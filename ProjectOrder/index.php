@@ -14,6 +14,15 @@
 </head>
 
 <body>
-
+<?php
+/*	if(isset($_SESSION['admin_id']))
+	{
+		header("location:?mod=home");
+	}*/
+	
+	$mod=@$_GET['mod'];
+	  if($mod=='') $mod='dangnhap';
+	  include("module/front/{$mod}.php");
+?> 
 </body>
 </html>
