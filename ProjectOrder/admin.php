@@ -1,3 +1,8 @@
+<?php
+	require_once("lib/connect.php");
+	session_start();
+	ob_start();//cached output cho browser, de su dung ham header
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
