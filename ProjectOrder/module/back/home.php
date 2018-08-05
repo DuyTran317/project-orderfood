@@ -3,18 +3,22 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
+	
 ?>
+<!--Reload Page-->
+<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
 
 <style>
  table.dataTable{
 	 border-collapse:collapse;
  }
 </style>
- 
+
 <div class="container-fluid"> 
  <div class="row">
   <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">  
   <caption>
+  	<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>
     <h2 style="color:#096; text-align:center"><i class="fas fa-clipboard-list"></i> Danh Sách Gọi Món</h2>
   </caption>
   </div>
@@ -65,4 +69,14 @@
     		}
 		});
     });
+	
+	//Reload Page
+	init_reload();
+	var time= getElementByID('#time_refresh');
+    function init_reload(){
+        setInterval( function() {
+                   window.location.reload();
+ 
+          },10000);
+    }
 </script>

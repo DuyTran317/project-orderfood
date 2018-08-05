@@ -15,7 +15,6 @@
 
 <div class="container-fluid" style="margin-bottom:50px">
 
-<form action="" method="post" enctype="multipart/form-data" class="col-md-12 col-sm-12 col-xs-12">
 <table border="1" class="col-md-12 col-sm-12 col-xs-12" style="margin-top:50px; margin-bottom:30px">
 	<caption style="text-align:center">
     	<h2 style="color:#096">Danh Sách Bàn Số <?=$num_table?></h2>
@@ -23,6 +22,7 @@
   <?php
   	$sql="select a.*,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`name` = b.`name`";
 	$rs=mysqli_query($link,$sql);
+	$total=0;
 	while($r=mysqli_fetch_assoc($rs)):
   ?>  
   <tr>
@@ -39,11 +39,15 @@
         </div>
     </td>
  </tr>
- <?php endwhile ?>
-    
+ <?php 
+ 	$total += $r['price']*$r['qty'];
+	endwhile 
+
+ ?>
+  
  <tr align="center">
     <td height="51" colspan="2">
-      <input type="submit" value="Hoàn Tất" class="btn btn-success">
+      <a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success"></a>
       </td>
   </tr>
     
