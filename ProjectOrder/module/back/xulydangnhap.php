@@ -31,7 +31,10 @@ if(isset($_POST['user']))
 		//Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
 		$_SESSION['email']=$user;
 ?>		
-		<script> alert('Sai tài khoản hoặc mật khẩu!'); </script>";
+		<script> 
+			alert('Sai tài khoản hoặc mật khẩu!'); 
+			window.location="?mod=dangnhap";
+        </script>
 		
 <?php		
 	}

@@ -19,7 +19,7 @@
 	$sql="update `of_order` set `active`=1 where `id`={$orderID}";
 	mysqli_query($link,$sql);
 	
-	$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '$orderID', '$num_table', '$total', '0')";
+	$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '$orderID', '$num_table', '$total', now(), '0')";
 	mysqli_query($link,$sql_ins_thanhtoan);
 ?>
 <script>
