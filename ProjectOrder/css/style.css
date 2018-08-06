@@ -1,3 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
 
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+.scrolling-wrapper .card {
+    display: inline-block;
+
+}
+.scrolling-wrapper::-webkit-scrollbar {
+    display: none;
+}

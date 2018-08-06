@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link rel="shortcut icon" href="img/shortcut/Christian-cross-icon.png" />-->
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="fontawesome-free-5.1.0-web/css/all.css">
@@ -15,13 +15,8 @@
 
 <body>
 <?php
-/*	if(isset($_SESSION['admin_id']))
-	{
-		header("location:?mod=home");
-	}*/
-	
 	$mod=@$_GET['mod'];
-	  if($mod=='') $mod='dangnhap';
+	  if($mod=='') $mod='home';
 	  include("module/front/{$mod}.php");
 ?> 
 </body>
