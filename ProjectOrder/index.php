@@ -1,3 +1,6 @@
+<?php
+	require_once("lib/connect.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +24,7 @@
 
 <?php
 	$mod=@$_GET['mod'];
-	  if($mod=='') $mod='detail';
+	  if($mod=='') $mod='home';
 	  include("module/front/{$mod}.php");
 ?> 
 </body>
