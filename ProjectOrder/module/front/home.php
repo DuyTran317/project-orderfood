@@ -2,48 +2,91 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body >
-
+<body style="background:url(img/front/crsrxfllostehmuxwzqfkdarpcg0di40toehyl4mzmgrkmy3dpfzxttukvsmluvp-.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
 <div class="container-fluid">
-    <div class="row" style="background-color: Black; padding: 20px;">
-        <h1 style="text-align: center">Testing Protocal</h1>
-        <div class="container">
-            <hr>
-            <div class="row">
-                <div class="col-md-9" style="   height: 300px; background-color: Blue"></div>
-                <div class="col-md-3" style="   height:300px; background-color: yellow"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3" style="   height: 300px; background-color: greenyellow"></div>
-                <div class="col-md-3" style="   height: 300px; background-color: yellowgreen"></div>
-                <div class="col-md-3" style="   height: 300px; background-color: darkcyan"></div>
-                <div class="col-md-3" style="   height: 300px; background-color: darkorchid"></div>
-            </div>
-        </div>
+	
+	<div class="row" style="padding:50px 0; font-family: 'Exo 2', sans-serif;">
+    	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />
+        <center><i class="fas fa-utensils fa-border" style="font-size:58px; color:#FFF"></i></center>
     </div>
-    <div class="row" style="background-color: aqua; padding: 20px;">
+	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
-            <h1>Testing Protocal</h1>
+            <h1 style="color:#FFF; text-align:center">Our Menu</h1>
             <hr>
             <div class="scrolling-wrapper">
-
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-                <div class="card" style="  width: 300px; height: 300px; background-color: Blue"></div>
-
-
-
+                <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
+                 <div class="card" style="  width: 300px; height: 300px; background:white;">
+                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; font-weight:bold">100.000.000vnd</div>
+                    </div>
+                    
+                    <div class="col-xs-12" style=" height: 150px; " >
+                        <h2 align="center"><b>Hamburger</b></h2>
+                        <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>
