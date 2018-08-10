@@ -1,10 +1,18 @@
+<?php 
+	$id = $_GET['id'];
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 </head>
-
+<?php 
+$sql="select * from `of_food` where `id`={$id}";
+$res = mysqli_query($link,$sql);
+$kq = mysqli_fetch_assoc($res);
+?>
 <body style="background:url(img/front/20180807_085811.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
 <div class="container" style="margin-top:50px;">
     <div class="row" > 
@@ -27,9 +35,9 @@
              </div>
         </div>
         <div class="col-sm-6" style="background-color:#FFF; font-family: 'Pacifico', cursive; border-radius:10px; padding:10px;">
-            <h1 style="color:#F00">100.000.000vnd</h1>
-            <h2 style="color:#F90; font-weight:bold">Hamburger</h2>
-            <i id="aubr">Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!! Ngon vl, nha sĩ khuyên ăn bạn bè khuyên thử!!!Ăn đê mấy thằng ml!!!</i>
+            <h1 style="color:#F00"> <?php echo number_format($kq['price']) ?> VND </h1>
+            <h2 style="color:#F90; font-weight:bold"><?php echo $kq['name'] ?></h2>
+            <i id="aubr"><?php echo $kq['desc'] ?></i>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">
                         <div class="input-group" >
