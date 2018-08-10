@@ -3,7 +3,7 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	
+	$nhanthanhtoan=$_SESSION['user_nameban'];
 ?>
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
@@ -24,7 +24,7 @@
   </div>
  </div> 
 </div>  
-  
+
 <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px">
   <thead>
   <tr align="center" bgcolor="#FFFFCC">
@@ -48,11 +48,23 @@
     <td align="center"><h5>&nbsp;&nbsp;
       Bàn Số <?=$re['num_table']?>
     </h5></td>
-    <td align="center"><h5>
+    <td><h5>
       <?php
 	  	if($re['wait']==0)
-		echo"Đang chờ thanh toán";
+		echo"Dang cho thanh toan";
+		if(isset($nhanthanhtoan)==$re['id'])
+		{
+			echo " <i class='fas fa-bell'></i>";	
+			
 	  ?>
+      
+      <audio controls autoplay="true" style="display:none">
+          <source src="lib/ringtone/bell-ringing-01.mp3" type="audio/mpeg">
+       </audio>
+	<?php
+			
+		}
+	?>
     </h5></td>   
     <td align="center"><h5>
       <a href="?mod=payment&id=<?=$re['order_id']?>&num_table=<?=$re['num_table']?>">Xem</a>
