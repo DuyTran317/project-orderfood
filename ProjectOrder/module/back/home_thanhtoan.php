@@ -3,7 +3,6 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	$nhanthanhtoan=$_SESSION['user_nameban'];
 ?>
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
@@ -52,7 +51,7 @@
       <?php
 	  	if($re['wait']==0)
 		echo"Dang cho thanh toan";
-		if(isset($nhanthanhtoan)==$re['id'])
+		if(isset($_SESSION['luuthanhtoan'])==$re['id'])
 		{
 			echo " <i class='fas fa-bell'></i>";	
 			
