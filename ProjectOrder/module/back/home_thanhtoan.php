@@ -51,15 +51,16 @@
       <?php
 	  	if($re['wait']==0)
 		echo"Dang cho thanh toan";
-		if(isset($_SESSION['luuthanhtoan'])==$re['id'])
-		{
-			echo " <i class='fas fa-bell'></i>";	
+		
+		$sql="select * from `of_solve_pay` where `num_table`={$re['num_table']} and `active`=0";
+		$rs=mysqli_query($link,$sql);
+		if(mysqli_num_rows($rs)>0)
+		{										
+				echo " <i class='fas fa-bell'></i>";	
 			
 	  ?>
       
-      <audio controls autoplay="true" style="display:none">
-          <source src="lib/ringtone/bell-ringing-01.mp3" type="audio/mpeg">
-       </audio>
+      <audio style="display:none" autoplay="autoplay" src="lib/ringtone/bell-ringing-01.mp3"></audio>
 	<?php
 			
 		}

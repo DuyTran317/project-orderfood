@@ -3,6 +3,14 @@
 	{
 		header("location:?mod=dangnhap");
 	}
+	if(isset($_GET['id']))
+	{
+		$id=$_GET['id'];
+	}
+	if(isset($_GET['name']))
+	{
+		$name=$_GET['name'];
+	}
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,12 +20,12 @@
 <div class="container-fluid">
 	
     <a href="?mod=list_order"><button class="btn btn-success">Danh Sách Các Món Đã Đặt</button></a>
-    <a href="?mod=xulythanhtoan&id="<?=$_SESSION['user_idban'] ?>>
+
+    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>">
     	<button class="btn btn-success"> Thanh Toán </button>
 	</a>
     <p style="text-align:right; color:#F00 ; font-size:36px">
-    	<?= $_SESSION['user_nameban']; ?>
-
+    	<?=$name;?>
     </p>
 	<div class="row" style="padding:50px 0; font-family: 'Exo 2', sans-serif;">
     	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />

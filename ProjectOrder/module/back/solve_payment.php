@@ -18,6 +18,9 @@
 	
 	$sql="update `of_bill` set `active`=1 where `order_id`={$orderID}";
 	mysqli_query($link,$sql);
+	
+	$sql="update `of_solve_pay` set `active`=1 where `num_table`={$num_table}";
+	mysqli_query($link,$sql);
 
 ?>
 <script>

@@ -47,6 +47,7 @@
   
  <tr align="center">
     <td height="51" colspan="2">
+      <hr /><strong>Tổng Tiền:</strong> <?=number_format($total)?> VND<hr />
       <a href="?mod=solve_payment&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success"></a>
       </td>
   </tr>

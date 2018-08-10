@@ -16,7 +16,9 @@ if(isset($_POST['user']))
 		$r=mysqli_fetch_assoc($rs);
 		$_SESSION['user_idban']=$r['id'];
 		$_SESSION['user_nameban']=$r['name'];
-		header("location:?mod=home");
+		$id = $r['id'];
+		$name = $r['name'];
+		header("location:?mod=home&id=$id&name=$name");
 	}
 	else
 	{
