@@ -25,6 +25,10 @@ if(isset($_POST['user']))
 		{
 			header("location:?mod=home_thanhtoan");
 		}
+		else
+		{
+			header("location:?mod=admin");
+		}
 	}
 	else
 	{

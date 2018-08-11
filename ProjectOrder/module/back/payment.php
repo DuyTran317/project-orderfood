@@ -20,20 +20,19 @@
     	<h2 style="color:#096">Danh Sách Bàn Số <?=$num_table?></h2>
   	</caption>
   <?php
-  	$sql="select a.*,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`name` = b.`name`";
+  	$sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
 	$rs=mysqli_query($link,$sql);
 	$total=0;
 	while($r=mysqli_fetch_assoc($rs)):
   ?>  
   <tr>
-    <td width="108" height="36" align="center"><strong style="font-size:20px"><?=$r['name']?></strong></td>
+    <td width="108" height="36" align="center"><strong style="font-size:20px"><?=$r['ten']?></strong></td>
     <td width="297" align="left">&nbsp;
     	<div class="container-fluid">
         <div class="row">
     		<img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" class="col-md-3 col-sm-3 col-xs-12">
             <div class="col-md-9 col-sm-9 col-xs-12" style="margin-left:10px;">
                 <p><strong>Số Lượng</strong>: <?=$r['qty']?></p>
-                <p><strong>Ghi Chú</strong>: <?=$r['note']?></p>
             </div>
         </div>    
         </div>

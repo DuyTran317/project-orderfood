@@ -1,5 +1,16 @@
 <?php 
-	$id = $_GET['id'];
+	if(isset($_GET['id']))
+	{
+		$id = $_GET['id'];
+	}
+	if(isset($_GET['id_ban']))
+	{
+		$id_ban=$_GET['id_ban'];
+	}
+	if(isset($_GET['name_ban']))
+	{
+		$name_ban=$_GET['name_ban'];
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -42,11 +53,11 @@ $kq = mysqli_fetch_assoc($res);
                     <div class="col-xs-6">
                         <div class="input-group" >
                         <span class="input-group-addon" name="qty">Qty:</span>
-                        <input type="text" class="form-control" placeholder="Enter quantity" id="quantity" />
+                        <input type="number" class="form-control" id="qty" min="1" value="1">
                         </div>
                     </div>
                     <div class="col-xs-6">
-                    <button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Order</button>
+                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Order</button></a>                    
                     </div>
                 </div>
         </div>
