@@ -1,4 +1,4 @@
-<script src="../../lib/notice.js"></script>
+<script src="lib/notice.js"></script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -6,7 +6,7 @@
 	}
 ?>
 <!--Reload Page-->
-<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
+<meta http-equiv="refresh" content="number;url=http://localhost:8080/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
 
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">

@@ -17,30 +17,20 @@
 <head>
 </head>
 <body style="background:url(img/front/crsrxfllostehmuxwzqfkdarpcg0di40toehyl4mzmgrkmy3dpfzxttukvsmluvp-.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
-<div class="container-fluid">	    
-	
-    <?php
-		if(isset($_GET['thanhtoan']))
-		{
-	?>
-    <a href="?mod=list_order&id_ban=<?=$id?>&name_ban=<?=$name?>"><button class="btn btn-success">Danh Sách Các Món Đã Đặt</button></a>
-    
-    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')">
-    	<button class="btn btn-success"> Thanh Toán </button>
-	</a>
-    
-    <?php } ?>
-	
-    <p style="text-align:right; color:#F00 ; font-size:36px">
-    	Bàn <?=$name;?>
+<p style="text-align:right; ">
+    	<span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Bàn <?=$name;?></span>
     </p>
-	<div class="row" style="padding:50px 0; font-family: 'Exo 2', sans-serif;">
+<div class="container-fluid">	    
+
+	
+    
+	<div class="row" style="padding:10px 0; font-family: 'Exo 2', sans-serif;">
     	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />
         <center><i class="fas fa-utensils fa-border" style="font-size:58px; color:#FFF"></i></center>
     </div>
 	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
-            <h1 style="color:#FFF; text-align:center">Our Menu</h1>
+            <h1 style="color:#FFF; text-align:center">Thực Đơn</h1>
             <hr>
             <div class="scrolling-wrapper">
             <?php 
@@ -65,8 +55,21 @@
                 </a>
                 
        		<?php } ?>
-                                                  
+            	
+	                          
             </div>
+            <?php
+					if(isset($_GET['thanhtoan']))
+					{
+				?>
+                <p align="right" style="margin-top:10px;">
+                    <a href="?mod=list_order&id_ban=<?=$id?>&name_ban=<?=$name?>" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">
+                     Thanh Toán
+                    </a>
+                </p>
+				
+				<?php } ?>
         </div>
     </div>
 </div>
