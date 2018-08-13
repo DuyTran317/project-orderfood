@@ -66,7 +66,16 @@
 					{
 				?>
                 <p align="right" style="margin-top:10px;">
-                    <a href="?mod=list_order&id_ban=<?=$id?>&name_ban=<?=$name?>" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
+                <?php
+				$sql="select `id` 
+					from `of_order` as a, `of_order_detail` as b
+					where a.`id`=b.`order_id` and `num_table`={$name}				
+					group by `id`
+					order by `id` desc limit 0,1";
+				$rs=mysqli_query($link,$sql);
+				$r=mysqli_fetch_assoc($rs);		
+	 			?>  
+                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">
                      Thanh Toán
                     </a>
