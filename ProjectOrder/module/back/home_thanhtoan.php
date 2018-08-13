@@ -1,3 +1,4 @@
+<script src="../../lib/notice.js"></script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -7,6 +8,31 @@
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
 
+<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('10d5ea7e7b632db09c72', {
+        encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('notice', function (data) {
+        //code xử lý khi có dữ liệu từ pusher
+        n = new Notification(
+                'Bạn nhận được yêu cầu thanh toán',
+                {
+                    body: data.name + ' đã gửi tin nhắn cho bạn:' + data.message,
+                    icon: 'http://icons.iconarchive.com/icons/pauloruberto/custom-round-yosemite/128/Bitcoin-icon.png', // Hình ảnh
+                    tag: '' // Đường dẫn 
+                });
+        setTimeout(n.close.bind(n), 10000);
+        // tự động đóng thông báo sau 10s
+        n.onclick = function () {
+            window.location.href = this.tag;
+        }
+        // kết thúc code xử lý thông báo
+    });
+</script>
 <style>
  table.dataTable{
 	 border-collapse:collapse;
