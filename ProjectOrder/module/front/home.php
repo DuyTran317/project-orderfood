@@ -18,8 +18,11 @@
 </head>
 <body style="background:url(img/front/crsrxfllostehmuxwzqfkdarpcg0di40toehyl4mzmgrkmy3dpfzxttukvsmluvp-.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
 <p style="text-align:right; ">
+		<?php if(isset($_SESSION['cart'])) {?>
+			<a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>"><i class="far fa-list-alt" style="color:#FFF; font-size:42px"></i></a>&nbsp;&nbsp;
+        <?php } ?>
     	<span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Bàn <?=$name;?></span>
-    </p>
+</p>
 <div class="container-fluid">	    
 
 	

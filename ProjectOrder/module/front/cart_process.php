@@ -23,6 +23,8 @@
 		$qty=max(1,intval($_GET['qty']));
 		
 		$cart[$id]+=$qty;
+		$_SESSION['cart']=$cart;
+		header("location:?mod=home&id=$id_ban&name=$name_ban");
 	}
 	
 	//Cập nhật
@@ -33,14 +35,19 @@
 		{
 			$cart[$k]=max(1,intval($_POST[$k]));
 		}
+		$_SESSION['cart']=$cart;
+		//Chuyen den trang cart
+		header("location:?mod=cart&id_ban=$id_ban&name_ban=$name_ban");
 	}
 	
 	//Xoa phan tu khoi mang: Xoa san pham khoi gio hang
 	if($act==3)
-	unset($cart[$id]);
+	{
+		unset($cart[$id]);
+			
+		$_SESSION['cart']=$cart;
 		
-	$_SESSION['cart']=$cart;
-	
-	//Chuyen den trang cart
-	header("location:?mod=cart&id_ban=$id_ban&name_ban=$name_ban");
+		//Chuyen den trang cart
+		header("location:?mod=cart&id_ban=$id_ban&name_ban=$name_ban");
+	}
 ?>

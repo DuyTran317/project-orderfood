@@ -42,7 +42,7 @@
   ?>
   
   <tr style="text-align:center; height:50px">
-    <td><a href="?mod=cart_process&id=<?=$k?>&act=3" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
+    <td><a href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
     <td>
       <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
 		<?=$r['name']?>
