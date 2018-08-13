@@ -17,8 +17,9 @@
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
     channel.bind('notice', function (data) {
+		
         //code xử lý khi có dữ liệu từ pusher
-        n = new Notification(
+		n = new Notification(
                 'Bạn nhận được yêu cầu thanh toán',
                 {
                     body: data.name + ' đã gửi tin nhắn cho bạn:' + data.message,
@@ -30,6 +31,7 @@
         n.onclick = function () {
             window.location.href = this.tag;
         }
+		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
 </script>
@@ -108,13 +110,5 @@
 		});
     });
 	
-	//Reload Page
-	init_reload();
-	var time= getElementByID('#time_refresh');
-    function init_reload(){
-        setInterval( function() {
-                   window.location.reload();
- 
-          },10000);
-    }
+	
 </script>
