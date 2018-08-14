@@ -11,6 +11,10 @@
 	{
 		$name=$_GET['name'];
 	}
+	if(isset($_GET['cate']))
+	{
+		$cate=$_GET['cate'];
+	}
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,8 +22,13 @@
 </head>
 <body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
 <p style="text-align:right; ">
+		
+        <!--Back-->
+        <a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">
+        Quay về</span></a>
+        
 		<?php if(isset($_SESSION['cart'])) {?>
-			<a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>"><i class="far fa-list-alt" style="color:#FFF; font-size:42px"></i></a>&nbsp;&nbsp;
+			<a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:#FFF; font-size:42px"></i></a>&nbsp;&nbsp;
         <?php } ?>
     	<span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Bàn <?=$name;?></span>
 </p>
@@ -37,13 +46,13 @@
             <hr>
             <div class="scrolling-wrapper">
             <?php 
-			$commsql="select * from `of_food` where `category_id`='1' ";
+			$commsql="select * from `of_food` where `category_id`={$cate} ";
 			$res= mysqli_query($link,$commsql);
 			while($kq= mysqli_fetch_assoc($res))
 			{	
 			?>
       			
-            	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>" style="color:#000; text-decoration:none">
+            	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>" style="color:#000; text-decoration:none">
                 <div class="card" style="  width: 300px; height: 300px; background:white;">
                     <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; 
@@ -61,7 +70,7 @@
             	
 	                          
             </div>
-            <?php
+            	<?php
 					if(isset($_GET['thanhtoan']))
 					{
 				?>
@@ -75,13 +84,22 @@
 				$rs=mysqli_query($link,$sql);
 				$r=mysqli_fetch_assoc($rs);		
 	 			?>  
-                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">
-                     Thanh Toán
-                    </a>
+                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan='yes'" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>                    
                 </p>
 				
-				<?php } ?>
+				<?php } 
+					$sql="select * from `of_order` where `num_table`={$name} order by `id` desc limit 0,1";
+					$rs_t=mysqli_query($link,$sql);
+					$r_t=mysqli_fetch_assoc($rs_t);
+					
+					if(isset($_GET['thanhtoan']) && $r_t['active']==1)
+					{
+				?>
+                	<a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">
+                     Thanh Toán
+                    </a>
+                
+                <?php } ?>
         </div>
     </div>
 </div>

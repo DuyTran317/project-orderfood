@@ -17,6 +17,10 @@
 	{
 		$name_ban=$_GET['name_ban'];
 	}
+	if(isset($_GET['cate']))
+	{
+		$cate=$_GET['cate'];
+	}
 	
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
@@ -55,10 +59,7 @@
 			}
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
-
-?>	
-			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'"</script>			
-
+		
 			//Gửi thông điêp để reload trang BẾP
 			require('Pusher.php');
 			$options = array(
@@ -73,7 +74,7 @@
 ?>
 
 			
-			<script>window.location="?mod=home&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'"</script>			
+			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'&cate=<?=$cate?>"</script>			
 
 
 

@@ -7,6 +7,10 @@
 	{
 		$name_ban=$_GET['name_ban'];
 	}
+	if(isset($_GET['cate']))
+	{
+		$cate=$_GET['cate'];
+	}
 ?>
 <style>
 	th{
@@ -19,7 +23,7 @@
 <div class="row">
 
 
-<form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>" method="post">
+<form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" method="post">
 <table border="1" class="col-md-12 col-sm-12 col-xs-12" cellspacing="0" bordercolor="#CCCCCC">
   <tr>
     <th width="42">Xóa</th>
@@ -42,7 +46,7 @@
   ?>
   
   <tr style="text-align:center; height:50px">
-    <td><a href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
+    <td><a href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
     <td>
       <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
 		<?=$r['name']?>
@@ -59,7 +63,7 @@
 </div>
 
 <div class="row" style="margin-top:30px">
-    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>"><button type="button" class="btn btn-info">
+    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?>"><button type="button" class="btn btn-info">
         	Tiếp tục chọn món</button></div></a>
             
     	<?php if(@count($cart)>0){ ?> 
@@ -67,7 +71,7 @@
         	Cập nhật danh sách</button></div>       
         <?php } ?>
             
-    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>"><button type="button" class="btn btn-info">
+    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>"><button type="button" class="btn btn-info">
         	Kiểm tra danh sách</button></div></a>
         <div class="col-md-2 col-sm-2 col-xs-12">&nbsp;</div>
         <div class="col-md-4 col-sm-4 col-xs-12"><span style="font-weight:bold; font-size:18px; text-decoration:underline">

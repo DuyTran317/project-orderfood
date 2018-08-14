@@ -11,6 +11,10 @@
 	{
 		$name_ban=$_GET['name_ban'];
 	}
+	if(isset($_GET['cate']))
+	{
+		$cate=$_GET['cate'];
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +61,7 @@ $kq = mysqli_fetch_assoc($res);
                         </div>
                     </div>
                     <div class="col-xs-6">
-                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Order</button></a>                    
+                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Order</button></a>                    
                     </div>
                 </div>
         </div>
