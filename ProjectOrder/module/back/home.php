@@ -1,3 +1,5 @@
+
+<script src="lib/notice.js"></script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -7,7 +9,33 @@
 ?>
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
-
+<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+  <script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('10d5ea7e7b632db09c72', {
+        encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('notices', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		n = new Notification(
+                'Thông Báo!!!!!!',
+                {
+                    body: data.name + ' ' + data.message,
+                    icon: 'http://icons.iconarchive.com/icons/google/noto-emoji-people-profession/128/10267-man-cook-light-skin-tone-icon.png', // Hình ảnh
+                    tag: '' // Đường dẫn 
+                });
+        setTimeout(n.close.bind(n), 10000);
+        // tự động đóng thông báo sau 10s
+        n.onclick = function () {
+            window.location.href = this.tag;
+        }
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+</script>
 <style>
  table.dataTable{
 	 border-collapse:collapse;
@@ -70,13 +98,6 @@
 		});
     });
 	
-	//Reload Page
-	init_reload();
-	var time= getElementByID('#time_refresh');
-    function init_reload(){
-        setInterval( function() {
-                   window.location.reload();
- 
-          },10000);
-    }
+	
+    
 </script>
