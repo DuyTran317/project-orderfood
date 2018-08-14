@@ -55,8 +55,24 @@
 			}
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
-?>	
+			//Gửi thông điêp để reload trang BẾP
+			require('Pusher.php');
+			$options = array(
+				'encrypted' => true
+			);
+			$pusher = new Pusher(
+					'10d5ea7e7b632db09c72', 'a496a6f084ba9c65fffb', '234217', $options
+			);
+			$data['name']= $name_ban ;
+			$data['message'] = 'đã gọi món mới!!!';
+			$pusher->trigger('hihi', 'notices', $data);
+?>
+
+			
 			<script>window.location="?mod=home&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'"</script>			
+
+
+
 <?php
 		}
 ?>		
@@ -117,7 +133,7 @@
     <div class="col-md-8 col-sm-8 col-xs-12">
     <div id="form_lienhe">
     	<form action="" method="post">
-        	<input class="btn btn-primary" type="submit" name="goimon" value="Xác Nhận Gọi Món">
+    <input  class="btn btn-primary" type="submit" name="goimon" value="Xác Nhận Gọi Món"> 
         </form>
     </div>
     </div>
