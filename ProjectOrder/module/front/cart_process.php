@@ -24,7 +24,7 @@
 		
 		$cart[$id]+=$qty;
 		$_SESSION['cart']=$cart;
-		header("location:?mod=home&id=$id_ban&name=$name_ban");
+		header("location:?mod=menu&id=$id_ban&name=$name_ban");
 	}
 	
 	//Cập nhật

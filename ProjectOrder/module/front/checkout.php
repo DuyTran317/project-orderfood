@@ -56,7 +56,7 @@
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
 ?>	
-			<script>window.location="?mod=home&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'"</script>			
+			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'"</script>			
 <?php
 		}
 ?>		

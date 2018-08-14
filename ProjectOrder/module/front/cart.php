@@ -59,7 +59,7 @@
 </div>
 
 <div class="row" style="margin-top:30px">
-    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=home&id=<?=$id_ban?>&name=<?=$name_ban?>"><button type="button" class="btn btn-info">
+    	<div class="col-md-2 col-sm-2 col-xs-12"><a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>"><button type="button" class="btn btn-info">
         	Tiếp tục chọn món</button></div></a>
             
     	<?php if(@count($cart)>0){ ?> 
