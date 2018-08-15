@@ -19,7 +19,7 @@ if(isset($_GET['name']))
 	height:auto;
 }
 </style>
-<body style="background-color: #fff289; font-family: 'Pacifico', cursive;"">
+<body style="background-color: #fff289; font-family: 'Pacifico', cursive;">
 <img src="img/front/black-pepper-bright-colors-940302.png"  class="responsive" width="100%" />
 <div class="container" style="margin-top: -8%; margin-bottom: 5%" >
     <div class="row" >
@@ -47,7 +47,7 @@ if(isset($_GET['name']))
 					}
 					?>); height: 200px; background-position: center; background-size: contain;"> </div>
                     <div class="col-xs-12" style=" padding: 20px;">
-                        <p align="center" style="font-size: 30px; border-bottom: black"><?=$r['name']?></p>
+                        <p align="center" style="font-size: 25px; border-bottom: black; color: grey; font-weight: bold"><?=$r['name']?></p>
 
                     </div>
                 </div>

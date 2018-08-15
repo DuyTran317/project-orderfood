@@ -1,40 +1,41 @@
-<div class="container-fluid" style="margin-top:150px">
-<div class="row">
-      <div class="col-md-3 col-sm-12 col-xs-12"></div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-
-            <form action="?mod=xulydangnhap" method="post">
-            <fieldset>
-                <legend><h2 style="text-align:center; background-color:#096; color:#FFF; padding:8px 10px 8px 10px">
-                	<strong>Xin Chào Quản Trị Viên!</strong></h2>
-                </legend>
-                <h3>--- Đăng Nhập ---</h3><br />
-                <ul style="list-style-type:none">
-                    <li>Email<span style="color:#F00"> *</span></li>
-                    <li><input type="text" name="user" style="width:60%" required 
-                    value="<?php
-                                if(isset($_SESSION['email']))
-                                {
-                                    echo $_SESSION['email'];
-                                    unset($_SESSION['email']);
-                                }
-                           ?>" 
-                    /></li>
-                </ul>
-                
-                <ul style="list-style-type:none">
-                    <li>Mật khẩu<span style="color:#F00"> *</span></li>
-                    <li><input type="password" name="pass" style="width:60%" required /></li>
-                </ul>         
-                
-                <ul>
-                    <button class="btn btn-success" style="margin-top:15px" type="submit">Đăng Nhập</button>
-                </ul>
-            
-            </fieldset>    
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<div class="container" style="margin-top:10%">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="background-color: rgba(0,0,0,0.7); padding:15px">
+            <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
+                <fieldset>
+                    <h2 style="text-align:center; color:#FFF; ">
+                        <strong>Xin Chào Quản Trị Viên</strong></h2>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="text" name="user" class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="Email"
+                                   value="<?php
+                                   if(isset($_SESSION['email']))
+                                   {
+                                       echo $_SESSION['email'];
+                                       unset($_SESSION['email']);
+                                   }
+                                   ?>"
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="password" name="pass"  class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="Mật khẩu"
+                                   value="<?php
+                                   if(isset($_SESSION['email']))
+                                   {
+                                       echo $_SESSION['email'];
+                                       unset($_SESSION['email']);
+                                   }
+                                   ?>"
+                            >
+                        </div>
+                    </div>
+                    <button class="btn col-xs-12" style="color: black; background-color: yellow; border-radius: 0px; type="submit">Đăng Nhập</button>
+                </fieldset>
             </form>
-          </div>
-         
-        <div class="col-md-3 col-sm-12 col-xs-12"></div>	        
+        </div>
+    </div>
 </div>
-</div>
+</body>

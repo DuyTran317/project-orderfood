@@ -49,27 +49,27 @@
         // kết thúc code xử lý thông báo
     });
 </script>
-		
-        <!--Back-->
-        <a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">
-        Quay về</span></a>
-        
-		<?php if(isset($_SESSION['cart'])) {?>
-			<a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:#FFF; font-size:42px"></i></a>&nbsp;&nbsp;
-        <?php } ?>
-    	<span style="color:#F00 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Bàn <?=$name;?></span>
+    	<span style="color:#000 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">
+            <a style="color:black; text-decoration: none " href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>">
+        <i class="fas fa-arrow-left"></i></a>
+            Bàn <?=$name;?>
+
+        </span>
 </p>
 <div class="container-fluid">	    
 
 	
     
-	<div class="row" style="padding:10px 0; font-family: 'Exo 2', sans-serif;">
+	<div class="row" style="padding:1% 0; font-family: 'Exo 2', sans-serif;">
     	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />
         <center><i class="fas fa-utensils fa-border" style="font-size:58px; color:#FFF"></i></center>
     </div>
 	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
-            <h1 style="color:#FFF; text-align:center">Thực Đơn</h1>
+            <h1 style="color:#FFF; text-align:center">Thực Đơn <?php if(isset($_SESSION['cart'])) {?>
+                   <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:#FFF; font-size:36px"></i></a>
+                <?php } ?></h1>
+
             <hr>
             <div class="scrolling-wrapper">
             <?php 
@@ -110,21 +110,21 @@
 					order by `id` desc limit 0,1";
 				$rs=mysqli_query($link,$sql);
 				$r=mysqli_fetch_assoc($rs);		
-	 			?>  
-                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan='yes'" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>                    
+	 			?>
+                    <?php }
+                    $sql="select * from `of_order` where `num_table`={$name} order by `id` desc limit 0,1";
+                    $rs_t=mysqli_query($link,$sql);
+                    $r_t=mysqli_fetch_assoc($rs_t);
+
+                    if(isset($_GET['thanhtoan']) && $r_t['active']==1)
+                    {
+                    ?>
+                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan='yes'" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">Thanh Toán</a>
                 </p>
 				
-				<?php } 
-					$sql="select * from `of_order` where `num_table`={$name} order by `id` desc limit 0,1";
-					$rs_t=mysqli_query($link,$sql);
-					$r_t=mysqli_fetch_assoc($rs_t);
-					
-					if(isset($_GET['thanhtoan']) && $r_t['active']==1)
-					{
-				?>
-                	<a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">
-                     Thanh Toán
-                    </a>
+
+
                 
                 <?php } ?>
         </div>
