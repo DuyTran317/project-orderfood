@@ -21,6 +21,16 @@
 	
 	$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '$orderID', '$num_table', '$total', now(), '0')";
 	mysqli_query($link,$sql_ins_thanhtoan);
+	//pussher
+	require('Pusher.php');
+	$options = array(
+		'encrypted' => true
+	);
+	$pusher = new Pusher(
+			'10d5ea7e7b632db09c72', 'a496a6f084ba9c65fffb', '234217', $options
+	);
+	$data['message'] = 'Đơn Hàng Mới!!!';
+	$pusher->trigger('hihi', 'newbill', $data);
 ?>
 <script>
 	alert("Hoàn Tất Đơn Hàng!");
