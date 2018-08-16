@@ -124,5 +124,16 @@ include("moduleAD/{$mod}.php");
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+<script>
+    //Chi tiết
+    var noidung = CKEDITOR.replace( 'noidung', {
+        uiColor: '#ccffff',
+        language:'vi',
+
+    });
+
+    CKFinder.setupCKEditor( noidung, 'brower_components/ckfinder/' ) ;
+
+</script>
 </body>
 </html>

@@ -126,7 +126,7 @@ if(isset($_GET['actives']))
 {
     $sql = "update `of_food` set `active`=1 where id='{$_GET['actives']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=cat_list");
+    header("location:?mod=pro_list");
 }
 if(isset($_GET['activeh']))
 {
