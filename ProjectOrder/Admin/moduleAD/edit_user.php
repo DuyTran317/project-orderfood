@@ -29,13 +29,16 @@
                                 <label for="exampleInputPassword1">Số</label>
                                 <input type="text" class="form-control" id="so" name="so" placeholder="Nhập số bàn">
                             </div>
+
+                                <input type="checkbox" name="changePassword" id="changePassword">
+                                <label for="exampleInputPassword1">Thay đổi</label>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Mật Khẩu</label>
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Nhập mật khẩu">
+                                <input type="password" class="form-control password" id="pass" name="pass" placeholder="Nhập mật khẩu" disabled="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" id="repass" name="repass" placeholder="Nhập lại mật khẩu">
+                                <input type="password" class="form-control password" id="repass" name="repass" placeholder="Nhập lại mật khẩu" disabled="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Trạng Thái:</label>
@@ -65,4 +68,5 @@
             <!--/.col (left) -->
         </div>
     </section>
+
 </div>

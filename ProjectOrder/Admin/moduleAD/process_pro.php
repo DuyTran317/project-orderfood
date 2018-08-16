@@ -55,33 +55,61 @@ if(isset($_POST['suatheloai']))
     $file3= $_FILES['suaimage3'];
     $file4= $_FILES['suaimage4'];
 
-    if($file['name']!= '' || $file2['name']!= '' || $file3['name']!= '' || $file4['name']!= '')
+    $sql = "select * from `of_food` where id=$edit";
+    $kq = mysqli_query($link,$sql);
+    $d=mysqli_fetch_assoc($kq);
+
+    $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`name`='{$tensp}',
+`price`='{$gia}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`order`='{$thutu}',
+`active`='{$trangthai}'";
+
+    if($file['name']!= '')
     {
         $img_url= mt_rand().$file['name'];
+        $sql_img1 = ",`img_url`='{$img_url}'";
         copy($file['tmp_name'],"../img/sp/{$img_url}");
 
+        $sql_edit .= $sql_img1;
+        $hinhcu = "../img/sp/{$d['img_url']}";
+        unlink($hinhcu);
+    }
+
+    if($file2['name'!= ''])
+    {
         $img_url2= mt_rand().$file2['name'];
+        $sql_img2 = ",`img_url2`='{$img_url2}'";
         copy($file2['tmp_name'],"../img/sp/{$img_url2}");
 
+        $sql_edit .= $sql_img2;
+        $hinhcu = "../img/sp/{$d['img_url2']}";
+        unlink($hinhcu);
+    }
+
+    if($file3['name'!= ''])
+    {
         $img_url3= mt_rand().$file3['name'];
+        $sql_img3 = ",`img_url3`='{$img_url3}'";
         copy($file3['tmp_name'],"../img/sp/{$img_url3}");
 
+        $sql_edit .= $sql_img3;
+        $hinhcu = "../img/sp/{$d['img_url3']}";
+        unlink($hinhcu);
+    }
+
+    if($file4['name'!= ''])
+    {
         $img_url4= mt_rand().$file4['name'];
+        $sql_img34= ",`img_url4`='{$img_url4}'";
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
 
-        copy($file['tmp_name'],"../img/sp/{$img_url}");
-        $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`name`='{$tensp}',
-`price`='{$gia}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`img_url`='{$img_url}',`img_url2`='{$img_url2}',`img_url3`='{$img_url3}',`img_url4`='{$img_url4}',`order`='{$thutu}',
-`active`='{$trangthai}' where id=$edit";
-        mysqli_query($link,$sql_edit);
+        $sql_edit .= $sql_img4;
+        $hinhcu = "../img/sp/{$d['img_url4']}";
+        unlink($hinhcu);
     }
-    else
-    {
-        $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`name`='{$tensp}',
-`price`='{$gia}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`order`='{$thutu}',
-`active`='{$trangthai}' where id=$edit";
-        mysqli_query($link,$sql_edit);
-    }
+
+
+    $sql_edit .= "where id=$edit";
+    mysqli_query($link,$sql_edit);
     header("location:?mod=pro_list&mes2=2");
 }
 
@@ -93,4 +121,16 @@ if(isset($_GET['del']))
         header("location:?mod=pro_list&mes3=3");
     }
     else echo $sql_del;
+}
+if(isset($_GET['actives']))
+{
+    $sql = "update `of_food` set `active`=1 where id='{$_GET['actives']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=cat_list");
+}
+if(isset($_GET['activeh']))
+{
+    $sql = "update `of_food` set `active`=0 where id='{$_GET['activeh']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=pro_list");
 }

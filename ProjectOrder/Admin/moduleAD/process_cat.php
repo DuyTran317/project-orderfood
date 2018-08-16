@@ -43,3 +43,15 @@ if(isset($_GET['del']))
     }
 
 }
+if(isset($_GET['actives']))
+{
+    $sql = "update `of_category` set `active`=1 where id='{$_GET['actives']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=cat_list");
+}
+if(isset($_GET['activeh']))
+{
+    $sql = "update `of_category` set `active`=0 where id='{$_GET['activeh']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=cat_list");
+}

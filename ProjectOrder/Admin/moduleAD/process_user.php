@@ -26,3 +26,15 @@ if(isset($_GET['del']))
     }
     else echo $sql_del;
 }
+if(isset($_GET['actives']))
+{
+    $sql = "update `of_user` set `active`=1 where id='{$_GET['actives']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=user_list");
+}
+if(isset($_GET['activeh']))
+{
+    $sql = "update `of_user` set `active`=0 where id='{$_GET['activeh']}' ";
+    mysqli_query($link,$sql);
+    header("location:?mod=user_list");
+}

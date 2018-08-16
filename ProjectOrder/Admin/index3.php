@@ -105,5 +105,24 @@ include("moduleAD/{$mod}.php");
         })
     })
 </script>
+<script>
+    $(document).ready(function () {
+        $("#changePassword").change(function () {
+            if($(this).is(":checked"))
+            {
+                $(".password").removeAttr('disabled');
+            }
+            else
+            {
+                $(".password").attr('disabled','');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>

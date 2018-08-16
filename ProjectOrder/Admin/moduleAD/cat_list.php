@@ -69,12 +69,10 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $d_cat['name'] ?></td>
-                                <td><?php if($d_cat['active']==1)
+                                <td><?php if($d_cat['active']==0) {echo "<a href=\"?mod=process_cat&actives={$d_cat['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    else
                                     {
-                                        echo "Hiện";
-                                    }else
-                                    {
-                                        echo "Ẩn";
+                                        echo "<a href=\"?mod=process_cat&activeh={$d_cat['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
                                 <td><a href="?mod=edit_cat&edit=<?= $d_cat['id'] ?>">Sửa</a>/<a href="?mod=process_cat&del=<?= $d_cat['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
@@ -82,14 +80,6 @@
                             <?php } ?>
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên Thể Loại</th>
-                                <th>Trạng Thái</th>
-                                <th><a href="?mod=add_cat">Thêm</a></th>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.box-body -->

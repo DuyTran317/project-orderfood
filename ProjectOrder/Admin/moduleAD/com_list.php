@@ -54,29 +54,17 @@
                                     <td><?= $d_com['customer_name'] ?></td>
                                     <td><?= $d_com['desc'] ?></td>
                                     <td><?= $d_com['star'] ?></td>
-                                    <td><?php if($d_com['active']==1)
+                                    <td><?php if($d_com['active']==0) {echo "<a href=\"?mod=process_com&actives={$d_com['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                        else
                                         {
-                                            echo "Hiện";
-                                        }else
-                                        {
-                                            echo "Ẩn";
+                                            echo "<a href=\"?mod=process_com&activeh={$d_com['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
-                                        ?></td>
+                                        ?>
                                     <td><a href="?mod=process_com&del=<?= $d_com['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên Khách Hàng</th>
-                                <th>Bình Luận</th>
-                                <th>Đánh Giá</th>
-                                <th>Trạng Thái</th>
-                                <th>Xóa</th>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.box-body -->

@@ -71,28 +71,18 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><?php if($d_user['active']==1)
+                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_user&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                        else
                                         {
-                                            echo "Hiện";
-                                        }else
-                                        {
-                                            echo "Ẩn";
+                                            echo "<a href=\"?mod=process_user&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="?mod=edit_cat&edit=<?= $d_user['id'] ?>">Sửa</a>/<a href="?mod=process_user&del=<?= $d_user['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
+                                    <td><a href="?mod=edit_user&edit=<?= $d_user['id'] ?>">Sửa</a>/<a href="?mod=process_user&del=<?= $d_user['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>STT</th>
-                                <th>Account</th>
-                                <th>Tên</th>
-                                <th>Trạng Thái</th>
-                                <th><a href="?mod=add_user">Thêm</a></th>
-                            </tr>
-                            </tfoot>
+
                         </table>
                     </div>
                     <!-- /.box-body -->

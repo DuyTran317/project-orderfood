@@ -101,21 +101,17 @@
                                 <td> <img src="../img/sp/<?php echo $d_pro['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
                                 <td><?php echo $d_pro['name'] ?></td>
                                 <td> <?php echo number_format($d_pro['price']) ?> VNĐ</td>
-                                <td><?php if($d_pro['active']==1){echo 'Hiện';}else echo 'Ẩn'; ?></td>
+                                <td><?php if($d_pro['active']==0) {echo "<a href=\"?mod=process_pro&actives={$d_pro['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    else
+                                    {
+                                        echo "<a href=\"?mod=process_pro&activeh={$d_pro['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                    }
+                                    ?></td>
                                 <td><a href="?mod=edit_pro&edit=<?php echo $d_pro['id'] ?>">Sửa</a>/<a href="?mod=process_pro&del=<?php echo $d_pro['id'] ?>">Xóa</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>STT</th>
-                                <th>Hình</th>
-                                <th>Tên</th>
-                                <th>Giá</th>
-                                <th>Trạng Thái</th>
-                                <th>Sửa/Xóa</th>
-                            </tr>
-                            </tfoot>
+
                         </table>
                     </div>
                     <!-- /.box-body -->
