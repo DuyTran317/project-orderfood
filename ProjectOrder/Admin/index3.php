@@ -135,5 +135,16 @@ include("moduleAD/{$mod}.php");
     CKFinder.setupCKEditor( noidung, 'brower_components/ckfinder/' ) ;
 
 </script>
+<script>
+    CKEDITOR.replace( 'noidung',
+        {
+            filebrowserBrowseUrl : 'brower_components/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Images',
+            filebrowserFlashBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Flash',
+            filebrowserUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        });
+</script>
 </body>
 </html>
