@@ -56,13 +56,13 @@
                 <td><?=number_format($r['price'])?><u>đ</u></td>
                 <td><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center"></td>
                 <td><?=number_format($r['price']*$v)?><u>đ</u></td>
-                <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
+                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
 
               </tr>
 
             <?php } ?>
             </table>
-    </div>
+        </div>
             <div class="row">
                 <div class="col-xs-4">
                     <span style="font-weight:bold; font-size:26px; text-decoration:underline; color: red">Tổng tiền: <?=number_format($s)?>đ</span>

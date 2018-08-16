@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
+<body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg);  background-position:center; background-size:cover  ;">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -67,9 +67,9 @@
 	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
             <h1 style="color:#FFF; text-align:center">Thực Đơn <?php if(isset($_SESSION['cart'])) {?>
-                   <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:#FFF; font-size:36px"></i></a>
-                <?php } ?></h1>
-
+                   <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:yellow; font-size:36px;"></i></a>
+                <?php } ?> </h1>
+            <div style="text-align: right; color: white; font-size: 18px;">Vuốt ngang để xem thêm <i class="fas fa-angle-double-right"></i></div>
             <hr>
             <div class="scrolling-wrapper">
             <?php 

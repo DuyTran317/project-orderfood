@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="befea44e-0790-4383-8974-0876150314a8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +21,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="102">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -26,7 +30,7 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="305">
               <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
             </state>
           </provider>
@@ -35,8 +39,11 @@
       <file leaf-file-name="dangnhap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="141" selection-start-column="6" selection-end-column="141" />
+            <state relative-caret-position="578">
+              <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="73" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,8 +51,13 @@
       <file leaf-file-name="cart.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/cart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+            <state relative-caret-position="305">
+              <caret line="56" column="116" selection-start-line="56" selection-start-column="116" selection-end-line="56" selection-end-column="116" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,19 +65,44 @@
       <file leaf-file-name="checkout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/checkout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="-137">
+              <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#1915#2050#0#HTML" expanded="true" />
+                <element signature="e#4092#4115#0#HTML" expanded="true" />
+                <element signature="e#4153#4220#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+            <state relative-caret-position="271">
+              <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="68" column="101" lean-forward="true" selection-start-line="68" selection-start-column="101" selection-end-line="68" selection-end-column="101" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#a#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,8 +111,11 @@
       <file leaf-file-name="dangnhap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="44" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="44" />
+            <state relative-caret-position="544">
+              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,13 +140,13 @@
         <option value="$PROJECT_DIR$/../DuAnK/CSS/Style.css" />
         <option value="$PROJECT_DIR$/ProjectOrder/woocommerce-FlexSlider-53570ee/demo/thumbnail-controlnav.html" />
         <option value="$PROJECT_DIR$/ProjectOrder/woocommerce-FlexSlider-53570ee/flexslider.css" />
-        <option value="$PROJECT_DIR$/ProjectOrder/css/style.css" />
-        <option value="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" />
-        <option value="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/home.php" />
-        <option value="$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php" />
+        <option value="$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php" />
+        <option value="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/cart.php" />
+        <option value="$PROJECT_DIR$/ProjectOrder/css/style.css" />
+        <option value="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" />
       </list>
     </option>
   </component>
@@ -121,6 +161,20 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/Flot/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/bootstrap-datepicker/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/bootstrap-daterangepicker/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/bootstrap/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/chart.js/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/ckeditor/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/eve-raphael/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/ion.rangeSlider/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/jquery-knob/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/jquery-slimscroll/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/jquery-ui/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/morris.js/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/bower_components/select2/package.json" />
+      <path value="$PROJECT_DIR$/ProjectOrder/Admin/package.json" />
       <path value="$PROJECT_DIR$/ProjectOrder/jqueryUI/package.json" />
       <path value="$PROJECT_DIR$/ProjectOrder/woocommerce-FlexSlider-53570ee/package.json" />
     </packageJsonPaths>
@@ -128,8 +182,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="744" />
+    <option name="width" value="814" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -210,18 +264,19 @@
       <workItem from="1534258650484" duration="125000" />
       <workItem from="1534315223692" duration="9367000" />
       <workItem from="1534337750991" duration="5422000" />
-      <workItem from="1534409359810" duration="1063000" />
+      <workItem from="1534409359810" duration="1386000" />
+      <workItem from="1534423045868" duration="2871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33654000" />
+    <option name="totallyTimeSpent" value="36848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -241,6 +296,27 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -515,13 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/woocommerce-FlexSlider-53570ee/demo/thumbnail-slider.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1615">
@@ -536,20 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="51" column="132" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -559,38 +614,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="44" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="141" selection-start-column="6" selection-end-column="141" />
+        <state relative-caret-position="544">
+          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/cart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+        <state relative-caret-position="305">
+          <caret line="56" column="116" selection-start-line="56" selection-start-column="116" selection-end-line="56" selection-end-column="116" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="-137">
+          <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1915#2050#0#HTML" expanded="true" />
+            <element signature="e#4092#4115#0#HTML" expanded="true" />
+            <element signature="e#4153#4220#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+        <state relative-caret-position="271">
+          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="73" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="68" column="101" lean-forward="true" selection-start-line="68" selection-start-column="101" selection-end-line="68" selection-end-column="101" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
