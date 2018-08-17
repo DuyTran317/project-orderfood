@@ -18,22 +18,26 @@
 		$name_ban=$_GET['name_ban'];
 	}
 	$id = $_GET['id'];
-	
-?>	
+if(isset($_GET['cate']))
+{
+    $cate=$_GET['cate'];
+}
+?>
 
+<body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
 <div class="container">
-	<h2 style="color:#C06">Danh Sách Đã Chọn</h2>
-<div class="row">
-
-
+    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate ?>& thanhtoan='yes'" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
 <form action="" method="post">
-<table border="1" class="col-md-12 col-sm-12 col-xs-12" cellspacing="0" bordercolor="#CCCCCC">
+    <div class="table-responsive">
+<table  class="col-md-12 table table-striped" cellspacing="0" >
   <tr>
-    <th width="42">STT</th>
-    <th width="220">Tên Sản Phẩm</th>
-    <th width="140">Giá Sản Phẩm</td>
-    <th width="106">Số Lượng</th>
-    <th width="198">Tổng Tiền</th>
+    <th >STT</th>
+    <th >Tên Sản Phẩm</th>
+    <th>Giá Sản Phẩm</td>
+    <th >Số Lượng</th>
+    <th>Tổng Tiền</th>
   </tr>
   
   <?php
@@ -58,13 +62,15 @@
 
 <?php } ?>
 </table>
-
+    </div>
+    <div class="row" style="margin-top:30px">
+        <div class="col-xs-4" style="font-weight:bold; font-size:26px; text-decoration:underline; color: red"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>
+    </div>
 </div>
 
-<div class="row" style="margin-top:30px">
-	<div class="col-md-4 col-sm-4 col-xs-12"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>                 	
-</div>
+
 
 </form>
 
 </div>
+</body>

@@ -1,7 +1,7 @@
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
 <div class="container" style="margin-top:10%">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="background-color: rgba(0,0,0,0.8); padding:15px">
+        <div class="col-md-4 col-md-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">
             <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
                 <fieldset>
                     <h2 style="text-align:center; color:#FFF; ">
@@ -32,7 +32,7 @@
                             >
                         </div>
                     </div>
-                    <button class="btn col-xs-12" style="color: black; background-color: yellow; border-radius: 0px; type="submit">Đăng Nhập</button>
+                    <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit">Đăng Nhập</button>
                 </fieldset>
             </form>
         </div>

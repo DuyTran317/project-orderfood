@@ -24,7 +24,7 @@ if(isset($_GET['name']))
 <div class="container" style="margin-top: -8%; margin-bottom: 5%" >
     <div class="row" >
     <?php
-		$sql="select * from `of_category`";
+		$sql="select * from `of_category` where `active`=1";
 		$rs=mysqli_query($link,$sql);
 		while($r=mysqli_fetch_assoc($rs)):
 	?>

@@ -56,12 +56,12 @@ $kq = mysqli_fetch_assoc($res);
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">
                         <div class="input-group" >
-                        <span class="input-group-addon" name="qty">Qty:</span>
+                        <span class="input-group-addon" name="qty">Số Lượng:</span>
                         <input type="number" class="form-control" id="qty" min="1" value="1">
                         </div>
                     </div>
                     <div class="col-xs-6">
-                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Order</button></a>                    
+                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Đặt Món</button></a>                    
                     </div>
                 </div>
         </div>
