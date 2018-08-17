@@ -52,7 +52,7 @@
     <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
     <tr>
         <td>
-             <a style="color:black; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
+             <a style="color:#FFF; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
         </td>
         <td align="right">
             <span style="background-color: yellow; padding: 5px"> Bàn <?=$name;?></span>

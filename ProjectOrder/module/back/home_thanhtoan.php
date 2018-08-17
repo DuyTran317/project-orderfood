@@ -78,7 +78,7 @@
     <td><h5>
       <?php
 	  	if($re['wait']==0)
-		echo"Dang cho thanh toan";
+		echo"Đang Chờ Thanh Toán";
 		
 		$sql="select * from `of_solve_pay` where `num_table`={$re['num_table']} and `active`=0";
 		$rs=mysqli_query($link,$sql);
@@ -95,7 +95,18 @@
 	?>
     </h5></td>   
     <td align="center"><h5>
+    <?php	
+		if(mysqli_num_rows($rs)>0)
+		{
+	?>		
       <a href="?mod=payment&id=<?=$re['order_id']?>&num_table=<?=$re['num_table']?>">Xem</a>
+	 <?php 
+	 	}
+	  	else
+		{
+			echo "<i class='fas fa-spinner'></i>";
+		}
+	 ?>
     </h5></td> 
   </tr>
   <?php } ?>
