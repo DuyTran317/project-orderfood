@@ -25,8 +25,9 @@
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
-    var pusher = new Pusher('10d5ea7e7b632db09c72', {
-        encrypted: true
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php

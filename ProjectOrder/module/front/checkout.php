@@ -63,10 +63,14 @@
 			//Gửi thông điêp để reload trang BẾP
 			require('Pusher.php');
 			$options = array(
-				'encrypted' => true
+			'cluster' => 'ap1',
+			'encrypted' => true
 			);
 			$pusher = new Pusher(
-					'10d5ea7e7b632db09c72', 'a496a6f084ba9c65fffb', '234217', $options
+			'161363aaa8197830a033',
+			'46f2ba3b258f514f6fc7',
+			'577033',
+			$options
 			);
 			$data['name']= $name_ban ;
 			$data['message'] = 'đã gọi món mới!!!';
