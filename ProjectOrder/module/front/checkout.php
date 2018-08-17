@@ -36,26 +36,54 @@
 		{
 			$num_table=$name_ban;			
 			
-			//Insert don hang (order)
-			$sql="insert into `of_order` values('NULL','$num_table','0')";
-			mysqli_query($link,$sql);
+			$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
+			$r=mysqli_query($link,$sql);
+			$rs=mysqli_fetch_assoc($r);
 			
-			//Insert don hang chi tiet (order_detail)
-			//Lay id (Auto Increment) cua lenh insert truoc
-			$orderID=mysqli_insert_id($link);
-			
-			$carts=@$_SESSION['cart'];
-			foreach($carts as $k => $v)
-			{
-				//Lay gia san pham
-				$sql = 'select `price` from `of_food` where`id`='.$k;
-				$rs = mysqli_query($link,$sql);
-				$r = mysqli_fetch_assoc($rs);
-				$price = $r['price'];
-				
-				//Insert
-				$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+			if($rs === null||$rs['active'] == 1){
+				//Insert don hang (order)
+				$sql="insert into `of_order` values('NULL','$num_table','0')";
 				mysqli_query($link,$sql);
+				
+				//Insert don hang chi tiet (order_detail)
+				//Lay id (Auto Increment) cua lenh insert truoc
+				$orderID=mysqli_insert_id($link);
+				
+				$carts=@$_SESSION['cart'];
+				foreach($carts as $k => $v)
+				{
+					//Lay gia san pham
+					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$rs = mysqli_query($link,$sql);
+					$r = mysqli_fetch_assoc($rs);
+					$price = $r['price'];
+					
+					//Insert
+					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+					mysqli_query($link,$sql);
+				}
+			}
+			else{
+				$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
+				$r=mysqli_query($link,$sql);
+				$rs=mysqli_fetch_assoc($r);
+				$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
+				mysqli_query($link,$sql);
+				
+				$orderID = $rs['id'];
+				$carts=@$_SESSION['cart'];
+				foreach($carts as $k => $v)
+				{
+					//Lay gia san pham
+					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$rs = mysqli_query($link,$sql);
+					$r = mysqli_fetch_assoc($rs);
+					$price = $r['price'];
+					
+					//Insert
+					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+					mysqli_query($link,$sql);
+				}
 			}
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
@@ -74,7 +102,7 @@
 ?>
 
 			
-			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'&cate=<?=$cate?>"</script>			
+			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'&cate=<?=$cate?>&temp=<?=$temp?>"</script>			
 
 
 
@@ -99,6 +127,8 @@
   </tr>
   
   <?php
+  if(isset($_SESSION['cart']))
+  {
   	$cart=@$_SESSION['cart'];
 	$s=0;
 	$i=0;
@@ -118,13 +148,14 @@
     <td><?=number_format($r['price']*$v)?><u>đ</u></td>
   </tr>
 
-<?php } ?>
+<?php } 
+  }?>
 </table>
 
 </div>
 
 <div class="row" style="margin-top:30px">
-	<div class="col-md-4 col-sm-4 col-xs-12"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>                 	
+	<div class="col-md-4 col-sm-4 col-xs-12"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?php if(isset($_SESSION['cart'])) {echo number_format($s);}?>đ</span></div>                 	
 </div>
 
 </form>
