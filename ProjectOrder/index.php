@@ -22,14 +22,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 
-<body >
 
 <?php
 	$mod=@$_GET['mod'];
 	  if($mod=='') $mod='dangnhap';
 	  include("module/front/{$mod}.php");
 ?> 
-</body>
+
 <script type="text/javascript">
     $(function(){
       SyntaxHighlighter.all();

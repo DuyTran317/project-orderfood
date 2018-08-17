@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg);  background-position:center; background-size:cover  ;">
+<body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg);  background-position:center; background-size:cover  ; height: 100%;" onload="startTime()">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -52,26 +52,77 @@
     <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
     <tr>
         <td>
-             <a style="color:black; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
-        </td>
-        <td align="right">
-            <span style="background-color: yellow; padding: 5px"> Bàn <?=$name;?></span>
+             <a style="color:white; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left" ></i></a>
         </td>
     </tr>
 </table>
 </p>
 <div class="container-fluid">
-	<div class="row" style="padding:1% 0; font-family: 'Exo 2', sans-serif;">
-    	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />
-        <center><i class="fas fa-utensils fa-border" style="font-size:58px; color:#FFF"></i></center>
+	<div class="row" style="font-family: 'Exo 2', sans-serif; height: 300px;">
+        <div class="col-sm-6 col-md-offset-1">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <img src="img/temp/594d886388044c5b3d185111_template_sale_03.jpg" alt="Los Angeles" style="width:100%; height: 300px;">
+                        <div class="carousel-caption">
+                            <h3 style="color: black">Khuyến mãi 1</h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="img/temp/December-Sales-Web-Banner.jpg" alt="Chicago" style="width:100%;  height: 300px;">
+                        <div class="carousel-caption">
+                            <h3 style="color: black">Khuyến mãi 2</h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="img/temp/Sale-Custom-Banner.jpg" alt="New York" style="width:100%;  height: 300px;">
+                        <div class="carousel-caption">
+                            <h3 style="color: black">Khuyến mãi 3</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4" style="border: solid white thin; border-radius: 20px; padding: 10px; height: 300px; border-radius: 10px; background-color: rgba(0,0,0,0.8); color: white; font-family: 'Pacifico', cursive;"">
+            <p style="font-size: 24px;">Số bàn: <?=$name;?></p>
+            <ul style="font-size: 20px; line-height: 35px;">
+
+                <li>Thời gian: <span id="day"></span>/<span id="month" ></span>  <span id="txt"></span></li>
+                <li>Tiến độ: </li>
+                <li>Số món ăn đã đặt: </li>
+            </ul><br><br><br>
+        <?php if(isset($_SESSION['cart'])) {?>
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>" ><button class="btn col-xs-12 btn-lg" style="background-color: yellow; color: black;">Danh Sách Đã Chọn</button> </a>
+
+        <?php } ?>
+        </div>
     </div>
 
 	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
-            <h1 style="color:#FFF; text-align:center">Thực Đơn <?php if(isset($_SESSION['cart'])) {?>
-                   <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>"><i class="far fa-list-alt" style="color:yellow; font-size:36px;"></i></a>
-                <?php } ?> </h1>
-            <div style="text-align: right; color: white; font-size: 18px;">Vuốt ngang để xem thêm <i class="fas fa-angle-double-right"></i></div>
+            <h1 style="color:#FFF; text-align:center">Thực Đơn </h1>
             <hr>
             <div class="scrolling-wrapper">
             <?php 
@@ -133,5 +184,41 @@
     </div>
 </div>
 </body>
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+        var month = new Array();
+        month[0] = "01";
+        month[1] = "02";
+        month[2] = "03";
+        month[3] = "04";
+        month[4] = "05";
+        month[5] = "06";
+        month[6] = "07";
+        month[7] = "08";
+        month[8] = "09";
+        month[9] = "10";
+        month[10] = "11";
+        month[11] = "12";
 
+        var d = new Date();
+        var day = d.getDate()
+
+        var mon = month[d.getMonth()];
+        document.getElementById("day").innerHTML = day;
+        document.getElementById("month").innerHTML = mon;
+
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+    }
+</script>
 </html>
