@@ -75,7 +75,7 @@
             <hr>
             <div class="scrolling-wrapper">
             <?php 
-			$commsql="select * from `of_food` where `category_id`={$cate} ";
+			$commsql="select * from `of_food` where `category_id`={$cate} and `active`=1";
 			$res= mysqli_query($link,$commsql);
 			while($kq= mysqli_fetch_assoc($res))
 			{	
