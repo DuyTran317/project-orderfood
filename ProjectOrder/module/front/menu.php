@@ -49,21 +49,23 @@
         // kết thúc code xử lý thông báo
     });
 </script>
-    	<span style="color:#000 ; font-size:36px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">
-            <a style="color:black; text-decoration: none " href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>">
-        <i class="fas fa-arrow-left"></i></a>
-            Bàn <?=$name;?>
-
-        </span>
+    <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
+    <tr>
+        <td>
+             <a style="color:black; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
+        </td>
+        <td align="right">
+            <span style="background-color: yellow; padding: 5px"> Bàn <?=$name;?></span>
+        </td>
+    </tr>
+</table>
 </p>
-<div class="container-fluid">	    
-
-	
-    
+<div class="container-fluid">
 	<div class="row" style="padding:1% 0; font-family: 'Exo 2', sans-serif;">
     	<p style=" color:#FFF; text-align:center; font-size:40px;"><span style="background-color:#CF0; padding:5px;">YOU CHOSE</span> <span style="background-color:#F90; padding:5px;">WE SERVE</span> <span style="background-color:#F60; padding:5px;">YOU'LL LOVE IT</span></p><br />
         <center><i class="fas fa-utensils fa-border" style="font-size:58px; color:#FFF"></i></center>
     </div>
+
 	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
         <div class="col-xs-12">
             <h1 style="color:#FFF; text-align:center">Thực Đơn <?php if(isset($_SESSION['cart'])) {?>
