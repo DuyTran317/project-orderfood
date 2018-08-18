@@ -20,9 +20,9 @@
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
-        <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" method="post">
+        <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">
         <div class="table-responsive">
 
             <table class="col-md-12 table table-striped">
@@ -48,15 +48,14 @@
               ?>
 
               <tr style="text-align:center; height:50px">
-                <td>
-                  <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
+                <td>                  
                     <?=$r['name']?>
                   </a>
                 </td>
                 <td><?=number_format($r['price'])?><u>đ</u></td>
                 <td><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center"></td>
                 <td><?=number_format($r['price']*$v)?><u>đ</u></td>
-                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>" onclick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
+                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
 
               </tr>
 
@@ -71,9 +70,9 @@
                 <div align="right" class="col-xs-8">
                     <?php if(@count($cart)>0){ ?>
                         <button type="submit" class="btn btn-warning btn-lg"><i class="fas fa-sync"></i></button>
-                    <?php } ?>
-                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>"><button type="button" class="btn btn-success btn-lg "><i class="fas fa-check"></i></button></a>
-
+                    
+                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg "><i class="fas fa-check"></i></button></a>
+					<?php } ?>
                 </div>
             </div>
 </div>

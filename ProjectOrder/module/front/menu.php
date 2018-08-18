@@ -53,7 +53,7 @@
     <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
     <tr>
         <td>
-             <a style="color:#FFF; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
+             <a style="color:#FFF; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><i class="fas fa-arrow-left"></i></a>
         </td>
         <td >
         </td>
@@ -117,7 +117,7 @@
                 <li>Số món ăn đã đặt: </li>
             </ul><br><br><br>
         <?php if(isset($_SESSION['cart'])) {?>
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>" ><button class="btn col-xs-12 btn-lg" style="background-color: yellow; color: black;">Danh Sách Đã Chọn</button> </a>
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" style="background-color: yellow; color: black;">Danh Sách Đã Chọn</button> </a>
 
         <?php } ?>
         </div>
@@ -135,7 +135,7 @@
 			{	
 			?>
       			
-            	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>" style="color:#000; text-decoration:none">
+            	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color:#000; text-decoration:none">
                 <div class="card" style="  width: 300px; height: 300px; background:white;">
                     <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; 
@@ -175,7 +175,7 @@
                     if(isset($_GET['thanhtoan']) && $r_t['active']==1)
                     {
                     ?>
-                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan='yes'" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
+                    <a href="?mod=list_order&id=<?=$r['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">Thanh Toán</a>
                 </p>
 				
