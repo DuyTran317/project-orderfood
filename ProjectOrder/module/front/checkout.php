@@ -36,26 +36,54 @@
 		{
 			$num_table=$name_ban;			
 			
-			//Insert don hang (order)
-			$sql="insert into `of_order` values('NULL','$num_table','0')";
-			mysqli_query($link,$sql);
+			$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
+			$r=mysqli_query($link,$sql);
+			$rs=mysqli_fetch_assoc($r);
 			
-			//Insert don hang chi tiet (order_detail)
-			//Lay id (Auto Increment) cua lenh insert truoc
-			$orderID=mysqli_insert_id($link);
-			
-			$carts=@$_SESSION['cart'];
-			foreach($carts as $k => $v)
-			{
-				//Lay gia san pham
-				$sql = 'select `price` from `of_food` where`id`='.$k;
-				$rs = mysqli_query($link,$sql);
-				$r = mysqli_fetch_assoc($rs);
-				$price = $r['price'];
-				
-				//Insert
-				$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+			if($rs === null||$rs['active'] == 1){
+				//Insert don hang (order)
+				$sql="insert into `of_order` values('NULL','$num_table','0')";
 				mysqli_query($link,$sql);
+				
+				//Insert don hang chi tiet (order_detail)
+				//Lay id (Auto Increment) cua lenh insert truoc
+				$orderID=mysqli_insert_id($link);
+				
+				$carts=@$_SESSION['cart'];
+				foreach($carts as $k => $v)
+				{
+					//Lay gia san pham
+					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$rs = mysqli_query($link,$sql);
+					$r = mysqli_fetch_assoc($rs);
+					$price = $r['price'];
+					
+					//Insert
+					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+					mysqli_query($link,$sql);
+				}
+			}
+			else{
+				$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
+				$r=mysqli_query($link,$sql);
+				$rs=mysqli_fetch_assoc($r);
+				$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
+				mysqli_query($link,$sql);
+				
+				$orderID = $rs['id'];
+				$carts=@$_SESSION['cart'];
+				foreach($carts as $k => $v)
+				{
+					//Lay gia san pham
+					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$rs = mysqli_query($link,$sql);
+					$r = mysqli_fetch_assoc($rs);
+					$price = $r['price'];
+					
+					//Insert
+					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+					mysqli_query($link,$sql);
+				}
 			}
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
@@ -78,69 +106,79 @@
 ?>
 
 			
-			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'&cate=<?=$cate?>"</script>			
+			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan='yes'&cate=<?=$cate?>&temp=<?=$temp?>"</script>			
 
 
 
 
 <?php
 		}
-?>
-<body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
-    <div class="container">
-    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-    <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-    <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
 
-    <form action="" method="post">
-        <div class="table-responsive">
+?>		
 
-            <table class="col-md-12 table table-striped">
-                <tr>
+<div class="container">
+	<h2 style="color:#C06">Danh Sách Đã Chọn</h2>
+<div class="row">
 
-                    <th>Món Ăn</th>
-                    <th>Giá</td>
-                    <th>Số Lượng</th>
-                    <th>Tổng Tiền</th>
-                </tr>
 
-                <?php
-                $cart=@$_SESSION['cart'];
-                $s=0;
-                $i=0;
-                if(@count($cart)>0) foreach($cart as $k=>$v)
-                {
-                    $sql="select `name`,`price` from `of_food` where `id`={$k} ";
-                    $rs=mysqli_query($link,$sql);
-                    $r=mysqli_fetch_assoc($rs);
-                    $s+=$r['price']*$v;
-                    ?>
+<form action="" method="post">
+<table border="1" class="col-md-12 col-sm-12 col-xs-12" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <th width="42">STT</th>
+    <th width="220">Tên Sản Phẩm</th>
+    <th width="140">Giá Sản Phẩm</td>
+    <th width="106">Số Lượng</th>
+    <th width="198">Tổng Tiền</th>
+  </tr>
+  
+  <?php
+  if(isset($_SESSION['cart']))
+  {
+  	$cart=@$_SESSION['cart'];
+	$s=0;
+	$i=0;
+	if(count($cart)>0)foreach($cart as $k => $v)
+	{
+		$sql="select `name`,`price` from `of_food` where `id`={$k} ";
+		$rs=mysqli_query($link,$sql);
+		$r=mysqli_fetch_assoc($rs);
+		$s+=$r['price']*$v;
+  ?>
+  
+  <tr style="text-align:center; height:50px">
+    <td><?=++$i?></td>    
+    <td><?=$r['name']?></td>
+    <td><?=number_format($r['price'])?><u>đ</u></td>
+    <td><input type="number" min="1" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
+    <td><?=number_format($r['price']*$v)?><u>đ</u></td>
+  </tr>
 
-                    <tr style="text-align:center; height:50px">
-                        <td>
-                            <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
-                                <?=$r['name']?>
-                            </a>
-                        </td>
-                        <td><?=number_format($r['price'])?><u>đ</u></td>
-                        <td><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center"></td>
-                        <td><?=number_format($r['price']*$v)?><u>đ</u></td>
+<?php } 
+  }?>
+</table>
 
-                    </tr>
+</div>
 
-                <?php } ?>
-            </table>
-        </div>
-        <div class="row" style="margin-top:30px">
-            <div class="col-xs-4" style="font-weight:bold; font-size:26px; text-decoration:underline; color: red"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>
-            <div align="right" class="col-xs-8">
-                <div id="form_lienhe">
-                    <form action="" method="post">
-                        <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="Gọi Món">
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="row" style="margin-top:30px">
+	<div class="col-md-4 col-sm-4 col-xs-12"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?php if(isset($_SESSION['cart'])) {echo number_format($s);}?>đ</span></div>                 	
+</div>
+
+</form>
+
+</div>
+
+
+
+<div class="container" style="background:url(img/logo/bg.jpg); margin-top:30px;">
+<div class="row">
+	
+    <div class="col-md-8 col-sm-8 col-xs-12">
+    <div id="form_lienhe">
+    	<form action="" method="post">
+    <input  class="btn btn-primary" type="submit" name="goimon" value="Xác Nhận Gọi Món"> 
+        </form>
+    </div>
+
     </div>
     </form>
 </div>

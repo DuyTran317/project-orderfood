@@ -20,7 +20,16 @@
                 {?>
                     <div class="alert alert-warning">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Lỗi!</strong> Mật Khẩu không trùng nhau
+                        <strong>Lỗi!</strong> Mật Khẩu phải ít nhất 6 ký tự!
+                    </div>
+                <?php }
+                ?>
+                <?php
+                if(isset($_GET['warm'])==2)
+                {?>
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Lỗi!</strong> Mật Khẩu không trùng nhau!
                     </div>
                 <?php }
                 ?>
