@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="befea44e-0790-4383-8974-0876150314a8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/back/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/back/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/back/solve_order.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/back/solve_order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectOrder/module/front/xulythanhtoan.php" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectOrder/module/front/xulythanhtoan.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,10 +23,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="17">
               <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
             </state>
           </provider>
@@ -67,17 +62,32 @@
       <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="73" column="69" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="69" />
+            <state relative-caret-position="577">
+              <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="checkout.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="checkout.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/checkout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2193">
-              <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="142" selection-end-column="14" />
+            <state relative-caret-position="461">
+              <caret line="155" column="157" selection-start-line="155" selection-start-column="157" selection-end-line="155" selection-end-column="157" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#2916#2973#0#HTML" expanded="true" />
+                <element signature="e#3384#3519#0#HTML" expanded="true" />
+                <element signature="e#3606#3689#0#HTML" expanded="true" />
+                <element signature="e#3791#3828#0#HTML" expanded="true" />
+                <element signature="e#3899#3926#0#HTML" expanded="true" />
+                <element signature="e#5229#5267#0#HTML" expanded="true" />
+                <element signature="e#5407#5436#0#HTML" expanded="true" />
+                <element signature="e#5830#5866#0#HTML" expanded="true" />
+                <element signature="e#6207#6230#0#HTML" expanded="true" />
+                <element signature="e#6290#6369#0#HTML" expanded="true" />
+                <element signature="e#6376#6443#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,8 +113,8 @@
       <file leaf-file-name="home_thanhtoan.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+            <state relative-caret-position="1666">
+              <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -123,7 +133,6 @@
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/home.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/dangnhap.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/back/dangnhap.php" />
-        <option value="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/cart.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/list_order.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/css/style.css" />
@@ -133,6 +142,7 @@
         <option value="$PROJECT_DIR$/ProjectOrder/module/back/payment.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php" />
         <option value="$PROJECT_DIR$/ProjectOrder/module/front/menu.php" />
+        <option value="$PROJECT_DIR$/ProjectOrder/module/front/checkout.php" />
       </list>
     </option>
   </component>
@@ -260,11 +270,12 @@
       <workItem from="1534515462427" duration="1778000" />
       <workItem from="1534517476301" duration="183000" />
       <workItem from="1534517816979" duration="237000" />
+      <workItem from="1534563580007" duration="881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56874000" />
+    <option name="totallyTimeSpent" value="57755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -568,31 +579,10 @@
     <entry file="file://$PROJECT_DIR$/ProjectOrder/manage.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="73" column="69" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/checkout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2193">
-          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="142" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/check_order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -610,6 +600,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/check_order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/payment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="577">
@@ -617,17 +635,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/back/home_thanhtoan.php">
+    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectOrder/module/front/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+        <state relative-caret-position="461">
+          <caret line="155" column="157" selection-start-line="155" selection-start-column="157" selection-end-line="155" selection-end-column="157" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#2916#2973#0#HTML" expanded="true" />
+            <element signature="e#3384#3519#0#HTML" expanded="true" />
+            <element signature="e#3606#3689#0#HTML" expanded="true" />
+            <element signature="e#3791#3828#0#HTML" expanded="true" />
+            <element signature="e#3899#3926#0#HTML" expanded="true" />
+            <element signature="e#5229#5267#0#HTML" expanded="true" />
+            <element signature="e#5407#5436#0#HTML" expanded="true" />
+            <element signature="e#5830#5866#0#HTML" expanded="true" />
+            <element signature="e#6207#6230#0#HTML" expanded="true" />
+            <element signature="e#6290#6369#0#HTML" expanded="true" />
+            <element signature="e#6376#6443#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
