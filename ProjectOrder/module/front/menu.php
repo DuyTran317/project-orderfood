@@ -25,8 +25,9 @@
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
-    var pusher = new Pusher('10d5ea7e7b632db09c72', {
-        encrypted: true
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
@@ -52,7 +53,9 @@
     <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
     <tr>
         <td>
-             <a style="color:white; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left" ></i></a>
+             <a style="color:#FFF; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>"><i class="fas fa-arrow-left"></i></a>
+        </td>
+        <td >
         </td>
     </tr>
 </table>
