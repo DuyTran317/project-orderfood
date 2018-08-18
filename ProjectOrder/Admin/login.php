@@ -1,9 +1,13 @@
+<?php
+session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>ORDERFOOD | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -11,7 +15,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href=".bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- iCheck -->
@@ -28,20 +32,62 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
+
+<?php
+include ("moduleAD/connect.php");
+if(isset($_POST['account']))
+{
+
+    $user = $_POST['account'];
+    $pass =$_POST['password'];
+
+    $user = strip_tags($user);
+    $user = addslashes($user);
+    $pass = strip_tags($pass);
+    $pass = addslashes($pass);
+    $pass=hash('sha512',$_POST['password']);
+    if($user == "" || $pass == "")
+    {
+               echo "Tài khoản hoặc Mật khẩu ko được để trồng";
+    }
+    else
+    {
+        $sql = "select * from of_admin where account= '$user' and password = '$pass' and cate = 3";
+        $kq = mysqli_query($link,$sql);
+        if(mysqli_num_rows($kq) == 0)
+        {
+            /*echo "Email hoặc Mật khẩu ko đúng";*/
+           echo 'tài khoàn hoặc mật khẩu khồn đúng';
+        }
+
+        else {
+
+            $d=mysqli_fetch_assoc($kq);
+            $_SESSION['userad'] =  $d['name'];
+            $_SESSION['idad'] = $d['id'];
+            header("location:index.php?mod=home");
+
+        }
+    }
+}
+
+?>
+
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>ORDER</b>FOOD</a>
+        <a href="login.php"><b>ORDER</b>FOOD</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
 
-        <form action="index2.html" method="post">
+        <form action="" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input type="text" class="form-control" name="account" placeholder="Account">
+                <i class="fa fa-user-circle-o form-control-feedback" aria-hidden="true"></i>
+
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">

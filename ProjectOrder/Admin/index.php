@@ -1,10 +1,17 @@
-<?php ob_start(); ?>
+<?php
+session_start();
+ob_start(); ?>
+<?php
+if(!isset($_SESSION['userad'])) {
+
+    header('location:login.php');
+} ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>OrderFOOD| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
