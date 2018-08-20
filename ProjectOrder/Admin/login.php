@@ -29,6 +29,7 @@ ob_start();
     <![endif]-->
 
     <!-- Google Font -->
+    <script src="dist/js/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
@@ -48,7 +49,11 @@ if(isset($_POST['account']))
     $pass=hash('sha512',$_POST['password']);
     if($user == "" || $pass == "")
     {
-               echo "Tài khoản hoặc Mật khẩu ko được để trồng";
+              echo '<script type="text/javascript">';
+                echo 'setTimeout(function () { swal("Đăng Nhập Thất bại?",
+                              "Tài Khoản hoặc Mật Khẩu không được trống!",
+                              "warning");';
+                echo '}, 1);</script>';
     }
     else
     {
@@ -57,7 +62,11 @@ if(isset($_POST['account']))
         if(mysqli_num_rows($kq) == 0)
         {
             /*echo "Email hoặc Mật khẩu ko đúng";*/
-           echo 'tài khoàn hoặc mật khẩu khồn đúng';
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function () { swal("Đăng Nhập Thất bại?",
+                      "Tài Khoản hoặc Mật Khẩu không đúng!",
+                      "warning");';
+            echo '}, 1);</script>';
         }
 
         else {
@@ -65,7 +74,7 @@ if(isset($_POST['account']))
             $d=mysqli_fetch_assoc($kq);
             $_SESSION['userad'] =  $d['name'];
             $_SESSION['idad'] = $d['id'];
-            header("location:index.php?mod=home");
+            header("location:index.php?mod=home&key=4");
 
         }
     }

@@ -50,6 +50,7 @@ if(isset($_POST['suatheloai']))
     $thutu = $_POST['suathutu'];
     $noidung = $_POST['suanoidung'];
     $trangthai = $_POST['suatrangthai'];
+
     $file= $_FILES['suaimage'];
     $file2= $_FILES['suaimage2'];
     $file3= $_FILES['suaimage3'];
@@ -74,7 +75,7 @@ if(isset($_POST['suatheloai']))
         unlink($hinhcu);
     }
 
-    if($file2['name'!= ''])
+    if($file2['name']!= '')
     {
         $img_url2= mt_rand().$file2['name'];
         $sql_img2 = ",`img_url2`='{$img_url2}'";
@@ -85,7 +86,7 @@ if(isset($_POST['suatheloai']))
         unlink($hinhcu);
     }
 
-    if($file3['name'!= ''])
+    if($file3['name']!= '')
     {
         $img_url3= mt_rand().$file3['name'];
         $sql_img3 = ",`img_url3`='{$img_url3}'";
@@ -96,10 +97,10 @@ if(isset($_POST['suatheloai']))
         unlink($hinhcu);
     }
 
-    if($file4['name'!= ''])
+    if($file4['name']!= '')
     {
         $img_url4= mt_rand().$file4['name'];
-        $sql_img34= ",`img_url4`='{$img_url4}'";
+        $sql_img4= ",`img_url4`='{$img_url4}'";
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
 
         $sql_edit .= $sql_img4;

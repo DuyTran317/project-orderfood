@@ -1,11 +1,7 @@
 <?php
 session_start();
 ob_start(); ?>
-<?php
-if(!isset($_SESSION['userad'])) {
 
-    header('location:login.php');
-} ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +42,25 @@ if(!isset($_SESSION['userad'])) {
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="dist/js/sweetalert2.all.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+    <?php
+if(!isset($_SESSION['userad'])) {
+
+    header('location:login.php');
+}
+elseif(isset($_GET['key'] )==4) {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
+                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
+                          'success');";
+            echo "},1);</script>";
+        }
+        else
+        {
+            header("?mod=home");
+        } ?>
 <?php include('moduleAD/menu.php') ?>
 <?php
 include ("moduleAD/connect.php");

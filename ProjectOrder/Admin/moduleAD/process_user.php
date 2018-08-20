@@ -32,29 +32,30 @@ if(isset($_POST['suaten']))
     $name = $_POST['suaso'];
     $active = $_POST['suatrangthai'];
 
-      if($pass != '')
+        if($pass != '')
         {
-
+            if($_POST['changePassword']="on"){
                 if(strlen($pass)<6)
                 {
-                    header("location:?mod=edit_user&war=1");
+                    header("location:?mod=edit_user&edit={$_POST['suaid']}&war=1");
                 }
                 else if($pass != $repass)
                 {
-                    header("location:?mod=edit_user&warm=2");
+                    header("location:?mod=edit_user&edit={$_POST['suaid']}&warm=2");
                 }else {
-                    $pass = hash('sha512',$_POST['pass']);
-                    $sql_edit="update `of_user` set `name`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
-
+                    $pass = hash('sha512',$_POST['suapass']);
+                    $sql_edit="update `of_user` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+                    mysqli_query($link,$sql_edit);
+                    header("location:?mod=user_list&mes2=2");
                 }
+            }
         }
-        else
-        {
+        else {
 
-            $sql_edit="update `of_user` set `name`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+            $sql_edit = "update `of_user` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+            mysqli_query($link,$sql_edit);
+            header("location:?mod=user_list&mes2=2");
         }
-        mysqli_query($link,$sql_edit);
-        header("location:?mod=user_list&mes2=2");
 
 }
 
