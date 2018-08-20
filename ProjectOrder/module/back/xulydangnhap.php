@@ -8,7 +8,7 @@ if(isset($_POST['user']))
 	$pass=hash('sha512',$_POST['pass']);
 	
 	//Kiem tra bang cach truy van vao DB
-	$sql="select * from `of_admin` where `account`='{$user}' and `password`='{$pass}'";
+	$sql="select * from `of_manage` where `account`='{$user}' and `password`='{$pass}'";
 	$rs=mysqli_query($link,$sql);
 	
 	if(mysqli_num_rows($rs)>0)
