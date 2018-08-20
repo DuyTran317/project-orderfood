@@ -14,21 +14,24 @@
 	
 	//$_SESSION['cart']= array(1=>2,360=>5);
 	
-	$cart=$_SESSION['cart'];
+	@$cart=$_SESSION['cart'];
 	
 	$act=$_GET['act'];//act=1:Thêm, act=2:Sửa, act=3:Xóa
 	
-	$id = $_GET['id'];
+	@$id = $_GET['id'];
 	
 	//Tang san pham them ++, khi khach hàng chon them
 	if($act==1)
 	{
 		//Qty này ở trang chi tiết (detail) khi thêm số lượng.
-		$qty=max(1,intval($_GET['qty']));
-		
-		$cart[$id]+=$qty;
-		$_SESSION['cart']=$cart;
-		header("location:?mod=menu&id=$id_ban&name=$name_ban&cate=$cate");
+		@$qty=max(1,intval($_GET['qty']));		
+		@$cart[$id]+=$qty;
+		@$_SESSION['cart']=$cart;
+?>
+	<script>window.location=
+	"?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>";
+    </script>
+<?php
 	}
 	
 	//Cập nhật
@@ -41,7 +44,11 @@
 		}
 		$_SESSION['cart']=$cart;
 		//Chuyen den trang cart
-		header("location:?mod=cart&id_ban=$id_ban&name_ban=$name_ban&cate=$cate");
+?>
+	<script>window.location=
+	"?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"
+	</script>
+<?php
 	}
 	
 	//Xoa phan tu khoi mang: Xoa san pham khoi gio hang
@@ -52,6 +59,10 @@
 		$_SESSION['cart']=$cart;
 		
 		//Chuyen den trang cart
-		header("location:?mod=cart&id_ban=$id_ban&name_ban=$name_ban&cate=$cate");
+?>
+	<script>window.location=
+	"?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>";
+	</script>
+<?php
 	}
 ?>

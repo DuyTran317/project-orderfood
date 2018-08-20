@@ -28,7 +28,7 @@ if(isset($_GET['name']))
 		$rs=mysqli_query($link,$sql);
 		while($r=mysqli_fetch_assoc($rs)):
 	?>
-    <a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan='yes'";}?>">
+    <a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>">
         <div class="col-sm-4">
             <div class="col-xs-12" style="background-color:#FFF; ">
                 <div class="row">

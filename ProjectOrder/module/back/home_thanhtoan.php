@@ -41,17 +41,13 @@
 	 border-collapse:collapse;
  }
 </style>
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<div class="container">
+    <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+        <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
+        <h2 style="color:#096; text-align:center">Danh Sách Chờ Thanh Toán</h2>
+        </div>
 
-<div class="container-fluid"> 
- <div class="row">
-  <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">  
-  <caption>
-  	<p style="text-align:center"><a href="?mod=home_thanhtoan"><button class="btn btn-success">Làm Mới</button></a></p>
-    <h2 style="color:#096; text-align:center"><i class="fas fa-clipboard-list"></i> Danh Sách Chờ Thanh Toán</h2>
-  </caption>
-  </div>
- </div> 
-</div>  
 
 <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px">
   <thead>
@@ -74,13 +70,13 @@
       <?=$i++?>
     </h5></td>
     <td align="center"><h5>&nbsp;&nbsp;
-      Bàn Số <?=$re['num_table']?>
+            Bàn Số: <span style="color: red; font-size: 24px;"><?=$re['num_table']?></span>
     </h5></td>
     <td><h5>
       <?php
 	  	if($re['wait']==0)
+
 		echo"Đang Chờ Thanh Toán";
-		
 		$sql="select * from `of_solve_pay` where `num_table`={$re['num_table']} and `active`=0";
 		$rs=mysqli_query($link,$sql);
 		if(mysqli_num_rows($rs)>0)
@@ -112,6 +108,9 @@
   </tr>
   <?php } ?>
 </table>
+    </div>
+</div>
+</body>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;

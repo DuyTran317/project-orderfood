@@ -27,7 +27,7 @@ if(isset($_GET['cate']))
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate ?>& thanhtoan='yes'" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate ?>& thanhtoan=1" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
 <form action="" method="post">
     <div class="table-responsive">
