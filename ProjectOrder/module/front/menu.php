@@ -168,7 +168,7 @@
 				$r=mysqli_fetch_assoc($rs);		
 	 			?>
                     <?php }
-                    $sql="select * from `of_order` where `num_table`={$name} order by `id` desc limit 0,1";
+                    $sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
                     $rs_t=mysqli_query($link,$sql);
                     $r_t=mysqli_fetch_assoc($rs_t);
 

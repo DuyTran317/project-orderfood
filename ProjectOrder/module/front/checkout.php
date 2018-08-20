@@ -41,26 +41,52 @@
 			$rs=mysqli_fetch_assoc($r);
 			
 			if($rs === null||$rs['active'] == 1){
-				//Insert don hang (order)
-				$sql="insert into `of_order` values('NULL','$num_table','0')";
-				mysqli_query($link,$sql);
 				
-				//Insert don hang chi tiet (order_detail)
-				//Lay id (Auto Increment) cua lenh insert truoc
-				$orderID=mysqli_insert_id($link);
+				$sql="select `id`,`num_table` from `of_order` where `active`=0";
+				$take=mysqli_query($link,$sql);
+				$take_sth=mysqli_fetch_assoc($take);
 				
 				$carts=@$_SESSION['cart'];
-				foreach($carts as $k => $v)
+				
+				if($name_ban == $take_sth['num_table'])
 				{
-					//Lay gia san pham
-					$sql = 'select `price` from `of_food` where`id`='.$k;
-					$rs = mysqli_query($link,$sql);
-					$r = mysqli_fetch_assoc($rs);
-					$price = $r['price'];
-					
-					//Insert
-					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+						$take_id = $take_sth['id'];
+						
+						foreach($carts as $k => $v)
+						{
+							//Lay gia san pham
+							$sql = 'select `price` from `of_food` where`id`='.$k;
+							$rs = mysqli_query($link,$sql);
+							$r = mysqli_fetch_assoc($rs);
+							$price = $r['price'];
+							
+							//Insert
+							$sql = "insert into `of_order_detail` values('$take_id','$k','$price','$v',0)";
+							mysqli_query($link,$sql);
+						}
+				}
+				else
+				{
+					//Insert don hang (order)
+					$sql="insert into `of_order` values('NULL','$num_table','0')";
 					mysqli_query($link,$sql);
+					
+					//Insert don hang chi tiet (order_detail)
+					//Lay id (Auto Increment) cua lenh insert truoc
+					$orderID=mysqli_insert_id($link);					
+					
+					foreach($carts as $k => $v)
+					{
+						//Lay gia san pham
+						$sql = 'select `price` from `of_food` where`id`='.$k;
+						$rs = mysqli_query($link,$sql);
+						$r = mysqli_fetch_assoc($rs);
+						$price = $r['price'];
+						
+						//Insert
+						$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v',0)";
+						mysqli_query($link,$sql);
+					}
 				}
 			}
 			else{
@@ -81,7 +107,7 @@
 					$price = $r['price'];
 					
 					//Insert
-					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v')";
+					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v',0)";
 					mysqli_query($link,$sql);
 				}
 			}
@@ -103,6 +129,8 @@
 			$data['name']= $name_ban ;
 			$data['message'] = 'đã gọi món mới!!!';
 			$pusher->trigger('hihi', 'notices', $data);
+			
+			$_SESSION['order_wait']=$orderID;
 ?>
 
 			
