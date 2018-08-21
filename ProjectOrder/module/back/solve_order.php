@@ -18,6 +18,8 @@
 	
 	$sql="update `of_order` set `active`=1 where `id`={$orderID}";
 	mysqli_query($link,$sql);
+	$sql="update `of_order_detail` set `active`=1 where `order_id`={$orderID}";
+	mysqli_query($link,$sql);
 	$sql="select `id` from `of_bill` where `order_id`=$orderID and `active` = 0";
 	$r=mysqli_query($link,$sql);
 	$rs=mysqli_num_rows($r);
