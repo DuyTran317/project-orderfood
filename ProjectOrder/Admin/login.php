@@ -20,7 +20,7 @@ ob_start();
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
-
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -74,6 +74,14 @@ if(isset($_POST['account']))
             $d=mysqli_fetch_assoc($kq);
             $_SESSION['userad'] =  $d['name'];
             $_SESSION['idad'] = $d['id'];
+            $_SESSION['catead'] = $d['cate'];
+
+            if(isset($_POST['remember'])){ setcookie("userad","{$d['name']}",time()+999999);
+                setcookie("idad","{$d['id']}",time()+999999);
+                setcookie("catead","{$d['cate']}",time()+999999);
+
+            }
+
             header("location:index.php?mod=home&key=4");
 
         }
@@ -103,7 +111,7 @@ if(isset($_POST['account']))
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> Remember Me
+                            <input type="checkbox" name="remember"> Remember Me
                         </label>
                     </div>
                 </div>

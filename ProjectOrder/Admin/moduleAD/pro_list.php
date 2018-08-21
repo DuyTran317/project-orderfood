@@ -87,7 +87,7 @@
                                 <th>Tên</th>
                                 <th>Giá</th>
                                 <th>Trạng Thái</th>
-                                <th>Sửa/Xóa</th>
+                                <th><a href="?mod=add_pro">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>

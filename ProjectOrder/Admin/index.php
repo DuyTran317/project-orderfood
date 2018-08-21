@@ -46,6 +46,14 @@ ob_start(); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <?php
+    if(isset($_COOKIE['user']) && isset($_COOKIE['id']))
+    {
+        $_SESSION['userad'] = $_COOKIE['userad'];
+        $_SESSION['idad'] = $_COOKIE['idad'];
+        setcookie("userad","{$_SESSION['userad']}",time()+999999);
+        setcookie("idad","{$_SESSION['idad']}",time()+999999);
+        setcookie("catead","{$_SESSION['catead']}",time()+999999);
+    }
 if(!isset($_SESSION['userad'])) {
 
     header('location:login.php');
