@@ -43,7 +43,7 @@ if(isset($_GET['cate']))
   <?php
   	$sql="select b.`name`,a.`price`, a.`qty`
 		  from `of_order_detail` as a, `of_food` as b
-		  where a.`food_id`= b.`id` and `order_id`={$id}";
+		  where a.`food_id`= b.`id` and a.`order_id`={$id}";
 	$rs=mysqli_query($link,$sql);
 	
 	$s=0;

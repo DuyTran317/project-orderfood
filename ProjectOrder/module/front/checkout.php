@@ -61,7 +61,7 @@
 							$price = $r['price'];
 							
 							//Insert
-							$sql = "insert into `of_order_detail` values('$take_id','$k','$price','$v',0)";
+							$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
 							mysqli_query($link,$sql);
 						}
 				}
@@ -84,7 +84,7 @@
 						$price = $r['price'];
 						
 						//Insert
-						$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v',0)";
+						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
 						mysqli_query($link,$sql);
 					}
 				}
@@ -107,7 +107,7 @@
 					$price = $r['price'];
 					
 					//Insert
-					$sql = "insert into `of_order_detail` values('$orderID','$k','$price','$v',0)";
+					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
 					mysqli_query($link,$sql);
 				}
 			}

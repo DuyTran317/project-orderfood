@@ -5,6 +5,8 @@ if(isset($_GET['id']))
 	$id = $_GET['id'];	
 	$sql="insert into `of_solve_pay` values(NULL,{$id},'0')";
 	mysqli_query($link,$sql);
+	
+	unset($_SESSION['order_wait']);
 ?>
 <script>
 alert("Đã Nhận Được Yêu Cầu! Vui Lòng Đợi!");
