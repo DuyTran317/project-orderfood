@@ -166,8 +166,7 @@
 					order by a.`id` desc limit 0,1";
 				$rs=mysqli_query($link,$sql);
 				$r=mysqli_fetch_assoc($rs);		
-	 			?>
-                    <?php }
+	 			
                     $sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
                     $rs_t=mysqli_query($link,$sql);
                     $r_t=mysqli_fetch_assoc($rs_t);
@@ -182,7 +181,7 @@
 
 
                 
-                <?php } ?>
+                <?php }} ?>
         </div>
     </div>
 </div>

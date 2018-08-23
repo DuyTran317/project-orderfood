@@ -61,8 +61,19 @@
 							$price = $r['price'];
 							
 							//Insert
-							$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
-							mysqli_query($link,$sql);
+							$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+							$r_search = mysqli_query($link,$sql);
+							$rs_search = mysqli_num_rows($r_search);
+							if($rs_search == 0)
+							{
+								$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
+								mysqli_query($link,$sql);
+							}
+							else 
+							{
+								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+								mysqli_query($link,$sql);
+							}
 						}
 				}
 				else
@@ -84,8 +95,19 @@
 						$price = $r['price'];
 						
 						//Insert
-						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
-						mysqli_query($link,$sql);
+						$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+							$r_search = mysqli_query($link,$sql);
+							$rs_search = mysqli_num_rows($r_search);
+							if($rs_search == 0)
+							{
+								$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+								mysqli_query($link,$sql);
+							}
+							else 
+							{
+								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+								mysqli_query($link,$sql);
+							}
 					}
 				}
 			}
