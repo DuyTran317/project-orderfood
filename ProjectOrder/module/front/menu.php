@@ -154,7 +154,11 @@
 	                          
             </div>
             	<?php
-					if(isset($_GET['thanhtoan']))
+					@$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
+                    $rs_t=mysqli_query($link,$sql);
+                    @$r_t=mysqli_fetch_assoc($rs_t);
+					
+					if(isset($_GET['thanhtoan']) && $r_t['active']==1)
 					{
 				?>
                 <p align="right" style="margin-top:10px;">
@@ -165,11 +169,7 @@
 					group by a.`id`
 					order by a.`id` desc limit 0,1";
 				$rs=mysqli_query($link,$sql);
-				$r=mysqli_fetch_assoc($rs);		
-
-                    $sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
-                    $rs_t=mysqli_query($link,$sql);
-                    $r_t=mysqli_fetch_assoc($rs_t);
+				$r=mysqli_fetch_assoc($rs);		                    
 
                     if(isset($_GET['thanhtoan']) && $r_t['active']==1)
                     {
