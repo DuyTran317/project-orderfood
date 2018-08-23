@@ -73,7 +73,7 @@
 					
 					//Insert don hang chi tiet (order_detail)
 					//Lay id (Auto Increment) cua lenh insert truoc
-					$orderID=mysqli_insert_id($link);					
+					@$orderID=mysqli_insert_id($link);					
 					
 					foreach($carts as $k => $v)
 					{
@@ -96,7 +96,7 @@
 				$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
 				mysqli_query($link,$sql);
 				
-				$orderID = $rs['id'];
+				@$orderID = $rs['id'];
 				$carts=@$_SESSION['cart'];
 				foreach($carts as $k => $v)
 				{
@@ -130,15 +130,9 @@
 			$data['message'] = 'đã gọi món mới!!!';
 			$pusher->trigger('hihi', 'notices', $data);
 			
-			$_SESSION['order_wait']=$orderID;
+			@$_SESSION['order_wait']=$orderID;
 ?>
-
-			
-			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>			
-
-
-
-
+		<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>							
 <?php
 		}
 
