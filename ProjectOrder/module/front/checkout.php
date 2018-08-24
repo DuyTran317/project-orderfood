@@ -165,7 +165,10 @@
 			$data['message'] = 'đã gọi món mới!!!';
 			$pusher->trigger('hihi', 'notices', $data);
 			
-			@$_SESSION['order_wait']=$orderID;
+			if(@$orderID != NULL)
+			{
+				@$_SESSION['order_wait']=$orderID;
+			}
 ?>
 		<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>							
 <?php
