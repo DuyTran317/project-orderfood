@@ -75,7 +75,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Tài Khoản</a>
+                                <a href="?mod=edit_ad&edit=<?php echo  $_SESSION['idad'] ?>" class="btn btn-default btn-flat">Tài Khoản</a>
                             </div>
                             <div class="pull-right">
                                 <a href="?mod=logout" class="btn btn-default btn-flat">Logout</a>
@@ -117,18 +117,19 @@
             <li class="header">MAIN NAVIGATION</li>
             <li>
                 <a href="?mod1=home">
-                    <i class="fa fa-dashboard"></i> <span>Tổng quan</span>
-                    <span class="pull-right-container">
-            </span>
+                    <i class="fa fa-dashboard"></i> <span>Tổng quan </span>
+                    <span class="pull-right-container"></span>
                 </a>
             </li>
-            <li class="treeview">
+       <?php
+            $cate = $_SESSION['catead'];
+          if($cate ==3 || $cate  ==1) {  ?>
+          <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
                     <span>Thể loại</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+              <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="?mod=cat_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
@@ -140,30 +141,36 @@
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
                     <span>Sản phẩm</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+              <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="?mod=pro_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
                     <li><a href="?mod=add_pro"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
-            </li>
-            <li>
-                <a href="?mod=cat_list">
-                    <i class="fa fa-first-order" aria-hidden="true"></i>
+            </li><?php }?>
+         <?php
+            $cate = $_SESSION['catead'];
+          if($cate ==2 || $cate  ==1) {  ?> 
+           <li>
+                <a href='?mod=cat_list'>
+                    <i class='fa fa-first-order' aria-hidden='true'></i>
                     <span>Hóa đơn</span>
-                    <span class="pull-right-container">
+                    <span class='pull-right-container'>
             </span>
                 </a>
             </li>
             <li>
-                <a href="?mod=com_list">
-                    <i class="fa fa-comments" aria-hidden="true"></i>
+                <a href='?mod=com_list'>
+                    <i class='fa fa-comments' aria-hidden='true'></i>
                     <span>Đánh Giá</span>
-                    <span class="pull-right-container">
+                    <span class='pull-right-container'>
                 </span>
                 </a>
             </li>
+      <?php  }?>
+      <?php
+            $cate = $_SESSION['catead'];
+          if($cate ==5 || $cate  ==1) {  ?> 
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-tablet" aria-hidden="true"></i>
@@ -177,32 +184,30 @@
                     <li><a href="?mod=add_user"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+        <?php }?>
+        <?php
+            $cate = $_SESSION['catead'];
+          if($cate ==4 || $cate  ==1) {  ?> 
+             <li>
+                <a href='?mod=kit_list'>
+                <i class="fa fa-free-code-camp" aria-hidden="true"></i>
                     <span>User Bếp - Thanh Toán</span>
                     <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="?mod=user_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_user"><i class="fa fa-circle-o"></i> Thêm</a></li>
-                </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        <?php } ?>
+        <?php
+            $cate = $_SESSION['catead'];
+          if($cate  ==1) {  ?> 
+            <li>
+                <a href='?mod=ad_list'>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <span>ADMIN</span>
-                    <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+                    <span class="pull-right-container"></span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="?mod=ad_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_ad"><i class="fa fa-circle-o"></i> Thêm</a></li>
-                </ul>
             </li>
+        <?php }?>
             <li>
                 <a href="?mod=calendar">
                     <i class="fa fa-calendar"></i> <span>Calendar</span>

@@ -46,10 +46,11 @@ ob_start(); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <?php
-    if(isset($_COOKIE['user']) && isset($_COOKIE['id']))
+    if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
     {
         $_SESSION['userad'] = $_COOKIE['userad'];
         $_SESSION['idad'] = $_COOKIE['idad'];
+        $_SESSION['catead'] = $_COOKIE['catead'];
         setcookie("userad","{$_SESSION['userad']}",time()+999999);
         setcookie("idad","{$_SESSION['idad']}",time()+999999);
         setcookie("catead","{$_SESSION['catead']}",time()+999999);
