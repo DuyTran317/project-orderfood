@@ -35,13 +35,21 @@
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="table-responsive">
+        <a href="?mod=home" class="btn btn-success" style="font-size:22px" > Trở Lại </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
                 <?php
-                $sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+                $sql="select a.*,b.`name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
+				
+				$dem = mysqli_num_rows($rs);				
                 $total=0;
+
 				$sql_timtrung="select a.*, b.`name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+
+				if($dem > 0 )
+				{
+
                 while($r=mysqli_fetch_assoc($rs)):
 					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
 					$orderId = $r['order_id'];
@@ -51,7 +59,9 @@
                             <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
                         </td>
                         <td class="col-xs-9">
-                            <div style="font-size:30px; font-weight: bold;"><?=$r['ten']?></div>
+                            <div style="font-size:30px; font-weight: bold;"><?=$r['ten']?>
+                            	<span style="float:right"><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')">X</a></span>
+                            </div>
                             <p style="color: grey"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
 
                         </td>
@@ -75,13 +85,13 @@
 				}
 				
                 ?>
-                </div>
-            
+            </div>                         
         </div>
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success btn-lg"></a></div>
         <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa?')">
         	<input type="submit" value="Xóa" class="btn btn-danger btn-lg"></a>
         </div>
+        
     </div>
     <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
 			$r_timtrung=mysqli_query($link,$sql_timtrung);
@@ -109,6 +119,11 @@
 				}
 			}
 			echo $note;
+		}
+		else
+		{
+			echo"Không còn sản phẩm nào của bàn này!";
+		}
 	?>
 </div>
 </body>

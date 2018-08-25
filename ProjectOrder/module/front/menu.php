@@ -38,7 +38,59 @@
                 'Món Ăn Của Bạn Đã Được Bếp Xác Nhận!!!!',
                 {
                     body: 'Vui Lòng Đợi Phục Vụ Mang Món Ăn Của Bạn Đến!!',
-                    icon: 'http://icons.iconarchive.com/icons/iconsmind/outline/128/Like-2-icon.png', // Hình ảnh
+                    icon: 'lib/icon/bell.png', // Hình ảnh
+                    tag: '' // Đường dẫn 
+                });
+        setTimeout(n.close.bind(n), 10000);
+        // tự động đóng thông báo sau 10s
+        n.onclick = function () {
+            window.location.href = this.tag;
+        }
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+	
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('delorder', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		n = new Notification(
+                'Đã Xác Nhận Yêu Cầu!!!!',
+                {
+                    body: data.message,
+                    icon: 'lib/icon/info.png', // Hình ảnh
+                    tag: '' // Đường dẫn 
+                });
+        setTimeout(n.close.bind(n), 10000);
+        // tự động đóng thông báo sau 10s
+        n.onclick = function () {
+            window.location.href = this.tag;
+        }
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+	
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('delfood', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		n = new Notification(
+                'Yêu Cầu Được Thực Hiện!!!!!',
+                {
+                    body: data.message ,
+                    icon: 'lib/icon/info.png', // Hình ảnh
                     tag: '' // Đường dẫn 
                 });
         setTimeout(n.close.bind(n), 10000);
@@ -50,6 +102,8 @@
         // kết thúc code xử lý thông báo
     });
 </script>
+<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+
     <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
     <tr>
         <td>

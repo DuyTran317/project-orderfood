@@ -24,7 +24,7 @@
                 'Bạn nhận được yêu cầu thanh toán',
                 {
                     body: data.name + ' đã gửi tin nhắn cho bạn:' + data.message,
-                    icon: 'http://icons.iconarchive.com/icons/pauloruberto/custom-round-yosemite/128/Bitcoin-icon.png', // Hình ảnh
+                    icon: 'lib/icon/thanhtoan.png', // Hình ảnh
                     tag: '' // Đường dẫn 
                 });
         setTimeout(n.close.bind(n), 10000);

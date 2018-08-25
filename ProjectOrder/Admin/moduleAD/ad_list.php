@@ -4,11 +4,11 @@
     <section class="content-header">
         <h1>
             Danh Sách
-            <small>Bàn</small>
+            <small>Admin</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bàn</a></li>
+            <li><a href="?mod=user_list">Admin</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -52,16 +52,16 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên Bàn</th>
-                                <th>Số</th>
+                                <th>Account</th>
+                                <th>Tên</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="?mod=add_user">Thêm</a></th>
+                                <th>Sửa</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
 
-                            $sql_user = "select * from of_user";
+                            $sql_user = "select * from of_admin";
                             $i=1;
                             $kq_user = mysqli_query($link,$sql_user);
                             while($d_user=mysqli_fetch_assoc($kq_user))
@@ -71,13 +71,13 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_user&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_ad&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
-                                            echo "<a href=\"?mod=process_user&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                            echo "<a href=\"?mod=process_ad&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="?mod=edit_user&edit=<?= $d_user['id'] ?>">Sửa</a>/<a href="?mod=process_user&del=<?= $d_user['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
+                                    <td><a href="?mod=edit_ad&edit=<?= $d_user['id'] ?>">Sửa</a></td>
                                 </tr>
                             <?php } ?>
 
