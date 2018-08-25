@@ -84,8 +84,8 @@
     '577033',
     $options
 	);
-	$data['message'] = 'Đơn Hàng Đã Được Xóa!!!';
-	$pusher->trigger('hihi', 'newbill', $data);
+	$data['message'] = 'Món Ăn Bạn Yêu Cầu Hủy Đã Được Thực Hiện!!!';
+	$pusher->trigger('hihi', 'delfood', $data);
 	
 	header("location:?mod=check_order&id=$id&num_table=$num_table");
 ?>

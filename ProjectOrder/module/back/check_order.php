@@ -34,7 +34,7 @@
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="table-responsive">
-        <a href="?mod=home"><input type="button" class="btn btn-success" value="Trở Lại" style="font-size:22px"></a>
+        <a href="?mod=home" class="btn btn-success" style="font-size:22px" > Trở Lại </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
                 <?php
