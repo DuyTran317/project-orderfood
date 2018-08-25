@@ -55,7 +55,7 @@
     $options
 	);
 	$data['message'] = 'Đơn Hàng Đã Được Xóa!!!';
-	$pusher->trigger('hihi', 'newbill', $data);
+	$pusher->trigger('hihi', 'delorder', $data);
 	
 	header("location:?mod=home");
 ?>
