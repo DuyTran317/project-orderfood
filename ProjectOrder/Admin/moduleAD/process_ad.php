@@ -7,7 +7,7 @@ if(isset($_POST['suaten']))
     $repass = $_POST['suarepass'];
     $name = $_POST['suaso'];
     $active = $_POST['suatrangthai'];
-
+    $cate = $_SESSION['catead'];
         if($pass != '')
         {
             if($_POST['changePassword']="on"){
@@ -22,7 +22,15 @@ if(isset($_POST['suaten']))
                     $pass = hash('sha512',$_POST['suapass']);
                     $sql_edit="update `of_admin` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
                     mysqli_query($link,$sql_edit);
-                    header("location:?mod=ad_list&mes2=2");
+                    
+                    if($cate ==1)
+                    {
+                        header("location:?mod=ad_list&mes2=2");
+                    }else
+                    {
+                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key=5");
+                    }
+                    
                 }
             }
         }
@@ -30,7 +38,14 @@ if(isset($_POST['suaten']))
 
             $sql_edit = "update `of_admin` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
             mysqli_query($link,$sql_edit);
-            header("location:?mod=ad_list&mes2=2");
+             if($cate ==1)
+                    {
+                        header("location:?mod=ad_list&mes2=2");
+                    }else
+                    {
+                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key2=5");
+                    }
+            
         }
 
 }
