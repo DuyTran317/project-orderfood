@@ -28,10 +28,16 @@
 		{
 			$sql="DELETE FROM `of_order` WHERE `id`={$orderID} AND `active`=0";
 			mysqli_query($link,$sql);
+			
+			$sql="delete from `of_note_order` where `order_id`={$orderID} and `active`=0";
+			mysqli_query($link,$sql);
 		}
 		else
 		{
 			$sql="update `of_order` set `active`=1 where `id`={$orderID}";
+			mysqli_query($link,$sql);
+			
+			$sql="delete from `of_note_order` where `order_id`={$orderID} and `active`=0";
 			mysqli_query($link,$sql);
 		}
 	}
@@ -48,7 +54,7 @@
     '577033',
     $options
 	);
-	$data['message'] = 'Đơn Hàng Mới!!!';
+	$data['message'] = 'Đơn Hàng Đã Được Xóa!!!';
 	$pusher->trigger('hihi', 'newbill', $data);
 	
 	header("location:?mod=home");
