@@ -38,7 +38,7 @@
                 'Món Ăn Của Bạn Đã Được Bếp Xác Nhận!!!!',
                 {
                     body: 'Vui Lòng Đợi Phục Vụ Mang Món Ăn Của Bạn Đến!!',
-                    icon: 'http://icons.iconarchive.com/icons/iconsmind/outline/128/Like-2-icon.png', // Hình ảnh
+                    icon: 'lib/icon/bell.png', // Hình ảnh
                     tag: '' // Đường dẫn 
                 });
         setTimeout(n.close.bind(n), 10000);

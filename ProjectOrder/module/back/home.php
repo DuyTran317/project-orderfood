@@ -25,7 +25,7 @@
                 'Thông Báo!!!!!!',
                 {
                     body: data.name + ' ' + data.message,
-                    icon: 'http://icons.iconarchive.com/icons/google/noto-emoji-people-profession/128/10267-man-cook-light-skin-tone-icon.png', // Hình ảnh
+                    icon: 'lib/icon/cook.png', // Hình ảnh
                     tag: '' // Đường dẫn 
                 });
         setTimeout(n.close.bind(n), 10000);
