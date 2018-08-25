@@ -28,6 +28,7 @@
 	{
 		$num_table=$_GET['num_table'];
 	}
+	$SoHoaDonLamTruoc = 5;
 ?>
 
 <body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
@@ -40,7 +41,10 @@
                 $sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
                 $total=0;
+				$sql_timtrung="select a.*, b.`name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
                 while($r=mysqli_fetch_assoc($rs)):
+					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
+					$orderId = $r['order_id'];
                     ?>
                     <tr>
                         <td align="center" class="col-xs-3">
@@ -79,6 +83,33 @@
         	<input type="submit" value="Xóa" class="btn btn-danger btn-lg"></a>
         </div>
     </div>
+    <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
+			$r_timtrung=mysqli_query($link,$sql_timtrung);
+			$orderId1=0;$note="";
+			while($rs_timtrung=mysqli_fetch_assoc($r_timtrung))
+			{
+				if($orderId1 != $rs_timtrung['order_id'])
+				{
+					echo $note;
+					$orderId1=$rs_timtrung['order_id'];
+					
+					$sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId} and `active`= 0";
+					$r_takenotes = mysqli_query($link,$sql_takenotes);
+					$note="";
+					while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))
+					{
+						$note.= $rs_takenotes['note']." <br>"; 
+					}
+					echo "<br> BÀN SỐ: {$rs_timtrung['num_table']} <br>";
+					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
+				}
+				else
+				{
+					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
+				}
+			}
+			echo $note;
+	?>
 </div>
 </body>
 
