@@ -25,6 +25,7 @@
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
+	
 	if(@count($cart)<=0)
 	{
 		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>Bạn phải chọn sản phẩm</div>";
@@ -34,7 +35,8 @@
 	{			
 		if(isset($_POST['goimon']))
 		{
-			$num_table=$name_ban;			
+			$num_table=$name_ban;
+			$note= $_POST['note'];		
 			
 			$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
 			$r=mysqli_query($link,$sql);
@@ -61,9 +63,23 @@
 							$price = $r['price'];
 							
 							//Insert
-							$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
-							mysqli_query($link,$sql);
+							$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+							$r_search = mysqli_query($link,$sql);
+							$rs_search = mysqli_num_rows($r_search);
+							if($rs_search == 0)
+							{
+								$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
+								mysqli_query($link,$sql);
+							}
+							else 
+							{
+								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+								mysqli_query($link,$sql);
+							}
 						}
+							//Insert note vao DB
+							$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
+							mysqli_query($link,$sql);
 				}
 				else
 				{
@@ -73,7 +89,8 @@
 					
 					//Insert don hang chi tiet (order_detail)
 					//Lay id (Auto Increment) cua lenh insert truoc
-					$orderID=mysqli_insert_id($link);					
+					
+					@$orderID=mysqli_insert_id($link);					
 					
 					foreach($carts as $k => $v)
 					{
@@ -84,9 +101,24 @@
 						$price = $r['price'];
 						
 						//Insert
-						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
-						mysqli_query($link,$sql);
+						$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+							$r_search = mysqli_query($link,$sql);
+							$rs_search = mysqli_num_rows($r_search);
+							if($rs_search == 0)
+							{
+								$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+								mysqli_query($link,$sql);
+							}
+							else 
+							{
+								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+								mysqli_query($link,$sql);
+							}
 					}
+					
+					//Insert note vao DB
+					$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+					mysqli_query($link,$sql);
 				}
 			}
 			else{
@@ -96,7 +128,7 @@
 				$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
 				mysqli_query($link,$sql);
 				
-				$orderID = $rs['id'];
+				@$orderID = $rs['id'];
 				$carts=@$_SESSION['cart'];
 				foreach($carts as $k => $v)
 				{
@@ -110,6 +142,9 @@
 					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
 					mysqli_query($link,$sql);
 				}
+				//Insert note vao DB
+					$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+					mysqli_query($link,$sql);
 			}
 			echo '<script>alert("Gọi Món Thành Công");</script>';
 			unset($_SESSION['cart']);
@@ -130,15 +165,12 @@
 			$data['message'] = 'đã gọi món mới!!!';
 			$pusher->trigger('hihi', 'notices', $data);
 			
-			$_SESSION['order_wait']=$orderID;
+			if(@$orderID != NULL)
+			{
+				@$_SESSION['order_wait']=$orderID;
+			}
 ?>
-
-			
-			<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>			
-
-
-
-
+		<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>							
 <?php
 		}
 
@@ -187,11 +219,14 @@
                                         <?php } ?>
                                     </table>
                                 </div>
+                                 <form action="" method="post">
                                 <div class="row" style="margin-top:30px">
+                                    <div class="col-md-12 col-sm-12 col-xs-12" style="width:100%">  <textarea name="note" rows="4" cols="60" placeholder="Nhập ghi chú vào đây!!!"></textarea> </div>
                                     <div class="col-xs-4" style="font-weight:bold; font-size:26px; text-decoration:underline; color: red"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
-                                            <form action="" method="post">
+                                           
+                                            	
                                                 <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="Gọi Món">
                                             </form>
                                         </div>

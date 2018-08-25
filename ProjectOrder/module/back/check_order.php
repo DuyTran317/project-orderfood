@@ -1,3 +1,20 @@
+<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+  <script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('notices', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pushe
+		alert('Có thay đổi về đơn hàng vui lòng chỉnh lại!');
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+</script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -35,13 +52,27 @@
 
                         </td>
                     </tr>
-                    <?php
+                  
+                <?php
                     $total += $r['price']*$r['qty'];
                 endwhile
-
                 ?>
-
+                <?php 
+				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
+				$rs2 = mysqli_query($link,$sql);
+				?>
+  				
             </table>
+            <div> <?php 
+            	while($r2=mysqli_fetch_assoc($rs2))
+				{
+					echo $r2['note']; 
+					echo "<br>";
+				}
+				
+                ?>
+                </div>
+            
         </div>
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success btn-lg"></a></div>
         <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa?')">
