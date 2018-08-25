@@ -4,15 +4,15 @@
         <h1>
             Sửa
             <small><?php
-            $sql = "select `name` from of_manage where id = {$_GET['edit']}";
+            $sql = "select `name` from of_admin where id = {$_GET['edit']}";
                     $kq = mysqli_query($link,$sql);
                     $d = mysqli_fetch_assoc($kq);
              echo $d['name'] ?></small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bàn</a></li>
-            <li class="active">Thêm</li>
+            <li><a href="?mod=user_list"><?php echo $d['name'] ?></a></li>
+            <li class="active">Sửa</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -42,11 +42,11 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php
-                    $sql_edit = "select * from of_manage where id = {$_GET['edit']}";
+                    $sql_edit = "select * from of_admin where id = {$_GET['edit']}";
                     $kq_edit = mysqli_query($link,$sql_edit);
                     $d_edit = mysqli_fetch_assoc($kq_edit);
                     ?>
-                    <form role="form" action="?mod=process_kit" method="post" enctype="multipart/form-data">
+                    <form role="form" action="?mod=process_ad" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Account</label>

@@ -57,7 +57,7 @@ if(isset($_POST['account']))
     }
     else
     {
-        $sql = "select * from of_admin where account= '$user' and password = '$pass' and cate = 1";
+        $sql = "select * from of_admin where account= '$user' and password = '$pass'";
         $kq = mysqli_query($link,$sql);
         if(mysqli_num_rows($kq) == 0)
         {
