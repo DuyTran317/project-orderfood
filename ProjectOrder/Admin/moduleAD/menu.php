@@ -188,13 +188,17 @@
         <?php
             $cate = $_SESSION['catead'];
           if($cate ==4 || $cate  ==1) {  ?> 
-             <li>
-                <a href='?mod=kit_list'>
-                <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-free-code-camp" aria-hidden="true"></i>
                     <span>User Bếp - Thanh Toán</span>
-                    <span class="pull-right-container">
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="?mod=kit_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="?mod=add_kit"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                </ul>
             </li>
         <?php } ?>
         <?php
@@ -218,9 +222,9 @@
                 </a>
             </li>
             <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-red"></i> <span>Quan Trọng</span></a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-yellow"></i> <span>Cảnh Báo</span></a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-aqua"></i> <span>Thông Tin</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

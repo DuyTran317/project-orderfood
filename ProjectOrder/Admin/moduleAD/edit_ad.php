@@ -57,15 +57,15 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Account</label>
-                                <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" value="<?= $d_edit['account'] ?>">
+                                <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" value="<?= $d_edit['account'] ?>" disabled="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tên</label>
-                                <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>">
+                                <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>" disabled="">
                             </div>
 
                                 <input type="checkbox" name="changePassword" id="changePassword">
-                                <label for="exampleInputPassword1">Thay đổi</label>
+                                <label for="exampleInputPassword1">Nhấn vào đây nếu bạn muốn thay đổi mật khẩu!</label>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Mật Khẩu</label>
                                 <input type="password" class="form-control password" id="pass" name="suapass" placeholder="Nhập mật khẩu" disabled="">
@@ -75,23 +75,12 @@
                                 <input type="password" class="form-control password" id="repass" name="suarepass" placeholder="Nhập lại mật khẩu" disabled="">
                             </div>
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái:</label>
-                                <div class="radio">
-                                    <label class="radio-inline">
-                                        <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input name="suatrangthai" value="0" type="radio" <?php if($d_edit['active'] == 0) {echo "checked";}  else echo ""; ?> >Ẩn
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" id="pass" class="btn btn-primary password" disabled="">Submit</button>
                         </div>
                     </form>
                 </div>

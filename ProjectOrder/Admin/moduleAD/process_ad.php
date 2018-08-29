@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['suaten']))
+if(isset($_POST['suapass']))
 {
     $account=$_POST['suaten'];
     $pass = $_POST['suapass'];
@@ -20,7 +20,7 @@ if(isset($_POST['suaten']))
                     header("location:?mod=edit_ad&edit={$_POST['suaid']}&warm=2");
                 }else {
                     $pass = hash('sha512',$_POST['suapass']);
-                    $sql_edit="update `of_admin` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+                    $sql_edit="update `of_admin` set `password`='$pass' WHERE id={$_POST['suaid']}";
                     mysqli_query($link,$sql_edit);
                     
                     if($cate ==1)
@@ -34,31 +34,5 @@ if(isset($_POST['suaten']))
                 }
             }
         }
-        else {
 
-            $sql_edit = "update `of_admin` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
-            mysqli_query($link,$sql_edit);
-             if($cate ==1)
-                    {
-                        header("location:?mod=ad_list&mes2=2");
-                    }else
-                    {
-                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key2=5");
-                    }
-            
-        }
-
-}
-
-if(isset($_GET['actives']))
-{
-    $sql = "update `of_admin` set `active`=1 where id='{$_GET['actives']}' ";
-    mysqli_query($link,$sql);
-    header("location:?mod=ad_list");
-}
-if(isset($_GET['activeh']))
-{
-    $sql = "update `of_admin` set `active`=0 where id='{$_GET['activeh']}' ";
-    mysqli_query($link,$sql);
-    header("location:?mod=ad_list");
 }
