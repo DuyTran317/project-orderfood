@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
                 <li><a href="?mod=cat_list">Thể Loại</a></li>
-                <li class="active">Thêm <?php echo $_SESSION['catead']; ?></li>
+                <li class="active">Thêm</li>
             </ol>
         </section>
 

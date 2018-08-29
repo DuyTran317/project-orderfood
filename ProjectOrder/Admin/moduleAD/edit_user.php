@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
             <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
             <li><a href="?mod=user_list">Bàn</a></li>
-            <li class="active">Thêm</li>
+            <li class="active">Sửa</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -46,7 +46,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Bàn</label>
-                                <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" value="<?= $d_edit['account'] ?>">
+                                <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" readonly="readonly" value="<?= $d_edit['account'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Số</label>

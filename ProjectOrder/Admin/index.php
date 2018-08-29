@@ -120,11 +120,17 @@ include("moduleAD/{$mod}.php");
 <!-- DataTables -->
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
 <script>
     $(function () {
-        $('#example1').DataTable()
+        $('#example1').DataTable( {
+			"language": {
+				"url": "bower_components/datatables.net/Vietnamese.json"
+			}
+    	} );
         $('#example2').DataTable({
+			"language": {
+				"url": "bower_components/datatables.net/Vietnamese.json"
+			},
             'paging'      : true,
             'lengthChange': false,
             'searching'   : false,
