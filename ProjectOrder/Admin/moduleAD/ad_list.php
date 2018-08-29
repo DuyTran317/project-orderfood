@@ -1,4 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -54,7 +55,6 @@
                                 <th>STT</th>
                                 <th>Account</th>
                                 <th>Tên</th>
-                                <th>Trạng Thái</th>
                                 <th>Sửa</th>
                             </tr>
                             </thead>
@@ -71,12 +71,6 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_ad&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
-                                        else
-                                        {
-                                            echo "<a href=\"?mod=process_ad&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
-                                        }
-                                        ?></td>
                                     <td><a href="?mod=edit_ad&edit=<?= $d_user['id'] ?>">Sửa</a></td>
                                 </tr>
                             <?php } ?>

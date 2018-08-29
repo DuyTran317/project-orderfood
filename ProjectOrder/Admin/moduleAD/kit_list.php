@@ -55,7 +55,7 @@
                                 <th>Account</th>
                                 <th>Tên</th>
                                 <th>Trạng Thái</th>
-                                <th>Sửa</th>
+                                <th><a href="?mod=add_kit">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -77,7 +77,7 @@
                                             echo "<a href=\"?mod=process_kit&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="?mod=edit_kit&edit=<?= $d_user['id'] ?>">Sửa</a></td>
+                                    <td><a href="?mod=edit_kit&edit=<?= $d_user['id'] ?>">Sửa</a>/<a href="?mod=process_kit&del=<?= $d_user['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa!')">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 
