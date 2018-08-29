@@ -93,33 +93,47 @@
         </div>
         
     </div>
+    <div style="background-color:#FFC">	
     <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
 			$r_timtrung=mysqli_query($link,$sql_timtrung);
-			$orderId1=0;$note="";
+			$orderId1=0;$note="";			
 			while($rs_timtrung=mysqli_fetch_assoc($r_timtrung))
 			{
 				if($orderId1 != $rs_timtrung['order_id'])
 				{
-					echo $note;
+					echo "<span style='font-size:22px'>".$note."</span>";
 					$orderId1=$rs_timtrung['order_id'];
 					
-					$sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId} and `active`= 0";
+					$sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
 					$r_takenotes = mysqli_query($link,$sql_takenotes);
 					$note="";
 					while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))
 					{
-						$note.= $rs_takenotes['note']." <br>"; 
+						$note.= $rs_takenotes['note']; 
 					}
-					echo "<br> BÀN SỐ: {$rs_timtrung['num_table']} <br>";
-					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
+	 ?>     		
+     				<table>
+                    	<tr>
+                        	<td style="font-weight:bold; font-size:28px">Bàn Số:</td>
+                            <td style="font-weight:bold; font-size:28px"><?=$rs_timtrung['num_table']?></td>
+                        </tr>
+                        <tr>
+                        	<td><?=$rs_timtrung['name']?>:</td>
+                            <td>x<?=$rs_timtrung['qty']?></td>
+                        </tr>                            
+                    </table>             
+     <?php
 				}
 				else
 				{
 					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
 				}
 			}
-			echo $note;
-		}
+			echo "<span style='font-size:22px'>".$note."</span>";
+    ?> 
+    	</div>
+    <?php			
+		}		
 		else
 		{
 			echo"Không còn sản phẩm nào của bàn này!";
