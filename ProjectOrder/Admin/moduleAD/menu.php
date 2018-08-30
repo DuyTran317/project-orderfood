@@ -114,16 +114,18 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header" style="text-align:center">DANH MỤC</li>
+            <li class="header" style="text-align:center">Bảng điều khiển</li>
             <li>
                 <a href="?mod1=home">
                     <i class="fa fa-dashboard"></i> <span>Tổng quan </span>
                     <span class="pull-right-container"></span>
                 </a>
             </li>
+            
        <?php
             $cate = $_SESSION['catead'];
-          if($cate ==3 || $cate  ==1) {  ?>
+          if($cate ==3 || $cate  ==1) {  ?> 
+            <li class="header" style="text-align:center">Quản lý món ăn</li>
           <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
@@ -148,9 +150,11 @@
                     <li><a href="?mod=add_pro"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li><?php }?>
+            
          <?php
             $cate = $_SESSION['catead'];
           if($cate ==2 || $cate  ==1) {  ?> 
+            <li class="header" style="text-align:center">Phân tích</li> 
            <li>
                 <a href='?mod=cat_list'>
                     <i class='fa fa-first-order' aria-hidden='true'></i>
@@ -168,9 +172,11 @@
                 </a>
             </li>
       <?php  }?>
+       
       <?php
             $cate = $_SESSION['catead'];
           if($cate ==5 || $cate  ==1) {  ?> 
+            <li class="header" style="text-align:center">Quản lý bàn</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-tablet" aria-hidden="true"></i>
@@ -185,9 +191,11 @@
                 </ul>
             </li>
         <?php }?>
+         
         <?php
             $cate = $_SESSION['catead'];
-          if($cate ==4 || $cate  ==1) {  ?> 
+          if($cate ==4 || $cate  ==1) {  ?>
+           <li class="header" style="text-align:center">Quản lý Bếp và Thanh toán</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-free-code-camp" aria-hidden="true"></i>
@@ -201,9 +209,11 @@
                 </ul>
             </li>
         <?php } ?>
+
         <?php
             $cate = $_SESSION['catead'];
           if($cate  ==1) {  ?> 
+            <li class="header" style="text-align:center">Quản lý và phần quyền</li>
             <li>
                 <a href='?mod=ad_list'>
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
