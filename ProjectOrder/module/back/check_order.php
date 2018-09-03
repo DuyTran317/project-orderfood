@@ -93,7 +93,11 @@
         </div>
         
     </div>
-    <div style="background-color:#FFC">	
+	
+	<h1 style="text-align:center; color:#FFF; margin-top:30px; font-weight:bold">Danh Sách Các Món Trùng</h1>
+    
+    <div class="container-fluid" style="background-color:#FFC; margin-top:10px">
+    <div class="row">	
     <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
 			$r_timtrung=mysqli_query($link,$sql_timtrung);
 			$orderId1=0;$note="";			
@@ -101,7 +105,7 @@
 			{
 				if($orderId1 != $rs_timtrung['order_id'])
 				{
-					echo "<span style='font-size:22px'>".$note."</span>";
+					
 					$orderId1=$rs_timtrung['order_id'];
 					
 					$sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
@@ -111,17 +115,15 @@
 					{
 						$note.= $rs_takenotes['note']; 
 					}
-	 ?>     		
-     				<table>
-                    	<tr>
-                        	<td style="font-weight:bold; font-size:28px">Bàn Số:</td>
-                            <td style="font-weight:bold; font-size:28px"><?=$rs_timtrung['num_table']?></td>
-                        </tr>
-                        <tr>
-                        	<td><?=$rs_timtrung['name']?>:</td>
-                            <td>x<?=$rs_timtrung['qty']?></td>
-                        </tr>                            
-                    </table>             
+	 ?>     		     				
+                    <div class="col-md-4 col-sm-4 col-xs-12" style="border-right:1px dotted #000; border-top:1px dashed #000; padding-bottom:10px; padding-top:10px">
+                                                    
+                        <span style="font-size:22px">Bàn:</span> <span style="color:#C00; font-size:24px"><?=$rs_timtrung['num_table']?></span><br>                 
+                        <span style="font-size:22px">Tên Món:</span> <span style="color:#006; font-size:24px"><?=$rs_timtrung['name']?></span><br>
+                        <span style="font-size:22px">Số Lượng:</span> <span style="color:#0C6; font-size:24px; text-decoration:underline">x<?=$rs_timtrung['qty']?></span><hr>
+                        
+                        <span style="font-size:22px">Chú Thích:</span> <?php echo "<span style='font-size:24px; color:#F09'>".$note."</span>"; ?>
+                    </div>    
      <?php
 				}
 				else
@@ -129,9 +131,10 @@
 					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
 				}
 			}
-			echo "<span style='font-size:22px'>".$note."</span>";
+			/*echo "<span style='font-size:22px'>".$note."</span>";*/
     ?> 
     	</div>
+        </div>
     <?php			
 		}		
 		else
