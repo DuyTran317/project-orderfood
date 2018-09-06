@@ -164,7 +164,7 @@
                 </a>
             </li>
             <li>
-                <a href='?mod=com_list'>
+                <a href='?mod=rate_list'>
                     <i class='fa fa-comments' aria-hidden='true'></i>
                     <span>Đánh Giá</span>
                     <span class='pull-right-container'>
