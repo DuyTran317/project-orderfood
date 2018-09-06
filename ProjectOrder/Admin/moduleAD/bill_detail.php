@@ -57,6 +57,7 @@
 
                             </tbody>
                         </table>
+                       <a href="?mod=bill_list">Trở về danh sách hóa đơn</a>
                     </div>
                     <!-- /.box-body -->
                 </div>
