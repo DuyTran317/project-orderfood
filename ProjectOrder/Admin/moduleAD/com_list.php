@@ -33,17 +33,18 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên Khách Hàng</th>
                                 <th>Bình Luận</th>
                                 <th>Đánh Giá</th>
                                 <th>Trạng Thái</th>
+                                <th>Ngày Đánh Giá</th>
+                                <th>Thời Gian Đánh Giá</th>
                                 <th>Xóa</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
 
-                            $sql_cat = "select * from of_rate";
+                            $sql_cat = "select * from `of_rate`";
                             $i=1;
                             $kq_cat = mysqli_query($link,$sql_cat);
                             while($d_com=mysqli_fetch_assoc($kq_cat))
@@ -51,15 +52,16 @@
                                 ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $d_com['customer_name'] ?></td>
                                     <td><?= $d_com['desc'] ?></td>
-                                    <td><?= $d_com['star'] ?></td>
+                                    <td><?php for($j=1;$j<= $d_com['star'];$j++) {?><i class="icon ion-ios-star"></i> <?php } ?></td>
                                     <td><?php if($d_com['active']==0) {echo "<a href=\"?mod=process_com&actives={$d_com['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
                                             echo "<a href=\"?mod=process_com&activeh={$d_com['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
-                                        ?>
+                                        ?></td>
+                                        <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
+                                        <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
                                     <td><a href="?mod=process_com&del=<?= $d_com['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
                                 </tr>
                             <?php } ?>

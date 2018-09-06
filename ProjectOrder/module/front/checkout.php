@@ -46,13 +46,56 @@
 				
 				$sql="select `id`,`num_table` from `of_order` where `active`=0";
 				$take=mysqli_query($link,$sql);
-				$take_sth=mysqli_fetch_assoc($take);
+				
 				
 				$carts=@$_SESSION['cart'];
-				
-				if($name_ban == $take_sth['num_table'])
+				$temp = 0;
+				while($take_sth=mysqli_fetch_assoc($take))
 				{
-						$take_id = $take_sth['id'];
+						if($name_ban == $take_sth['num_table'])
+						{
+							$take_id = $take_sth['id'];
+							
+							foreach($carts as $k => $v)
+							{
+								//Lay gia san pham
+								$sql = 'select `price` from `of_food` where`id`='.$k;
+								$rs = mysqli_query($link,$sql);
+								$r = mysqli_fetch_assoc($rs);
+								$price = $r['price'];
+								
+								//Insert
+								$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+								$r_search = mysqli_query($link,$sql);
+								$rs_search = mysqli_num_rows($r_search);
+								if($rs_search == 0)
+								{
+									$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
+									mysqli_query($link,$sql);
+								}
+								else 
+								{
+									$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+									mysqli_query($link,$sql);
+								}
+							}
+								//Insert note vao DB
+								$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
+								mysqli_query($link,$sql);
+								$temp++;
+								break;
+						}
+					}
+					if($temp==0)
+					{
+						//Insert don hang (order)
+						$sql="insert into `of_order` values('NULL','$num_table','0')";
+						mysqli_query($link,$sql);
+						
+						//Insert don hang chi tiet (order_detail)
+						//Lay id (Auto Increment) cua lenh insert truoc
+						
+						@$orderID=mysqli_insert_id($link);					
 						
 						foreach($carts as $k => $v)
 						{
@@ -63,63 +106,26 @@
 							$price = $r['price'];
 							
 							//Insert
-							$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-							$r_search = mysqli_query($link,$sql);
-							$rs_search = mysqli_num_rows($r_search);
-							if($rs_search == 0)
-							{
-								$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
-								mysqli_query($link,$sql);
-							}
-							else 
-							{
-								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-								mysqli_query($link,$sql);
-							}
+							$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+								$r_search = mysqli_query($link,$sql);
+								$rs_search = mysqli_num_rows($r_search);
+								if($rs_search == 0)
+								{
+									$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+									mysqli_query($link,$sql);
+								}
+								else 
+								{
+									$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+									mysqli_query($link,$sql);
+								}
 						}
-							//Insert note vao DB
-							$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
-							mysqli_query($link,$sql);
-				}
-				else
-				{
-					//Insert don hang (order)
-					$sql="insert into `of_order` values('NULL','$num_table','0')";
-					mysqli_query($link,$sql);
-					
-					//Insert don hang chi tiet (order_detail)
-					//Lay id (Auto Increment) cua lenh insert truoc
-					
-					@$orderID=mysqli_insert_id($link);					
-					
-					foreach($carts as $k => $v)
-					{
-						//Lay gia san pham
-						$sql = 'select `price` from `of_food` where`id`='.$k;
-						$rs = mysqli_query($link,$sql);
-						$r = mysqli_fetch_assoc($rs);
-						$price = $r['price'];
 						
-						//Insert
-						$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-							$r_search = mysqli_query($link,$sql);
-							$rs_search = mysqli_num_rows($r_search);
-							if($rs_search == 0)
-							{
-								$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
-								mysqli_query($link,$sql);
-							}
-							else 
-							{
-								$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-								mysqli_query($link,$sql);
-							}
+						//Insert note vao DB
+						$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+						mysqli_query($link,$sql);
 					}
-					
-					//Insert note vao DB
-					$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
-					mysqli_query($link,$sql);
-				}
+				
 			}
 			else{
 				$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
