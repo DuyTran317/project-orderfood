@@ -13,7 +13,7 @@ if(isset($_GET['name']))
 }
 ?>
 
-<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background.png);  background-size:cover;">
+<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png);  background-size:cover;">
 
 <div class="container" style="margin-top:25%; height: 600px; overflow-y: scroll; overflow-x: hidden">
     <div class="row">
