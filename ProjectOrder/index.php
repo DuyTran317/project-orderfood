@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="fontawesome-free-5.1.0-web/css/all.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="lib/wowjs/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="woocommerce-FlexSlider-53570ee/flexslider.css" media="screen" />
 <script src="lib/wowjs/wow.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
