@@ -53,7 +53,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_com['customer_name'] ?></td>
                                     <td><?= $d_com['desc'] ?></td>
-                                    <td><?= $d_com['star'] ?></td>
+                                    <td><?= $d_com['star'] ?><i class="icon ion-ios-star"></i></td>
                                     <td><?php if($d_com['active']==0) {echo "<a href=\"?mod=process_com&actives={$d_com['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
