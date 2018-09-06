@@ -8,7 +8,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="">Thể Loại</a></li>
+            <li><a href="">Hóa Đơn</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
