@@ -13,51 +13,48 @@ if(isset($_GET['name']))
 }
 ?>
 
-<style>
-.responsive {
-    max-width: 100%;
-	height:auto;
-}
-</style>
-<body style="background-color: #fff289; font-family: 'Pacifico', cursive;">
-<img src="img/front/black-pepper-bright-colors-940302.png"  class="responsive" width="100%" />
-<div class="container" style="margin-top: -8%; margin-bottom: 5%" >
-    <div class="row" >
-    <?php
-		$sql="select * from `of_category` where `active`=1";
-		$rs=mysqli_query($link,$sql);
-		while($r=mysqli_fetch_assoc($rs)):
-	?>
-    <a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>">
-        <div class="col-sm-4">
-            <div class="col-xs-12" style="background-color:#FFF; ">
-                <div class="row">
-                    <div class="col-xs-12" style="background-image: url(img/front/<?php 
-					if($r['name']=='Đồ Ăn')
-					{
-						echo "close-up-cooking-cuisine-958545.jpg";
-					}
-					elseif($r['name']=='Thức Uống')
-					{
-						echo "blur-close-up-cutlery-370984.jpg";
-					}
-					else
-					{
-						echo "appetizer-breakfast-cuisine-326278.jpg";
-					}
-					?>); height: 200px; background-position: center; background-size: contain;"> </div>
-                    <div class="col-xs-12" style=" padding: 20px;">
-                        <p align="center" style="font-size: 25px; border-bottom: black; color: grey; font-weight: bold"><?=$r['name']?></p>
+<body style="background-color: #fff289; font-family: 'Pacifico', cursive; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
 
-                    </div>
-                </div>
+<h1 style="color:#FFC; text-decoration:underline">Bàn <?=$name?></h1>
 
-            </div>
-        </div>
-     </a>   
-     <?php endwhile ?>         
-    </div>
+<div style="text-align:center; font-size:38px; margin-top:80px; color:#FFF">
+	<p>Nhà Hàng Năm Con Dê Xin Hân Hạnh Phục Vụ Quý Khách!</p>
 </div>
-<img src="img/front/Untitled-1.png"  class="responsive" width="100%" />
+
+<div class="container-fluid" style="margin-top:60px">
+<div class="row">
+
+    <!-- Nút Slide -->
+    <h1 style="color:#FFC; text-align:center">Thể Loại</h1>
+    <hr>
+    <span style="float:left; font-size:42px; color:#FFF; margin-left:20px"><i class="fas fa-angle-double-left"></i></span>    
+    <span style="float:right; font-size:42px; color:#FFF; margin-right:20px"><i class="fas fa-angle-double-right"></i></span>  
+    
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="scrolling-wrapper">
+        <?php   
+			$sql="select * from `of_category` where `active`=1";
+			$rs=mysqli_query($link,$sql);   
+			$dem=0;     
+            while($r=mysqli_fetch_assoc($rs)):
+			$dem++;
+        ?>
+        	<div class="card">                      
+            	<a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="font-size:46px ;text-decoration:none;">
+    
+                   <div class="<?php if($dem%2==0) echo 'noibat2'; else echo 'noibat';?>" style="padding:100px 120px 100px 120px;  background:url(img/front/BG.jpg);background-position:center; background-size:cover;"><i class="fas fa-utensils"></i> <?=$r['name']?></div>
+      
+                </a>       
+            </div> 
+         <?php endwhile ?>        
+    </div>
+	</div>
+</div>
+</div>
+
+<div style="text-align:center; font-size:40px; margin-top:80px; color:#FFC">
+	<marquee scrollamount="12">*** Chúc Quý Khách Ngon Miệng ***</marquee>
+</div>
+
 </body>
 </html>
