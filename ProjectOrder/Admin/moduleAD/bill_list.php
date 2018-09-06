@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Danh Sách
-            <small>Thể loại</small>
+            <small>Hóa Đơn</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i>Trang chủ</a></li>
@@ -52,27 +52,32 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã Đánh Giá</th>
-                                <th>Nội Dung</th>
-                                <th>Số Sao Đánh Giá</th>
-                                <th>Ngày Đánh Giá</th>
+                                <th>Mã  Hóa Đơn</th>
+                                <th>Bàn</th>
+                                <th>Tổng Tiền</th>
+                                <th>Ngày Xuất</th>
+                                <th>Giờ Xuất</th>
+                                <th>Thao Tác</th>
+                                
                             </tr>
                             </thead>
                             <tbody>
                             <?php
 
-                            $sql_rate = "select * from of_rate";
+                            $sql_bill = "select * from of_bill";
                             $i=1;
-                            $kq_rate = mysqli_query($link,$sql_rate);
-                            while($d_rate=mysqli_fetch_assoc($kq_rate))
+                            $kq_bill = mysqli_query($link,$sql_bill);
+                            while($d_bill=mysqli_fetch_assoc($kq_bill))
                             {
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $d_rate['id'] ?></td>
-                               	<td><?= $d_rate['desc'] ?></td>
-                               	<td><?= $d_rate['star'] ?></td>
-                               	<td><?= $d_rate['date'] ?></td>  
+                                <td><?= $d_bill['id'] ?></td>
+                               	<td><?= $d_bill['num_table'] ?></td>
+                               	<td><?= number_format($d_bill['total']) ?></td>
+                               	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td> 
+                                <td><?= date("H:i:s", strtotime( $d_bill['date']))?></td> 
+                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a></td>
                             </tr>
                             <?php } ?>
 
