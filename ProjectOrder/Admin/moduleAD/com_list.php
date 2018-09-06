@@ -33,10 +33,10 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên Khách Hàng</th>
                                 <th>Bình Luận</th>
                                 <th>Đánh Giá</th>
                                 <th>Trạng Thái</th>
+                                <th>Ngày Đánh Giá</th>
                                 <th>Xóa</th>
                             </tr>
                             </thead>
@@ -51,7 +51,6 @@
                                 ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $d_com['customer_name'] ?></td>
                                     <td><?= $d_com['desc'] ?></td>
                                     <td><?= $d_com['star'] ?><i class="icon ion-ios-star"></i></td>
                                     <td><?php if($d_com['active']==0) {echo "<a href=\"?mod=process_com&actives={$d_com['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
@@ -59,7 +58,8 @@
                                         {
                                             echo "<a href=\"?mod=process_com&activeh={$d_com['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
-                                        ?>
+                                        ?></td>
+                                        <td><?= $d_com['date'] ?></td>
                                     <td><a href="?mod=process_com&del=<?= $d_com['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
                                 </tr>
                             <?php } ?>
