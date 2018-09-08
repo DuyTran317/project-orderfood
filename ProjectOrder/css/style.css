@@ -32,60 +32,7 @@
 .table.no-border tr td, .table.no-border tr th {
     border-width: 0;
 }
-/* nôi bật */
-	@-webkit-keyframes my {
-	 0% { color: #F63 } 
-	 50% { color: #F66;  } 
-	 100% { color: #C09;  } 
-	}
-	@-moz-keyframes my { 
-	 0% { color: #F63;  } 
-	 50% { color: #F66;  }
-	 100% { color: #C09;  } 
-	}
-	@-o-keyframes my { 
-	 0% { color: #F63; } 
-	 50% { color: #F66; } 
-	 100% { color: #C09;  } 
-	}
-	@keyframes my { 
-	 0% { color: #F63;  } 
-	 50% { color: #F66;  }
-	 100% { color: #C09;  } 
-	} 
-.noibat {
- -webkit-animation: my 700ms infinite;
- -moz-animation: my 700ms infinite; 
- -o-animation: my 700ms infinite; 
- animation: my 700ms infinite;
-}
-/* nôi bật */
-	@-webkit-keyframes my2 {
-	 0% { color: #006; } 
-	 50% { color: #0C9;  } 
-	 100% { color: #F33;  } 
-	}
-	@-moz-keyframes my2 { 
-	 0% { color: #006;  } 
-	 50% { color: #F66;  }
-	 100% { color: #F33;  } 
-	}
-	@-o-keyframes my2 { 
-	 0% { color: #006; } 
-	 50% { color: #0C9; } 
-	 100% { color: #F33;  } 
-	}
-	@keyframes my2 { 
-	 0% { color: #006;  } 
-	 50% { color: #0C9;  }
-	 100% { color: #F33;  } 
-	} 
-.noibat2 {
- -webkit-animation: my2 700ms infinite;
- -moz-animation: my2 700ms infinite; 
- -o-animation: my2 700ms infinite; 
- animation: my2 700ms infinite;
-}
+
 .star{
 	color:#FF0;
 	font-size:24px;

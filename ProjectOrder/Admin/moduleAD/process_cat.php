@@ -5,7 +5,14 @@ if(isset($_POST['theloai']))
     $theloai = $_POST['theloai'];
     $trangthai = $_POST['trangthai'];
     $thutu = $_POST['thutu'];
-     $sql_add = "insert into `of_category` VALUES(NULL,'{$theloai}','{$thutu}','{$trangthai}') ";
+
+    $file = $_FILES['image'];
+    if($file['name'] != '')
+    {
+        $img_url = mt_rand().$file['name'];
+        copy($file['tmp_name'],"../img/sp/{$img_url}");
+    }
+     $sql_add = "insert into `of_category` VALUES(NULL,'{$theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
          header('Location:?mod=cat_list&mes=1');
@@ -20,14 +27,22 @@ if(isset($_POST['suatheloai']))
     $trangthai = $_POST['suatrangthai'];
     $thutu = $_POST['suathutu'];
     $id= $_POST['id'];
-    $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
-    if(mysqli_query($link,$sql_edit))
+
+    $file = $_FILES['suaimage'];
+    if($file['name']!= '')
     {
-        header('Location:?mod=cat_list&mes2=2');
+      $img_url= mt_rand().$file['name'];
+      copy($file['tmp_name'],"../img/sp/{$img_url}");
+
+        $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
+        
+        mysqli_query($link,$sql_edit);
     }
-    else {
-        echo $sql_edit;
+    else{
+        $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
+        mysqli_query($link,$sql_edit);
     }
+header('Location:?mod=cat_list&mes2=2');
 }
 
 

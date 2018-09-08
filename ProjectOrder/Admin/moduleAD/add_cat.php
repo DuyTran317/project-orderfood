@@ -37,22 +37,28 @@
                                            name="thutu" placeholder="Nhập thứ tự">
                                 </div>
                             </div>
-
                             <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái:</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked>Hiện
-                                    </label>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Hình:</label>
+                                    <input type="file" id="exampleInputFile" name="image">
                                 </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="trangthai" id="optionsRadios2" value="0">
-                                        Ẩn
-                                    </label>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Trạng Thái:</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked>Hiện
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="trangthai" id="optionsRadios2" value="0">
+                                            Ẩn
+                                        </label>
+                                    </div>
                                 </div>
-                            </div></div>
+                            </div>
                             <!-- /.box-body -->
 
                             <div class="box-footer">

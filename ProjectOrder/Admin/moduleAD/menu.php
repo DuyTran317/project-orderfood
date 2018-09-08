@@ -156,7 +156,7 @@
           if($cate ==2 || $cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Phân tích</li> 
            <li>
-                <a href='?mod=cat_list'>
+                <a href='?mod=bill_list'>
                     <i class='fa fa-first-order' aria-hidden='true'></i>
                     <span>Hóa đơn</span>
                     <span class='pull-right-container'>
@@ -222,10 +222,6 @@
                 </a>
             </li>
         <?php }?>
-            <li class="header" style="text-align:center">CHÚ THÍCH</li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-red"></i> <span>Quan Trọng</span></a></li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-yellow"></i> <span>Cảnh Báo</span></a></li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-aqua"></i> <span>Thông Tin</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

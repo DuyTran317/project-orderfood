@@ -44,7 +44,14 @@
                                            name="suathutu" placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
                                 </div>
                             </div>
+                            <div class="box-body">
+                                <div class="form-group">
 
+                                    <label for="exampleInputFile">Hình</label><br>
+                                    <img src="../img/sp/<?php echo $d_edit['img_url']; ?>" alt="đay là hình" width="50" height="50">
+                                    <input type="file" id="exampleInputFile" name="suaimage">
+                                </div>
+                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Trạng Thái:</label>
