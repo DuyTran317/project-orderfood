@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/appetizer-breakfast-cuisine-326278.jpg);  background-position:center; background-size:cover  ; height: 100%;" onload="startTime()">
+<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ; " onload="startTime()">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -104,83 +104,20 @@
 </script>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
-    <table class="table no-border" style="font-size:36px; color:#000;font-family: 'Pacifico', cursive; ">
-    <tr>
-        <td>
-             <a style="color:#FFF; text-decoration: none; font-size: 50px" href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><i class="fas fa-arrow-left"></i></a>
-        </td>
-        <td >
-        </td>
-    </tr>
-</table>
 </p>
-<div class="container-fluid">
-	<div class="row" style="font-family: 'Exo 2', sans-serif; height: 300px;">
-        <div class="col-sm-6 col-md-offset-1">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
+<div class="container-fluid" style="margin-top: 6%">
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-
-                    <div class="item active">
-                        <img src="img/temp/594d886388044c5b3d185111_template_sale_03.jpg" alt="Los Angeles" style="width:100%; height: 300px;">
-                        <div class="carousel-caption">
-                            <h3 style="color: black">Khuyến mãi 1</h3>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <img src="img/temp/December-Sales-Web-Banner.jpg" alt="Chicago" style="width:100%;  height: 300px;">
-                        <div class="carousel-caption">
-                            <h3 style="color: black">Khuyến mãi 2</h3>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <img src="img/temp/Sale-Custom-Banner.jpg" alt="New York" style="width:100%;  height: 300px;">
-                        <div class="carousel-caption">
-                            <h3 style="color: black">Khuyến mãi 3</h3>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4" style="border: solid white thin; border-radius: 20px; padding: 10px; height: 300px; border-radius: 10px; background-color: rgba(0,0,0,0.8); color: white; font-family: 'Pacifico', cursive;"">
-            <p style="font-size: 24px;">Số bàn: <?=$name;?></p>
-            <ul style="font-size: 20px; line-height: 35px;">
-
-                <li>Thời gian: <span id="day"></span>/<span id="month" ></span>  <span id="txt"></span></li>
-                <li>Tiến độ: </li>
-                <li>Số món ăn đã đặt: </li>
-            </ul><br><br><br>
-        
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="background-color: yellow; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
-
-        
-        </div>
-    </div>
-
-	<div class="row" style=" padding: 30px;  font-family: 'Pacifico', cursive;">
-        <div class="col-xs-12">
-            <h1 style="color:#FFF; text-align:center">Thực Đơn </h1>
+	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
+        <div class="col-md-3" style="color: white; font-size: 25px; background-color: grey; margin-top: 20px; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;">
+            <h1 align="center"> <?=$name;?></h1>
+            <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;">TRANG CHỦ</a></p>
             <hr>
+            <p style="margin-left:5px;">ĐỒ ĂN</p><hr>
+            <p style="margin-left:5px;">THỨC UỐNG</p><hr>
+            <p style="margin-left:5px;">CÁC MÓN KHÁC</p>
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="background-color: yellow; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
+        </div>
+        <div class="col-md-9" >
             <div class="scrolling-wrapper">
             <?php 
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`=1";
@@ -190,16 +127,15 @@
 			?>
       			
             	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color:#000; text-decoration:none">
-                <div class="card" style="  width: 300px; height: 300px; background:white;">
-                <input type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="width:50px; height:50px"/>
-                    <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
-                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; 
+                <div class="card" style="  width: 300px; background:white; ">
+                    <div class="col-xs-12" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                        <input type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" />
+                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                     </div>
-                    
-                    <div class="col-xs-12" style=" height: 150px; " >
-                        <h3 id="aubr" align="center" style="color:#900"><b><?= $kq['name'] ?></b></h3>
-                        <i id="aubr"><?= $kq['desc'] ?></i>
+
+                    <div class="col-xs-12" style="height:100px;" >
+                        <h2 align="center" id="aubr"  style="color:#900"><b><?= $kq['name'] ?></b></h2>
                     </div>
                 </div>
                 </a>
