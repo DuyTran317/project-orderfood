@@ -38,24 +38,21 @@ if(isset($_GET['name']))
         </div>
     </div>
     <div class="row">
+    <?php
+		$sql="select * from `of_category` where `active`=1";
+		$rs=mysqli_query($link,$sql);
+		while($r=mysqli_fetch_assoc($rs)):
+	?>
+    	<a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?>">
         <div class=" col-md-4" style="margin-bottom: 20px;">
-            <div style="height: 300px; background-image:url(img/front/food-eating-potatoes-beer-8313.jpg); background-size: cover; padding: 30px; color: white">
-                <p style="font-size: 60px;">ĐỒ ĂN</p>
+            <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
+                <p style="font-size: 60px;"><?=$r['name']?></p>
                 <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold">Chi tiết</button>
             </div>
-        </div>
-        <div class=" col-md-4" style="margin-bottom: 20px;">
-            <div style="height: 300px; background-image:url(img/front/bar-beverage-cocktail-109275.jpg); background-size: cover; padding: 30px; color: white">
-                <p style="font-size: 60px;">ĐỒ UỐNG</p>
-                <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold">Chi tiết</button>
-            </div>
-        </div>
-        <div class=" col-md-4" style="margin-bottom: 20px;">
-            <div style="height: 300px; background-image:url(img/front/pexels-photo-132694.jpeg); background-size: cover; padding: 30px; color: white">
-                <p style="font-size: 60px;">KHÁC</p>
-                <button class="btn" style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold">Chi tiết</button>
-            </div>
-        </div>
+        </div>        
+    	</a>
+    <?php endwhile ?>    
+        
     </div>
 
     </div>
