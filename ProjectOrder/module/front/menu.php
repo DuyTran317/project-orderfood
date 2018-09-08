@@ -170,10 +170,10 @@
                 <li>Tiến độ: </li>
                 <li>Số món ăn đã đặt: </li>
             </ul><br><br><br>
-        <?php if(isset($_SESSION['cart'])) {?>
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" style="background-color: yellow; color: black;">Danh Sách Đã Chọn</button> </a>
+        
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="background-color: yellow; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
 
-        <?php } ?>
+        
         </div>
     </div>
 
@@ -191,7 +191,7 @@
       			
             	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color:#000; text-decoration:none">
                 <div class="card" style="  width: 300px; height: 300px; background:white;">
-                <input type="checkbox" style="width:50px; height:50px"/>
+                <input type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="width:50px; height:50px"/>
                     <div class="col-xs-12" style="  height: 150px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#FF0; color:#000; font-size:18px; 
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
@@ -274,5 +274,22 @@
         if (i < 10) {i = "0" + i};
         return i;
     }
+	function checkFood(id){
+		
+		$.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{id_food: id, act: 1}
+			}).done(function(data){
+				var btn = document.getElementById("btn_GoiMon");
+				
+				if(data > 0){
+						btn.style.display = "block";
+						
+					}
+					else {btn.style.display = "none";}
+				
+				});
+	}
 </script>
 </html>

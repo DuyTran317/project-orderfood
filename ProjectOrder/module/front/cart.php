@@ -53,7 +53,7 @@
                   </a>
                 </td>
                 <td><?=number_format($r['price'])?><u>đ</u></td>
-                <td><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center"></td>
+                <td><input type="number" class="qty" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)" style="width:50%; text-align:center"></td>
                 <td><?=number_format($r['price']*$v)?><u>đ</u></td>
                   <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
 
@@ -64,7 +64,7 @@
         </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <span style="font-weight:bold; font-size:26px; text-decoration:underline; color: red">Tổng tiền: <?=number_format($s)?>đ</span>
+                    <span style="font-weight:bold; font-size:26px; text-decoration:underline; color: red">Tổng tiền: <span id="total"><?=number_format($s)?></span>đ</span>
                 </div>
 
                 <div align="right" class="col-xs-8">
@@ -84,3 +84,15 @@
 
 </div>
 </body>
+<script>
+	function updateFood(id){
+		var qty = document.getElementById(id).value;
+		$.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{id_food: id, qty: qty, act: 2}
+			}).done(function(data){
+				document.getElementById("total").innerHTML = data;
+				});
+	}
+</script>
