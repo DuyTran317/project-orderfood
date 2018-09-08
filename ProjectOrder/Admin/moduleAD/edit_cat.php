@@ -48,7 +48,7 @@
                                 <div class="form-group">
 
                                     <label for="exampleInputFile">Hình</label><br>
-                                    <img src="../img/sp/<?php echo $d_edit['img_url']; ?>" alt="đay là hình" width="50" height="50">
+                                    <img src="../img/cate/<?php echo $d_edit['img_url']; ?>" alt="đay là hình" width="50" height="50">
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
                              </div>

@@ -10,7 +10,7 @@ if(isset($_POST['theloai']))
     if($file['name'] != '')
     {
         $img_url = mt_rand().$file['name'];
-        copy($file['tmp_name'],"../img/sp/{$img_url}");
+        copy($file['tmp_name'],"../img/cate/{$img_url}");
     }
      $sql_add = "insert into `of_category` VALUES(NULL,'{$theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
@@ -32,7 +32,7 @@ if(isset($_POST['suatheloai']))
     if($file['name']!= '')
     {
       $img_url= mt_rand().$file['name'];
-      copy($file['tmp_name'],"../img/sp/{$img_url}");
+      copy($file['tmp_name'],"../img/cate/{$img_url}");
 
         $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
         

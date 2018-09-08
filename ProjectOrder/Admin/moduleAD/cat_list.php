@@ -69,7 +69,7 @@
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                 <td> <img src="../img/sp/<?php echo $d_cat['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
+                                 <td> <img src="../img/cate/<?php echo $d_cat['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
                                 <td><?= $d_cat['name'] ?></td>
                                 <td><?php if($d_cat['active']==0) {echo "<a href=\"?mod=process_cat&actives={$d_cat['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else
