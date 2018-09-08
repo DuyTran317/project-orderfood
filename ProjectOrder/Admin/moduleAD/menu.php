@@ -222,10 +222,6 @@
                 </a>
             </li>
         <?php }?>
-            <li class="header" style="text-align:center">CHÚ THÍCH</li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-red"></i> <span>Quan Trọng</span></a></li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-yellow"></i> <span>Cảnh Báo</span></a></li>
-            <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-aqua"></i> <span>Thông Tin</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
