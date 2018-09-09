@@ -73,7 +73,16 @@
                       <button type="submit" class="btn btn-warning btn-lg"><i class="fas fa-sync"></i></button>
                     
                     <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg "><i class="fas fa-check"></i></button></a>
-					<?php } ?>
+					<?php }
+						  else
+						  {
+					?>		  
+                    <script>
+						window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>";
+					</script>			  
+                    <?php          
+						  }
+					?>
                 </div>
             </div>
 </div>

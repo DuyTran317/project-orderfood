@@ -108,13 +108,18 @@
 <div class="container-fluid" style="margin-top: 6%">
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
-        <div class="col-md-3" style="color: white; font-size: 25px; background-color: grey; margin-top: 20px; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;">
-            <h1 align="center"> <?=$name;?></h1>
+        <div class="col-md-3" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;">
+            <h1 align="center"> Bàn <?=$name?></h1>
             <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;">TRANG CHỦ</a></p>
-            <hr>
-            <p style="margin-left:5px;">ĐỒ ĂN</p><hr>
-            <p style="margin-left:5px;">THỨC UỐNG</p><hr>
-            <p style="margin-left:5px;">CÁC MÓN KHÁC</p>
+           
+            <?php 
+				$sql="select `id`,`name` from `of_category` where `active`=1";
+				$c=mysqli_query($link,$sql);
+				while($r_cate=mysqli_fetch_assoc($c)):
+			?>
+             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px;"><?=$r_cate['name']?></p></a>            
+            <?php endwhile ?>
+            
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="background-color: yellow; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
         </div>
         <div class="col-md-9" >

@@ -15,20 +15,15 @@
 	{
 		$cate=$_GET['cate'];
 	}
-?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
-<?php 
-$sql="select * from `of_food` where `id`={$id}";
-$res = mysqli_query($link,$sql);
-$kq = mysqli_fetch_assoc($res);
-?>
+	$sql="select * from `of_food` where `id`={$id}";
+	$res = mysqli_query($link,$sql);
+	$kq = mysqli_fetch_assoc($res);
+?>	
 <body style="background:url(img/front/20180807_085811.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
+
+ <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+ 
 <div class="container" style="margin-top:50px;">
     <div class="row" > 
         <div class="col-sm-6">

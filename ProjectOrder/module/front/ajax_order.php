@@ -10,7 +10,7 @@
 		if(isset($_POST['id_food']))
 		{
 			$id_food = $_POST['id_food'];
-			$cart=$_SESSION['cart'];
+			@$cart=$_SESSION['cart'];
 			if(isset($cart[$id_food]))
 			{
 				unset($cart[$id_food]);
