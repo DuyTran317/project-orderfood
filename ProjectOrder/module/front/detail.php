@@ -76,7 +76,7 @@
             <i id="aubr"><?php echo $kq['desc'] ?></i>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">
-                        <button class="btn btn-lg col-xs-12" style="color: grey">Quay về</button>
+                        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-lg col-xs-12" style="color: grey">Quay về</button></a>
                     </div>
                     <div class="col-xs-6">
                     <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12 btn-lg" style="background-color:#F60; color:#FFF">Đặt Món</button></a>
