@@ -20,43 +20,66 @@
 	$res = mysqli_query($link,$sql);
 	$kq = mysqli_fetch_assoc($res);
 ?>	
-<body style="background:url(img/front/20180807_085811.jpg); background-repeat:no-repeat; background-position:center; background-size:cover ;">
+<body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
- <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
- 
-<div class="container" style="margin-top:50px;">
-    <div class="row" > 
-        <div class="col-sm-6">
-               <div class="flexslider"><!--pictures must have the same resolution for the best result. 16:9 is recommended-->
-              <ul class="slides"><!--Should contain only 4 thumbnails for better result-->
-                <li data-thumb="img/front/1515456591895.jpg">
-                    <img src="img/front/1515456591895.jpg"/>
-                </li>
-                <li data-thumb="img/front/pxqrocxwsjcc_3GZEqT8qE8oUsyUkiQc66G_jalapeno-popper-stuffed-hamburger_squareThumbnail_en.png">
-                <img src="img/front/pxqrocxwsjcc_3GZEqT8qE8oUsyUkiQc66G_jalapeno-popper-stuffed-hamburger_squareThumbnail_en.png"/>
-                </li>
-                <li data-thumb="img/front/sous-vide-hamburger-finishing-steps-image-2.jpg">
-                <img src="img/front/sous-vide-hamburger-finishing-steps-image-2.jpg" />
-                </li>
-                <li data-thumb="img/front/tải xuống.jpg">
-                <img src="img/front/tải xuống.jpg"/>
-                </li>
-              </ul>
-             </div>
-        </div>
-        <div class="col-sm-6" style="background-color:#FFF; font-family: 'Pacifico', cursive; border-radius:10px; padding:10px;">
-            <h1 style="color:#F00"> <?php echo number_format($kq['price']) ?> VND </h1>
+<div class="container" >
+        <div class="col-xs-12">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="img/front/pxqrocxwsjcc_3GZEqT8qE8oUsyUkiQc66G_jalapeno-popper-stuffed-hamburger_squareThumbnail_en.png"  style="width:100%;">
+                    </div>
+
+                    <div class="item">
+                        <img src="img/front/sous-vide-hamburger-finishing-steps-image-2.jpg" style="width:100%; ">
+                    </div>
+
+                    <div class="item">
+                        <img src="img/front/tải xuống.jpg" style="width:100%;">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        <div class="col-xs-12" style="background-color:#FFF; padding:10px;">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1 style="color:#F00"> <?php echo number_format($kq['price']) ?> VND </h1>
+                </div>
+                <div class="col-xs-6" align="right">
+                    <div class="input-group col-sm-5 col-lg-3">
+                        <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='quantity' style="border: none; background-color: transparent; color:white"/></span>
+                        <input type="text" class="form-control text-center" id="qty" min="1" value="1"  name='quantity' disabled style="border-color: #F60; color: #F60;">
+                        <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='quantity' style="border: none; background-color: transparent; color: white"/></span>
+
+                    </div>
+                </div>
+            </div>
             <h2 style="color:#F90; font-weight:bold"><?php echo $kq['name'] ?></h2>
             <i id="aubr"><?php echo $kq['desc'] ?></i>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">
-                        <div class="input-group" >
-                        <span class="input-group-addon" name="qty">Số Lượng:</span>
-                        <input type="number" class="form-control" id="qty" min="1" value="1">
-                        </div>
+                        <button class="btn btn-lg col-xs-12" style="color: grey">Quay về</button>
                     </div>
                     <div class="col-xs-6">
-                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12" style="background-color:#F60; color:#FFF">Đặt Món</button></a>                    
+                    <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12 btn-lg" style="background-color:#F60; color:#FFF">Đặt Món</button></a>
                     </div>
                 </div>
         </div>
@@ -85,5 +108,41 @@
         }
     });
 });
+  jQuery(document).ready(function(){
+      // This button will increment the value
+      $('.qtyplus').click(function(e){
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          fieldName = $(this).attr('field');
+          // Get its current value
+          var currentVal = parseInt($('input[name='+fieldName+']').val());
+          // If is not undefined
+          if (!isNaN(currentVal)) {
+              // Increment
+              $('input[name='+fieldName+']').val(currentVal + 1);
+          } else {
+              // Otherwise put a 0 there
+              $('input[name='+fieldName+']').val(0);
+          }
+      });
+      // This button will decrement the value till 0
+      $(".qtyminus").click(function(e) {
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          fieldName = $(this).attr('field');
+          // Get its current value
+          var currentVal = parseInt($('input[name='+fieldName+']').val());
+          // If it isn't undefined or its greater than 0
+          if (!isNaN(currentVal) && currentVal > 0) {
+              // Decrement one
+              $('input[name='+fieldName+']').val(currentVal - 1);
+          } else {
+              // Otherwise put a 0 there
+              $('input[name='+fieldName+']').val(0);
+          }
+      });
+  });
   </script>
 </html>
