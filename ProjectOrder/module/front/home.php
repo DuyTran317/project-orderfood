@@ -15,7 +15,7 @@ if(isset($_GET['name']))
 
 <body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png);  background-size:cover;">
 
-<div class="container" style="margin-top:25%; height: 600px; overflow-y: scroll; overflow-x: hidden">
+<div class="container" style="margin-top:25%;">
     <div class="row">
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
             <div style="background-image:url(img/front/20180807_085811r.jpg); height: 350px; padding: 30px;  color: white;">
