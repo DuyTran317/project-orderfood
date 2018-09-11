@@ -1,3 +1,4 @@
+<script src="../jqueryUI/jquery-ui-admin.js"></script>
 
 <div class="wrapper">
 
@@ -95,11 +96,108 @@
 
     </section>
     <!-- /.content -->
+   
+    <div class="container">
+    	<div class="row" style="text-align:center">
+            <select style="width:500px; height:30px; font-size:18px;">
+            	<option>Số Hóa Đơn</option>
+                <option>Số Món Ăn</option>
+            </select>
+        </div>
+        <hr>
+    	<div class="row" style="text-align:center">
+        	Từ:  <input type="text" style="margin-right:25px" class="datefrom" readonly />
+            Đến: <input type="text" style="margin-right:25px" class="dateto" readonly />
+            <button class="btn btn-success">Tìm</button>
+        </div>
+        <hr>
+        <div class="row">
+       
+        	<div class="col-md-6 col-xs-12 col-sm-6">
+            	<label style="font-size:20px; font-weight:bold; color:#900">Tổng Quan</label>
+            	<div id="piechart_3d" style="height: 500px;"></div>
+            </div>
+            
+            <div class="col-md-6 col-xs-12 col-sm-6">
+            	<a href="" class="btn btn-primary" style="font-size:16px;"> &gt;&gt; Xem Chi Tiết &lt;&lt;</a>
+            	<div id="curve_chart" style="height: 500px"></div>
+            </div>
+        </div>
+    </div>
+    
 </div>
 <!-- /.content-wrapper -->
-
-
-   
-    <div class="control-sidebar-bg"></div>
+    
 </div>
 <!-- ./wrapper -->
+
+<script>
+	$( function() {
+		<!--Config DatePicker Bootstrap-->
+		$.fn.datepicker.dates['en'] = {
+			days: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
+			daysShort: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
+			daysMin: ["CN", "T.2", "T.3", "T.4", "T.5", "T.6", "T.7"],
+			months: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+			monthsShort: ["Th.1", "Th.2", "Th.3", "Th.4", "Th.5", "Th.6", "Th.7", "Th.8", "Th.9", "Th.10", "Th.11", "Th.12"],
+			titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+			weekStart: 0
+		};
+		
+		$( ".datefrom" ).datepicker({
+			format:'dd/mm/yyyy',			
+		});
+		$( ".dateto" ).datepicker({
+			format:'dd/mm/yyyy',
+		});
+  } );
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+	  ['Task', 'Hours per Day'],
+	  ['Work',     11],
+	  ['Eat',      2],
+	  ['Commute',  2],
+	  ['Watch TV', 2],
+	  ['Sleep',    7]
+	]);
+
+	var options = {
+	  title: 'Aegona Company',
+	  is3D: true,
+	};
+
+	var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+	chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+	  ['Year', 'Sales', 'Expenses'],
+	  ['2004',  1000,      400],
+	  ['2005',  1170,      460],
+	  ['2006',  660,       1120],
+	  ['2007',  1030,      540]
+	]);
+
+	var options = {
+	  title: 'Company Performance',
+	  curveType: 'function',
+	  legend: { position: 'bottom' }
+	};
+
+	var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+	chart.draw(data, options);
+  }
+</script>

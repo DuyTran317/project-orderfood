@@ -7,19 +7,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link rel="shortcut icon" href="img/shortcut/Christian-cross-icon.png" />-->
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="fontawesome-free-5.1.0-web/css/all.css">
+<link rel="stylesheet" type="text/css" href="lib/fontawesome-free-5.1.0-web/css/all.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="lib/wowjs/animate.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="woocommerce-FlexSlider-53570ee/flexslider.css" media="screen" />
 <script src="lib/wowjs/wow.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script defer src="woocommerce-FlexSlider-53570ee/demo/js/jquery.flexslider.js"></script>
+<script defer src="lib/woocommerce-FlexSlider-53570ee/demo/js/jquery.flexslider.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 

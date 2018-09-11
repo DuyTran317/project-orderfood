@@ -22,7 +22,7 @@ if(isset($_POST['content']))
 }
 ?>
 
-<body style="background-color: #fff289; font-family: 'Pacifico', cursive; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
+<body style="background-color: #fff289;  font-family: 'Anton', sans-serif; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
  <form action="" method="post" enctype="multipart/form-data" style="text-align:center">
                         <div class="form-group">
                             <label for="comment" style="margin-top:30px; font-size:20px; font-weight:100">Bình Luận <i class="fas fa-comment"></i></label>
