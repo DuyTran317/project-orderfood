@@ -28,7 +28,7 @@ if(isset($_POST['suapass']))
                         header("location:?mod=ad_list&mes2=2");
                     }else
                     {
-                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key=5");
+                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key2=5");
                     }
                     
                 }
