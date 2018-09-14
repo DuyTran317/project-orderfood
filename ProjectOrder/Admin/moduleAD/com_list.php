@@ -1,3 +1,40 @@
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            text: "Bạn có muốn xóa bình luận này",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Xóa!',
+                    'Bạn đã xóa thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=process_com&del="+id;});
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,15 +53,6 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <?php
-                if(isset($_GET['mes3'])==3)
-                {?>
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Chúc mừng!</strong> Bạn đã xóa thành công
-                    </div>
-                <?php }
-                ?>
 
                 <div class="box">
 
@@ -62,7 +90,7 @@
                                         ?></td>
                                         <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
                                         <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
-                                    <td><a href="?mod=process_com&del=<?= $d_com['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa');">Xóa</a></td>
+                                    <td><a id="test_xoa" href="#" onclick="hoi(<?= $d_com['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

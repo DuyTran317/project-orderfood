@@ -41,19 +41,26 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Bàn</label>
-                                <input type="text" class="form-control" id="ten" name="ten" placeholder="Nhập tên bàn">
+                                <input type="text" class="form-control" id="ten" name="ten" required placeholder="Nhập tên bàn">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Số</label>
-                                <input type="text" class="form-control" id="so" name="so" placeholder="Nhập số bàn">
+                                <input type="number" class="form-control" id="so" name="so" required placeholder="Nhập số bàn">
                             </div>
+                           <label for="exampleInputPassword1">Mật khẩu</label>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Mật Khẩu</label>
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Nhập mật khẩu">
+                                    <input type="password" id="pass" name="pass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+                                    
+                                    <div class="requirements">
+                                        Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
+                                    </div>
                             </div>
+                            <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" id="repass" name="repass" placeholder="Nhập lại mật khẩu">
+                                <span>
+                                 <input type="password" id="repass" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu "  />
+
+                                <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Trạng Thái:</label>

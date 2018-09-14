@@ -51,7 +51,7 @@ if(isset($_GET['del']))
     $sql_del="delete from `of_category` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
-        header('Location:?mod=cat_list&mes3=3');
+        header('Location:?mod=cat_list');
     }
     else {
         echo $sql_del;

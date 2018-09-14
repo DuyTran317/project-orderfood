@@ -6,23 +6,14 @@ if(isset($_POST['ten']))
     $repass = $_POST['repass'];
     $name = $_POST['so'];
     $active = $_POST['trangthai'];
-    if(strlen($pass)<6)
-    {
-        header("location:?mod=add_user&war=1");
-    }
-    else if($pass != $repass)
-    {
-        header("location:?mod=add_user&warm=2");
-    }
-    else
-    {   $pass = hash('sha512',$_POST['pass']);
+    $pass = hash('sha512',$_POST['pass']);
         $sql_user = "insert into `of_user` VALUES (NULL ,'{$account}','{$pass}','{$name}','{$active}')";
        if(mysqli_query($link,$sql_user))
         {
             header("location:?mod=user_list&mes=1");
         }
         else echo $sql_user;
-    }
+
 }
 if(isset($_POST['suaten']))
 {
@@ -35,19 +26,12 @@ if(isset($_POST['suaten']))
         if($pass != '')
         {
             if($_POST['changePassword']="on"){
-                if(strlen($pass)<6)
-                {
-                    header("location:?mod=edit_user&edit={$_POST['suaid']}&war=1");
-                }
-                else if($pass != $repass)
-                {
-                    header("location:?mod=edit_user&edit={$_POST['suaid']}&warm=2");
-                }else {
+                
                     $pass = hash('sha512',$_POST['suapass']);
                     $sql_edit="update `of_user` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
                     mysqli_query($link,$sql_edit);
                     header("location:?mod=user_list&mes2=2");
-                }
+               
             }
         }
         else {
@@ -64,7 +48,7 @@ if(isset($_GET['del']))
     $sql_del= "delete from of_user WHERE id={$_GET['del']}";
     if(mysqli_query($link,$sql_del))
     {
-        header("location:?mod=user_list&mes3=3");
+        header("location:?mod=user_list");
     }
     else echo $sql_del;
 }

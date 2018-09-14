@@ -34,14 +34,14 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Thể Loại:</label>
                                     <input type="text" class="form-control"
-                                           name="suatheloai" placeholder="Nhập tên thể loại" value="<?= $d_edit['name']?>">
+                                           name="suatheloai" required placeholder="Nhập tên thể loại" value="<?= $d_edit['name']?>">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự:</label>
                                     <input type="text" class="form-control"
-                                           name="suathutu" placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
+                                           name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
                                 </div>
                             </div>
                             <div class="box-body">
