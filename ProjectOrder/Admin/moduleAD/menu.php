@@ -116,7 +116,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header" style="text-align:center">Bảng điều khiển</li>
             <li>
-                <a href="?mod1=home">
+                <a href="?mod=home">
                     <i class="fa fa-dashboard"></i> <span>Tổng quan </span>
                     <span class="pull-right-container"></span>
                 </a>

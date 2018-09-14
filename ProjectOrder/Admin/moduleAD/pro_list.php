@@ -1,3 +1,54 @@
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            text: "Bạn có muốn xóa món ăn này",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Xóa!',
+                    'Bạn đã xóa thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=process_pro&del="+id;});
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
+<?php if(isset($_GET['mes2'] )==5) {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Sửa Thành Công',
+                          'Bạn sửa thành công',
+                          'success');";
+            echo "},1);</script>";
+        }?>
+ <?php if(isset($_GET['mes'] )==1) {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Thêm Thành Công',
+                          'Bạn đã thêm thành công',
+                          'success');";
+            echo "},1);</script>";
+        }?>    
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,34 +67,6 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <?php
-                if(isset($_GET['mes'])==1)
-                {?>
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Chúc mừng!</strong> Bạn đã thêm thành công
-                    </div>
-                <?php }
-                ?>
-                <?php
-                if(isset($_GET['mes2'])==2)
-                {?>
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Chúc mừng!</strong> Bạn đã sửa thành công
-                    </div>
-                <?php }
-                ?>
-
-                <?php
-                if(isset($_GET['mes3'])==3)
-                {?>
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Chúc mừng!</strong> Bạn đã xóa thành công
-                    </div>
-                <?php }
-                ?>
             <!-- general form elements disabled -->
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -107,7 +130,7 @@
                                         echo "<a href=\"?mod=process_pro&activeh={$d_pro['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="?mod=edit_pro&edit=<?php echo $d_pro['id'] ?>">Sửa</a>/<a href="?mod=process_pro&del=<?php echo $d_pro['id'] ?>">Xóa</a></td>
+                                <td><a href="?mod=edit_pro&edit=<?php echo $d_pro['id'] ?>">Sửa</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_pro['id'] ?>)">Xóa</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>

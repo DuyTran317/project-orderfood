@@ -35,19 +35,19 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tên Sản Phẩm</label>
-                        <input type="text" class="form-control" id="tensp" name="tensp" placeholder="Nhập tên sản phẩm">
+                        <input type="text" class="form-control" id="tensp" required name="tensp" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Giá</label>
-                        <input type="text" class="form-control" id="gia" name="gia" placeholder="Nhập giá sản phẩm">
+                        <input type="number" class="form-control" id="gia" required name="gia" placeholder="Nhập giá sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Khuyến mãi</label>
-                        <input type="text" class="form-control" id="khuyenmai" name="khuyenmai" placeholder="Nhập khuyến mãi sản phẩm">
+                        <input type="number" class="form-control" id="khuyenmai" required name="khuyenmai" placeholder="Nhập khuyến mãi sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Thứ tự</label>
-                        <input type="text" class="form-control" id="thutu" name="thutu" placeholder="Nhập thứ tự sản phẩm">
+                        <input type="number" class="form-control" id="thutu" required name="thutu" placeholder="Nhập thứ tự sản phẩm">
                     </div>
                     <label for="exampleInputPassword1">Nội Dung</label>
                     <div class="form-group">
