@@ -125,7 +125,7 @@
         <div class="col-md-9" >
             <div class="scrolling-wrapper">
             <?php 
-			$commsql="select * from `of_food` where `category_id`={$cate} and `active`=1";
+			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0";
 			$res= mysqli_query($link,$commsql);
 			while($kq= mysqli_fetch_assoc($res))
 			{	
@@ -134,7 +134,9 @@
             	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color:#000; text-decoration:none">
                 <div class="card" style="  width: 300px; background:white; ">
                     <div class="col-xs-12" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
+                        <?php if($kq['active'] == 1) { ?>
                         <input type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" />
+                        <?php } ?>
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                     </div>
