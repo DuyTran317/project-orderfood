@@ -165,14 +165,16 @@
                         <?php if($kq['active'] == 1) { ?>
                         <input onchange="handleChange(this);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" id="foodchosen<?php  echo $number1;?>" />
                         <?php } ?>
-
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                     </label>
 
-                    <div class="col-xs-12" style="height:100px;" >
+                    <div class="col-xs-12"  >
                         <h3 align="center" id="aubr"  style="color:#900"><b><?= $kq['name'] ?></b></h3>
-                        <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn">Chi tiết</button></a>
+                        <div class="row">
+                            <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;">Chi tiết</button></a>
+
+                        </div>
                     </div>
                 </div>
                 <script>
