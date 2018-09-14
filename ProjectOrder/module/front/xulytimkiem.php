@@ -14,9 +14,10 @@ if(isset($_POST['find']))
 	$rs=mysqli_query($link,$sql);
 	while($r=mysqli_fetch_assoc($rs))
 		{
+			
 			$id=$r['id'];
 			$id_cate=$r['category_id'];
-			header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}");
+			header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
 		}
 	}
 ?>

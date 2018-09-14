@@ -40,7 +40,7 @@ if(isset($_GET['name']))
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>
                <form class="navbar-form navbar-left" method="post" action="?mod=xulytimkiem"> 
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn" id="find" name="find">
+                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn" id="find" name="find" style="font-style:normal">
                     <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
                       <button class="btn btn-info" type="submit" >
                         <i class="fa fa-search fa-lg"></i>
