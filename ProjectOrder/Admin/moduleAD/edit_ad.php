@@ -26,24 +26,6 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <?php
-                if(isset($_GET['war'])==1)
-                {?>
-                    <div class="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Lỗi!</strong> Mật Khẩu phải ít nhất 6 ký tự!
-                    </div>
-                <?php }
-                ?>
-                <?php
-                if(isset($_GET['warm'])==2)
-                {?>
-                    <div class="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Lỗi!</strong> Mật Khẩu không trùng nhau!
-                    </div>
-                <?php }
-                ?>
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <!-- /.box-header -->
@@ -63,16 +45,24 @@
                                 <label for="exampleInputPassword1">Tên</label>
                                 <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>" disabled="">
                             </div>
-
+                            <div class="form-group">
                                 <input type="checkbox" name="changePassword" id="changePassword">
                                 <label for="exampleInputPassword1">Nhấn vào đây nếu bạn muốn thay đổi mật khẩu!</label>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Mật Khẩu</label>
-                                <input type="password" class="form-control password" id="pass" name="suapass" placeholder="Nhập mật khẩu" disabled="">
                             </div>
+                           <label for="exampleInputPassword1">Mật khẩu</label>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control password" id="repass" name="suarepass" placeholder="Nhập lại mật khẩu" disabled="">
+                                    <input type="password" id="pass" class="form-control password" name="suapass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
+                                    
+                                    <div class="requirements">
+                                        Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
+                                    </div>
+                            </div>
+                            <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+                            <div class="form-group">
+                                <span>
+                                 <input type="password" id="repass" class="form-control password" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu " disabled="" />
+
+                                <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
                         </div>

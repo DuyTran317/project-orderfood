@@ -15,24 +15,6 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <?php
-                if(isset($_GET['war'])==1)
-                {?>
-                    <div class="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Lỗi!</strong> Mật Khẩu phải ít nhất 6 ký tự!
-                    </div>
-                <?php }
-                ?>
-                <?php
-                if(isset($_GET['warm'])==2)
-                {?>
-                    <div class="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Lỗi!</strong> Mật Khẩu không trùng nhau!
-                    </div>
-                <?php }
-                ?>
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <!-- /.box-header -->
@@ -41,19 +23,26 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Account</label>
-                                <input type="text" class="form-control" id="ten" name="ten" placeholder="Nhập tên bàn">
+                                <input type="text" class="form-control" id="ten" required  name="ten" placeholder="Nhập tên bàn">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tên</label>
-                                <input type="text" class="form-control" id="so" name="so" placeholder="Nhập số bàn">
+                                <input type="text" class="form-control" id="so" required name="so" placeholder="Nhập tên">
                             </div>
+                            <label for="exampleInputPassword1">Mật khẩu</label>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Mật Khẩu</label>
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Nhập mật khẩu">
+                                    <input type="password" id="pass" name="pass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+                                    
+                                    <div class="requirements">
+                                        Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
+                                    </div>
                             </div>
+                            <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" id="repass" name="repass" placeholder="Nhập lại mật khẩu">
+                                <span>
+                                 <input type="password" id="repass" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu "  />
+
+                                <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Danh mục</label>

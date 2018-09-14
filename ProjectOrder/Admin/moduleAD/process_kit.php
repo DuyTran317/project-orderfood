@@ -7,23 +7,14 @@ if(isset($_POST['ten']))
     $name = $_POST['so'];
     $active = $_POST['trangthai'];
     $cate = $_POST['cate'];
-    if(strlen($pass)<6)
-    {
-        header("location:?mod=add_kit&war=1");
-    }
-    else if($pass != $repass)
-    {
-        header("location:?mod=add_kit&warm=2");
-    }
-    else
-    {   $pass = hash('sha512',$_POST['pass']);
+       $pass = hash('sha512',$_POST['pass']);
         $sql_user = "insert into `of_manage` VALUES (NULL ,'{$account}','{$pass}','{$name}','{$cate}','{$active}')";
        if(mysqli_query($link,$sql_user))
         {
             header("location:?mod=kit_list&mes=1");
         }
         else echo $sql_user;
-    }
+
 }
 if(isset($_POST['suaten']))
 {
@@ -55,7 +46,7 @@ if(isset($_POST['suaten']))
 
             $sql_edit = "update `of_manage` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
             mysqli_query($link,$sql_edit);
-            header("location:?mod=kit_list&mes2=2");
+            header("location:?mod=kit_list");
         }
 
 }

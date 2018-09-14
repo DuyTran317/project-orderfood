@@ -13,6 +13,17 @@ if(isset($_GET['name']))
 }
 ?>
 
+<script type="text/javascript">
+
+		$(document).ready(function()
+		{
+			$('#find').autocomplete(
+			{
+				source: "search.php",
+			});
+		});
+		
+	</script>
 <body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png);  background-size:cover;">
 
 <div class="container" style="margin-top:25%;">
@@ -27,16 +38,22 @@ if(isset($_GET['name']))
         <div class="col-sm-6" style="  color: white;">
             <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>
+               <form  method="post" action="?mod=xulytimkiem">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn">
+                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn" id="find" name="find">
                     <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
-                        Tìm
+                      <button class="btn btn-xs" type="submit" style="background-color: transparent;">
+                      Tìm
+                      </button>
                     </span>
                 </div><hr><br><br>
+            
                 <p style="font-size: 60px;" align="center">THỂ LOẠI</p>
             </div>
+            </form>
         </div>
     </div>
+   
     <div class="row">
     <?php
 		$sql="select * from `of_category` where `active`=1";
