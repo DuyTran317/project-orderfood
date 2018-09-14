@@ -27,14 +27,14 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Thể Loại:</label>
                                     <input type="text" class="form-control"
-                                           name="theloai" placeholder="Nhập tên thể loại">
+                                         required  name="theloai" placeholder="Nhập tên thể loại">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự:</label>
-                                    <input type="text" class="form-control"
-                                           name="thutu" placeholder="Nhập thứ tự">
+                                    <input type="number" class="form-control"
+                                          required name="thutu" placeholder="Nhập thứ tự">
                                 </div>
                             </div>
                             <div class="box-body">

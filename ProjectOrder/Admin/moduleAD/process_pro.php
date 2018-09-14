@@ -119,7 +119,7 @@ if(isset($_GET['del']))
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
-        header("location:?mod=pro_list&mes3=3");
+        header("location:?mod=pro_list");
     }
     else echo $sql_del;
 }
