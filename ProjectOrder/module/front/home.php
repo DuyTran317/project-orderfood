@@ -13,6 +13,11 @@ if(isset($_GET['name']))
 }
 ?>
 
+<?php if(isset($_GET['tim'])){?>
+	<script>
+		alert("Xin lỗi không có món ăn này trong menu nhà hàng!!!!");
+		</script>
+        <?php } ?>
 <script type="text/javascript">
 
 		$(document).ready(function()
@@ -40,9 +45,9 @@ if(isset($_GET['name']))
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>
                <form  method="post" action="?mod=xulytimkiem">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn" id="find" name="find" style="font-style:normal">
+                    <input type="text" class="form-control input-lg " placeholder="Tìm món ăn" id="find" name="find" style="font-style:normal">
                     <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
-                      <button class="btn btn-xs" type="submit" style="background-color: transparent;">
+                      <button class="btn btn-xs find" type="submit" style="background-color: transparent;" disabled>
                       Tìm
                       </button>
                     </span>
