@@ -228,7 +228,7 @@
                                  <form action="" method="post">
                                 <div class="row" style="margin-top:30px">
                                     <div class="col-md-12 col-sm-12 col-xs-12" style="width:100%">  <textarea name="note" rows="4" cols="60" placeholder="Nhập ghi chú vào đây!!!"></textarea> </div>
-                                    <div class="col-xs-4" style="font-weight:bold; font-size:26px; text-decoration:underline; color: red"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>
+                                    <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
                                            

@@ -117,69 +117,92 @@
 				$c=mysqli_query($link,$sql);
 				while($r_cate=mysqli_fetch_assoc($c)):
 			?>
-             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px;"><?=$r_cate['name']?></p></a>            
+             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate['name']?></p></a>
             <?php endwhile ?>
-            
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="background-color: #ff9d00; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
+
+            <?php
+            @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
+            $rs_t=mysqli_query($link,$sql);
+            @$r_t=mysqli_fetch_assoc($rs_t);
+
+            if(isset($_GET['thanhtoan']) && $r_t['active']==1)
+            {
+                ?>
+                <?php
+                $sql="select a.`id` as id_donhang  
+					from `of_order` as a, `of_order_detail` as b
+					where a.`id`=b.`order_id` and `num_table`={$name}				
+					group by a.`id`
+					order by a.`id` desc limit 0,1";
+                $rs=mysqli_query($link,$sql);
+
+                $r=mysqli_fetch_assoc($rs);
+
+                if(isset($_GET['thanhtoan']) && $r_t['active']==1)
+                {
+                    ?>
+                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px;">Kiểm Tra</button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px;">Thanh Toán</button></a>
+                <?php }} ?>
+
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
         </div>
         <div class="col-md-9" >
             <div class="scrolling-wrapper">
             <?php 
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`=1";
 			$res= mysqli_query($link,$commsql);
+            $number1=0;
+            $number2=0;
 			while($kq= mysqli_fetch_assoc($res))
-			{	
-			?>
-      			
-            	<a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color:#000; text-decoration:none">
+			{
+			    $number1++;
+			    $number2++;
+                ?>
                 <div class="card" style="  width: 300px; background:white; ">
-                    <div class="col-xs-12" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;">
-                        <input type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" />
+                    <label class="col-xs-12 status" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;" for="foodchosen<?php  echo $number1;?>">
+                        <div id="status" style="" ></div>
+                        <input onchange="handleChange(this);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" id="foodchosen<?php  echo $number1;?>" />
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
-                    </div>
+                    </label>
 
                     <div class="col-xs-12" style="height:100px;" >
-                        <h2 align="center" id="aubr"  style="color:#900"><b><?= $kq['name'] ?></b></h2>
+                        <h3 align="center" id="aubr"  style="color:#900"><b><?= $kq['name'] ?></b></h3>
+                        <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn">Chi tiết</button></a>
                     </div>
                 </div>
-                </a>
-                
-       		<?php } ?>
+                <script>
+                    /*$('#abc').click(function(){
+
+                        if($('#abc').attr('checked') == true){
+                            $('#dark').attr("style", "background-color: yellow;");
+                        }
+                        else{
+                            $('#dark').attr("style", "background-color: transparent;");
+                        }
+                    });*/
+                    function handleChange(checkbox) {
+                        if(checkbox.checked == true){
+                            document.getElementById("status").setAttribute("style", "background-color: rgba(252, 252, 37, 0.5);");
+                        }else{
+                            document.getElementById("status").setAttribute("style", "background-color: transparent;");
+                        }
+                    }
+                </script>
+            <?php } ?>
+
             	
 	                          
             </div>
-            	<?php
-					@$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
-                    $rs_t=mysqli_query($link,$sql);
-                    @$r_t=mysqli_fetch_assoc($rs_t);
-					
-					if(isset($_GET['thanhtoan']) && $r_t['active']==1)
-					{
-				?>
-                <p align="right" style="margin-top:10px;">
-                <?php
-				$sql="select a.`id` as id_donhang  
-					from `of_order` as a, `of_order_detail` as b
-					where a.`id`=b.`order_id` and `num_table`={$name}				
-					group by a.`id`
-					order by a.`id` desc limit 0,1";
-				$rs=mysqli_query($link,$sql);
 
-				$r=mysqli_fetch_assoc($rs);
-
-                    if(isset($_GET['thanhtoan']) && $r_t['active']==1)
-                    {
-                    ?>
-                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:#F00 ; font-size:20px; color:#000; background-color:#FF0; padding:5px;font-family: 'Pacifico', cursive; ">Kiểm Tra Hóa Đơn</a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style="color:#F00 ; font-size:20px; color:#000; background-color:#F60; padding:5px;font-family: 'Pacifico', cursive; ">Thanh Toán</a>
-                </p>
-                <?php }} ?>
         </div>
     </div>
 </div>
 </body>
 <script>
+
+
     function startTime() {
         var today = new Date();
         var h = today.getHours();

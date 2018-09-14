@@ -172,68 +172,75 @@ button {
 
 </style>
 
-<body>
-<a href="?mod=home_thanhtoan" class="btn btn-danger" style="font-size:18px; margin-top:20px; margin-left:20px">Trở Lại</a>
-<div id="content">
-<div id="page" class="page">
-    <div class="header">
-        <div class="company">Nhà Hàng 5 Con Dê</div>
-    </div>
-  <br/>
-  <div class="title">
-        HÓA ĐƠN THANH TOÁN
-        <br/>
-        -------oOo-------
-  </div>
-  <br/>
-  <br/>
-  <table class="TableData">
-    <tr>
-      <th>STT</th>
-      <th>Tên</th>
-      <th>Đơn giá</th>
-      <th>Số lượng</th>
-      <th>Thành tiền</th>
-    </tr>
-    <?php
-	$sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
-	$rs=mysqli_query($link,$sql);
-	$total=0;
-	$stt=1;
-	while($r=mysqli_fetch_assoc($rs)):
+<body  style=" background-image:url(img/front/blur-close-up-cutlery-370984.jpg);">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" style="background-color: white">
+            <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+            <div id="content">
+                <div id="page" class="page">
+                    <div class="header">
+                        <div class="company">Nhà Hàng 5 Con Dê</div>
+                    </div>
+                    <br/>
+                    <div class="title">
+                        HÓA ĐƠN THANH TOÁN
+                        <br/>
+                        -------oOo-------
+                    </div>
+                    <br/>
+                    <br/>
+                    <table class="TableData">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                        <?php
+                        $sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                        $rs=mysqli_query($link,$sql);
+                        $total=0;
+                        $stt=1;
+                        while($r=mysqli_fetch_assoc($rs)):
 
-        echo "<tr>";
-        echo "<td class=\"cotSTT\">".$stt++."</td>";
-        echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
-        echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
-        echo "<td class=\"cotSoLuong\" align='center'>x".$r['qty']."</td>";
-        echo "<td class=\"cotSo\">".number_format(($r['qty']*$r['price']))."</td>";
-        echo "</tr>";
-		$total += $r['price']*$r['qty'];
-    endwhile      
-?>
-    <tr>
-      <td colspan="4" class="tong">Tổng cộng</td>
-      <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
-    </tr>
-  </table>
-  <div class="footer-right">
-  <?php
-  	$sql="select `date` from `of_bill` where `order_id`={$id}";
-	$kq=mysqli_query($link,$sql);
-	$k=mysqli_fetch_assoc($kq);
-  ?>
-  	<p><strong><strong>Bàn</strong>:<?=$num_table?> - Ngày</strong>: <?=date("d/m/Y",strtotime($k['date']))?></p>
-  	<p>Cảm Ơn Quý Khách. Hẹn Gặp Lại Nhé ^o^</p>
-  </div>
-  
-  
+                            echo "<tr>";
+                            echo "<td class=\"cotSTT\">".$stt++."</td>";
+                            echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
+                            echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
+                            echo "<td class=\"cotSoLuong\" align='center'>x".$r['qty']."</td>";
+                            echo "<td class=\"cotSo\">".number_format(($r['qty']*$r['price']))."</td>";
+                            echo "</tr>";
+                            $total += $r['price']*$r['qty'];
+                        endwhile
+                        ?>
+                        <tr>
+                            <td colspan="4" class="tong">Tổng cộng</td>
+                            <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
+                        </tr>
+                    </table>
+                    <div class="footer-right">
+                        <?php
+                        $sql="select `date` from `of_bill` where `order_id`={$id}";
+                        $kq=mysqli_query($link,$sql);
+                        $k=mysqli_fetch_assoc($kq);
+                        ?>
+                        <p><strong><strong>Bàn</strong>:<?=$num_table?> - Ngày</strong>: <?=date("d/m/Y",strtotime($k['date']))?></p>
+                        <p>Cảm Ơn Quý Khách. Hẹn Gặp Lại Nhé ^o^</p>
+                    </div>
+
+
+                </div>
+            </div>
+            <div style="margin-top:10px; text-align:center">
+                <a href="javascript:void(0)" onclick="Print('content')" class="btn btn-success btn-lg">In hóa đơn</a>
+                <a id="nut_tt" href="?mod=solve_payment&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Thanh Toán" class="btn btn-success btn-lg"></a>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-<div style="margin-top:10px; text-align:center">
-      <a href="javascript:void(0)" onclick="Print('content')" class="btn btn-success btn-lg">In hóa đơn</a>
-      <a id="nut_tt" href="?mod=solve_payment&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Thanh Toán" class="btn btn-success btn-lg"></a>
-  </div>
+
 </body>
 
 <script>

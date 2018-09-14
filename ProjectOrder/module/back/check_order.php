@@ -31,13 +31,16 @@
 	$SoHoaDonLamTruoc = 5;
 ?>
 
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="table-responsive">
-        <a href="?mod=home" class="btn btn-success" style="font-size:22px" > Trở Lại </a>
+        <a href="?mod=home" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
+                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
+                        <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
+                </div>
                 <?php
                 $sql="select a.*,b.`name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
@@ -66,7 +69,7 @@
 
                         </td>
                     </tr>
-                  
+
                 <?php
                     $total += $r['price']*$r['qty'];
                 endwhile
@@ -75,22 +78,20 @@
 				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
 				$rs2 = mysqli_query($link,$sql);
 				?>
-  				
+
             </table>
-            <div> <?php 
-            	while($r2=mysqli_fetch_assoc($rs2))
-				{
-					echo $r2['note']; 
-					echo "<br>";
-				}
-				
+            <div> Ghi chú:<?php
+                while($r2=mysqli_fetch_assoc($rs2))
+                {
+                    echo $r2['note'];
+                    echo "<br>";
+                }
+
                 ?>
-            </div>                         
+            </div>
         </div>
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success btn-lg"></a></div>
-        <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa?')">
-        	<input type="submit" value="Xóa" class="btn btn-danger btn-lg"></a>
-        </div>
+
         
     </div>
 	

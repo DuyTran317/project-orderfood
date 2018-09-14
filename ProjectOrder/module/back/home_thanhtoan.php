@@ -41,11 +41,11 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
-        <h2 style="color:#096; text-align:center">Danh Sách Chờ Thanh Toán</h2>
+        <h2 style=" text-align:center">Danh Sách Chờ Thanh Toán</h2>
         </div>
 
 
