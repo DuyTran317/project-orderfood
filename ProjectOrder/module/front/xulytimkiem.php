@@ -12,12 +12,20 @@ if(isset($_POST['find']))
 	$name=$_POST['find'];
 	$sql="select * from `of_food` where `name`='$name'";
 	$rs=mysqli_query($link,$sql);
-	while($r=mysqli_fetch_assoc($rs))
+	if(mysqli_num_rows($rs)>0)
 		{
+		while($r=mysqli_fetch_assoc($rs))
+			{
 			
 			$id=$r['id'];
 			$id_cate=$r['category_id'];
 			header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
+			}
+		}
+	else
+		{
+		
+		header("location:?mod=home&id={$id_ban}&name={$id_name}&tim");
 		}
 	}
 ?>
