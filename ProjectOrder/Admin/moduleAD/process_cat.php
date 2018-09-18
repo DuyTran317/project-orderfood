@@ -16,7 +16,8 @@ if(isset($_POST['theloai']))
      $sql_add = "insert into `of_category` VALUES(NULL,'{$theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
-         header('Location:?mod=cat_list&mes=1');
+        $_SESSION['them'] = 'themthanhcong';
+         header('Location:?mod=cat_list');
      }
         else {
          echo $sql_add;

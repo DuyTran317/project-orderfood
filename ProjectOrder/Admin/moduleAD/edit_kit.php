@@ -44,7 +44,7 @@
                             </div>
                             <label for="exampleInputPassword1">Mật khẩu</label>
                             <div class="form-group">
-                                    <input type="password" id="pass" class="form-control password" name="pass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
+                                    <input type="password" id="pass" class="form-control password" name="suapass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
                                     
                                     <div class="requirements">
                                         Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
@@ -74,7 +74,8 @@
 
                         <div class="box-footer">
 
-                            <button type="submit" class="btn btn-primary password" disabled="">Submit</button>
+                            <button type="submit" class="btn btn-primary password" disabled="">Sửa</button>
+                            <button type="reset" class="btn btn-defaul">Xóa</button>
                         </div>
                     </form>
                 </div>

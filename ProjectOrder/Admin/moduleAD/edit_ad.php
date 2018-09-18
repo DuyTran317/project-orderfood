@@ -70,7 +70,8 @@
 
                         <div class="box-footer">
 
-                            <button type="submit" id="pass" class="btn btn-primary password" disabled="">Submit</button>
+                            <button type="submit" id="pass" class="btn btn-primary password" disabled="">Sửa</button>
+                            <button type="reset" class="btn btn-defaul">Xóa</button>
                         </div>
                     </form>
                 </div>

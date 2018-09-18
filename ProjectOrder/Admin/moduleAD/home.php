@@ -93,37 +93,37 @@
             <!-- ./col -->
         </div>
         <!-- /.row -->
-
+        <div class="container">
+                <div class="row" style="text-align:center">
+                    <select style="width:500px; height:30px; font-size:18px;">
+                        <option>Số Hóa Đơn</option>
+                        <option>Số Món Ăn</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="row" style="text-align:center">
+                    Từ:  <input type="text" style="margin-right:25px" class="datefrom" readonly />
+                    Đến: <input type="text" style="margin-right:25px" class="dateto" readonly />
+                    <button class="btn btn-success">Tìm</button>
+                </div>
+                <hr>
+                <div class="row">
+               
+                    <div class="col-md-6 col-xs-12 col-sm-6">
+                        <label style="font-size:20px; font-weight:bold; color:#900">Tổng Quan</label>
+                        <div id="piechart_3d" style="height: 500px;"></div>
+                    </div>
+                    
+                    <div class="col-md-6 col-xs-12 col-sm-6">
+                        <a href="" class="btn btn-primary" style="font-size:16px;"> &gt;&gt; Xem Chi Tiết &lt;&lt;</a>
+                        <div id="curve_chart" style="height: 500px"></div>
+                    </div>
+                </div>
+            </div>
     </section>
     <!-- /.content -->
    
-    <div class="container">
-    	<div class="row" style="text-align:center">
-            <select style="width:500px; height:30px; font-size:18px;">
-            	<option>Số Hóa Đơn</option>
-                <option>Số Món Ăn</option>
-            </select>
-        </div>
-        <hr>
-    	<div class="row" style="text-align:center">
-        	Từ:  <input type="text" style="margin-right:25px" class="datefrom" readonly />
-            Đến: <input type="text" style="margin-right:25px" class="dateto" readonly />
-            <button class="btn btn-success">Tìm</button>
-        </div>
-        <hr>
-        <div class="row">
-       
-        	<div class="col-md-6 col-xs-12 col-sm-6">
-            	<label style="font-size:20px; font-weight:bold; color:#900">Tổng Quan</label>
-            	<div id="piechart_3d" style="height: 500px;"></div>
-            </div>
-            
-            <div class="col-md-6 col-xs-12 col-sm-6">
-            	<a href="" class="btn btn-primary" style="font-size:16px;"> &gt;&gt; Xem Chi Tiết &lt;&lt;</a>
-            	<div id="curve_chart" style="height: 500px"></div>
-            </div>
-        </div>
-    </div>
+    
     
 </div>
 <!-- /.content-wrapper -->

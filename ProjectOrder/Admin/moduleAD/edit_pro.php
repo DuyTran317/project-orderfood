@@ -2,7 +2,9 @@
 if(isset($_GET['edit']))
 {
     $id = $_GET['edit'];}
-?><div class="content-wrapper">
+?>
+<div class="wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -107,7 +109,8 @@ if(isset($_GET['edit']))
 
                         <div class="box-footer">
                             <input type="hidden" name="id" value="<?php echo $d_pro['id']; ?>">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button type="reset" class="btn btn-defaul">Xóa</button>
                         </div>
                     </form>
                 </div>
@@ -117,6 +120,7 @@ if(isset($_GET['edit']))
             <!--/.col (left) -->
         </div>
     </section>
+</div>
 </div>
 <script>
     //Chi tiết

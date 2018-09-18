@@ -91,7 +91,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                    <button type="reset" class="btn btn-defaul">Xóa</button>
                 </div>
             </form>
         </div>

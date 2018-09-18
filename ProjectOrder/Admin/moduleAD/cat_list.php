@@ -42,7 +42,7 @@
                           'success');";
             echo "},1);</script>";
         }?>
- <?php if(isset($_GET['mes'] )==1) {
+ <?php if(isset($_SESSION['them'] )== 'themthanhcong') {
             echo "<script type='text/javascript'>";
             echo "setTimeout(function () { swal('Thêm Thành Công',
                           'Bạn đã thêm thành công',
@@ -120,4 +120,6 @@
 </div>
 </div>
 <!-- /.content-wrapper -->
-<?php unset($_SESSION['sua']); ?>
+<?php unset($_SESSION['sua']); 
+unset($_SESSION['them']); 
+?>

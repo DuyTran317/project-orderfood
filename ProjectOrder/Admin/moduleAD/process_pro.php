@@ -36,7 +36,8 @@ if(isset($_POST['tensp']))
     $sql_img = "insert into of_food  VALUES(NULL ,'$theloai','$tensp','$gia','$khuyenmai','$noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
-        header("Location:?mod=pro_list&mes=1");
+        $_SESSION['them'] = 'themthanhcong';
+        header("Location:?mod=pro_list");
     }
     else echo $sql_img;
 }
@@ -111,7 +112,8 @@ if(isset($_POST['suatheloai']))
 
     $sql_edit .= "where id=$edit";
     mysqli_query($link,$sql_edit);
-    header("location:?mod=pro_list&mes2=2");
+     $_SESSION['sua'] = 'suathanhcong';
+    header("location:?mod=pro_list");
 }
 
 if(isset($_GET['del']))
