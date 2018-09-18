@@ -75,14 +75,17 @@ if(isset($_POST['account']))
             $_SESSION['userad'] =  $d['name'];
             $_SESSION['idad'] = $d['id'];
             $_SESSION['catead'] = $d['cate'];
-
+            $_SESSION['success'] = 'thanhcong';/*array(
+                  'message' => 'Du lieu nhap vao ko hop le',
+                  'data' => $_POST,
+                );*/
             if(isset($_POST['remember'])){ setcookie("userad","{$d['name']}",time()+999999);
                 setcookie("idad","{$d['id']}",time()+999999);
                 setcookie("catead","{$d['cate']}",time()+999999);
 
             }
 
-            header("location:index.php?mod=home&key=4");
+            header("location:index.php?mod=home");
 
         }
     }

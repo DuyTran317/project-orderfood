@@ -60,7 +60,7 @@ if(!isset($_SESSION['userad'])) {
 
     header('location:login.php');
 }
-elseif(isset($_GET['key'] )==4) {
+elseif(isset($_SESSION['success'] )=='thanhcong') {
             echo "<script type='text/javascript'>";
             echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
                           'Chào mừng bạn đến với trang quản trị OrderFOOD',
@@ -220,7 +220,9 @@ include("moduleAD/{$mod}.php");
 }
 
 }
+
  </script>
+ <?php unset($_SESSION['success']); ?>
 </body>
 
 </html>
