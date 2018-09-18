@@ -1,3 +1,4 @@
+<div class="wrapper">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -100,6 +101,7 @@
     <!--/.col (left) -->
             </div>
     </section>
+</div>
 </div>
 <script>
     //Chi tiết

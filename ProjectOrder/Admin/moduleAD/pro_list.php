@@ -49,6 +49,7 @@
                           'success');";
             echo "},1);</script>";
         }?>    
+<div class="wrapper">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -146,5 +147,6 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
+</div>
 </div>
 <!-- /.content-wrapper --><?php  ?>

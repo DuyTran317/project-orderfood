@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("connect.php");
 if(isset($_POST['theloai']))
 {
@@ -42,7 +43,8 @@ if(isset($_POST['suatheloai']))
         $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
         mysqli_query($link,$sql_edit);
     }
-header('Location:?mod=cat_list&mes2=2');
+    $_SESSION['sua'] = 'suathanhcong';
+header('Location:?mod=cat_list');
 }
 
 

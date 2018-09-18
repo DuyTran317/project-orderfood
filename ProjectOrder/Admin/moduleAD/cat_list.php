@@ -35,7 +35,7 @@
 
     }
 </script>
-<?php if(isset($_GET['mes2'] )==5) {
+<?php if(isset($_SESSION['sua'] )== 'suathanhcong') {
             echo "<script type='text/javascript'>";
             echo "setTimeout(function () { swal('Sửa Thành Công',
                           'Bạn sửa thành công',
@@ -48,7 +48,8 @@
                           'Bạn đã thêm thành công',
                           'success');";
             echo "},1);</script>";
-        }?>       
+        }?>      
+<div class="wrapper"> 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -117,4 +118,6 @@
     </section>
     <!-- /.content -->
 </div>
+</div>
 <!-- /.content-wrapper -->
+<?php unset($_SESSION['sua']); ?>

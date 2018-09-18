@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['ten']))
 {
     $account=$_POST['ten'];
@@ -11,6 +12,7 @@ if(isset($_POST['ten']))
         $sql_user = "insert into `of_manage` VALUES (NULL ,'{$account}','{$pass}','{$name}','{$cate}','{$active}')";
        if(mysqli_query($link,$sql_user))
         {
+            
             header("location:?mod=kit_list&mes=1");
         }
         else echo $sql_user;
