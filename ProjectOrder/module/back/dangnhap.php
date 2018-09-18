@@ -1,4 +1,4 @@
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-top:10%">
     <div class="row">
         <div class="col-md-4 col-md-offset-4" style="background-color: rgba(0,0,0,0.7); padding:15px">

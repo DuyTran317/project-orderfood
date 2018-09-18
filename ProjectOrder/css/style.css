@@ -21,7 +21,7 @@
     word-break: break-all;
     -webkit-word-wrap: break-word;
     white-space: -moz-pre-wrap;
-    white-space: pre-wrap;
+    white-space: nowrap;
 }
 .centered {
     position: absolute;
@@ -58,8 +58,6 @@
 }
 .rate {
     float:left;
-    height: 46px;
-    padding: 0 10px;
 }
 .rate:not(:checked) > input {
     position:absolute;
@@ -90,4 +88,11 @@
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+.status #status {
+    width: 100%;
+    left:0px;
+    height: 100%;
+    position:absolute;
+    transition: 0.2s;
 }

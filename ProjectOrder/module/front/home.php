@@ -13,6 +13,11 @@ if(isset($_GET['name']))
 }
 ?>
 
+<?php if(isset($_GET['tim'])){?>
+	<script>
+		alert("Xin lỗi không có món ăn này trong menu nhà hàng!!!!");
+		</script>
+        <?php } ?>
 <script type="text/javascript">
 
 		$(document).ready(function()
@@ -38,13 +43,13 @@ if(isset($_GET['name']))
         <div class="col-sm-6" style="  color: white;">
             <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>
-               <form class="navbar-form navbar-left" method="post" action="?mod=xulytimkiem"> 
+               <form  method="post" action="?mod=xulytimkiem">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Tìm món ăn" id="find" name="find">
+                    <input type="text" class="form-control input-lg " placeholder="Tìm món ăn" id="find" name="find" style="font-style:normal">
                     <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
-                      <button class="btn btn-info" type="submit" >
-                        <i class="fa fa-search fa-lg"></i>
-                        </button>
+                      <button class="btn btn-xs find" type="submit" style="background-color: transparent;" disabled>
+                      Tìm
+                      </button>
                     </span>
                 </div><hr><br><br>
             

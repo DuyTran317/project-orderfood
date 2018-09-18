@@ -1,4 +1,4 @@
-
+﻿
 <script src="lib/notice.js"></script>
 <?php
 	if(! isset($_SESSION['admin_id']))
@@ -42,10 +42,9 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
     <div class="container">
         <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        	<a href="?mod=ds_food"><button>DS Món Ăn</button></a>
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
                 <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
@@ -55,13 +54,13 @@
               <thead>
               <tr align="center" bgcolor="#FFFFCC">
                 <td><h4><strong>STT</strong></h4></td>
-                <td><h4><strong>Số Bàn</strong></h4></td>
+                <td><h4><strong>Tên Món</strong></h4></td>
                 <td><h4><strong>Trạng Thái</strong></h4></td>
                 <td><h4><strong>Kiểm Tra</strong></h4></td>
               </tr>
               </thead>
               <?php
-                $sql = "SELECT * from `of_order` where `active`=0";
+                $sql = "SELECT * from `of_food`";
                 $rel = mysqli_query($link,$sql);
                 $i=1;
                 while($re = mysqli_fetch_assoc($rel))
@@ -72,21 +71,24 @@
                   <?=$i++?>
                 </h5></td>
                 <td align="center"><h5>&nbsp;&nbsp;
-                  Bàn Số: <span style="color: red; font-size: 24px;"><?=$re['num_table']?></span>
+                  <span style="color: red; font-size: 24px;"><?=$re['name']?></span>
                 </h5></td>
                 <td align="center"><h5>
-                  <?php
-                    if($re['active']==0)
-                    echo"Đang chờ xử lý";
-                  ?>
+				  <!--act == 0 ngừng kinh doanh  == 1 đang kinh doanh, còn món  == 2 đang kinh doanh, hết món-->
+                    <select id="<?=$re['id'] ?>" name='status' onChange="ChangeStatus(<?=$re['id'] ?>)">
+							<option value='0' <?php if($re['active']==0) echo "selected"; ?>>ngừng kinh doanh</option>
+							<option value='1' <?php if($re['active']==1) echo "selected"; ?>>còn món</option>
+							<option value='2' <?php if($re['active']==2) echo "selected"; ?>>hết món</option>
+						</select>
                 </h5></td>
                 <td align="center"><h5>
-                  <a href="?mod=check_order&id=<?=$re['id']?>&num_table=<?=$re['num_table']?>">Xem</a>
+                  <a href="">Xem</a>
                 </h5></td>
               </tr>
               <?php } ?>
             </table>
         </div>
+        
     </div>
 </body>
 <script>
@@ -96,8 +98,17 @@
         		url: 'datatable/Vietnamese.json'
     		}
 		});
-    });
+    	});
 	
-	
+	function ChangeStatus(id){
+		var active = document.getElementById(id).value;
+		$.ajax({
+			url:'module/back/ajax.php',
+			type:'POST',
+			data:{id: id, active: active, ChangeActiveFood: 1}
+			}).done(function(data){
+								
+				});
+	};
     
 </script>

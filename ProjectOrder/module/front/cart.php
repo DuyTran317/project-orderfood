@@ -63,9 +63,8 @@
             </table>
         </div>
             <div class="row">
-                <div class="col-xs-4">
-                    <span style="font-weight:bold; font-size:26px; text-decoration:underline; color: red">Tổng tiền: <span id="total"><?=number_format($s)?></span>đ</span>
-                </div>
+                <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
+
 
                 <div align="right" class="col-xs-8">
                     <?php if(@count($cart)>0){ ?>

@@ -22,34 +22,52 @@ if(isset($_POST['content']))
 }
 ?>
 
-<body style="background-color: #fff289;  font-family: 'Anton', sans-serif; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
- <form action="" method="post" enctype="multipart/form-data" style="text-align:center">
-                        <div class="form-group">
-                            <label for="comment" style="margin-top:30px; font-size:20px; font-weight:100">Bình Luận <i class="fas fa-comment"></i></label>
-                        </div>
-                        <textarea name="content" id="comment" class="form-group" style="width:100%; height:100px" placeholder="Nhập Ý Kiến Của Bạn Vào Đây!!!!"></textarea>
+<body style=" font-family: 'Anton', sans-serif; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
+<div class="container" style="margin-top:50px; font-size:20px; font-weight:100">
+    <div class="row" >
+        <div class="col-md-8 col-md-offset-2" style="background-color: white; padding: 20px;">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="comment" style="font-size: 20px;" >
+                        <table>
+                            <tr>
+                                <td>
+                                    Đánh giá nhà hàng:
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rate" value="5" checked/>
+                                            <label for="star5" title="text">5</label>
+                                            <input type="radio" id="star4" name="rate" value="4" />
+                                            <label for="star4" title="text">4</label>
+                                            <input type="radio" id="star3" name="rate" value="3" />
+                                            <label for="star3" title="text">3</label>
+                                            <input type="radio" id="star2" name="rate" value="2" />
+                                            <label for="star2" title="text">2</label>
+                                            <input type="radio" id="star1" name="rate" value="1" />
+                                            <label for="star1" title="text">1</label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                        <div class="form-group">
-                            
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" checked/>
-                                    <label for="star5" title="text">5</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1</label>
-                                  </div>
-                        </div>
-                       
-                        <br/><br/>
-                        <button id="submit_comment" class="btn btn-success" style="clear:left"><strong>Gửi Đánh Giá</strong></button>
-   
+                    </label>
+                </div>
+                <textarea name="content" id="comment" class="form-group" style="width:100%; height:100px" placeholder="Vui lòng cho biết ý kiến của bạn"></textarea>
 
-                    </form>
+
+
+                <br/><br/>
+                <div align="right"><button id="submit_comment" class="btn btn-success btn-lg" style="clear:left">Gửi</button></div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 <?php
 	require('Pusher.php');

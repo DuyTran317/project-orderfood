@@ -31,7 +31,20 @@
 	  if($mod=='') $mod='dangnhap';
 	  include("module/front/{$mod}.php");
 ?> 
-
+<script>
+    $(document).ready(function () {
+		$("#find").click(function () {
+			 $(".find").removeAttr('disabled');
+			 });
+		$("#find").blur(function () {	
+			if(document.getElementById('find').value != ''){ 
+			 $(".find").removeAttr('disabled');
+			 }else{
+                $(".find").attr('disabled','');
+			 }
+				});
+    });
+</script>
 <script type="text/javascript">
     $(function(){
       SyntaxHighlighter.all();

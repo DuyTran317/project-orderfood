@@ -64,7 +64,7 @@ if(isset($_GET['cate']))
 </table>
     </div>
     <div class="row" style="margin-top:30px">
-        <div class="col-xs-4" style="font-weight:bold; font-size:26px; text-decoration:underline; color: red"><span style="font-weight:bold; font-size:20px; text-decoration:underline">Tổng thành tiền: <?=number_format($s)?>đ</span></div>
+        <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
     </div>
 </div>
 
