@@ -161,9 +161,9 @@
                 ?>
                 <div class="card" style="  width: 300px; background:white; ">
                     <label class="col-xs-12 status" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;" for="foodchosen<?php  echo $number1;?>">
-                        <div id="status" style="" ></div>
+                        <div id="status<?=$kq['id'] ?>" class="status1" style="" ></div>
                         <?php if($kq['active'] == 1) { ?>
-                        <input onchange="handleChange(this);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" id="foodchosen<?php  echo $number1;?>" />
+                        <input onchange="handleChange(this,<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" id="foodchosen<?php  echo $number1;?>" />
                         <?php } ?>
                     	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
                         font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
@@ -187,11 +187,11 @@
                             $('#dark').attr("style", "background-color: transparent;");
                         }
                     });*/
-                    function handleChange(checkbox) {
+                    function handleChange(checkbox,id) {
                         if(checkbox.checked == true){
-                            document.getElementById("status").setAttribute("style", "background-color: rgba(252, 252, 37, 0.5);");
+                            document.getElementById("status"+id).setAttribute("style", "background-color: rgba(252, 252, 37, 0.5);");
                         }else{
-                            document.getElementById("status").setAttribute("style", "background-color: transparent;");
+                            document.getElementById("status"+id).setAttribute("style", "background-color: transparent;");
                         }
                     }
                 </script>
