@@ -101,6 +101,20 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+	
 </script>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 

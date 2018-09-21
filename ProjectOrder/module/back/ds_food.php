@@ -87,6 +87,7 @@
               </tr>
               <?php } ?>
             </table>
+           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px;">Cập Nhật Menu</button></a>
         </div>
         
     </div>
