@@ -26,9 +26,8 @@
         <div class="table-responsive">
 
             <table class="col-md-12 table table-striped">
-              <tr>
-
-                <th>Món Ăn</th>
+              <tr style="background-color: #f9d093; font-size: 18px;">
+                <th class="text-left">Món Ăn</th>
                 <th>Giá</td>
                 <th>Số Lượng</th>
                 <th>Tổng Tiền</th>
@@ -47,14 +46,24 @@
                     $s+=$r['price']*$v;
               ?>
 
-              <tr style="text-align:center; height:50px">
+              <tr style=" height:50px">
                 <td>                  
                     <?=$r['name']?>
                   </a>
                 </td>
-                <td><?=number_format($r['price'])?><u>đ</u></td>
-                <td><input type="number" class="qty" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)" style="width:50%; text-align:center"></td>
-                <td><?=number_format($r['price']*$v)?><u>đ</u></td>
+                <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
+                  <td class="hidden-md hidden-lg hidden-sm">
+                      <input type="text" class="form-control text-center" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)">
+                  </td>
+                <td class="col-sm-3 hidden-xs">
+                    <div class="input-group " >
+                        <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='<?=$k?>' style="border: none; background-color: transparent; color:white"/></span>
+                        <input type="text" class="form-control text-center" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)" disabled style="border-color: #F60; color: #F60;">
+                        <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='<?=$k?>' style="border: none; background-color: transparent; color: white"/></span>
+
+                    </div>
+                </td>
+                <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
                   <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
 
               </tr>
@@ -93,6 +102,63 @@
 </div>
 </body>
 <script>
+    $(document).ready(function() {
+        $("#<?=$k?>").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl/cmd+A
+                (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl/cmd+C
+                (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl/cmd+X
+                (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+    jQuery(document).ready(function(){
+        // This button will increment the value
+        $('.qtyplus').click(function(e){
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            fieldName = $(this).attr('field');
+            // Get its current value
+            var currentVal = parseInt($('input[name='+fieldName+']').val());
+            // If is not undefined
+            if (!isNaN(currentVal)) {
+                // Increment
+                $('input[name='+fieldName+']').val(currentVal + 1);
+            } else {
+                // Otherwise put a 0 there
+                $('input[name='+fieldName+']').val(0);
+            }
+        });
+        // This button will decrement the value till 0
+        $(".qtyminus").click(function(e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            fieldName = $(this).attr('field');
+            // Get its current value
+            var currentVal = parseInt($('input[name='+fieldName+']').val());
+            // If it isn't undefined or its greater than 0
+            if (!isNaN(currentVal) && currentVal > 0) {
+                // Decrement one
+                $('input[name='+fieldName+']').val(currentVal - 1);
+            } else {
+                // Otherwise put a 0 there
+                $('input[name='+fieldName+']').val(0);
+            }
+        });
+    });
 	function updateFood(id){
 		var qty = document.getElementById(id).value;
 		$.ajax({

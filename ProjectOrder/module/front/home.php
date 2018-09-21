@@ -34,12 +34,40 @@ if(isset($_GET['name']))
 <div class="container" style="margin-top:25%;">
     <div class="row">
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
-            <div style="background-image:url(img/front/20180807_085811r.jpg); height: 350px; padding: 30px;  color: white;">
-                <p style="font-size: 50px;">HAMBURGER BÒ</p>
-                <p style="font-family: 'Open Sans Condensed', sans-serif; font-size: 30px;">NGON BỔ RẺ</p>
-                <button class="btn" style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold">Chi tiết</button>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="img/front/20180807_085811r.jpg"  style="width:100%; height: 350px;">
+                        </div>
+
+                        <div class="item">
+                            <img src="img/front/20180807_085811r.jpg" style="width:100%;height: 350px; ">
+                        </div>
+
+                        <div class="item">
+                            <img src="img/front/20180807_085811r.jpg" style="width:100%; height: 350px;">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
-        </div>
         <div class="col-sm-6" style="  color: white;">
             <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>

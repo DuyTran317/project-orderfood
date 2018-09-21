@@ -195,10 +195,10 @@
                             <form action="" method="post">
                                 <div class="table-responsive">
                                     <table class="col-md-12 table table-striped">
-                                        <tr>
-                                            <th>Món Ăn</th>
+                                        <tr style="background-color: #f9d093; font-size: 18px;">
+                                            <th class="text-left">Món Ăn</th>
                                             <th>Giá</td>
-                                            <th>Số Lượng</th>
+                                            <th class="col-xs-2">Số Lượng</th>
                                             <th>Tổng Tiền</th>
                                         </tr>
                                         <?php
@@ -212,27 +212,28 @@
                                             $r=mysqli_fetch_assoc($rs);
                                             $s+=$r['price']*$v;
                                             ?>
-                                            <tr style="text-align:center; height:50px">
+                                            <tr style="height:50px">
                                                 <td>
                                                     <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
                                                         <?=$r['name']?>
                                                     </a>
                                                 </td>
-                                                <td><?=number_format($r['price'])?><u>đ</u></td>
-                                                <td><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
-                                                <td><?=number_format($r['price']*$v)?><u>đ</u></td>
+                                                <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
+                                                <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
+                                                <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
                                             </tr>
                                         <?php } ?>
                                     </table>
                                 </div>
                                  <form action="" method="post">
                                 <div class="row" style="margin-top:30px">
-                                    <div class="col-md-12 col-sm-12 col-xs-12" style="width:100%">  <textarea name="note" rows="4" cols="60" placeholder="Nhập ghi chú vào đây!!!"></textarea> </div>
+                                    <div style="width:100%">
+                                        <p>Ghi Chú:</p>
+                                        <textarea name="note" rows="4" class="form-control" placeholder="Nhập ghi chú vào đây!!!"></textarea>
+                                    </div>
                                     <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
-                                           
-                                            	
                                                 <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="Gọi Món">
                                             </form>
                                         </div>

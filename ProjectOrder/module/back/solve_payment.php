@@ -25,5 +25,5 @@
 ?>
 <script>
 	alert("Hoàn Tất Thanh Toán!");
-	window.location="?mod=home_thanhtoan";
+	window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
 </script>

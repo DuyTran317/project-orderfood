@@ -174,13 +174,19 @@
 			    $number2++;
                 ?>
                 <div class="card" style="  width: 300px; background:white; ">
-                    <label class="col-xs-12 status" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;" for="foodchosen<?php  echo $number1;?>">
-                        <div id="status<?=$kq['id'] ?>" class="status1" style="" ></div>
+                    <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover;" for="foodchosen<?php  echo $number1;?>">
                         <?php if($kq['active'] == 1) { ?>
-                        <input onchange="handleChange(this,<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style="height: 40px; width: 40px; position: absolute; right: 0px; top: 0px;" id="foodchosen<?php  echo $number1;?>" />
+                            <div id="status<?=$kq['id'] ?>" class="status1" style="" >
+                                <h1 style=" font-size: 80px; color: lightgrey" id="chose<?=$kq['id'] ?>"></h1>
+                            </div>
+                            <input onchange="handleChange(this,<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
+                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                         <?php } ?>
-                    	<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;
-                        font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
+                        <?php if($kq['active'] == 2) { ?>
+                            <div id="dark">
+                                <h1 style="transform: rotate(-40deg); font-size: 80px; color: #ff9328">Hết Hàng</h1>
+                            </div>
+                        <?php } ?>
                     </label>
 
                     <div class="col-xs-12"  >
@@ -203,9 +209,11 @@
                     });*/
                     function handleChange(checkbox,id) {
                         if(checkbox.checked == true){
-                            document.getElementById("status"+id).setAttribute("style", "background-color: rgba(252, 252, 37, 0.5);");
+                            document.getElementById("status"+id).setAttribute("style", "background-color: rgba(249, 150, 2, 0.5);");
+                            document.getElementById("chose"+id).innerHTML = "<i class=\"fas fa-check\"></i>";
                         }else{
                             document.getElementById("status"+id).setAttribute("style", "background-color: transparent;");
+                            document.getElementById("chose"+id).innerHTML = " ";
                         }
                     }
                 </script>
