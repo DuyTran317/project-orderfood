@@ -18,7 +18,9 @@ if(isset($_SESSION['latitude']))
 		
 	  }
 	}
+	else echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
 }
+else echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
 if(!isset($_SESSION['user_nameban']))
 {
 	header("location:?mod=dangnhap");
