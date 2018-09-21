@@ -1,5 +1,34 @@
 <script src="../jqueryUI/jquery-ui-admin.js"></script>
 
+<?php
+	if(isset($_POST['datefrom']))
+	{
+		$datefrom=$_POST['datefrom'];
+		
+		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+		$d= substr($datefrom,0,2);
+		$m= substr($datefrom,3,2);
+		$y= substr($datefrom,6,4);
+		
+		$datefrom="{$y}-{$m}-{$d}";		
+	}
+	if(isset($_POST['dateto']))
+	{
+		$dateto=$_POST['dateto'];
+		
+		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+		$d= substr($dateto,0,2);
+		$m= substr($dateto,3,2);
+		$y= substr($dateto,6,4);
+		
+		$dateto="{$y}-{$m}-{$d}";
+	}
+	if(isset($_GET['id_mon']))
+	{
+		$id_mon=$_GET['id_mon'];		
+	}		
+?>
+
 <div class="wrapper">
 
 
@@ -93,38 +122,123 @@
             <!-- ./col -->
         </div>
         <!-- /.row -->
-        <div class="container">
-                <div class="row" style="text-align:center">
-                    <select style="width:500px; height:30px; font-size:18px;">
-                        <option>Số Hóa Đơn</option>
-                        <option>Số Món Ăn</option>
+        
+        <hr /><hr /><hr />
+        <h2>Thông Kê Món Ăn</h2>
+        <hr />
+        <div class="container">        		                                
+                <div class="row">
+                		<span style="font-size:20px"><strong>Chọn Loại:</strong></span>
+                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:20px; width:300px; margin-left:20px">
+                                <?php
+                                    $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
+                                    $rs_s=mysqli_query($link,$sql);
+                                    $r_s=mysqli_fetch_assoc($rs_s);
+                                    
+                                    $cid = @$_GET['cid'];
+                                    if($cid == '') $cid = $r_s['id'];
+                                    
+                                    
+                                    $sql="select * from `of_category` where `active`=1 order by `order` asc";
+                                    $rs=mysqli_query($link,$sql);
+                                    while($r=mysqli_fetch_assoc($rs)){
+                                ?>
+                                                        
+                                    <option <?php if($r['id']==$cid) echo'selected'?>
+                                        value="<?=$r['id']?>"><?=$r['name']?>
+                                    </option>                           
+                                
+                                <?php } ?>
+                     </select><br /><br /><br />
+                    
+                    <span style="font-size:20px"><strong>Chọn Món:</strong></span>
+                    <select style="width:420px; height:30px; font-size:17px; margin-left:20px"  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
+                        <?php
+								$sql="select `id` from `of_food` where `active`=1 and `category_id`={$cid} order by `id` asc";
+								$lay_idmon=mysqli_query($link,$sql);
+								$lay_idmon_show=mysqli_fetch_assoc($lay_idmon);
+								
+								$id_mon = @$_GET['id_mon'];
+								if($id_mon=='') $id_mon = $lay_idmon_show['id'];
+						
+						
+                                $sql="select * from `of_food` where `active`=1 and `category_id`={$cid}";
+                                $rs_pro=mysqli_query($link,$sql);
+								
+								if($cid == '') $cid = $r_s['id'];
+								
+                                while($r_pro=mysqli_fetch_assoc($rs_pro)){
+                            ?>
+                                                    
+                                <option <?php if($r_pro['id']==$id_mon) echo'selected'?>
+                                    value="<?=$r_pro['id']?>"><?=$r_pro['name']?>
+                                </option>                           
+                            
+                        <?php } ?>
                     </select>
                 </div>
-                <hr>
-                <div class="row" style="text-align:center">
-                    Từ:  <input type="text" style="margin-right:25px" class="datefrom" readonly />
-                    Đến: <input type="text" style="margin-right:25px" class="dateto" readonly />
-                    <button class="btn btn-success">Tìm</button>
+                <hr><br />
+                <div class="row" style="text-align:left">
+                	<form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
+                        <strong>Từ:</strong>  <input type="text" style="margin-right:25px" class="datefrom" name="datefrom" readonly />
+                        <strong>Đến:</strong> <input type="text" style="margin-right:25px" class="dateto" name="dateto" readonly />
+                        <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
+                    </form>    
                 </div>
                 <hr>
-                <div class="row">
-               
-                    <div class="col-md-6 col-xs-12 col-sm-6">
-                        <label style="font-size:20px; font-weight:bold; color:#900">Tổng Quan</label>
+                <div class="row">               
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <label style="font-size:20px; font-weight:bold; margin-top:18px">Tổng Quan</label>
                         <div id="piechart_3d" style="height: 500px;"></div>
-                    </div>
+                    </div>         
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <section class="content">
+                        <label style="font-size:20px; font-weight:bold;">Chi Tiết</label>
+                            <div class="row">
+                                <div class="col-xs-12">
                     
-                    <div class="col-md-6 col-xs-12 col-sm-6">
-                        <a href="" class="btn btn-primary" style="font-size:16px;"> &gt;&gt; Xem Chi Tiết &lt;&lt;</a>
-                        <div id="curve_chart" style="height: 500px"></div>
-                    </div>
-                </div>
-            </div>
-    </section>
-    <!-- /.content -->
-   
-    
-    
+                                    <div class="box">
+                    
+                                        <div class="box-body">
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên Thể Loại</th>
+                                                    <th>Số Lượng</th>
+                                                    <th>Ngày</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                    
+                                                @$sql_cat = "select *,c.`name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
+                                                $i=1;
+                                                $kq_cat = mysqli_query($link,$sql_cat);
+                                                while($d_cat=mysqli_fetch_assoc($kq_cat))
+                                                {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $i++; ?></td>                                
+                                                    <td><?= $d_cat['ten_mon'] ?></td> 
+                                                    <td><?= $d_cat['sl_mon'] ?></td>                                
+                                                    <td><?= date('d/m/Y H:i:s',strtotime($d_cat['ngay']))?></td>                                                             
+                                                </tr>
+                                                <?php } ?>
+                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                    	</section>
+               		</div>
+                    </div>     
 </div>
 <!-- /.content-wrapper -->
     
@@ -155,49 +269,31 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+	<?php
+		$date_start = date("Y-m-01");		
+		$date_end = date("Y-m-t", strtotime("+0 month") );
+
+		$sql="select *,c.`name` as ten_mon, b.`qty` as sl_mon from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$date_end}' and a.`date` >= '{$date_start}' order by b.`qty` desc limit 0,5";
+		$kq=mysqli_query($link,$sql);		
+	?>
   google.charts.load("current", {packages:["corechart"]});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
 	var data = google.visualization.arrayToDataTable([
 	  ['Task', 'Hours per Day'],
-	  ['Work',     11],
-	  ['Eat',      2],
-	  ['Commute',  2],
-	  ['Watch TV', 2],
-	  ['Sleep',    7]
+	  <?php
+	  	while($k=mysqli_fetch_assoc($kq)): 
+	  ?>
+	  	['<?=$k['ten_mon']?>', <?=$k['sl_mon']?>],
+	  <?php endwhile ?>
 	]);
 
 	var options = {
-	  title: 'Aegona Company',
+	  title: 'Năm Món Được Đặt Nhiều Nhất Trong Tháng',
 	  is3D: true,
 	};
 
 	var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-	chart.draw(data, options);
-  }
-</script>
-
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-	  ['Year', 'Sales', 'Expenses'],
-	  ['2004',  1000,      400],
-	  ['2005',  1170,      460],
-	  ['2006',  660,       1120],
-	  ['2007',  1030,      540]
-	]);
-
-	var options = {
-	  title: 'Company Performance',
-	  curveType: 'function',
-	  legend: { position: 'bottom' }
-	};
-
-	var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
 	chart.draw(data, options);
   }
 </script>
