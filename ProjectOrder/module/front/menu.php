@@ -176,10 +176,10 @@
                 <div class="card" style="  width: 300px; background:white; ">
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
                         <?php if($kq['active'] == 1) { ?>
-                            <div id="status<?=$kq['id'] ?>" class="status1" style="" >
-                                <h1 style=" font-size: 80px; color: #e8ebf2;" id="chose<?=$kq['id'] ?>"></h1>
+                            <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
+                                <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
                             </div>
-                            <input onchange="handleChange(this,<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?> onclick="checkFood(<?=$kq['id']?>)" style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
+                            <input onchange="handleChange(this,<?=$kq['id']?>);checkFood(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
                             <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
