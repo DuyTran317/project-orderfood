@@ -13,7 +13,7 @@ if(isset($_SESSION['latitude']))
 	if(isset($_SESSION['longitude']))
 	{
 		$long=$_SESSION['longitude'];
-	  if(	(($lat2_res>$lat)or($lat<$lat_res)) or (($long2_res>$long)or($long<$long_res)))
+	  if(	(($lat2_res>$lat)or($lat<$lat_res)) && (($long2_res>$long)or($long<$long_res)))
 	  { 
 	  	echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
 		
