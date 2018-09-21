@@ -90,7 +90,6 @@ if(isset($_POST['account']))
         }
     }
 }
-
 ?>
 
 <div class="login-box">
@@ -102,7 +101,7 @@ if(isset($_POST['account']))
 
         <form action="" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="account" placeholder="Account">
+                <input type="text" class="form-control" id="account" name="account" placeholder="Account">
                 <i class="fa fa-user-circle-o form-control-feedback" aria-hidden="true"></i>
 
             </div>
@@ -148,5 +147,10 @@ if(isset($_POST['account']))
         });
     });
 </script>
+<script>
+     $( document ).ready(function() {
+       $('input#account').val("<?php echo $user; ?>");
+      });
+ </script>
 </body>
 </html>

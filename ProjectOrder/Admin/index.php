@@ -222,6 +222,64 @@ include("moduleAD/{$mod}.php");
 }
 
  </script>
+ <script>
+    $( function() {
+        <!--Config DatePicker Bootstrap-->
+        $.fn.datepicker.dates['en'] = {
+            days: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
+            daysShort: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
+            daysMin: ["CN", "T.2", "T.3", "T.4", "T.5", "T.6", "T.7"],
+            months: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+            monthsShort: ["Th.1", "Th.2", "Th.3", "Th.4", "Th.5", "Th.6", "Th.7", "Th.8", "Th.9", "Th.10", "Th.11", "Th.12"],
+            titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+            weekStart: 0
+        };
+        
+        $( ".datefrom" ).datepicker({
+            format:'dd/mm/yyyy',            
+        });
+        $( ".dateto" ).datepicker({
+            format:'dd/mm/yyyy',
+        });
+  } );
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    <?php
+        $date_start = date("Y-m-01");       
+        $date_end = date("Y-m-t", strtotime("+0 month") );
+
+        $sql="select *,c.`name` as ten_mon, b.`qty` as sl_mon from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$date_end}' and a.`date` >= '{$date_start}' order by b.`qty` desc limit 0,5";
+        $kq=mysqli_query($link,$sql);       
+    ?>
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      <?php
+        while($k=mysqli_fetch_assoc($kq)): 
+      ?>
+        ['<?=$k['ten_mon']?>', <?=$k['sl_mon']?>],
+      <?php endwhile ?>
+    ]);
+
+    var options = {
+      title: 'Năm Món Được Đặt Nhiều Nhất Trong Tháng',
+      is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }
+</script>
+<script>
+     $( document ).ready(function() {
+       $('input#dateto').val("<?php echo $fdateto; ?>");
+       $('input#datefrom').val("<?php echo $fdatefrom; ?>");
+      });
+ </script>
  <?php unset($_SESSION['success']); ?>
 </body>
 

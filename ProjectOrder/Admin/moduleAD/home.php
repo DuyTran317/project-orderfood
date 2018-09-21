@@ -86,7 +86,7 @@
                     <div class="icon">
                         <i class="ion ion-compose"></i>
                     </div>
-                    <a href="?mod=order_list" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="?mod=bill_list" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -124,12 +124,17 @@
         <!-- /.row -->
         
         <hr /><hr /><hr />
-        <h2>Thông Kê Món Ăn</h2>
+        <h1 style="font-size: 24px;">Thông Kê Món Ăn</h2>
         <hr />
-        <div class="container">        		                                
+        <div class="container">
+          <div class="row">
+           <div class="col-md-11">   
+             <div class="box box-primary">
+             <div class="box-header with-border">        		                                
                 <div class="row">
-                		<span style="font-size:20px"><strong>Chọn Loại:</strong></span>
-                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:20px; width:300px; margin-left:20px">
+
+                		<span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
+                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px;  width:200px;; font-size:14px; width:300px; margin-left:30px">
                                 <?php
                                     $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
                                     $rs_s=mysqli_query($link,$sql);
@@ -149,10 +154,10 @@
                                     </option>                           
                                 
                                 <?php } ?>
-                     </select><br /><br /><br />
+                     </select>
                     
-                    <span style="font-size:20px"><strong>Chọn Món:</strong></span>
-                    <select style="width:420px; height:30px; font-size:17px; margin-left:20px"  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
+                    <span style="font-size:16px; margin-left: 50px; "><strong>Chọn Món:</strong></span>
+                    <select style="width:420px; height:30px; font-size:14px; margin-left:20px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
                         <?php
 								$sql="select `id` from `of_food` where `active`=1 and `category_id`={$cid} order by `id` asc";
 								$lay_idmon=mysqli_query($link,$sql);
@@ -178,13 +183,14 @@
                     </select>
                 </div>
                 <hr><br />
-                <div class="row" style="text-align:left">
+                <div class="row center" style="text-align:left; margin-left: 50px; ">
                 	<form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
-                        <strong>Từ:</strong>  <input type="text" style="margin-right:25px" class="datefrom" name="datefrom" readonly />
-                        <strong>Đến:</strong> <input type="text" style="margin-right:25px" class="dateto" name="dateto" readonly />
+                        <strong>Từ:</strong>  <input type="text" style="margin-right:100px;margin-left:30px" class="datefrom" name="datefrom" id="datefrom" readonly />
+                        <strong>Đến:</strong> <input type="text" style="margin-right:70px;margin-left:30px"" class="dateto" name="dateto" id="dateto" readonly />
                         <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
                     </form>    
                 </div>
+            </div></div></div></div></div>
                 <hr>
                 <div class="row">               
                     <div class="col-md-6 col-xs-6 col-sm-6">
@@ -244,56 +250,30 @@
     
 </div>
 <!-- ./wrapper -->
+<?php
+    if(isset($_POST['datefrom']))
+    {
+        $datefrom=$_POST['datefrom'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
+        $y= substr($datefrom,6,4);
+        
+        $fdatefrom="{$d}/{$m}/{$y}";     
+    }
+    if(isset($_POST['dateto']))
+    {
+        $dateto=$_POST['dateto'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
+        $y= substr($dateto,6,4);
+        
+        $fdateto="{$d}/{$m}/{$y}";
 
-<script>
-	$( function() {
-		<!--Config DatePicker Bootstrap-->
-		$.fn.datepicker.dates['en'] = {
-			days: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
-			daysShort: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
-			daysMin: ["CN", "T.2", "T.3", "T.4", "T.5", "T.6", "T.7"],
-			months: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
-			monthsShort: ["Th.1", "Th.2", "Th.3", "Th.4", "Th.5", "Th.6", "Th.7", "Th.8", "Th.9", "Th.10", "Th.11", "Th.12"],
-			titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-			weekStart: 0
-		};
-		
-		$( ".datefrom" ).datepicker({
-			format:'dd/mm/yyyy',			
-		});
-		$( ".dateto" ).datepicker({
-			format:'dd/mm/yyyy',
-		});
-  } );
-</script>
+    }   
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	<?php
-		$date_start = date("Y-m-01");		
-		$date_end = date("Y-m-t", strtotime("+0 month") );
+?>
 
-		$sql="select *,c.`name` as ten_mon, b.`qty` as sl_mon from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$date_end}' and a.`date` >= '{$date_start}' order by b.`qty` desc limit 0,5";
-		$kq=mysqli_query($link,$sql);		
-	?>
-  google.charts.load("current", {packages:["corechart"]});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-	  ['Task', 'Hours per Day'],
-	  <?php
-	  	while($k=mysqli_fetch_assoc($kq)): 
-	  ?>
-	  	['<?=$k['ten_mon']?>', <?=$k['sl_mon']?>],
-	  <?php endwhile ?>
-	]);
-
-	var options = {
-	  title: 'Năm Món Được Đặt Nhiều Nhất Trong Tháng',
-	  is3D: true,
-	};
-
-	var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-	chart.draw(data, options);
-  }
-</script>
