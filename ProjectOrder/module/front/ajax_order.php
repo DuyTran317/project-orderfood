@@ -47,4 +47,11 @@
 		}
 		echo number_format($total);
 	}
+	else
+	//act = 3 lấy location để biết có ở nhà hàng hay k
+	if($act==3)
+	{
+		$_SESSION['latitude'] = $_POST['latitude'];
+		$_SESSION['longitude'] = $_POST['longitude'];
+	}
 ?>
