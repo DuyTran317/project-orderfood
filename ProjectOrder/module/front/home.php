@@ -14,7 +14,7 @@ if(isset($_SESSION['latitude']))
 		$long=$_SESSION['longitude'];
 	  if(	(($lat2_res>$lat)&&($lat<$lat_res)) && (($long2_res>$long)&&($long<$long_res)))
 	  { 
-	  	echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+	  	echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
 		
 	  }
 	}
