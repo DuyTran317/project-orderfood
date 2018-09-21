@@ -124,12 +124,17 @@
         <!-- /.row -->
         
         <hr /><hr /><hr />
-        <h2>Thông Kê Món Ăn</h2>
+        <h1 style="font-size: 24px;">Thông Kê Món Ăn</h2>
         <hr />
-        <div class="container">        		                                
+        <div class="container">
+          <div class="row">
+           <div class="col-md-11">   
+             <div class="box box-primary">
+             <div class="box-header with-border">        		                                
                 <div class="row">
-                		<span style="font-size:20px"><strong>Chọn Loại:</strong></span>
-                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:20px; width:300px; margin-left:20px">
+
+                		<span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
+                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px;  width:200px;; font-size:14px; width:300px; margin-left:30px">
                                 <?php
                                     $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
                                     $rs_s=mysqli_query($link,$sql);
@@ -151,8 +156,8 @@
                                 <?php } ?>
                      </select>
                     
-                    <span style="font-size:20px; margin-left: 50px; "><strong>Chọn Món:</strong></span>
-                    <select style="width:420px; height:30px; font-size:17px; margin-left:20px"  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
+                    <span style="font-size:16px; margin-left: 50px; "><strong>Chọn Món:</strong></span>
+                    <select style="width:420px; height:30px; font-size:14px; margin-left:20px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
                         <?php
 								$sql="select `id` from `of_food` where `active`=1 and `category_id`={$cid} order by `id` asc";
 								$lay_idmon=mysqli_query($link,$sql);
@@ -180,11 +185,12 @@
                 <hr><br />
                 <div class="row center" style="text-align:left; margin-left: 50px; ">
                 	<form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
-                        <strong>Từ:</strong>  <input type="text" style="margin-right:50px;margin-left:20px" class="datefrom" name="datefrom" readonly />
-                        <strong>Đến:</strong> <input type="text" style="margin-right:25px" class="dateto" name="dateto" readonly />
+                        <strong>Từ:</strong>  <input type="text" style="margin-right:100px;margin-left:30px" class="datefrom" name="datefrom" id="datefrom" readonly />
+                        <strong>Đến:</strong> <input type="text" style="margin-right:70px;margin-left:30px"" class="dateto" name="dateto" id="dateto" readonly />
                         <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
                     </form>    
                 </div>
+            </div></div></div></div></div>
                 <hr>
                 <div class="row">               
                     <div class="col-md-6 col-xs-6 col-sm-6">
@@ -244,4 +250,30 @@
     
 </div>
 <!-- ./wrapper -->
+<?php
+    if(isset($_POST['datefrom']))
+    {
+        $datefrom=$_POST['datefrom'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
+        $y= substr($datefrom,6,4);
+        
+        $fdatefrom="{$d}/{$m}/{$y}";     
+    }
+    if(isset($_POST['dateto']))
+    {
+        $dateto=$_POST['dateto'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
+        $y= substr($dateto,6,4);
+        
+        $fdateto="{$d}/{$m}/{$y}";
+
+    }   
+
+?>
 

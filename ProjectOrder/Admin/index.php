@@ -274,7 +274,12 @@ include("moduleAD/{$mod}.php");
     chart.draw(data, options);
   }
 </script>
-
+<script>
+     $( document ).ready(function() {
+       $('input#dateto').val("<?php echo $fdateto; ?>");
+       $('input#datefrom').val("<?php echo $fdatefrom; ?>");
+      });
+ </script>
  <?php unset($_SESSION['success']); ?>
 </body>
 

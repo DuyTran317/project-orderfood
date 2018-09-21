@@ -5,7 +5,7 @@ if(isset($_GET['mahd']))
     if(mysqli_query($link,$sql_del))
     {
     	 
-        header('Location:?mod=bill_list&mes3=3');
+        header('Location:?mod=bill_list');
     }
     else {
         echo $sql_del;

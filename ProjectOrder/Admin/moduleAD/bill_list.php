@@ -1,3 +1,40 @@
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            text: "Bạn có muốn xóa thể loại này",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Xóa!',
+                    'Bạn đã xóa thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=process_bill&mahd="+id;});
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
 <script src="../jqueryUI/jquery-ui-admin.js"></script>
 <?php
     if(isset($_POST['datefrom']))
@@ -23,7 +60,7 @@
         $dateto="{$y}-{$m}-{$d}";
 
     }   
-
+   
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -43,10 +80,10 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-             <div class="row center" style="text-align:left; margin-left: 5px; ">
+             <div class="row center" style="text-align:left; margin-left: 15px; ">
                     <form action="?mod=bill_list" method="post">
-                        <strong>Từ:</strong>  <input type="text" style="margin-right:50px;margin-left:20px" class="datefrom" name="datefrom" readonly />
-                        <strong>Đến:</strong> <input type="text" style="margin-right:25px" class="dateto" name="dateto" readonly />
+                        <strong>Từ:</strong>  <input type="text" id="datefrom" style="margin-right:50px;margin-left:20px;" class="datefrom" name="datefrom" readonly />
+                        <strong>Đến:</strong> <input type="text" style="margin-right:25px;margin-left:20px;" class="dateto" name="dateto" id="dateto" readonly />
                         <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
                     </form>    
                 </div><br>
@@ -69,10 +106,23 @@
                             </thead>
                             <tbody>
                             <?php
-
+                            if(isset($_POST['datefrom'])&&isset($_POST['dateto'])){
+                                 if($datefrom>$dateto)
+                                    {
+                                        echo "<script type='text/javascript'>";
+                                            echo "setTimeout(function () { swal('Lỗi',
+                                                          'Bạn hãy chọn đúng ngày!',
+                                                          'error');";
+                                            echo "},1);</script>";
+                                        }
+                            $sql_bill = "select * from of_bill where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
+                            $i=1;
+                            $kq_bill = mysqli_query($link,$sql_bill);
+                        }else{
                             $sql_bill = "select * from of_bill";
                             $i=1;
                             $kq_bill = mysqli_query($link,$sql_bill);
+                        }
                             while($d_bill=mysqli_fetch_assoc($kq_bill))
                             {
                             ?>
@@ -83,7 +133,7 @@
                                	<td><?= number_format($d_bill['total']) ?></td>
                                	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td> 
                                 <td><?= date("H:i:s", strtotime( $d_bill['date']))?></td> 
-                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a>/<a href="?mod=process_bill&mahd= <?= $d_bill['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa hóa đơn này!')">Xóa</a></td>
+                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_bill['id'] ?>)">Xóa</a></td>
                             </tr>
                             <?php } ?>
 
@@ -101,3 +151,29 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<?php
+    if(isset($_POST['datefrom']))
+    {
+        $datefrom=$_POST['datefrom'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
+        $y= substr($datefrom,6,4);
+        
+        $fdatefrom="{$d}/{$m}/{$y}";     
+    }
+    if(isset($_POST['dateto']))
+    {
+        $dateto=$_POST['dateto'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
+        $y= substr($dateto,6,4);
+        
+        $fdateto="{$d}/{$m}/{$y}";
+
+    }   
+
+?>
