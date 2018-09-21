@@ -20,6 +20,23 @@
 	$res = mysqli_query($link,$sql);
 	$kq = mysqli_fetch_assoc($res);
 ?>	
+<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script type="text/javascript">
+
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadchitiet', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+</script>
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
 <div class="container" >
@@ -79,7 +96,11 @@
                         <a href="<?php if(isset($_GET['back'])) {echo "?mod=home&&id=$id_ban&name=$name_ban";}else{echo "?mod=menu&id=$id_ban&name=$name_ban&cate=$cate"; }?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-lg col-xs-12" style="color: grey">Quay về</button></a>
                     </div>
                     <div class="col-xs-6">
+                    <?php
+						if($kq['active']==1){
+					?>
                     <a href="javascript:window.location='?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12 btn-lg" style="background-color:#F60; color:#FFF">Đặt Món</button></a>
+                    <?php } ?>
                     </div>
                 </div>
         </div>
