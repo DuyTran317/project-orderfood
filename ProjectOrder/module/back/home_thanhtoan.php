@@ -144,7 +144,7 @@
 	$(document).ready(function(){    	
 		$('#datatable').DataTable( {
    			 language: {
-        		url: 'datatable/Vietnamese.json'
+        		url: 'lib/datatable/Vietnamese.json'
     		}
 		});
     });

@@ -48,7 +48,14 @@
 	$rs=mysqli_num_rows($r);
 	if($rs==0)
 	{
-		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '$orderID', '$num_table', '$total', now(), '0')";
+		$sql="select `id` from `of_bill` order by `id` desc limit 0,1";
+		$kq_mhd=mysqli_query($link,$sql);
+		$k_mhd=mysqli_fetch_assoc($kq_mhd);
+		
+		$mh=$k_mhd['id']+1;
+		$mh=date('Ym').$mh;
+			
+		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '{$mh}', '$orderID', '$num_table', '$total', now(), '0')";
 		mysqli_query($link,$sql_ins_thanhtoan);
 	}
 	else 

@@ -14,7 +14,10 @@
 ?>
 
 <style>
-body {
+	th{
+		text-align:center;
+	}
+	body {
     margin: 0;
     padding: 0;
     background-color: #FAFAFA;
@@ -25,10 +28,9 @@ body {
     -moz-box-sizing: border-box;
 }
 .page {
-    width: 21cm;
+    width: 23cm;
     overflow:hidden;
     min-height:auto;
-    padding: 2.5cm;
     margin-left:auto;
     margin-right:auto;
     background: white;
@@ -43,10 +45,6 @@ body {
  @page {
  size: A4;
  margin: 0;
-}
-button {
-    width:100px;
-    height: 24px;
 }
 .header {
     overflow:hidden;
@@ -159,7 +157,7 @@ button {
 }
 @media print {
  @page {
- margin: 0;
+ margin: 5px;
  border: initial;
  border-radius: initial;
  width: initial;
@@ -179,8 +177,16 @@ button {
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
             <div id="content">
                 <div id="page" class="page">
-                    <div class="header">
-                        <div class="company">Nhà Hàng 5 Con Dê</div>
+                    <div class="header" style="margin-top:10px">
+                        <div style="float:left; font-size:18px"><strong>Nhà Hàng 5 Siêu Nhân</strong></div>
+                        <?php
+                            $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                            $kq=mysqli_query($link,$sql);
+                            $k=mysqli_fetch_assoc($kq);
+                        ?>
+                        <div style="float:right; font-size:18px"><strong>Mã Hóa Đơn: <?=$k['code_order']?></strong></div>
+                        <div style="clear:both"></div>
+                        <div style="float:left"><strong>Địa chỉ: 115 Hai Bà Trưng, P.Bến Nghé, Q.1, TP.HCM</strong></div>        
                     </div>
                     <br/>
                     <div class="title">
@@ -203,7 +209,7 @@ button {
                         $rs=mysqli_query($link,$sql);
                         $total=0;
                         $stt=1;
-                        while($r=mysqli_fetch_assoc($rs)):
+                        while($r=mysqli_fetch_assoc($rs)){
 
                             echo "<tr>";
                             echo "<td class=\"cotSTT\">".$stt++."</td>";
@@ -213,28 +219,38 @@ button {
                             echo "<td class=\"cotSo\">".number_format(($r['qty']*$r['price']))."</td>";
                             echo "</tr>";
                             $total += $r['price']*$r['qty'];
-                        endwhile
+                        }
+						
+							//Đọc số tiền ra chữ
+							$thanhtien="";
+							$thanhtien=VndText($total);
+	 
                         ?>
                         <tr>
-                            <td colspan="4" class="tong">Tổng cộng</td>
+                            <td colspan="4" class="tong">Tổng Thành Tiền</td>
                             <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                         </tr>
                     </table>
+                    
+                    <div style="font-size:18px; float:right; margin-top:12px"><strong>Ghi bằng chữ</strong>:&nbsp<?php  echo $thanhtien;?> </div>
+    				<div style="clear:right"></div>
+                    
                     <div class="footer-right">
                         <?php
-                        $sql="select `date` from `of_bill` where `order_id`={$id}";
-                        $kq=mysqli_query($link,$sql);
-                        $k=mysqli_fetch_assoc($kq);
+                            $sql="select `date` from `of_bill` where `order_id`={$id}";
+                            $kq=mysqli_query($link,$sql);
+                            $k=mysqli_fetch_assoc($kq);
                         ?>
-                        <p><strong><strong>Bàn</strong>:<?=$num_table?> - Ngày</strong>: <?=date("d/m/Y",strtotime($k['date']))?></p>
-                        <p>Cảm Ơn Quý Khách. Hẹn Gặp Lại Nhé ^o^</p>
+                        <p><strong>TP.HCM</strong>, <?=date('d/m/Y',strtotime($k['date']));?></p>
+                        <p>Nhân Viên</p>
                     </div>
-
+                    <div class="footer-left">
+                        <p style="margin-top:22px">Khách Hàng</p>
+                    </div> 
 
                 </div>
             </div>
-            <div style="margin-top:10px; text-align:center">
-                <a href="javascript:void(0)" onclick="Print('content')" class="btn btn-success btn-lg">In hóa đơn</a>
+            <div style="margin-top:10px; text-align:center">                
                 <a id="nut_tt" href="?mod=solve_payment&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Thanh Toán" class="btn btn-success btn-lg"></a>
             </div>
         </div>
@@ -253,4 +269,71 @@ button {
 		document.body.innerHTML = restorepage;
 	}
 </script>
+
+<?php
+//Hàm Đọc Số Tiền Ra Chữ
+function VndText($amount)
+{
+         if($amount <=0)
+        {
+            return $textnumber="Tiền phải là số nguyên dương lớn hơn số 0";
+        }
+        $Text=array("không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín");
+        $TextLuythua =array("","nghìn", "triệu", "tỷ", "ngàn tỷ", "triệu tỷ", "tỷ tỷ");
+        $textnumber = "";
+        $length = strlen($amount);
+        
+        for ($i = 0; $i < $length; $i++)
+        $unread[$i] = 0;
+        
+        for ($i = 0; $i < $length; $i++)
+        {               
+            $so = substr($amount, $length - $i -1 , 1);                
+            
+            if ( ($so == 0) && ($i % 3 == 0) && ($unread[$i] == 0)){
+                for ($j = $i+1 ; $j < $length ; $j ++)
+                {
+                    $so1 = substr($amount,$length - $j -1, 1);
+                    if ($so1 != 0)
+                        break;
+                }                       
+                       
+                if (intval(($j - $i )/3) > 0){
+                    for ($k = $i ; $k <intval(($j-$i)/3)*3 + $i; $k++)
+                        $unread[$k] =1;
+                }
+            }
+        }
+        
+        for ($i = 0; $i < $length; $i++)
+        {        
+            $so = substr($amount,$length - $i -1, 1);       
+            if ($unread[$i] ==1)
+            continue;
+            
+            if ( ($i% 3 == 0) && ($i > 0))
+            $textnumber = $TextLuythua[$i/3] ." ". $textnumber;     
+            
+            if ($i % 3 == 2 )
+            $textnumber = 'trăm ' . $textnumber;
+            
+            if ($i % 3 == 1)
+            $textnumber = 'mươi ' . $textnumber;
+            
+            
+            $textnumber = $Text[$so] ." ". $textnumber;
+        }
+        
+        //Phai de cac ham replace theo dung thu tu nhu the nay
+        $textnumber = str_replace("không mươi", "lẻ", $textnumber);
+        $textnumber = str_replace("lẻ không", "", $textnumber);
+        $textnumber = str_replace("mươi không", "mươi", $textnumber);
+        $textnumber = str_replace("một mươi", "mười", $textnumber);
+        $textnumber = str_replace("mươi năm", "mươi lăm", $textnumber);
+        $textnumber = str_replace("mươi một", "mươi mốt", $textnumber);
+        $textnumber = str_replace("mười năm", "mười lăm", $textnumber);
+        
+        return ucfirst($textnumber." đồng chẵn");
+}
+?>
 
