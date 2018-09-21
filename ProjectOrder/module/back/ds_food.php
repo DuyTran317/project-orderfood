@@ -42,22 +42,22 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Pacifico', cursive;">
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
     <div class="container">
         <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        	<a href="?mod=home" class="btn btn-success" style="font-size:20px">Trở Lại</a>
+        	<a href="?mod=home" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
                 <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
             </div>
             <div class="table-responsive"></div>
-            <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
+            <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style=" margin-top:15px; overflow-x: scroll">
               <thead>
-              <tr align="center" bgcolor="#FFFFCC">
-                <td><h4><strong>STT</strong></h4></td>
-                <td><h4><strong>Tên Món</strong></h4></td>
-                <td><h4><strong>Trạng Thái</strong></h4></td>
-                <td><h4><strong>Kiểm Tra</strong></h4></td>
+              <tr>
+                <td align="center">STT</td>
+                <td>Tên Món</td>
+                <td>Trạng Thái</td>
+                <td align="center">Kiểm Tra</td>
               </tr>
               </thead>
               <?php
@@ -68,13 +68,13 @@
                 {
               ?>
               <tr>
-                <td align="center"><h5>
+                <td align="center">
                   <?=$i++?>
-                </h5></td>
-                <td align="center"><h5>&nbsp;&nbsp;
-                  <span style="color: red; font-size: 24px;"><?=$re['name']?></span>
-                </h5></td>
-                <td align="center"><h5>
+                </td>
+                <td align="left">&nbsp;&nbsp;
+                  <span style=" font-size: 20px;"><?=$re['name']?></span>
+                </td>
+                <td align="left"><h5>
 				  <!--act == 0 ngừng kinh doanh  == 1 đang kinh doanh, còn món  == 2 đang kinh doanh, hết món-->
                     <select id="<?=$re['id'] ?>" name='status' onChange="ChangeStatus(<?=$re['id'] ?>)">
 							<option value='0' <?php if($re['active']==0) echo "selected"; ?>>ngừng kinh doanh</option>
@@ -88,7 +88,7 @@
               </tr>
               <?php } ?>
             </table>
-           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px;">Cập Nhật Menu</button></a>
+           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-12 btn btn-lg" style="background-color:#FF0; border-radius: 0px;">Cập Nhật Menu</button></a>
         </div>
         
     </div>
