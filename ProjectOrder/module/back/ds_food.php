@@ -48,7 +48,7 @@
         	<a href="?mod=home" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
-                <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
+                <h2 style=" text-align:center">Danh Sách Món Ăn</h2>
             </div>
             <div class="table-responsive"></div>
             <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style=" margin-top:15px; overflow-x: scroll">
