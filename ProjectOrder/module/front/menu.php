@@ -31,21 +31,9 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function (data) {
+    channel.bind('newbill', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Món Ăn Của Bạn Đã Được Bếp Xác Nhận!!!!',
-                {
-                    body: 'Vui Lòng Đợi Phục Vụ Mang Món Ăn Của Bạn Đến!!',
-                    icon: 'lib/icon/bell.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
@@ -57,21 +45,8 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('delorder', function (data) {
+    channel.bind('delorder', function () {
 		
-        //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Đã Xác Nhận Yêu Cầu!!!!',
-                {
-                    body: data.message,
-                    icon: 'lib/icon/info.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
@@ -83,21 +58,10 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('delfood', function (data) {
+    channel.bind('delfood', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Yêu Cầu Được Thực Hiện!!!!!',
-                {
-                    body: data.message ,
-                    icon: 'lib/icon/info.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
+		
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
@@ -108,7 +72,7 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu', function (data) {
+    channel.bind('loadmenu', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();

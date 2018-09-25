@@ -81,8 +81,6 @@ if(isset($_POST['content']))
     '577033',
     $options
 	);
-	$data['name'] = $name ;
-	$data['message'] = 'Thanh Toán!!!!!';
-	$pusher->trigger('hihi', 'notice', $data);
+	$pusher->trigger('hihi', 'notice', @$data);
 ?>
 

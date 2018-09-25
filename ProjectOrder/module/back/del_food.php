@@ -84,8 +84,7 @@
     '577033',
     $options
 	);
-	$data['message'] = 'Món Ăn Bạn Yêu Cầu Hủy Đã Được Thực Hiện!!!';
-	$pusher->trigger('hihi', 'delfood', $data);
+	$pusher->trigger('hihi', 'delfood', @$data);
 	
 	header("location:?mod=check_order&id=$id&num_table=$num_table");
 ?>
