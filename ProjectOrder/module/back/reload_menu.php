@@ -10,9 +10,7 @@
     '577033',
     $options
 	);
-	$data['name'] = 'Load Menu';
-	$data['message'] = 'Cap Nhat ';
-	$pusher->trigger('hihi', 'loadmenu', $data);
+	$pusher->trigger('hihi', 'loadmenu', @$data);
 	//reload chi tiet
 	$options = array(
 	'cluster' => 'ap1',
@@ -24,9 +22,7 @@
     '577033',
     $options
 	);
-	$data['name'] = 'Load Menu';
-	$data['message'] = 'Cap Nhat ';
-	$pusher->trigger('hihi', 'loadchitiet', $data);
+	$pusher->trigger('hihi', 'loadchitiet', @$data);
 	
 ?>
 <script>

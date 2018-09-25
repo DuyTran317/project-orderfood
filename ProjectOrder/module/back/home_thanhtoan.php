@@ -17,21 +17,9 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('notice', function (data) {
+    channel.bind('notice', function () {
 		
-        //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Bạn nhận được yêu cầu thanh toán',
-                {
-                    body: data.name + ' đã gửi tin nhắn cho bạn:' + data.message,
-                    icon: 'lib/icon/thanhtoan.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
+        //code xử lý khi có dữ liệu từ pushe
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
@@ -120,21 +108,9 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function (data) {
+    channel.bind('newbill', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Bạn nhận đơn hàng mới',
-                {
-                    body: data.message,
-                    icon: 'http://icons.iconarchive.com/icons/icons8/windows-8/128/Ecommerce-Bill-icon.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });

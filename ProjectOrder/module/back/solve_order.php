@@ -75,8 +75,7 @@
     '577033',
     $options
 	);
-	$data['message'] = 'Đơn Hàng Mới!!!';
-	$pusher->trigger('hihi', 'newbill', $data);
+	$pusher->trigger('hihi', 'newbill', @$data);
 ?>
 <script>
 	alert("Hoàn Tất Đơn Hàng!");

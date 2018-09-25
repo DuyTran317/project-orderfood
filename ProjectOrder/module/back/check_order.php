@@ -7,7 +7,7 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('notices', function (data) {
+    channel.bind('notices', function () {
 		
         //code xử lý khi có dữ liệu từ pushe
 		alert('Có thay đổi về đơn hàng vui lòng chỉnh lại!');

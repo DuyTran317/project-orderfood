@@ -30,7 +30,7 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('loadchitiet', function (data) {
+    channel.bind('loadchitiet', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();

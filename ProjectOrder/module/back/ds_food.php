@@ -18,21 +18,7 @@
     });
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
-    channel.bind('notices', function (data) {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		n = new Notification(
-                'Thông Báo!!!!!!',
-                {
-                    body: data.name + ' ' + data.message,
-                    icon: 'lib/icon/cook.png', // Hình ảnh
-                    tag: '' // Đường dẫn 
-                });
-        setTimeout(n.close.bind(n), 10000);
-        // tự động đóng thông báo sau 10s
-        n.onclick = function () {
-            window.location.href = this.tag;
-        }
+    channel.bind('notices', function () {
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });

@@ -167,9 +167,7 @@
 			'577033',
 			$options
 			);
-			$data['name']= $name_ban ;
-			$data['message'] = 'đã gọi món mới!!!';
-			$pusher->trigger('hihi', 'notices', $data);
+			$pusher->trigger('hihi', 'notices', @$data);
 			
 			if(@$orderID != NULL)
 			{
