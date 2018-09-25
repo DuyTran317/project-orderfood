@@ -10,7 +10,7 @@
 		$m= substr($datefrom,3,2);
 		$y= substr($datefrom,6,4);
 		
-		$datefrom="{$y}-{$m}-{$d}";		
+		$datefrom="{$y}-{$m}-{$d} 00:00:00";		
 	}
 	if(isset($_POST['dateto']))
 	{
@@ -21,7 +21,7 @@
 		$m= substr($dateto,3,2);
 		$y= substr($dateto,6,4);
 		
-		$dateto="{$y}-{$m}-{$d}";
+		$dateto="{$y}-{$m}-{$d} 23:59:59";
 	}
 	if(isset($_GET['id_mon']))
 	{
