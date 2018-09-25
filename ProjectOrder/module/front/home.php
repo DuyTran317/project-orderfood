@@ -1,10 +1,10 @@
 <?php 
 //khoanh vùng tọa độ
 $temp= 0.0001;
-$lat_res= 10.8155729 + $temp ;
-$long_res=106.6324576 + $temp;
-$lat2_res= 10.8155729 - $temp ;
-$long2_res= 106.6324576 - $temp;
+$lat_res= 10.8649288 + $temp ;
+$long_res= 106.61940759999999 + $temp;
+$lat2_res= 10.8649288 - $temp ;
+$long2_res= 106.61940759999999 - $temp;
 //ràng buộc phải ở trong nhà hàng
 if(isset($_SESSION['latitude']))
 {
