@@ -58,7 +58,7 @@
                   <?=$i++?>
                 </td>
                 <td align="left">&nbsp;&nbsp;
-                  <span style=" font-size: 20px;"><?=$re['name']?></span>
+                  <span style=" font-size: 20px;"><?=$re['vi_name']?></span>
                 </td>
                 <td align="left"><h5>
 				  <!--act == 0 ngừng kinh doanh  == 1 đang kinh doanh, còn món  == 2 đang kinh doanh, hết món-->
@@ -73,8 +73,8 @@
                 </h5></td>
               </tr>
               <?php } ?>
-            </table>
-           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-12 btn btn-lg" style="background-color:#FF0; border-radius: 0px;">Cập Nhật Menu</button></a>
+            </table><br>
+           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-12 btn btn-lg btn-info"  >Cập Nhật Menu</button></a>
         </div>
         
     </div>

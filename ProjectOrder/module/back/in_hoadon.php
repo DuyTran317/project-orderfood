@@ -170,9 +170,9 @@
 
 </style>
 
-<body  style=" background-image:url(img/front/blur-close-up-cutlery-370984.jpg);">
-<div class="container">
-    <div class="row">
+<body  style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover;">
+<div class="container" style="margin-bottom:50px">
+    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
             <div id="content">
@@ -205,7 +205,7 @@
                             <th>Thành tiền</th>
                         </tr>
                         <?php
-                        $sql="select a.*,b.`name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                        $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
                         $rs=mysqli_query($link,$sql);
                         $total=0;
                         $stt=1;
@@ -250,8 +250,8 @@
 
                 </div>
             </div>
-            <div style="margin-top:10px; text-align:center">                
-                <input type="button" value="In Hóa Đơn" class="btn btn-success btn-lg" onClick="Print('content')">
+            <div style="margin-top:10px; text-align:right">
+                <button  class="btn btn-info btn-lg" onClick="Print('content')"><i class="fas fa-print  fa-1x"></i></button>
             </div>
         </div>
     </div>

@@ -1,4 +1,8 @@
-
+<script>
+    function changeLang(){
+        document.getElementById('form_lang').submit();
+    }
+</script>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-top:10%">
     <div class="row">
@@ -6,10 +10,10 @@
             <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
                 <fieldset>
                     <h2 style="text-align:center; color:#FFF; ">
-                        <strong>Đánh Dấu Số Bàn</strong></h2>
+                        <strong><?=_ENTER?></strong></h2>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" name="user" class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="Email"
+                            <input type="text" name="user" class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="<?=_TABLENO?>"
                                    value="<?php
                                    if(isset($_SESSION['email']))
                                    {
@@ -22,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="password" name="pass"  class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="Mật khẩu"
+                            <input type="password" name="pass"  class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="<?=_PASS?>"
                                    value="<?php
                                    if(isset($_SESSION['email']))
                                    {
@@ -33,7 +37,8 @@
                             >
                         </div>
                     </div>
-                    <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit">Đăng Nhập</button>
+
+                    <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit"><?=_LOGIN?></button>
                 </fieldset>
             </form>
         </div>

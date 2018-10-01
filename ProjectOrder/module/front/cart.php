@@ -21,16 +21,16 @@
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-        <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
+        <h2 style=" text-align: center"><?=_CHOSEN?></h2>
         <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">
         <div class="table-responsive">
 
             <table class="col-md-12 table table-striped">
               <tr style="background-color: #f9d093; font-size: 18px;">
-                <th class="text-left">Món Ăn</th>
-                <th>Giá</td>
-                <th>Số Lượng</th>
-                <th>Tổng Tiền</th>
+                <th class="text-left"><?=_DISH?></th>
+                <th><?=_PRICE?></td>
+                <th><?=_QTY?></th>
+                <th><?=_TOTALPRICE?></th>
                 <th></th>
               </tr>
 
@@ -40,7 +40,7 @@
                 $i=0;
                 if(@count($cart)>0) foreach($cart as $k=>$v)
                 {
-                    $sql="select `name`,`price` from `of_food` where `id`={$k} ";
+                    $sql="select * from `of_food` where `id`={$k} ";
                     $rs=mysqli_query($link,$sql);
                     $r=mysqli_fetch_assoc($rs);
                     $s+=$r['price']*$v;
@@ -48,7 +48,7 @@
 
               <tr style=" height:50px">
                 <td>                  
-                    <?=$r['name']?>
+                    <?=$r[$_SESSION['lang'].'_name']?>
                   </a>
                 </td>
                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
@@ -72,7 +72,7 @@
             </table>
         </div>
             <div class="row">
-                <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
+                <div class="col-xs-4" style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
 
 
                 <div align="right" class="col-xs-8">

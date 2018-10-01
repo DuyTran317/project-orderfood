@@ -1,6 +1,6 @@
 <?php 
 //khoanh vùng tọa độ
-$temp= 0.0001;
+$temp= 1000.0001;
 $lat_res= 10.8642437 + $temp ;
 $long_res= 106.6232474 + $temp;
 $lat2_res= 10.8642437 - $temp ;
@@ -50,6 +50,9 @@ if(isset($_GET['name']))
 		});
 		
 	</script>
+
+
+
 <body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png);  background-size:cover;">
 
 <div class="container" style="margin-top:25%;">
@@ -91,18 +94,18 @@ if(isset($_GET['name']))
             </div>
         <div class="col-sm-6" style="  color: white;">
             <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
-                <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> Tìm Kiếm</p>
+                <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> <?= _SEARCH ?></p>
                <form  method="post" action="?mod=xulytimkiem">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg " placeholder="Tìm món ăn" id="find" name="find" style="font-style:normal">
+                    <input type="text" class="form-control input-lg " placeholder="<?= _FIND ?>" id="find" name="find" style="font-style:normal">
                     <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
                       <button class="btn btn-xs find" type="submit" style="background-color: transparent;" disabled>
-                      Tìm
+                      <?= _SEARCH ?>
                       </button>
                     </span>
                 </div><hr><br><br>
             
-                <p style="font-size: 60px;" align="center">THỂ LOẠI</p>
+                <p style="font-size: 60px;" align="center"><?= _CATE ?></p>
             </div>
             </form>
         </div>
@@ -117,8 +120,9 @@ if(isset($_GET['name']))
     	<a href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>">
         <div class=" col-md-4" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
-                <p style="font-size: 60px;"><?=$r['name']?></p>
-                <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold">Chi tiết</button>
+
+                <p style="font-size: 60px;"><?=$r[$_SESSION['lang'].'_name']?></p>
+                <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold"><?=_DETAIL?></button>
             </div>
         </div>        
     	</a>

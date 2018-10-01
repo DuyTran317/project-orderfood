@@ -18,7 +18,7 @@
     display: none;
 }
 #aubr {
-    word-break: break-all;
+    word-break: break-all
     -webkit-word-wrap: break-word;
     white-space: -moz-pre-wrap;
     white-space: nowrap;
@@ -113,4 +113,10 @@
     background-color: rgba(255, 0, 0,0.5);
     padding: 45% 0px;
     text-align: center;
+}
+.textover {
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

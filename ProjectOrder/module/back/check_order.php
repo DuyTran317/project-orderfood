@@ -40,15 +40,15 @@
                     <h2 style=" text-align: center">Danh Sách Bàn Số <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
                 <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
                         <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
-                </div>
+                </div><br>
                 <?php
-                $sql="select a.*,b.`name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
 				
 				$dem = mysqli_num_rows($rs);				
                 $total=0;
 
-				$sql_timtrung="select a.*, b.`name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
 
 				if($dem > 0 )
 				{
@@ -62,10 +62,10 @@
                             <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
                         </td>
                         <td class="col-xs-9">
-                            <div style="font-size:30px; font-weight: bold;"><?=$r['ten']?>
-                            	<span style="float:right"><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')">X</a></span>
+                            <div style=" font-weight: bold; font-size:25px;"><?=$r['ten']?>
+                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')">X</a></span>
                             </div>
-                            <p style="color: grey"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
+                            <p style="color: grey; font-size:20px;"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
 
                         </td>
                     </tr>
@@ -90,7 +90,7 @@
                 ?>
             </div>
         </div>
-        <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Hoàn Tất" class="btn btn-success btn-lg"></a></div>
+        <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div>
 
         
     </div>
@@ -120,7 +120,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12" style="border-right:1px dotted #000; border-top:1px dashed #000; padding-bottom:10px; padding-top:10px">
                                                     
                         <span style="font-size:22px">Bàn:</span> <span style="color:#C00; font-size:24px"><?=$rs_timtrung['num_table']?></span><br>                 
-                        <span style="font-size:22px">Tên Món:</span> <span style="color:#006; font-size:24px"><?=$rs_timtrung['name']?></span><br>
+                        <span style="font-size:22px">Tên Món:</span> <span style="color:#006; font-size:24px"><?=$rs_timtrung['vi_name']?></span><br>
                         <span style="font-size:22px">Số Lượng:</span> <span style="color:#0C6; font-size:24px; text-decoration:underline">x<?=$rs_timtrung['qty']?></span><hr>
                         
                         <span style="font-size:22px">Chú Thích:</span> <?php echo "<span style='font-size:24px; color:#F09'>".$note."</span>"; ?>

@@ -189,15 +189,15 @@
                     <div class="container">
                         <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
                             <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-                            <h2 style=" text-align: center">Danh Sách Đã Chọn</h2>
+                            <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
                             <form action="" method="post">
                                 <div class="table-responsive">
                                     <table class="col-md-12 table table-striped">
                                         <tr style="background-color: #f9d093; font-size: 18px;">
-                                            <th class="text-left">Món Ăn</th>
-                                            <th>Giá</td>
-                                            <th class="col-xs-2">Số Lượng</th>
-                                            <th>Tổng Tiền</th>
+                                            <th class="text-left"><?=_DISH?></th>
+                                            <th><?=_PRICE?></td>
+                                            <th class="col-xs-2"><?=_QTY?></th>
+                                            <th><?=_TOTALPRICE?></th>
                                         </tr>
                                         <?php
                                         $cart=@$_SESSION['cart'];
@@ -205,7 +205,7 @@
                                         $i=0;
                                         if(@count($cart)>0) foreach($cart as $k=>$v)
                                         {
-                                            $sql="select `name`,`price` from `of_food` where `id`={$k} ";
+                                            $sql="select * from `of_food` where `id`={$k} ";
                                             $rs=mysqli_query($link,$sql);
                                             $r=mysqli_fetch_assoc($rs);
                                             $s+=$r['price']*$v;
@@ -213,7 +213,7 @@
                                             <tr style="height:50px">
                                                 <td>
                                                     <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
-                                                        <?=$r['name']?>
+                                                        <?=$r[$_SESSION['lang'].'_name']?>
                                                     </a>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
@@ -226,13 +226,13 @@
                                  <form action="" method="post">
                                 <div class="row" style="margin-top:30px">
                                     <div style="width:100%">
-                                        <p>Ghi Chú:</p>
-                                        <textarea name="note" rows="4" class="form-control" placeholder="Nhập ghi chú vào đây!!!"></textarea>
+                                        <p><?=_NOTE?>:</p>
+                                        <textarea name="note" rows="4" class="form-control" placeholder="<?=_NOTEHERE?>"></textarea>
                                     </div>
-                                    <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">Thành tiền: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
+                                    <div class="col-xs-4" style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
-                                                <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="Gọi Món">
+                                                <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="<?=_ORDER?>">
                                             </form>
                                         </div>
                                     </div>

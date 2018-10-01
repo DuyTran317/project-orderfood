@@ -24,7 +24,36 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
+<?php
 
+// Set Language variable
+if(isset($_POST['lang']) && !empty($_POST['lang'])){
+    $_SESSION['lang'] = $_POST['lang'];
+
+    if(isset($_SESSION['lang']) && $_SESSION['lang'] != $_POST['lang']){
+        echo "<script type='text/javascript'> location.reload(); </script>";
+    }
+}
+if(isset($_SESSION['lang'])){
+    include "languages/lang_".$_SESSION['lang'].".php";
+}else{
+    $_SESSION['lang']='vi';
+    include "languages/lang_vi.php";
+}
+?>
+<script>
+    function changeLang(){
+        document.getElementById('form_lang').submit();
+    }
+</script>
+
+<!-- Language -->
+<form method='post' action='' id='form_lang'>
+    <select name='lang' onchange='changeLang();' >
+        <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
+        <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
+    </select>
+</form>
 
 <?php
 	$mod=@$_GET['mod'];

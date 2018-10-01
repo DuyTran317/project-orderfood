@@ -87,15 +87,15 @@
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
         <div class="col-md-3" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; overflow-y: scroll;">
-            <h1 align="center"> Bàn <?=$name?></h1>
-            <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;">TRANG CHỦ</a></p>
+            <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
+            <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
            
             <?php 
-				$sql="select `id`,`name` from `of_category` where `active`=1";
+				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
 				while($r_cate=mysqli_fetch_assoc($c)):
 			?>
-             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate['name']?></p></a>
+             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate[$_SESSION['lang'].'_name']?></p></a>
             <?php endwhile ?>
 
             <?php
@@ -119,11 +119,11 @@
                 if(isset($_GET['thanhtoan']) && $r_t['active']==1)
                 {
                     ?>
-                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;">Kiểm Tra</button></a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;">Thanh Toán</button></a>
+                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
 
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>">Danh Sách Đã Chọn</button> </a>
+            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
         <div class="col-md-9" >
             <div class="scrolling-wrapper">
@@ -137,7 +137,7 @@
 			    $number1++;
 			    $number2++;
                 ?>
-                <div class="card" style="  width: 300px; background:white; ">
+                <div class="card"  style="  width: 300px; background:white; ">
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
                         <?php if($kq['active'] == 1) { ?>
                             <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
@@ -148,15 +148,15 @@
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
-                                <h1 style="transform: rotate(-40deg); font-size: 80px; color: #ff9328">Hết Hàng</h1>
+                                <h1 style="transform: rotate(-40deg); font-size: 60px; color: #ff9328"><?=_OUTOFSTOCK?></h1>
                             </div>
                         <?php } ?>
                     </label>
 
-                    <div class="col-xs-12"  >
-                        <h3 align="center" id="aubr"  style="color:#900"><b><?= $kq['name'] ?></b></h3>
+                    <div class="col-xs-12 " >
+                        <h3 align="center" class="textover" style="color:#900;"><b><?= $kq[$_SESSION['lang'].'_name'] ?></b></h3>
                         <div class="row">
-                            <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;">Chi tiết</button></a>
+                            <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
 
                         </div>
                     </div>
