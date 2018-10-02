@@ -25,11 +25,19 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_cat">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại:</label>
+                                    <label for="exampleInputEmail1">Tên Thể Loại VN:</label>
                                     <input type="text" class="form-control"
-                                         required  name="theloai" placeholder="Nhập tên thể loại">
+                                         required  name="vi_theloai" placeholder="Nhập tên thể loại">
                                 </div>
                             </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tên Thể Loại EN:</label>
+                                    <input type="text" class="form-control"
+                                         required  name="en_theloai" placeholder="Nhập tên thể loại bằng tiếng anh">
+                                </div>
+                            </div>
+                            
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự:</label>

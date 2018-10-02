@@ -1,9 +1,13 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 include("connect.php");
-if(isset($_POST['theloai']))
+if(isset($_POST['vi_theloai']))
 {
-    $theloai = $_POST['theloai'];
+    $vi_theloai = $_POST['vi_theloai'];
+    $en_theloai = $_POST['en_theloai'];
     $trangthai = $_POST['trangthai'];
     $thutu = $_POST['thutu'];
 
@@ -13,7 +17,7 @@ if(isset($_POST['theloai']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/cate/{$img_url}");
     }
-     $sql_add = "insert into `of_category` VALUES(NULL,'{$theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
+     $sql_add = "insert into `of_category` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -23,9 +27,10 @@ if(isset($_POST['theloai']))
          echo $sql_add;
         }
 }
-if(isset($_POST['suatheloai']))
+if(isset($_POST['vi_suatheloai']))
 {
-    $theloai = $_POST['suatheloai'];
+    $vi_theloai = $_POST['vi_suatheloai'];
+    $en_theloai = $_POST['en_suatheloai'];
     $trangthai = $_POST['suatrangthai'];
     $thutu = $_POST['suathutu'];
     $id= $_POST['id'];
@@ -36,12 +41,12 @@ if(isset($_POST['suatheloai']))
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/cate/{$img_url}");
 
-        $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
+        $sql_edit="update `of_category` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
         
         mysqli_query($link,$sql_edit);
     }
     else{
-        $sql_edit="update `of_category` set `name`='{$theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
+        $sql_edit="update `of_category` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
         mysqli_query($link,$sql_edit);
     }
     $_SESSION['sua'] = 'suathanhcong';

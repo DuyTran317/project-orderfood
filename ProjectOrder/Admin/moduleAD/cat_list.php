@@ -77,7 +77,8 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình</th>
-                                <th>Tên Thể Loại</th>
+                                <th>Tên Thể Loại VN</th> 
+                                <th>Tên Thể Loại EN</th>
                                 <th>Trạng Thái</th>
                                 <th><a href="?mod=add_cat">Thêm</a></th>
                             </tr>
@@ -94,7 +95,8 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                  <td> <img src="../img/cate/<?php echo $d_cat['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
-                                <td><?= $d_cat['name'] ?></td>
+                                <td><?= $d_cat['vi_name'] ?></td>
+                                <td><?= $d_cat['en_name'] ?></td>
                                 <td><?php if($d_cat['active']==0) {echo "<a href=\"?mod=process_cat&actives={$d_cat['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else
                                     {

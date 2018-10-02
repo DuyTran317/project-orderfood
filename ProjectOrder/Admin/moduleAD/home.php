@@ -150,7 +150,7 @@
                                 ?>
                                                         
                                     <option <?php if($r['id']==$cid) echo'selected'?>
-                                        value="<?=$r['id']?>"><?=$r['name']?>
+                                        value="<?=$r['id']?>"><?=$r['vi_name']?>
                                     </option>                           
                                 
                                 <?php } ?>
@@ -176,7 +176,7 @@
                             ?>
                                                     
                                 <option <?php if($r_pro['id']==$id_mon) echo'selected'?>
-                                    value="<?=$r_pro['id']?>"><?=$r_pro['name']?>
+                                    value="<?=$r_pro['id']?>"><?=$r_pro['vi_name']?>
                                 </option>                           
                             
                         <?php } ?>
@@ -218,7 +218,7 @@
                                                 <tbody>
                                                 <?php
                     
-                                                @$sql_cat = "select *,c.`name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
+                                                @$sql_cat = "select *,c.`vi_name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
                                                 $i=1;
                                                 $kq_cat = mysqli_query($link,$sql_cat);
                                                 while($d_cat=mysqli_fetch_assoc($kq_cat))

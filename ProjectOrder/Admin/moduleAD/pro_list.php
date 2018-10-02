@@ -90,7 +90,7 @@
                                 $kq_cat = mysqli_query($link,$sql_cat);
                                 while($d_cat=mysqli_fetch_assoc($kq_cat))
                                 {?>
-                                <option value="<?= $d_cat['id'] ?>" <?php if($d_cat['id']== $id) echo "selected"; ?>><?= $d_cat['name'] ?></option>
+                                <option value="<?= $d_cat['id'] ?>" <?php if($d_cat['id']== $id) echo "selected"; ?>><?= $d_cat['vi_name'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -108,7 +108,8 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình</th>
-                                <th>Tên</th>
+                                <th>Tên VN</th>
+                                <th>Tên EN</th>
                                 <th>Giá</th>
                                 <th>Trạng Thái</th>
                                 <th><a href="?mod=add_pro">Thêm</a></th>
@@ -123,7 +124,8 @@
                             <tr>
                                 <td><?php echo $i++; ?></td>
                                 <td> <img src="../img/sp/<?php echo $d_pro['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
-                                <td><?php echo $d_pro['name'] ?></td>
+                                <td><?php echo $d_pro['vi_name'] ?></td>
+                                <td><?php echo $d_pro['en_name'] ?></td>
                                 <td> <?php echo number_format($d_pro['price']) ?> VNĐ</td>
                                 <td><?php if($d_pro['active']==0) {echo "<a href=\"?mod=process_pro&actives={$d_pro['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else

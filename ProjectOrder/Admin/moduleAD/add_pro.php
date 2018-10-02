@@ -30,13 +30,17 @@
                             $kq_cat = mysqli_query($link,$sql_cat);
                             while($d_cat=mysqli_fetch_assoc($kq_cat))
                             {?>
-                                <option value="<?= $d_cat['id'] ?>" ><?= $d_cat['name'] ?></option>
+                                <option value="<?= $d_cat['id'] ?>" ><?= $d_cat['vi_name'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Sản Phẩm</label>
-                        <input type="text" class="form-control" id="tensp" required name="tensp" placeholder="Nhập tên sản phẩm">
+                        <label for="exampleInputEmail1">Tên Sản Phẩm VN</label>
+                        <input type="text" class="form-control" id="vi_tensp" required name="vi_tensp" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên Sản Phẩm EN</label>
+                        <input type="text" class="form-control" id="en_tensp" required name="en_tensp" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Giá</label>
@@ -50,10 +54,17 @@
                         <label for="exampleInputPassword1">Thứ tự</label>
                         <input type="number" class="form-control" id="thutu" required name="thutu" placeholder="Nhập thứ tự sản phẩm">
                     </div>
-                    <label for="exampleInputPassword1">Nội Dung</label>
+                    <label for="exampleInputPassword1">Nội Dung VN</label>
                     <div class="form-group">
 
-                    <textarea class="ckeditor" id="noidung" name="noidung" rows="10" cols="50">
+                    <textarea class="ckeditor" id="vi_noidung" name="vi_noidung" rows="10" cols="50">
+                    </textarea>
+                    </div>
+
+                    <label for="exampleInputPassword1">Nội Dung EN</label>
+                    <div class="form-group">
+
+                    <textarea class="ckeditor" id="en_noidung" name="en_noidung" rows="10" cols="50">
                     </textarea>
                     </div>
                     <div class="form-group">
@@ -84,6 +95,12 @@
                             <label>
                                 <input type="radio" name="trangthai" id="optionsRadios2" value="0">
                                 Ẩn
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="trangthai" id="optionsRadios3" value="2">
+                                Hết Hàng
                             </label>
                         </div>
                     </div>

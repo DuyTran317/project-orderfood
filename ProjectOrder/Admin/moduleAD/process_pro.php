@@ -1,12 +1,14 @@
 <?php
-if(isset($_POST['tensp']))
+if(isset($_POST['vi_tensp']))
 {
     $theloai = $_POST['theloai'];
-    $tensp = $_POST['tensp'];
+    $vi_tensp = $_POST['vi_tensp'];
+    $en_tensp = $_POST['en_tensp'];
     $gia = $_POST['gia'];
     $khuyenmai = $_POST['khuyenmai'];
     $thutu = $_POST['thutu'];
-    $noidung = $_POST['noidung'];
+    $vi_noidung = $_POST['vi_noidung'];
+    $en_noidung = $_POST['en_noidung'];
     $trangthai = $_POST['trangthai'];
     $file= $_FILES['image'];
     if($file['name'] != '')
@@ -33,7 +35,8 @@ if(isset($_POST['tensp']))
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
     }
 
-    $sql_img = "insert into of_food  VALUES(NULL ,'$theloai','$tensp','$gia','$khuyenmai','$noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
+    $sql_img = "insert into of_food  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$khuyenmai',
+    '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
         $_SESSION['them'] = 'themthanhcong';
