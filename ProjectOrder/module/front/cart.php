@@ -64,7 +64,7 @@
                     </div>
                 </td>
                 <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
-                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('Bạn muốn xóa khỏi giỏ hàng?')">X</a></td>
+                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')">X</a></td>
 
               </tr>
 

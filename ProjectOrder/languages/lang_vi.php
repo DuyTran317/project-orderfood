@@ -22,3 +22,5 @@ define("_NOTEHERE", "Ghi Chú Ở Đây");
 define("_OUTOFSTOCK", "Hết Hàng");
 define("_CHECK", "Kiểm Tra");
 define("_PAY", "Thanh Toán");
+define("_DELFOOD", "Bạn muốn xóa món ăn này không?");
+define("_UNFOUND", "Món ăn này không có trong nhà hàng");
