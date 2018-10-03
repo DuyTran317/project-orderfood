@@ -1,6 +1,6 @@
 <?php 
 //khoanh vùng tọa độ
-$temp= 1000.0001;
+$temp= 0.0001;
 $lat_res= 10.8642437 + $temp ;
 $long_res= 106.6232474 + $temp;
 $lat2_res= 10.8642437 - $temp ;
@@ -13,13 +13,55 @@ if(isset($_SESSION['latitude']))
 	{
 		$long=$_SESSION['longitude'];
 	  if($lat2_res>$lat||$lat>$lat_res ||$long2_res>$long||$long>$long_res)
-	  { 
-	  	echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+	  {
+	      switch( $_SESSION['lang']) {
+              case "vi":
+                  {
+                      echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+                  }
+              case "en":
+                  {
+                      echo "<script> alert('In order to use this website, you need to be in the restaurant area' ); window.location='?mod=dangnhap' </script>";
+                  }
+          }
 	  }
 	}
-	else echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+	else
+
+        switch( $_SESSION['lang']) {
+            case "vi":
+                {
+                    echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+                }
+            case "en":
+                {
+                    echo "<script> alert('Please allow location permission' ); window.location='?mod=dangnhap' </script>";
+                }
+        }
+
+
+
+
+
+
 }
-else echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+else
+    switch( $_SESSION['lang']) {
+        case "vi":
+            {
+                echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+            }
+        case "en":
+            {
+                echo "<script> alert('Please allow location permission' ); window.location='?mod=dangnhap' </script>";
+            }
+    }
+
+
+
+
+
+
 if(!isset($_SESSION['user_nameban']))
 {
 	header("location:?mod=dangnhap");
@@ -35,8 +77,9 @@ if(isset($_GET['name']))
 ?>
 
 <?php if(isset($_GET['tim'])){?>
+
 	<script>
-		alert("Xin lỗi không có món ăn này trong menu nhà hàng!!!!");
+		alert("<?=_UNFOUND?>");
 		</script>
         <?php } ?>
 <script type="text/javascript">

@@ -152,7 +152,13 @@
 					$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
 					mysqli_query($link,$sql);
 			}
-			echo '<script>alert("Gọi Món Thành Công");</script>';
+			if($_SESSION['lang']=='vi'){
+                echo '<script>alert(" Gọi món thành công ");</script>';
+            }
+			else if ($_SESSION['lang']=='en')
+            {
+                echo '<script>alert(" Your dishes have been successfully ordered ");</script>';
+            }
 			unset($_SESSION['cart']);
 		
 			//Gửi thông điêp để reload trang BẾP
