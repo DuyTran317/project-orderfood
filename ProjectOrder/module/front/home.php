@@ -1,10 +1,11 @@
 <?php 
 //khoanh vùng tọa độ
-$temp= 0.0001;
-$lat_res= 10.8088477+ $temp ;
-$long_res= 106.6657913 + $temp;
-$lat2_res= 10.8088477 - $temp ;
-$long2_res= 106.6657913 - $temp;
+
+$temp= 1211100.0001;
+$lat_res= 10.8642437 + $temp ;
+$long_res= 106.6232474 + $temp;
+$lat2_res= 10.8642437 - $temp ;
+$long2_res= 106.6232474 - $temp;
 //ràng buộc phải ở trong nhà hàng
 if(isset($_SESSION['latitude']))
 {
@@ -172,14 +173,8 @@ if(isset($_GET['name']))
     <?php endwhile ?>    
         
     </div>
-    <button onclick="get11()">Định vị</button>
+    
     </div>
-<script>
-function get11() {
-alert('<?php echo $lat  ?>')
-alert('<?php echo $long ?>')
-}
-</script>
 
 </body>
 </html>

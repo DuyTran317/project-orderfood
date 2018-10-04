@@ -26,7 +26,7 @@ function showPosition(position) {
 
 <?php
 //khoanh vùng tọa độ
-$temp= 0.0001;
+$temp= 11.0001;
 $lat_res= 10.8088477+ $temp ;
 $long_res= 106.6657913 + $temp;
 $lat2_res= 10.8088477 - $temp ;
