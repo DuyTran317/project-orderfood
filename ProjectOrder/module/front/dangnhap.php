@@ -1,3 +1,34 @@
+<?php
+if(isset($_SESSION['latitude']))
+{
+	unset($_SESSION['latitude']);
+}
+if(isset($_SESSION['longitude']))
+{
+	unset($_SESSION['longitude']);
+}
+
+?>
+<script>
+ window.onload=function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+//   alert(position.coords.latitude,position.coords.longitude);
+   $.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{latitude: position.coords.latitude,longitude: position.coords.longitude, act: 3}
+			}).done(function(data){
+				
+				});
+}
+</script>
 <script>
     function changeLang(){
         document.getElementById('form_lang').submit();
