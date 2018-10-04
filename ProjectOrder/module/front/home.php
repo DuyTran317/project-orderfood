@@ -1,6 +1,6 @@
 <?php 
 //khoanh vùng tọa độ
-$temp= 0.0001;
+$temp= 1211100.0001;
 $lat_res= 10.8642437 + $temp ;
 $long_res= 106.6232474 + $temp;
 $lat2_res= 10.8642437 - $temp ;

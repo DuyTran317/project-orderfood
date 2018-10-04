@@ -1,4 +1,6 @@
 <?php
+session_start();
+$lang = $_SESSION['lang'].'_name';
 if(isset($_SESSION['user_idban']))
 {
 	$id_ban=$_SESSION['user_idban'];
@@ -10,7 +12,7 @@ if(isset($_SESSION['user_nameban']))
 if(isset($_POST['find']))
 	{
 	$name=$_POST['find'];
-	$sql="select * from `of_food` where `name`='$name'";
+	$sql="select * from `of_food` where `$lang`='$name'";
 	$rs=mysqli_query($link,$sql);
 	if(mysqli_num_rows($rs)>0)
 		{
