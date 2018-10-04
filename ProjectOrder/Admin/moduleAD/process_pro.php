@@ -121,6 +121,28 @@ if(isset($_POST['suatheloai']))
 
 if(isset($_GET['del']))
 {
+	$sql="select `img_url`,`img_url2`,`img_url3`,`img_url4` from `of_food` where `id`='{$_GET['del']}'";
+	$rs=mysqli_query($link,$sql);
+	$r=mysqli_fetch_assoc($rs);
+	
+	//Xóa hình 
+	if(is_file("../img/sp/{$r['img_url']}"))
+	{
+		unlink("../img/sp/{$r['img_url']}");	
+	}
+	if(is_file("../img/sp/{$r['img_url2']}"))
+	{
+		unlink("../img/sp/{$r['img_url2']}");	
+	}
+	if(is_file("../img/sp/{$r['img_url3']}"))
+	{
+		unlink("../img/sp/{$r['img_url3']}");	
+	}
+	if(is_file("../img/sp/{$r['img_url4']}"))
+	{
+		unlink("../img/sp/{$r['img_url4']}");	
+	}
+	
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {

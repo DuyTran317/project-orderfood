@@ -96,7 +96,7 @@ if(isset($_GET['edit']))
                             <div class="form-group">
 
                                 <label for="exampleInputFile">Hình 4</label><br>
-                                <img src="../img/sp/<?php echo $d_pro['img_url4']; ?> alt="đay là hình" width="50" height="50">
+                                <img src="../img/sp/<?php echo $d_pro['img_url4']; ?>" alt="đay là hình" width="50" height="50">
                                 <input type="file" id="exampleInputFile" name="suaimage4">
                             </div>
 
