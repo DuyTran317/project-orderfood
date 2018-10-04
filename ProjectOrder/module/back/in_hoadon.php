@@ -178,7 +178,7 @@
             <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
-                        <div style="float:left; font-size:18px"><strong>Nhà Hàng 5 Siêu Nhân</strong></div>
+                        <div style="float:left; font-size:18px; margin-left:65px"><strong>Nhà Hàng 5 Siêu Nhân</strong></div>
                         <?php
                             $sql="select * from `of_bill` order by `id` desc limit 0,1";
                             $kq=mysqli_query($link,$sql);
@@ -186,7 +186,7 @@
                         ?>
                         <div style="float:right; font-size:18px"><strong>Mã Hóa Đơn: <?=$k['code_order']?></strong></div>
                         <div style="clear:both"></div>
-                        <div style="float:left"><strong>Địa chỉ: 115 Hai Bà Trưng, P.Bến Nghé, Q.1, TP.HCM</strong></div>        
+                        <div style="float:left"><strong>115 Hai Bà Trưng, P.Bến Nghé, Q.1, TP.HCM</strong></div>        
                     </div>
                     <br/>
                     <div class="title">
@@ -202,7 +202,7 @@
                             <th>Tên</th>
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
-                            <th>Thành tiền</th>
+                            <th>Thành tiền (VND)</th>
                         </tr>
                         <?php
                         $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
@@ -215,7 +215,7 @@
                             echo "<td class=\"cotSTT\">".$stt++."</td>";
                             echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
                             echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
-                            echo "<td class=\"cotSoLuong\" align='center'>x".$r['qty']."</td>";
+                            echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
                             echo "<td class=\"cotSo\">".number_format(($r['qty']*$r['price']))."</td>";
                             echo "</tr>";
                             $total += $r['price']*$r['qty'];
@@ -232,8 +232,8 @@
                         </tr>
                     </table>
                     
-                    <div style="font-size:18px; float:right; margin-top:12px"><strong>Ghi bằng chữ</strong>:&nbsp<?php  echo $thanhtien;?> </div>
-    				<div style="clear:right"></div>
+                    <div style="font-size:18px; float:left; margin-top:12px; margin-left:80px"><strong>Tổng thành tiền (ghi bằng chữ)</strong>:&nbsp<?php  echo $thanhtien;?> </div>
+    				<div style="clear:left"></div>
                     
                     <div class="footer-right">
                         <?php
@@ -251,7 +251,7 @@
                 </div>
             </div>
             <div style="margin-top:10px; text-align:right">
-                <button  class="btn btn-info btn-lg" onClick="Print('content')"><i class="fas fa-print  fa-1x"></i></button>
+                <button  class="btn btn-info btn-lg" onClick="Print('content')"><i class="fas fa-print  fa-1x"></i> In hóa đơn</button>
             </div>
         </div>
     </div>

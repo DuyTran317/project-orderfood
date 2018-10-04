@@ -1,15 +1,11 @@
 <?php
-	if(! isset($_SESSION['admin_id']))
-	{
-		header("location:?mod=dangnhap");	
-	}
 	if(isset($_GET['id']))
 	{
 		$id=$_GET['id'];
 	}
-	if(isset($_GET['num_table']))
+	if(isset($_GET['mhd']))
 	{
-		$num_table=$_GET['num_table'];
+		$mhd=$_GET['mhd'];
 	}
 ?>
 
@@ -17,11 +13,10 @@
 	th{
 		text-align:center;
 	}
-	body {
+	#ok {
     margin: 0;
     padding: 0;
     background-color: #FAFAFA;
-    font: 12pt "Tohoma";
 }
 * {
     box-sizing: border-box;
@@ -35,6 +30,7 @@
     margin-right:auto;
     background: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	font: 12pt "Tohoma";
 }
 .subpage {
     padding: 1cm;
@@ -168,13 +164,13 @@
 }
 }
 
-</style>
+</style>       
 
-<body  style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover;">
+<body>
+<div id="ok"  style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover;">
 <div class="container" style="margin-bottom:50px">
-    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+    <div class="row" style="background-color: #FFF; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
-            <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
             <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
@@ -250,13 +246,14 @@
 
                 </div>
             </div>
-            <div style="margin-top:10px; text-align:center">                
-                <a id="nut_tt" href="?mod=solve_payment&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><input type="button" value="Thanh Toán" class="btn btn-success btn-lg"></a>
+            <div style="margin-top:10px; text-align:center">
+                <button  class="btn btn-primary btn-lg" onClick="Print('content')">In hóa đơn</button>
             </div>
         </div>
     </div>
 </div>
 
+</div>
 </body>
 
 <script>
@@ -264,7 +261,7 @@
 	{
 		var restorepage = document.body.innerHTML;
 		var printcontent = document.getElementById(content).innerHTML;
-		document.body.innerHTML = printcontent;
+		document.getElementById('ok').innerHTML = printcontent;
 		window.print();
 		document.body.innerHTML = restorepage;
 	}

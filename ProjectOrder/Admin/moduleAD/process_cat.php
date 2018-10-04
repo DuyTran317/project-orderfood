@@ -56,6 +56,16 @@ header('Location:?mod=cat_list');
 
 if(isset($_GET['del']))
 {
+	$sql="select `img_url` from `of_category` where `id`='{$_GET['del']}'";
+	$rs=mysqli_query($link,$sql);
+	$r=mysqli_fetch_assoc($rs);
+	
+	//Xóa hình 
+	if(is_file("../img/cate/{$r['img_url']}"))
+	{
+		unlink("../img/cate/{$r['img_url']}");	
+	}
+	
     $sql_del="delete from `of_category` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {

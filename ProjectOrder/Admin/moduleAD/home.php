@@ -277,3 +277,30 @@
 
 ?>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([		
+          ['Task', 'Hours per Day'],
+		  <?php
+		  	$sql="select b.`vi_name` as tensp, a.`qty` as sl_ban from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` limit 0,5";
+			$kq=mysqli_query($link,$sql);
+			while($k=mysqli_fetch_assoc($kq)){
+		  ?>
+          ['<?=$k['tensp']?>',     <?=$k['sl_ban']?>],
+		  <?php } ?>
+
+        ]);
+
+        var options = {
+          title: 'Các Món Đã Bán Nhiều Nhất',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+

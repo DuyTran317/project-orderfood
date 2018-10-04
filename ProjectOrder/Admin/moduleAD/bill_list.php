@@ -84,7 +84,7 @@
                     <form action="?mod=bill_list" method="post">
                         <strong>Từ:</strong>  <input type="text" id="datefrom" style="margin-right:50px;margin-left:20px;" class="datefrom" name="datefrom" readonly />
                         <strong>Đến:</strong> <input type="text" style="margin-right:25px;margin-left:20px;" class="dateto" name="dateto" id="dateto" readonly />
-                        <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
+                        <button type="submit" class="btn btn-success">Tìm Theo Ngày</button>
                     </form>    
                 </div><br>
             <div class="col-xs-12">
@@ -115,25 +115,27 @@
                                                           'error');";
                                             echo "},1);</script>";
                                         }
-                            $sql_bill = "select * from of_bill where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
+                            $sql_bill = "select * from `of_bill` where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
                             $i=1;
                             $kq_bill = mysqli_query($link,$sql_bill);
                         }else{
-                            $sql_bill = "select * from of_bill";
+							
+                            $sql_bill = "select * from `of_bill` where DATE(`date`) =  CURDATE()";
                             $i=1;
-                            $kq_bill = mysqli_query($link,$sql_bill);
-                        }
+                            $kq_bill = mysqli_query($link,$sql_bill); 
+							echo "<span style='font-size:18px;  text-decoration: underline;'>Hóa Đơn Trong Ngày</span><hr>";
+							                        }
                             while($d_bill=mysqli_fetch_assoc($kq_bill))
                             {
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $d_bill['id'] ?></td>
+                                <td><?= $d_bill['code_order'] ?></td>
                                	<td><?= $d_bill['num_table'] ?></td>
                                	<td><?= number_format($d_bill['total']) ?></td>
                                	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td> 
                                 <td><?= date("H:i:s", strtotime( $d_bill['date']))?></td> 
-                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_bill['id'] ?>)">Xóa</a></td>
+                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a></td>
                             </tr>
                             <?php } ?>
 
