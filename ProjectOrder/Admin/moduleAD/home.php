@@ -159,7 +159,7 @@
                     <span style="font-size:16px; margin-left: 50px; "><strong>Chọn Món:</strong></span>
                     <select style="width:420px; height:30px; font-size:14px; margin-left:20px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
                         <?php
-								$sql="select `id` from `of_food` where `active`=1 and `category_id`={$cid} order by `id` asc";
+								$sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
 								$lay_idmon=mysqli_query($link,$sql);
 								$lay_idmon_show=mysqli_fetch_assoc($lay_idmon);
 								
@@ -167,7 +167,7 @@
 								if($id_mon=='') $id_mon = $lay_idmon_show['id'];
 						
 						
-                                $sql="select * from `of_food` where `active`=1 and `category_id`={$cid}";
+                                $sql="select * from `of_food` where `active` !=0 and `category_id`={$cid}";
                                 $rs_pro=mysqli_query($link,$sql);
 								
 								if($cid == '') $cid = $r_s['id'];
@@ -213,6 +213,7 @@
                                                     <th>Tên Thể Loại</th>
                                                     <th>Số Lượng</th>
                                                     <th>Ngày</th>
+                                                    <th>Giờ</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -228,7 +229,8 @@
                                                     <td><?= $i++; ?></td>                                
                                                     <td><?= $d_cat['ten_mon'] ?></td> 
                                                     <td><?= $d_cat['sl_mon'] ?></td>                                
-                                                    <td><?= date('d/m/Y H:i:s',strtotime($d_cat['ngay']))?></td>                                                             
+                                                    <td><?= date('d/m/Y',strtotime($d_cat['ngay']))?></td>
+                                                    <td><?= date('H:i:s',strtotime($d_cat['ngay']))?></td>         
                                                 </tr>
                                                 <?php } ?>
                     
@@ -285,17 +287,17 @@
         var data = google.visualization.arrayToDataTable([		
           ['Task', 'Hours per Day'],
 		  <?php
-		  	$sql="select b.`vi_name` as tensp, a.`qty` as sl_ban from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` limit 0,5";
+		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} limit 0,5";
 			$kq=mysqli_query($link,$sql);
 			while($k=mysqli_fetch_assoc($kq)){
 		  ?>
-          ['<?=$k['tensp']?>',     <?=$k['sl_ban']?>],
+          ['<?=$k['vi_name']?>',     <?=$k['solve']?>],
 		  <?php } ?>
 
         ]);
 
         var options = {
-          title: 'Các Món Đã Bán Nhiều Nhất',
+          title: 'Các Món Đã Bán Nhiều Nhất Của Loại Hàng',
           is3D: true,
         };
 
