@@ -1,5 +1,6 @@
 <?php 
 //khoanh vùng tọa độ
+
 $temp= 1211100.0001;
 $lat_res= 10.8642437 + $temp ;
 $long_res= 106.6232474 + $temp;
@@ -172,9 +173,8 @@ if(isset($_GET['name']))
     <?php endwhile ?>    
         
     </div>
-
+    
     </div>
-
 
 </body>
 </html>
