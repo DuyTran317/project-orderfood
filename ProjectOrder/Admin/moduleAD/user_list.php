@@ -99,7 +99,7 @@
                                             echo "<a href=\"?mod=process_user&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="?mod=edit_user&edit=<?= $d_user['id'] ?>">Sửa</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
+                                    <td><a id="test_xoa" href="#" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

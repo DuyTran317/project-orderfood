@@ -3,12 +3,9 @@
 if(isset($_POST['user']))
 {
 	$user=$_POST['user'];
-	
-	//Mã hóa MK
-	$pass=hash('sha512',$_POST['pass']);
-	
+
 	//Kiem tra bang cach truy van vao DB
-	$sql="select * from `of_user` where `account`='{$user}' and `password`='{$pass}'";
+	$sql="select * from `of_user` where `account`='{$user}' and `active`=1";
 	$rs=mysqli_query($link,$sql);
 	
 	if(mysqli_num_rows($rs)>0)
