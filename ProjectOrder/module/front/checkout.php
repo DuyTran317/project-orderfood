@@ -6,27 +6,16 @@
 <script>
  window.onload=function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
-}
-
-function showPosition(position) {
-//   alert(position.coords.latitude,position.coords.longitude);
-   $.ajax({
-			url:'module/front/ajax_order.php',
-			type:'POST',
-			data:{latitude: position.coords.latitude,longitude: position.coords.longitude, act: 3}
-			}).done(function(data){
-				
-				});
 }
 </script>
 
 <?php
 //khoanh vùng tọa độ
-$temp= 11.0001;
+$temp= 0.0001;
 $lat_res= 10.8088477+ $temp ;
 $long_res= 106.6657913 + $temp;
 $lat2_res= 10.8088477 - $temp ;

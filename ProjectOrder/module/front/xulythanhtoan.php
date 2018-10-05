@@ -16,7 +16,8 @@ if(isset($_POST['content']))
 		$star=$_POST['rate'];
 		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star',now(),'1')";
 		mysqli_query($link,$sql);
-		header("location:?mod=home&id=$id&name=$name");	
+		// header("location:?mod=home&id=$id&name=$name");
+		header("location:?mod=dangnhap");	
 	}	
 	
 }
