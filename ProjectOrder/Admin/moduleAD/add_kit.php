@@ -23,14 +23,14 @@
                     <form role="form" action="?mod=process_kit" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên Account</label>
+                                <label for="exampleInputEmail1">Tên Account <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="ten" required  name="ten" placeholder="Nhập tên bàn">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tên</label>
+                                <label for="exampleInputPassword1">Tên <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="so" required name="so" placeholder="Nhập tên">
                             </div>
-                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <label for="exampleInputPassword1">Mật khẩu <span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
                                     <input type="password" id="pass" name="pass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
                                     
@@ -38,7 +38,7 @@
                                         Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
                                     </div>
                             </div>
-                            <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+                            <label for="exampleInputPassword1">Nhập lại mật khẩu <span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
                                 <span>
                                  <input type="password" id="repass" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu "  />
@@ -46,7 +46,7 @@
                                 <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Danh mục</label>
+                                <label for="exampleInputPassword1">Danh mục <span style="color:#F00" >(*)</span></label>
                                 <select class="form-control" name="cate"  style="border-radius: 5px 5px 5px 5px;">
                                     
                                     <option value="1">Quản Lý Danh Sách Món Ăn</option>

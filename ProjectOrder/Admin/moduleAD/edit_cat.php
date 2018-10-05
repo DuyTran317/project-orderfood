@@ -32,21 +32,21 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_cat">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại VN:</label>
+                                    <label for="exampleInputEmail1">Tên Thể Loại VN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
                                            name="vi_suatheloai" required placeholder="Nhập tên thể loại" value="<?= $d_edit['vi_name']?>">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại EN:</label>
+                                    <label for="exampleInputEmail1">Tên Thể Loại EN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
                                            name="en_suatheloai" required placeholder="Nhập tên thể loại" value="<?= $d_edit['en_name']?>">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Thứ Tự:</label>
+                                    <label for="exampleInputEmail1">Thứ Tự:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
                                            name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
                                 </div>
@@ -54,14 +54,14 @@
                             <div class="box-body">
                                 <div class="form-group">
 
-                                    <label for="exampleInputFile">Hình</label><br>
+                                    <label for="exampleInputFile">Hình <span style="color:#F00" >(*)</span></label><br>
                                     <img src="../img/cate/<?php echo $d_edit['img_url']; ?>" alt="đay là hình" width="50" height="50">
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
                              </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Trạng Thái:</label>
+                                    <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
                                     <div class="radio">
                                         <label class="radio-inline">
                                             <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
