@@ -9,8 +9,12 @@
     overflow: -moz-scrollbars-none;
 }
 .scrolling-wrapper .card {
-    display: inline-block;
-    margin-right: 20px;
+     display: inline-block;
+     margin-right: 20px;
+     border: solid thick #ff9d00;
+     box-shadow: 5px 5px 10px;
+ }
+.scrolling-wrapper2 .card2 {
     border: solid thick #ff9d00;
     box-shadow: 5px 5px 10px;
 }
@@ -89,13 +93,7 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
-.status .status1 {
-    width: 100%;
-    left:0px;
-    height: 100%;
-    position:absolute;
-    transition: 0.2s;
-}
+
 .status .status1 {
     width: 100%;
     left:0px;
@@ -103,6 +101,15 @@
     position:absolute;
     transition: 0.3s;
     padding: 45% 0px;
+    text-align: center;
+}
+.statusmobile .statusmobile1 {
+    width: 100%;
+    left:0px;
+    height: 100%;
+    position:absolute;
+    transition: 0.3s;
+    padding: 10% 0px;
     text-align: center;
 }
 .dark #dark {
@@ -114,9 +121,23 @@
     padding: 45% 0px;
     text-align: center;
 }
+.dark2 #dark2 {
+    width: 100%;
+    left:0px;
+    height: 100%;
+    position:absolute;
+    background-color: rgba(255, 0, 0,0.5);
+    padding: 18% 0px;
+    text-align: center;
+}
 .textover {
     white-space: nowrap;
     width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}.textover2 {
+    white-space: nowrap;
+     min-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
