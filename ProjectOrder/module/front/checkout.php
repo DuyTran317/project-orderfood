@@ -15,7 +15,7 @@
 
 <?php
 //khoanh vùng tọa độ
-$temp= 0.0001;
+$temp= 1.0001;
 $lat_res= 10.8088477+ $temp ;
 $long_res= 106.6657913 + $temp;
 $lat2_res= 10.8088477 - $temp ;
@@ -116,18 +116,18 @@ if(isset($_SESSION['latitude']))
 							foreach($carts as $k => $v)
 							{
 								//Lay gia san pham
-								$sql = 'select `price` from `of_food` where`id`='.$k;
+								$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 								$rs = mysqli_query($link,$sql);
 								$r = mysqli_fetch_assoc($rs);
 								$price = $r['price'];
-								
+								$km = $r['discount'];
 								//Insert
 								$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
 								$r_search = mysqli_query($link,$sql);
 								$rs_search = mysqli_num_rows($r_search);
 								if($rs_search == 0)
 								{
-									$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
+									$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0)";
 									mysqli_query($link,$sql);
 								}
 								else 
@@ -157,10 +157,11 @@ if(isset($_SESSION['latitude']))
 						foreach($carts as $k => $v)
 						{
 							//Lay gia san pham
-							$sql = 'select `price` from `of_food` where`id`='.$k;
+							$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 							$rs = mysqli_query($link,$sql);
 							$r = mysqli_fetch_assoc($rs);
 							$price = $r['price'];
+							$km = $r['discount'];
 							
 							//Insert
 							$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
@@ -168,7 +169,7 @@ if(isset($_SESSION['latitude']))
 								$rs_search = mysqli_num_rows($r_search);
 								if($rs_search == 0)
 								{
-									$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+									$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
 									mysqli_query($link,$sql);
 								}
 								else 
@@ -196,13 +197,14 @@ if(isset($_SESSION['latitude']))
 				foreach($carts as $k => $v)
 				{
 					//Lay gia san pham
-					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 					$rs = mysqli_query($link,$sql);
 					$r = mysqli_fetch_assoc($rs);
 					$price = $r['price'];
+					$km = $r['discount'];
 					
 					//Insert
-					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
 					mysqli_query($link,$sql);
 				}
 				//Insert note vao DB
