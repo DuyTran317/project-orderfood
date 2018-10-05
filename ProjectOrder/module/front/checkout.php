@@ -3,8 +3,60 @@
 		text-align:center;
 	}
 </style>
+<script>
+ window.onload=function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+</script>
 
 <?php
+//khoanh vùng tọa độ
+$temp= 1.0001;
+$lat_res= 10.8088477+ $temp ;
+$long_res= 106.6657913 + $temp;
+$lat2_res= 10.8088477 - $temp ;
+$long2_res= 106.6657913 - $temp;
+//ràng buộc phải ở trong nhà hàng
+if(isset($_SESSION['latitude']))
+{
+	$lat=$_SESSION['latitude'];
+	if(isset($_SESSION['longitude']))
+	{
+		$long=$_SESSION['longitude'];
+	  if($lat2_res>$lat||$lat>$lat_res ||$long2_res>$long||$long>$long_res)
+	  {
+	      switch( $_SESSION['lang']) {
+              case "vi":
+                  {
+                      echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+                  }
+              case "en":
+                  {
+                      echo "<script> alert('In order to use this website, you need to be in the restaurant area' ); window.location='?mod=dangnhap' </script>";
+                  }
+          }
+	  }
+	}
+	else
+
+        switch( $_SESSION['lang']) {
+            case "vi":
+                {
+                    echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
+                }
+            case "en":
+                {
+                    echo "<script> alert('Please allow location permission' ); window.location='?mod=dangnhap' </script>";
+                }
+        }
+
+}
+
+//---------------------------------------------
 	if(! isset($_SESSION['user_idban']))
 	{
 		header("location:?mod=dangnhap");
@@ -25,10 +77,15 @@
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
-	
+	$lang;
+	if($_SESSION['lang']='vi'){
+		$lang='Không có món';
+		
+		}
+	else if($_SESSION['lang']='en'){ $lang='Do not have foods';}
 	if(@count($cart)<=0)
 	{
-		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>Bạn phải chọn sản phẩm</div>";
+		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>$lang</div>";
 		echo"<div style='margin-top:200px'></div>";
 	}
 	else
@@ -59,18 +116,18 @@
 							foreach($carts as $k => $v)
 							{
 								//Lay gia san pham
-								$sql = 'select `price` from `of_food` where`id`='.$k;
+								$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 								$rs = mysqli_query($link,$sql);
 								$r = mysqli_fetch_assoc($rs);
 								$price = $r['price'];
-								
+								$km = $r['discount'];
 								//Insert
 								$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
 								$r_search = mysqli_query($link,$sql);
 								$rs_search = mysqli_num_rows($r_search);
 								if($rs_search == 0)
 								{
-									$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v',0)";
+									$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0)";
 									mysqli_query($link,$sql);
 								}
 								else 
@@ -100,10 +157,11 @@
 						foreach($carts as $k => $v)
 						{
 							//Lay gia san pham
-							$sql = 'select `price` from `of_food` where`id`='.$k;
+							$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 							$rs = mysqli_query($link,$sql);
 							$r = mysqli_fetch_assoc($rs);
 							$price = $r['price'];
+							$km = $r['discount'];
 							
 							//Insert
 							$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
@@ -111,7 +169,7 @@
 								$rs_search = mysqli_num_rows($r_search);
 								if($rs_search == 0)
 								{
-									$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+									$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
 									mysqli_query($link,$sql);
 								}
 								else 
@@ -139,13 +197,14 @@
 				foreach($carts as $k => $v)
 				{
 					//Lay gia san pham
-					$sql = 'select `price` from `of_food` where`id`='.$k;
+					$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
 					$rs = mysqli_query($link,$sql);
 					$r = mysqli_fetch_assoc($rs);
 					$price = $r['price'];
+					$km = $r['discount'];
 					
 					//Insert
-					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v',0)";
+					$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
 					mysqli_query($link,$sql);
 				}
 				//Insert note vao DB
@@ -218,9 +277,7 @@
                                             ?>
                                             <tr style="height:50px">
                                                 <td>
-                                                    <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
                                                         <?=$r[$_SESSION['lang'].'_name']?>
-                                                    </a>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>

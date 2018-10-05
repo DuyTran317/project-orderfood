@@ -74,26 +74,7 @@ if(isset($_SESSION['lang'])){
 				});
     });
 </script>
-<script>
- window.onload=function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
 
-function showPosition(position) {
-//   alert(position.coords.latitude,position.coords.longitude);
-   $.ajax({
-			url:'module/front/ajax_order.php',
-			type:'POST',
-			data:{latitude: position.coords.latitude,longitude: position.coords.longitude, act: 3}
-			}).done(function(data){
-				
-				});
-}
-</script>
 <script type="text/javascript">
     $(function(){
       SyntaxHighlighter.all();
@@ -107,5 +88,16 @@ function showPosition(position) {
         }
       });
     });
+	//luu GPS
+	
+	function showPosition(position) {
+   $.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{latitude: position.coords.latitude,longitude: position.coords.longitude, act: 3}
+			}).done(function(data){
+				
+				});
+}
   </script>
 </html>

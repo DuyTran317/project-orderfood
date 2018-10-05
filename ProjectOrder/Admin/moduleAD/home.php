@@ -1,4 +1,5 @@
 <script src="../jqueryUI/jquery-ui-admin.js"></script>
+<script src="../lib/chartJS/canvasjs.min.js"></script>
 
 <?php
 	if(isset($_POST['datefrom']))
@@ -193,11 +194,11 @@
             </div></div></div></div></div>
                 <hr>
                 <div class="row">               
-                    <div class="col-md-6 col-xs-6 col-sm-6">
+                    <div class="col-md-6 col-xs-12 col-sm-6">
                         <label style="font-size:20px; font-weight:bold; margin-top:18px">Tổng Quan</label>
-                        <div id="piechart_3d" style="height: 500px;"></div>
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                     </div>         
-                    <div class="col-md-6 col-xs-6 col-sm-6">
+                    <div class="col-md-6 col-xs-12 col-sm-6">
                         <section class="content">
                         <label style="font-size:20px; font-weight:bold;">Chi Tiết</label>
                             <div class="row">
@@ -278,31 +279,34 @@
     }   
 
 ?>
+  
+<script>
+window.onload = function() {
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([		
-          ['Task', 'Hours per Day'],
-		  <?php
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		fontSize: 22,
+		fontFamily: "Verdana",		
+		text: "Các Món Bán Chạy Nhất Của Mặt Hàng"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		
+		indexLabel: "{label} {y}",
+		dataPoints: [
+		<?php
 		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} limit 0,5";
 			$kq=mysqli_query($link,$sql);
 			while($k=mysqli_fetch_assoc($kq)){
-		  ?>
-          ['<?=$k['vi_name']?>',     <?=$k['solve']?>],
-		  <?php } ?>
+		 ?>
+			{y: <?=$k['solve']?>, label: "<?=$k['vi_name']?>, SL:"},
+		<?php } ?>
+		]
+	}]
+});
+chart.render();
 
-        ]);
-
-        var options = {
-          title: 'Các Món Đã Bán Nhiều Nhất Của Loại Hàng',
-          is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-      }
-    </script>
-
+}
+</script>  

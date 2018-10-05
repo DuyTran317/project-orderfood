@@ -34,7 +34,7 @@ if(isset($_GET['edit']))
                         ?>
 
                             <div class="form-group">
-                                <label>Thể Loại</label>
+                                <label>Thể Loại <span style="color:#F00" >(*)</span></label>
                                 <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="suatheloai">
                                     <?php
 
@@ -47,30 +47,31 @@ if(isset($_GET['edit']))
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên Sản Phẩm VN</label>
+                                <label for="exampleInputEmail1">Tên Sản Phẩm VN <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="vi_tensp" name="vi_suatensp" placeholder="Nhập tên sản phẩm" value="<?php echo $d_pro['vi_name']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên Sản Phẩm EN</label>
+                                <label for="exampleInputEmail1">Tên Sản Phẩm EN <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="en_tensp" name="en_suatensp" placeholder="Nhập tên sản phẩm" value="<?php echo $d_pro['en_name']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Giá</label>
+                                <label for="exampleInputPassword1">Giá <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="gia" name="suagia" placeholder="Nhập giá sản phẩm" value="<?php echo $d_pro['price']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Khuyến mãi</label>
+                                <label for="exampleInputPassword1">Khuyến mãi <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="khuyenmai" name="suakhuyenmai" placeholder="Nhập khuyến mãi sản phẩm" value="<?php echo $d_pro['discount']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Thứ tự</label>
+                                <label for="exampleInputPassword1">Thứ tự <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="thutu" name="suathutu" placeholder="Nhập thứ tự sản phẩm" value="<?php echo $d_pro['order']; ?>" >
                             </div>
-                            <label for="exampleInputPassword1">Nội Dung VN</label>
+                            <label for="exampleInputPassword1">Nội Dung VN </label>
                             <div class="form-group">
                                 <textarea class="ckeditor" id="vi_noidung" name="vi_suanoidung" rows="10" cols="50"><?php echo $d_pro['vi_desc']; ?>
                                 </textarea>
                             </div>
+                            <label for="exampleInputPassword1">Nội Dung EN </label>
                             <div class="form-group">
                                 <textarea class="ckeditor" id="en_noidung" name="en_suanoidung" rows="10" cols="50"><?php echo $d_pro['en_desc']; ?>
                                 </textarea>
@@ -101,7 +102,7 @@ if(isset($_GET['edit']))
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái:</label>
+                                <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
                                 <div class="radio">
                                     <label class="radio-inline">
                                         <input name="suatrangthai" value="1" <?php if($d_pro['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện

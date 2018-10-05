@@ -73,7 +73,7 @@ elseif(isset($_SESSION['success'] )=='thanhcong') {
         } ?>
 <?php include('moduleAD/menu.php') ?>
 <?php
-include ("moduleAD/connect.php");
+include ("../lib/connect.php");
 $mod=@$_GET['mod'];
 if($mod=='') $mod='home';
 include("moduleAD/{$mod}.php");

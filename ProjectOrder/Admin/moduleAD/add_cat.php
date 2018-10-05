@@ -25,14 +25,14 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_cat">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại VN:</label>
+                                    <label for="exampleInputEmail1">Tên Thể Loại VN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
                                          required  name="vi_theloai" placeholder="Nhập tên thể loại">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại EN:</label>
+                                    <label for="exampleInputEmail1">Tên Thể Loại EN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
                                          required  name="en_theloai" placeholder="Nhập tên thể loại bằng tiếng anh">
                                 </div>
@@ -40,14 +40,14 @@
                             
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Thứ Tự:</label>
+                                    <label for="exampleInputEmail1">Thứ Tự: <span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
                                           required name="thutu" placeholder="Nhập thứ tự">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Hình:</label>
+                                    <label for="exampleInputFile">Hình:<span style="color:#F00" >(*)</span></label>
                                     <input type="file" id="exampleInputFile" name="image">
                                 </div>
                             </div>

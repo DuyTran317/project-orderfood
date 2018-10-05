@@ -23,4 +23,5 @@ define("_OUTOFSTOCK", "Out Of Stock");
 define("_CHECK", "Check Again");
 define("_PAY", "Pay");
 define("_DELFOOD", "Do you want to remove this dish?");
-define("_UNFOUND", "This dish can not be found, try again");
+define("_STT", "No");
+define("_PAYCONFIRM", "You want to pay?");

@@ -32,11 +32,17 @@
 		{
 			$sql_sl = "update `of_order_detail` set `qty` = `qty`+ {$rs['qty']} where `order_id`={$orderID} and `active` = 1 and `food_id` = {$rs['food_id']}";
 			mysqli_query($link,$sql_sl);
+			
+			$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
+			mysqli_query($link,$sql);
 		}
 		else
 		{
 			$sql_sl = "update `of_order_detail` set `active` = 1 where `order_id`={$orderID} and `food_id` = {$rs['food_id']}";
 			mysqli_query($link,$sql_sl);
+			
+			$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
+			mysqli_query($link,$sql);
 		}
 	}
 	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 0";
