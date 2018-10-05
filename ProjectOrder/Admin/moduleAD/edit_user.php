@@ -28,18 +28,18 @@
                     <form role="form" action="?mod=process_user" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên Bàn</label>
+                                <label for="exampleInputEmail1">Tên Bàn <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" readonly="readonly" value="<?= $d_edit['account'] ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Số</label>
+                                <label for="exampleInputPassword1">Số <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="so" readonly="readonly" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>">
                             </div>
 <div class="form-group">
                                 
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái:</label>
+                                <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
                                 <div class="radio">
                                     <label class="radio-inline">
                                         <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
