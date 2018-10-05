@@ -88,10 +88,15 @@ if(isset($_SESSION['latitude']))
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
-	
+	$lang;
+	if($_SESSION['lang']='vi'){
+		$lang='Không có món';
+		
+		}
+	else if($_SESSION['lang']='en'){ $lang='Do not have foods';}
 	if(@count($cart)<=0)
 	{
-		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>Bạn phải chọn sản phẩm</div>";
+		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>$lang</div>";
 		echo"<div style='margin-top:200px'></div>";
 	}
 	else
@@ -281,9 +286,7 @@ if(isset($_SESSION['latitude']))
                                             ?>
                                             <tr style="height:50px">
                                                 <td>
-                                                    <a href="?mod=detail&id=<?=$k?>" style="text-decoration:none;">
                                                         <?=$r[$_SESSION['lang'].'_name']?>
-                                                    </a>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
