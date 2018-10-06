@@ -23,7 +23,7 @@
             <form role="form" action="?mod=process_pro" method="post" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="form-group">
-                        <label>Thể Loại</label>
+                        <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
                         <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="theloai">
                             <?php
                             $sql_cat = "select * from of_category";
@@ -35,23 +35,23 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Sản Phẩm VN</label>
+                        <label for="exampleInputEmail1">Tên Sản Phẩm VN <span style="color:#F00" >(*)</span> </label>
                         <input type="text" class="form-control" id="vi_tensp" required name="vi_tensp" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Sản Phẩm EN</label>
+                        <label for="exampleInputEmail1">Tên Sản Phẩm EN <span style="color:#F00" >(*)</span></label>
                         <input type="text" class="form-control" id="en_tensp" required name="en_tensp" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Giá</label>
+                        <label for="exampleInputPassword1">Giá <span style="color:#F00" >(*)</span> </label>
                         <input type="number" class="form-control" id="gia" required name="gia" placeholder="Nhập giá sản phẩm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Khuyến mãi</label>
+                        <label for="exampleInputPassword1">Khuyến mãi <span style="color:#F00" >(*)</span> </label>
                         <input type="number" class="form-control" id="khuyenmai" required name="khuyenmai" placeholder="Nhập khuyến mãi sản phẩm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Thứ tự</label>
+                        <label for="exampleInputPassword1">Thứ tự <span style="color:#F00" >(*)</span> </label>
                         <input type="number" class="form-control" id="thutu" required name="thutu" placeholder="Nhập thứ tự sản phẩm">
                     </div>
                     <label for="exampleInputPassword1">Nội Dung VN</label>

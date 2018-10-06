@@ -31,18 +31,18 @@
                     <form role="form" action="?mod=process_kit" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Account</label>
+                                <label for="exampleInputEmail1">Account <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="ten" name="suaten" placeholder="Nhập tên bàn" readonly="readonly" value="<?= $d_edit['account'] ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tên</label>
+                                <label for="exampleInputPassword1">Tên <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>" readonly="readonly">
                             </div>
                              <div class="form-group">
                                 <input type="checkbox" name="changePassword" id="changePassword">
                                 <label for="exampleInputPassword1">Nhấn vào đây nếu bạn muốn thay đổi mật khẩu!</label>
                             </div>
-                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <label for="exampleInputPassword1">Mật khẩu <span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
                                     <input type="password" id="pass" class="form-control password" name="suapass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
                                     
@@ -50,7 +50,7 @@
                                         Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
                                     </div>
                             </div>
-                            <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+                            <label for="exampleInputPassword1">Nhập lại mật khẩu <span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
                                 <span>
                                  <input type="password" id="repass" class="form-control password" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu " disabled="" />
@@ -59,7 +59,7 @@
                             </div>
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái:</label>
+                                <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
                                 <div class="radio">
                                     <label class="radio-inline">
                                         <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện

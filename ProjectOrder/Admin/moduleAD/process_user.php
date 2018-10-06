@@ -7,41 +7,13 @@ if(isset($_POST['ten']))
     $name = $_POST['so'];
     $active = $_POST['trangthai'];
     $pass = hash('sha512',$_POST['pass']);
-        $sql_user = "insert into `of_user` VALUES (NULL ,'{$account}','{$pass}','{$name}','{$active}')";
+        $sql_user = "insert into `of_user` VALUES (NULL ,'{$account}','{$name}','{$active}')";
        if(mysqli_query($link,$sql_user))
         {
             $_SESSION['them'] = 'themthanhcong';
             header("location:?mod=user_list");
         }
         else echo $sql_user;
-
-}
-if(isset($_POST['suaten']))
-{
-    $account=$_POST['suaten'];
-    $pass = $_POST['suapass'];
-    $repass = $_POST['suarepass'];
-    $name = $_POST['suaso'];
-    $active = $_POST['suatrangthai'];
-
-        if($pass != '')
-        {
-            if($_POST['changePassword']="on"){
-                
-                    $pass = hash('sha512',$_POST['suapass']);
-                    $sql_edit="update `of_user` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
-                    mysqli_query($link,$sql_edit);
-                     $_SESSION['sua'] = 'suathanhcong';
-                    header("location:?mod=user_list");
-               
-            }
-        }
-        else {
-
-            $sql_edit = "update `of_user` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
-            mysqli_query($link,$sql_edit);
-            header("location:?mod=user_list&mes2=2");
-        }
 
 }
 

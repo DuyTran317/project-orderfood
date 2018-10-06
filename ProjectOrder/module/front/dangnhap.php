@@ -33,7 +33,7 @@ if(isset($_SESSION['longitude']))
                         <strong><?=_ENTER?></strong></h2>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" name="user" class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="<?=_TABLENO?>"
+                            <input type="text" name="user" class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%; height:100px; text-align:center" placeholder="<?=_TABLENO?>"
                                    value="<?php
                                    if(isset($_SESSION['email']))
                                    {
@@ -43,20 +43,7 @@ if(isset($_SESSION['longitude']))
                                    ?>"
                             >
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input type="password" name="pass"  class="form-control input-lg" required style = "background-color:transparent; color:white; border-radius:0px; max-width:100%" placeholder="<?=_PASS?>"
-                                   value="<?php
-                                   if(isset($_SESSION['email']))
-                                   {
-                                       echo $_SESSION['email'];
-                                       unset($_SESSION['email']);
-                                   }
-                                   ?>"
-                            >
-                        </div>
-                    </div>
+                    </div>                    
 
                     <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit"><?=_LOGIN?></button>
                 </fieldset>

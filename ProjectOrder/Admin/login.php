@@ -35,7 +35,7 @@ ob_start();
 <body class="hold-transition login-page">
 
 <?php
-include ("moduleAD/connect.php");
+include ("../lib/connect.php");
 if(isset($_POST['account']))
 {
 
