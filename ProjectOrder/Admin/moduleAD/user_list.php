@@ -58,8 +58,8 @@
             <small>Bàn</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bàn</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="danh-sach-ban.html">Bàn</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -77,7 +77,7 @@
                                 <th>Tên Bàn</th>
                                 <th>Số</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="?mod=add_user">Thêm</a></th>
+                                <th><a href="them-ban.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -99,7 +99,7 @@
                                             echo "<a href=\"?mod=process_user&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a id="test_xoa" href="#" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
+                                    <td><a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

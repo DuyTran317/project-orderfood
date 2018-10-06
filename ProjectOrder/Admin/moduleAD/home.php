@@ -41,7 +41,7 @@
            Tổng Quan
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
             <li class="active">Tổng quan</li>
         </ol>
     </section>
@@ -67,7 +67,7 @@
                     <div class="icon">
                         <i class="ion ion-clipboard"></i>
                     </div>
-                    <a href="?mod=user_list" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-ban.html" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -87,7 +87,7 @@
                     <div class="icon">
                         <i class="ion ion-compose"></i>
                     </div>
-                    <a href="?mod=bill_list" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-hoa-don.html" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -102,7 +102,7 @@
                     <div class="icon">
                         <i class="ion ion-ios-star"></i>
                     </div>
-                    <a href="?mod=com_list" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-danh-gia.html" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

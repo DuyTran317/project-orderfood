@@ -44,8 +44,8 @@
             <small>Đánh Giá</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=com_list">Đánh giá</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-danh-gia.html">Đánh giá</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -90,7 +90,7 @@
                                         ?></td>
                                         <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
                                         <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
-                                    <td><a id="test_xoa" href="#" onclick="hoi(<?= $d_com['id'] ?>)">Xóa</a></td>
+                                    <td><a id="test_xoa" onclick="hoi(<?= $d_com['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

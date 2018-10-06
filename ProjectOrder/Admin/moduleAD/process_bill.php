@@ -5,7 +5,7 @@ if(isset($_GET['mahd']))
     if(mysqli_query($link,$sql_del))
     {
     	 
-        header('Location:?mod=bill_list');
+        header('Location:danh-sach-hoa-don.html');
     }
     else {
         echo $sql_del;

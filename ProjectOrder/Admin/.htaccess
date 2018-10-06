@@ -5,11 +5,18 @@ RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list"
 RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list" 
 RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
 RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"
+RewriteRule "^danh-sach-danh-gia.html$" "?mod=com_list"
+RewriteRule "^danh-sach-ban.html$" "?mod=user_list"
 RewriteRule "^trang-chu.html$" "?mod=home"
 
 
 
 RewriteRule "^them-the-loai.html$" "?mod=add_cat"
+RewriteRule "^them-san-pham.html$" "?mod=add_pro"
+RewriteRule "^them-ban.html$" "?mod=add_user"
+RewriteRule "^them-bep-thanhtoan.html$" "?mod=add_kit"
 
 
-RewriteRule "^(.*)-(.*).html$" "?mod=edit_cat&edit=$2"
+RewriteRule "^(.*)-(.*).html$" "?mod=$1&edit=$2"
+#RewriteRule "^trang-chu-(.*).html$" "?mod=home&id_mon=$2"
+

@@ -19,10 +19,11 @@ if(isset($_POST['suapass']))
                     if($cate ==1)
                     {
                         $_SESSION['sua'] = 'suathanhcong';
-                        header("location:?mod=ad_list");
+                        header("location:danh-sach-admin.html");
                     }else
                     {
-                        header("location:?mod=edit_ad&edit={$_POST['suaid']}&key2=5");
+                         $_SESSION['sua'] = 'suathanhcong';
+                        header("location:edit_ad-{$_POST['suaid']}.html");
                     }
                     
                 

@@ -10,12 +10,13 @@
             <ol class="breadcrumb">
                 <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
                 <li><a href="?mod=cat_list">Thể loại</a></li>
-                <li class="active">Sửa</li>
+                <li class="active">Sửa</li> <?php echo $_GET['edit']; ?>
             </ol>
         </section>
     <?php
     if(isset($_GET['edit'])) {
         $edit = $_GET['edit'];
+
     }
     $sql_edit = "select * from of_category where id=$edit";
     $kq_edit = mysqli_query($link,$sql_edit);

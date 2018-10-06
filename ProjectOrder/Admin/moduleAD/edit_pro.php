@@ -12,8 +12,8 @@ if(isset($_GET['edit']))
             <small>Sản phẩm</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=pro_list">Sản phẩm</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-san-pham.html">Sản phẩm</a></li>
             <li class="active">Sửa</li>
         </ol>
     </section>
@@ -91,7 +91,7 @@ if(isset($_GET['edit']))
                             <div class="form-group">
 
                                 <label for="exampleInputFile">Hình 3</label><br>
-                                <img src="../img/sp/<?php echo $d_pro['img_url3']; ?>" alt="đay là hình" width="50" height="50">
+                               <img src="../img/sp/<?php echo $d_pro['img_url3']; ?>" alt="đay là hình" width="50" height="50">
                                 <input type="file" id="exampleInputFile" name="suaimage3">
                             </div>
                             <div class="form-group">

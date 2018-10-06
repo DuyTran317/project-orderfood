@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-   <?php if(isset($_GET['key2'] )==5) {
+   <?php if(isset($_SESSION['sua'] )== 'suathanhcong') {
             echo "<script type='text/javascript'>";
             echo "setTimeout(function () { swal('Sửa Thành Công',
                           'Bạn sửa thành công',
@@ -17,8 +17,11 @@
              echo $d['name'] ?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=user_list"><?php echo $d['name'] ?></a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+          <?php
+            $cate = $_SESSION['catead'];
+          if($cate  ==1) {  ?> 
+            <li><a href="danh-sach-admin.html"><?php echo $d['name'] ?></a></li>      <?php }?>
             <li class="active">Sửa</li>
         </ol>
     </section>

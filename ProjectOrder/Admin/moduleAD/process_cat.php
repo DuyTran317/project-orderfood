@@ -21,7 +21,7 @@ if(isset($_POST['vi_theloai']))
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
-         header('Location:?mod=cat_list');
+         header('Location:danh-sach-the-loai.html');
      }
         else {
          echo $sql_add;
@@ -50,7 +50,7 @@ if(isset($_POST['vi_suatheloai']))
         mysqli_query($link,$sql_edit);
     }
     $_SESSION['sua'] = 'suathanhcong';
-header('Location:?mod=cat_list');
+header('Location:danh-sach-the-loai.html');
 }
 
 
@@ -69,7 +69,7 @@ if(isset($_GET['del']))
     $sql_del="delete from `of_category` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
-        header('Location:?mod=cat_list');
+        header('Location:danh-sach-the-loai.html');
     }
     else {
         echo $sql_del;
@@ -80,11 +80,11 @@ if(isset($_GET['actives']))
 {
     $sql = "update `of_category` set `active`=1 where id='{$_GET['actives']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=cat_list");
+    header("location:danh-sach-the-loai.html");
 }
 if(isset($_GET['activeh']))
 {
     $sql = "update `of_category` set `active`=0 where id='{$_GET['activeh']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=cat_list");
+    header("location:danh-sach-the-loai.html");
 }

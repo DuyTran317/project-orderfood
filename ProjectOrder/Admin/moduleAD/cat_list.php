@@ -59,8 +59,8 @@
             <small>Thể loại</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=cat_list">Thể Loại</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -80,7 +80,7 @@
                                 <th>Tên Thể Loại VN</th> 
                                 <th>Tên Thể Loại EN</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="add_cat.html">Thêm</a></th>
+                                <th><a href="them-the-loai.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -103,7 +103,7 @@
                                         echo "<a href=\"?mod=process_cat&activeh={$d_cat['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="?mod=edit_cat&edit=<?= $d_cat['id'] ?>">Sửa</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_cat['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)">Xóa</a></td>
                             </tr>
                             <?php } ?>
 

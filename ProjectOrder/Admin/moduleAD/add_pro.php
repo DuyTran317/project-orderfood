@@ -7,8 +7,8 @@
                 <small>Sản phẩm</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-                <li><a href="?mod=pro_list">Sản phẩm</a></li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+                <li><a href="danh-sach-san-pham.html">Sản phẩm</a></li>
                 <li class="active">Thêm</li>
             </ol>
         </section>

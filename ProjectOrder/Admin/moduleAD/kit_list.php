@@ -58,8 +58,8 @@
             <small>Bếp - Thanh Toán</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="?mod=kit_list">Bếp - Thanh Toán</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="danh-sach-bep-thanh-toan.html">Bếp - Thanh Toán</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -77,7 +77,7 @@
                                 <th>Account</th>
                                 <th>Tên</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="?mod=add_kit">Thêm</a></th>
+                                <th><a href="them-bep-thanhtoan.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -99,7 +99,7 @@
                                             echo "<a href=\"?mod=process_kit&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="?mod=edit_kit&edit=<?= $d_user['id'] ?>">Sửa</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
+                                    <td><a href="edit_kit-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

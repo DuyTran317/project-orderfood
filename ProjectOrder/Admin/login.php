@@ -85,7 +85,7 @@ if(isset($_POST['account']))
 
             }
 
-            header("location:index.php?mod=home");
+            header("location:trang-chu.html");
 
         }
     }

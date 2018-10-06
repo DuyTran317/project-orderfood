@@ -13,7 +13,7 @@ if(isset($_POST['ten']))
        if(mysqli_query($link,$sql_user))
         {
             $_SESSION['them'] = 'themthanhcong';
-            header("location:?mod=kit_list");
+            header("location:danh-sach-bep-thanh-toan.html");
         }
         else echo $sql_user;
 
@@ -34,7 +34,7 @@ if(isset($_POST['suaten']))
                     $sql_edit="update `of_manage` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
                     mysqli_query($link,$sql_edit);
                      $_SESSION['sua'] = 'suathanhcong';
-                    header("location:?mod=kit_list");
+                    header("location:danh-sach-bep-thanh-toan.html");
                 
             }
         }
@@ -42,7 +42,7 @@ if(isset($_POST['suaten']))
 
             $sql_edit = "update `of_manage` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
             mysqli_query($link,$sql_edit);
-            header("location:?mod=kit_list");
+            header("location:danh-sach-bep-thanh-toan.html");
         }
 
 }
@@ -51,20 +51,20 @@ if(isset($_GET['actives']))
 {
     $sql = "update `of_manage` set `active`=1 where id='{$_GET['actives']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=kit_list");
+    header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['activeh']))
 {
     $sql = "update `of_manage` set `active`=0 where id='{$_GET['activeh']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=kit_list");
+    header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['del']))
 {
     $sql_del= "delete from of_manage WHERE id={$_GET['del']}";
     if(mysqli_query($link,$sql_del))
     {
-        header("location:?mod=kit_list&mes3=3");
+        header("location:danh-sach-bep-thanh-toan.html");
     }
     else echo $sql_del;
 }

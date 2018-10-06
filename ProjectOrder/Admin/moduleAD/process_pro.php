@@ -35,12 +35,12 @@ if(isset($_POST['vi_tensp']))
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
     }
 
-    $sql_img = "insert into of_food  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$khuyenmai',
+    $sql_img = "insert into of_food(`id`,`category_id`,`vi_name`,`en_name`,`price`,`discount`,`vi_desc`,`en_desc`,`img_url`,`img_url2`,`img_url3`,`img_url4`,`order`,`active`)  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$khuyenmai',
     '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
         $_SESSION['them'] = 'themthanhcong';
-        header("Location:?mod=pro_list");
+        header("Location:danh-sach-san-pham.html");
     }
     else echo $sql_img;
 }
@@ -79,10 +79,10 @@ if(isset($_POST['suatheloai']))
         unlink($hinhcu);
     }
 
-    if($file2['name']!= '')
+      if($file2['name']!= '')
     {
         $img_url2= mt_rand().$file2['name'];
-        $sql_img2 = ",`img_url2`='{$img_url2}'";
+        $sql_img2= ",`img_url2`='{$img_url2}'";
         copy($file2['tmp_name'],"../img/sp/{$img_url2}");
 
         $sql_edit .= $sql_img2;
@@ -90,10 +90,10 @@ if(isset($_POST['suatheloai']))
         unlink($hinhcu);
     }
 
-    if($file3['name']!= '')
+     if($file3['name']!= '')
     {
         $img_url3= mt_rand().$file3['name'];
-        $sql_img3 = ",`img_url3`='{$img_url3}'";
+        $sql_img3= ",`img_url3`='{$img_url3}'";
         copy($file3['tmp_name'],"../img/sp/{$img_url3}");
 
         $sql_edit .= $sql_img3;
@@ -116,7 +116,7 @@ if(isset($_POST['suatheloai']))
     $sql_edit .= "where id=$edit";
     mysqli_query($link,$sql_edit);
      $_SESSION['sua'] = 'suathanhcong';
-    header("location:?mod=pro_list");
+    header("location:danh-sach-san-pham.html");
 }
 
 if(isset($_GET['del']))
@@ -146,7 +146,7 @@ if(isset($_GET['del']))
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
-        header("location:?mod=pro_list");
+        header("location:danh-sach-san-pham.html");
     }
     else echo $sql_del;
 }
@@ -154,11 +154,11 @@ if(isset($_GET['actives']))
 {
     $sql = "update `of_food` set `active`=1 where id='{$_GET['actives']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=pro_list");
+    header("location:danh-sach-san-pham.html");
 }
 if(isset($_GET['activeh']))
 {
     $sql = "update `of_food` set `active`=0 where id='{$_GET['activeh']}' ";
     mysqli_query($link,$sql);
-    header("location:?mod=pro_list");
+    header("location:danh-sach-san-pham.html");
 }

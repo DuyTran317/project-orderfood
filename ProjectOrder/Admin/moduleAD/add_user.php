@@ -7,8 +7,8 @@
             <small>Bàn</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bàn</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-ban.html">Bàn</a></li>
             <li class="active">Thêm</li>
         </ol>
     </section>

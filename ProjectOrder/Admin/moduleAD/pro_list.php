@@ -59,8 +59,8 @@
             <small>Sản Phẩm</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
-            <li><a href="?mod=pro_list">Sản phẩm</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+            <li><a href="danh-sach-san-pham.html">Sản phẩm</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -112,7 +112,7 @@
                                 <th>Tên EN</th>
                                 <th>Giá</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="?mod=add_pro">Thêm</a></th>
+                                <th><a href="them-san-pham.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -133,7 +133,7 @@
                                         echo "<a href=\"?mod=process_pro&activeh={$d_pro['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="?mod=edit_pro&edit=<?php echo $d_pro['id'] ?>">Sửa</a>/<a id="test_xoa" href="#" onclick="hoi(<?=$d_pro['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_pro-<?php echo $d_pro['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">Xóa</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>

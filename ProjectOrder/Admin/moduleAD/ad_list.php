@@ -21,8 +21,8 @@
             <small>Admin</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="?mod=user_list">Admin</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="danh-sach-admin.html">Admin</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -55,7 +55,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><a href="?mod=edit_ad&edit=<?= $d_user['id'] ?>">Sửa</a></td>
+                                    <td><a href="edit_ad-<?= $d_user['id'] ?>.html">Sửa</a></td>
                                 </tr>
                             <?php } ?>
 

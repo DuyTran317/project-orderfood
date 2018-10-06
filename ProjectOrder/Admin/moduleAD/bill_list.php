@@ -71,8 +71,8 @@
             <small>Hóa Đơn</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="">Hóa Đơn</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-hoa-don.html">Hóa Đơn</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col-xs-12">
              <div class="row center" style="text-align:left; margin-left: 15px; ">
-                    <form action="?mod=bill_list" method="post">
+                    <form action="danh-sach-hoa-don.html" method="post">
                         <strong>Từ:</strong>  <input type="text" id="datefrom" style="margin-right:50px;margin-left:20px;" class="datefrom" name="datefrom" readonly />
                         <strong>Đến:</strong> <input type="text" style="margin-right:25px;margin-left:20px;" class="dateto" name="dateto" id="dateto" readonly />
                         <button type="submit" class="btn btn-success">Tìm Theo Ngày</button>

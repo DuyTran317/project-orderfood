@@ -10,8 +10,8 @@
              echo $d['name'] ?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bàn</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-bep-thanh-toan.html">Bếp và Thanh Toán</a></li>
             <li class="active">Sửa</li>
         </ol>
     </section>

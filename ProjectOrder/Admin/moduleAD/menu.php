@@ -75,7 +75,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="?mod=edit_ad&edit=<?php echo  $_SESSION['idad'] ?>" class="btn btn-default btn-flat">Tài Khoản</a>
+                                <a href="edit_ad-<?php echo  $_SESSION['idad'] ?>.html" class="btn btn-default btn-flat">Tài Khoản</a>
                             </div>
                             <div class="pull-right">
                                 <a href="?mod=logout" class="btn btn-default btn-flat">Logout</a>
@@ -127,7 +127,7 @@
           if($cate ==3 || $cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Quản lý món ăn</li>
           <li class="treeview">
-                <a href="#">
+                <a href="javascript:void(0)">
                     <i class="fa fa-pie-chart"></i>
                     <span>Thể loại</span>
                     <span class="pull-right-container">
@@ -139,7 +139,7 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#">
+                <a href="javascript:void(0)">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
                     <span>Sản phẩm</span>
                     <span class="pull-right-container">
@@ -164,7 +164,7 @@
                 </a>
             </li>
             <li>
-                <a href='com_list.html'>
+                <a href='danh-sach-danh-gia.html'>
                     <i class='fa fa-comments' aria-hidden='true'></i>
                     <span>Đánh Giá</span>
                     <span class='pull-right-container'>
@@ -178,7 +178,7 @@
           if($cate ==5 || $cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Quản lý bàn</li>
             <li class="treeview">
-                <a href="#">
+                <a href="javascript:void(0)">
                     <i class="fa fa-tablet" aria-hidden="true"></i>
                     <span>Bàn</span>
                     <span class="pull-right-container">
@@ -186,8 +186,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="user_list.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="add_user.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-ban.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-ban.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
         <?php }?>
@@ -197,7 +197,7 @@
           if($cate ==4 || $cate  ==1) {  ?>
            <li class="header" style="text-align:center">Quản lý Bếp và Thanh toán</li>
             <li class="treeview">
-                <a href="#">
+                <a href="javascript:void(0)">
                     <i class="fa fa-free-code-camp" aria-hidden="true"></i>
                     <span>User Bếp - Thanh Toán</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
@@ -205,7 +205,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="danh-sach-bep-thanh-toan.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="add_kit.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="them-bep-thanhtoan.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
         <?php } ?>

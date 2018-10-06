@@ -7,8 +7,8 @@
             <small>Bếp - Thanh Toán</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="?mod=user_list">Bếp - Thanh Toán</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li><a href="danh-sach-bep-thanh-toan.html">Bếp - Thanh Toán</a></li>
             <li class="active">Thêm</li>
         </ol>
     </section>
