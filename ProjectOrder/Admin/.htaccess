@@ -1,0 +1,15 @@
+RewriteEngine on
+RewriteRule "index.html" "index.php"
+RewriteRule "^danh-sach-hoa-don.html$" "?mod=bill_list" 
+RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list" 
+RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list" 
+RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
+RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"
+RewriteRule "^trang-chu.html$" "?mod=home"
+
+
+
+RewriteRule "^them-the-loai.html$" "?mod=add_cat"
+
+
+RewriteRule "^(.*)-(.*).html$" "?mod=edit_cat&edit=$2"
