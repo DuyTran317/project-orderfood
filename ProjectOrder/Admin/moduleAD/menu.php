@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index.php" class="logo">
+    <a href="trang-chu.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>O</b>rder food</span>
         <!-- logo for regular state and mobile devices -->
@@ -116,7 +116,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header" style="text-align:center">Bảng điều khiển</li>
             <li>
-                <a href="?mod=home">
+                <a href="trang-chu.html">
                     <i class="fa fa-dashboard"></i> <span>Tổng quan </span>
                     <span class="pull-right-container"></span>
                 </a>
@@ -134,8 +134,8 @@
               <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=cat_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_cat"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-the-loai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-the-loai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -146,8 +146,8 @@
               <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=pro_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_pro"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-san-pham.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-san-pham.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li><?php }?>
             
@@ -156,7 +156,7 @@
           if($cate ==2 || $cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Phân tích</li> 
            <li>
-                <a href='?mod=bill_list'>
+                <a href='danh-sach-hoa-don.html'>
                     <i class='fa fa-first-order' aria-hidden='true'></i>
                     <span>Hóa đơn</span>
                     <span class='pull-right-container'>
@@ -164,7 +164,7 @@
                 </a>
             </li>
             <li>
-                <a href='?mod=com_list'>
+                <a href='com_list.html'>
                     <i class='fa fa-comments' aria-hidden='true'></i>
                     <span>Đánh Giá</span>
                     <span class='pull-right-container'>
@@ -186,8 +186,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=user_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_user"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="user_list.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="add_user.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
         <?php }?>
@@ -204,8 +204,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=kit_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="?mod=add_kit"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-bep-thanh-toan.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="add_kit.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
         <?php } ?>
@@ -215,7 +215,7 @@
           if($cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Quản lý và phần quyền</li>
             <li>
-                <a href='?mod=ad_list'>
+                <a href='danh-sach-admin.html'>
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <span>ADMIN</span>
                     <span class="pull-right-container"></span>

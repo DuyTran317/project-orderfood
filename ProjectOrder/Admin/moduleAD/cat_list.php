@@ -80,7 +80,7 @@
                                 <th>Tên Thể Loại VN</th> 
                                 <th>Tên Thể Loại EN</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="?mod=add_cat">Thêm</a></th>
+                                <th><a href="add_cat.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
