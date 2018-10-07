@@ -88,16 +88,5 @@ if(isset($_SESSION['lang'])){
         }
       });
     });
-	//luu GPS
-	
-	function showPosition(position) {
-   $.ajax({
-			url:'module/front/ajax_order.php',
-			type:'POST',
-			data:{latitude: position.coords.latitude,longitude: position.coords.longitude, act: 3}
-			}).done(function(data){
-				
-				});
-}
   </script>
 </html>

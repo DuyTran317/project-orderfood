@@ -14,49 +14,6 @@
 </script>
 
 <?php
-//khoanh vùng tọa độ
-$temp= 1.0001;
-$lat_res= 10.8088477+ $temp ;
-$long_res= 106.6657913 + $temp;
-$lat2_res= 10.8088477 - $temp ;
-$long2_res= 106.6657913 - $temp;
-//ràng buộc phải ở trong nhà hàng
-if(isset($_SESSION['latitude']))
-{
-	$lat=$_SESSION['latitude'];
-	if(isset($_SESSION['longitude']))
-	{
-		$long=$_SESSION['longitude'];
-	  if($lat2_res>$lat||$lat>$lat_res ||$long2_res>$long||$long>$long_res)
-	  {
-	      switch( $_SESSION['lang']) {
-              case "vi":
-                  {
-                      echo "<script> alert('Bạn Cần Ở Trong Nhà Hàng Để sử dụng' ); window.location='?mod=dangnhap' </script>";
-                  }
-              case "en":
-                  {
-                      echo "<script> alert('In order to use this website, you need to be in the restaurant area' ); window.location='?mod=dangnhap' </script>";
-                  }
-          }
-	  }
-	}
-	else
-
-        switch( $_SESSION['lang']) {
-            case "vi":
-                {
-                    echo "<script> alert('Bạn Cần Cho Phép Truy Cập Vị Trí Để sử dụng' ); window.location='?mod=dangnhap' </script>";
-                }
-            case "en":
-                {
-                    echo "<script> alert('Please allow location permission' ); window.location='?mod=dangnhap' </script>";
-                }
-        }
-
-}
-
-//---------------------------------------------
 	if(! isset($_SESSION['user_idban']))
 	{
 		header("location:?mod=dangnhap");

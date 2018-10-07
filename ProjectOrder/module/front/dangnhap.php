@@ -1,23 +1,3 @@
-<?php /*?><?php
-if(isset($_SESSION['latitude']))
-{
-	unset($_SESSION['latitude']);
-}
-if(isset($_SESSION['longitude']))
-{
-	unset($_SESSION['longitude']);
-}
-
-?> <?php */?>
-<script>
- window.onload=function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-</script>
 <script>
     function changeLang(){
         document.getElementById('form_lang').submit();
