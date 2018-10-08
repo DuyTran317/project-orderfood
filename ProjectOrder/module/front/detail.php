@@ -1,4 +1,10 @@
-<?php 
+<style>
+    html,
+    body{
+        height: 100%;
+    }
+</style>
+<?php
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
@@ -40,8 +46,9 @@
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
 <div class="container" >
-        <div class="col-xs-12">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 10%; background-color: white">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -74,14 +81,16 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        </div>
+    </div>
 
-        <div class="col-xs-12" style="background-color:#FFF; padding:10px;">
+        <div class="col-md-10 col-md-offset-1" style="background-color:#FFF; padding:10px;">
             <div class="row">
                 <div class="col-xs-6">
                     <h1 style="color:#F00"> <?php echo number_format($kq['price']) ?> VND </h1>
                 </div>
                 <div class="col-xs-6" align="right">
-                    <div class="input-group col-sm-5 col-lg-3">
+                    <div class="input-group col-sm-5 col-md-4">
                         <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='quantity' style="border: none; background-color: transparent; color:white"/></span>
                         <input type="text" class="form-control text-center" id="qty" min="1" value="1"  name='quantity' disabled style="border-color: #F60; color: #F60;">
                         <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='quantity' style="border: none; background-color: transparent; color: white"/></span>
@@ -89,8 +98,9 @@
                     </div>
                 </div>
             </div>
+
             <h2 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h2>
-            <i id="aubr"><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i>
+            <div><i><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i></div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">
                         <a href="<?php if(isset($_GET['back'])) {echo "?mod=home&&id=$id_ban&name=$name_ban";}else{echo "?mod=menu&id=$id_ban&name=$name_ban&cate=$cate"; }?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>

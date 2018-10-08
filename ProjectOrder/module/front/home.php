@@ -34,9 +34,9 @@ if(isset($_GET['name']))
 
 
 
-<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png);  background-size:cover;">
+<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png); height: 100% ">
 
-<div class="container" style="margin-top:25%;">
+<div class="container" style="margin-top:5%;">
     <div class="row">
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
@@ -91,7 +91,7 @@ if(isset($_GET['name']))
             </form>
         </div>
     </div>
-   
+   <br>
     <div class="row">
     <?php
 		$sql="select * from `of_category` where `active`=1";

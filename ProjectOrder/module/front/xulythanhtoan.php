@@ -22,8 +22,13 @@ if(isset($_POST['content']))
 	
 }
 ?>
-
-<body style=" font-family: 'Anton', sans-serif; background-image:url(img/front/blur-close-up-cutlery-370984.jpg); background-position:center; background-size:cover; background-attachment:fixed">
+<style>
+    html,
+    body{
+        height: 100%;
+    }
+</style>
+<body style=" font-family: 'Anton', sans-serif; background-image:url(img/front/close-up-cooking-cuisine-958545.jpg); background-position:center; background-size:cover; background-attachment:fixed">
 <div class="container" style="margin-top:50px; font-size:20px; font-weight:100">
     <div class="row" >
         <div class="col-md-8 col-md-offset-2" style="background-color: white; padding: 20px;">
@@ -33,7 +38,7 @@ if(isset($_POST['content']))
                         <table>
                             <tr>
                                 <td>
-                                    Đánh giá nhà hàng:
+                                    <?=_REVIEWUS?>:
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -56,12 +61,12 @@ if(isset($_POST['content']))
 
                     </label>
                 </div>
-                <textarea name="content" id="comment" class="form-group" style="width:100%; height:100px" placeholder="Vui lòng cho biết ý kiến của bạn"></textarea>
+                <textarea name="content" id="comment" class="form-group" style="width:100%; height:100px" placeholder="<?=_OPINION?>"></textarea>
 
 
 
                 <br/><br/>
-                <div align="right"><button id="submit_comment" class="btn btn-success btn-lg" style="clear:left">Gửi</button></div>
+                <div align="right"><button id="submit_comment" class="btn btn-success btn-lg" style="clear:left"><?=_SEND?></button></div>
 
 
             </form>

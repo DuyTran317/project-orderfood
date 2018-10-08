@@ -48,12 +48,15 @@ if(isset($_SESSION['lang'])){
 </script>
 
 <!-- Language -->
-<form method='post' action='' id='form_lang'>
-    <select name='lang' onchange='changeLang();' >
-        <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
-        <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
-    </select>
-</form>
+<div align="right">
+    <form method='post' action='' id='form_lang'>
+        <select name='lang' onchange='changeLang();' >
+            <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
+            <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
+        </select>
+    </form>
+</div>
+
 
 <?php
 	$mod=@$_GET['mod'];

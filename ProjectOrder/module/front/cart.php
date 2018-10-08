@@ -16,6 +16,11 @@
 	th{
 		text-align:center;
 	}
+    html,
+    body{
+        height: 100%;
+    }
+
 </style>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">

@@ -23,7 +23,7 @@ if(isset($_POST['user']))
 		$_SESSION['email']=$user;
 ?>		
 		<script> 
-			alert('Sai tài khoản hoặc mật khẩu!'); 
+			alert('<?=_WRONGTABLENO?>');
 			window.location="?mod=dangnhap";
         </script>
 		

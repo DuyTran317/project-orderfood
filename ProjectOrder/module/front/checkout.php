@@ -201,13 +201,14 @@
 		}
 
 ?>
-
-        <div class="container" style="background:url(img/logo/bg.jpg); margin-top:30px;">
+        <html style="height: 100%;">
+        <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif; height: 100%;">
+        <div class="container" style=" margin-top:30px;">
             <div class="row">
 
                 <div class="col-md-8 col-sm-8 col-xs-12">
 
-                    <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
+
                     <div class="container">
                         <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
                             <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
@@ -248,7 +249,7 @@
                                     <div style="width:100%">
                                         <p><?=_NOTE?>:</p>
                                         <textarea name="note" rows="4" class="form-control" placeholder="<?=_NOTEHERE?>"></textarea>
-                                    </div>
+                                    </div><br><br>
                                     <div class="col-xs-4" style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
@@ -261,7 +262,10 @@
 
 
                     </div>
+
                     </form>
                 </div>
+
                 </body>
+        </html>
 <?php } ?>

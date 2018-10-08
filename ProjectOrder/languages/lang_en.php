@@ -25,3 +25,7 @@ define("_PAY", "Pay");
 define("_DELFOOD", "Do you want to remove this dish?");
 define("_STT", "No");
 define("_PAYCONFIRM", "You want to pay?");
+define("_WRONGTABLENO", "You entered the wrong tables number");
+define("_REVIEWUS", "Review us");
+define("_OPINION", "Feel free to give us your opinion");
+define("_SEND", "Send");

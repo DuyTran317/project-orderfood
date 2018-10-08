@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ; " onload="startTime()">
+<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " onload="startTime()">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -126,9 +126,15 @@
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
 
-        <div class="col-xs-12 hidden-md hidden-lg hidden-sm" style="color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  ">
-            <a href="#demo" data-toggle="collapse" align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?></h3></a>
-            <div id="demo" class="collapse">
+        <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
+
+            <div  class="collapse in" style="cursor: pointer">
+                <div data-toggle="collapse" data-parent="#demo" href="#demo">
+                    <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a></span>
+
+                </div>
+
+                <div class="collapse out" id="demo">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
 
                 <?php
@@ -138,6 +144,7 @@
                     ?>
                     <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate[$_SESSION['lang'].'_name']?></p></a>
                 <?php endwhile ?>
+                </div>
             </div>
 
 
@@ -163,7 +170,7 @@
                 {
                     ?>
                     <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('Bạn chắc muốn thanh toán chứ?')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
 
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
@@ -343,5 +350,10 @@
 
         });
     }
+    $('.collapse').on('shown.bs.collapse', function() {
+        $(this).parent().find(".caret-down").removeClass("caret-down").addClass("caret-up");
+    }).on('hidden.bs.collapse', function() {
+        $(this).parent().find(".caret-up").removeClass("caret-up").addClass("caret-down");
+    });
 </script>
 </html>
