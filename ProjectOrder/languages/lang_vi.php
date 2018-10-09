@@ -29,3 +29,6 @@ define("_WRONGTABLENO", "Bạn nhập sai số bàn");
 define("_REVIEWUS", "Đánh giá nhà hàng chúng tôi");
 define("_OPINION", "Vui lòng cho ý kiến của bạn");
 define("_SEND", "Gửi");
+define("_LANGUAGE", "Ngôn ngữ");
+define("_OPTION", "Tùy chọn");
+define("_LOGOUT", "Đăng xuất");

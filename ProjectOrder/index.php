@@ -49,14 +49,22 @@ if(isset($_SESSION['lang'])){
 
 <!-- Language -->
 <div align="right">
-    <form method='post' action='' id='form_lang'>
-        <select name='lang' onchange='changeLang();' >
+
+</div>
+<div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
+    <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
+     <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
+        <select name='lang' onchange='changeLang();' style="color: black">
             <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
             <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
         </select>
     </form>
+     </a>
+    <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"> </i><?=_LOGOUT?></button> </div>
 </div>
 
+<span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()">&#9776; <?=_OPTION?></span>
 
 <?php
 	$mod=@$_GET['mod'];
@@ -76,6 +84,13 @@ if(isset($_SESSION['lang'])){
 			 }
 				});
     });
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
 </script>
 
 <script type="text/javascript">
