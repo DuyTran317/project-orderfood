@@ -26,7 +26,7 @@ define("_DELFOOD", "Bạn muốn xóa món ăn này không?");
 define("_STT", "STT");
 define("_PAYCONFIRM", "Bạn muốn thanh toán chứ?");
 define("_WRONGTABLENO", "Bạn nhập sai số bàn");
-define("_REVIEWUS", "Đánh giá nhà hàng chúng tôi");
+define("_REVIEWUS", "Đánh giá");
 define("_OPINION", "Vui lòng cho ý kiến của bạn");
 define("_SEND", "Gửi");
 define("_LANGUAGE", "Ngôn ngữ");

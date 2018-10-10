@@ -64,7 +64,7 @@ if(isset($_SESSION['lang'])){
     <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"> </i><?=_LOGOUT?></button> </div>
 </div>
 
-<span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()">&#9776; <?=_OPTION?></span>
+<span style="font-size:30px;cursor:pointer; color: white; margin-left: 20px; margin-top: 10px;" onclick="openNav()">&#9776; <?=_OPTION?></span>
 
 <?php
 	$mod=@$_GET['mod'];

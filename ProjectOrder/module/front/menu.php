@@ -1,4 +1,10 @@
-	<?php 
+<style>
+    html,
+    body{
+        height: 100%;
+    }
+</style>
+	<?php
 	if(!isset($_SESSION['user_nameban']))
 	{
 		header("location:?mod=dangnhap");

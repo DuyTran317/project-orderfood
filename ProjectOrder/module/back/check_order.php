@@ -37,7 +37,7 @@
         <div class="table-responsive">
         <a href="?mod=home" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
-                    <h2 style=" text-align: center">Danh Sách Bàn Số <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
+                    <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
                 <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
                         <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
                 </div><br>
@@ -63,7 +63,7 @@
                         </td>
                         <td class="col-xs-9">
                             <div style=" font-weight: bold; font-size:25px;"><?=$r['ten']?>
-                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')">X</a></span>
+                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
                             </div>
                             <p style="color: grey; font-size:20px;"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
 
@@ -90,59 +90,57 @@
                 ?>
             </div>
         </div>
-        <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div>
+        <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
 
-        
-    </div>
-	
-	<h1 style="text-align:center; color:#FFF; margin-top:30px; font-weight:bold">Danh Sách Các Món Trùng</h1>
-    
-    <div class="container-fluid" style="background-color:#FFC; margin-top:10px">
-    <div class="row">	
-    <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
-			$r_timtrung=mysqli_query($link,$sql_timtrung);
-			$orderId1=0;$note="";			
-			while($rs_timtrung=mysqli_fetch_assoc($r_timtrung))
-			{
-				if($orderId1 != $rs_timtrung['order_id'])
-				{
-					
-					$orderId1=$rs_timtrung['order_id'];
-					
-					$sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
-					$r_takenotes = mysqli_query($link,$sql_takenotes);
-					$note="";
-					while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))
-					{
-						$note.= $rs_takenotes['note']; 
-					}
-	 ?>     		     				
+        <div class="row" style="margin-top: 40px;">
+            <h1 style="text-align:center; font-weight:bold">Danh Sách Các Món Trùng</h1>
+            <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
+            $r_timtrung=mysqli_query($link,$sql_timtrung);
+            $orderId1=0;$note="";
+            while($rs_timtrung=mysqli_fetch_assoc($r_timtrung))
+            {
+                if($orderId1 != $rs_timtrung['order_id'])
+                {
+
+                    $orderId1=$rs_timtrung['order_id'];
+
+                    $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
+                    $r_takenotes = mysqli_query($link,$sql_takenotes);
+                    $note="";
+                    while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))
+                    {
+                        $note.= $rs_takenotes['note'];
+                    }
+                    ?>
                     <div class="col-md-4 col-sm-4 col-xs-12" style="border-right:1px dotted #000; border-top:1px dashed #000; padding-bottom:10px; padding-top:10px">
-                                                    
-                        <span style="font-size:22px">Bàn:</span> <span style="color:#C00; font-size:24px"><?=$rs_timtrung['num_table']?></span><br>                 
+
+                        <span style="font-size:22px">Bàn:</span> <span style="color:#C00; font-size:24px"><?=$rs_timtrung['num_table']?></span><br>
                         <span style="font-size:22px">Tên Món:</span> <span style="color:#006; font-size:24px"><?=$rs_timtrung['vi_name']?></span><br>
                         <span style="font-size:22px">Số Lượng:</span> <span style="color:#0C6; font-size:24px; text-decoration:underline">x<?=$rs_timtrung['qty']?></span><hr>
-                        
+
                         <span style="font-size:22px">Chú Thích:</span> <?php echo "<span style='font-size:24px; color:#F09'>".$note."</span>"; ?>
-                    </div>    
-     <?php
-				}
-				else
-				{
-					echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
-				}
-			}
-			/*echo "<span style='font-size:22px'>".$note."</span>";*/
-    ?> 
-    	</div>
+                    </div>
+                    <?php
+                }
+                else
+                {
+                    echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
+                }
+            }
+            /*echo "<span style='font-size:22px'>".$note."</span>";*/
+            ?>
         </div>
-    <?php			
-		}		
-		else
-		{
-			echo"Không còn sản phẩm nào của bàn này!";
-		}
-	?>
+    </div>
+    <?php
+    }
+    else
+    {
+        echo"Không còn sản phẩm nào của bàn này!";
+    }
+    ?>
+    </div>
+	
+
 </div>
 </body>
 

@@ -125,129 +125,128 @@
         <!-- /.row -->
         
         <hr /><hr /><hr />
-        <h1 style="font-size: 24px;">Thông Kê Món Ăn</h2>
-        <hr />
-        <div class="container">
-          <div class="row">
-           <div class="col-md-11">   
-             <div class="box box-primary">
-             <div class="box-header with-border">        		                                
-                <div class="row">
 
-                		<span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
-                        <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px;  width:200px;; font-size:14px; width:300px; margin-left:30px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 style="font-size: 24px; font-weight: bold">Thông Kê Món Ăn</h1>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
+                            <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
                                 <?php
-                                    $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
-                                    $rs_s=mysqli_query($link,$sql);
-                                    $r_s=mysqli_fetch_assoc($rs_s);
-                                    
-                                    $cid = @$_GET['cid'];
-                                    if($cid == '') $cid = $r_s['id'];
-                                    
-                                    
-                                    $sql="select * from `of_category` where `active`=1 order by `order` asc";
-                                    $rs=mysqli_query($link,$sql);
-                                    while($r=mysqli_fetch_assoc($rs)){
-                                ?>
-                                                        
+                                $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
+                                $rs_s=mysqli_query($link,$sql);
+                                $r_s=mysqli_fetch_assoc($rs_s);
+
+                                $cid = @$_GET['cid'];
+                                if($cid == '') $cid = $r_s['id'];
+
+
+                                $sql="select * from `of_category` where `active`=1 order by `order` asc";
+                                $rs=mysqli_query($link,$sql);
+                                while($r=mysqli_fetch_assoc($rs)){
+                                    ?>
+
                                     <option <?php if($r['id']==$cid) echo'selected'?>
-                                        value="<?=$r['id']?>"><?=$r['vi_name']?>
-                                    </option>                           
-                                
+                                            value="<?=$r['id']?>"><?=$r['vi_name']?>
+                                    </option>
+
                                 <?php } ?>
-                     </select>
-                    
-                    <span style="font-size:16px; margin-left: 50px; "><strong>Chọn Món:</strong></span>
-                    <select style="width:420px; height:30px; font-size:14px; margin-left:20px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value">
-                        <?php
-								$sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
-								$lay_idmon=mysqli_query($link,$sql);
-								$lay_idmon_show=mysqli_fetch_assoc($lay_idmon);
-								
-								$id_mon = @$_GET['id_mon'];
-								if($id_mon=='') $id_mon = $lay_idmon_show['id'];
-						
-						
+                            </select>
+                            <br><br>
+                            <span style="font-size:16px; margin-left: 15px; "><strong>Chọn Món:</strong></span>
+                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
+                                <?php
+                                $sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
+                                $lay_idmon=mysqli_query($link,$sql);
+                                $lay_idmon_show=mysqli_fetch_assoc($lay_idmon);
+
+                                $id_mon = @$_GET['id_mon'];
+                                if($id_mon=='') $id_mon = $lay_idmon_show['id'];
+
+
                                 $sql="select * from `of_food` where `active` !=0 and `category_id`={$cid}";
                                 $rs_pro=mysqli_query($link,$sql);
-								
-								if($cid == '') $cid = $r_s['id'];
-								
+
+                                if($cid == '') $cid = $r_s['id'];
+
                                 while($r_pro=mysqli_fetch_assoc($rs_pro)){
-                            ?>
-                                                    
-                                <option <?php if($r_pro['id']==$id_mon) echo'selected'?>
-                                    value="<?=$r_pro['id']?>"><?=$r_pro['vi_name']?>
-                                </option>                           
-                            
-                        <?php } ?>
-                    </select>
-                </div>
-                <hr><br />
-                <div class="row center" style="text-align:left; margin-left: 50px; ">
-                	<form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
-                        <strong>Từ:</strong>  <input type="text" style="margin-right:100px;margin-left:30px" class="datefrom" name="datefrom" id="datefrom" readonly />
-                        <strong>Đến:</strong> <input type="text" style="margin-right:70px;margin-left:30px"" class="dateto" name="dateto" id="dateto" readonly />
-                        <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
-                    </form>    
-                </div>
-            </div></div></div></div></div>
-                <hr>
-                <div class="row">               
-                    <div class="col-md-6 col-xs-12 col-sm-6">
-                        <label style="font-size:20px; font-weight:bold; margin-top:18px">Tổng Quan</label>
-                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-                    </div>         
-                    <div class="col-md-6 col-xs-12 col-sm-6">
-                        <section class="content">
-                        <label style="font-size:20px; font-weight:bold;">Chi Tiết</label>
-                            <div class="row">
-                                <div class="col-xs-12">
-                    
-                                    <div class="box">
-                    
-                                        <div class="box-body">
-                                            <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Tên Thể Loại</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Ngày</th>
-                                                    <th>Giờ</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php
-                    
-                                                @$sql_cat = "select *,c.`vi_name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
-                                                $i=1;
-                                                $kq_cat = mysqli_query($link,$sql_cat);
-                                                while($d_cat=mysqli_fetch_assoc($kq_cat))
-                                                {
-                                                ?>
-                                                <tr>
-                                                    <td><?= $i++; ?></td>                                
-                                                    <td><?= $d_cat['ten_mon'] ?></td> 
-                                                    <td><?= $d_cat['sl_mon'] ?></td>                                
-                                                    <td><?= date('d/m/Y',strtotime($d_cat['ngay']))?></td>
-                                                    <td><?= date('H:i:s',strtotime($d_cat['ngay']))?></td>         
-                                                </tr>
-                                                <?php } ?>
-                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- /.box-body -->
-                                    </div>
-                                    <!-- /.box -->
-                                </div>
-                                <!-- /.col -->
+                                    ?>
+
+                                    <option <?php if($r_pro['id']==$id_mon) echo'selected'?>
+                                            value="<?=$r_pro['id']?>"><?=$r_pro['vi_name']?>
+                                    </option>
+
+                                <?php } ?>
+                            </select>
+                            <br><br>
+                            <div  STYLE="margin-left: 15px;">
+                                <form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
+                                    <strong>Từ:</strong>  <input type="text" class="datefrom" name="datefrom" id="datefrom" readonly /> &nbsp; - &nbsp;
+                                    <strong>Đến:</strong> <input type="text" class="dateto" name="dateto" id="dateto" readonly /><br><br>
+                                    <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
+                                </form>
                             </div>
-                            <!-- /.row -->
-                    	</section>
-               		</div>
-                    </div>     
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-7">
+                    <h1 style="font-size: 24px; font-weight: bold">Chi Tiết</h1>
+                    <div class="box box-primary">
+                        <div class="box-body">
+
+                            <div class="table-responsive">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên Thể Loại</th>
+                                    <th>Số Lượng</th>
+                                    <th>Ngày</th>
+                                    <th>Giờ</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+
+                                @$sql_cat = "select *,c.`vi_name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
+                                $i=1;
+                                $kq_cat = mysqli_query($link,$sql_cat);
+                                while($d_cat=mysqli_fetch_assoc($kq_cat))
+                                {
+                                    ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d_cat['ten_mon'] ?></td>
+                                        <td><?= $d_cat['sl_mon'] ?></td>
+                                        <td><?= date('d/m/Y',strtotime($d_cat['ngay']))?></td>
+                                        <td><?= date('H:i:s',strtotime($d_cat['ngay']))?></td>
+                                    </tr>
+                                <?php } ?>
+
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 style="font-size: 24px; font-weight: bold">Tổng Quan</h2>
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 <!-- /.content-wrapper -->
     
