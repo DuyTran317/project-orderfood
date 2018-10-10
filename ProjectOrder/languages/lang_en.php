@@ -29,6 +29,6 @@ define("_WRONGTABLENO", "You entered the wrong tables number");
 define("_REVIEWUS", "Review us");
 define("_OPINION", "Feel free to give us your opinion");
 define("_SEND", "Send");
-define("_LANGUAGE", "Language");
+define("_LANGUAGE", "Ngôn ngữ");
 define("_OPTION", "Option");
 define("_LOGOUT", "Log out");
