@@ -34,7 +34,7 @@ if(isset($_GET['name']))
 
 
 
-<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/background1.png); height: 100% ">
+<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/pexels-photo-326333.jpeg); height: 100% ">
 
 <div class="container" style="margin-top:5%;">
     <div class="row">

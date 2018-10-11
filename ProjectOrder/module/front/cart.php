@@ -83,9 +83,9 @@
                 <div align="right" class="col-xs-8">
                     <?php if(@count($cart)>0){ ?>
                         
-                      <button type="submit" class="btn btn-warning btn-lg"><i class="fas fa-sync"></i></button>
+                      <button type="submit" class="btn btn-warning btn-lg"><i class="fas fa-sync"></i> <?=_UPDATELIST?></button>
                     
-                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg "><i class="fas fa-check"></i></button></a>
+                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg "><i class="fas fa-check"></i> <?=_GOONORDER?></button></a>
 					<?php }
 						  else
 						  {
