@@ -185,7 +185,7 @@
         <div class="col-md-9 hidden-xs" >
             <div class="scrolling-wrapper">
             <?php
-			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0";
+			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
 			$res= mysqli_query($link,$commsql);
             $number1=0;
             $number2=0;
