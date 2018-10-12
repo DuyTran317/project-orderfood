@@ -34,18 +34,11 @@
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
-	$lang;
-	if($_SESSION['lang']='vi'){
-		$lang='Không có món';
-		
-		}
-	else if($_SESSION['lang']='en'){ $lang='Do not have foods';}
-	if(@count($cart)<=0)
-	{
-		echo"<div style='font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px'>$lang</div>";
-		echo"<div style='margin-top:200px'></div>";
-	}
-	else
+
+	if(@count($cart)<=0){ ?>
+		<div style="font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px"><?=_CARTZERO?></div>
+	<?php }
+	 else
 	{			
 		if(isset($_POST['goimon']))
 		{
@@ -235,7 +228,7 @@
                                             ?>
                                             <tr style="height:50px">
                                                 <td>
-                                                        <?=$r[$_SESSION['lang'].'_name']?>
+                                                    <?=$r[$_SESSION['lang'].'_name']?>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>

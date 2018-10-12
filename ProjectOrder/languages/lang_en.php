@@ -34,3 +34,4 @@ define("_OPTION", "Option");
 define("_LOGOUT", "Log out");
 define("_UPDATELIST", "Update List");
 define("_GOONORDER", "Continue");
+define("_CARTZERO", "Your cart is empty");
