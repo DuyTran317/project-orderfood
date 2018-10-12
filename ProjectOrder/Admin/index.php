@@ -1,7 +1,31 @@
 ﻿<?php
 session_start();
 ob_start(); ?>
+   <?php
+    if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
+    {
+        $_SESSION['userad'] = $_COOKIE['userad'];
+        $_SESSION['idad'] = $_COOKIE['idad'];
+        $_SESSION['catead'] = $_COOKIE['catead'];
+        setcookie("userad","{$_SESSION['userad']}",time()+999999);
+        setcookie("idad","{$_SESSION['idad']}",time()+999999);
+        setcookie("catead","{$_SESSION['catead']}",time()+999999);
+    }
+if(!isset($_SESSION['userad'])) {
 
+    header('location:login.php');
+}
+elseif(isset($_SESSION['success'] )=='thanhcong') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
+                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
+                          'success');";
+            echo "},1);</script>";
+        }
+        else
+        {
+            header("?mod=home");
+        } ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,31 +70,7 @@ ob_start(); ?>
     <script src="dist/js/sweetalert2.all.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-    <?php
-    if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
-    {
-        $_SESSION['userad'] = $_COOKIE['userad'];
-        $_SESSION['idad'] = $_COOKIE['idad'];
-        $_SESSION['catead'] = $_COOKIE['catead'];
-        setcookie("userad","{$_SESSION['userad']}",time()+999999);
-        setcookie("idad","{$_SESSION['idad']}",time()+999999);
-        setcookie("catead","{$_SESSION['catead']}",time()+999999);
-    }
-if(!isset($_SESSION['userad'])) {
-
-    header('location:login.php');
-}
-elseif(isset($_SESSION['success'] )=='thanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
-                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
-                          'success');";
-            echo "},1);</script>";
-        }
-        else
-        {
-            header("?mod=home");
-        } ?>
+ 
 <?php include('moduleAD/menu.php') ?>
 <?php
 include ("../lib/connect.php");
