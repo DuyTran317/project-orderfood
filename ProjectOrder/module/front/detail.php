@@ -86,7 +86,18 @@
         <div class="col-md-10 col-md-offset-1" style="background-color:#FFF; padding:10px;">
             <div class="row">
                 <div class="col-xs-6">
-                    <h1 style="color:#F00"> <?php echo number_format($kq['price']) ?> VND </h1>
+                    <?php if($kq['discount']>0){
+                        $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+                        ?>
+                        <h1 style="color: red"><?=number_format($new_price) ?> VND (-<?=$kq['discount']?>%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND </span> </h1>
+                    <?php }
+                    else{
+                        ?>
+                        <h4><?=number_format($kq['price']) ?> VND</h4>
+                        <?php
+                    }
+                    ?>
+
                 </div>
                 <div class="col-xs-6" align="right">
                     <div class="input-group col-sm-10 col-md-4">

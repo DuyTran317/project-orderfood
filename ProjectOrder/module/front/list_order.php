@@ -36,7 +36,7 @@ if(isset($_GET['cate']))
     <th ><?=_STT?></th>
     <th ><?=_DISH?></th>
     <th><?=_PRICE?></th>
-    <th>Khuyến Mãi</th>
+    <th><?=_DISCOUNT?></th>
     <th ><?=_QTY?></th>
     <th><?=_TOTALPRICE?></th>
   </tr>

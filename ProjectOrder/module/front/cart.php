@@ -34,7 +34,7 @@
               <tr style="background-color: #f9d093; font-size: 18px;">
                 <th class="text-left"><?=_DISH?></th>
                 <th><?=_PRICE?></th>
-                <th>Khuyến Mãi</th>
+                <th><?=_DISCOUNT?></th>
                 <th><?=_QTY?></th>
                 <th><?=_TOTALPRICE?></th>
                 <th></th>

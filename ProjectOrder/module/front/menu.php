@@ -200,7 +200,7 @@
 
                         <?php if($kq['active'] == 1) { ?>
                         	<?php if($kq['discount']>0){ ?>
-                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 28px; font-size: 25px;"> <?=$kq['discount']?>%</span>
+                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;"> <?=$kq['discount']?>%</span>
                             <?php } ?>
                             <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2,0.5)"' ?>>
                                 <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
@@ -296,7 +296,7 @@
                 <?php if($kq['discount']>0){ 
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
 				?>
-                <h5><?=number_format($new_price)?> VND&nbsp;<span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                <h5><?=number_format($new_price)?> VND (-<?=$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
                 <?php }
 					else
 					{
