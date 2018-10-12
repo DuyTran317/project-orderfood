@@ -56,15 +56,15 @@ if(isset($_GET['edit']))
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Giá <span style="color:#F00" >(*)</span></label>
-                                <input type="text" class="form-control" id="gia" name="suagia" placeholder="Nhập giá sản phẩm" value="<?php echo $d_pro['price']; ?>">
+                                <input type="number" class="form-control" id="gia" name="suagia" placeholder="Nhập giá sản phẩm" value="<?php echo $d_pro['price']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Khuyến mãi <span style="color:#F00" >(*)</span></label>
-                                <input type="text" class="form-control" id="khuyenmai" name="suakhuyenmai" placeholder="Nhập khuyến mãi sản phẩm" value="<?php echo $d_pro['discount']; ?>">
+                                <input type="number" class="form-control" id="khuyenmai" name="suakhuyenmai" placeholder="Nhập khuyến mãi sản phẩm" value="<?php echo $d_pro['discount']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Thứ tự <span style="color:#F00" >(*)</span></label>
-                                <input type="text" class="form-control" id="thutu" name="suathutu" placeholder="Nhập thứ tự sản phẩm" value="<?php echo $d_pro['order']; ?>" >
+                                <input type="number" class="form-control" id="thutu" name="suathutu" placeholder="Nhập thứ tự sản phẩm" value="<?php echo $d_pro['order']; ?>" >
                             </div>
                             <label for="exampleInputPassword1">Nội Dung VN </label>
                             <div class="form-group">

@@ -48,11 +48,13 @@ if(isset($_POST['suatheloai']))
 {
     $edit=$_POST['id'];
     $theloai = $_POST['suatheloai'];
-    $tensp = $_POST['suatensp'];
+    $vi_tensp = $_POST['vi_suatensp'];
+    $en_tensp = $_POST['en_suatensp'];
     $gia = $_POST['suagia'];
     $khuyenmai = $_POST['suakhuyenmai'];
     $thutu = $_POST['suathutu'];
-    $noidung = $_POST['suanoidung'];
+    $vi_noidung = $_POST['vi_suanoidung'];
+    $en_noidung = $_POST['en_suanoidung'];
     $trangthai = $_POST['suatrangthai'];
 
     $file= $_FILES['suaimage'];
@@ -64,8 +66,7 @@ if(isset($_POST['suatheloai']))
     $kq = mysqli_query($link,$sql);
     $d=mysqli_fetch_assoc($kq);
 
-    $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`name`='{$tensp}',
-`price`='{$gia}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`order`='{$thutu}',
+    $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`vi_name`='{$vi_tensp}',`en_name`='{$en_tensp}',`price`='{$gia}',`discount`='{$khuyenmai}',`vi_desc`='{$vi_noidung}',`en_desc`='{$en_noidung}',`order`='{$thutu}',
 `active`='{$trangthai}'";
 
     if($file['name']!= '')
@@ -76,7 +77,7 @@ if(isset($_POST['suatheloai']))
 
         $sql_edit .= $sql_img1;
         $hinhcu = "../img/sp/{$d['img_url']}";
-        unlink($hinhcu);
+        @unlink($hinhcu);
     }
 
       if($file2['name']!= '')
@@ -87,7 +88,7 @@ if(isset($_POST['suatheloai']))
 
         $sql_edit .= $sql_img2;
         $hinhcu = "../img/sp/{$d['img_url2']}";
-        unlink($hinhcu);
+        @unlink($hinhcu);
     }
 
      if($file3['name']!= '')
@@ -98,7 +99,7 @@ if(isset($_POST['suatheloai']))
 
         $sql_edit .= $sql_img3;
         $hinhcu = "../img/sp/{$d['img_url3']}";
-        unlink($hinhcu);
+        @unlink($hinhcu);
     }
 
     if($file4['name']!= '')
@@ -109,7 +110,7 @@ if(isset($_POST['suatheloai']))
 
         $sql_edit .= $sql_img4;
         $hinhcu = "../img/sp/{$d['img_url4']}";
-        unlink($hinhcu);
+        @unlink($hinhcu);
     }
 
 
