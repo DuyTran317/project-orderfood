@@ -211,7 +211,8 @@
                                     <table class="col-md-12 table table-striped">
                                         <tr style="background-color: #f9d093; font-size: 18px;">
                                             <th class="text-left"><?=_DISH?></th>
-                                            <th><?=_PRICE?></td>
+                                            <th><?=_PRICE?></th>
+                                            <th>Khuyến Mãi</th>
                                             <th class="col-xs-2"><?=_QTY?></th>
                                             <th><?=_TOTALPRICE?></th>
                                         </tr>
@@ -224,15 +225,38 @@
                                             $sql="select * from `of_food` where `id`={$k} ";
                                             $rs=mysqli_query($link,$sql);
                                             $r=mysqli_fetch_assoc($rs);
-                                            $s+=$r['price']*$v;
+                                            
+											//Tính giá có Khuyến Mãi
+											if($r['discount']>0)
+											{
+												$gia_temp = $r['price_discount']*$v;
+											}
+											else
+											{
+												$gia_temp = $r['price']*$v;
+											}
+											$s += $gia_temp;
+											
                                             ?>
                                             <tr style="height:50px">
                                                 <td>
                                                     <?=$r[$_SESSION['lang'].'_name']?>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
+                                                <td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
+                                                <?php
+													if($r['discount']>0)
+													{
+												?>
+                                                	<td align="center"><?=number_format($r['price_discount']*$v)?><u>đ</u></td>
+                                                <?php
+													}
+													else
+													{
+												?>
                                                 <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
+                                                <?php } ?>
                                             </tr>
                                         <?php } ?>
                                     </table>

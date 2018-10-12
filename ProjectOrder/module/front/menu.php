@@ -293,7 +293,18 @@
             </label>
             <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
                 <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
-                <h5>100.000 VND <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                <?php if($kq['discount']>0){ 
+					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+				?>
+                <h5><?=number_format($new_price)?> VND&nbsp;<span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                <?php }
+					else
+					{
+			    ?>
+                	<h5><?=number_format($kq['price']) ?> VND</h5>			
+				<?php		
+					}
+				?>
                 <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>

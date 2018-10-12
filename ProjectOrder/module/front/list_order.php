@@ -35,14 +35,15 @@ if(isset($_GET['cate']))
   <tr>
     <th ><?=_STT?></th>
     <th ><?=_DISH?></th>
-    <th><?=_PRICE?></td>
+    <th><?=_PRICE?></th>
+    <th>Khuyến Mãi</th>
     <th ><?=_QTY?></th>
     <th><?=_TOTALPRICE?></th>
   </tr>
   
   <?php
-  $lozduy = $_SESSION['lang'].'_name';
-  	$sql="select b.{$lozduy} as ten,a.`price`, a.`qty`
+  $multi = $_SESSION['lang'].'_name';
+  	$sql="select b.{$multi} as ten,a.`price`, a.`qty`, b.`discount` as km, b.`price_discount` as gia_km
 		  from `of_order_detail` as a, `of_food` as b
 		  where a.`food_id`= b.`id` and a.`order_id`={$id}";
 	$rs=mysqli_query($link,$sql);
@@ -50,15 +51,46 @@ if(isset($_GET['cate']))
 	$s=0;
 	$i=0;
 	while($r=mysqli_fetch_assoc($rs)) {
-		$s+= $r['price']*$r['qty'];	
+		//Tính giá có Khuyến Mãi
+		if($r['km']>0)
+		{
+			$gia_temp = $r['gia_km']*$r['qty'];
+		}
+		else
+		{
+			$gia_temp = $r['price']*$r['qty'];
+		}
+		$s += $gia_temp;	
   ?>
   
   <tr style="text-align:center; height:50px">
     <td><?=++$i?></td>    
     <td><?=$r['ten']?></td>
     <td><?=number_format($r['price'])?><u>đ</u></td>
+    <?php if($r['km']>0) 
+		{ 
+	?>            
+    <td align="center" style='color:#F00'><?=number_format($r['km'])?>%</td>
+    <?php 
+		}
+		else
+		{
+    ?>
+    <td align="center"><?=number_format($r['km'])?>%</td>
+    <?php
+		}
+	?>
+		
     <td><input type="number" min="1" value="<?=$r['qty']?>" style="width:50%; text-align:center" disabled></td>
-    <td><?=number_format($r['price']*$r['qty'])?><u>đ</u></td>
+    <?php if($r['km']>0) { ?>
+    	<td><?=number_format($r['gia_km']*$r['qty'])?><u>đ</u></td>
+    <?php
+		}
+		else
+		{
+	?>		
+    	<td><?=number_format($r['price']*$r['qty'])?><u>đ</u></td>
+    <?php } ?>    
   </tr>
 
 <?php } ?>
