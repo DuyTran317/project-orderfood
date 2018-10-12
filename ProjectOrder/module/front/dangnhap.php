@@ -7,14 +7,14 @@
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif; height: 100%">
 <div class="container-fluid" style="margin-top:10%">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">
+        <div class="col-sm-4 col-sm-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">
             <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
                 <fieldset>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <h2 style="text-align:center; color:#FFF; "><strong><?=_ENTER?></strong></h2>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <input type="text" name="user" class="form-control" required style = "background-color:transparent; color:white;" placeholder="<?=_TABLENO?>"
