@@ -54,7 +54,7 @@ if(isset($_SESSION['lang'])){
 <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
     <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <?php if(isset($_SESSION['user_idban'])){?>
-    <h3 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h3>
+    <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h2>
     <?php } ?>
     <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
      <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
