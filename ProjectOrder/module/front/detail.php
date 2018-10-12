@@ -93,7 +93,7 @@
                     <?php }
                     else{
                         ?>
-                        <h4><?=number_format($kq['price']) ?> VND</h4>
+                        <h1 style="color: red"><?=number_format($kq['price']) ?> VND</h1>
                         <?php
                     }
                     ?>
