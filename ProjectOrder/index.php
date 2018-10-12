@@ -53,7 +53,9 @@ if(isset($_SESSION['lang'])){
 </div>
 <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
     <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <h3 style="margin-bottom:10px; margin-left:20px"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h3>
+    <?php if(isset($_SESSION['user_idban'])){?>
+    <h3 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h3>
+    <?php } ?>
     <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
      <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
         <select name='lang' onchange='changeLang();' style="color: black">
@@ -62,7 +64,9 @@ if(isset($_SESSION['lang'])){
         </select>
     </form>
      </a>
-    <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"> </i><?=_LOGOUT?></button> </div>
+    <?php if(isset($_SESSION['user_idban'])){?>
+    <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; "><a href="?mod=xulydangxuat" style="font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></a></button> </div>
+    <?php } ?>
 </div>
 
 <span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()"><i class="fas fa-cog" style="margin-top:10px"></i></span>

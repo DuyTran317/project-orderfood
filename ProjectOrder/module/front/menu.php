@@ -195,13 +195,17 @@
 			    $number2++;
                 ?>
                 <div class="card"  style="  width: 300px; background:white; ">
+
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
+
                         <?php if($kq['active'] == 1) { ?>
-                            <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
+                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 25px; font-size: 25px;">50%</span>
+                            <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2,0.5)"' ?>>
                                 <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
                             </div>
                             <input onchange="handleChange(this,<?=$kq['id']?>);checkFood(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
-                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
+
+                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold">100.000 VND <br><span style=" text-decoration: line-through; font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span></div>
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
@@ -275,8 +279,8 @@
                 <?php } ?>
             </label>
             <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
-                <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?></h4>
-                <h5><?=number_format($kq['price']) ?> VND</h5>
+                <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
+                <h5>100.000 VND <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
                 <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>

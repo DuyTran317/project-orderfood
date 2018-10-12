@@ -34,3 +34,4 @@ define("_OPTION", "Tùy chọn");
 define("_LOGOUT", "Đăng xuất");
 define("_UPDATELIST", "Cập nhật danh sách");
 define("_GOONORDER", "Tiến hành gọi món");
+define("_CARTZERO", "Bạn không có món ăn nào trong giỏ hàng");
