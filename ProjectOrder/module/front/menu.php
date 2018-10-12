@@ -268,7 +268,7 @@
     </div>
     <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" >
         <?php
-        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0";
+        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
         $res= mysqli_query($link,$commsql);
         $number1=0;
         $number2=0;
