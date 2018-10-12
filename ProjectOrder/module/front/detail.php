@@ -45,7 +45,7 @@
 </script>
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
-<div class="container" >
+<div class="container" style="margin-top: 3%" >
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 10%; background-color: white">
@@ -55,7 +55,6 @@
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
-
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
@@ -94,7 +93,6 @@
                         <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='quantity' style="border: none; background-color: transparent; color:white"/></span>
                         <input type="text" class="form-control text-center" id="qty" min="1" value="1"  name='quantity' disabled style="border-color: #F60; color: #F60;">
                         <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='quantity' style="border: none; background-color: transparent; color: white"/></span>
-
                     </div>
                 </div>
             </div>
