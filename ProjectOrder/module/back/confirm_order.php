@@ -35,7 +35,7 @@
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="table-responsive">
-        <a href="" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
+        <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
                 <div style="text-align: right"><a href="" onClick="return confirm('Bạn chắc chắn xóa hết?')">
