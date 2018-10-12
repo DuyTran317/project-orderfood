@@ -49,7 +49,7 @@
               </tr>
               </thead>
               <?php
-                $sql = "SELECT * from `of_order` where `active`=0";
+                $sql = "SELECT * from `of_order` where `active`=2";
                 $rel = mysqli_query($link,$sql);
                 $i=1;
                 while($re = mysqli_fetch_assoc($rel))
