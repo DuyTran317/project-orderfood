@@ -34,8 +34,17 @@ if(isset($_POST['vi_tensp']))
         $img_url4 = mt_rand().$file4['name'];
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
     }
-
-    $sql_img = "insert into of_food(`id`,`category_id`,`vi_name`,`en_name`,`price`,`discount`,`vi_desc`,`en_desc`,`img_url`,`img_url2`,`img_url3`,`img_url4`,`order`,`active`)  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$khuyenmai',
+	//Khuyến mãi
+	if($khuyenmai != 0)
+	{ 
+		$new_price = $gia-(($khuyenmai*$gia)/100);
+	}
+	else
+	{
+		$new_price = $gia;
+	}
+	
+    $sql_img = "insert into of_food(`id`,`category_id`,`vi_name`,`en_name`,`price`,`price_discount`,`discount`,`vi_desc`,`en_desc`,`img_url`,`img_url2`,`img_url3`,`img_url4`,`order`,`active`)  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$new_price','$khuyenmai',
     '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
@@ -60,12 +69,22 @@ if(isset($_POST['suatheloai']))
     $file3= $_FILES['suaimage3'];
     $file4= $_FILES['suaimage4'];
 
-    $sql = "select * from `of_food` where id=$edit";
+	//Khuyến mãi
+	if($khuyenmai != 0)
+	{ 
+		$new_price = $gia-(($khuyenmai*$gia)/100);
+	}
+	else
+	{
+		$new_price = $gia;
+	}
+	
+    $sql = "select * from `of_food` where `id`={$edit}";
     $kq = mysqli_query($link,$sql);
     $d=mysqli_fetch_assoc($kq);
 
     $sql_edit = "update `of_food` set `category_id`= '{$theloai}',`name`='{$tensp}',
-`price`='{$gia}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`order`='{$thutu}',
+`price`='{$gia}',`price_discount`='{$new_price}',`discount`='{$khuyenmai}',`desc`='{$noidung}',`order`='{$thutu}',
 `active`='{$trangthai}'";
 
     if($file['name']!= '')
