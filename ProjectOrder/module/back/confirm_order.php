@@ -35,20 +35,20 @@
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="table-responsive">
-        <a href="?mod=home" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
+        <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
-                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
+                <div style="text-align: right"><a href="" onClick="return confirm('Bạn chắc chắn xóa hết?')">
                         <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
                 </div><br>
                 <?php
-                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
+                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
 				
 				$dem = mysqli_num_rows($rs);				
                 $total=0;
 
-				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=2 and a.`food_id`=0";
+				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
 
 				if($dem > 0 )
 				{
@@ -63,7 +63,7 @@
                         </td>
                         <td class="col-xs-9">
                             <div style=" font-weight: bold; font-size:25px;"><?=$r['ten']?>
-                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
+                            	<span style="float:right; "><a href="" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
                             </div>
                             <p style="color: grey; font-size:20px;"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
 
@@ -90,7 +90,7 @@
                 ?>
             </div>
         </div>
-        <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
+        <div style="text-align: center"><a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
 
         <div class="row" style="margin-top: 40px;">
             <h1 style="text-align:center; font-weight:bold">Danh Sách Các Món Trùng</h1>
@@ -143,4 +143,3 @@
 
 </div>
 </body>
-

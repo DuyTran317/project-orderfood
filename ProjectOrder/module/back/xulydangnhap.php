@@ -25,6 +25,10 @@ if(isset($_POST['user']))
 		{
 			header("location:?mod=home_thanhtoan");
 		}
+		elseif ($r['cate']==3)
+		{
+			header("location:?mod=home_nhanvien");
+		}
 		else
 		{
 			header("location:?mod=admin");

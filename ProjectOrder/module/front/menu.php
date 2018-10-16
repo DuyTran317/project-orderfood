@@ -26,7 +26,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " onload="startTime()">
+<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " onLoad="startTime()">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -126,7 +126,7 @@
                 {
                     ?>
                     <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
 
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
@@ -176,7 +176,7 @@
                 {
                     ?>
                     <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onclick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
 
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
@@ -185,7 +185,7 @@
         <div class="col-md-9 hidden-xs" >
             <div class="scrolling-wrapper">
             <?php
-			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0";
+			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
 			$res= mysqli_query($link,$commsql);
             $number1=0;
             $number2=0;
@@ -199,13 +199,26 @@
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
 
                         <?php if($kq['active'] == 1) { ?>
-                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 25px; font-size: 25px;">50%</span>
+                        	<?php if($kq['discount']>0){ ?>
+                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;"> <?=$kq['discount']?>%</span>
+                            <?php } ?>
                             <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2,0.5)"' ?>>
                                 <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
                             </div>
-                            <input onchange="handleChange(this,<?=$kq['id']?>);checkFood(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
-
-                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold">100.000 VND <br><span style=" text-decoration: line-through; font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span></div>
+                            <input onChange="handleChange(this,<?=$kq['id']?>);checkFood(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
+                            
+							<?php if($kq['discount']>0){ 
+									$new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+							?>
+                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($new_price) ?> VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span></div>
+                            <?php } 
+								  else{
+							?>
+                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>		
+                            <?php			  
+								  }
+							?>
+                            
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
@@ -255,7 +268,7 @@
     </div>
     <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" >
         <?php
-        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0";
+        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
         $res= mysqli_query($link,$commsql);
         $number1=0;
         $number2=0;
@@ -270,7 +283,7 @@
                     <div id="statusmobile<?=$kq['id'] ?>" class="statusmobile1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
                         <h1 style=" font-size: 50px; color: #e8ebf2; " id="chosemobile<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
                     </div>
-                    <input onchange="handleChange(this,<?=$kq['id']?>);checkFoodMobile(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display: none" id="foodchosenmobile<?php  echo $number1;?>" />
+                    <input onChange="handleChange(this,<?=$kq['id']?>);checkFoodMobile(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display: none" id="foodchosenmobile<?php  echo $number1;?>" />
                 <?php } ?>
                 <?php if($kq['active'] == 2) { ?>
                     <div id="dark2">
@@ -280,7 +293,18 @@
             </label>
             <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
                 <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
-                <h5>100.000 VND <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                <?php if($kq['discount']>0){ 
+					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+				?>
+                <h5><?=number_format($new_price)?> VND (-<?=$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                <?php }
+					else
+					{
+			    ?>
+                	<h5><?=number_format($kq['price']) ?> VND</h5>			
+				<?php		
+					}
+				?>
                 <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>
