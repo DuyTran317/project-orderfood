@@ -8,8 +8,8 @@
                 <small>Thể Loại</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="?mod=home"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-                <li><a href="?mod=cat_list">Thể Loại</a></li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+                <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
                 <li class="active">Thêm</li>
             </ol>
         </section>

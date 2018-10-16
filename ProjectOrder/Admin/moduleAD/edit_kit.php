@@ -7,7 +7,7 @@
             $sql = "select `name` from of_manage where id = {$_GET['edit']}";
                     $kq = mysqli_query($link,$sql);
                     $d = mysqli_fetch_assoc($kq);
-             echo $d['name'] ?></small>
+             ?></small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>

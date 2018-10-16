@@ -7,6 +7,7 @@ RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
 RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"
 RewriteRule "^danh-sach-danh-gia.html$" "?mod=com_list"
 RewriteRule "^danh-sach-ban.html$" "?mod=user_list"
+RewriteRule "^danh-sach-slide.html$" "?mod=slide_list"
 RewriteRule "^trang-chu.html$" "?mod=home"
 
 
