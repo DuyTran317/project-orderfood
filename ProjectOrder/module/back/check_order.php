@@ -96,7 +96,7 @@
             <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
-            while($rs_timtrung=mysqli_fetch_assoc($r_timtrung))
+            while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
             {
                 if($orderId1 != $rs_timtrung['order_id'])
                 {
