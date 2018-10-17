@@ -237,7 +237,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 style="font-size: 24px; font-weight: bold">Tổng Quan</h2>
+                    <h1 style="font-size: 24px; font-weight: bold">Tổng Quan</h1>
                     <div class="box box-primary">
                         <div class="box-body">
                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
@@ -246,11 +246,10 @@
                 </div>
             </div>
         </div>
-
+    </section>
 </div>
 <!-- /.content-wrapper -->
-    
-</div>
+    </div>
 <!-- ./wrapper -->
 <?php
     if(isset($_POST['datefrom']))

@@ -191,7 +191,20 @@
                 </ul>
             </li>
         <?php }?>
-         
+         <li class="header" style="text-align:center">Quản lý slide</li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                    <span>Slide</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="?mod=slide_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-ban.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                </ul>
+            </li>
         <?php
             $cate = $_SESSION['catead'];
           if($cate ==4 || $cate  ==1) {  ?>

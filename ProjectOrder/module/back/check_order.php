@@ -41,13 +41,13 @@
                         <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
                 </div><br>
                 <?php
-                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 $rs=mysqli_query($link,$sql);
 				
 				$dem = mysqli_num_rows($rs);				
                 $total=0;
 
-				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=2 and a.`food_id`=0";
 
 				if($dem > 0 )
 				{
