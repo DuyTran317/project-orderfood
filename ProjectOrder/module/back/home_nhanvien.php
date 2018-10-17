@@ -1,3 +1,20 @@
+<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+  <script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('hihi');
+     //chanel trùng voi chanel trong send.php
+    channel.bind('notices', function () {
+		
+        //code xử lý khi có dữ liệu từ pushe
+		 window.location.reload();
+         //kết thúc code xử lý thông báo
+    });
+</script>
+
 <html>
 
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif;">
@@ -17,21 +34,18 @@
 				$qr=mysqli_query($link,$sql);
 				$kq=mysqli_fetch_assoc($qr);
 				$id_order= $kq['id'];
-				if($slban['active']==2)
+				//lấy số món
+				$sql="select  * 
+				from `of_order` as a, `of_order_detail` as b
+				where a.`id`=b.`order_id` and `num_table`='{$name}'";
+				$rs=mysqli_query($link,$sql);
+				$somon=mysqli_num_rows($rs);
+				if($slban['active']==2 && $somon!=0)
 				{
 					   ?> 
 					   <a href="?mod=confirm_order&id=<?= $id_order ?>&num_table=<?= $name ?>" style="text-decoration:none; color:#000">
 						 <div class="fw-place-within-col" style='background-color: #FF0; height: 200px; padding: 40px 0px;'" >
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
-							<?php 
-							
-							//lấy số món
-							$sql="select  * 
-								from `of_order` as a, `of_order_detail` as b
-								where a.`id`=b.`order_id` and `num_table`='{$name}'";
-							$rs=mysqli_query($link,$sql);
-							$somon=mysqli_num_rows($rs);
-							?>
 							Số món đã đặt: <?= $somon ?>
 						   </a>
 							<?php } 

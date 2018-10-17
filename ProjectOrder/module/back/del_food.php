@@ -86,5 +86,5 @@
 	);
 	$pusher->trigger('hihi', 'delfood', @$data);
 	
-	header("location:?mod=check_order&id=$id&num_table=$num_table");
+	header("location:?mod=confirm_order&id=$id&num_table=$num_table");
 ?>

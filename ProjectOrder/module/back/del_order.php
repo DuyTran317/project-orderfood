@@ -56,5 +56,5 @@
 	);
 	$pusher->trigger('hihi', 'delorder', @$data);
 	
-	header("location:?mod=home");
+	header("location:?mod=home_nhanvien");
 ?>

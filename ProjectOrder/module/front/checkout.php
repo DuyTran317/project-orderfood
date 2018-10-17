@@ -3,16 +3,6 @@
 		text-align:center;
 	}
 </style>
-<script>
- window.onload=function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-</script>
-
 <?php
 	if(! isset($_SESSION['user_idban']))
 	{

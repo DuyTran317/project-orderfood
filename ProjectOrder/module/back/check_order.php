@@ -1,4 +1,4 @@
-<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+<!--<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {
@@ -10,11 +10,10 @@
     channel.bind('notices', function () {
 		
         //code xử lý khi có dữ liệu từ pushe
-		alert('Có thay đổi về đơn hàng vui lòng chỉnh lại!');
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-</script>
+</script>-->
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{

@@ -8,7 +8,7 @@
 	
 ?>
 <!--Reload Page-->
-<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
+<!--<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
 <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
@@ -22,7 +22,7 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-</script>
+</script>-->
 <style>
  table.dataTable{
 	 border-collapse:collapse;
@@ -42,7 +42,7 @@
                 
                 <hr>
                 <div style="text-align:center; color:#066"><span style="color:#000; font-size:24px; color:#333">Chọn Loại:&nbsp;</span>
-                <select id="category_id" onchange="window.location='?mod=ds_food&cid='+this.value" style="width:200px;; font-size:20px; margin-top:10px">
+                <select id="category_id" onChange="window.location='?mod=ds_food&cid='+this.value" style="width:200px;; font-size:20px; margin-top:10px">
 							<?php
 								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
 								$rs_s=mysqli_query($link,$sql);

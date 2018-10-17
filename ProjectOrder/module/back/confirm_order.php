@@ -1,4 +1,4 @@
-<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+<!--<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {
@@ -6,15 +6,15 @@
       encrypted: true
     });
     var channel = pusher.subscribe('hihi');
-    // chanel trùng voi chanel trong send.php
+     chanel trùng voi chanel trong send.php
     channel.bind('notices', function () {
 		
-        //code xử lý khi có dữ liệu từ pushe
+        code xử lý khi có dữ liệu từ pushe
 		alert('Có thay đổi về đơn hàng vui lòng chỉnh lại!');
 		 window.location.reload();
-        // kết thúc code xử lý thông báo
+         kết thúc code xử lý thông báo
     });
-</script>
+</script>-->
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -38,14 +38,14 @@
         <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
-                <div style="text-align: right"><a href="" onClick="return confirm('Bạn chắc chắn xóa hết?')">
+                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
                         <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
                 </div><br>
                 <?php
                 $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
 				
-				$dem = mysqli_num_rows($rs);				
+				@$dem = mysqli_num_rows($rs);				
                 $total=0;
 
 				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
@@ -63,7 +63,7 @@
                         </td>
                         <td class="col-xs-9">
                             <div style=" font-weight: bold; font-size:25px;"><?=$r['ten']?>
-                            	<span style="float:right; "><a href="" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
+                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
                             </div>
                             <p style="color: grey; font-size:20px;"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
 

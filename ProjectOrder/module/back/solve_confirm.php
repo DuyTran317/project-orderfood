@@ -45,7 +45,43 @@
 			mysqli_query($link,$sql);
 		}
 	}
+	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 0";
+	mysqli_query($link,$sql_sl);
+	/*$sql="update `of_order_detail` set `active`=1 where `order_id`={$orderID}";
+	mysqli_query($link,$sql);*/
+	$sql="select `id` from `of_bill` where `order_id`=$orderID and `active` = 0";
+	$r=mysqli_query($link,$sql);
+	$rs=mysqli_num_rows($r);
+	if($rs==0)
+	{
+		$sql="select `id` from `of_bill` order by `id` desc limit 0,1";
+		$kq_mhd=mysqli_query($link,$sql);
+		$k_mhd=mysqli_fetch_assoc($kq_mhd);
+		
+		$mh=$k_mhd['id']+1;
+		$mh=date('Ym').$mh;
+			
+		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '{$mh}', '$orderID', '$num_table', '$total', now(), '0')";
+		mysqli_query($link,$sql_ins_thanhtoan);
+	}
+	else 
+	{
+		$sql_update_thanhtoan="update `of_bill` set `total`=$total where `order_id`=$orderID";
+		mysqli_query($link,$sql_update_thanhtoan);
+	}
 	
+			require('Pusher.php');
+			$options = array(
+			'cluster' => 'ap1',
+			'encrypted' => true
+			);
+			$pusher = new Pusher(
+			'161363aaa8197830a033',
+			'46f2ba3b258f514f6fc7',
+			'577033',
+			$options
+			);
+			$pusher->trigger('hihi', 'notices', @$data);
 ?>
 <script>
 	window.location="?mod=home_nhanvien";
