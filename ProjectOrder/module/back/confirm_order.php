@@ -44,7 +44,7 @@
                 <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
 
                 <?php
-                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+                $sql="select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
                 $rs=mysqli_query($link,$sql);
 				
 				@$dem = mysqli_num_rows($rs);				
@@ -73,7 +73,7 @@
                             <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
                         </td>
                         <td>
-                            <div style=""><?=$r['ten']?></div>
+                            <div style=""><?=$r[$r['country'].'_name']?></div>
                         </td>
                         <td align="center">
                             <p style=""> <?=$r['qty']?></p>
@@ -90,7 +90,7 @@
                     $total += $r['price']*$r['qty'];
                 endwhile
                 ?>
-                <?php 
+                <?php
 				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
 				$rs2 = mysqli_query($link,$sql);
 				?>

@@ -206,7 +206,7 @@
                             <th>Thành tiền (VND)</th>
                         </tr>
                         <?php
-                        $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                        $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country`, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
                         $rs=mysqli_query($link,$sql);
                         $total=0;
                         $stt=1;
@@ -215,7 +215,7 @@
 							
                             echo "<tr>";
                             echo "<td class=\"cotSTT\">".$stt++."</td>";
-                            echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
+                            echo "<td class=\"cotTenSanPham\">".$r[$r['country'].'_name']."</td>";
                             echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
                             echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
 							echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";

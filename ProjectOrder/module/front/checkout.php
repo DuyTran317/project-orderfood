@@ -75,7 +75,7 @@
 									$rs_search = mysqli_num_rows($r_search);
 									if($rs_search == 0)
 									{
-										$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0)";
+										$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0,'$country')";
 										mysqli_query($link,$sql);
 									}
 									else 
@@ -117,7 +117,7 @@
 									$rs_search = mysqli_num_rows($r_search);
 									if($rs_search == 0)
 									{
-										$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
+										$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
 										mysqli_query($link,$sql);
 									}
 									else 
@@ -152,7 +152,7 @@
 						$km = $r['discount'];
 						
 						//Insert
-						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0)";
+						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
 						mysqli_query($link,$sql);
 					}
 					//Insert note vao DB
