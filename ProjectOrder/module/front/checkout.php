@@ -20,7 +20,7 @@
 	{
 		$cate=$_GET['cate'];
 	}
-	
+	$country = $_SESSION['lang'];
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
@@ -256,6 +256,7 @@
                                                 <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
                                                 <?php } ?>
                                             </tr>
+                                            <input name="country" value="<?=$_SESSION['lang']?>" style=" display: none">
                                         <?php } ?>
                                     </table>
                                 </div>
@@ -268,7 +269,9 @@
                                     <div class="col-xs-4" style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
                                     <div align="right" class="col-xs-8">
                                         <div id="form_lienhe">
+
                                                 <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="<?=_ORDER?>">
+
                                             </form>
                                         </div>
                                     </div>

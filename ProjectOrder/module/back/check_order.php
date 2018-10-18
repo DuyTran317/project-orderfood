@@ -37,9 +37,7 @@
         <a href="?mod=home" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <table class="col-md-12 col-sm-12 col-xs-12 table table-striped" >
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
-                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa hết?')">
-                        <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
-                </div><br>
+
                 <?php
                 $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 $rs=mysqli_query($link,$sql);
@@ -52,20 +50,34 @@
 				if($dem > 0 )
 				{
 
+                echo '
+                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm(\'Bạn chắc chắn xóa hết?\')">
+                        <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
+                </div><br>
+                <tr>
+                    <th class="col-xs-3 ">Hình Ảnh</th>
+                    <th>Tên</th>
+                    <th class="text-center">Số Lượng</th>
+                    <th></th>
+                </tr>';
                 while($r=mysqli_fetch_assoc($rs)):
 					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
 					$orderId = $r['order_id'];
                     ?>
                     <tr>
-                        <td align="center" class="col-xs-3">
+                        <td>
                             <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
                         </td>
-                        <td class="col-xs-9">
-                            <div style=" font-weight: bold; font-size:25px;"><?=$r['ten']?>
-                            	<span style="float:right; "><a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a></span>
-                            </div>
-                            <p style="color: grey; font-size:20px;"><strong>Số Lượng</strong>: <?=$r['qty']?></p>
-
+                        <td>
+                            <div style=""><?=$r['ten']?></div>
+                        </td>
+                        <td align="center">
+                            <p style=""> <?=$r['qty']?></p>
+                        </td>
+                        <td >
+                            <span style="float:right; ">
+                                <a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a>
+                            </span>
                         </td>
                     </tr>
 
@@ -92,7 +104,7 @@
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
 
         <div class="row" style="margin-top: 40px;">
-            <h1 style="text-align:center; font-weight:bold">Danh Sách Các Món Trùng</h1>
+
             <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
@@ -100,7 +112,7 @@
             {
                 if($orderId1 != $rs_timtrung['order_id'])
                 {
-
+                    echo "<h1 style=\"text-align:center; font-weight:bold\">Danh Sách Các Món Trùng</h1>";
                     $orderId1=$rs_timtrung['order_id'];
 
                     $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
@@ -111,6 +123,7 @@
                         $note.= $rs_takenotes['note'];
                     }
                     ?>
+
                     <div class="col-md-4 col-sm-4 col-xs-12" style="border-right:1px dotted #000; border-top:1px dashed #000; padding-bottom:10px; padding-top:10px">
 
                         <span style="font-size:22px">Bàn:</span> <span style="color:#C00; font-size:24px"><?=$rs_timtrung['num_table']?></span><br>

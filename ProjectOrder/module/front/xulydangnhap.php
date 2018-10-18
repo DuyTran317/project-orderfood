@@ -15,6 +15,7 @@ if(isset($_POST['user']))
 		$_SESSION['user_nameban']=$r['name'];
 		$id = $r['id'];
 		$name = $r['name'];
+		$country= $_SESSION['lang'];
 		$sql="update `of_user` set `active`= 2 where `id`={$id}";
 		$rs=mysqli_query($link,$sql);
 		header("location:?mod=home&id=$id&name=$name");
