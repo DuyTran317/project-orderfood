@@ -29,24 +29,22 @@
 	$name=$slban['name']; ?>
         <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px;" align="center">
         <?php
-		//lay bill active
-		//$sql="select * from `of_bill` where `active`=0 and `num_table`='{$name}'";
-//				$qr1=mysqli_query($link,$sql);	
-//				$kq2=mysqli_fetch_assoc($qr1);
-		//lấy id_order và name bàn
-				$sql="select * from `of_order` where `active`=0 and `num_table`='{$name}'";
+				//lấy id_order và name bàn
+				$sql="SELECT *,`of_order`.`id` as id_or FROM `of_order` LEFT JOIN `of_bill` ON `of_order`.`id` = `of_bill`.`order_id` where (`of_order`.`active` <> 1 or `of_bill`.`active` <> 1) and `of_order`.`num_table` = '{$name}'";
 				$qr=mysqli_query($link,$sql);
+				
 				$kq=mysqli_fetch_assoc($qr);
-				$id_order= $kq['id'];
+				$id_order= $kq['id_or'];
+				
 				//lấy số món
 				$sql="select  * 
 				from `of_order` as a, `of_order_detail` as b
 				where a.`id`=b.`order_id` and `num_table`='{$name}' and b.`active`=0  ";
 				$rs=mysqli_query($link,$sql);
 				$somon=mysqli_num_rows($rs);
-				if($slban['active']==2 ) 
+			
+				if(mysqli_num_rows($qr)>0) 
 				{
-					   
 					   ?> 
 					   <a href="?mod=confirm_order&id=<?= $id_order ?>&num_table=<?= $name ?>" style="text-decoration:none; color:#000">
 						 <div class="fw-place-within-col" style='background-color: #FF0; height: 200px; padding: 40px 0px;'>
