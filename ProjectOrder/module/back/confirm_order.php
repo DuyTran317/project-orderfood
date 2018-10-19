@@ -56,8 +56,8 @@
 				{
 
 
-                echo '<div style="text-align: right"><a><input type="submit" value="Thêm Món" class="btn btn-success"></a>
-                </div><br>';
+                echo "<div style='text-align: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
+                </div><br>";
                 echo '<tr>
                     <th class="col-xs-3 ">Hình Ảnh</th>
                     <th>Tên</th>
