@@ -46,37 +46,81 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
+<style>
+    #page {
+        display: none;
+        transition: 0.2s;
+    }
+    #loading {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99 !important;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-size: 100px;
+        background-image: url(img/front/transparent-backgrounds-loading-3.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: 0.2s;
+    }
 
-<!-- Language -->
-<div align="right">
+</style>
+<div id="page">
+
+    <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
+        <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <?php if(isset($_SESSION['user_idban'])){?>
+        <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h2>
+        <?php } ?>
+        <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
+         <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
+            <select name='lang' onchange='changeLang();' style="color: black">
+                <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
+                <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
+            </select>
+        </form>
+         </a>
+        <?php if(isset($_SESSION['user_idban'])){?>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; "><a href="?mod=xulydangxuat" style="font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></a></button> </div>
+        <?php } ?>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()"><i class="fas fa-cog" style="margin-top:10px"></i></span>
+
+
+    <?php
+        $mod=@$_GET['mod'];
+          if($mod=='') $mod='dangnhap';
+          include("module/front/{$mod}.php");
+    ?>
 
 </div>
-<div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
-    <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <?php if(isset($_SESSION['user_idban'])){?>
-    <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h2>
-    <?php } ?>
-    <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
-     <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
-        <select name='lang' onchange='changeLang();' style="color: black">
-            <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
-            <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
-        </select>
-    </form>
-     </a>
-    <?php if(isset($_SESSION['user_idban'])){?>
-    <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; "><a href="?mod=xulydangxuat" style="font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></a></button> </div>
-    <?php } ?>
+<div id="loading">
 </div>
-
-<span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()"><i class="fas fa-cog" style="margin-top:10px"></i></span>
-
-<?php
-	$mod=@$_GET['mod'];
-	  if($mod=='') $mod='dangnhap';
-	  include("module/front/{$mod}.php");
-?> 
 <script>
+    function onReady(callback) {
+        var intervalID = window.setInterval(checkReady, 1000);
+
+        function checkReady() {
+            if (document.getElementsByTagName('body')[0] !== undefined) {
+                window.clearInterval(intervalID);
+                callback.call(this);
+            }
+        }
+    }
+
+    function show(id, value) {
+        document.getElementById(id).style.display = value ? 'block' : 'none';
+    }
+
+    onReady(function () {
+        show('page', true);
+        show('loading', false);
+    });
+
     $(document).ready(function () {
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
@@ -97,19 +141,4 @@ if(isset($_SESSION['lang'])){
         document.getElementById("mySidenav").style.width = "0";
     }
 </script>
-
-<script type="text/javascript">
-    $(function(){
-      SyntaxHighlighter.all();
-    });
-    $(window).load(function(){
-      $('.flexslider').flexslider({
-        animation: "slide",
-        controlNav: "thumbnails",
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-      });
-    });
-  </script>
 </html>

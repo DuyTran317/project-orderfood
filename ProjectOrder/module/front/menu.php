@@ -3,6 +3,12 @@
     body{
         height: 100%;
     }
+    .active{
+         background-color: rgba(247, 139, 7,0.8);
+         padding: 5px;
+         border-radius: 5px;
+         transition: 0.3s;
+     }
 </style>
 	<?php
 	if(!isset($_SESSION['user_nameban']))
@@ -22,11 +28,12 @@
 		$cate=$_GET['cate'];
 	}
 	?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " onLoad="startTime()">
+<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; ">
 <p style="text-align:right; ">
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
@@ -38,12 +45,12 @@
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
     channel.bind('newbill', function () {
-		
+
         //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-	
+
 	Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {
       cluster: 'ap1',
@@ -52,11 +59,11 @@
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
     channel.bind('delorder', function () {
-		
+
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-	
+
 	Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {
       cluster: 'ap1',
@@ -65,9 +72,9 @@
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
     channel.bind('delfood', function () {
-		
+
         //code xử lý khi có dữ liệu từ pusher
-		
+
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
@@ -79,12 +86,12 @@
     var channel = pusher.subscribe('hihi');
     // chanel trùng voi chanel trong send.php
     channel.bind('loadmenu', function () {
-		
+
         //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-	
+
 </script>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
@@ -95,14 +102,33 @@
         <div class="col-md-3 hidden-xs" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; overflow-y: scroll;">
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
             <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
-           
-            <?php 
+
+            <?php
 				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
 				while($r_cate=mysqli_fetch_assoc($c)):
 			?>
-             <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate[$_SESSION['lang'].'_name']?></p></a>
+             <hr>
+                <ul style="list-style: none;padding: 0; margin: 0;">
+                    <li>
+                        <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
+                    </li>
+                </ul>
             <?php endwhile ?>
+            <script>
+
+                var url = window.location;
+                $('ul a[href="' + url + '"]').parent().addClass('active');
+                $('ul a').filter(function () {
+                    return this.href == url;
+                }).parent().addClass('active');
+                console.log(123);
+                var current_url = window.location;
+                $('ul li a').filter(function () {
+                    return this.href == current_url;
+
+                }).last().parents('li').addClass('active');
+            </script>
 
             <?php
             @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
@@ -126,6 +152,7 @@
                 {
                     ?>
                     <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
 
@@ -136,7 +163,7 @@
 
             <div  class="collapse in" style="cursor: pointer">
                 <div data-toggle="collapse" data-parent="#demo" href="#demo">
-                    <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a></span>
+                    <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
 
                 </div>
 
@@ -148,8 +175,27 @@
                 $c=mysqli_query($link,$sql);
                 while($r_cate=mysqli_fetch_assoc($c)):
                     ?>
-                    <hr><a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><p style="margin-left:5px; text-transform: uppercase;"><?=$r_cate[$_SESSION['lang'].'_name']?></p></a>
+                    <hr>
+                    <ul style="list-style: none;padding: 0; margin: 0;">
+                        <li>
+                            <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
+                        </li>
+                    </ul>
                 <?php endwhile ?>
+                    <script>
+
+                        var url = window.location;
+                        $('ul a[href="' + url + '"]').parent().addClass('active');
+                        $('ul a').filter(function () {
+                            return this.href == url;
+                        }).parent().addClass('active');
+                        console.log(123);
+                        var current_url = window.location;
+                        $('ul li a').filter(function () {
+                            return this.href == current_url;
+
+                        }).last().parents('li').addClass('active');
+                    </script>
                 </div>
             </div>
 
@@ -206,19 +252,19 @@
                                 <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
                             </div>
                             <input onChange="handleChange(this,<?=$kq['id']?>);checkFood(<?=$kq['id']?>);" type="checkbox" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'checked="checked"' ?>  style=" height: 40px; width: 40px; position: absolute; right: 0px; top: 0px; display:none;" id="foodchosen<?php  echo $number1;?>" />
-                            
-							<?php if($kq['discount']>0){ 
+
+							<?php if($kq['discount']>0){
 									$new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
 							?>
                             <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($new_price) ?> VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span></div>
-                            <?php } 
+                            <?php }
 								  else{
 							?>
-                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>		
-                            <?php			  
+                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
+                            <?php
 								  }
 							?>
-                            
+
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
@@ -261,11 +307,7 @@
                 </script>
             <?php } ?>
             </div>
-
-
-
-
-    </div>
+        </div>
     <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" >
         <?php
         $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
@@ -293,7 +335,7 @@
             </label>
             <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
                 <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
-                <?php if($kq['discount']>0){ 
+                <?php if($kq['discount']>0){
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
 				?>
                 <h5><?=number_format($new_price)?> VND (-<?=$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
@@ -301,8 +343,8 @@
 					else
 					{
 			    ?>
-                	<h5><?=number_format($kq['price']) ?> VND</h5>			
-				<?php		
+                	<h5><?=number_format($kq['price']) ?> VND</h5>
+				<?php
 					}
 				?>
                 <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
@@ -310,6 +352,7 @@
         </div>
         <?php } ?>
     </div>
+</div>
 </div>
 </body>
 <script>
@@ -351,20 +394,20 @@
         return i;
     }
 	function checkFood(id){
-		
+
 		$.ajax({
 			url:'module/front/ajax_order.php',
 			type:'POST',
 			data:{id_food: id, act: 1}
 			}).done(function(data){
 				var btn = document.getElementById("btn_GoiMon");
-				
+
 				if(data > 0){
 						btn.style.display = "block";
-						
+
 					}
 					else {btn.style.display = "none";}
-				
+
 				});
 	}
     function checkFoodMobile(id){
