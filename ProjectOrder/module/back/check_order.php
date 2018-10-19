@@ -80,17 +80,17 @@
                 endwhile
                 ?>
                 <?php 
-				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 2";
+				$sql="SELECT note FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
 				$rs2 = mysqli_query($link,$sql);
 				$xacnhan = mysqli_num_rows($rs2);
+				 
 				?>
 
             </table>
-            <?php
-				if($xacnhan > 0)
+                <div style="margin:15px 0 15px 0"> <span style="color:#F00; font-size:18px; font-weight:bold">Ghi chú: <br> </span>
+					<?php
+					if($xacnhan > 0 )
 				{
-			?>
-                <div style="margin:15px 0 15px 0"> <span style="color:#F00; font-size:18px; font-weight:bold">Ghi chú: </span><?php
                     while($r2=mysqli_fetch_assoc($rs2))
                     {
                         echo $r2['note'];
