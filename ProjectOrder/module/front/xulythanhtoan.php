@@ -2,8 +2,9 @@
 if(isset($_GET['id']))
 {
 	$name = $_GET['name'];
-	$id = $_GET['id'];	
-	$sql="insert into `of_solve_pay` values(NULL,{$id},'0')";
+	$id = $_GET['id'];
+	$order_id=$_GET['order_id'];	
+	$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$id},'0')";
 	mysqli_query($link,$sql);
 	
 	unset($_SESSION['order_wait']);
