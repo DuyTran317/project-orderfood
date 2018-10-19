@@ -8,7 +8,7 @@
 	
 ?>
 <!--Reload Page-->
-<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
+<!--<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
 <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
@@ -24,7 +24,7 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-</script>
+</script>-->
 <style>
  table.dataTable{
 	 border-collapse:collapse;
