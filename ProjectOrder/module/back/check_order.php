@@ -51,34 +51,28 @@
 				{
 
                 echo '
-                <div style="text-align: right"><a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm(\'Bạn chắc chắn xóa hết?\')">
-                        <input type="submit" value="Xóa hết" class="btn btn-danger btn-lg"></a>
-                </div><br>
                 <tr>
-                    <th class="col-xs-3 ">Hình Ảnh</th>
-                    <th>Tên</th>
-                    <th class="text-center">Số Lượng</th>
+                    <th class="col-xs-3 " style="font-size:22px; color:#1c5a1e">STT</th>
+                    <th style="font-size:22px; color:#1c5a1e">Tên</th>
+                    <th class="text-center" style="font-size:22px; color:#1c5a1e">Số Lượng</th>
                     <th></th>
                 </tr>';
+				$stt=0;
                 while($r=mysqli_fetch_assoc($rs)):
+				++$stt;
 					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
 					$orderId = $r['order_id'];
                     ?>
                     <tr>
                         <td>
-                            <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
+                            <?=$stt?>
                         </td>
                         <td>
                             <div style=""><?=$r['ten']?></div>
                         </td>
-                        <td align="center">
+                        <td align="center" style="color:#900">
                             <p style=""> <?=$r['qty']?></p>
-                        </td>
-                        <td >
-                            <span style="float:right; ">
-                                <a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a>
-                            </span>
-                        </td>
+                        </td>                        
                     </tr>
 
                 <?php
@@ -86,20 +80,26 @@
                 endwhile
                 ?>
                 <?php 
-				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
+				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 2";
 				$rs2 = mysqli_query($link,$sql);
+				$xacnhan = mysqli_num_rows($rs2);
 				?>
 
             </table>
-            <div> Ghi chú:<?php
-                while($r2=mysqli_fetch_assoc($rs2))
-                {
-                    echo $r2['note'];
-                    echo "<br>";
-                }
-
-                ?>
-            </div>
+            <?php
+				if($xacnhan > 0)
+				{
+			?>
+                <div style="margin:15px 0 15px 0"> <span style="color:#F00; font-size:18px; font-weight:bold">Ghi chú: </span><?php
+                    while($r2=mysqli_fetch_assoc($rs2))
+                    {
+                        echo $r2['note'];
+                        echo "<br>";
+                    }
+    
+                    ?>
+                </div>
+            <?php } ?>
         </div>
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
 

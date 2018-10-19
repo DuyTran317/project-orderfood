@@ -33,7 +33,7 @@
 <body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
     <div class="container">
         <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        <a href="?mod=ds_food" style="font-size:30px; color:#096"> <i class="fas fa-cogs"></i></a>
+        <a href="?mod=ds_food" style="font-size:30px; color:#096; text-decoration:none"> <i class="fas fa-cogs"></i></a>
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
                 <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
