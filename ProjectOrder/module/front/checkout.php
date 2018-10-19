@@ -260,30 +260,28 @@
                                         <?php } ?>
                                     </table>
                                 </div>
-                                 <form action="" method="post">
-                                <div class="row" style="margin-top:30px">
-                                    <div style="width:100%">
-                                        <p><?=_NOTE?>:</p>
-                                        <textarea name="note" rows="4" class="form-control" placeholder="<?=_NOTEHERE?>"></textarea>
-                                    </div><br><br>
-                                    <div class="col-xs-4" style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span></div>
-                                    <div align="right" class="col-xs-8">
-                                        <div id="form_lienhe">
-
-                                                <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="<?=_ORDER?>">
-
-                                            </form>
+                                <form action="" method="post">
+                                    <div class="row" style="margin-top:30px">
+                                        <div style="width:100%">
+                                            <p><?=_NOTE?>:</p>
+                                            <textarea name="note" rows="4" class="form-control" placeholder="<?=_NOTEHERE?>"></textarea>
+                                        </div><br><br>
+                                        <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">
+                                            <?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span>
+                                        </div>
+                                        <div align="right" class="col-xs-8">
+                                            <div id="form_lienhe">
+                                                    <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="<?=_ORDER?>">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
+                            </form>
+                            </div>
                         </div>
-
-
-                    </div>
-
-                    </form>
                 </div>
-
+            </div>
+                </div>
                 </body>
         </html>
 <?php } ?>
