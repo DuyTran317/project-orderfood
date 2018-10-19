@@ -33,6 +33,18 @@
         $country=$_GET['country'];
     }
 	$SoHoaDonLamTruoc = 5;
+	if(isset($_POST['update']))
+	{
+		$sql ="select id from `of_order_detail` where `order_id` = {$_POST['order_id']} and `active`=0";
+		$r=mysqli_query($link,$sql);
+		while($kq=mysqli_fetch_assoc($r))
+		{
+			$temp=$_POST['qty'.$kq['id']];
+			$sql1="update `of_order_detail` set qty = {$temp} where id = {$kq['id']} and `active`=0";
+			$r1=mysqli_query($link,$sql1);
+		}
+		
+	}
 ?>
 
 <body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
@@ -52,12 +64,14 @@
 
 				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
 
+?>
+<form action="" method="post" >
+<div style="text-align: right"><a><input  type="submit" value="Thêm Món" class="btn btn-success"></a>
+<button type="submit" class="btn btn-warning btn-lg" name="update"><i class="fas fa-sync"></i> </button>
+                </div><br>
+<?php
 				if($dem > 0 )
 				{
-
-
-                echo '<div style="text-align: right"><a><input type="submit" value="Thêm Món" class="btn btn-success"></a>
-                </div><br>';
                 echo '<tr>
                     <th class="col-xs-3 ">Hình Ảnh</th>
                     <th>Tên</th>
@@ -69,27 +83,33 @@
 					$orderId = $r['order_id'];
                     ?>
                     <tr>
+                     
                         <td>
                             <img src="" alt="" style="width:149px; height:145px; margin-bottom:20px;" >
                         </td>
                         <td>
                             <div style=""><?=$r[$r['country'].'_name']?></div>
                         </td>
+                        
                         <td align="center">
-                            <p style=""> <?=$r['qty']?></p>
+                            <input type="number" value="<?=$r['qty']?>" name="qty<?= $r['id_food'] ?>" >
+                            
                         </td>
                         <td >
                             <span style="float:right; ">
-                                <i class="fas fa-edit"></i>
+                                
                                 <a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a>
                             </span>
                         </td>
+                       
                     </tr>
 
                 <?php
                     $total += $r['price']*$r['qty'];
                 endwhile
                 ?>
+                <input type="hidden" name="order_id" value="<?=$orderId?>">
+                 </form>
                 <?php
 				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
 				$rs2 = mysqli_query($link,$sql);
