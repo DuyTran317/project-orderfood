@@ -1,10 +1,10 @@
 <?php
-if(isset($_POST['ten']))
+if(isset($_POST['so']))
 {
-    $account=$_POST['ten'];
+    
     $name = $_POST['so'];
     $active = $_POST['trangthai'];
-        $sql_user = "insert into `of_user` VALUES (NULL ,'{$account}','{$name}','{$active}')";
+        $sql_user = "insert into `of_user` VALUES (NULL ,'{$name}','{$active}')";
        if(mysqli_query($link,$sql_user))
         {
             $_SESSION['them'] = 'themthanhcong';

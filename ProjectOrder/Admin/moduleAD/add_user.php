@@ -1,3 +1,4 @@
+
 <div class="wrapper">
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,16 +22,12 @@
                 <div class="box box-primary">
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="?mod=process_user" method="post" enctype="multipart/form-data">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tên Bàn <span style="color:#F00" >(*)</span> </label>
-                                <input type="text" class="form-control" id="ten" name="ten" required placeholder="Nhập tên bàn">
-                            </div>
+                    <form role="form1" action="?mod=process_user" method="post" enctype="multipart/form-data">
+                        <div class="box-body"><div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Số <span style="color:#F00" >(*)</span></label>
-                                <input type="number" class="form-control" id="so" name="so" required placeholder="Nhập số bàn">
-                            </div>                           
+                                <input type="text" class="form-control" id="username" name="username" required placeholder="Nhập số bàn"><span id="thongbao"></span>
+                            </div>     </div>                      
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
                                 <div class="radio">
@@ -62,3 +59,25 @@
     </section>
 </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $('#username').blur(function() { 
+        
+        var username = $(this).val();
+        
+        $.ajax({
+            method:"POST",               // Phương thức gởi đi
+            url:"moduleAD/check_number.php",           // File xử lý dữ liệu được gởi
+            data:{user_name:username},
+            dataType:"text",            // Dữ liệu gởi đến cho url 
+            success: function(html) { // Hàm chạy khi dữ liệu gởi thành công
+                $("#thongbao").html(html);    
+            }
+        });
+        
+    });
+
+});
+
+</script>

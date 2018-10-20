@@ -74,7 +74,6 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên Bàn</th>
                                 <th>Số</th>
                                 <th>Trạng Thái</th>
                                 <th><a href="them-ban.html">Thêm</a></th>
@@ -91,7 +90,6 @@
                                 ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
                                     <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_user&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
