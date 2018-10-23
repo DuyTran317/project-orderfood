@@ -42,3 +42,5 @@ define("_TOTALBYWORDS", "Tổng Thành Tiền (bằng chữ)");
 define("_CUSTOMER", "Khách Hàng");
 define("_EMPLOYEE", "Nhân Viên");
 define("_CITY", "TP.HCM");
+define("_STEP", "Bước");
+define("_MANUAL", "Hướng Dẫn Sử Dụng");
