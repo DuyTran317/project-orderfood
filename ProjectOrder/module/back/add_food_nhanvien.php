@@ -24,19 +24,36 @@
 		$price = $k['price'];
 		$discount = $k['discount'];
 		
-		$sql = "insert into `of_order_detail` values (NULL, '1', '$id_sp', '$price', '$qty', '$discount', '0', 'vi')";
-		mysqli_query($link,$sql);
+		$sql = "select * from `of_order_detail` where `order_id` ={$id} and `active` = 0 and `food_id` = {$id_sp}";
+		$check = mysqli_query($link,$sql);
 		
-		header("location:?mod=confirm_order&id={$id}&num_table=$num_table");
+			if(mysqli_num_rows($check) > 0)
+			{
+				echo "<script>alert('Đã tồn tại món này trong danh sách!')</script>";
+			}
+			else
+			{
+				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '0', 'vi')";
+				mysqli_query($link,$sql);
+		
+				header("location:?mod=confirm_order&id={$id}&num_table=$num_table");
+			}
 	}
 ?>
+
+<a href="?mod=confirm_order&id=<?=$id?>&num_table=<?=$num_table?>"><button class="btn btn-success">Quay lại</button></a>
+&nbsp;&nbsp;&nbsp;Chọn ngôn ngữ:
+<select>
+	<option>Tiếng Việt</option>
+    <option>English</option>
+</select>
 
 <table>
                 <form action="" method="post">
                 	<tr>
                     	<td><label style="margin-top:20px">Loại Hàng</label></td>
                         <td>
-                        	 <select id="category_id" onchange="window.location='?mod=add_food_nhanvien&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:17px">
+                        	 <select id="category_id" onchange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:17px">
 							<?php
 								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
 								$rs_s=mysqli_query($link,$sql);
