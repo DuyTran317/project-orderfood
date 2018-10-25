@@ -56,7 +56,6 @@ if(isset($_SESSION['lang'])){
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 99 !important;
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
@@ -66,7 +65,84 @@ if(isset($_SESSION['lang'])){
         background-position: center;
         transition: 0.2s;
     }
+    .captionanimatext {
+        opacity: 0;
+        animation-name: captionfade;
+        animation-delay: 1s;
+        animation-duration: 2s;
 
+    }
+    @keyframes captionfade {
+        0% {
+            position: absolute;
+            right:42%;
+            opacity: 0;
+            top:0rem;
+        }
+
+        75% {
+            position: absolute;
+            right:42%;
+            opacity: 1;
+            top:-8rem;
+        }
+
+        100% {
+            position: absolute;
+            right:42%;
+            opacity: 0;
+            top:-8rem;
+        }
+    }
+
+    @media only screen and (max-width: 767px){
+        @keyframes captionfade {
+            0% {
+                position: absolute;
+                left:32%;
+                opacity: 0;
+                top:0rem;
+            }
+
+            75% {
+                position: absolute;
+                left:32%;
+                opacity: 1;
+                top:-8rem;
+            }
+
+            100% {
+                position: absolute;
+                left:32%;
+                opacity: 0;
+                top:-8rem;
+            }
+        }
+    }
+    @media only screen and (max-width: 991px){
+        @keyframes captionfade {
+            0% {
+                position: absolute;
+                left:37%;
+                opacity: 0;
+                top:0rem;
+            }
+
+            75% {
+                position: absolute;
+                left:37%;
+                opacity: 1;
+                top:-8rem;
+            }
+
+            100% {
+                position: absolute;
+                left:37%;
+                opacity: 0;
+                top:-8rem;
+            }
+        }
+    }
 </style>
 <div id="page">
 
@@ -82,7 +158,9 @@ if(isset($_SESSION['lang'])){
                 <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
             </select>
         </form>
-         </a>
+         </a><br>
+        <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
+
         <?php if(isset($_SESSION['user_idban'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; "><a href="?mod=xulydangxuat" style="font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></a></button> </div>
         <?php } ?>
@@ -98,14 +176,111 @@ if(isset($_SESSION['lang'])){
     ?>
 
 </div>
-<div id="loading">
+
+<div class="modal fade" id="manual" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="z-index: 99 !important;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" align="center"><?=_MANUAL?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="myManual" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
+                        <li data-target="#myCarousel" data-slide-to="5"></li>
+                        <li data-target="#myCarousel" data-slide-to="6"></li>
+                        <li data-target="#myCarousel" data-slide-to="7"></li>
+                        <li data-target="#myCarousel" data-slide-to="8"></li>
+                    </ol>
+                    <div class="carousel-inner" >
+
+                        <div class="item active">
+                            <img src="img/front/1.jpg" style="width:100%;">
+                            <div class="carousel-caption ">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 1</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/front/2.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 2</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/front/3.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 3</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/4.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 4</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/5.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 5</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/6.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 6</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/7.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 7</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/8.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 8</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/front/9.jpg"  style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 9</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myManual" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myManual" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+<div id="loading"></div>
 <script>
     function onReady(callback) {
         var intervalID = window.setInterval(checkReady, 1000);
 
         function checkReady() {
-            if (document.getElementsByTagName('body')[0] !== undefined) {
+            if (document.getElementsByTagName('div')[0] !== undefined) {
                 window.clearInterval(intervalID);
                 callback.call(this);
             }

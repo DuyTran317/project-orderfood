@@ -4,7 +4,11 @@ if(isset($_GET['id']))
 	$name = $_GET['name'];
 	$id = $_GET['id'];
 	$order_id=$_GET['order_id'];	
+
 	$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$id},'0')";
+	mysqli_query($link,$sql);
+	
+	$sql="update `of_user` set `active`= 1 where `id`={$id}";
 	mysqli_query($link,$sql);
 	
 	unset($_SESSION['order_wait']);
@@ -17,9 +21,7 @@ if(isset($_POST['content']))
 		$star=$_POST['rate'];
 		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star',now(),'1')";
 		mysqli_query($link,$sql);
-		$sql="update `of_user` set `active`= 1 where `id`={$id}";
-		$rs=mysqli_query($link,$sql);
-		// header("location:?mod=home&id=$id&name=$name");
+		
 		header("location:?mod=dangnhap");	
 	}	
 	

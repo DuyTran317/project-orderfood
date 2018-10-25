@@ -32,8 +32,7 @@
     <div class="container">
         <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         	<a href="?mod=home" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
-            <!--Chuyển Bàn -->
-            <a href="?mod=temp" style="font-size:18px; color: #909; float:right; border:1px dotted #906; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Chuyển Bàn</a>
+            
             <div style="clear:right"></div>
             
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">

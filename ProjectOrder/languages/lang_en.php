@@ -42,3 +42,5 @@ define("_TOTALBYWORDS", "Total (by words)");
 define("_CUSTOMER", "Customer");
 define("_EMPLOYEE", "Employee");
 define("_CITY", "HCM City");
+define("_STEP", "Step");
+define("_MANUAL", "How To Use Our Website");

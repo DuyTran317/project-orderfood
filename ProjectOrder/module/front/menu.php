@@ -135,26 +135,26 @@
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
 
+			$sql="select a.`id` as id_donhang  
+				from `of_order` as a, `of_order_detail` as b
+				where a.`id`=b.`order_id` and `num_table`={$name}				
+				group by a.`id`
+				order by a.`id` desc limit 0,1";
+			$rs=mysqli_query($link,$sql);
+
+			$r=mysqli_fetch_assoc($rs);
+
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                ?>
-                <?php
-                $sql="select a.`id` as id_donhang  
-					from `of_order` as a, `of_order_detail` as b
-					where a.`id`=b.`order_id` and `num_table`={$name}				
-					group by a.`id`
-					order by a.`id` desc limit 0,1";
-                $rs=mysqli_query($link,$sql);
-
-                $r=mysqli_fetch_assoc($rs);
-
                 if(isset($_GET['thanhtoan']) && $r_t['active']==1)
                 {
-                    ?>
-                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
-
+            ?>                    
+            		<!--Thanh toán-->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
+                	
+                    <!--Kiểm Tra Hóa Đơn -->
+					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>                
 
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
@@ -204,27 +204,28 @@
             @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
+			
+			$sql="select a.`id` as id_donhang  
+				from `of_order` as a, `of_order_detail` as b
+				where a.`id`=b.`order_id` and `num_table`={$name}				
+				group by a.`id`
+				order by a.`id` desc limit 0,1";
+			$rs=mysqli_query($link,$sql);
+
+			$r=mysqli_fetch_assoc($rs);			
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                ?>
-                <?php
-                $sql="select a.`id` as id_donhang  
-					from `of_order` as a, `of_order_detail` as b
-					where a.`id`=b.`order_id` and `num_table`={$name}				
-					group by a.`id`
-					order by a.`id` desc limit 0,1";
-                $rs=mysqli_query($link,$sql);
-
-                $r=mysqli_fetch_assoc($rs);
-
                 if(isset($_GET['thanhtoan']) && $r_t['active']==1)
                 {
-                    ?>
-                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+                ?>
+                	<!--Thanh toán -->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }} ?>
-
+                	
+                    <!--Kiểm Tra Hóa Đơn -->
+                    <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+                    
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
 
@@ -357,42 +358,6 @@
 </body>
 <script>
 
-
-    function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
-        var t = setTimeout(startTime, 500);
-        var month = new Array();
-        month[0] = "01";
-        month[1] = "02";
-        month[2] = "03";
-        month[3] = "04";
-        month[4] = "05";
-        month[5] = "06";
-        month[6] = "07";
-        month[7] = "08";
-        month[8] = "09";
-        month[9] = "10";
-        month[10] = "11";
-        month[11] = "12";
-
-        var d = new Date();
-        var day = d.getDate()
-
-        var mon = month[d.getMonth()];
-        document.getElementById("day").innerHTML = day;
-        document.getElementById("month").innerHTML = mon;
-
-    }
-    function checkTime(i) {
-        if (i < 10) {i = "0" + i};
-        return i;
-    }
 	function checkFood(id){
 
 		$.ajax({
