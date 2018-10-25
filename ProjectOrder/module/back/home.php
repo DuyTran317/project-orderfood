@@ -64,7 +64,6 @@
                 </h5></td>
                 <td align="center"><h5>
                   <?php
-                    if($re['active']==0)
                     echo"Đang chờ xử lý";
                   ?>
                 </h5></td>
