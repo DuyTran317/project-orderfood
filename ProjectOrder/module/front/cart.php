@@ -71,7 +71,7 @@
                 <td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>
                 
                   <td class="hidden-md hidden-lg hidden-sm">
-                      <input type="text" class="form-control text-center" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)">
+                      <input type="text" class="form-control text-center quantity" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)">
                   </td>
                 <td class="col-sm-3 hidden-xs">
                     <div class="input-group " >
@@ -107,9 +107,9 @@
                 <div align="right" class="col-xs-8">
                     <?php if(@count($cart)>0){ ?>
                         
-                      <button type="submit" class="btn btn-warning btn-lg"><i class="fas fa-sync"></i> <?=_UPDATELIST?></button>
+                      <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><i class="fas fa-sync"></i></button>
                     
-                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg " id="btnorder"><i class="fas fa-check"></i> <?=_GOONORDER?></button></a>
+                    <a href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button type="button" class="btn btn-success btn-lg " id="btnorder"><i class="fas fa-check"></i></button></a>
 					<?php }
 						  else
 						  {
@@ -133,6 +133,11 @@
 <script>
     $( ".qtyminus , .qtyplus" ).click(function() {
         $("#btnorder").attr("disabled", true);
+        $("#refreshbtn").attr("disabled", false);
+    });
+    $( ".quantity").click(function() {
+        $("#btnorder").attr("disabled", true);
+        $("#refreshbtn").attr("disabled", false);
     });
     $(document).ready(function() {
         $("#<?=$k?>").keydown(function (e) {

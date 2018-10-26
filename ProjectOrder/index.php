@@ -48,102 +48,7 @@ if(isset($_SESSION['lang'])){
     }
 </script>
 <style>
-    #page {
-        display: none;
-        transition: 0.2s;
-    }
-    #loading {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        background-size: 100px;
-        background-image: url(img/front/transparent-backgrounds-loading-3.gif);
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: 0.2s;
-    }
-    .captionanimatext {
-        opacity: 0;
-        animation-name: captionfade;
-        animation-delay: 1s;
-        animation-duration: 2s;
-
-    }
-    @keyframes captionfade {
-        0% {
-            position: absolute;
-            right:42%;
-            opacity: 0;
-            top:0rem;
-        }
-
-        75% {
-            position: absolute;
-            right:42%;
-            opacity: 1;
-            top:-8rem;
-        }
-
-        100% {
-            position: absolute;
-            right:42%;
-            opacity: 0;
-            top:-8rem;
-        }
-    }
-
-    @media only screen and (max-width: 767px){
-        @keyframes captionfade {
-            0% {
-                position: absolute;
-                left:32%;
-                opacity: 0;
-                top:0rem;
-            }
-
-            75% {
-                position: absolute;
-                left:32%;
-                opacity: 1;
-                top:-8rem;
-            }
-
-            100% {
-                position: absolute;
-                left:32%;
-                opacity: 0;
-                top:-8rem;
-            }
-        }
-    }
-    @media only screen and (max-width: 991px){
-        @keyframes captionfade {
-            0% {
-                position: absolute;
-                left:37%;
-                opacity: 0;
-                top:0rem;
-            }
-
-            75% {
-                position: absolute;
-                left:37%;
-                opacity: 1;
-                top:-8rem;
-            }
-
-            100% {
-                position: absolute;
-                left:37%;
-                opacity: 0;
-                top:-8rem;
-            }
-        }
-    }
+    
 </style>
 <div id="page">
 
@@ -168,7 +73,7 @@ if(isset($_SESSION['lang'])){
         <?php } ?>
     </div>
 
-    <span style="font-size:30px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()"><i class="fas fa-cog" style="margin-top:10px"></i></span>
+    <span style="font-size:34px;cursor:pointer; color: white; margin-left: 10px;" onclick="openNav()"><i class="fas fa-cog" style="margin-top:10px"></i></span>
 
 
     <?php

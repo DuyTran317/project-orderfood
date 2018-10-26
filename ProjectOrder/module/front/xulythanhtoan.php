@@ -36,7 +36,7 @@ if(isset($_POST['content']))
 <body style=" font-family: 'Anton', sans-serif; background-image:url(img/front/close-up-cooking-cuisine-958545.jpg); background-position:center; background-size:cover; background-attachment:fixed">
 <div class="container" style="margin-top:50px; font-size:20px; font-weight:100">
     <div class="row" >
-        <div class="col-md-8 col-md-offset-2" style="background-color: white; padding: 20px;">
+        <div class="col-md-8 col-md-offset-2" style="background-color: white; padding: 20px; border-radius: 20px;">
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="comment" style="font-size: 20px;" >
