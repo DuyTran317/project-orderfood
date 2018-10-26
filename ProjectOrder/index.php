@@ -197,7 +197,7 @@ if(isset($_SESSION['lang'])){
     }
 
     onReady(function () {
-        show('page', true);
+        show('loadingpage', true);
         show('loading', false);
     });
 
