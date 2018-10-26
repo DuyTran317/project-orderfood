@@ -13,6 +13,19 @@
 		 window.location.reload();
          //kết thúc code xử lý thông báo
     });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('aaee585e94d28c3959f4', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu_nhanvien', function () {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
 </script>
 
 <html>

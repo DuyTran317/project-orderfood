@@ -54,7 +54,8 @@
     '577033',
     $options
 	);
-	$pusher->trigger('Reload', 'delorder', @$data);
+	$data['name']=$num_table;
+	$pusher->trigger('Reload', 'delorder', $data);
 	
 	header("location:?mod=home_nhanvien");
 ?>

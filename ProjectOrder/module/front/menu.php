@@ -58,9 +58,11 @@
     });
     var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
-    channel.bind('delorder', function () {
+    channel.bind('delorder', function (data) {
 
-		 window.location.reload();
+		if(data.name == <?= $name?>){
+		window.location.reload();
+		}
         // kết thúc code xử lý thông báo
     });
 
@@ -71,11 +73,13 @@
     });
     var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
-    channel.bind('delfood', function () {
+    channel.bind('delfood', function (data) {
 
         //code xử lý khi có dữ liệu từ pusher
 
-		 window.location.reload();
+		if(data.name == <?= $name?>){
+		window.location.reload();
+		}
         // kết thúc code xử lý thông báo
     });
 	Pusher.logToConsole = true;
@@ -91,7 +95,36 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu2', function (data) {
 
+        //code xử lý khi có dữ liệu từ pusher
+		if(data.name == <?= $name?>){
+		window.location.reload();
+		}
+        // kết thúc code xử lý thông báo
+    });
+Pusher.logToConsole = true;
+    var pusher = new Pusher('aaee585e94d28c3959f4', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu_nhanvien', function (data) {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		if(data.name == <?= $name?>){
+		window.location.reload();
+		}
+        // kết thúc code xử lý thông báo
+    });
 </script>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
