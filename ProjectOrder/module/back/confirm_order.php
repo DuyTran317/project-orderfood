@@ -5,7 +5,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
      chanel trùng voi chanel trong send.php
     channel.bind('notices', function () {
 		
@@ -66,7 +66,7 @@
 
 ?>
 <form action="" method="post" >
-<button type="submit" class="btn btn-warning btn-lg" name="update"><i class="fas fa-sync"></i> </button>
+
                 </div><br>
 <?php
 				if($dem > 0 )
@@ -84,6 +84,7 @@
 					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
 					$orderId = $r['order_id'];
                     ?>
+                   
                     <tr>
                      
                         <td>
@@ -110,6 +111,7 @@
                     $total += $r['price']*$r['qty'];
                 endwhile
                 ?>
+                 <button type="submit" class="btn btn-warning btn-lg" name="update"><i class="fas fa-sync"></i> </button>
                 <input type="hidden" name="order_id" value="<?=$orderId?>">
                  </form>
                 <?php

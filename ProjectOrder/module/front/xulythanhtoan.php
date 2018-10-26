@@ -92,6 +92,6 @@ if(isset($_POST['content']))
     '577033',
     $options
 	);
-	$pusher->trigger('hihi', 'notice', @$data);
+	$pusher->trigger('Reload', 'notice', @$data);
 ?>
 

@@ -1,4 +1,18 @@
 <?php
+if(isset($_POST['language']) && !empty($_POST['language'])){
+    $_SESSION['servantlang'] = $_POST['language'];
+
+    if(isset($_SESSION['servantlang']) && $_SESSION['servantlang'] != $_POST['language']){
+        echo "<script type='text/javascript'> location.reload(); </script>";
+    }
+}
+if(empty($_SESSION['servantlang'])){
+    $_SESSION['servantlang'] ='vi';
+}
+?>
+
+<?php
+    $servantlang = $_SESSION['servantlang'];
 	if(! isset($_SESSION['admin_id']))
 	{
 		header("location:?mod=dangnhap");	
@@ -33,27 +47,47 @@
 			}
 			else
 			{
-				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '0', 'vi')";
+				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '0', '$servantlang')";
 				mysqli_query($link,$sql);
 		
 				header("location:?mod=confirm_order&id={$id}&num_table=$num_table");
 			}
 	}
 ?>
+<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
+<div class="container" style="margin-bottom:50px">
+    <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+<a href="?mod=confirm_order&id=<?=$id?>&num_table=<?=$num_table?>" style="font-size: 36px; color: black" ><i class="fas fa-arrow-left"></i></a>
 
-<a href="?mod=confirm_order&id=<?=$id?>&num_table=<?=$num_table?>"><button class="btn btn-success">Quay lại</button></a>
-&nbsp;&nbsp;&nbsp;Chọn ngôn ngữ:
-<select>
-	<option>Tiếng Việt</option>
-    <option>English</option>
-</select>
+<form action="#" method="post" id="servantlang">
+    <table class="table">
+        <tr>
+            <td class="col-sm-3" >
+                Chọn ngôn ngữ
+            </td>
+            <td >
+                <select name="language"  onchange='changeLang();' class="form-control">
+                    <option value="vi" <?php if(isset($_SESSION['servantlang']) && $_SESSION['servantlang'] == 'vi'){ echo "selected"; } ?>>Tiếng Việt</option>
+                    <option value="en" <?php if(isset($_SESSION['servantlang']) && $_SESSION['servantlang'] == 'en'){ echo "selected"; } ?>>English</option>
+                </select>
+            </td>
+        </tr>
+    </table>
 
-<table>
-                <form action="" method="post">
+</form>
+<script>
+    function changeLang(){
+        document.getElementById('servantlang').submit();
+    }
+</script>
+<form action="" method="post">
+<table class="table">
+
+
                 	<tr>
-                    	<td><label style="margin-top:20px">Loại Hàng</label></td>
+                    	<td class="col-sm-3">Loại Hàng</td>
                         <td>
-                        	 <select id="category_id" onchange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" style="margin-top:10px; margin-left:20px; width:200px;; font-size:17px">
+                        	 <select id="category_id" onchange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" class="form-control">
 							<?php
 								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
 								$rs_s=mysqli_query($link,$sql);
@@ -69,7 +103,7 @@
                             ?>
                                                     
                                 <option <?php if($r['id']==$cid) echo'selected'?>
-                                    value="<?=$r['id']?>"><?=$r['vi_name']?>
+                                    value="<?=$r['id']?>"><?=$r[$_SESSION['servantlang'].'_name']?>
                                 </option>                           
                             
                             <?php } ?>
@@ -77,9 +111,9 @@
                         </td>
                     </tr>
                     <tr>
-                    	<td><label style="margin-top:20px">Sản Phẩm</label></td>
+                    	<td class="col-sm-3">Sản Phẩm</td>
                         <td>
-                        	<select id="id_sp" name="id_sp" style="margin-top:10px; margin-left:20px; width:300px;; font-size:17px">
+                        	<select id="id_sp" name="id_sp" class="form-control">
 							<?php
                                 $sql="select * from `of_food` where `active`=1 and `category_id`={$cid}";
                                 $rs_pro=mysqli_query($link,$sql);
@@ -87,7 +121,7 @@
                           ?>
                                                     
                                 <option <?php if($r_pro['id']==$cid) echo'selected'?>
-                                    value="<?=$r_pro['id']?>"><?=$r_pro['vi_name']?>
+                                    value="<?=$r_pro['id']?>"><?=$r_pro[$_SESSION['servantlang'].'_name']?>
                                 </option>                           
                             
                             <?php } ?>
@@ -95,14 +129,38 @@
                         </td>
                     </tr>
                     <tr>
-                    <tr>
-                    	<td><label style="margin-top:20px">Số Lượng</label></td>
+                    	<td class="col-sm-3">Số Lượng</td>
                         <td>
-                        	<input type="number" min="1" name="qty" required="required" style="margin-top:10px; margin-left:20px; width:70px;; font-size:17px">
+                        	<input type="number" min="1" name="qty" required="required" class="form-control" value="1" id="quantity">
                         </td>
                     </tr>
-                    <tr>
-                    	<td><input type="submit" value="Thêm"></td>
-                    </tr>    
-                 </form>
-</table>                 
+
+</table>
+        <input type="submit" value="Thêm" class="btn btn-success col-xs-12 btn-lg">
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        $("#quantity").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl/cmd+A
+                (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl/cmd+C
+                (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl/cmd+X
+                (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

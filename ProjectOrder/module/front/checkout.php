@@ -178,7 +178,7 @@
 				'577033',
 				$options
 				);
-				$pusher->trigger('hihi', 'notices', @$data);
+				$pusher->trigger('Reload', 'notices', @$data);
 				
 				if(@$orderID != NULL)
 				{

@@ -16,7 +16,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
     channel.bind('notices', function () {
 		 window.location.reload();

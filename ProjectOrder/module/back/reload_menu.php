@@ -10,7 +10,7 @@
     '577033',
     $options
 	);
-	$pusher->trigger('hihi', 'loadmenu', @$data);
+	$pusher->trigger('Reload', 'loadmenu', @$data);
 	//reload chi tiet
 	$options = array(
 	'cluster' => 'ap1',
@@ -22,7 +22,7 @@
     '577033',
     $options
 	);
-	$pusher->trigger('hihi', 'loadchitiet', @$data);
+	$pusher->trigger('Reload', 'loadchitiet', @$data);
 	
 ?>
 <script>
