@@ -36,7 +36,11 @@
 			$sosanh = mysqli_query($link,$sql);
 			if(mysqli_num_rows($sosanh) > 0)
 			{
-				echo "<script>alert('Không thể đặt món. Bàn đã được sử dụng!')</script>";
+				echo '<script type="text/javascript">';
+	            echo 'setTimeout(function () { swal("Không thể đặt món",
+	                      "Bàn đã được sử dụng!",
+	                      "warning");';
+	            echo '}, 1);</script>';
 			}
 			else
 			{
@@ -159,13 +163,7 @@
 						$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
 						mysqli_query($link,$sql);
 				}
-				if($_SESSION['lang']=='vi'){
-					echo '<script>alert(" Gọi món thành công ");</script>';
-				}
-				else if ($_SESSION['lang']=='en')
-				{
-					echo '<script>alert(" Your dishes have been successfully ordered ");</script>';
-				}
+
 				unset($_SESSION['cart']);
 			
 				//Gửi thông điêp để reload trang BẾP
@@ -186,9 +184,30 @@
 				{
 					@$_SESSION['order_wait']=$orderID;
 				}
-?>
-		<script>window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&thanhtoan=1&cate=<?=$cate?>"</script>							
-<?php
+				if($_SESSION['lang']=='vi'){
+						echo '<script type="text/javascript">';
+		            	echo 'swal({
+					    title: "Thành công!",
+					    text: "Gọi món thành công",
+					    type: "success"
+						}).then(function() {
+						    window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+						});';
+						echo '</script>';
+				}
+				else if ($_SESSION['lang']=='en')
+				{
+					echo '<script type="text/javascript">';
+		           	echo 'swal({
+					    title: "Success!",
+					    text: "Your dishes have been successfully ordered",
+					    type: "success"
+					}).then(function() {
+					    window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+					});';
+					echo '</script>';
+				}
+
 			}
 		}
 ?>

@@ -11,21 +11,16 @@ ob_start(); ?>
         setcookie("idad","{$_SESSION['idad']}",time()+999999);
         setcookie("catead","{$_SESSION['catead']}",time()+999999);
     }
-if(!isset($_SESSION['userad'])) {
+    if(!isset($_SESSION['userad'])) {
 
-    header('location:login.php');
-}
-elseif(isset($_SESSION['success'] )=='thanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
-                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
-                          'success');";
-            echo "},1);</script>";
-        }
-        else
-        {
-            header("?mod=home");
-        } ?>
+        header('location:login.php');
+    }
+    else
+    {
+        header("trang-chu.html");
+    } 
+
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,6 +63,15 @@ elseif(isset($_SESSION['success'] )=='thanhcong') {
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <script src="dist/js/sweetalert2.all.min.js"></script>
+    <?php 
+        if(isset($_SESSION['success']) =='thanhcong') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
+                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
+                          'success');";
+            echo "},1);</script>";
+        }
+    ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
  
@@ -79,9 +83,8 @@ if($mod=='') $mod='home';
 include("moduleAD/{$mod}.php");
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -90,11 +93,7 @@ include("moduleAD/{$mod}.php");
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="bower_components/raphael/raphael.min.js"></script>
-<script src="bower_components/morris.js/morris.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

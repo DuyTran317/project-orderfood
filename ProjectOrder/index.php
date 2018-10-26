@@ -23,6 +23,7 @@
 <script defer src="lib/woocommerce-FlexSlider-53570ee/demo/js/jquery.flexslider.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="lib/sweetalert2.all.min.js"></script>
 </head>
 <?php
 
@@ -152,7 +153,8 @@ if(isset($_SESSION['lang'])){
         <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h2>
         <?php } ?>
         <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
-         <a><form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
+         <a>
+             <form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
             <select name='lang' onchange='changeLang();' style="color: black">
                 <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
                 <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
