@@ -96,25 +96,28 @@
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
 </p>
+<a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 30px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMon" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
+<a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 30px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
 <div class="container-fluid" style="margin-top: 6%">
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
-        <div class="col-md-3 hidden-xs" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; overflow-y: scroll;">
+        <div class="col-md-3 hidden-xs" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; background-size: cover">
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
             <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
-
+            <div style="height: 250px; overflow-y: scroll;">
             <?php
 				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
 				while($r_cate=mysqli_fetch_assoc($c)):
 			?>
              <hr>
-                <ul style="list-style: none;padding: 0; margin: 0;">
+                <ul style="list-style: none;padding: 0; margin: 0; ">
                     <li>
                         <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
                     </li>
                 </ul>
             <?php endwhile ?>
+            </div>
             <script>
 
                 var url = window.location;
@@ -143,30 +146,27 @@
 			$rs=mysqli_query($link,$sql);
 
 			$r=mysqli_fetch_assoc($rs);
-
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
 					@$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
 					@$tt = mysqli_query($link,$sql);
 					if(@mysqli_num_rows($tt) > 0)
 					{
-            ?>                    
+            ?>
             		<!--Thanh toán-->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
 					else {unset($_SESSION['order_wait']);}
 			} ?>
-                	
+
                     <!--Kiểm Tra Hóa Đơn -->
-                    <?php 
+                    <?php
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
-						if(@mysqli_num_rows($kt) > 0) { 
+						if(@mysqli_num_rows($kt) > 0) {
 					?>
-					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>  
-                    <?php } ?>              
-
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMon" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+                    <?php } ?>
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
@@ -208,44 +208,41 @@
                     </script>
                 </div>
             </div>
-
-
             <?php
             @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
 
-			$sql="select a.`id` as id_donhang  
+            $sql="select a.`id` as id_donhang  
 				from `of_order` as a, `of_order_detail` as b
 				where a.`id`=b.`order_id` and `num_table`={$name}				
 				group by a.`id`
 				order by a.`id` desc limit 0,1";
-			$rs=mysqli_query($link,$sql);
+            $rs=mysqli_query($link,$sql);
 
-			$r=mysqli_fetch_assoc($rs);
+            $r=mysqli_fetch_assoc($rs);
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-					@$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
-					@$tt = mysqli_query($link,$sql);
-					if(@mysqli_num_rows($tt) > 0)
-					{
-            ?>                    
-            		<!--Thanh toán-->
+                @$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
+                @$tt = mysqli_query($link,$sql);
+                if(@mysqli_num_rows($tt) > 0)
+                {
+                    ?>
+                    <!--Thanh toán-->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
-					else {unset($_SESSION['order_wait']);}
-			} ?>
-                	
-                    <!--Kiểm Tra Hóa Đơn -->
-                    <?php 
-						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
-						@$kt = mysqli_query($link,$sql);
-						if(@mysqli_num_rows($kt) > 0) { 
-					?>
-					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>  
-                    <?php } ?>
-                    
+                else {unset($_SESSION['order_wait']);}
+            } ?>
+
+            <!--Kiểm Tra Hóa Đơn -->
+            <?php
+            @$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
+            @$kt = mysqli_query($link,$sql);
+            if(@mysqli_num_rows($kt) > 0) {
+                ?>
+                <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+            <?php } ?>
             <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
 
@@ -335,7 +332,7 @@
             <?php } ?>
             </div>
         </div>
-    <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" >
+    <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" > <!--mobile-->
         <?php
         $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
         $res= mysqli_query($link,$commsql);
@@ -361,7 +358,13 @@
                 <?php } ?>
             </label>
             <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
-                <h4 style="color:#900;" class="textover2"> <?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
+                <?php
+                $info="";
+                if($kq[$_SESSION['lang'].'_name']== ""){
+                    $info = "-No Information-";
+                }
+                ?>
+                <h4 style="color:#900;" class="textover2"> <?=$info?><?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
                 <?php if($kq['discount']>0){
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
 				?>

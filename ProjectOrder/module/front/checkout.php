@@ -2,6 +2,10 @@
 	th{
 		text-align:center;
 	}
+    html,
+    body{
+        height: 100%;
+    }
 </style>
 <?php
 	if(! isset($_SESSION['user_idban']))
