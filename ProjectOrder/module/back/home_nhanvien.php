@@ -43,7 +43,7 @@
     <div class="row">
     <?php 
 	//show bàn ra
-	$sql1="select * from `of_user` where `active`!=0";
+	$sql1="select * from `of_user` where `active`!=0 order by `active` DESC";
 	$c=mysqli_query($link,$sql1);
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
