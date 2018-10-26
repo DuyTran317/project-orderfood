@@ -11,21 +11,16 @@ ob_start(); ?>
         setcookie("idad","{$_SESSION['idad']}",time()+999999);
         setcookie("catead","{$_SESSION['catead']}",time()+999999);
     }
-if(!isset($_SESSION['userad'])) {
+    if(!isset($_SESSION['userad'])) {
 
-    header('location:login.php');
-}
-elseif(isset($_SESSION['success'] )=='thanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
-                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
-                          'success');";
-            echo "},1);</script>";
-        }
-        else
-        {
-            header("?mod=home");
-        } ?>
+        header('location:login.php');
+    }
+    else
+    {
+        header("trang-chu.html");
+    } 
+
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,6 +63,15 @@ elseif(isset($_SESSION['success'] )=='thanhcong') {
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <script src="dist/js/sweetalert2.all.min.js"></script>
+    <?php 
+        if(isset($_SESSION['success']) =='thanhcong') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
+                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
+                          'success');";
+            echo "},1);</script>";
+        }
+    ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
  

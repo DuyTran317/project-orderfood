@@ -9,6 +9,7 @@ RewriteRule "^danh-sach-danh-gia.html$" "?mod=com_list"
 RewriteRule "^danh-sach-ban.html$" "?mod=user_list"
 RewriteRule "^danh-sach-slide.html$" "?mod=slide_list"
 RewriteRule "^trang-chu.html$" "?mod=home"
+RewriteRule "^thoat.html$" "?mod=logout"
 
 
 
