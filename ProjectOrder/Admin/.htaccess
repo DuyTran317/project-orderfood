@@ -9,6 +9,17 @@ RewriteRule "^danh-sach-danh-gia.html$" "?mod=com_list"
 RewriteRule "^danh-sach-ban.html$" "?mod=user_list"
 RewriteRule "^danh-sach-slide.html$" "?mod=slide_list"
 RewriteRule "^trang-chu.html$" "?mod=home"
+RewriteRule "^thoat.html$" "?mod=logout"
+RewriteRule "^process-cat.html$" "?mod=process_cat"
+RewriteRule "^process-pro.html$" "?mod=process_pro"
+RewriteRule "^process-bill.html$" "?mod=process_bill"
+RewriteRule "^process-ad.html$" "?mod=process_ad"
+RewriteRule "^process-com.html$" "?mod=process_com"
+RewriteRule "^process-kit.html$" "?mod=process_kit"
+RewriteRule "^process-slide.html$" "?mod=process_slide"
+RewriteRule "^process-user.html$" "?mod=process_user"
+
+
 
 
 

@@ -78,7 +78,7 @@
                                 <a href="edit_ad-<?php echo  $_SESSION['idad'] ?>.html" class="btn btn-default btn-flat">Tài Khoản</a>
                             </div>
                             <div class="pull-right">
-                                <a href="?mod=logout" class="btn btn-default btn-flat">Logout</a>
+                                <a href="thoat.html" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>

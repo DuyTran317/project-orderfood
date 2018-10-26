@@ -25,7 +25,7 @@
                     $kq_edit = mysqli_query($link,$sql_edit);
                     $d_edit = mysqli_fetch_assoc($kq_edit);
                     ?>
-                    <form role="form" action="?mod=process_user" method="post" enctype="multipart/form-data">
+                    <form role="form" action="process-user.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Bàn <span style="color:#F00" >(*)</span></label>

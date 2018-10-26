@@ -11,21 +11,16 @@ ob_start(); ?>
         setcookie("idad","{$_SESSION['idad']}",time()+999999);
         setcookie("catead","{$_SESSION['catead']}",time()+999999);
     }
-if(!isset($_SESSION['userad'])) {
+    if(!isset($_SESSION['userad'])) {
 
-    header('location:login.php');
-}
-elseif(isset($_SESSION['success'] )=='thanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
-                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
-                          'success');";
-            echo "},1);</script>";
-        }
-        else
-        {
-            header("?mod=home");
-        } ?>
+        header('location:login.php');
+    }
+    else
+    {
+        header("trang-chu.html");
+    } 
+
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,6 +63,15 @@ elseif(isset($_SESSION['success'] )=='thanhcong') {
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <script src="dist/js/sweetalert2.all.min.js"></script>
+    <?php 
+        if(isset($_SESSION['success']) =='thanhcong') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Đăng Nhập Thành Công',
+                          'Chào mừng bạn đến với trang quản trị OrderFOOD',
+                          'success');";
+            echo "},1);</script>";
+        }
+    ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
  
@@ -109,14 +113,14 @@ include("moduleAD/{$mod}.php");
 <script>
     $(function () {
         $('#example1').DataTable( {
-			"language": {
-				"url": "bower_components/datatables.net/Vietnamese.json"
-			}
-    	} );
+            "language": {
+                "url": "bower_components/datatables.net/Vietnamese.json"
+            }
+        } );
         $('#example2').DataTable({
-			"language": {
-				"url": "bower_components/datatables.net/Vietnamese.json"
-			},
+            "language": {
+                "url": "bower_components/datatables.net/Vietnamese.json"
+            },
             'paging'      : true,
             'lengthChange': false,
             'searching'   : false,
@@ -147,17 +151,33 @@ include("moduleAD/{$mod}.php");
 </script>
 <script>
     //Chi tiết
-    var noidung = CKEDITOR.replace( 'noidung', {
+    var vi_noidung = CKEDITOR.replace( 'vi_noidung', {
         uiColor: '#ccffff',
         language:'vi',
 
     });
 
-    CKFinder.setupCKEditor( noidung, 'brower_components/ckfinder/' ) ;
-
+    CKFinder.setupCKEditor( vi_noidung, 'brower_components/ckfinder/' ) ;
+    CKEDITOR.replace( 'vi_noidung',
+        {
+            filebrowserBrowseUrl : 'brower_components/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Images',
+            filebrowserFlashBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Flash',
+            filebrowserUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        });
 </script>
 <script>
-    CKEDITOR.replace( 'noidung',
+    //Chi tiết
+    var en_noidung = CKEDITOR.replace( 'en_noidung', {
+        uiColor: '#ccffff',
+        language:'vi',
+
+    });
+
+    CKFinder.setupCKEditor( en_noidung, 'brower_components/ckfinder/' ) ;
+    CKEDITOR.replace( 'en_noidung',
         {
             filebrowserBrowseUrl : 'brower_components/ckfinder/ckfinder.html',
             filebrowserImageBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Images',

@@ -23,6 +23,32 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu2', function () {
+
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadthanhtoan', function () {
+
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
 </script>
 <style>
  table.dataTable{

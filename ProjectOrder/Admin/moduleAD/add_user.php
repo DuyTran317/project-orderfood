@@ -22,7 +22,7 @@
                 <div class="box box-primary">
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form1" action="?mod=process_user" method="post" enctype="multipart/form-data">
+                    <form role="form1" action="process-user.html" method="post" enctype="multipart/form-data">
                         <div class="box-body"><div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Số <span style="color:#F00" >(*)</span></label>
