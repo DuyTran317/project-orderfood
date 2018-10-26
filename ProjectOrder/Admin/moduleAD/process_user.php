@@ -1,16 +1,23 @@
 <?php
-if(isset($_POST['so']))
+if(isset($_POST['username']))
 {
     
-    $name = $_POST['so'];
+    $name = $_POST['username'];
     $active = $_POST['trangthai'];
-        $sql_user = "insert into `of_user` VALUES (NULL ,'{$name}','{$active}')";
-       if(mysqli_query($link,$sql_user))
-        {
-            $_SESSION['them'] = 'themthanhcong';
-            header("location:danh-sach-ban.html");
-        }
-        else echo $sql_user;
+    $sql = "select * from `of_user` where name='".$_POST['username']."'";
+    $sql_user = "insert into `of_user` VALUES (NULL ,'{$name}','{$active}')";
+    $kq = mysqli_query($link,$sql);
+    if(mysqli_num_rows($kq)>0)
+    {
+         $_SESSION['fail'] = 'thatbai';
+        header("location:them-ban.html");
+    }
+    elseif(mysqli_query($link,$sql_user))
+    {
+        $_SESSION['them'] = 'themthanhcong';
+        header("location:danh-sach-ban.html");
+    }
+    else echo $sql_user;
 
 }
 

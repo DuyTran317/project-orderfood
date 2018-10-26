@@ -97,10 +97,10 @@
                                  <td> <img src="../img/cate/<?php echo $d_cat['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
                                 <td><?= $d_cat['vi_name'] ?></td>
                                 <td><?= $d_cat['en_name'] ?></td>
-                                <td><?php if($d_cat['active']==0) {echo "<a href=\"?mod=process_cat&actives={$d_cat['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                <td><?php if($d_cat['active']==0) {echo "<a href=\"process-cat-s{$d_cat['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else
                                     {
-                                        echo "<a href=\"?mod=process_cat&activeh={$d_cat['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                        echo "<a href=\"process-cat-h{$d_cat['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
                                 <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)">Xóa</a></td>

@@ -287,6 +287,7 @@ include("moduleAD/{$mod}.php");
        $('input#datefrom').val("<?php echo $fdatefrom; ?>");
       });
  </script>
+ 
  <?php unset($_SESSION['success']); ?>
 </body>
 

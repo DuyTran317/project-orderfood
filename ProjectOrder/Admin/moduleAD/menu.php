@@ -201,8 +201,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=slide_list"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-ban.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-slide.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
         <?php
