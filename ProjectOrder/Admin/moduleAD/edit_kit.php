@@ -28,7 +28,7 @@
                     $kq_edit = mysqli_query($link,$sql_edit);
                     $d_edit = mysqli_fetch_assoc($kq_edit);
                     ?>
-                    <form role="form" action="?mod=process_kit" method="post" enctype="multipart/form-data">
+                    <form role="form" action="process-kit.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Account <span style="color:#F00" >(*)</span></label>

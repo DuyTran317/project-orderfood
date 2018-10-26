@@ -20,7 +20,7 @@
         <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="?mod=process_pro" method="post" enctype="multipart/form-data">
+            <form role="form" action="process-pro.html" method="post" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="form-group">
                         <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
@@ -121,14 +121,3 @@
     </section>
 </div>
 </div>
-<script>
-    //Chi tiết
-    var noidung = CKEDITOR.replace( 'noidung', {
-        uiColor: '#ccffff',
-        language:'vi',
-
-    });
-
-    CKFinder.setupCKEditor( noidung, 'brower_components/ckfinder/' ) ;
-
-</script>

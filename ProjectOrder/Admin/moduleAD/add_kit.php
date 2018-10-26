@@ -20,7 +20,7 @@
                 <div class="box box-primary">
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="?mod=process_kit" method="post" enctype="multipart/form-data">
+                    <form role="form" action="process-kit.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Account <span style="color:#F00" >(*)</span></label>
