@@ -129,8 +129,8 @@ Pusher.logToConsole = true;
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
 </p>
-<a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 30px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMon" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
-<a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 30px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
+<a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMon" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
+<a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i></a>
 <div class="container-fluid" style="margin-top: 6%">
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
