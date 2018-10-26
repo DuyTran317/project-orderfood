@@ -192,7 +192,8 @@
                             <?php
                             $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
                             $rs=mysqli_query($link,$sql);
-                            $lang=mysqli_fetch_assoc($rs);
+                           $lang_use=mysqli_query($link,$sql);
+                       	   $lang=mysqli_fetch_assoc($lang_use);
                             $total=0;
                             $stt=1;
                             include "languages/lang_".$lang['country'].".php";
