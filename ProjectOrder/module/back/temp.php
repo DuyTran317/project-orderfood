@@ -32,6 +32,58 @@
 			$r_uporder = mysqli_query($link,$sql);
 		}
 	}
+	else
+	if(isset($_POST['Gop_Ban']))
+	{
+		$sql1 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_from']} and a.active <> 0 and b.`active` = 0";
+		$r1 = mysqli_query($link,$sql1);
+		$rs1 = mysqli_fetch_assoc($r1);
+		
+		$sql2 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_to']} and a.active <> 0 and b.`active` = 0";
+		$r2 = mysqli_query($link,$sql2);
+		$rs2 = mysqli_fetch_assoc($r2);
+		
+		$sql_sol = "select `id` from `of_solve_pay` where `order_id` == {$rs2['order_id']} or `order_id` == {$rs2['order_id']}";
+		$r_sol = mysqli_query($link,$sql_sol);
+		$rs_sol = mysqli_num_rows($r_sol);
+		
+		if($rs1 && $rs2 && $rs_sol == 0)
+		{
+			$sql_upd="update `of_bill` set `total` = `total` + {$rs1['total']} where `num_table` = {$_POST['table_to']} and `active` = 0";
+			mysqli_query($link,$sql_upd);
+			
+			if($rs1['active'] == 2 || $rs2['active'] == 2)
+			{
+				$sql_upd="update `of_order` set `active` = 2 where `id` = {$rs2['order_id']}";
+				mysqli_query($link,$sql_upd);
+				
+				$sql_upd="update `of_note_order` set `order_id`={$rs2['order_id']}, `active`=2 where `order_id` = {$rs1['order_id']}";
+				mysqli_query($link,$sql_upd);
+			}
+			else
+			{
+				$sql_upd="update `of_note_order` set `order_id`={$rs2['order_id']} where `order_id` = {$rs1['order_id']}";
+				mysqli_query($link,$sql_upd);
+			}
+			
+			$sql_upd="update `of_order_detail` set `order_id`={$rs2['order_id']} where `order_id` = {$rs1['order_id']}";
+			mysqli_query($link,$sql_upd);
+			
+			$sql="delete from `of_bill` where `order_id` = {$rs1['order_id']}";
+			mysqli_query($link,$sql);
+			$sql="delete from `of_order` where `id` = {$rs1['order_id']}";
+			mysqli_query($link,$sql);
+
+		}
+		else
+		{
+			?>
+			<script>
+            	alert("đéo gọp được nha óc chó!");
+            </script>
+			<?php
+		}
+	}
 ?>
 <form method="post" action="">
 Từ Bàn:
@@ -60,4 +112,5 @@ Từ Bàn:
 	 ?>
 </select>
 <input type="submit" name="Chuyen_Ban" value="Chuyển" />
+<input type="submit" name="Gop_Ban" value="Gop" />
 </form>

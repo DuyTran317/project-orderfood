@@ -30,7 +30,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_cat">
+                        <form role="form" method="post" enctype="multipart/form-data" action="process-cat.html">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Thể Loại VN:<span style="color:#F00" >(*)</span></label>
