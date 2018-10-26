@@ -25,25 +25,25 @@
 	$r = mysqli_query($link,$sql);
 	while($rs = mysqli_fetch_assoc($r))
 	{
-		$sql1 = "select * from `of_order_detail` where `order_id`={$orderID} and `active` = 1 and `food_id` = {$rs['food_id']}";
+		/*$sql1 = "select * from `of_order_detail` where `order_id`={$orderID} and `active` = 1 and `food_id` = {$rs['food_id']}";
 		$r1 = mysqli_query($link,$sql1);
 		$rs_sl = mysqli_num_rows($r1);
 		if($rs_sl>0)
 		{
-			$sql_sl = "update `of_order_detail` set `qty` = `qty`+ {$rs['qty']} where `order_id`={$orderID} and `active` = 1 and `food_id` = {$rs['food_id']}";
+			$sql_sl = "update `of_order_detail` set `qty` = `qty`+ {$rs['qty']}, `active` =2 where `order_id`={$orderID} and `active` = 1 and `food_id` = {$rs['food_id']}";
 			mysqli_query($link,$sql_sl);
 			
 			$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
 			mysqli_query($link,$sql);
 		}
 		else
-		{
-			$sql_sl = "update `of_order_detail` set `active` = 2 where `order_id`={$orderID} and `food_id` = {$rs['food_id']}";
+		{*/
+			$sql_sl = "update `of_order_detail` set `active` = 2 where `order_id`={$orderID} and `food_id` = {$rs['food_id']} and `active` = 0";
 			mysqli_query($link,$sql_sl);
 			
 			$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
 			mysqli_query($link,$sql);
-		}
+		//}
 	}
 	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 0";
 	mysqli_query($link,$sql_sl);
