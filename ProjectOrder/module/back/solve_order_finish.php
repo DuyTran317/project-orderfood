@@ -16,6 +16,18 @@
 		$id=$_GET['id'];
 	}
 	
+	if(isset($_GET['idorder2']))
+	{
+		$idorder2=$_GET['idorder2'];
+	}
+	if(isset($_GET['num_table2']))
+	{
+		$num_table2=$_GET['num_table2'];
+	}
+	if(isset($_GET['id2']))
+	{
+		$id2=$_GET['id2'];
+	}
 	$sql = "select * from `of_order_detail` where `order_id` ={$idorder} and `active` = 2";
 	$rs = mysqli_query($link,$sql);
 	$dem = 1;
@@ -75,6 +87,12 @@
 			$sql="update `of_food` set `solve` = `solve` + {$qty} where `id` ={$id}";
 			mysqli_query($link,$sql);
 		}
-		
+	if(isset($id2))
+	{
+		header("location:?mod=check_order&num_table={$num_table2}&id={$idorder2}");
+	}
+	else
+	{
 	header("location:?mod=check_order&num_table={$num_table}&id={$idorder}");
+	}
 ?>
