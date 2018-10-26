@@ -5,7 +5,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
     channel.bind('notices', function () {
 		
@@ -39,7 +39,7 @@
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
 
                 <?php
-                $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh,a.`id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
+                $sql="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 $rs=mysqli_query($link,$sql);
 				
 				$dem = mysqli_num_rows($rs);				
@@ -55,7 +55,7 @@
                     <th class="col-xs-3 " style="font-size:22px; color:#1c5a1e">STT</th>
                     <th style="font-size:22px; color:#1c5a1e">Tên</th>
                     <th class="text-center" style="font-size:22px; color:#1c5a1e">Số Lượng</th>
-                    <th></th>
+                    <th class="text-center" style="font-size:22px; color:#1c5a1e">Xử lý</th>
                 </tr>';
 				$stt=0;
                 while($r=mysqli_fetch_assoc($rs)):
@@ -72,7 +72,10 @@
                         </td>
                         <td align="center" style="color:#900">
                             <p style=""> <?=$r['qty']?></p>
-                        </td>                        
+                        </td>  
+                        <td align="center">
+                        	<a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a>
+                        </td>                      
                     </tr>
 
                 <?php
@@ -80,7 +83,7 @@
                 endwhile
                 ?>
                 <?php 
-				$sql="SELECT note FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
+				$sql="SELECT `note` FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
 				$rs2 = mysqli_query($link,$sql);
 				$xacnhan = mysqli_num_rows($rs2);
 				 

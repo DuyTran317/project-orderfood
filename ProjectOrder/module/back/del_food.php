@@ -84,7 +84,7 @@
     '577033',
     $options
 	);
-	$pusher->trigger('hihi', 'delfood', @$data);
+	$pusher->trigger('Reload', 'delfood', @$data);
 	
 	header("location:?mod=confirm_order&id=$id&num_table=$num_table");
 ?>
