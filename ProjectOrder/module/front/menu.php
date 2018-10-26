@@ -121,7 +121,7 @@ Pusher.logToConsole = true;
 		
         //code xử lý khi có dữ liệu từ pusher
 		if(data.name == <?= $name?>){
-		window.location.reload();
+		window.location="?mod=xulydangxuat";
 		}
         // kết thúc code xử lý thông báo
     });
