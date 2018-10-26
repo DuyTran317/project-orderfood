@@ -47,10 +47,8 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
-<style>
-    
-</style>
-<div id="page">
+
+<div id="loadingpage">
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

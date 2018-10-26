@@ -100,7 +100,7 @@
 
                 </div>
                 <div class="col-xs-6" align="right">
-                    <div class="input-group col-sm-10 col-md-4">
+                    <div class="input-group col-sm-10 col-md-6">
                         <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='quantity' style="border: none; background-color: transparent; color:white"/></span>
                         <input type="text" class="form-control text-center" id="qty" min="1" value="1"  name='quantity' disabled style="border-color: #F60; color: #F60;">
                         <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='quantity' style="border: none; background-color: transparent; color: white"/></span>

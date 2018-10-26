@@ -170,12 +170,13 @@
 
 </style>
 
+
 <body  style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover;">
 <div class="container" style="margin-bottom:50px">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-            <div id="content">
+              <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
                         <div style="float:left; font-size:18px; margin-left:65px"><strong>Nhà Hàng 5 Siêu Nhân</strong></div>

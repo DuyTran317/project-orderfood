@@ -7,7 +7,7 @@
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif; height: 100%">
 <div class="container-fluid" style="margin-top:10%">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">
+        <div class="col-sm-8 col-sm-offset-2" style="background-color: rgba(0,0,0,0.8); padding:15px">
             <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
                 <fieldset>
                     <div class="row">

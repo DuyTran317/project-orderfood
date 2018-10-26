@@ -276,7 +276,6 @@ Pusher.logToConsole = true;
                 ?>
                 <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
             <?php } ?>
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
 
         <div class="col-md-9 hidden-xs" >
