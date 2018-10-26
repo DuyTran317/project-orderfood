@@ -8,7 +8,7 @@
 	
 ?>
 <!--Reload Page-->
-<!--<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
+<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
 <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
@@ -16,15 +16,15 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
-    channel.bind('notices', function () {
+    channel.bind('reloadbep', function () {
 		
         //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
-</script>-->
+</script>
 <style>
  table.dataTable{
 	 border-collapse:collapse;

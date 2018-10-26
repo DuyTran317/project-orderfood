@@ -76,12 +76,13 @@
     'encrypted' => true
 	);
  	$pusher = new Pusher(
-    '161363aaa8197830a033',
-    '46f2ba3b258f514f6fc7',
-    '577033',
+    '770fa0ac91f2e68d3ae7',
+    'ba6aadbd24eaa367edb6',
+    '631845',
     $options
 	);
-	$pusher->trigger('hihi', 'newbill', @$data);
+	$data['name'] = $num_table;
+	$pusher->trigger('Reload', 'newbill', $data);
 ?>
 <script>
 	alert("Hoàn Tất Đơn Hàng!");

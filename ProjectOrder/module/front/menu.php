@@ -38,17 +38,17 @@
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function () {
-
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
+    channel.bind('newbill', function(data) {
+		
+		if(data.name == <?= $name?>){
+		window.location.reload();
+		}
     });
 
 	Pusher.logToConsole = true;
@@ -56,7 +56,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
     channel.bind('delorder', function () {
 
@@ -69,7 +69,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
     channel.bind('delfood', function () {
 
@@ -83,7 +83,7 @@
       cluster: 'ap1',
       encrypted: true
     });
-    var channel = pusher.subscribe('hihi');
+    var channel = pusher.subscribe('Reload');
     // chanel trùng voi chanel trong send.php
     channel.bind('loadmenu', function () {
 

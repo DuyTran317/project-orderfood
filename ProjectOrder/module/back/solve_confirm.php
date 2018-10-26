@@ -81,7 +81,7 @@
 			'577033',
 			$options
 			);
-			$pusher->trigger('hihi', 'notices', @$data);
+			$pusher->trigger('Reload', 'reloadbep', @$data);
 ?>
 <script>
 	window.location="?mod=home_nhanvien";

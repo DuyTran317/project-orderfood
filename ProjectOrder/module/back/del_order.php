@@ -54,7 +54,7 @@
     '577033',
     $options
 	);
-	$pusher->trigger('hihi', 'delorder', @$data);
+	$pusher->trigger('Reload', 'delorder', @$data);
 	
 	header("location:?mod=home_nhanvien");
 ?>
