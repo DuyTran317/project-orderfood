@@ -2,6 +2,10 @@
 	th{
 		text-align:center;
 	}
+	html,
+    body{
+        height: 100%;
+    }
 </style>
 
 <?php
@@ -23,7 +27,7 @@ if(isset($_GET['cate']))
     $cate=$_GET['cate'];
 }
 ?>
-
+<html>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
@@ -107,3 +111,4 @@ if(isset($_GET['cate']))
 
 </div>
 </body>
+</html>
