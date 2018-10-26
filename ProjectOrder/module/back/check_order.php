@@ -42,6 +42,9 @@
                 $sql="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 $rs=mysqli_query($link,$sql);
 				
+				$sql1="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                $rs1=mysqli_query($link,$sql1);
+				
 				$dem = mysqli_num_rows($rs);				
                 $total=0;
 
@@ -58,9 +61,12 @@
                     <th class="text-center" style="font-size:22px; color:#1c5a1e">Xử lý</th>
                 </tr>';
 				$stt=0;
+				while($r1=mysqli_fetch_assoc($rs1)):
+				$sql_timtrung.=" or a.`food_id`={$r1['food_id']}";
+				endwhile;
                 while($r=mysqli_fetch_assoc($rs)):
 				++$stt;
-					$sql_timtrung.=" or a.`food_id`={$r['food_id']}";
+					
 					$orderId = $r['order_id'];
                     ?>
                     <tr>
@@ -113,6 +119,7 @@
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
             while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
+			
             {
                 if($orderId1 != $rs_timtrung['order_id'])
                 {
@@ -135,12 +142,14 @@
                         <span style="font-size:22px">Số Lượng:</span> <span style="color:#0C6; font-size:24px; text-decoration:underline">x<?=$rs_timtrung['qty']?></span><hr>
 
                         <span style="font-size:22px">Chú Thích:</span> <?php echo "<span style='font-size:24px; color:#F09'>".$note."</span>"; ?>
+                        <br>
+                        <a href="?mod=solve_order_finish&id=<?=$rs_timtrung['food_id']?>&idorder=<?=$rs_timtrung['order_id']?>&num_table=<?=$rs_timtrung['num_table']?>&id2=<?=$r['id_food']?>&idorder2=<?=$id?>&num_table2=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a>
                     </div>
                     <?php
                 }
                 else
                 {
-                    echo "{$rs_timtrung['name']} : {$rs_timtrung['qty']} <br>";
+                    echo "{$rs_timtrung['vi_name']} : {$rs_timtrung['qty']} <br>";
                 }
             }
             /*echo "<span style='font-size:22px'>".$note."</span>";*/
