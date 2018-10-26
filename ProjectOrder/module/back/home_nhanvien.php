@@ -69,7 +69,7 @@
 						   if(mysqli_num_rows($show) > 0)
 						   {
 						?>
-                       <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('thanh toán?')"  style=" color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px; text-align:center">Thanh toán</button></a> 
+                       <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px; text-align:center">Thanh toán</button></a> 
                        <?php } ?> 
                        
 				<?php  
