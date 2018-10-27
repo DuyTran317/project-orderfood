@@ -193,7 +193,7 @@ Pusher.logToConsole = true;
 			} ?>
 
                     <!--Kiểm Tra Hóa Đơn -->
-                    <?php
+                    <?php						
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
