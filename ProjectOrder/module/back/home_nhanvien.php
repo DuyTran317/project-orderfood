@@ -49,7 +49,7 @@
 	$name=$slban['name']; 
 	$id_ban = $slban['id'];
 	?>
-        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px;" align="center">
+        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center">
         <?php
 				//lấy id_order và name bàn
 				$sql="SELECT *,`of_order`.`id` as id_or, `of_order`.`num_table` as name_ban FROM `of_order` LEFT JOIN `of_bill` ON `of_order`.`id` = `of_bill`.`order_id` where (`of_order`.`active` <> 1 or `of_bill`.`active` <> 1) and `of_order`.`num_table` = '{$name}'";
@@ -68,35 +68,48 @@
 				if(mysqli_num_rows($qr)>0) 
 				{
 					   ?> 
-					   <a href="?mod=confirm_order&id=<?= $id_order ?>&num_table=<?= $name ?>" style="text-decoration:none; color:#000">
-						 <div class="fw-place-within-col" style='background-color: #FF0; height: 200px; padding: 40px 0px;'>
-							<div style="font-size: 40px;" ><?= $slban['name']?></div>
-							<p style="margin-bottom:25px">Số món đã đặt: <?= $somon ?></p>
-					   </a>
-                       
-                       <!--Nút Thanh toán-->
-                       <?php 
-					   $sql = "select `order_id` from `of_bill` where `order_id` = {$kq['id_or']} and `active`=0";
-					   $show = mysqli_query($link,$sql);
-					   
-						   if(mysqli_num_rows($show) > 0)
-						   {
-						?>
-                       <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px; text-align:center">Thanh toán</button></a> 
-                       <?php } ?> 
-                       
+
+						 <div class="col-xs-12" style='background-color: #FF0; height: 250px; padding: 40px 0px;'>
+                             <a href="?mod=confirm_order&id=<?= $id_order ?>&num_table=<?= $name ?>" style="text-decoration:none; color:#000">
+                             <div style="font-size: 40px;" ><?= $slban['name']?></div>
+							 <p >Số món đã đặt: <?= $somon ?></p>
+                             </a>
+                           <div class="row" style="position: absolute; bottom: 0px; left: 0px; right: 0px;">
+                                 <div class="col-md-12" >
+                                     <!--Kiểm Tra Hóa Đơn -->
+                                     <?php
+                                     @$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$kq['id_or']} and `active` !=0";
+                                     @$kt = mysqli_query($link,$sql);
+                                     if(@mysqli_num_rows($kt) > 0) {
+                                         ?>
+                                         <a style="color: black; text-decoration: none;" href="?mod=list_order_nv&id=<?=$kq['id_or']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name?>"><button class="col-xs-12 btn btn-lg" style=" border-radius: 0px; font-size: 15px; text-align: center; background-color:#f4af41; ">Kiểm Tra</button>
+                                         </a>
+                                     <?php } ?>
+                                 </div>
+                                 <div class="col-md-12">
+                                     <!--Nút Thanh toán-->
+                                     <?php
+                                     $sql = "select `order_id` from `of_bill` where `order_id` = {$kq['id_or']} and `active`=0";
+                                     $show = mysqli_query($link,$sql);
+
+                                     if(mysqli_num_rows($show) > 0)
+                                     {
+                                         ?>
+                                         <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
+                                     <?php } ?>
+                                 </div>
+                             </div>
 				<?php  
 				}
 				else
 				{
 				?>
-							<div class="fw-place-within-col" style='background-color: #999; height: 200px; padding: 40px 0px;'>
+							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
-				<?php }?>  
 
-							
+				<?php }?>
 						</div>
-					</div>                                      
+					</div>
                   
         <?php endwhile ?>
     </div>

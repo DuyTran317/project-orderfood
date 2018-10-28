@@ -45,7 +45,7 @@
 </script>
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
-<div class="container" style="margin-top: 3%" >
+<div class="container" style="margin-top:2%" >
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 10%; background-color: white">
@@ -84,7 +84,7 @@
     </div>
 
         <div class="col-md-10 col-md-offset-1" style="background-color:#FFF; padding:10px;">
-            <h2 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h2>
+            <h1 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h1>
             <div class="row">
                 <div class="col-sm-6">
                     <?php if($kq['discount']>0){
@@ -98,18 +98,17 @@
                         <?php
                     }
                     ?>
-
                 </div>
                 <div class="col-sm-6" align="right">
-                    <div class="input-group col-sm-10 col-md-5 col-xs-12">
+                    <div class="input-group col-sm-10 col-md-6 col-xs-12">
+
                         <span class="input-group-addon" name="qty" style="background-color: #F60; border-color: #F60;" ><input type='button' value='-' class='qtyminus ' field='quantity' style="border: none; background-color: transparent; color:white"/></span>
                         <input type="text" class="form-control text-center" id="qty" min="1" value="1"  name='quantity' disabled style="border-color: #F60; color: #F60;">
                         <span class="input-group-addon" name="qty"  style="background-color: #F60; border-color: #F60;"><input type='button' value='+' class='qtyplus' field='quantity' style="border: none; background-color: transparent; color: white"/></span>
                     </div>
                 </div>
             </div>
-
-
+            <br>
             <div><i><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i></div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-6">

@@ -1,4 +1,10 @@
-
+<?php if(isset($_SESSION['fail'] )== 'thatbai') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Thêm thất bại',
+                          'Số bàn đã có rồi! xin mới nhập lại',
+                          'warning');";
+            echo "},1);</script>";
+        }?>
 <div class="wrapper">
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -26,7 +32,7 @@
                         <div class="box-body"><div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Số <span style="color:#F00" >(*)</span></label>
-                                <input type="text" class="form-control" id="username" name="username" required placeholder="Nhập số bàn"><span id="thongbao"></span>
+                                <input type="text" class="form-control" id="username" name="username" required placeholder="Nhập số bàn" value=""><span id="thongbao"></span>
                             </div>     </div>                      
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
@@ -59,7 +65,8 @@
     </section>
 </div>
 </div>
-<script type="text/javascript">
+<?php unset($_SESSION['fail']);  ?>
+<!-- <script type="text/javascript">
 $(document).ready(function() {
 
     $('#username').blur(function() { 
@@ -80,4 +87,9 @@ $(document).ready(function() {
 
 });
 
-</script>
+</script> -->
+<script>
+     $( document ).ready(function() {
+       $('input#username').val("<?php echo $username; ?>");
+      });
+ </script>
