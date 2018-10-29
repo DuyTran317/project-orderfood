@@ -30,15 +30,15 @@
 
 <html>
 
-<body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif;">
+<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
 
     <!--Chuyển Bàn -->
-    <a href="?mod=temp" style="font-size:18px; color: #909; float:right; border:1px dotted #906; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Chuyển Bàn</a>
+    <a href="?mod=temp" style="font-size:18px; color: #909; float:right; border:1px dotted #906; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
     <div style="clear:right"></div>
     <hr>
     
-    <h1 align="center">Danh sách bàn</h1>
+    <h1 align="center" style="color:#033"><i class="fas fa-clipboard-list"></i> Danh Sách Bàn</h1>
     
     <div class="row">
     <?php 
@@ -71,8 +71,8 @@
 
 						 <div class="col-xs-12" style='background-color: #FF0; height: 250px; padding: 40px 0px;'>
                              <a href="?mod=confirm_order&id=<?= $id_order ?>&num_table=<?= $name ?>" style="text-decoration:none; color:#000">
-                             <div style="font-size: 40px;" ><?= $slban['name']?></div>
-							 <p >Số món đã đặt: <?= $somon ?></p>
+                             <div style="font-size: 40px; color:#06F" ><?= $slban['name']?></div>
+							 <p >Số món đã đặt: <span style="color:#F00"><?= $somon ?></span></p>
                              </a>
                            <div class="row" style="position: absolute; bottom: 0px; left: 0px; right: 0px;">
                                  <div class="col-md-12" >

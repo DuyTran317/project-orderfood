@@ -92,18 +92,18 @@
     }
 </style>
 <html>
-<body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
+<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size:cover ;font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-top:2%" >
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <a href="?mod=home_nhanvien" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
-        <h2 style=" text-align:center">Quản Lý Gộp Bàn</h2>
+        <h2 style=" text-align:center; color:#909"><i class="fas fa-external-link-alt"></i> Quản Lý Bàn</h2>
         <form method="post" action="">
         <table class="table">
             <tr>
-                <th class="text-center" >
+                <th class="text-center" style="color:#F06" >
                     Từ Bàn
                 </th>
-                <th class="text-center">
+                <th class="text-center" style="color:#033" >
                     Đến Bàn
                 </th>
             </tr>
@@ -139,10 +139,10 @@
 
         </table>
             <div class="col-md-3 col-md-offset-3 col-xs-6">
-                <input type="submit" name="Gop_Ban" value="Gộp" class="btn btn-success btn-lg col-xs-12" style="border-radius: 0px;" />
+                <input type="submit" name="Gop_Ban" value="Gộp" class="btn btn-info btn-lg col-xs-12" style="border-radius: 10px;" />
             </div>
             <div class="col-md-3 col-xs-6">
-                <input type="submit" name="Chuyen_Ban" value="Chuyển" class="btn btn-success btn-lg col-xs-12" style="border-radius: 0px;"/>
+                <input type="submit" name="Chuyen_Ban" value="Chuyển" class="btn btn-primary btn-lg col-xs-12" style="border-radius: 10px;"/>
             </div>
 
 
