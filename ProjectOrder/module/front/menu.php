@@ -136,7 +136,7 @@ Pusher.logToConsole = true;
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
         <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; background-size: cover">
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
-            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
+            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;">
             <?php
 				$sql="select * from `of_category` where `active`=1";
@@ -209,7 +209,7 @@ Pusher.logToConsole = true;
                     <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
                 </div>
                 <div class="collapse out" id="demo">
-                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
+                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
                 $sql="select * from `of_category` where `active`=1";
                 $c=mysqli_query($link,$sql);
@@ -289,7 +289,7 @@ Pusher.logToConsole = true;
                 ?>
                 <div class="card"  style="  width: 300px; background:white; ">
 
-                    <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
+                    <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/sp/<?=$kq['img_url']?>);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
 
                         <?php if($kq['active'] == 1) { ?>
                         	<?php if($kq['discount']>0){ ?>
