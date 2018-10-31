@@ -115,7 +115,6 @@
         <div class="row" style="margin-top: 40px;">
 
             <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
-			
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
             while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
@@ -133,7 +132,8 @@
                     {
                         $note.= $rs_takenotes['note'];
                     }
-                    ?>
+				}
+				    ?>
 
                     <div class="col-md-4 col-sm-4 col-xs-12" style="border-right:1px dotted #000; border-top:1px dashed #000; padding-bottom:10px; padding-top:10px">
 
@@ -146,11 +146,11 @@
                         <a href="?mod=solve_order_finish&id=<?=$rs_timtrung['food_id']?>&idorder=<?=$rs_timtrung['order_id']?>&num_table=<?=$rs_timtrung['num_table']?>&id2=<?=$r['id_food']?>&idorder2=<?=$id?>&num_table2=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a>
                     </div>
                     <?php
-                }
-                else
+               
+              /*  else
                 {
                     echo "{$rs_timtrung['vi_name']} : {$rs_timtrung['qty']} <br>";
-                }
+                }*/
             }
             /*echo "<span style='font-size:22px'>".$note."</span>";*/
             ?>
