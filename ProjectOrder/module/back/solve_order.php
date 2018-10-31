@@ -21,7 +21,7 @@
 	$sql="update `of_note_order` set `active`=1 where `order_id`={$orderID}";
 	mysqli_query($link,$sql);
 	
-	$sql="select * from `of_order_detail` where `order_id`={$orderID} and `active` = 2";
+	$sql="select * from `of_order_detail` where `order_id`={$orderID} and `active` = 2 ";
 	$r = mysqli_query($link,$sql);
 	while($rs = mysqli_fetch_assoc($r))
 	{
@@ -45,7 +45,7 @@
 			mysqli_query($link,$sql);
 		}
 	}
-	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 0";
+	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 2";
 	mysqli_query($link,$sql_sl);
 	/*$sql="update `of_order_detail` set `active`=1 where `order_id`={$orderID}";
 	mysqli_query($link,$sql);*/

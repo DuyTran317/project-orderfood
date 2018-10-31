@@ -25,7 +25,7 @@ if(isset($_GET['edit']))
                 <div class="box box-primary">
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="?mod=process_pro" method="post" enctype="multipart/form-data">
+                    <form role="form" action="process-pro.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                         <?php
                         $sql_pro = "select * from of_food where id=$id";

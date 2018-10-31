@@ -76,7 +76,7 @@
                                 <th>Tên</th>
                                 <th>Hình</th>
                                 <th>Link</th>
-                                <th><a href="?mod=add_slide">Thêm</a></th>
+                                <th><a href="them-slide.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>

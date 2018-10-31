@@ -91,10 +91,10 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_user&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    <td><?php if($d_user['active']==0) {echo "<a href=\"process-user-s{$d_user['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
-                                            echo "<a href=\"?mod=process_user&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                            echo "<a href=\"process-user-h{$d_user['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
                                     <td><a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>

@@ -22,7 +22,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_slide">
+                        <form role="form" method="post" enctype="multipart/form-data" action="process-slide.html">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Slide:<span style="color:#F00" >(*)</span></label>

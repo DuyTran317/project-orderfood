@@ -93,10 +93,10 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><?php if($d_user['active']==0) {echo "<a href=\"?mod=process_kit&actives={$d_user['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    <td><?php if($d_user['active']==0) {echo "<a href=\"process-kit-s{$d_user['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
-                                            echo "<a href=\"?mod=process_kit&activeh={$d_user['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                            echo "<a href=\"process-kit-h{$d_user['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
                                     <td><a href="edit_kit-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>

@@ -85,32 +85,69 @@
 		}
 	}
 ?>
-<form method="post" action="">
-Từ Bàn:
-<select name="table_from">
-	<?php 
-		$sql = "select `name` from `of_user`";
-		$r = mysqli_query($link,$sql);
-		while($rs = mysqli_fetch_assoc($r))
-		{
-		?>
-			<option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
-		<?php
-        }
-	 ?>
-</select>
-Đến Bàn:
-<select name="table_to">
-	<?php 
-		$r = mysqli_query($link,$sql);
-		while($rs = mysqli_fetch_assoc($r))
-		{
-		?>
-			<option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
-		<?php
-        }
-	 ?>
-</select>
-<input type="submit" name="Chuyen_Ban" value="Chuyển" />
-<input type="submit" name="Gop_Ban" value="Gop" />
-</form>
+<style>
+    html,
+    body{
+        height: 100%;
+    }
+</style>
+<html>
+<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size:cover ;font-family: 'Anton', sans-serif;">
+<div class="container" style="margin-top:2%" >
+    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+        <a href="?mod=home_nhanvien" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <h2 style=" text-align:center; color:#909"><i class="fas fa-external-link-alt"></i> Quản Lý Bàn</h2>
+        <form method="post" action="">
+        <table class="table">
+            <tr>
+                <th class="text-center" style="color:#F06" >
+                    Từ Bàn
+                </th>
+                <th class="text-center" style="color:#033" >
+                    Đến Bàn
+                </th>
+            </tr>
+            <tr>
+                <td align="center">
+                    <select name="table_from" style="width: 50px; height: 50px;" >
+                        <?php
+                        $sql = "select `name` from `of_user`";
+                        $r = mysqli_query($link,$sql);
+                        while($rs = mysqli_fetch_assoc($r))
+                        {
+                            ?>
+                            <option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </td>
+                <td align="center" >
+                    <select name="table_to" style="width: 50px; height: 50px;">
+                        <?php
+                        $r = mysqli_query($link,$sql);
+                        while($rs = mysqli_fetch_assoc($r))
+                        {
+                            ?>
+                            <option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+            <div class="col-md-3 col-md-offset-3 col-xs-6">
+                <input type="submit" name="Gop_Ban" value="Gộp" class="btn btn-info btn-lg col-xs-12" style="border-radius: 10px;" />
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <input type="submit" name="Chuyen_Ban" value="Chuyển" class="btn btn-primary btn-lg col-xs-12" style="border-radius: 10px;"/>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

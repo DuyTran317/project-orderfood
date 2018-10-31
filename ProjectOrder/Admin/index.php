@@ -83,8 +83,9 @@ if($mod=='') $mod='home';
 include("moduleAD/{$mod}.php");
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- jQuery 3 -->
-
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -93,7 +94,11 @@ include("moduleAD/{$mod}.php");
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<!-- Morris.js charts -->
+<script src="bower_components/raphael/raphael.min.js"></script>
+<script src="bower_components/morris.js/morris.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -108,14 +113,14 @@ include("moduleAD/{$mod}.php");
 <script>
     $(function () {
         $('#example1').DataTable( {
-			"language": {
-				"url": "bower_components/datatables.net/Vietnamese.json"
-			}
-    	} );
+            "language": {
+                "url": "bower_components/datatables.net/Vietnamese.json"
+            }
+        } );
         $('#example2').DataTable({
-			"language": {
-				"url": "bower_components/datatables.net/Vietnamese.json"
-			},
+            "language": {
+                "url": "bower_components/datatables.net/Vietnamese.json"
+            },
             'paging'      : true,
             'lengthChange': false,
             'searching'   : false,
@@ -146,17 +151,33 @@ include("moduleAD/{$mod}.php");
 </script>
 <script>
     //Chi tiết
-    var noidung = CKEDITOR.replace( 'noidung', {
+    var vi_noidung = CKEDITOR.replace( 'vi_noidung', {
         uiColor: '#ccffff',
         language:'vi',
 
     });
 
-    CKFinder.setupCKEditor( noidung, 'brower_components/ckfinder/' ) ;
-
+    CKFinder.setupCKEditor( vi_noidung, 'brower_components/ckfinder/' ) ;
+    CKEDITOR.replace( 'vi_noidung',
+        {
+            filebrowserBrowseUrl : 'brower_components/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Images',
+            filebrowserFlashBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Flash',
+            filebrowserUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl : 'brower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        });
 </script>
 <script>
-    CKEDITOR.replace( 'noidung',
+    //Chi tiết
+    var en_noidung = CKEDITOR.replace( 'en_noidung', {
+        uiColor: '#ccffff',
+        language:'vi',
+
+    });
+
+    CKFinder.setupCKEditor( en_noidung, 'brower_components/ckfinder/' ) ;
+    CKEDITOR.replace( 'en_noidung',
         {
             filebrowserBrowseUrl : 'brower_components/ckfinder/ckfinder.html',
             filebrowserImageBrowseUrl : 'brower_components/ckfinder/ckfinder.html?type=Images',
@@ -266,6 +287,7 @@ include("moduleAD/{$mod}.php");
        $('input#datefrom').val("<?php echo $fdatefrom; ?>");
       });
  </script>
+ 
  <?php unset($_SESSION['success']); ?>
 </body>
 

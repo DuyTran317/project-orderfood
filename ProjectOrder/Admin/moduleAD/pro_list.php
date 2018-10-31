@@ -127,10 +127,13 @@
                                 <td><?php echo $d_pro['vi_name'] ?></td>
                                 <td><?php echo $d_pro['en_name'] ?></td>
                                 <td> <?php echo number_format($d_pro['price']) ?> VNĐ</td>
-                                <td><?php if($d_pro['active']==0) {echo "<a href=\"?mod=process_pro&actives={$d_pro['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
-                                    else
+                                <td><?php if($d_pro['active']==0) {echo "<a href=\"process-pro-s{$d_pro['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                    elseif($d_pro['active']==1)
                                     {
-                                        echo "<a href=\"?mod=process_pro&activeh={$d_pro['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                        echo "<a href=\"process-pro-h{$d_pro['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                    }else
+                                    {
+                                        echo "<span style='color:red;'>Hết hàng</span>";
                                     }
                                     ?></td>
                                 <td><a href="edit_pro-<?php echo $d_pro['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">Xóa</a></td>

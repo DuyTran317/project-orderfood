@@ -10,6 +10,25 @@ RewriteRule "^danh-sach-ban.html$" "?mod=user_list"
 RewriteRule "^danh-sach-slide.html$" "?mod=slide_list"
 RewriteRule "^trang-chu.html$" "?mod=home"
 RewriteRule "^thoat.html$" "?mod=logout"
+RewriteRule "^process-cat.html$" "?mod=process_cat"
+RewriteRule "^process-pro.html$" "?mod=process_pro"
+RewriteRule "^process-bill.html$" "?mod=process_bill"
+RewriteRule "^process-ad.html$" "?mod=process_ad"
+RewriteRule "^process-com.html$" "?mod=process_com"
+RewriteRule "^process-kit.html$" "?mod=process_kit"
+RewriteRule "^process-slide.html$" "?mod=process_slide"
+RewriteRule "^process-user.html$" "?mod=process_user"
+RewriteRule "^process-pro-h(.*).html$" "?mod=process_pro&activeh=$1"
+RewriteRule "^process-pro-s(.*).html$" "?mod=process_pro&actives=$1"
+RewriteRule "^process-cat-h(.*).html$" "?mod=process_cat&activeh=$1"
+RewriteRule "^process-cat-s(.*).html$" "?mod=process_cat&actives=$1"
+RewriteRule "^process-user-h(.*).html$" "?mod=process_user&activeh=$1"
+RewriteRule "^process-user-s(.*).html$" "?mod=process_user&actives=$1"
+RewriteRule "^process-kit-h(.*).html$" "?mod=process_kit&activeh=$1"
+RewriteRule "^process-kit-s(.*).html$" "?mod=process_kit&actives=$1"
+
+
+
 
 
 
@@ -17,6 +36,8 @@ RewriteRule "^them-the-loai.html$" "?mod=add_cat"
 RewriteRule "^them-san-pham.html$" "?mod=add_pro"
 RewriteRule "^them-ban.html$" "?mod=add_user"
 RewriteRule "^them-bep-thanhtoan.html$" "?mod=add_kit"
+RewriteRule "^them-slide.html$" "?mod=add_slide"
+
 
 
 RewriteRule "^(.*)-(.*).html$" "?mod=$1&edit=$2"
