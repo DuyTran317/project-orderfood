@@ -92,17 +92,8 @@ if(isset($_SESSION['lang'])){
                 <h4 class="modal-title" align="center"><?=_MANUAL?></h4>
             </div>
             <div class="modal-body">
-                <div id="myManual" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                        <li data-target="#myCarousel" data-slide-to="4"></li>
-                        <li data-target="#myCarousel" data-slide-to="5"></li>
-                        <li data-target="#myCarousel" data-slide-to="6"></li>
-                        <li data-target="#myCarousel" data-slide-to="7"></li>
-                        <li data-target="#myCarousel" data-slide-to="8"></li>
-                    </ol>
+                <div id="myManual" class="carousel slide" data-ride="carousel" data-interval="false">
+
                     <div class="carousel-inner" >
 
                         <div class="item active">
@@ -162,19 +153,21 @@ if(isset($_SESSION['lang'])){
                             </div>
                         </div>
                     </div>
+
                     <a class="left carousel-control" href="#myManual" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
+
+                        <span class="sr-only"></span>
                     </a>
                     <a class="right carousel-control" href="#myManual" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
+
+                        <span class="sr-only"></span>
                     </a>
                 </div>
 
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?=_CLOSE?></button>
             </div>
         </div>
     </div>
