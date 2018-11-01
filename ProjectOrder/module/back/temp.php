@@ -96,14 +96,14 @@
 <div class="container" style="margin-top:2%" >
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <a href="?mod=home_nhanvien" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
-        <h2 style=" text-align:center; color:#909"><i class="fas fa-external-link-alt"></i> Quản Lý Bàn</h2>
+        <h1 style=" text-align:center;">Quản Lý Bàn</h1>
         <form method="post" action="">
         <table class="table">
             <tr>
-                <th class="text-center" style="color:#F06" >
+                <th class="text-center" >
                     Từ Bàn
                 </th>
-                <th class="text-center" style="color:#033" >
+                <th class="text-center">
                     Đến Bàn
                 </th>
             </tr>

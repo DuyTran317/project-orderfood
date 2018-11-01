@@ -38,12 +38,12 @@
     <div style="clear:right"></div>
     <hr>
     
-    <h1 align="center" style="color:#033"><i class="fas fa-clipboard-list"></i> Danh Sách Bàn</h1>
+    <h1 align="center" style="color:#033">Danh Sách Bàn</h1>
     
     <div class="row">
     <?php 
 	//show bàn ra
-	$sql1="select * from `of_user` where `active`!=0 order by `active` desc";
+	$sql1="SELECT * FROM of_user ORDER BY (CASE active WHEN '2' THEN 1 END) DESC , id ASC";
 	$c=mysqli_query($link,$sql1);
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
