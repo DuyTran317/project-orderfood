@@ -24,7 +24,7 @@
         // kết thúc code xử lý thông báo
     });
 	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('05d67b2777b04b8a83db', {
       cluster: 'ap1',
       encrypted: true
     });

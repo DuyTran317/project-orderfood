@@ -52,7 +52,7 @@
     });
 
 	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('a8fd52cd1e38d4a2bcf1', {
       cluster: 'ap1',
       encrypted: true
     });
@@ -67,7 +67,7 @@
     });
 
 	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('0d68e38f87eb0271863b', {
       cluster: 'ap1',
       encrypted: true
     });
@@ -96,7 +96,7 @@
         // kết thúc code xử lý thông báo
     });
 Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('05d67b2777b04b8a83db', {
       cluster: 'ap1',
       encrypted: true
     });
