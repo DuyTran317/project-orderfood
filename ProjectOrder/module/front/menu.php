@@ -362,12 +362,12 @@ Pusher.logToConsole = true;
         </div>
 
         <script>
-            $(".arrow-left").click(function(){
+            $(".arrow-left").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
                 $(".scrolling-wrapper").scrollLeft(actualScroll-250)
                 ;
             })
-            $(".arrow-right").click(function(){
+            $(".arrow-right").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
                 $(".scrolling-wrapper").scrollLeft(actualScroll+250)
             })
@@ -384,7 +384,7 @@ Pusher.logToConsole = true;
         $number2++;
         ?>
         <div class="row" style="margin-bottom: 10px; box-shadow: 5px 5px 10px; height: 110px;">
-            <label class="col-xs-4 dark2 statusmobile" style=" border: solid medium #ff9d00; height: 110px; background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;  " for="foodchosenmobile<?php  echo $number1;?>">
+            <label class="col-xs-4 dark2 statusmobile" style=" border: solid medium #ff9d00; height: 110px; background:url(img/sp/<?=$kq['img_url']?>); background-position:center; background-size:cover; cursor: pointer;  " for="foodchosenmobile<?php  echo $number1;?>">
                 <?php if($kq['active'] == 1) { ?>
                     <div id="statusmobile<?=$kq['id'] ?>" class="statusmobile1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
                         <h1 style=" font-size: 50px; color: #e8ebf2; " id="chosemobile<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
