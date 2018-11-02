@@ -45,3 +45,4 @@ define("_CITY", "TP.HCM");
 define("_STEP", "Bước");
 define("_MANUAL", "Hướng Dẫn Sử Dụng");
 define("_CLOSE", "Đóng");
+define("_NOLOGIN", "Xem không cần đăng nhập");

@@ -45,3 +45,4 @@ define("_CITY", "HCM City");
 define("_STEP", "Step");
 define("_MANUAL", "How To Use Our Website");
 define("_CLOSE", "Close");
+define("_NOLOGIN", "Watch menu without logging in");
