@@ -50,10 +50,12 @@
 <body style="background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        <div class="table-responsive">
+
         <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
+            <h2 style=" text-align: center">Danh Sách Món Bàn: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
+            <div class="table-responsive">
             <table class="col-md-12 col-sm-12 col-xs-12 table" >
-                <h2 style=" text-align: center">Danh Sách Món Bàn: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
+
 
                 <?php
                 $sql="select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
@@ -67,11 +69,13 @@
 ?>
 <form action="" method="post" >
 
-                </div><br>
+                <br>
 <?php
 				if($dem > 0 )
 				{
-                echo "<div style='text-align: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
+                echo "
+                 <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button>
+<div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
                 </div><br>";
 
                 echo '<tr>
@@ -111,14 +115,13 @@
                     $total += $r['price']*$r['qty'];
                 endwhile
                 ?>
-                 <button type="submit" class="btn btn-warning btn-lg" name="update"><i class="fas fa-sync"></i> </button>
                 <input type="hidden" name="order_id" value="<?=$orderId?>">
                  </form>
                 <?php
 				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
 				$rs2 = mysqli_query($link,$sql);
 				?>
-
+            </div>
             </table>
             <div> Ghi chú:<?php
                 while($r2=mysqli_fetch_assoc($rs2))
@@ -130,8 +133,8 @@
                 ?>
             </div>
         </div>
-        <a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa đơn hàng?')" <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Hủy Đơn Hàng</button></a>
-        <a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-6 btn btn-primary btn-lg"style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" >Xác Nhận Đơn Hàng</button></a><hr>
+        <a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa đơn hàng?')" <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Hủy</button></a>
+        <a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-6 btn btn-primary btn-lg"style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" >Xác Nhận</button></a><hr>
     </div>
     <?php
     }

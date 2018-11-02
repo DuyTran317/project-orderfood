@@ -1,8 +1,20 @@
-﻿oau94795@awsoo.com
+﻿-------------1----------------
+oau94795@awsoo.com
 123456
 // reload bep sang menu va home_thanhtoan
+--------------2--------------
 dhu37482@awsoo.com
 123456
 // reload ThanhToan qua menu vs home_nhanvien
-
-
+-------------3--------------------
+vio08741@nbzmr.com
+123456
+//truyen tin tu del_order sang menu
+-----------------4------------------
+xop25938@nbzmr.com
+123456
+//truyen tin del_food sang menu
+--------------5-----------------
+avg16455@nbzmr.com
+123456
+//truyen tin solve_order_finish sang menu voi home_thanhtoan

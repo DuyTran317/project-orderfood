@@ -67,7 +67,7 @@ if(isset($_SESSION['lang'])){
         <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
 
         <?php if(isset($_SESSION['user_idban'])){?>
-        <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; "><a href="?mod=xulydangxuat" style="font-size: 25px; "><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></a></button> </div>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=xulydangxuat'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } ?>
     </div>
 
@@ -92,17 +92,8 @@ if(isset($_SESSION['lang'])){
                 <h4 class="modal-title" align="center"><?=_MANUAL?></h4>
             </div>
             <div class="modal-body">
-                <div id="myManual" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                        <li data-target="#myCarousel" data-slide-to="4"></li>
-                        <li data-target="#myCarousel" data-slide-to="5"></li>
-                        <li data-target="#myCarousel" data-slide-to="6"></li>
-                        <li data-target="#myCarousel" data-slide-to="7"></li>
-                        <li data-target="#myCarousel" data-slide-to="8"></li>
-                    </ol>
+                <div id="myManual" class="carousel slide" data-ride="carousel" data-interval="false">
+
                     <div class="carousel-inner" >
 
                         <div class="item active">
@@ -162,19 +153,21 @@ if(isset($_SESSION['lang'])){
                             </div>
                         </div>
                     </div>
+
                     <a class="left carousel-control" href="#myManual" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
+
+                        <span class="sr-only"></span>
                     </a>
                     <a class="right carousel-control" href="#myManual" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
+
+                        <span class="sr-only"></span>
                     </a>
                 </div>
 
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?=_CLOSE?></button>
             </div>
         </div>
     </div>
