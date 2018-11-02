@@ -12,6 +12,43 @@
 		$cate=$_GET['cate'];
 	}
 ?>
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            text: "Bạn có muốn xóa món ăn này",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Xóa!',
+                    'Bạn đã xóa thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=process_pro&del="+id;});
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
 <style>
 	th{
 		text-align:center;
@@ -84,7 +121,7 @@
                 <?php if($r['discount']>0) { ?>
                 
                 <td align="center"><?=number_format($r['price_discount']*$v)?><u>đ</u></td>
-                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')">X</a></td>
+                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')" id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">X</a></td>
                
                 <?php }
 					  else
