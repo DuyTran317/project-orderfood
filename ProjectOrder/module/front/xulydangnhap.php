@@ -5,7 +5,7 @@ if(isset($_POST['user']))
 	$user=$_POST['user'];
 
 	//Kiem tra bang cach truy van vao DB
-	$sql="select * from `of_user` where `name`='{$user}' and `active`!=0";
+	$sql="select * from `of_user` where `name`='{$user}' and `active`=1";
 	$rs=mysqli_query($link,$sql);
 	
 	if(mysqli_num_rows($rs)>0)

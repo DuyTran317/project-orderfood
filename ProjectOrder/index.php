@@ -68,6 +68,8 @@ if(isset($_SESSION['lang'])){
 
         <?php if(isset($_SESSION['user_idban'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=xulydangxuat'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
+        <?php } else {?>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-success" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=dangnhap'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGIN?></button> </div>
         <?php } ?>
     </div>
 

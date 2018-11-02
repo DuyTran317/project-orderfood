@@ -35,7 +35,7 @@
 </head>
 <body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; ">
 <p style="text-align:right; ">
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
@@ -126,7 +126,7 @@ Pusher.logToConsole = true;
         // kết thúc code xử lý thông báo
     });
 </script>
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 
 </p>
 <a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i></a>
