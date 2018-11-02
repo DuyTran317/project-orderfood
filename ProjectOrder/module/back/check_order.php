@@ -96,29 +96,21 @@
             <?php } ?>
         </div>
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
-
         <div class="row" style="margin-top: 40px;">
-            <h1 style="text-align:center; font-weight:bold">Danh Sách Các Món Trùng</h1>
-            <div class="table-responsive">
-                <table class="table">
-                    <tr>
-                        <th class="text-center col-xs-1">Bàn</th>
-                        <th>Món</th>
-                        <th class="text-center">Số Lượng</th>
-                        <th>Chú Thích</th>
-                        <th class="text-right">Xử Lý</th>
-                    </tr>
 
             <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
-
+            echo "<h1 style=\"text-align:center; font-weight:bold\">Danh Sách Các Món Trùng</h1>";
             while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
-			
             {
+
                 if($orderId1 != $rs_timtrung['order_id'])
                 {
-
+                    if($orderId1 != 0)
+                    {
+                        echo "<span style='font-size:22px'>Chú Thích:</span> <span style='font-size:24px; color:#F09'>{$note}</span></div>";
+                    }
                     $orderId1=$rs_timtrung['order_id'];
 
                     $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
@@ -128,30 +120,24 @@
                     {
                         $note.= $rs_takenotes['note'];
                     }
-				}
-				    ?>
-                    <tr>
-                        <td align="center"><?=$rs_timtrung['num_table']?></td>
-                        <td><?=$rs_timtrung['vi_name']?></td>
-                        <td align="center"><?=$rs_timtrung['qty']?></td>
-                        <td><?php echo "<span style='font-size:24px; color:#F09'>".$note."</span>"; ?></td>
-                        <td align="right"><a href="?mod=solve_order_finish&id=<?=$rs_timtrung['food_id']?>&idorder=<?=$rs_timtrung['order_id']?>&num_table=<?=$rs_timtrung['num_table']?>&id2=<?=$r['id_food']?>&idorder2=<?=$id?>&num_table2=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a>
-                        </td>
-                    </tr>
 
-                    <?php
-               
-              /*  else
+                    echo "
+					<div style='border:dashed medium' class='col-md-4 col-sm-12'>
+                        <span style='font-size:22px'>Bàn:</span> <span style='color:#C00; font-size:24px'>{$rs_timtrung['num_table']}</span><br>";
+                    echo "<span style='font-size:22px'>Tên Món:</span> <span style='color:#006; font-size:24px'>{$rs_timtrung['vi_name']}</span><br>
+                        <span style='font-size:22px'>Số Lượng:</span> <span style='color:#0C6; font-size:24px; text-decoration:underline'>x{$rs_timtrung['qty']}</span> &nbsp; <a href='?mod=solve_order_finish&id={$rs_timtrung['food_id']}&idorder={$rs_timtrung['order_id']}&num_table={$rs_timtrung['num_table']}&id2={$r['id_food']}&idorder2={$id}&num_table2={$num_table}' class='btn btn-success'><i class='fas fa-check-double'></i></a><br>";
+
+                }
+                else
                 {
-                    echo "{$rs_timtrung['vi_name']} : {$rs_timtrung['qty']} <br>";
-                }*/
-            }
-            /*echo "<span style='font-size:22px'>".$note."</span>";*/
-            ?>
-                </table>
-            </div>
-        </div>
+                    echo "<span style='font-size:22px'>Tên Món:</span> <span style='color:#006; font-size:24px'>{$rs_timtrung['vi_name']}</span><br>
+                        <span style='font-size:22px'>Số Lượng:</span> <span style='color:#0C6; font-size:24px; text-decoration:underline'>x{$rs_timtrung['qty']}</span>&nbsp; <a href='?mod=solve_order_finish&id={$rs_timtrung['food_id']}&idorder={$rs_timtrung['order_id']}&num_table={$rs_timtrung['num_table']}&id2={$r['id_food']}&idorder2={$id}&num_table2={$num_table}' class='btn btn-success'><i class='fas fa-check-double'></i></a><br>";
+                }
 
+            }
+            echo "<span style='font-size:22px'>Chú Thích:</span> <span style='font-size:24px; color:#F09'>{$note}</span> </div>";
+            ?>
+        </div>
     </div>
     <?php
     }
