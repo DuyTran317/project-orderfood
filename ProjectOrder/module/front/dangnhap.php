@@ -28,8 +28,11 @@
                                     >
                                 </div>
                             </div>
-                            <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit"><?=_LOGIN?></button>
+                            
+                            <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; margin-bottom:10px;" type="submit" ><?=_LOGIN?></button><br>
+                            <a href="?mod=watch_home" style="color:#FFF; margin-top:10px; text-decoration:underline "><?=_NOLOGIN?></a>
 
+                            
                         </div>
 
                     </div>

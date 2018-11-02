@@ -107,8 +107,10 @@
 				{
 				?>
 							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
-                            <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" style="color:#033" class="btn btn-info"><i class="fas fa-user-times"></i></a></div>
-                            <div style="clear:right"></div>
+                            <?php if($slban['active'] == 2) {?>
+                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" class="btn btn-danger">x</a></div>
+                                <div style="clear:right"></div>
+                            <?php }?>
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
 
 				<?php }?>
