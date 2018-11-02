@@ -22,7 +22,7 @@ if(isset($_POST['content']))
 		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star',now(),'1')";
 		mysqli_query($link,$sql);
 		
-		header("location:?mod=dangnhap");	
+		header("location:?mod=xulydangxuat");	
 	}	
 	
 }

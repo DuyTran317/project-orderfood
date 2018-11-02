@@ -54,7 +54,7 @@ if(empty($_SESSION['servantlang'])){
 			}
 	}
 ?>
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
+<body style="background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
 <a href="?mod=confirm_order&id=<?=$id?>&num_table=<?=$num_table?>" style="font-size: 36px; color: black" ><i class="fas fa-arrow-left"></i></a>
@@ -87,7 +87,7 @@ if(empty($_SESSION['servantlang'])){
                 	<tr>
                     	<td class="col-sm-3">Loại Hàng</td>
                         <td>
-                        	 <select id="category_id" onchange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" class="form-control">
+                        	 <select id="category_id" onChange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" class="form-control">
 							<?php
 								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
 								$rs_s=mysqli_query($link,$sql);
@@ -131,7 +131,7 @@ if(empty($_SESSION['servantlang'])){
                     <tr>
                     	<td class="col-sm-3">Số Lượng</td>
                         <td>
-                        	<input type="number" min="1" name="qty" required="required" class="form-control" value="1" id="quantity">
+                        	<input type="number" min="1" name="qty" required class="form-control" value="1" id="quantity">
                         </td>
                     </tr>
 

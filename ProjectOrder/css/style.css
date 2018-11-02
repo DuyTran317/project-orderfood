@@ -206,7 +206,7 @@ body{
     background: #f2a71d;
     transform: rotate(135deg);
 }
-#page {
+#loadingpage {
 	display: none;
 	transition: 0.2s;
     }

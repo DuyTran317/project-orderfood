@@ -36,7 +36,7 @@
 	{			
 		if(isset($_POST['goimon']))
 		{			
-			$sql = "select * from `of_order` where `num_table`={$id_ban} and `active`=0 or `active` = 2";
+			$sql = "select * from `of_order` where `num_table`={$name_ban} and `active` !=1";
 			$sosanh = mysqli_query($link,$sql);
 			if(mysqli_num_rows($sosanh) > 0)
 			{

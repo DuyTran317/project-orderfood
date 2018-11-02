@@ -52,7 +52,7 @@
     });
 
 	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('a8fd52cd1e38d4a2bcf1', {
       cluster: 'ap1',
       encrypted: true
     });
@@ -67,7 +67,7 @@
     });
 
 	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('0d68e38f87eb0271863b', {
       cluster: 'ap1',
       encrypted: true
     });
@@ -96,7 +96,7 @@
         // kết thúc code xử lý thông báo
     });
 Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
+    var pusher = new Pusher('05d67b2777b04b8a83db', {
       cluster: 'ap1',
       encrypted: true
     });
@@ -129,15 +129,15 @@ Pusher.logToConsole = true;
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
 </p>
-<a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMon" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i> </a>
 <a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i></a>
 <div class="container-fluid" style="margin-top: 6%">
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
-        <div class="col-md-3 hidden-xs" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px; height: 450px; background-size: cover">
+        <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
-            <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
-            <div style="height: 250px; overflow-y: scroll;">
+
+            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+            <div style="height: 250px; overflow-y: auto;">
             <?php
 				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
@@ -151,6 +151,7 @@ Pusher.logToConsole = true;
                 </ul>
             <?php endwhile ?>
             </div>
+
             <script>
 
                 var url = window.location;
@@ -170,7 +171,7 @@ Pusher.logToConsole = true;
             @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
-
+            $buttoncol="col-xs-12";
 			$sql="select a.`id` as id_donhang  
 				from `of_order` as a, `of_order_detail` as b
 				where a.`id`=b.`order_id` and `num_table`={$name}				
@@ -187,19 +188,21 @@ Pusher.logToConsole = true;
 					{
             ?>
             		<!--Thanh toán-->
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
 					else {unset($_SESSION['order_wait']);}
 			} ?>
-
                     <!--Kiểm Tra Hóa Đơn -->
-                    <?php
+                    <?php						
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
+						    $buttoncol="col-xs-6";
 					?>
 					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
                     <?php } ?>
+            <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
@@ -207,12 +210,9 @@ Pusher.logToConsole = true;
             <div  class="collapse in" style="cursor: pointer">
                 <div data-toggle="collapse" data-parent="#demo" href="#demo">
                     <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
-
                 </div>
-
                 <div class="collapse out" id="demo">
-                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px;" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><?=_HOME?></a></p>
-
+                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
                 $sql="select * from `of_category` where `active`=1";
                 $c=mysqli_query($link,$sql);
@@ -276,11 +276,12 @@ Pusher.logToConsole = true;
                 ?>
                 <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
             <?php } ?>
-            <a href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-12 btn-lg" id="btn_GoiMonMobile" style="border-radius: 0px;background-color: #ff9d00; color: black; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
         </div>
 
-        <div class="col-md-9 hidden-xs" >
+        <div class="col-lg-9 col-md-8 hidden-xs" >
             <div class="scrolling-wrapper">
+                <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
+                <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
             <?php
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
 			$res= mysqli_query($link,$commsql);
@@ -293,7 +294,7 @@ Pusher.logToConsole = true;
                 ?>
                 <div class="card"  style="  width: 300px; background:white; ">
 
-                    <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
+                    <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/sp/<?=$kq['img_url']?>);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
 
                         <?php if($kq['active'] == 1) { ?>
                         	<?php if($kq['discount']>0){ ?>
@@ -338,16 +339,9 @@ Pusher.logToConsole = true;
                         </div>
                     </div>
                 </div>
-                <script>
-                    /*$('#abc').click(function(){
 
-                        if($('#abc').attr('checked') == true){
-                            $('#dark').attr("style", "background-color: yellow;");
-                        }
-                        else{
-                            $('#dark').attr("style", "background-color: transparent;");
-                        }
-                    });*/
+                <script>
+
                     function handleChange(checkbox,id) {
                         if(checkbox.checked == true){
                             document.getElementById("status"+id).setAttribute("style", "background-color: rgba(249, 150, 2, 0.5);");
@@ -363,8 +357,21 @@ Pusher.logToConsole = true;
                     }
                 </script>
             <?php } ?>
+
             </div>
         </div>
+
+        <script>
+            $(".arrow-left").click(function(){
+                var actualScroll = $(".scrolling-wrapper").scrollLeft();
+                $(".scrolling-wrapper").scrollLeft(actualScroll-250)
+                ;
+            })
+            $(".arrow-right").click(function(){
+                var actualScroll = $(".scrolling-wrapper").scrollLeft();
+                $(".scrolling-wrapper").scrollLeft(actualScroll+250)
+            })
+        </script>
     <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" > <!--mobile-->
         <?php
         $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";

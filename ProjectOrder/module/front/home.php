@@ -41,25 +41,29 @@ if(isset($_GET['name']))
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!--<ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+                    </ol>-->
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="img/front/20180807_085811r.jpg"  style="width:100%; height: 350px;">
+                    
+                      <?php
+						$sql = "select * from `of_slider`";
+						$slide=mysqli_query($link,$sql);
+						$count=0;
+						while($show_slide = mysqli_fetch_assoc($slide)):
+						$count++;
+					  ?>
+                    
+                        <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
+                            <img src="img/slider/<?=$show_slide['img_url']?>"  style="width:100%; height: 350px;">
                         </div>
+                        
+                      <?php endwhile ?>    
 
-                        <div class="item">
-                            <img src="img/front/20180807_085811r.jpg" style="width:100%;height: 350px; ">
-                        </div>
-
-                        <div class="item">
-                            <img src="img/front/20180807_085811r.jpg" style="width:100%; height: 350px;">
-                        </div>
                     </div>
 
                     <!-- Left and right controls -->

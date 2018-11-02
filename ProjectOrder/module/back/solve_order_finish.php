@@ -16,6 +16,18 @@
 		$id=$_GET['id'];
 	}
 	
+	if(isset($_GET['idorder2']))
+	{
+		$idorder2=$_GET['idorder2'];
+	}
+	if(isset($_GET['num_table2']))
+	{
+		$num_table2=$_GET['num_table2'];
+	}
+	if(isset($_GET['id2']))
+	{
+		$id2=$_GET['id2'];
+	}
 	$sql = "select * from `of_order_detail` where `order_id` ={$idorder} and `active` = 2";
 	$rs = mysqli_query($link,$sql);
 	$dem = 1;
@@ -43,9 +55,9 @@
 			'encrypted' => true
 			);
 			$pusher = new Pusher(
-			'161363aaa8197830a033',
-			'46f2ba3b258f514f6fc7',
-			'577033',
+			'05d67b2777b04b8a83db',
+			'd7e2016ecdb311bba59b',
+			'636618',
 			$options
 			);
 			$data['name']=$num_table;
@@ -75,6 +87,12 @@
 			$sql="update `of_food` set `solve` = `solve` + {$qty} where `id` ={$id}";
 			mysqli_query($link,$sql);
 		}
-		
+	if(isset($id2))
+	{
+		header("location:?mod=check_order&num_table={$num_table2}&id={$idorder2}");
+	}
+	else
+	{
 	header("location:?mod=check_order&num_table={$num_table}&id={$idorder}");
+	}
 ?>
