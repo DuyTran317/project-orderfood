@@ -95,13 +95,16 @@
                 </div>
             <?php } ?>
         </div>
+
         <div style="text-align: center"><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a></div><hr>
         <div class="row" style="margin-top: 40px;">
 
             <?php $sql_timtrung.=" ) and a.`order_id`<>{$orderId} and a.`order_id`-{$orderId}<=$SoHoaDonLamTruoc order by c.`num_table` ASC";
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
-            echo "<h1 style=\"text-align:center; font-weight:bold\">Danh Sách Các Món Trùng</h1>";
+            echo "<h1 style=\"text-align:center; font-weight:bold\">Danh Sách Các Món Trùng</h1>
+            <div class=\"grid\"> 
+            ";
             while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
             {
 
@@ -122,8 +125,8 @@
                     }
 
                     echo "
-					<div style='border:dashed medium' class='col-md-4 col-sm-12'>
-                        <span style='font-size:22px'>Bàn:</span> <span style='color:#C00; font-size:24px'>{$rs_timtrung['num_table']}</span><br>";
+					<div class='grid-item'>
+                        <h1 align='center'>Bàn:<span style='color:#C00;'>{$rs_timtrung['num_table']}</span></h1><hr>";
                     echo "<span style='font-size:22px'>Tên Món:</span> <span style='color:#006; font-size:24px'>{$rs_timtrung['vi_name']}</span><br>
                         <span style='font-size:22px'>Số Lượng:</span> <span style='color:#0C6; font-size:24px; text-decoration:underline'>x{$rs_timtrung['qty']}</span> &nbsp; <a href='?mod=solve_order_finish&id={$rs_timtrung['food_id']}&idorder={$rs_timtrung['order_id']}&num_table={$rs_timtrung['num_table']}&id2={$r['id_food']}&idorder2={$id}&num_table2={$num_table}' class='btn btn-success'><i class='fas fa-check-double'></i></a><br>";
 
@@ -138,6 +141,7 @@
             echo "<span style='font-size:22px'>Chú Thích:</span> <span style='font-size:24px; color:#F09'>{$note}</span> </div>";
             ?>
         </div>
+        </div>
     </div>
     <?php
     }
@@ -146,6 +150,25 @@
         echo"Không còn sản phẩm nào của bàn này!";
     }
     ?>
+    <style>
+
+        .grid-item {
+            width: 380px;
+            margin-bottom: 10px;
+            background-color: lightgrey;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+    </style>
+    <script>
+        $('.grid').masonry({
+            // options
+            itemSelector: '.grid-item',
+            columnWidth: 380,
+            gutter: 10
+        });
+    </script>
 </div>
 	
 
