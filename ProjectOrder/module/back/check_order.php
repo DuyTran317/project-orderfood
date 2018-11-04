@@ -12,7 +12,7 @@
 	{
 		$num_table=$_GET['num_table'];
 	}
-	$SoHoaDonLamTruoc = 5;
+	$SoHoaDonLamTruoc = 15;
 ?>
 
 <body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
@@ -103,7 +103,7 @@
             $r_timtrung=mysqli_query($link,$sql_timtrung);
             $orderId1=0;$note="";
             echo "<h1 style=\"text-align:center; font-weight:bold\">Danh Sách Các Món Trùng</h1>
-            <div class=\"grid\"> 
+            <div class=\"grid\">  
             ";
             while(@$rs_timtrung=mysqli_fetch_assoc($r_timtrung))
             {
@@ -158,6 +158,14 @@
             background-color: lightgrey;
             padding: 10px;
             border-radius: 10px;
+            transition: 0.5s;
+        }
+        .grid-item:hover{
+            transform: scale(1.1);
+            -webkit-box-shadow: 7px 10px 14px -2px rgba(0,0,0,0.75);
+            -moz-box-shadow: 7px 10px 14px -2px rgba(0,0,0,0.75);
+            box-shadow: 7px 10px 14px -2px rgba(0,0,0,0.75);
+            z-index: 99;
         }
 
     </style>
