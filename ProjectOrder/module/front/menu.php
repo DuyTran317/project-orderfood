@@ -149,19 +149,34 @@ Pusher.logToConsole = true;
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;">
-                <a data-toggle="collapse" data-target="#food" onclick="setCookie('food')">Simple collapsible</a>
-                <div id="food" class="collapse list-group" >
-                <ul>
-                    <li>Shit heo</li>
-                </ul>
-
-                </div><hr>
-                <a data-toggle="collapse" data-target="#drink" onclick="setCookie('drink')">Simple collapsible</a>
-                <div id="drink" class="collapse">
+                        
+            <?php
+				// Phần revise 
+				//Chủng Loại
+				$sql="select * from `of_department` where `active`=1";
+				$d=mysqli_query($link,$sql);
+				while($r_dep=mysqli_fetch_assoc($d)):
+			?>
+            
+                <a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" onClick="setCookie('food')"><?=$r_dep['vi_name']?></a>
+                <div id="<?=$r_dep['id']?>" class="collapse list-group" >
+                
+                	<?php				
+						//Thể Loại
+						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+						$c=mysqli_query($link,$sql);
+						while($r_cate=mysqli_fetch_assoc($c)):
+					?>
                     <ul>
-                        <li>Urine heo</li>
+                        <li><?=$r_cate['vi_name']?></li>
                     </ul>
-                </div>
+					
+                    <?php endwhile ?>
+                    
+                </div><hr>
+                
+            <?php endwhile ?>    
+                
             <?php
 				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
