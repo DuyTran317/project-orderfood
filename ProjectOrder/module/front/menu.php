@@ -149,6 +149,19 @@ Pusher.logToConsole = true;
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;">
+                <a data-toggle="collapse" data-target="#food" onclick="setCookie('food')">Simple collapsible</a>
+                <div id="food" class="collapse list-group" >
+                <ul>
+                    <li>Shit heo</li>
+                </ul>
+
+                </div><hr>
+                <a data-toggle="collapse" data-target="#drink" onclick="setCookie('drink')">Simple collapsible</a>
+                <div id="drink" class="collapse">
+                    <ul>
+                        <li>Urine heo</li>
+                    </ul>
+                </div>
             <?php
 				$sql="select * from `of_category` where `active`=1";
 				$c=mysqli_query($link,$sql);
@@ -455,6 +468,44 @@ Pusher.logToConsole = true;
 
 				});
 	}
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(sectionName) {
+        var lastState = getCookie(sectionName);
+        if (lastState == "" || lastState == "off") {
+            document.cookie = sectionName + "=on";
+        }
+        else {
+            document.cookie = sectionName + "=off";
+        }
+    }
+
+    function setState() {
+        if (getCookie("food") == "" || getCookie("food") == "off") {
+            document.getElementById("food").className = "collapse";
+        }
+        else {
+            document.getElementById("food").className = "collapse in";
+        }
+
+        if (getCookie("drink") == "" || getCookie("drink") == "off") {
+            document.getElementById("drink").className = "collapse";
+        }
+        else {
+            document.getElementById("drink").className = "collapse in";
+        }
+    }
     function checkFoodMobile(id){
 
         $.ajax({

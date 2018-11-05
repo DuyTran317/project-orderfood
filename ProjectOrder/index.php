@@ -48,7 +48,7 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
-
+<body onload="setState()">
 <div id="loadingpage">
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
@@ -176,6 +176,7 @@ if(isset($_SESSION['lang'])){
     </div>
 </div>
 <div id="loading"></div>
+</body>
 <script>
     function onReady(callback) {
         var intervalID = window.setInterval(checkReady, 1000);
