@@ -5,7 +5,6 @@
     }
     .active{
          background-color: rgba(247, 139, 7,0.8);
-         padding: 5px;
          border-radius: 5px;
          transition: 0.3s;
      }
@@ -153,14 +152,16 @@ Pusher.logToConsole = true;
             <?php
 				// Phần revise 
 				//Chủng Loại
+            $counter=0;
 				$sql="select * from `of_department` where `active`=1";
 				$d=mysqli_query($link,$sql);
 				while($r_dep=mysqli_fetch_assoc($d)):
+                    $counter++;
 			?>
-            
-                <a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" onClick="setCookie('food')"><?=$r_dep['vi_name']?></a>
-                <div id="<?=$r_dep['id']?>" class="collapse list-group" >
-                
+                <hr>
+                <div><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; " onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+
                 	<?php				
 						//Thể Loại
 						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
@@ -168,27 +169,16 @@ Pusher.logToConsole = true;
 						while($r_cate=mysqli_fetch_assoc($c)):
 					?>
                     <ul>
-                        <li><?=$r_cate['vi_name']?></li>
+                        <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                     </ul>
-					
+
                     <?php endwhile ?>
                     
-                </div><hr>
-                
-            <?php endwhile ?>    
-                
-            <?php
-				$sql="select * from `of_category` where `active`=1";
-				$c=mysqli_query($link,$sql);
-				while($r_cate=mysqli_fetch_assoc($c)):
-			?>
-             <hr>
-                <ul style="list-style: none;padding: 0; margin: 0; ">
-                    <li>
-                        <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                    </li>
-                </ul>
+                </div>
+
             <?php endwhile ?>
+
+
             </div>
 
             <script>
@@ -250,17 +240,35 @@ Pusher.logToConsole = true;
             <div id="demo" class="collapse">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
-                $sql="select * from `of_category` where `active`=1";
-                $c=mysqli_query($link,$sql);
-                while($r_cate=mysqli_fetch_assoc($c)):
+                // Phần revise
+                //Chủng Loại
+                $mobile_counter=0;
+                $sql="select * from `of_department` where `active`=1";
+                $d=mysqli_query($link,$sql);
+                while($r_dep=mysqli_fetch_assoc($d)):
+                   $mobile_counter++;
                     ?>
                     <hr>
-                    <ul style="list-style: none;padding: 0; margin: 0;">
-                        <li>
-                            <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                        </li>
-                    </ul>
+                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none; "><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+
+                        <?php
+                        //Thể Loại
+                        $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+                        $c=mysqli_query($link,$sql);
+                        while($r_cate=mysqli_fetch_assoc($c)):
+                            ?>
+                            <ul>
+                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                            </ul>
+
+                        <?php endwhile ?>
+
+                    </div>
+
                 <?php endwhile ?>
+
+
                     <script>
                         var url = window.location;
                         $('ul a[href="' + url + '"]').parent().addClass('active');
@@ -464,25 +472,8 @@ Pusher.logToConsole = true;
 </div>
 </div>
 </body>
+
 <script>
-
-	function checkFood(id){
-
-		$.ajax({
-			url:'module/front/ajax_order.php',
-			type:'POST',
-			data:{id_food: id, act: 1}
-			}).done(function(data){
-				var btn = document.getElementById("btn_GoiMon");
-
-				if(data > 0){
-						btn.style.display = "block";
-
-					}
-					else {btn.style.display = "none";}
-
-				});
-	}
     function getCookie(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -507,20 +498,34 @@ Pusher.logToConsole = true;
     }
 
     function setState() {
-        if (getCookie("food") == "" || getCookie("food") == "off") {
-            document.getElementById("food").className = "collapse";
-        }
-        else {
-            document.getElementById("food").className = "collapse in";
-        }
-
-        if (getCookie("drink") == "" || getCookie("drink") == "off") {
-            document.getElementById("drink").className = "collapse";
-        }
-        else {
-            document.getElementById("drink").className = "collapse in";
+        for (var i=1; i<= <?=$counter?>; i++){
+            if (getCookie(i) == "" || getCookie(i) == "off") {
+                document.getElementById(i).className = "collapse";
+            }
+            else {
+                document.getElementById(i).className = "collapse in";
+            }
         }
     }
+
+	function checkFood(id){
+
+		$.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{id_food: id, act: 1}
+			}).done(function(data){
+				var btn = document.getElementById("btn_GoiMon");
+
+				if(data > 0){
+						btn.style.display = "block";
+
+					}
+					else {btn.style.display = "none";}
+
+				});
+	}
+
     function checkFoodMobile(id){
 
         $.ajax({
