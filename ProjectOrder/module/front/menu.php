@@ -249,9 +249,8 @@ Pusher.logToConsole = true;
                    $mobile_counter++;
                     ?>
                     <hr>
-                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none; "><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
                     <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
-
                         <?php
                         //Thể Loại
                         $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
@@ -507,7 +506,17 @@ Pusher.logToConsole = true;
             }
         }
     }
-
+    function mobile_setState() {
+        for (var x=1; x<= <?=$counter?>; x++) {
+            var string ="mobile_" + x;
+            if (getCookie(string) == "" || getCookie(string) == "off") {
+                document.getElementById(string).className = "collapse";
+            }
+            else {
+                document.getElementById(string).className = "collapse in";
+            }
+        }
+    }
 	function checkFood(id){
 
 		$.ajax({

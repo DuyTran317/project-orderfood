@@ -48,7 +48,7 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
-<body onload="setState() ; mobile_setState() ">
+<body onload="setState() ; mobile_setState(); ">
 <div id="loadingpage">
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
