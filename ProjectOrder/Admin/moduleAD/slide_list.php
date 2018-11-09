@@ -20,7 +20,7 @@
                     'Bạn đã xóa thành công!',
                     'success'
                 ).then(function(){
-                    window.location.href="?mod=process_slide&del="+id;});
+                    window.location.href="process_slide-del-"+id+".html";});
             } else if (
                 // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel
@@ -75,7 +75,6 @@
                                 <th>STT</th>
                                 <th>Tên</th>
                                 <th>Hình</th>
-                                <th>Link</th>
                                 <th><a href="them-slide.html">Thêm</a></th>
                             </tr>
                             </thead>
@@ -92,7 +91,6 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['name'] ?></td>
                                     <td><img src="../img/slide/<?= $d_user['img_url'] ?>" width="50" height="50"></td>
-                                    <td><?= $d_user['link'] ?></td>
                                     <td><a href="edit_slide-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>

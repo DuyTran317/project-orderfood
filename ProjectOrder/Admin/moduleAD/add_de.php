@@ -25,16 +25,16 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="process-de.html">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại VN: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Chủng Loại VN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="vi_theloai" placeholder="Nhập tên thể loại">
+                                         required  name="vi_theloai" placeholder="Nhập tên chủng loại">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại EN: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Chủng Loại EN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="en_theloai" placeholder="Nhập tên thể loại bằng tiếng anh">
+                                         required  name="en_theloai" placeholder="Nhập tên chủng loại bằng tiếng anh">
                                 </div>
                             </div>
                             

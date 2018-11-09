@@ -5,12 +5,12 @@
         <section class="content-header">
             <h1>
                 Sửa
-                <small>Thể Loại</small>
+                <small>Chủng Loại</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-                <li><a href="?mod=cat_list">Thể loại</a></li>
-                <li class="active">Sửa</li> <?php echo $_GET['edit']; ?>
+                <li><a href="?mod=cat_list">Chủng loại</a></li>
+                <li class="active">Sửa</li>
             </ol>
         </section>
     <?php
@@ -33,22 +33,22 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="process-de.html">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại VN:<span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Chủng Loại VN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                           name="vi_suatheloai" required placeholder="Nhập tên thể loại" value="<?= $d_edit['vi_name']?>">
+                                           name="vi_suatheloai" required placeholder="Nhập tên chủng loại" value="<?= $d_edit['vi_name']?>">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại EN:<span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Chủng Loại EN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                           name="en_suatheloai" required placeholder="Nhập tên thể loại" value="<?= $d_edit['en_name']?>">
+                                           name="en_suatheloai" required placeholder="Nhập tên chủng loại" value="<?= $d_edit['en_name']?>">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự:<span style="color:#F00" >(*)</span></label>
-                                    <input type="text" class="form-control"
+                                    <input type="number" class="form-control"
                                            name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
                                 </div>
                             </div>

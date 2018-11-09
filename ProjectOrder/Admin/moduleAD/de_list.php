@@ -77,8 +77,8 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình</th>
-                                <th>Tên Thể Loại VN</th> 
-                                <th>Tên Thể Loại EN</th>
+                                <th>Tên Chủng Loại VN</th> 
+                                <th>Tên Chủng Loại EN</th>
                                 <th>Trạng Thái</th>
                                 <th><a href="them-chung-loai.html">Thêm</a></th>
                             </tr>

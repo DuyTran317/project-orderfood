@@ -6,7 +6,6 @@ if(!isset($_SESSION))
 if(isset($_POST['tenslide']))
 {
     $tenslide = $_POST['tenslide'];
-    $tenlink = $_POST['tenlink'];
     
     $file = $_FILES['image'];
     if($file['name'] != '')
@@ -14,7 +13,7 @@ if(isset($_POST['tenslide']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/slide/{$img_url}");
     }
-     $sql_add = "insert into `of_slider`(`id`,`name`,`img_url`,`link`,`created_at`) VALUES(NULL,'{$tenslide}','{$img_url}','{$tenlink}',now())";
+     $sql_add = "insert into `of_slider`(`id`,`name`,`img_url`,`create_at`) VALUES(NULL,'{$tenslide}','{$img_url}',now())";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -27,22 +26,21 @@ if(isset($_POST['tenslide']))
 if(isset($_POST['suatenslide']))
 {
     $suatenslide = $_POST['suatenslide'];
-    $sualink = $_POST['sualink'];
-
     $file = $_FILES['suaimage'];
     if($file['name']!= '')
     {
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/slide/{$img_url}");
 
-        $sql_edit="update `of_slider` set `name`='{$suatenslide}',`link`='{$sualink}',`img_url`='{$img_url}',`updated_at`=now() where `id`={$_POST['id']}";
+        $sql_edit="update `of_slider` set `name`='{$suatenslide}',`img_url`='{$img_url}'where `id`={$_POST['id']}";
         
         mysqli_query($link,$sql_edit);
     }
     else{
-        $sql_edit="update `of_slider` set `name`='{$suatenslide}',`link`='{$sualink}',`updated_at`=now() where `id`={$_POST['id']}";
+        $sql_edit="update `of_slider` set `name`='{$suatenslide}' where `id`={$_POST['id']}";
         mysqli_query($link,$sql_edit);
     }
+  
     $_SESSION['sua'] = 'suathanhcong';
 header('Location:danh-sach-slide.html');
 }

@@ -36,13 +36,6 @@
                                     <input type="file" id="exampleInputFile" name="image">
                                 </div>
                             </div>
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Link<span style="color:#F00" >(*)</span></label>
-                                    <input type="text" class="form-control"
-                                         required  name="tenlink" placeholder="Nhập tên link">
-                                </div>
-                            </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                                 <button type="reset" class="btn btn-defaul">Xóa</button>
