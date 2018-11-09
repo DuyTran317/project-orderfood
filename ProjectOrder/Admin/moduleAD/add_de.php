@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự: <span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                          required name="thutu" placeholder="Nhập thứ tự">
+                                          required name="thutu" placeholder="Nhập thứ tự" min="1">
                                 </div>
                             </div>
                             <div class="box-body">

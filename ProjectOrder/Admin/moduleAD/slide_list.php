@@ -90,7 +90,7 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><img src="../img/slide/<?= $d_user['img_url'] ?>" width="50" height="50"></td>
+                                    <td><img src="../img/slider/<?= $d_user['img_url'] ?>" width="50" height="50"></td>
                                     <td><a href="edit_slide-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
                                 </tr>
                             <?php } ?>

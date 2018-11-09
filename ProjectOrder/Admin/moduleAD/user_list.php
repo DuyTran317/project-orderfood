@@ -20,7 +20,7 @@
                     'Bạn đã xóa thành công!',
                     'success'
                 ).then(function(){
-                    window.location.href="?mod=process_user&del="+id;});
+                    window.location.href="process_user-del-"+id+".html";});
             } else if (
                 // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel

@@ -44,7 +44,7 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình slide:<span style="color:#F00" >(*)</span></label><br/>
-                                    <img src="../img/slide/<?php echo $d['img_url']; ?>" width="100" height="100"><br/>
+                                    <img src="../img/slider/<?php echo $d['img_url']; ?>" width="100" height="100"><br/>
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
                             </div>
