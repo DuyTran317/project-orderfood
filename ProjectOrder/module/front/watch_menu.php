@@ -28,18 +28,34 @@
 
             <p  style="padding: 5px; text-align:center" ><a href="?mod=watch_home" style="color: #FFF; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;">
-            <?php
-				$sql="select * from `of_category` where `active`=1";
-				$c=mysqli_query($link,$sql);
-				while($r_cate=mysqli_fetch_assoc($c)):
-			?>
-             <hr>
-                <ul style="list-style: none;padding: 0; margin: 0; ">
-                    <li>
-                        <a style="color:#FFF; text-decoration:none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                    </li>
-                </ul>
-            <?php endwhile ?>
+                <?php
+                // Phần revise
+                //Chủng Loại
+                $counter=0;
+                $sql="select * from `of_department` where `active`=1";
+                $d=mysqli_query($link,$sql);
+                while($r_dep=mysqli_fetch_assoc($d)):
+                    $counter++;
+                    ?>
+                    <hr>
+                    <div><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; " onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+
+                        <?php
+                        //Thể Loại
+                        $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+                        $c=mysqli_query($link,$sql);
+                        while($r_cate=mysqli_fetch_assoc($c)):
+                            ?>
+                            <ul>
+                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                            </ul>
+
+                        <?php endwhile ?>
+
+                    </div>
+
+                <?php endwhile ?>
             </div>
 
             <script>
@@ -69,18 +85,33 @@
                 
                 <div class="collapse out" id="demo">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=watch_home" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
-                <?php
-                $sql="select * from `of_category` where `active`=1";
-                $c=mysqli_query($link,$sql);
-                while($r_cate=mysqli_fetch_assoc($c)):
-                    ?>
-                    <hr>
-                    <ul style="list-style: none;padding: 0; margin: 0;">
-                        <li>
-                            <a style="color:#FFF; text-decoration:none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                        </li>
-                    </ul>
-                <?php endwhile ?>
+                    <?php
+                    // Phần revise
+                    //Chủng Loại
+                    $mobile_counter=0;
+                    $sql="select * from `of_department` where `active`=1";
+                    $d=mysqli_query($link,$sql);
+                    while($r_dep=mysqli_fetch_assoc($d)):
+                        $mobile_counter++;
+                        ?>
+                        <hr>
+                        <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                        <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+                            <?php
+                            //Thể Loại
+                            $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+                            $c=mysqli_query($link,$sql);
+                            while($r_cate=mysqli_fetch_assoc($c)):
+                                ?>
+                                <ul>
+                                    <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                </ul>
+
+                            <?php endwhile ?>
+
+                        </div>
+
+                    <?php endwhile ?>
                     <script>
 
                         var url = window.location;
@@ -223,6 +254,50 @@
 </div>
 </body>
 <script>
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(sectionName) {
+        var lastState = getCookie(sectionName);
+        if (lastState == "" || lastState == "off") {
+            document.cookie = sectionName + "=on";
+        }
+        else {
+            document.cookie = sectionName + "=off";
+        }
+    }
+
+    function setState() {
+        for (var i=1; i<= <?=$counter?>; i++){
+            if (getCookie(i) == "" || getCookie(i) == "off") {
+                document.getElementById(i).className = "collapse";
+            }
+            else {
+                document.getElementById(i).className = "collapse in";
+            }
+        }
+    }
+    function mobile_setState() {
+        for (var x=1; x<= <?=$counter?>; x++) {
+            var string ="mobile_" + x;
+            if (getCookie(string) == "" || getCookie(string) == "off") {
+                document.getElementById(string).className = "collapse";
+            }
+            else {
+                document.getElementById(string).className = "collapse in";
+            }
+        }
+    }
 
 	function checkFood(id){
 
