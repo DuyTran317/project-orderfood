@@ -143,18 +143,6 @@ if(isset($_SESSION['lang'])){
                                 <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 7</h3>
                             </div>
                         </div>
-                        <div class="item">
-                            <img src="img/front/8.jpg"  style="width:100%;">
-                            <div class="carousel-caption">
-                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 8</h3>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="img/front/9.jpg"  style="width:100%;">
-                            <div class="carousel-caption">
-                                <h3 style="background-color: orange; padding: 10px; border-radius: 5px;" class="captionanimatext"><?=_STEP?> 9</h3>
-                            </div>
-                        </div>
                     </div>
 
                     <a class="left carousel-control" href="#myManual" data-slide="prev">
