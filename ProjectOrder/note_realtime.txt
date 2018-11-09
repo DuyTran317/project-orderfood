@@ -18,3 +18,7 @@ xop25938@nbzmr.com
 avg16455@nbzmr.com
 123456
 //truyen tin solve_order_finish sang menu voi home_thanhtoan
+---------------6----------------
+zdm71571@iencm.com
+123456 
+//truyen tin tu khach hang sang nhan vien luc login

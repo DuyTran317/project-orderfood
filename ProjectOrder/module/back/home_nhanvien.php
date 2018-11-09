@@ -26,6 +26,19 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('51e37eb7c055b1a5ea68', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('login', function () {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
 </script>
 
 <html>
