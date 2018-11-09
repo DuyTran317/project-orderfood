@@ -24,6 +24,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="lib/sweetalert2.all.min.js"></script>
+
 </head>
 <?php
 
@@ -47,7 +48,7 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
-
+<body onload="setState() ; mobile_setState(); ">
 <div id="loadingpage">
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
@@ -68,6 +69,8 @@ if(isset($_SESSION['lang'])){
 
         <?php if(isset($_SESSION['user_idban'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=xulydangxuat'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
+        <?php } else {?>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-success" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=dangnhap'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGIN?></button> </div>
         <?php } ?>
     </div>
 
@@ -173,6 +176,7 @@ if(isset($_SESSION['lang'])){
     </div>
 </div>
 <div id="loading"></div>
+</body>
 <script>
     function onReady(callback) {
         var intervalID = window.setInterval(checkReady, 1000);

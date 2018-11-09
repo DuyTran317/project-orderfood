@@ -1,4 +1,4 @@
-<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {
@@ -26,6 +26,19 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('51e37eb7c055b1a5ea68', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('login', function () {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
 </script>
 
 <html>
@@ -34,7 +47,7 @@
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
 
     <!--Chuyển Bàn -->
-    <a href="?mod=temp" style="font-size:18px; color: #909; float:right; border:1px dotted #906; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
+    <a href="?mod=temp" class="btn btn-success" style="font-size:18px; color: #FFF; float:right; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
     <div style="clear:right"></div>
     <hr>
     
@@ -43,13 +56,15 @@
     <div class="row">
     <?php 
 	//show bàn ra
-	$sql1="SELECT * FROM of_user ORDER BY (CASE active WHEN '2' THEN 1 END) DESC , id ASC";
+	$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
 	$c=mysqli_query($link,$sql1);
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
 	$id_ban = $slban['id'];
 	?>
+    
         <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center">
+        
         <?php
 				//lấy id_order và name bàn
 				$sql="SELECT *,`of_order`.`id` as id_or, `of_order`.`num_table` as name_ban FROM `of_order` LEFT JOIN `of_bill` ON `of_order`.`id` = `of_bill`.`order_id` where (`of_order`.`active` <> 1 or `of_bill`.`active` <> 1) and `of_order`.`num_table` = '{$name}'";
@@ -105,6 +120,10 @@
 				{
 				?>
 							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
+                            <?php if($slban['active'] == 2) {?>
+                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" class="btn btn-danger">x</a></div>
+                                <div style="clear:right"></div>
+                            <?php }?>
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
 
 				<?php }?>

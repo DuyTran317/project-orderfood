@@ -28,46 +28,91 @@
 	//Lấy thông tin người dùng
 	$userID=$_SESSION['user_idban'];
 	$cart=@$_SESSION['cart'];
-
-	if(@count($cart)<=0){ ?>
-		<div style="font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px"><?=_CARTZERO?></div>
-	<?php }
-	 else
-	{			
-		if(isset($_POST['goimon']))
+	
+	$sql_check = "select `id` from `of_user` where `active` = 2 and `id` = {$userID}";
+	$r_check = mysqli_query($link,$sql_check);
+	if(mysqli_num_rows($r_check))
+	{
+		if(@count($cart)<=0){ ?>
+			<div style="font-size:20px; color:red; font-weight:bold; text-align:center; margin-top:200px"><?=_CARTZERO?></div>
+		<?php }
+		 else
 		{			
-			$sql = "select * from `of_order` where `num_table`={$name_ban} and `active` !=1";
-			$sosanh = mysqli_query($link,$sql);
-			if(mysqli_num_rows($sosanh) > 0)
-			{
-				echo '<script type="text/javascript">';
-	            echo 'setTimeout(function () { swal("Không thể đặt món",
-	                      "Bàn đã được sử dụng!",
-	                      "warning");';
-	            echo '}, 1);</script>';
-			}
-			else
-			{
-				$num_table=$name_ban;
-				$note= $_POST['note'];		
-				
-				$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
-				$r=mysqli_query($link,$sql);
-				$rs=mysqli_fetch_assoc($r);
-				
-				if($rs === null||$rs['active'] == 1){
+			if(isset($_POST['goimon']))
+			{			
+				$sql = "select * from `of_order` where `num_table`={$name_ban} and `active` !=1";
+				$sosanh = mysqli_query($link,$sql);
+				if(mysqli_num_rows($sosanh) > 0)
+				{
+					echo '<script type="text/javascript">';
+					echo 'setTimeout(function () { swal("Không thể đặt món",
+							  "Bàn đã được sử dụng!",
+							  "warning");';
+					echo '}, 1);</script>';
+				}
+				else
+				{
+					$num_table=$name_ban;
+					$note= $_POST['note'];		
 					
-					$sql="select `id`,`num_table` from `of_order` where `active`=0";
-					$take=mysqli_query($link,$sql);
+					$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
+					$r=mysqli_query($link,$sql);
+					$rs=mysqli_fetch_assoc($r);
 					
-					
-					$carts=@$_SESSION['cart'];
-					$temp = 0;
-					while($take_sth=mysqli_fetch_assoc($take))
-					{
-							if($name_ban == $take_sth['num_table'])
+					if($rs === null||$rs['active'] == 1){
+						
+						$sql="select `id`,`num_table` from `of_order` where `active`=0";
+						$take=mysqli_query($link,$sql);
+						
+						
+						$carts=@$_SESSION['cart'];
+						$temp = 0;
+						while($take_sth=mysqli_fetch_assoc($take))
+						{
+								if($name_ban == $take_sth['num_table'])
+								{
+									$take_id = $take_sth['id'];
+									
+									foreach($carts as $k => $v)
+									{
+										//Lay gia san pham
+										$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
+										$rs = mysqli_query($link,$sql);
+										$r = mysqli_fetch_assoc($rs);
+										$price = $r['price'];
+										$km = $r['discount'];
+										//Insert
+										$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+										$r_search = mysqli_query($link,$sql);
+										$rs_search = mysqli_num_rows($r_search);
+										if($rs_search == 0)
+										{
+											$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0,'$country')";
+											mysqli_query($link,$sql);
+										}
+										else 
+										{
+											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
+											mysqli_query($link,$sql);
+										}
+									}
+										//Insert note vao DB
+										$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
+										mysqli_query($link,$sql);
+										$temp++;
+										break;
+								}
+							}
+							if($temp==0)
 							{
-								$take_id = $take_sth['id'];
+								//Insert don hang (order)
+								$sql="insert into `of_order` values('NULL','$num_table','0')";
+								mysqli_query($link,$sql);
+								
+								//Insert don hang chi tiet (order_detail)
+								//Lay id (Auto Increment) cua lenh insert truoc
+								
+								@$orderID=mysqli_insert_id($link);					
 								
 								foreach($carts as $k => $v)
 								{
@@ -77,143 +122,105 @@
 									$r = mysqli_fetch_assoc($rs);
 									$price = $r['price'];
 									$km = $r['discount'];
+									
 									//Insert
-									$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-									$r_search = mysqli_query($link,$sql);
-									$rs_search = mysqli_num_rows($r_search);
-									if($rs_search == 0)
-									{
-										$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0,'$country')";
-										mysqli_query($link,$sql);
-									}
-									else 
-									{
-										$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-										mysqli_query($link,$sql);
-									}
+									$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+										$r_search = mysqli_query($link,$sql);
+										$rs_search = mysqli_num_rows($r_search);
+										if($rs_search == 0)
+										{
+											$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
+											mysqli_query($link,$sql);
+										}
+										else 
+										{
+											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
+											mysqli_query($link,$sql);
+										}
 								}
-									//Insert note vao DB
-									$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
-									mysqli_query($link,$sql);
-									$temp++;
-									break;
-							}
-						}
-						if($temp==0)
-						{
-							//Insert don hang (order)
-							$sql="insert into `of_order` values('NULL','$num_table','0')";
-							mysqli_query($link,$sql);
-							
-							//Insert don hang chi tiet (order_detail)
-							//Lay id (Auto Increment) cua lenh insert truoc
-							
-							@$orderID=mysqli_insert_id($link);					
-							
-							foreach($carts as $k => $v)
-							{
-								//Lay gia san pham
-								$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
-								$rs = mysqli_query($link,$sql);
-								$r = mysqli_fetch_assoc($rs);
-								$price = $r['price'];
-								$km = $r['discount'];
 								
-								//Insert
-								$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-									$r_search = mysqli_query($link,$sql);
-									$rs_search = mysqli_num_rows($r_search);
-									if($rs_search == 0)
-									{
-										$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-										mysqli_query($link,$sql);
-									}
-									else 
-									{
-										$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-										mysqli_query($link,$sql);
-									}
+								//Insert note vao DB
+								$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+								mysqli_query($link,$sql);
 							}
+						
+					}
+					else{
+						$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
+						$r=mysqli_query($link,$sql);
+						$rs=mysqli_fetch_assoc($r);
+						$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
+						mysqli_query($link,$sql);
+						
+						@$orderID = $rs['id'];
+						$carts=@$_SESSION['cart'];
+						foreach($carts as $k => $v)
+						{
+							//Lay gia san pham
+							$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
+							$rs = mysqli_query($link,$sql);
+							$r = mysqli_fetch_assoc($rs);
+							$price = $r['price'];
+							$km = $r['discount'];
 							
-							//Insert note vao DB
+							//Insert
+							$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
+							mysqli_query($link,$sql);
+						}
+						//Insert note vao DB
 							$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
 							mysqli_query($link,$sql);
-						}
-					
-				}
-				else{
-					$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
-					$r=mysqli_query($link,$sql);
-					$rs=mysqli_fetch_assoc($r);
-					$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
-					mysqli_query($link,$sql);
-					
-					@$orderID = $rs['id'];
-					$carts=@$_SESSION['cart'];
-					foreach($carts as $k => $v)
-					{
-						//Lay gia san pham
-						$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
-						$rs = mysqli_query($link,$sql);
-						$r = mysqli_fetch_assoc($rs);
-						$price = $r['price'];
-						$km = $r['discount'];
-						
-						//Insert
-						$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-						mysqli_query($link,$sql);
 					}
-					//Insert note vao DB
-						$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
-						mysqli_query($link,$sql);
-				}
-
-				unset($_SESSION['cart']);
-			
-				//Gửi thông điêp để reload trang BẾP
-				require('Pusher.php');
-				$options = array(
-				'cluster' => 'ap1',
-				'encrypted' => true
-				);
-				$pusher = new Pusher(
-				'161363aaa8197830a033',
-				'46f2ba3b258f514f6fc7',
-				'577033',
-				$options
-				);
-				$pusher->trigger('Reload', 'notices', @$data);
+	
+					unset($_SESSION['cart']);
 				
-				if(@$orderID != NULL)
-				{
-					@$_SESSION['order_wait']=$orderID;
-				}
-				if($_SESSION['lang']=='vi'){
+					//Gửi thông điêp để reload trang BẾP
+					require('Pusher.php');
+					$options = array(
+					'cluster' => 'ap1',
+					'encrypted' => true
+					);
+					$pusher = new Pusher(
+					'161363aaa8197830a033',
+					'46f2ba3b258f514f6fc7',
+					'577033',
+					$options
+					);
+					$pusher->trigger('Reload', 'notices', @$data);
+					
+					if(@$orderID != NULL)
+					{
+						@$_SESSION['order_wait']=$orderID;
+					}
+					if($_SESSION['lang']=='vi'){
+							echo '<script type="text/javascript">';
+							echo 'swal({
+							title: "Thành công!",
+							text: "Gọi món thành công",
+							type: "success"
+							}).then(function() {
+								window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+							});';
+							echo '</script>';
+					}
+					else if ($_SESSION['lang']=='en')
+					{
 						echo '<script type="text/javascript">';
-		            	echo 'swal({
-					    title: "Thành công!",
-					    text: "Gọi món thành công",
-					    type: "success"
+						echo 'swal({
+							title: "Success!",
+							text: "Your dishes have been successfully ordered",
+							type: "success"
 						}).then(function() {
-						    window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+							window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
 						});';
 						echo '</script>';
+					}
+	
 				}
-				else if ($_SESSION['lang']=='en')
-				{
-					echo '<script type="text/javascript">';
-		           	echo 'swal({
-					    title: "Success!",
-					    text: "Your dishes have been successfully ordered",
-					    type: "success"
-					}).then(function() {
-					    window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
-					});';
-					echo '</script>';
-				}
-
 			}
-		}
+	}
+	
+	
 ?>
         <html style="height: 100%;">
         <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif; height: 100%;">
@@ -307,4 +314,12 @@
                 </div>
                 </body>
         </html>
-<?php } ?>
+<?php } 
+	else {
+		?>
+        <script>
+        	alert('Bạn vui lòng đăng nhập lại!');
+			window.location="?mod=dangnhap";
+        </script>
+        <?php
+	}?>

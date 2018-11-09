@@ -9,7 +9,7 @@
 ?>
 <!--Reload Page-->
 <!--<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
-<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
   <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('161363aaa8197830a033', {

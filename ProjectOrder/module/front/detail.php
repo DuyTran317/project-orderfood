@@ -26,7 +26,7 @@
 	$res = mysqli_query($link,$sql);
 	$kq = mysqli_fetch_assoc($res);
 ?>	
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
 
 	Pusher.logToConsole = true;

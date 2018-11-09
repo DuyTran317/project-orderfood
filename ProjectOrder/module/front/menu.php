@@ -5,10 +5,20 @@
     }
     .active{
          background-color: rgba(247, 139, 7,0.8);
-         padding: 5px;
          border-radius: 5px;
          transition: 0.3s;
      }
+    .expand_caret {
+        transform: scale(1.6);
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        transition: 0.5s;
+
+    }
+    a[aria-expanded='false'] > .expand_caret {
+        transform: scale(1.6) rotate(180deg);
+    }
 </style>
 	<?php
 	if(!isset($_SESSION['user_nameban']))
@@ -35,7 +45,7 @@
 </head>
 <body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; ">
 <p style="text-align:right; ">
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
@@ -126,30 +136,49 @@ Pusher.logToConsole = true;
         // kết thúc code xử lý thông báo
     });
 </script>
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 
 </p>
 <a class="hidden-sm hiddenmd hidden-lg" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="color: white; font-size: 34px; text-decoration: none; position: absolute; top: 10px; right: 10px;"><i class="fas fa-shopping-cart" id="btn_GoiMonMobile" style=" display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"></i></a>
 <div class="container-fluid" style="margin-top: 6%">
 
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
-        <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
+        <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;">
+                        
             <?php
-				$sql="select * from `of_category` where `active`=1";
-				$c=mysqli_query($link,$sql);
-				while($r_cate=mysqli_fetch_assoc($c)):
+				// Phần revise 
+				//Chủng Loại
+            $counter=0;
+				$sql="select * from `of_department` where `active`=1";
+				$d=mysqli_query($link,$sql);
+				while($r_dep=mysqli_fetch_assoc($d)):
+                    $counter++;
 			?>
-             <hr>
-                <ul style="list-style: none;padding: 0; margin: 0; ">
-                    <li>
-                        <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                    </li>
-                </ul>
+                <hr>
+                <div><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; " onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+
+                	<?php				
+						//Thể Loại
+						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+						$c=mysqli_query($link,$sql);
+						while($r_cate=mysqli_fetch_assoc($c)):
+					?>
+                    <ul>
+                        <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                    </ul>
+
+                    <?php endwhile ?>
+                    
+                </div>
+
             <?php endwhile ?>
+
+
             </div>
 
             <script>
@@ -202,31 +231,44 @@ Pusher.logToConsole = true;
 					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
                     <?php } ?>
             <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
-
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
-
-            <div  class="collapse in" style="cursor: pointer">
-                <div data-toggle="collapse" data-parent="#demo" href="#demo">
-                    <a align="center" style="color: white; text-decoration: none;"><h3 > <?=_TABLE?> <?=$name?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
-                </div>
-                <div class="collapse out" id="demo">
+            <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
+                <h3 > <?=_TABLE?> <?=$name?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+            </a>
+            <div id="demo" class="collapse">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
-                $sql="select * from `of_category` where `active`=1";
-                $c=mysqli_query($link,$sql);
-                while($r_cate=mysqli_fetch_assoc($c)):
+                // Phần revise
+                //Chủng Loại
+                $mobile_counter=0;
+                $sql="select * from `of_department` where `active`=1";
+                $d=mysqli_query($link,$sql);
+                while($r_dep=mysqli_fetch_assoc($d)):
+                   $mobile_counter++;
                     ?>
                     <hr>
-                    <ul style="list-style: none;padding: 0; margin: 0;">
-                        <li>
-                            <a style="color:#FFF; text-decoration:none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><?=$r_cate[$_SESSION['lang'].'_name']?></a>
-                        </li>
-                    </ul>
-                <?php endwhile ?>
-                    <script>
+                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+                        <?php
+                        //Thể Loại
+                        $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+                        $c=mysqli_query($link,$sql);
+                        while($r_cate=mysqli_fetch_assoc($c)):
+                            ?>
+                            <ul>
+                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                            </ul>
 
+                        <?php endwhile ?>
+
+                    </div>
+
+                <?php endwhile ?>
+
+
+                    <script>
                         var url = window.location;
                         $('ul a[href="' + url + '"]').parent().addClass('active');
                         $('ul a').filter(function () {
@@ -239,7 +281,7 @@ Pusher.logToConsole = true;
 
                         }).last().parents('li').addClass('active');
                     </script>
-                </div>
+
             </div>
             <?php
             @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
@@ -278,7 +320,8 @@ Pusher.logToConsole = true;
             <?php } ?>
         </div>
 
-        <div class="col-lg-9 col-md-8 hidden-xs" >
+
+        <div class="col-lg-9 col-md-8 hidden-xs" > <!--desktop-->
             <div class="scrolling-wrapper">
                 <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
                 <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
@@ -362,12 +405,12 @@ Pusher.logToConsole = true;
         </div>
 
         <script>
-            $(".arrow-left").click(function(){
+            $(".arrow-left").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
                 $(".scrolling-wrapper").scrollLeft(actualScroll-250)
                 ;
             })
-            $(".arrow-right").click(function(){
+            $(".arrow-right").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
                 $(".scrolling-wrapper").scrollLeft(actualScroll+250)
             })
@@ -384,7 +427,7 @@ Pusher.logToConsole = true;
         $number2++;
         ?>
         <div class="row" style="margin-bottom: 10px; box-shadow: 5px 5px 10px; height: 110px;">
-            <label class="col-xs-4 dark2 statusmobile" style=" border: solid medium #ff9d00; height: 110px; background:url(img/front/1515456591895.jpg);background-position:center; background-size:cover; cursor: pointer;  " for="foodchosenmobile<?php  echo $number1;?>">
+            <label class="col-xs-4 dark2 statusmobile" style=" border: solid medium #ff9d00; height: 110px; background:url(img/sp/<?=$kq['img_url']?>); background-position:center; background-size:cover; cursor: pointer;  " for="foodchosenmobile<?php  echo $number1;?>"> <!--mobile-->
                 <?php if($kq['active'] == 1) { ?>
                     <div id="statusmobile<?=$kq['id'] ?>" class="statusmobile1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2, 0.5)"' ?>>
                         <h1 style=" font-size: 50px; color: #e8ebf2; " id="chosemobile<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
@@ -397,18 +440,21 @@ Pusher.logToConsole = true;
                     </div>
                 <?php } ?>
             </label>
-            <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;">
+            <div class="col-xs-8" style="background-color: white; height: 110px;  border: solid medium #ff9d00;"> <!--mobile-->
                 <?php
                 $info="";
                 if($kq[$_SESSION['lang'].'_name']== ""){
                     $info = "-No Information-";
                 }
                 ?>
+                <label for="foodchosenmobile<?php  echo $number1;?>">
                 <h4 style="color:#900;" class="textover2"> <?=$info?><?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
+
                 <?php if($kq['discount']>0){
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
 				?>
                 <h5><?=number_format($new_price)?> VND (-<?=$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
+                </label>
                 <?php }
 					else
 					{
@@ -417,7 +463,7 @@ Pusher.logToConsole = true;
 				<?php
 					}
 				?>
-                <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
+                <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style=" position: absolute; bottom: 5px; right: 5px;"><button class="btn" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>
         <?php } ?>
@@ -425,8 +471,52 @@ Pusher.logToConsole = true;
 </div>
 </div>
 </body>
-<script>
 
+<script>
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(sectionName) {
+        var lastState = getCookie(sectionName);
+        if (lastState == "" || lastState == "off") {
+            document.cookie = sectionName + "=on";
+        }
+        else {
+            document.cookie = sectionName + "=off";
+        }
+    }
+
+    function setState() {
+        for (var i=1; i<= <?=$counter?>; i++){
+            if (getCookie(i) == "" || getCookie(i) == "off") {
+                document.getElementById(i).className = "collapse";
+            }
+            else {
+                document.getElementById(i).className = "collapse in";
+            }
+        }
+    }
+    function mobile_setState() {
+        for (var x=1; x<= <?=$counter?>; x++) {
+            var string ="mobile_" + x;
+            if (getCookie(string) == "" || getCookie(string) == "off") {
+                document.getElementById(string).className = "collapse";
+            }
+            else {
+                document.getElementById(string).className = "collapse in";
+            }
+        }
+    }
 	function checkFood(id){
 
 		$.ajax({
@@ -444,6 +534,7 @@ Pusher.logToConsole = true;
 
 				});
 	}
+
     function checkFoodMobile(id){
 
         $.ajax({
@@ -461,10 +552,6 @@ Pusher.logToConsole = true;
 
         });
     }
-    $('.collapse').on('shown.bs.collapse', function() {
-        $(this).parent().find(".caret-down").removeClass("caret-down").addClass("caret-up");
-    }).on('hidden.bs.collapse', function() {
-        $(this).parent().find(".caret-up").removeClass("caret-up").addClass("caret-down");
-    });
+
 </script>
 </html>

@@ -17,11 +17,17 @@ if(isset($_POST['find']))
 	if(mysqli_num_rows($rs)>0)
 		{
 		while($r=mysqli_fetch_assoc($rs))
-			{
-			
-			$id=$r['id'];
-			$id_cate=$r['category_id'];
-			header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
+			{			
+				$id=$r['id'];
+				$id_cate=$r['category_id'];
+				if(isset($_SESSION['user_idban']))
+				{
+					header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
+				}
+				else
+				{
+					header("location:?mod=watch_detail&id={$id}&cate={$id_cate}&back");
+				}
 			}
 		}
 	else

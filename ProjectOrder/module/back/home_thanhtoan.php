@@ -8,7 +8,7 @@
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost:8080/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
 
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
    var pusher = new Pusher('161363aaa8197830a033', {
@@ -125,7 +125,7 @@ Pusher.logToConsole = true;
     </div>
 </div>
 </body>
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
