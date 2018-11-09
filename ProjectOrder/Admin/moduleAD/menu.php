@@ -16,7 +16,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Notifications: style can be found in dropdown.less -->
-                <li class="dropdown notifications-menu">
+                <!-- <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
                         <span class="label label-warning">10</span>
@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">You have 10 notifications</li>
                         <li>
-                            <!-- inner menu: contains the actual data -->
+                            inner menu: contains the actual data
                             <ul class="menu">
                                 <li>
                                     <a href="#">
@@ -56,7 +56,7 @@
                         </li>
                         <li class="footer"><a href="#">View all</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -126,7 +126,19 @@
             $cate = $_SESSION['catead'];
           if($cate ==3 || $cate  ==1) {  ?> 
             <li class="header" style="text-align:center">Quản lý món ăn</li>
-          <li class="treeview">
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Chủng loại</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="danh-sach-chung-loai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-chung-loai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-pie-chart"></i>
                     <span>Thể loại</span>
@@ -138,6 +150,7 @@
                     <li><a href="them-the-loai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
+            
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>

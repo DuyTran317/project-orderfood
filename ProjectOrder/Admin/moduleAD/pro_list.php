@@ -20,7 +20,7 @@
                     'Bạn đã xóa thành công!',
                     'success'
                 ).then(function(){
-                    window.location.href="?mod=process_pro&del="+id;});
+                    window.location.href="process_pro-del-"+id+".html";});
             } else if (
                 // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel
@@ -95,7 +95,8 @@
                             </select>
                         </div>
                     </form>
-                </div></div>
+                </div>
+            </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->

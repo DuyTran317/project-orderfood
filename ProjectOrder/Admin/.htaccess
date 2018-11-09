@@ -3,6 +3,8 @@ RewriteRule "index.html" "index.php"
 RewriteRule "^danh-sach-hoa-don.html$" "?mod=bill_list" 
 RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list" 
 RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list" 
+RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
+
 RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
 RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"
 RewriteRule "^danh-sach-danh-gia.html$" "?mod=com_list"
@@ -27,17 +29,24 @@ RewriteRule "^process-user-s(.*).html$" "?mod=process_user&actives=$1"
 RewriteRule "^process-kit-h(.*).html$" "?mod=process_kit&activeh=$1"
 RewriteRule "^process-kit-s(.*).html$" "?mod=process_kit&actives=$1"
 
-
-
+RewriteRule "^process-de.html$" "?mod=process_de"
+RewriteRule "^process-de-h(.*).html$" "?mod=process_de&activeh=$1"
+RewriteRule "^process-de-s(.*).html$" "?mod=process_de&actives=$1"
 
 
 
 RewriteRule "^them-the-loai.html$" "?mod=add_cat"
+
+RewriteRule "^them-chung-loai.html$" "?mod=add_de"
+
 RewriteRule "^them-san-pham.html$" "?mod=add_pro"
 RewriteRule "^them-ban.html$" "?mod=add_user"
 RewriteRule "^them-bep-thanhtoan.html$" "?mod=add_kit"
 RewriteRule "^them-slide.html$" "?mod=add_slide"
 
+RewriteRule "^process_de-del-(.*).html$" "?mod=process_de&del=$1"
+RewriteRule "^process_cat-del-(.*).html$" "?mod=process_cat&del=$1"
+RewriteRule "^process_pro-del-(.*).html$" "?mod=process_pro&del=$1"
 
 
 RewriteRule "^(.*)-(.*).html$" "?mod=$1&edit=$2"

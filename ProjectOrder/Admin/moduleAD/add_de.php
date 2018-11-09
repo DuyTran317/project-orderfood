@@ -5,11 +5,11 @@
         <section class="content-header">
             <h1>
                Thêm
-                <small>Thể Loại</small>
+                <small>Chủng Loại</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-                <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
+                <li><a href="danh-sach-chung-loai.html">Chủng Loại</a></li>
                 <li class="active">Thêm</li>
             </ol>
         </section>
@@ -22,19 +22,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form role="form" method="post" enctype="multipart/form-data" action="process-cat.html">
-                            <div class="form-group">
-                                <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
-                                <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="chungloai">
-                                    <?php
-                                    $sql_de = "select * from of_department";
-                                    $kq_de = mysqli_query($link,$sql_de);
-                                    while($d_de=mysqli_fetch_assoc($kq_de))
-                                    {?>
-                                        <option value="<?= $d_de['id'] ?>" ><?= $d_de['vi_name'] ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                        <form role="form" method="post" enctype="multipart/form-data" action="process-de.html">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Thể Loại VN: <span style="color:#F00" >(*)</span></label>
@@ -55,6 +43,12 @@
                                     <label for="exampleInputEmail1">Thứ Tự: <span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
                                           required name="thutu" placeholder="Nhập thứ tự">
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Hình:<span style="color:#F00" >(*)</span></label>
+                                    <input type="file" id="exampleInputFile" name="image">
                                 </div>
                             </div>
                             <div class="box-body">

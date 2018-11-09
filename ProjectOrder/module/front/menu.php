@@ -321,13 +321,27 @@ Pusher.logToConsole = true;
 
         <div class="col-lg-9 col-md-8 hidden-xs" > <!--desktop-->
             <div class="scrolling-wrapper">
-                <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
-                <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
+                
             <?php
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
 			$res= mysqli_query($link,$commsql);
             $number1=0;
             $number2=0;
+			$dem = mysqli_num_rows($res);
+			if($dem==0)
+			{
+			?>
+				<h1 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px">Chưa có món ăn cho thể loại này!</h1>
+			<?php
+			}
+			else
+			{
+			?> 
+            <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
+                <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
+            
+			<?php
+			}
 			while($kq= mysqli_fetch_assoc($res))
 			{
 			    $number1++;
@@ -419,6 +433,15 @@ Pusher.logToConsole = true;
         $res= mysqli_query($link,$commsql);
         $number1=0;
         $number2=0;
+		
+		if($dem==0)
+		{
+		?>
+        
+		<h3 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px">Chưa có món ăn cho thể loại này!</h3>
+		
+        <?php
+		}
         while($kq= mysqli_fetch_assoc($res))
         {
         $number1++;

@@ -81,21 +81,21 @@
     </div>
    <br>
     <div class="row">
-    <?php
-		$sql="select * from `of_category` where `active`=1";
+     <?php
+		$sql="select * from `of_department` where `active`=1";
 		$rs=mysqli_query($link,$sql);
 		while($r=mysqli_fetch_assoc($rs)):
 	?>
+
     	<a href="?mod=watch_menu&cate=<?=$r['id']?>">
         <div class=" col-md-4" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
-
-                <p style="font-size: 60px;"><?=$r[$_SESSION['lang'].'_name']?></p>
+                <p style="font-size: 60px; "><?=$r[$_SESSION['lang'].'_name']?></p>
                 <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold"><?=_DETAIL?></button>
             </div>
         </div>        
     	</a>
-    <?php endwhile ?>    
+    <?php endwhile ?>     
         
     </div>
     

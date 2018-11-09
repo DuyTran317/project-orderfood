@@ -20,7 +20,7 @@
                     'Bạn đã xóa thành công!',
                     'success'
                 ).then(function(){
-                    window.location.href="process_cat-del-"+id+".html";});
+                    window.location.href="process_de-del-"+id+".html";});
             } else if (
                 // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel
@@ -56,11 +56,11 @@
     <section class="content-header">
         <h1>
             Danh Sách
-            <small>Thể loại</small>
+            <small>Chủng Loại</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
+            <li><a href="danh-sach-chung-loai.html">Chủng Loại</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -68,34 +68,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Chủng Loại</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <form  name="form1" id="form1" method="post" >
-                        <!-- select -->
-                        <div class="form-group">
-                            <select class="form-control" name="change" onchange="form1.submit();" style="border-radius: 5px 5px 5px 5px;">
-                                <?php
-                                if(isset($_POST['change'])) {
-                                    $id = $_POST['change'];
-                                }
-                                else{
-                                    $id=1;
-                                }
-                                $sql_de = "select * from of_department";
-                                $kq_de = mysqli_query($link,$sql_de);
-                                while($d_de=mysqli_fetch_assoc($kq_de))
-                                {?>
-                                <option value="<?= $d_de['id'] ?>" <?php if($d_de['id']== $id) echo "selected"; ?>><?= $d_de['vi_name'] ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
                 <div class="box">
 
                     <div class="box-body">
@@ -103,32 +76,34 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Hình</th>
                                 <th>Tên Thể Loại VN</th> 
                                 <th>Tên Thể Loại EN</th>
                                 <th>Trạng Thái</th>
-                                <th><a href="them-the-loai.html">Thêm</a></th>
+                                <th><a href="them-chung-loai.html">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
 
-                            $sql_cat = "select * from of_category where department_id=$id";
+                            $sql_cat = "select * from of_department";
                             $i=1;
                             $kq_cat = mysqli_query($link,$sql_cat);
-                            while($d_cat=mysqli_fetch_assoc($kq_cat))
+                            while($d_de=mysqli_fetch_assoc($kq_cat))
                             {
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $d_cat['vi_name'] ?></td>
-                                <td><?= $d_cat['en_name'] ?></td>
-                                <td><?php if($d_cat['active']==0) {echo "<a href=\"process-cat-s{$d_cat['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
+                                 <td> <img src="../img/cate/<?php echo $d_de['img_url']; ?>" alt="Chưa có Hình" width="120" height="100"></td>
+                                <td><?= $d_de['vi_name'] ?></td>
+                                <td><?= $d_de['en_name'] ?></td>
+                                <td><?php if($d_de['active']==0) {echo "<a href=\"process-de-s{$d_de['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else
                                     {
-                                        echo "<a href=\"process-cat-h{$d_cat['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
+                                        echo "<a href=\"process-de-h{$d_de['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_de-<?= $d_de['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_de['id'] ?>)">Xóa</a></td>
                             </tr>
                             <?php } ?>
 
