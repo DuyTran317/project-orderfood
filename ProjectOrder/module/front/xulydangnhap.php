@@ -18,6 +18,20 @@ if(isset($_POST['user']))
 		$country= $_SESSION['lang'];
 		$sql="update `of_user` set `active`= 2 where `id`={$id}";
 		$rs=mysqli_query($link,$sql);
+		// gui tin sang nhan vien
+		require('Pusher.php');
+		$options = array(
+		'cluster' => 'ap1',
+    	'encrypted' => true
+		);
+ 		$pusher = new Pusher(
+    	'51e37eb7c055b1a5ea68',
+    	'42f05b8854b00b014f5b',
+   		 '643830',
+   		 $options
+		);
+		$pusher->trigger('Reload', 'login', @$data);
+	
 		header("location:?mod=home&id=$id&name=$name");
 	}
 	else
@@ -26,6 +40,7 @@ if(isset($_POST['user']))
 		$_SESSION['email']=$user;
 		$sql="update `of_user` set `active`= 2 where `id`={$id}";
 $rs=mysqli_query($link,$sql);
+
 ?>		
 		<script> 
 			alert('<?=_WRONGTABLENO?>');
