@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
                 <li><a href="?mod=cat_list">Thể loại</a></li>
-                <li class="active">Sửa</li>
+                <li class="active">Sửa</li> <?php echo $_GET['edit']; ?>
             </ol>
         </section>
     <?php
@@ -18,10 +18,9 @@
         $edit = $_GET['edit'];
 
     }
-    $sql_edit = "select * from of_category where id=$edit";
+    $sql_edit = "select * from of_department where id=$edit";
     $kq_edit = mysqli_query($link,$sql_edit);
     $d_edit=mysqli_fetch_assoc($kq_edit);
-     $id = $d_edit['department_id'];
     ?>
         <!-- Main content -->
         <section class="content">
@@ -31,19 +30,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form role="form" method="post" enctype="multipart/form-data" action="process-cat.html">
-                            <div class="form-group">
-                                <label>Thể Loại <?php echo $id; ?> <span style="color:#F00" >(*)</span> </label>
-                                <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="suachungloai">
-                                    <?php
-                                    $sql_de = "select * from of_department where `id`= $id";
-                                    $kq_de = mysqli_query($link,$sql_de);
-                                    while($d_de=mysqli_fetch_assoc($kq_de))
-                                    {?>
-                                        <option value="<?= $d_de['id'] ?>" ><?= $d_de['vi_name'] ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                        <form role="form" method="post" enctype="multipart/form-data" action="process-de.html">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Thể Loại VN:<span style="color:#F00" >(*)</span></label>
@@ -65,6 +52,14 @@
                                            name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
                                 </div>
                             </div>
+                            <div class="box-body">
+                                <div class="form-group">
+
+                                    <label for="exampleInputFile">Hình <span style="color:#F00" >(*)</span></label><br>
+                                    <img src="../img/cate/<?php echo $d_edit['img_url']; ?>" alt="đay là hình" width="50" height="50">
+                                    <input type="file" id="exampleInputFile" name="suaimage">
+                                </div>
+                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>

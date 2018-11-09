@@ -3,21 +3,16 @@ if(!isset($_SESSION))
     { 
         session_start(); 
     } 
-include("connect.php");
 if(isset($_POST['vi_theloai']))
 {
+    $department_id=$_POST['chungloai'];
     $vi_theloai = $_POST['vi_theloai'];
     $en_theloai = $_POST['en_theloai'];
     $trangthai = $_POST['trangthai'];
     $thutu = $_POST['thutu'];
 
-    $file = $_FILES['image'];
-    if($file['name'] != '')
-    {
-        $img_url = mt_rand().$file['name'];
-        copy($file['tmp_name'],"../img/cate/{$img_url}");
-    }
-     $sql_add = "insert into `of_category` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
+    
+     $sql_add = "insert into `of_category` VALUES(NULL,'{$department_id}','{$vi_theloai}','{$en_theloai}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -29,28 +24,22 @@ if(isset($_POST['vi_theloai']))
 }
 if(isset($_POST['vi_suatheloai']))
 {
+    $department_id=$_POST['suachungloai'];
     $vi_theloai = $_POST['vi_suatheloai'];
     $en_theloai = $_POST['en_suatheloai'];
     $trangthai = $_POST['suatrangthai'];
     $thutu = $_POST['suathutu'];
     $id= $_POST['id'];
 
-    $file = $_FILES['suaimage'];
-    if($file['name']!= '')
-    {
-      $img_url= mt_rand().$file['name'];
-      copy($file['tmp_name'],"../img/cate/{$img_url}");
-
-        $sql_edit="update `of_category` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
-        
-        mysqli_query($link,$sql_edit);
-    }
-    else{
-        $sql_edit="update `of_category` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
-        mysqli_query($link,$sql_edit);
-    }
-    $_SESSION['sua'] = 'suathanhcong';
-header('Location:danh-sach-the-loai.html');
+        $sql_edit="update `of_category` set `department_id`={$department_id} ,`vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
+       if(mysqli_query($link,$sql_edit)) 
+       {
+         $_SESSION['sua'] = 'suathanhcong';
+         header('Location:danh-sach-the-loai.html');
+       }
+       else echo $sql_edit;
+    
+   
 }
 
 
