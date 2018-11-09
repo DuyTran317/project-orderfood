@@ -116,7 +116,7 @@
                     }
                     $orderId1=$rs_timtrung['order_id'];
 
-                    $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 0";
+                    $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 2";
                     $r_takenotes = mysqli_query($link,$sql_takenotes);
                     $note="";
                     while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))

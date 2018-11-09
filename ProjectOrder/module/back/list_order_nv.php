@@ -9,10 +9,10 @@
 </style>
 
 <?php
-	if(! isset($_SESSION['user_idban']))
+	/*if(! isset($_SESSION['user_idban']))
 	{
 		header("location:?mod=dangnhap");
-	}
+	}*/
 	if(isset($_GET['id_ban']))
 	{
 		$id_ban=$_GET['id_ban'];

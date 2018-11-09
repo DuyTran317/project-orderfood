@@ -4,11 +4,21 @@
         height: 100%;
     }
     .active{
-         background-color: rgba(247, 139, 7,0.8);
-         padding: 5px;
-         border-radius: 5px;
-         transition: 0.3s;
-     }
+        background-color: rgba(247, 139, 7,0.8);
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    .expand_caret {
+        transform: scale(1.6);
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        transition: 0.5s;
+
+    }
+    a[aria-expanded='false'] > .expand_caret {
+        transform: scale(1.6) rotate(180deg);
+    }
 </style>
 	<?php
 	if(isset($_GET['cate']))
@@ -78,10 +88,9 @@
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
 
             <div  class="collapse in" style="cursor: pointer">
-            
-            	<div data-toggle="collapse" data-parent="#demo" href="#demo">
-                    <a align="center" style="color: white; text-decoration: none;"><h3 ><?=_CATE?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
-                </div>
+                <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
+                    <h3 > <?=_CATE?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                </a>
                 
                 <div class="collapse out" id="demo">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=watch_home" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
