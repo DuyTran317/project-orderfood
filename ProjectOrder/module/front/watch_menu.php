@@ -4,11 +4,21 @@
         height: 100%;
     }
     .active{
-         background-color: rgba(247, 139, 7,0.8);
-         padding: 5px;
-         border-radius: 5px;
-         transition: 0.3s;
-     }
+        background-color: rgba(247, 139, 7,0.8);
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    .expand_caret {
+        transform: scale(1.6);
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        transition: 0.5s;
+
+    }
+    a[aria-expanded='false'] > .expand_caret {
+        transform: scale(1.6) rotate(180deg);
+    }
 </style>
 	<?php
 	if(isset($_GET['cate']))
@@ -48,7 +58,7 @@
                         while($r_cate=mysqli_fetch_assoc($c)):
                             ?>
                             <ul>
-                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
                         <?php endwhile ?>
@@ -78,10 +88,9 @@
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
 
             <div  class="collapse in" style="cursor: pointer">
-            
-            	<div data-toggle="collapse" data-parent="#demo" href="#demo">
-                    <a align="center" style="color: white; text-decoration: none;"><h3 ><?=_CATE?> <i class="fas fa-caret-down" style="float: right;"></i></h3> </a>
-                </div>
+                <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
+                    <h3 > <?=_CATE?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                </a>
                 
                 <div class="collapse out" id="demo">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=watch_home" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
@@ -104,7 +113,7 @@
                             while($r_cate=mysqli_fetch_assoc($c)):
                                 ?>
                                 <ul>
-                                    <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                    <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                                 </ul>
 
                             <?php endwhile ?>
@@ -133,13 +142,27 @@
 
         <div class="col-lg-9 col-md-8 hidden-xs" >
             <div class="scrolling-wrapper">
-                <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
-                <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
+                
             <?php
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
 			$res= mysqli_query($link,$commsql);
             $number1=0;
             $number2=0;
+			$dem = mysqli_num_rows($res);
+			if($dem==0)
+			{
+			?>
+				<h1 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px">Chưa có món ăn cho thể loại này!</h1>
+			<?php
+			}
+			else
+			{
+			?> 
+            <a class="arrow-left" style="font-size: 35px; position: absolute; left: 30px; z-index: 99;color: black; top: 40%"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-left"></i></button></a>
+                <a class="arrow-right"  style="font-size: 35px; position: absolute; right: 30px; z-index: 99; top: 40%; color: black;"><button style="background-color: orange;" class="btn btn-lg"><i class="fas fa-chevron-right"></button></i></a>
+            
+			<?php
+			}			
 			while($kq= mysqli_fetch_assoc($res))
 			{
 			    $number1++;
@@ -211,6 +234,15 @@
         $res= mysqli_query($link,$commsql);
         $number1=0;
         $number2=0;
+		
+		if($dem==0)
+		{
+		?>
+        
+		<h3 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px">Chưa có món ăn cho thể loại này!</h3>
+		
+        <?php
+		}		
         while($kq= mysqli_fetch_assoc($res))
         {
         $number1++;
