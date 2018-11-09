@@ -14,7 +14,6 @@
         top: 30px;
         right: 10px;
         transition: 0.5s;
-
     }
     a[aria-expanded='false'] > .expand_caret {
         transform: scale(1.6) rotate(180deg);
@@ -146,7 +145,7 @@ Pusher.logToConsole = true;
         <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
 
-            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p><br>
             <div style="height: 250px; overflow-y: auto;">
                         
             <?php
@@ -158,9 +157,9 @@ Pusher.logToConsole = true;
 				while($r_dep=mysqli_fetch_assoc($d)):
                     $counter++;
 			?>
-                <hr>
-                <div><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; " onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
-                <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+
+                <div style=" "><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a>
+                <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;" >
 
                 	<?php				
 						//Thể Loại
@@ -173,9 +172,8 @@ Pusher.logToConsole = true;
                     </ul>
 
                     <?php endwhile ?>
-                    
                 </div>
-
+                </div><hr>
             <?php endwhile ?>
 
 
@@ -250,7 +248,7 @@ Pusher.logToConsole = true;
                     ?>
                     <hr>
                     <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
-                    <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+                    <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;" >
                         <?php
                         //Thể Loại
                         $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
