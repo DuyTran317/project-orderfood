@@ -48,7 +48,7 @@
                         while($r_cate=mysqli_fetch_assoc($c)):
                             ?>
                             <ul>
-                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
                         <?php endwhile ?>
@@ -104,7 +104,7 @@
                             while($r_cate=mysqli_fetch_assoc($c)):
                                 ?>
                                 <ul>
-                                    <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                    <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                                 </ul>
 
                             <?php endwhile ?>
