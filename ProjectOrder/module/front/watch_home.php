@@ -88,7 +88,7 @@
 	?>
 
     	<a href="?mod=watch_menu&cate=<?=$r['id']?>">
-        <div class=" col-md-4" style="margin-bottom: 20px;">
+        <div class=" col-md-4 col-sm-6" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
                 <p style="font-size: 60px; "><?=$r[$_SESSION['lang'].'_name']?></p>
                 <button class="btn " style="background: orange; border-radius: 10px;font-family: 'Open Sans Condensed', sans-serif; font-size: 15px; font-weight: bold"><?=_DETAIL?></button>

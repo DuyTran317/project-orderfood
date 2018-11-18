@@ -48,7 +48,7 @@ if(isset($_SESSION['lang'])){
         document.getElementById('form_lang').submit();
     }
 </script>
-<body onload="setState() ; mobile_setState(); ">
+<body onload="setState() ; mobile_setState(); clearbiscuit()">
 <div id="loadingpage">
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
@@ -205,5 +205,12 @@ if(isset($_SESSION['lang'])){
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
+            <?PHP /*
+            FOREACH($_COOKIE AS $key => $value) {
+                SETCOOKIE($key,$value,TIME()-10000);
+            }*/
+            ?>
+
 </script>
 </html>
