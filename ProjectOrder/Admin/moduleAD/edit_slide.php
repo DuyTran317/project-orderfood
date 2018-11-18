@@ -38,24 +38,17 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Slide:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="suatenslide" value="<?php echo $d['name']; ?>" placeholder="Nhập tên thể loại">
+                                         required  name="suatenslide" value="<?php echo $d['name']; ?>" placeholder="Nhập slide">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình slide:<span style="color:#F00" >(*)</span></label><br/>
-                                    <img src="../img/slide/<?php echo $d['img_url']; ?>" width="100" height="100"><br/>
+                                    <img src="../img/slider/<?php echo $d['img_url']; ?>" width="100" height="100"><br/>
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
                             </div>
                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Link<span style="color:#F00" >(*)</span></label>
-                                    <input type="text" class="form-control"
-                                         required  name="sualink" value="<?php echo $d['link']; ?>" placeholder="Nhập link">
-                                </div>
-                            </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Sửa</button>
                                 <button type="reset" class="btn btn-defaul">Xóa</button>

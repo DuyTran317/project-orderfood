@@ -204,20 +204,7 @@
                 </ul>
             </li>
         <?php }?>
-         <li class="header" style="text-align:center">Quản lý slide</li>
-            <li class="treeview">
-                <a href="javascript:void(0)">
-                    <i class="fa fa-tablet" aria-hidden="true"></i>
-                    <span>Slide</span>
-                    <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="danh-sach-slide.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
-                </ul>
-            </li>
+         
         <?php
             $cate = $_SESSION['catead'];
           if($cate ==4 || $cate  ==1) {  ?>
@@ -239,6 +226,22 @@
         <?php
             $cate = $_SESSION['catead'];
           if($cate  ==1) {  ?> 
+          
+          <li class="header" style="text-align:center">Quản lý slide</li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                    <span>Slide</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="danh-sach-slide.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                </ul>
+            </li>
+          
             <li class="header" style="text-align:center">Quản lý và phần quyền</li>
             <li>
                 <a href='danh-sach-admin.html'>

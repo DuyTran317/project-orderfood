@@ -51,6 +51,7 @@
                                     
                                     <option value="1">Quản Lý Danh Sách Món Ăn</option>
                                    <option value="2">Quản Lý Thanh Toán</option>
+                                   <option value="3">Nhân Viên</option>
                                    
                                 </select>
                             </div>

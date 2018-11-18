@@ -61,8 +61,8 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Thứ Tự:<span style="color:#F00" >(*)</span></label>
-                                    <input type="text" class="form-control"
-                                           name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>">
+                                    <input type="number" class="form-control"
+                                           name="suathutu" required placeholder="Nhập thứ tự" value="<?= $d_edit['order']?>" min="1">
                                 </div>
                             </div>
                             <div class="box-body">

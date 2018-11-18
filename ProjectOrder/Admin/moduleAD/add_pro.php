@@ -44,15 +44,15 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Giá <span style="color:#F00" >(*)</span> </label>
-                        <input type="number" class="form-control" id="gia" required name="gia" placeholder="Nhập giá sản phẩm">
+                        <input type="number" class="form-control" id="gia" required name="gia" placeholder="Nhập giá sản phẩm" min="1">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Khuyến mãi <span style="color:#F00" >(*)</span> </label>
-                        <input type="number" class="form-control" id="khuyenmai" required name="khuyenmai" placeholder="Nhập khuyến mãi sản phẩm">
+                        <input type="number" class="form-control" id="khuyenmai" required name="khuyenmai" placeholder="Nhập khuyến mãi sản phẩm" min="1" max="100">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Thứ tự <span style="color:#F00" >(*)</span> </label>
-                        <input type="number" class="form-control" id="thutu" required name="thutu" placeholder="Nhập thứ tự sản phẩm">
+                        <input type="number" class="form-control" id="thutu" required name="thutu" placeholder="Nhập thứ tự sản phẩm" min="1">
                     </div>
                     <label for="exampleInputPassword1">Nội Dung VN</label>
                     <div class="form-group">
