@@ -5,8 +5,6 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
 }
 .scrolling-wrapper .card {
      display: inline-block;
@@ -18,9 +16,7 @@
     border: solid thick #ff9d00;
     box-shadow: 5px 5px 10px;
 }
-.scrolling-wrapper::-webkit-scrollbar {
-    display: none;
-}
+
 #aubr {
     word-break: break-all
     -webkit-word-wrap: break-word;
@@ -301,4 +297,22 @@ body{
 			top:-8rem;
 		}
 	}
+}
+#style-2::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    background-color: #e2e0e0;
+}
+#style-2::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    border-radius: 10px;
+    background-color: #ffc94c;
+}
+#style-2::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
+#style-2::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #e2e0e0;
 }
