@@ -37,7 +37,7 @@
         <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="?mod=watch_home" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
-            <div style="height: 250px; overflow-y: auto;">
+            <div style="height: 250px; overflow-y: auto;" id="style-2">
                 <?php
                 // Phần revise
                 //Chủng Loại
@@ -141,7 +141,7 @@
         </div>
 
         <div class="col-lg-9 col-md-8 hidden-xs" >
-            <div class="scrolling-wrapper">
+            <div class="scrolling-wrapper" id="style-2">
                 
             <?php
 			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";

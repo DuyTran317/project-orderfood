@@ -68,6 +68,7 @@
     color:#0000FF;
     font-size: 24px;
     top:1px;
+	margin-top:20px;
 }
 .footer-left {
     text-align:center;
@@ -194,7 +195,7 @@
                             $rs=mysqli_query($link,$sql);
                            $lang_use=mysqli_query($link,$sql);
                        	   $lang=mysqli_fetch_assoc($lang_use);
-                            $total=0;
+                            $gia_goc=0;
                             $stt=1;
                             include "languages/lang_".$lang['country'].".php";
                             ?>
@@ -215,7 +216,7 @@
                         <th><?=_DISH?></th>
                         <th><?=_PRICE?></th>
                         <th><?=_QTY?></th>
-                        <th><?=_DISCOUNT?></th>
+                        <!--<th><?=_DISCOUNT?></th>-->
                         <th><?=_TOTALPRICE?></th>
                     </tr>
                     <?php
@@ -228,20 +229,37 @@
                         echo "<td class=\"cotTenSanPham\">".$r[$r['country'].'_name']."</td>";
                         echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
                         echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
-                        echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";
+                        /*echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";*/
                         echo "<td class=\"cotSo\">".number_format(($r['qty']*$gia_temp))."</td>";
-                        echo "</tr>";
-                        $total += $gia_temp*$r['qty'];
+                        echo "</tr>";          
+						$gia_goc += $gia_temp*$r['qty'];              
                     }
+					
+					//Truy vấn tổng tiền Bill
+					$sql = "select `total` from `of_bill` where `order_id`={$id}";
+					$query_total = mysqli_query($link,$sql);
+					$show_total = mysqli_fetch_assoc($query_total);
+					$total = $show_total['total'];
 
                     //Đọc số tiền ra chữ
                     $thanhtien="";
                     $clgt=$lang['country']."Text";
                     $thanhtien=$clgt($total);
-
+					
+					$sql ="select `discount` from `of_discount` where `active`=1";
+					$query_discount = mysqli_query($link,$sql);
+					$show_discount = mysqli_fetch_assoc($query_discount);					
                     ?>
                     <tr>
-                        <td colspan="5" class="tong"><?=_TOTALPRICE?></td>
+                        <td colspan="4" class="tong">Giá gốc</td>
+                        <td class="cotSo"><span style="font-weight:bold"><?=number_format($gia_goc)?></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="tong">Giảm giá</td>
+                        <td class="cotSo"><span style="font-weight:bold"><?=$show_discount['discount']?>%</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="tong"><?=_TOTALPRICE?></td>
                         <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                     </tr>
                     </table>

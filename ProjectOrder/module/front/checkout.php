@@ -240,7 +240,7 @@
                                         <tr style="background-color: #f9d093; font-size: 18px;">
                                             <th class="text-left"><?=_DISH?></th>
                                             <th><?=_PRICE?></th>
-                                            <th><?=_DISCOUNT?></th>
+                                            <!--<th><?=_DISCOUNT?></th>-->
                                             <th class="col-xs-2"><?=_QTY?></th>
                                             <th><?=_TOTALPRICE?></th>
                                         </tr>
@@ -271,7 +271,7 @@
                                                     <?=$r[$_SESSION['lang'].'_name']?>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
-                                                <td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>
+                                                <!--<td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>-->
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
                                                 <?php
 													if($r['discount']>0)

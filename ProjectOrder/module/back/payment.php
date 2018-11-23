@@ -68,6 +68,7 @@
     color:#0000FF;
     font-size: 24px;
     top:1px;
+	margin-top:20px;
 }
 .footer-left {
     text-align:center;
@@ -197,10 +198,11 @@
 						//Truy vấn cho việc sử dụng $lang
 						$sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
                         $lang_use=mysqli_query($link,$sql);
-                        $lang=mysqli_fetch_assoc($lang_use);
-						
-                        $total=0;
+                        $lang=mysqli_fetch_assoc($lang_use);																	
+						                        
                         $stt=1;
+						$total=0;
+						$gia_goc=0;
                         include "languages/lang_".$lang['country'].".php";
                         ?>
                         <div style="float:right; font-size:18px"><strong><?=_CODENO?>: <?=$k['code_order']?></strong></div>
@@ -220,7 +222,7 @@
                             <th><?=_DISH?></th>
                             <th><?=_PRICE?></th>
                             <th><?=_QTY?></th>
-                            <th><?=_DISCOUNT?></th>
+                            <!--<th><?=_DISCOUNT?></th>-->
                             <th><?=_TOTALPRICE?></th>
                         </tr>
                         <?php
@@ -233,20 +235,53 @@
                             echo "<td class=\"cotTenSanPham\">".$r[$r['country'].'_name']."</td>";
                             echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
                             echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
-							echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";
+							/*echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";*/
                             echo "<td class=\"cotSo\">".number_format(($r['qty']*$gia_temp))."</td>";
                             echo "</tr>";
                             $total += $gia_temp*$r['qty'];
-                        }
+							$gia_goc += $gia_temp*$r['qty'];
+                        }	
 						
+						//Truy vấn ngày trong hóa đơn
+						$sql="select `date` from `of_bill` where `order_id`={$id}";
+						$date_bill=mysqli_query($link,$sql);
+						$show_date_bill=mysqli_fetch_assoc($date_bill);
+						
+						//Truy vấn lấy ngày và giá trị khuyến mãi
+						$giatri_km=0;						
+						
+						$sql="select * from `of_discount` where `active` =1";
+						$khuyen_mai = mysqli_query($link,$sql);
+						
+						if(mysqli_num_rows($khuyen_mai)>0)
+						{
+							$show_km = mysqli_fetch_assoc($khuyen_mai);
+							$giatri_km = $show_km['discount'];
+							$from = $show_km['create_at'];
+							$to = $show_km['end_at'];
+							
+							if($show_date_bill['date'] <= $to && $show_date_bill['date'] >= $from)
+							{
+								$total = $total - (( $total * $giatri_km ) /100);
+							}							
+						}														
+							
 							//Đọc số tiền ra chữ
 							$thanhtien="";
-                        $clgt=$lang['country']."Text";
+                        	$clgt=$lang['country']."Text";
 							$thanhtien=$clgt($total);
 
                         ?>
                         <tr>
-                            <td colspan="5" class="tong"><?=_TOTALPRICE?></td>
+                            <td colspan="4" class="tong">Giá gốc</td>
+                            <td class="cotSo"><span style="font-weight:bold"><?=number_format($gia_goc)?></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="tong">Giảm giá</td>
+                            <td class="cotSo"><span style="font-weight:bold"><?=$giatri_km?>%</span></td>
+                        </tr>                        
+                        <tr>
+                            <td colspan="4" class="tong"><?=_TOTALPRICE?></td>
                             <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                         </tr>
                     </table>
@@ -255,12 +290,7 @@
     				<div style="clear:left"></div>
                     
                     <div class="footer-right">
-                        <?php
-                            $sql="select `date` from `of_bill` where `order_id`={$id}";
-                            $kq=mysqli_query($link,$sql);
-                            $k=mysqli_fetch_assoc($kq);
-                        ?>
-                        <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($k['date']));?> <i>(dd/mm/yyyy)</i></p>
+                        <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($show_date_bill['date']));?> <i>(dd/mm/yyyy)</i></p>
                         <p><?=_EMPLOYEE?></p>
                     </div>
                     <div class="footer-left">

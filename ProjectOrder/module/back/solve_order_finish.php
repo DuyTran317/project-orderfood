@@ -87,12 +87,7 @@
 			$sql="update `of_food` set `solve` = `solve` + {$qty} where `id` ={$id}";
 			mysqli_query($link,$sql);
 		}
-	if(isset($id2))
-	{
-		header("location:?mod=check_order&num_table={$num_table2}&id={$idorder2}");
-	}
-	else
-	{
-	header("location:?mod=check_order&num_table={$num_table}&id={$idorder}");
-	}
+	
+	header("location:?mod=home");
+	
 ?>

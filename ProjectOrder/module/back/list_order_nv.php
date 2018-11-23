@@ -35,8 +35,8 @@
   <tr>
     <th >STT</th>
     <th >Tên món</th>
-    <th>Gía</th>
-    <th>Khuyến mãi</th>
+    <th>Giá</th>
+    <!--<th>Khuyến mãi</th>-->
     <th >Số lượng</th>
     <th>Tổng tiền</th>
   </tr>
@@ -70,13 +70,13 @@
     <?php if($r['km']>0) 
 		{ 
 	?>            
-    <td align="center" style='color:#F00'><?=number_format($r['km'])?>%</td>
+    <!--<td align="center" style='color:#F00'><?=number_format($r['km'])?>%</td>-->
     <?php 
 		}
 		else
 		{
     ?>
-    <td align="center"><?=number_format($r['km'])?>%</td>
+    <!--<td align="center"><?=number_format($r['km'])?>%</td>-->
     <?php
 		}
 	?>
