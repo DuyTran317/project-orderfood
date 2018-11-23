@@ -42,8 +42,17 @@
 
                 <div class="grid">
                     <div class="gutter-sizer"></div>
-                    <div class="grid-item" >
-                        <h3 style="text-align: center">Bàn: 1</h3>
+                    
+                     <?php 
+					$sql = "select * from `of_order` where `active`=2";
+					$rs=mysqli_query($link,$sql);
+					while($r1=mysqli_fetch_assoc($rs))
+					{
+					$num_table = $r1['num_table'];
+					$id = $r1['id'];
+			 		?>
+                    <div class="grid-item"  >
+                        <h3 style="text-align: center">Bàn: <?=$num_table?> </h3>
                         <table class="table">
                             <tr>
                                 <th class="col-xs-8">Tên</th>
@@ -51,22 +60,49 @@
                                 <th>Xử Lý</th>
                             </tr>
                             <tr>
-                                <td>Cơm chiên dương châu</td>
-                                <td>1</td>
-                                <td><a class="btn btn-success"><i class="fas fa-check-double"></i></a></td>
+                             <?php 
+					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
+                	$rs1=mysqli_query($link,$sql2);
+					$sql1="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                	$rs2=mysqli_query($link,$sql1);
+					$total=0;
+					while($r=mysqli_fetch_assoc($rs1))
+					{
+					?>
+                                <td><?=$r['ten']?></td>
+                                <td><?=$r['qty']?></td>
+                                <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a></td>
+                                
                             </tr>
+                            <?php
+							 $total += $r['price']*$r['qty'];
+							 } ?>
                         </table>
-                        <p>Chú Thích:</p>
-                        <button class="btn btn-success col-xs-12">Hoàn Tất</button>
+                         <?php 
+					
+				$sql="SELECT `note` FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
+				$rs2 = mysqli_query($link,$sql);
+				$xacnhan = mysqli_num_rows($rs2);
+				 
+				?>
+                        <p>Chú Thích:</p> <?php
+					if($xacnhan > 0 )
+					{
+                    while($r2=mysqli_fetch_assoc($rs2))
+                    {
+                        echo $r2['note'];
+                        echo "<br>";
+                    }
+					}
+					
+                    ?>
+                        <a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a>
                     </div>
-                    <div class="grid-item"  style="height: 250px; ">2 </div>
-                    <div class="grid-item"  style="height: 400px;">3</div>
-                    <div class="grid-item"  style="height: 200px;">4</div>
-                    <div class="grid-item"  style="height: 500px;">5</div>
-                    <div class="grid-item"  style="height: 600px;">6</div>
-                    <div class="grid-item"  style="height: 100px;">7</div>
-
-                </div>
+                     
+                   <?php
+				   } 
+				   ?>
+              </div> 
             </div>
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
@@ -75,7 +111,7 @@
                 <div class="grid-item2"  style="height: 200px;">...</div>
             </div>
             <div class="table-responsive"></div>
-            <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
+            <?php /*?><table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
               <thead>
               <tr align="center" bgcolor="#FFFFCC">
                 <td><h4><strong>STT</strong></h4></td>
@@ -108,7 +144,7 @@
                 </h5></td>
               </tr>
               <?php } ?>
-            </table>
+            </table><?php */?>
         </div>
     </div>
 </body>
