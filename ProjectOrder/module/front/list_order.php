@@ -40,7 +40,7 @@ if(isset($_GET['cate']))
     <th ><?=_STT?></th>
     <th ><?=_DISH?></th>
     <th><?=_PRICE?></th>
-    <th><?=_DISCOUNT?></th>
+    <!--<th><?=_DISCOUNT?></th>-->
     <th ><?=_QTY?></th>
     <th><?=_TOTALPRICE?></th>
   </tr>
@@ -74,13 +74,13 @@ if(isset($_GET['cate']))
     <?php if($r['km']>0) 
 		{ 
 	?>            
-    <td align="center" style='color:#F00'><?=number_format($r['km'])?>%</td>
+    <!--<td align="center" style='color:#F00'><?=number_format($r['km'])?>%</td>-->
     <?php 
 		}
 		else
 		{
     ?>
-    <td align="center"><?=number_format($r['km'])?>%</td>
+    <!--<td align="center"><?=number_format($r['km'])?>%</td>-->
     <?php
 		}
 	?>

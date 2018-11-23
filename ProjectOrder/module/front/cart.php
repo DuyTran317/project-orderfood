@@ -71,7 +71,7 @@
               <tr style="background-color: #f9d093; font-size: 18px;">
                 <th class="text-left"><?=_DISH?></th>
                 <th><?=_PRICE?></th>
-                <th><?=_DISCOUNT?></th>
+                <!--<th><?=_DISCOUNT?></th>-->
                 <th><?=_QTY?></th>
                 <th><?=_TOTALPRICE?></th>
                 <th></th>
@@ -105,8 +105,8 @@
                   </a>
                 </td>
                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
-                <td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>
-                
+                <!--<td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>
+                -->
                   <td class="hidden-md hidden-lg hidden-sm">
                       <input type="text" class="form-control text-center quantity" id="<?=$k?>" min="1" name="<?=$k?>" value="<?=$v?>" onChange="updateFood(<?=$k?>)">
                   </td>
