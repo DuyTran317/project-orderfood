@@ -6,7 +6,9 @@
             echo "},1);</script>";
         }?>
 <!-- Content Wrapper. Contains page content -->
- <?php if(isset($_SESSION['them'] )== 'themthanhcong') {
+ <?php 
+ $cate = $_SESSION['catead'];
+ if(isset($_SESSION['them'] )== 'themthanhcong') {
             echo "<script type='text/javascript'>";
             echo "setTimeout(function () { swal('Thêm Thành Công',
                           'Bạn đã thêm thành công',
@@ -50,12 +52,13 @@
                             $kq_user = mysqli_query($link,$sql_user);
                             while($d_user=mysqli_fetch_assoc($kq_user))
                             {
+                                $a = $d_user['id'];
                                 ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td><a href="edit_ad-<?= $d_user['id'] ?>.html">Sửa</a></td>
+                                    <td ><a href="edit_ad-<?=$d_user['id']?>.html" style="<?php if($cate != 1 && $d_user['cate'] ==1 ){ echo "display: none; "; } ?>" >Sửa</a></td>
                                 </tr>
                             <?php } ?>
 

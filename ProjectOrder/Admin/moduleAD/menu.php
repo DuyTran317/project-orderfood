@@ -124,7 +124,7 @@
             
        <?php
             $cate = $_SESSION['catead'];
-          if($cate ==3 || $cate  ==1) {  ?> 
+          if($cate ==3 || $cate  ==1 || $cate  ==6) {  ?> 
             <li class="header" style="text-align:center">Quản lý món ăn</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
@@ -166,7 +166,7 @@
             
          <?php
             $cate = $_SESSION['catead'];
-          if($cate ==2 || $cate  ==1) {  ?> 
+          if($cate ==2 || $cate  ==1 || $cate  ==6) {  ?> 
             <li class="header" style="text-align:center">Phân tích</li> 
            <li>
                 <a href='danh-sach-hoa-don.html'>
@@ -188,7 +188,7 @@
        
       <?php
             $cate = $_SESSION['catead'];
-          if($cate ==5 || $cate  ==1) {  ?> 
+          if($cate ==5 || $cate  ==1 || $cate  ==6) {  ?> 
             <li class="header" style="text-align:center">Quản lý bàn</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
@@ -207,7 +207,7 @@
          
         <?php
             $cate = $_SESSION['catead'];
-          if($cate ==4 || $cate  ==1) {  ?>
+          if($cate ==4 || $cate  ==1 || $cate  ==6) {  ?>
            <li class="header" style="text-align:center">Quản lý Bếp và Thanh toán</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
@@ -225,7 +225,7 @@
 
         <?php
             $cate = $_SESSION['catead'];
-          if($cate  ==1) {  ?> 
+          if($cate  ==1 || $cate  ==6) {  ?> 
           
           <li class="header" style="text-align:center">Quản lý slide</li>
             <li class="treeview">

@@ -36,9 +36,16 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="process-slide.html">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Slide:<span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Slide VN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="suatenslide" value="<?php echo $d['name']; ?>" placeholder="Nhập slide">
+                                         required  name="vi_suatenslide" value="<?php echo $d['vi_name']; ?>" placeholder="Nhập slide">
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tên Slide EN:<span style="color:#F00" >(*)</span></label>
+                                    <input type="text" class="form-control"
+                                         required  name="en_suatenslide" value="<?php echo $d['en_name']; ?>" placeholder="Nhập slide">
                                 </div>
                             </div>
                             <div class="box-body">
@@ -47,6 +54,16 @@
                                     <img src="../img/slider/<?php echo $d['img_url']; ?>" width="100" height="100"><br/>
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
+                            </div>
+                            <label for="exampleInputPassword1">Nội Dung VN </label>
+                            <div class="form-group">
+                                <textarea class="ckeditor" id="vi_noidung" name="vi_suanoidung" rows="10" cols="50"><?php echo $d['vi_content']; ?>
+                                </textarea>
+                            </div>
+                            <label for="exampleInputPassword1">Nội Dung EN </label>
+                            <div class="form-group">
+                                <textarea class="ckeditor" id="en_noidung" name="en_suanoidung" rows="10" cols="50"><?php echo $d['en_content']; ?>
+                                </textarea>
                             </div>
                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                             <div class="box-footer">

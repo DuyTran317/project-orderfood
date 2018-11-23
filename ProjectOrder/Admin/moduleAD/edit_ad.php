@@ -37,6 +37,7 @@
                     $sql_edit = "select * from of_admin where id = {$_GET['edit']}";
                     $kq_edit = mysqli_query($link,$sql_edit);
                     $d_edit = mysqli_fetch_assoc($kq_edit);
+                    $cate_edit = $d_edit['cate'];
                     ?>
                     <form role="form" action="process-ad.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
@@ -68,12 +69,24 @@
                                 <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
+                            <div class="form-group">
+                            <label for="exampleInputPassword1">Quyền</label>
+                            <select class="form-control " name="quyen" style="border-radius: 5px 5px 5px 5px;" <?php if($cate_edit == 1 || $cate  !=1) echo 'disabled=""'; ?>>
+                                 <option value="1" <?php if(1== $cate_edit) echo "selected"; ?> 
+                                 disabled="disabled" > Quản Trị Viên (Admin)</option> 
+                                 <option value="2" <?php if(2== $cate_edit) echo "selected"; ?>>Thống Kê Viên</option>
+                                 <option value="3" <?php if(3== $cate_edit) echo "selected"; ?>>Quản Lý Loại & Sản Phẩm</option>
+                                 <option value="4" <?php if(4== $cate_edit) echo "selected"; ?>>Quản Lý</option>   
+                                 <option value="5" <?php if(5== $cate_edit) echo "selected"; ?>>Quản Lý Bàn</option>
+                                 <option value="6" <?php if(6== $cate_edit) echo "selected"; ?>>Quyền admin</option>
+                            </select>
+                        </div>
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
 
-                            <button type="submit" id="pass" class="btn btn-primary password" disabled="">Sửa</button>
+                            <button type="submit" id="pass" class="btn btn-primary" name="xacnhan" >Sửa</button>
                             <button type="reset" class="btn btn-defaul">Xóa</button>
                         </div>
                     </form>

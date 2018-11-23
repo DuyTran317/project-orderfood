@@ -25,9 +25,16 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="process-slide.html">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Slide:<span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1">Tên Slide VN:<span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="tenslide" placeholder="Nhập tên thể loại">
+                                         required  name="vi_tenslide" placeholder="Nhập tên thể loại">
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tên Slide EN:<span style="color:#F00" >(*)</span></label>
+                                    <input type="text" class="form-control"
+                                         required  name="en_tenslide" placeholder="Nhập tên thể loại">
                                 </div>
                             </div>
                             <div class="box-body">
@@ -35,6 +42,16 @@
                                     <label for="exampleInputFile">Hình slide:<span style="color:#F00" >(*)</span></label>
                                     <input type="file" id="exampleInputFile" name="image">
                                 </div>
+                            </div>
+                            <label for="exampleInputPassword1">Nội Dung VN </label>
+                            <div class="form-group">
+                                <textarea class="ckeditor" id="vi_noidung" name="vi_noidung" rows="10" cols="50">
+                                </textarea>
+                            </div>
+                            <label for="exampleInputPassword1">Nội Dung EN </label>
+                            <div class="form-group">
+                                <textarea class="ckeditor" id="en_noidung" name="en_noidung" rows="10" cols="50">
+                                </textarea>
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Thêm</button>
