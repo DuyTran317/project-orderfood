@@ -42,8 +42,8 @@
         $datefrom=$_POST['datefrom'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $d= substr($datefrom,0,2);
-        $m= substr($datefrom,3,2);
+        $m= substr($datefrom,0,2);
+        $d= substr($datefrom,3,2);
         $y= substr($datefrom,6,4);
         
         $datefrom="{$y}-{$m}-{$d} 00:00:00";     
@@ -53,8 +53,8 @@
         $dateto=$_POST['dateto'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $d= substr($dateto,0,2);
-        $m= substr($dateto,3,2);
+        $m= substr($dateto,0,2);
+        $d= substr($dateto,3,2);
         $y= substr($dateto,6,4);
         
         $dateto="{$y}-{$m}-{$d} 23:59:59";
@@ -82,11 +82,42 @@
             <div class="col-xs-12">
              <div class="row center" style="text-align:left; margin-left: 15px; ">
                     <form action="danh-sach-hoa-don.html" method="post">
-                        <strong>Từ:</strong>  <input type="text" id="datefrom" style="margin-right:50px;margin-left:20px;" class="datefrom" name="datefrom" readonly />
-                        <strong>Đến:</strong> <input type="text" style="margin-right:25px;margin-left:20px;" class="dateto" name="dateto" id="dateto" readonly />
-                        <button type="submit" class="btn btn-success">Tìm Theo Ngày</button>
+                        <div class="box-body">
+                              <!-- Date -->
+                              <div class="form-group">
+                                <label>Date from:</label>
+
+                                <div class="input-group date">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" class="form-control pull-right" id="datepicker" readonly="" class="datefrom" name="datefrom">
+                                </div>
+                                <!-- /.input group -->
+                              </div>
+                              <!-- /.form group -->
+                        </div>
+                        <div class="box-body">
+                              <!-- Date -->
+                              <div class="form-group">
+                                <label>Date to:</label>
+
+                                <div class="input-group date">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" class="form-control pull-right" id="datepicker1" readonly="" class="dateto" name="dateto">
+                                </div>
+                                <!-- /.input group -->
+                              </div>
+                              <!-- /.form group -->
+                        </div>
+                        <div class="box-body">
+                            <button type="submit" class="btn btn-success">Tìm Theo Ngày</button>
+                        </div>
                     </form>    
-                </div><br>
+                </div>
+            </div>
             <div class="col-xs-12">
                 <div class="box">
 
@@ -107,7 +138,7 @@
                             <tbody>
                             <?php
                             if(isset($_POST['datefrom'])&&isset($_POST['dateto'])){
-                                 if($datefrom>$dateto)
+                                if($datefrom>$dateto)
                                     {
                                         echo "<script type='text/javascript'>";
                                             echo "setTimeout(function () { swal('Lỗi',

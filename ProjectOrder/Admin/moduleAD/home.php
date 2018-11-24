@@ -1,5 +1,4 @@
-<script src="../jqueryUI/jquery-ui-admin.js"></script>
-<script src="../lib/chartJS/canvasjs.min.js"></script>
+
 
 <?php
 	if(isset($_POST['datefrom']))

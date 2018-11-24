@@ -208,11 +208,11 @@
         <?php
             $cate = $_SESSION['catead'];
           if($cate ==4 || $cate  ==1 || $cate  ==6) {  ?>
-           <li class="header" style="text-align:center">Quản lý Bếp và Thanh toán</li>
+           <li class="header" style="text-align:center">Quản lý người dùng</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-free-code-camp" aria-hidden="true"></i>
-                    <span>User Bếp - Thanh Toán</span>
+                    <span>Người Dùng</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
@@ -241,7 +241,19 @@
                     <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
-          
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                    <span>Khuyến mãi</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="danh-sach-khuyen-mai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+                    <li><a href="them-khuyen-mai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                </ul>
+            </li>
             <li class="header" style="text-align:center">Quản lý và phần quyền</li>
             <li>
                 <a href='danh-sach-admin.html'>

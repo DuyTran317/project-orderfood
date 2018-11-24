@@ -4,6 +4,7 @@ RewriteRule "^danh-sach-hoa-don.html$" "?mod=bill_list"
 RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list" 
 RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list" 
 RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
+RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list" 
 
 RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
 RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"
@@ -33,10 +34,14 @@ RewriteRule "^process-de.html$" "?mod=process_de"
 RewriteRule "^process-de-h(.*).html$" "?mod=process_de&activeh=$1"
 RewriteRule "^process-de-s(.*).html$" "?mod=process_de&actives=$1"
 
+RewriteRule "^process-dis.html$" "?mod=process_dis"
+RewriteRule "^process-dis-h(.*).html$" "?mod=process_dis&activeh=$1"
+RewriteRule "^process-dis-s(.*).html$" "?mod=process_dis&actives=$1"
+
 
 
 RewriteRule "^them-the-loai.html$" "?mod=add_cat"
-
+RewriteRule "^them-khuyen-mai.html$" "?mod=add_discount"
 RewriteRule "^them-chung-loai.html$" "?mod=add_de"
 
 RewriteRule "^them-san-pham.html$" "?mod=add_pro"
@@ -51,6 +56,7 @@ RewriteRule "^process_slide-del-(.*).html$" "?mod=process_slide&del=$1"
 RewriteRule "^process_kit-del-(.*).html$" "?mod=process_kit&del=$1"
 
 RewriteRule "^process_user-del-(.*).html$" "?mod=process_user&del=$1"
+RewriteRule "^process_dis-del-(.*).html$" "?mod=process_dis&del=$1"
 
 
 RewriteRule "^(.*)-(.*).html$" "?mod=$1&edit=$2"
