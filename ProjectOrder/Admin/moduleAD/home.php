@@ -1,4 +1,4 @@
-
+<script src="../jqueryUI/jquery-ui-admin.js"></script>
 
 <?php
 	if(isset($_POST['datefrom']))
@@ -6,8 +6,8 @@
 		$datefrom=$_POST['datefrom'];
 		
 		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-		$d= substr($datefrom,0,2);
-		$m= substr($datefrom,3,2);
+		$m= substr($datefrom,0,2);
+		$d= substr($datefrom,3,2);
 		$y= substr($datefrom,6,4);
 		
 		$datefrom="{$y}-{$m}-{$d} 00:00:00";		
@@ -17,8 +17,8 @@
 		$dateto=$_POST['dateto'];
 		
 		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-		$d= substr($dateto,0,2);
-		$m= substr($dateto,3,2);
+		$m= substr($dateto,0,2);
+		$d= substr($dateto,3,2);
 		$y= substr($dateto,6,4);
 		
 		$dateto="{$y}-{$m}-{$d} 23:59:59";
@@ -181,9 +181,37 @@
                             </select>
                             <br><br>
                             <div  STYLE="margin-left: 15px;">
-                                <form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
-                                    <strong>Từ:</strong>  <input type="text" class="datefrom" name="datefrom" id="datefrom" readonly /> &nbsp; - &nbsp;
-                                    <strong>Đến:</strong> <input type="text" class="dateto" name="dateto" id="dateto" readonly /><br><br>
+                                <form action="?mod=home&id_mon=<?=$id_mon?>" method="post">    
+                                    <div class="box-body">
+                                      <!-- Date -->
+                                      <div class="form-group">
+                                        <label>Từ Ngày:</label>
+
+                                        <div class="input-group date">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom">
+                                        </div>
+                                        <!-- /.input group -->
+                                      </div>
+                                      <!-- /.form group -->
+                                    </div>
+                                     <div class="box-body">
+                                      <!-- Date -->
+                                      <div class="form-group">
+                                        <label>Đến ngày:</label>
+
+                                        <div class="input-group date">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto">
+                                        </div>
+                                        <!-- /.input group -->
+                                      </div>
+                                      <!-- /.form group -->
+                                    </div>
                                     <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
                                 </form>
                             </div>

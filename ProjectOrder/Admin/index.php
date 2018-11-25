@@ -189,15 +189,6 @@ include("moduleAD/{$mod}.php");
 </script>
 
 
-
-
-
-
-
-
-
-
-
 <!-- Morris.js charts -->
 <script src="bower_components/raphael/raphael.min.js"></script>
 <script src="bower_components/morris.js/morris.min.js"></script>
@@ -319,7 +310,7 @@ include("moduleAD/{$mod}.php");
         if($mod=="add_de")echo"Thêm chủng loại";
         if($mod=="add_discount")echo"Thêm khuyến mãi";
         if($mod=="edit_discount")echo"Sửa khuyến mãi";
-        if($mod=="discount_list")echo"Danh sách khuyến mãi";
+        if($mod=="discount_list")echo"Danh sách khuyến mã<i></i>";
 
         ?> | OrderFood
   </title>
@@ -406,6 +397,7 @@ include("moduleAD/{$mod}.php");
     $( "#datepicker1" ).datepicker();
   } );
   </script>
+
  <?php unset($_SESSION['success']); ?>
 </body>
 
