@@ -6,8 +6,8 @@
 		$datefrom=$_POST['datefrom'];
 		
 		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-		$m= substr($datefrom,0,2);
-		$d= substr($datefrom,3,2);
+		$d= substr($datefrom,0,2);
+		$m= substr($datefrom,3,2);
 		$y= substr($datefrom,6,4);
 		
 		$datefrom="{$y}-{$m}-{$d} 00:00:00";		
@@ -17,8 +17,8 @@
 		$dateto=$_POST['dateto'];
 		
 		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-		$m= substr($dateto,0,2);
-		$d= substr($dateto,3,2);
+		$d= substr($dateto,0,2);
+		$m= substr($dateto,3,2);
 		$y= substr($dateto,6,4);
 		
 		$dateto="{$y}-{$m}-{$d} 23:59:59";
@@ -74,7 +74,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                         <?php 
+                        <?php 
                         $sqlbill = "select * from of_bill where active = 1";
                         $kqbill= mysqli_query($link,$sqlbill);
                         $dbill = mysqli_num_rows($kqbill);
@@ -109,30 +109,33 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>&nbsp;</h3>
+                        <?php 
+                        $sqlbill = "select * from `of_discount` where active = 1";
+                        $kqbill= mysqli_query($link,$sqlbill);
+                        $dbill = mysqli_num_rows($kqbill);
+                        ?>
+                        <h3><?php echo $dbill; ?></h3>
 
-                        <p>Thống kê</p>
+                        <p>Mục Khuyến Mãi</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-tags" aria-hidden="true"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-khuyen-mai.html" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
         </div>
-        <!-- /.row -->
-        
-        <hr /><hr /><hr />
+        <!-- /.row -->       
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <h1 style="font-size: 24px; font-weight: bold">Thông Kê Món Ăn</h1>
+                    <h1 style="font-size: 24px; font-weight: bold">Thống Kê Món Ăn</h1>
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
-                            <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
+                            <select id="category_id" onchange="window.location='index.php?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
                                 <?php
                                 $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
                                 $rs_s=mysqli_query($link,$sql);
@@ -155,7 +158,7 @@
                             </select>
                             <br><br>
                             <span style="font-size:16px; margin-left: 15px; "><strong>Chọn Món:</strong></span>
-                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
+                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='index.php?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
                                 <?php
                                 $sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
                                 $lay_idmon=mysqli_query($link,$sql);
@@ -181,7 +184,7 @@
                             </select>
                             <br><br>
                             <div  STYLE="margin-left: 15px;">
-                                <form action="?mod=home&id_mon=<?=$id_mon?>" method="post">    
+                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>" method="post">    
                                     <div class="box-body">
                                       <!-- Date -->
                                       <div class="form-group">
@@ -278,6 +281,7 @@
 <!-- /.content-wrapper -->
     </div>
 <!-- ./wrapper -->
+ 
 <?php
     if(isset($_POST['datefrom']))
     {
@@ -302,9 +306,9 @@
         $fdateto="{$d}/{$m}/{$y}";
 
     }   
-
-?>
-  
+?> 
+ 
+<script src="../lib/chartJS/canvasjs.min.js"></script>  
 <script>
 window.onload = function() {
 

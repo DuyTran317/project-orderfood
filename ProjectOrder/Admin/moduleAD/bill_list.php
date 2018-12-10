@@ -42,8 +42,8 @@
         $datefrom=$_POST['datefrom'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($datefrom,0,2);
-        $d= substr($datefrom,3,2);
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
         $y= substr($datefrom,6,4);
         
         $datefrom="{$y}-{$m}-{$d} 00:00:00";     
@@ -53,8 +53,8 @@
         $dateto=$_POST['dateto'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($dateto,0,2);
-        $d= substr($dateto,3,2);
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
         $y= substr($dateto,6,4);
         
         $dateto="{$y}-{$m}-{$d} 23:59:59";

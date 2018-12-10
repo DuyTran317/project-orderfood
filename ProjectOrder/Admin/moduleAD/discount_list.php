@@ -75,7 +75,7 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Khuyến mãi</th> 
+                                <th>Khuyến mãi (%)</th> 
                                 <th>Từ ngày</th>
                                 <th>Đến ngày</th>
                                 <th>Trạng thái</th>
