@@ -73,7 +73,7 @@
                 <th><?=_PRICE?></th>
                 <!--<th><?=_DISCOUNT?></th>-->
                 <th><?=_QTY?></th>
-                <th><?=_TOTALPRICE?></th>
+                <th><?=_AMOUNT?></th>
                 <th></th>
               </tr>
 

@@ -242,7 +242,7 @@
                                             <th><?=_PRICE?></th>
                                             <!--<th><?=_DISCOUNT?></th>-->
                                             <th class="col-xs-2"><?=_QTY?></th>
-                                            <th><?=_TOTALPRICE?></th>
+                                            <th><?=_AMOUNT?></th>
                                         </tr>
                                         <?php
                                         $cart=@$_SESSION['cart'];
