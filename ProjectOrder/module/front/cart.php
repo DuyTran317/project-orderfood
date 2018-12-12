@@ -61,13 +61,14 @@
 </style>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">
-    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px; " >
         <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center"><?=_CHOSEN?></h2>
         <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">
-        <div class="table-responsive">
+        <div class="table-responsive" style="max-height: 450px; overflow-y: auto ;" id="style-2">
 
-            <table class="col-md-12 table table-striped">
+            <table class="col-md-12 table table-striped" >
+                <thead>
               <tr style="background-color: #f9d093; font-size: 18px;">
                 <th class="text-left"><?=_DISH?></th>
                 <th><?=_PRICE?></th>
@@ -76,7 +77,7 @@
                 <th><?=_AMOUNT?></th>
                 <th></th>
               </tr>
-
+                </thead>
               <?php
                 $cart=@$_SESSION['cart'];
                 $s=0;

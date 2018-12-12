@@ -34,33 +34,34 @@
 <body style="background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+        <?php
+        $sql="select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+        $rs=mysqli_query($link,$sql);
+
+        @$dem = mysqli_num_rows($rs);
+        $total=0;
+
+        $sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+
+        ?>
 
         <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <h2 style=" text-align: center">Danh Sách Món Bàn: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
-            <div class="table-responsive">
-            <table class="col-md-12 col-sm-12 col-xs-12 table" >
-
-
-                <?php
-                $sql="select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
-                $rs=mysqli_query($link,$sql);
-				
-				@$dem = mysqli_num_rows($rs);				
-                $total=0;
-
-				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
-
-?>
-<form action="" method="post" >
-
-                <br>
-<?php
-				if($dem > 0 )
-				{
-                echo "
+            <?php
+            if($dem>0){
+            echo "
                  <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button>
 <div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
                 </div><br>";
+            }
+            ?>
+            <div class="table-responsive" style="height: 450px; overflow-y: auto ;" id="style-2">
+            <table class="col-md-12 col-sm-12 col-xs-12 table" >
+<form action="" method="post" >
+<?php
+				if($dem > 0 )
+				{
+
 
                 echo '<tr>
                     <th class="col-xs-3 ">Hình Ảnh</th>
