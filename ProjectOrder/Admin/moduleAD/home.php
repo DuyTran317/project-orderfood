@@ -184,7 +184,7 @@
                             </select>
                             <br><br>
                             <div  STYLE="margin-left: 15px;">
-                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>" method="post">    
+                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>&cid=<?=$cid?>" method="post">    
                                     <div class="box-body">
                                       <!-- Date -->
                                       <div class="form-group">
