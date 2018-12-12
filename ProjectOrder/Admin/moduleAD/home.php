@@ -1,4 +1,4 @@
-<script src="../jqueryUI/jquery-ui-admin.js"></script>
+﻿<script src="../jqueryUI/jquery-ui-admin.js"></script>
 
 <?php
 	if(isset($_POST['datefrom']))
@@ -184,7 +184,7 @@
                             </select>
                             <br><br>
                             <div  STYLE="margin-left: 15px;">
-                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>" method="post">    
+                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>&cid=<?=$cid?>" method="post">    
                                     <div class="box-body">
                                       <!-- Date -->
                                       <div class="form-group">
@@ -326,7 +326,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabel: "{label} {y}",
 		dataPoints: [
 		<?php
-		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} limit 0,5";
+		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} order by `solve` desc limit 0,5";
 			$kq=mysqli_query($link,$sql);
 			while($k=mysqli_fetch_assoc($kq)){
 		 ?>

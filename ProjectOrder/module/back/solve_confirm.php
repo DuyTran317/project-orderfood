@@ -41,8 +41,8 @@
 			$sql_sl = "update `of_order_detail` set `active` = 2 where `order_id`={$orderID} and `food_id` = {$rs['food_id']} and `active` = 0";
 			mysqli_query($link,$sql_sl);
 			
-			$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
-			mysqli_query($link,$sql);
+			/*$sql="update `of_food` set `solve` = `solve` + {$rs['qty']} where `id` ={$rs['food_id']}";
+			mysqli_query($link,$sql);*/
 		//}
 	}
 	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 0";
