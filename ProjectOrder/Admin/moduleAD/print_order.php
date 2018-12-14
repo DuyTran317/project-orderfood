@@ -168,7 +168,7 @@
                     <div class="header" style="margin-top:10px">
                         <div style="float:left; font-size:18px; margin-left:65px"><strong>Nhà Hàng 5 Siêu Nhân</strong></div>
                         <?php
-                            $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                            $sql="select * from `of_bill` where `id`={$mhd}";
                             $kq=mysqli_query($link,$sql);
                             $k=mysqli_fetch_assoc($kq);
                         ?>
@@ -190,13 +190,14 @@
                             <th>Tên</th>
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
-                            <th>Khuyến mãi</th>
+                            <!--<th>Khuyến mãi</th>-->
                             <th>Thành tiền (VND)</th>
                         </tr>
                         <?php
                         $sql="select a.*,b.`vi_name` as ten,b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
                         $rs=mysqli_query($link,$sql);
                         $total=0;
+						$giagoc=0;
                         $stt=1;
                         while($r=mysqli_fetch_assoc($rs)){
 							$gia_temp=$r['price']-(($r['km']*$r['price'])/100);
@@ -206,19 +207,30 @@
                             echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
                             echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
                             echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
-							echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";
+							/*echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";*/
                             echo "<td class=\"cotSo\">".number_format(($r['qty']*$gia_temp))."</td>";
                             echo "</tr>";
                             $total += $gia_temp*$r['qty'];
+							$giagoc += $gia_temp*$r['qty'];
                         }
-						
+							
+							$total = $total - ((($total*$k['discount'])/100));
+							
 							//Đọc số tiền ra chữ
 							$thanhtien="";
 							$thanhtien=VndText($total);
 	 
                         ?>
                         <tr>
-                            <td colspan="5" class="tong" style="font-weight: bold; font-size: 18px">Tổng Thành Tiền</td>
+                            <td colspan="4" class="tong">Giá Gốc</td>
+                            <td class="cotSo"><span ><?=number_format($giagoc)?></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="tong">Khuyến Mãi</td>		
+                            <td class="cotSo"><span ><?=$k['discount']?>%</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="tong" style="font-weight: bold; font-size: 17px">Tổng Thành Tiền</td>
                             <td class="cotSo" style="font-weight: bold; font-size: 18px"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                         </tr>
                     </table>
