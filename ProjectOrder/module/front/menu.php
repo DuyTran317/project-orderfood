@@ -1,8 +1,4 @@
 <style>
-    html,
-    body{
-        height: 100%;
-    }
     .active{
          background-color: rgba(247, 139, 7,0.8);
          border-radius: 5px;
@@ -138,7 +134,7 @@ Pusher.logToConsole = true;
 <script src="lib/pusher.min.js"></script>
 
 </p>
-<div class="container-fluid" style="margin-top: 6%">
+<div class="container-fluid" style="margin-top: 3%">
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
         <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>

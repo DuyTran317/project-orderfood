@@ -1,5 +1,4 @@
-<script src="../jqueryUI/jquery-ui-admin.js"></script>
-<script src="../lib/chartJS/canvasjs.min.js"></script>
+﻿<script src="../jqueryUI/jquery-ui-admin.js"></script>
 
 <?php
 	if(isset($_POST['datefrom']))
@@ -75,7 +74,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                         <?php 
+                        <?php 
                         $sqlbill = "select * from of_bill where active = 1";
                         $kqbill= mysqli_query($link,$sqlbill);
                         $dbill = mysqli_num_rows($kqbill);
@@ -110,30 +109,33 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>&nbsp;</h3>
+                        <?php 
+                        $sqlbill = "select * from `of_discount` where active = 1";
+                        $kqbill= mysqli_query($link,$sqlbill);
+                        $dbill = mysqli_num_rows($kqbill);
+                        ?>
+                        <h3><?php echo $dbill; ?></h3>
 
-                        <p>Thống kê</p>
+                        <p>Mục Khuyến Mãi</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-tags" aria-hidden="true"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-khuyen-mai.html" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
         </div>
-        <!-- /.row -->
-        
-        <hr /><hr /><hr />
+        <!-- /.row -->       
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <h1 style="font-size: 24px; font-weight: bold">Thông Kê Món Ăn</h1>
+                    <h1 style="font-size: 24px; font-weight: bold">Thống Kê Món Ăn</h1>
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
-                            <select id="category_id" onchange="window.location='?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
+                            <select id="category_id" onchange="window.location='index.php?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
                                 <?php
                                 $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
                                 $rs_s=mysqli_query($link,$sql);
@@ -156,7 +158,7 @@
                             </select>
                             <br><br>
                             <span style="font-size:16px; margin-left: 15px; "><strong>Chọn Món:</strong></span>
-                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
+                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='index.php?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
                                 <?php
                                 $sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
                                 $lay_idmon=mysqli_query($link,$sql);
@@ -182,9 +184,37 @@
                             </select>
                             <br><br>
                             <div  STYLE="margin-left: 15px;">
-                                <form action="?mod=home&id_mon=<?=$id_mon?>" method="post">
-                                    <strong>Từ:</strong>  <input type="text" class="datefrom" name="datefrom" id="datefrom" readonly /> &nbsp; - &nbsp;
-                                    <strong>Đến:</strong> <input type="text" class="dateto" name="dateto" id="dateto" readonly /><br><br>
+                                <form action="index.php?mod=home&id_mon=<?=$id_mon?>&cid=<?=$cid?>" method="post">    
+                                    <div class="box-body">
+                                      <!-- Date -->
+                                      <div class="form-group">
+                                        <label>Từ Ngày:</label>
+
+                                        <div class="input-group date">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom">
+                                        </div>
+                                        <!-- /.input group -->
+                                      </div>
+                                      <!-- /.form group -->
+                                    </div>
+                                     <div class="box-body">
+                                      <!-- Date -->
+                                      <div class="form-group">
+                                        <label>Đến ngày:</label>
+
+                                        <div class="input-group date">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto">
+                                        </div>
+                                        <!-- /.input group -->
+                                      </div>
+                                      <!-- /.form group -->
+                                    </div>
                                     <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
                                 </form>
                             </div>
@@ -251,6 +281,7 @@
 <!-- /.content-wrapper -->
     </div>
 <!-- ./wrapper -->
+ 
 <?php
     if(isset($_POST['datefrom']))
     {
@@ -275,9 +306,9 @@
         $fdateto="{$d}/{$m}/{$y}";
 
     }   
-
-?>
-  
+?> 
+ 
+<script src="../lib/chartJS/canvasjs.min.js"></script>  
 <script>
 window.onload = function() {
 
@@ -295,7 +326,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabel: "{label} {y}",
 		dataPoints: [
 		<?php
-		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} limit 0,5";
+		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} order by `solve` desc limit 0,5";
 			$kq=mysqli_query($link,$sql);
 			while($k=mysqli_fetch_assoc($kq)){
 		 ?>

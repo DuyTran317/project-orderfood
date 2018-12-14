@@ -2,10 +2,7 @@
 	th{
 		text-align:center;
 	}
-    html,
-    body{
-        height: 100%;
-    }
+
 </style>
 <?php
 	if(! isset($_SESSION['user_idban']))
@@ -222,8 +219,8 @@
 	
 	
 ?>
-        <html style="height: 100%;">
-        <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif; height: 100%;">
+        <html style="">
+        <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif;">
         <div class="container" style=" margin-top:30px;">
             <div class="row">
 
@@ -242,7 +239,7 @@
                                             <th><?=_PRICE?></th>
                                             <!--<th><?=_DISCOUNT?></th>-->
                                             <th class="col-xs-2"><?=_QTY?></th>
-                                            <th><?=_TOTALPRICE?></th>
+                                            <th><?=_AMOUNT?></th>
                                         </tr>
                                         <?php
                                         $cart=@$_SESSION['cart'];

@@ -30,7 +30,7 @@
         <a href="?mod=home_nhanvien" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center">DANH SÁCH MÓN ĂN BÀN <?=$name_ban?></h2>
 <form action="" method="post">
-    <div class="table-responsive">
+    <div class="table-responsive" style="max-height: 450px; overflow-y: auto ;" id="style-2">
 <table  class="col-md-12 table table-striped" cellspacing="0" >
   <tr>
     <th >STT</th>

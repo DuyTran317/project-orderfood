@@ -46,3 +46,6 @@ define("_STEP", "Bước");
 define("_MANUAL", "Hướng Dẫn Sử Dụng");
 define("_CLOSE", "Đóng");
 define("_NOLOGIN", "Xem không cần đăng nhập");
+define("_AMOUNT", "Thành Tiền");
+define("_RESTAURANTNAME", "Nhà Hàng 5 Siêu Nhân");
+define("_RESTAURANTADDRESS", "115 Hai Bà Trưng, P.Bến Nghé, Q.1, TP.HCM");
