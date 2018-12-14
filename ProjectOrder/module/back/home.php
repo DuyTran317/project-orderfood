@@ -44,18 +44,22 @@
                     <div class="gutter-sizer"></div>
                     
                      <?php 
-					 $temp1 =1;$idbandau=0;
+					 $temp = 0;$idbandau=0;$sql_montrung="";
 					$sql = "select * from `of_order` where `active`=2";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
 					{
+						$id = $r1['id'];
+						if($temp == 0)
+						{ 
+							$idbandau = $r1['id'];
+							if(!isset($_COOKIE['idbancuoi']) || $_COOKIE['idbancuoi']<$idbandau)
+							{
+							   setcookie("idbancuoi",$idbandau+$sobanmontrung-1,time()+86400);
+							}
+						}
+						
 					$num_table = $r1['num_table'];
-					$id = $r1['id'];
-					if($temp1 == 1)
-					{
-						$idbandau = $r1['id'];
-						$temp1 =0;
-					}
 			 		?>
                     <div class="grid-item"  >
                         <h3 style="text-align: center">Bàn: <?=$num_table?> </h3>
@@ -69,10 +73,11 @@
                              <?php 
 					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 	$rs1=mysqli_query($link,$sql2);
-					
+					if($temp==0) $sql_montrung = "select b.`vi_name`,SUM(qty) as qty_sum from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and a.`active`=2 and a.`order_id`>={$idbandau} and a.`order_id`<={$_COOKIE['idbancuoi']} and (a.food_id=0";
 					$total=0;
 					while($r=mysqli_fetch_assoc($rs1))
 					{
+						if($temp==0) $sql_montrung.=" or a.food_id = {$r['food_id']}";
 					?>
                                 <td><?=$r['ten']?></td>
                                 <td><?=$r['qty']?></td>
@@ -99,20 +104,40 @@
                         echo "<br>";
                     }
 					}
-					
+					if($temp==0) $sql_montrung.=") GROUP BY a.`food_id` ORDER BY a.`id` ASC";
+					$temp=1;
                     ?>
                         <a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a>
                     </div>
                      
                    <?php
 				   } 
+				   
 				   ?>
               </div> 
             </div>
+            
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
-                <div class="grid-item2"> 
-                	
+                <div class="grid-item2">
+                <table>
+                	<tr>
+                        <th class="col-xs-8">Tên</th>
+                        <th>SL</th>
+                    </tr> 
+                	<?php 
+						$r_montrung = mysqli_query($link,$sql_montrung);
+						while($rs_montrung=mysqli_fetch_assoc($r_montrung))
+						{
+							?>
+                            	<tr>
+                        			<td><?= $rs_montrung['vi_name']?></td>
+                                    <td><?= $rs_montrung['qty_sum']?></td>
+                    			</tr>
+                            <?php
+						}
+					?>
+                    </table>
                 </div>
             </div>
             <div class="table-responsive"></div>
