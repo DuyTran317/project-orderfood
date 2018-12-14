@@ -116,20 +116,23 @@
 				   ?>
               </div> 
             </div>
-            
+
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
+                <?php
+                @$r_montrung = mysqli_query($link,$sql_montrung);
+                if(!empty($r_montrung )){?>
                 <div class="grid-item2">
                 <table class="table">
                 	<tr>
                         <th class="col-xs-8">Tên</th>
                         <th>SL</th>
-                    </tr> 
-                	<?php 
-						@$r_montrung = mysqli_query($link,$sql_montrung);
-						while(@$rs_montrung=mysqli_fetch_assoc($r_montrung))
-						{
-							?>
+                    </tr>
+                    <?php
+
+                    while(@$rs_montrung=mysqli_fetch_assoc($r_montrung))
+                    {
+                        ?>
                             	<tr>
                         			<td><?= $rs_montrung['vi_name']?></td>
                                     <td><?= $rs_montrung['qty_sum']?></td>
@@ -139,6 +142,7 @@
 					?>
                     </table>
                 </div>
+                <?php } ?>
             </div>
             <div class="table-responsive"></div>
             <?php /*?><table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
