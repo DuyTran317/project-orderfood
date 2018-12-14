@@ -10,161 +10,153 @@
 ?>
 
 <style>
-	th{
-		text-align:center;
-	}
-	#ok {
-    margin: 0;
-    padding: 0;
-    background-color: #FAFAFA;
-}
-* {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-.page {
-    width: 23cm;
-    overflow:hidden;
-    min-height:auto;
-    margin-left:auto;
-    margin-right:auto;
-    background: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-	font: 12pt "Tohoma";
-}
-.subpage {
-    padding: 1cm;
-    border: 5px red solid;
-    height: 237mm;
-    outline: 2cm #FFEAEA solid;
-}
- @page {
- size: A4;
- margin: 0;
-}
-.header {
-    overflow:hidden;
-}
-.logo {
-    background-color:#FFFFFF;
-    text-align:left;
-    float:left;
-}
-.company {
-    padding-top:24px;
-    text-transform:uppercase;
-    background-color:#FFFFFF;
-    text-align:right;
-    float:right;
-    font-size:16px;
-}
-.title {
-    text-align:center;
-    position:relative;
-    color:#0000FF;
-    font-size: 24px;
-    top:1px;
-}
-.footer-left {
-    text-align:center;
-    text-transform:uppercase;
-    padding-top:24px;
-    position:relative;
-    height: 150px;
-    width:50%;
-    color:#000;
-    float:left;
-    font-size: 12px;
-    bottom:1px;
-}
-.footer-right {
-    text-align:center;
-    text-transform:uppercase;
-    padding-top:24px;
-    position:relative;
-    height: 150px;
-    width:50%;
-    color:#000;
-    font-size: 12px;
-    float:right;
-    bottom:1px;
-}
-.TableData {
-    background:#ffffff;
-    font: 11px;
-    width:100%;
-    border-collapse:collapse;
-    font-family:Verdana, Arial, Helvetica, sans-serif;
-    font-size:12px;
-    border:thin solid #d3d3d3;
-}
-.TableData TH {
-    background: rgba(0,0,255,0.1);
-    text-align: center;
-    font-weight: bold;
-    color: #000;
-    border: solid 1px #ccc;
-    height: 24px;
-}
-.TableData TR {
-    height: 24px;
-    border:thin solid #d3d3d3;
-}
-.TableData TR TD {
-    padding-right: 2px;
-    padding-left: 2px;
-    border:thin solid #d3d3d3;
-}
-.TableData TR:hover {
-    background: rgba(0,0,0,0.05);
-}
-.TableData .cotSTT {
-    text-align:center;
-    width: 10%;
-}
-.TableData .cotTenSanPham {
-    text-align:left;
-    width: 40%;
-}
-.TableData .cotHangSanXuat {
-    text-align:left;
-    width: 20%;
-}
-.TableData .cotGia {
-    text-align:right;
-    width: 120px;
-}
-.TableData .cotSoLuong {
-    text-align: center;
-    width: 50px;
-}
-.TableData .cotSo {
-    text-align: right;
-    width: 120px;
-}
-.TableData .tong {
-    text-align: right;
-    font-weight:bold;
-    text-transform:uppercase;
-    padding-right: 4px;
-}
-.TableData .cotSoLuong input {
-    text-align: center;
-}
-@media print {
- @page {
- margin: 5px;
- border: initial;
- border-radius: initial;
- width: initial;
- min-height: initial;
- box-shadow: initial;
- background: initial;
- page-break-after: always;
-}
-}
+    th{
+        text-align:center;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        font: 12pt "Tohoma";
+    }
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .page {
+        width: 23cm;
+        overflow:hidden;
+        min-height:auto;
+        margin-left:auto;
+        margin-right:auto;
+        background: white;
+    }
+    .subpage {
+        padding: 1cm;
+        border: 5px red solid;
+        height: 237mm;
+        outline: 2cm #FFEAEA solid;
+    }
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    .header {
+        overflow:hidden;
+    }
+    .logo {
+        background-color:#FFFFFF;
+        text-align:left;
+        float:left;
+    }
+    .company {
+        padding-top:24px;
+        text-transform:uppercase;
+        background-color:#FFFFFF;
+        text-align:right;
+        float:right;
+        font-size:16px;
+    }
+    .title {
+        text-align:center;
+        position:relative;
+        font-size: 24px;
+        top:1px;
+        margin-top:20px;
+        font-weight: bold;
+    }
+    .footer-left {
+        text-align:center;
+        text-transform:uppercase;
+        padding-top:24px;
+        position:relative;
+        height: 150px;
+        width:50%;
+        color:#000;
+        float:left;
+        font-size: 12px;
+        bottom:1px;
+    }
+    .footer-right {
+        text-align:center;
+        text-transform:uppercase;
+        padding-top:24px;
+        position:relative;
+        height: 150px;
+        width:50%;
+        color:#000;
+        font-size: 12px;
+        float:right;
+        bottom:1px;
+    }
+    .TableData {
+        background:#ffffff;
+        font: 11px;
+        width:100%;
+        border-collapse:collapse;
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        font-size:12px;
+    }
+    .TableData TH {
+        font-weight: bold;
+        color: #000;
+        height: 24px;
+        font-size: 15px;
+    }
+    .TableData TR {
+        height: 24px;
+    }
+    .TableData TR TD {
+        padding-right: 2px;
+        padding-left: 2px;
 
-</style>       
+    }
+    .TableData .cotSTT {
+        text-align:center;
+        width: 10%;
+    }
+    .TableData .cotTenSanPham {
+        text-align:left;
+        width: 40%;
+    }
+    .TableData .cotHangSanXuat {
+        text-align:left;
+        width: 20%;
+    }
+    .TableData .cotGia {
+        text-align:center;
+        width: 120px;
+    }
+    .TableData .cotSoLuong {
+        text-align: center;
+        width: 50px;
+    }
+    .TableData .cotSo {
+        text-align: right;
+        width: 120px;
+    }
+    .TableData .tong {
+        text-align: right;
+        text-transform:uppercase;
+        padding-right: 4px;
+    }
+    .TableData .cotSoLuong input {
+        text-align: center;
+    }
+    @media print {
+        @page {
+            margin: 5px;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
+
+</style>
 
 <body>
 <div id="ok"  style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover;">
@@ -193,7 +185,7 @@
                     <br/>
                     <br/>
                     <table class="TableData">
-                        <tr>
+                        <tr style="text-transform: uppercase; border-top: solid lightgrey; border-bottom: solid lightgrey ">
                             <th>STT</th>
                             <th>Tên</th>
                             <th>Đơn giá</th>
@@ -209,7 +201,7 @@
                         while($r=mysqli_fetch_assoc($rs)){
 							$gia_temp=$r['price']-(($r['km']*$r['price'])/100);
 							
-                            echo "<tr>";
+                            echo "<tr style='border-bottom: dashed thin; '>";
                             echo "<td class=\"cotSTT\">".$stt++."</td>";
                             echo "<td class=\"cotTenSanPham\">".$r['ten']."</td>";
                             echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
@@ -226,8 +218,8 @@
 	 
                         ?>
                         <tr>
-                            <td colspan="5" class="tong">Tổng Thành Tiền</td>
-                            <td class="cotSo"><span style="font-weight:bold"><?=number_format($total)?></span></td>
+                            <td colspan="5" class="tong" style="font-weight: bold; font-size: 18px">Tổng Thành Tiền</td>
+                            <td class="cotSo" style="font-weight: bold; font-size: 18px"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                         </tr>
                     </table>
                     
