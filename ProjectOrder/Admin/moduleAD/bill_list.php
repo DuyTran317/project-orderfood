@@ -166,7 +166,7 @@
                                	<td><?= number_format($d_bill['total']) ?></td>
                                	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td> 
                                 <td><?= date("H:i:s", strtotime( $d_bill['date']))?></td> 
-                                <td><a href="?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a></td>
+                                <td><a href="index.php?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a></td>
                             </tr>
                             <?php } ?>
 
