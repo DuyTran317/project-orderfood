@@ -5,7 +5,7 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	
+	$sobanmontrung=5;
 ?>
 <!--Reload Page-->
 <meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
@@ -44,12 +44,18 @@
                     <div class="gutter-sizer"></div>
                     
                      <?php 
+					 $temp1 =1;$idbandau=0;
 					$sql = "select * from `of_order` where `active`=2";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
 					{
 					$num_table = $r1['num_table'];
 					$id = $r1['id'];
+					if($temp1 == 1)
+					{
+						$idbandau = $r1['id'];
+						$temp1 =0;
+					}
 			 		?>
                     <div class="grid-item"  >
                         <h3 style="text-align: center">Bàn: <?=$num_table?> </h3>
@@ -63,8 +69,7 @@
                              <?php 
 					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
                 	$rs1=mysqli_query($link,$sql2);
-					$sql1="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
-                	$rs2=mysqli_query($link,$sql1);
+					
 					$total=0;
 					while($r=mysqli_fetch_assoc($rs1))
 					{
@@ -76,7 +81,7 @@
                             </tr>
                             <?php
 							 $total += $r['price']*$r['qty'];
-							 } ?>
+					} ?>
                         </table>
                          <?php 
 					
@@ -106,9 +111,9 @@
             </div>
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
-                <div class="grid-item2"  style="height: 250px; ">... </div>
-                <div class="grid-item2"  style="height: 400px;">...</div>
-                <div class="grid-item2"  style="height: 200px;">...</div>
+                <div class="grid-item2"> 
+                	
+                </div>
             </div>
             <div class="table-responsive"></div>
             <?php /*?><table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
