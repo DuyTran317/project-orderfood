@@ -30,9 +30,9 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="background-image: url(img/back/adult-ancient-artisan-1062269.jpg); background-size: cover; font-family: 'Anton', sans-serif;">
+<body style="font-family: 'Anton', sans-serif;">
     <div class="container-fluid" >
-        <div class="row"  style="background-color: #FFF;padding: 20px;">
+        <div class="row"  style="padding: 20px;">
         <a href="?mod=ds_food" style="font-size:30px; color:#096; text-decoration:none"> <i class="fas fa-cogs"></i></a>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
@@ -125,10 +125,14 @@
 				   ?>
               </div> 
             </div>
-            
+
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
+                <?php
+                @$r_montrung = mysqli_query($link,$sql_montrung);
+                if(!empty($r_montrung )){?>
                 <div class="grid-item2">
+<<<<<<< HEAD
                 
                 <?php if($temp==1){ echo "từ bàn $bandau đến $bancuoi"; ?>
                 <table>
@@ -154,6 +158,7 @@
 					?>
                     </table>
                 </div>
+                <?php } ?>
             </div>
             <div class="table-responsive"></div>
             <?php /*?><table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
