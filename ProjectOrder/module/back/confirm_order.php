@@ -48,13 +48,9 @@
         <a href="?mod=home_nhanvien" style="font-size: 36px; color: black" > <i class="fas fa-arrow-left"></i> </a>
             <h2 style=" text-align: center">Danh Sách Món Bàn: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
             <?php
-            if($dem>0){
-            echo "
-                 <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button>
-<div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
-                </div><br>";
-            }
+            
             ?>
+            
             <div class="table-responsive" style="height: 450px; overflow-y: auto ;" id="style-2">
             <table class="col-md-12 col-sm-12 col-xs-12 table" >
 <form action="" method="post" >
@@ -101,6 +97,14 @@
                 endwhile
                 ?>
                 <input type="hidden" name="order_id" value="<?=$orderId?>">
+                <?php
+				if($dem>0){
+            echo "
+                 <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button>
+<div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
+                </div><br>";
+            }
+				?>
                  </form>
                 <?php
 				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";

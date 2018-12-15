@@ -45,8 +45,8 @@
 			mysqli_query($link,$sql);
 		}
 	}
-	$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 2";
-	mysqli_query($link,$sql_sl);
+	/*$sql_sl = "delete from `of_order_detail` where `order_id`={$orderID} and `active` = 2";
+	mysqli_query($link,$sql_sl);*/
 	/*$sql="update `of_order_detail` set `active`=1 where `order_id`={$orderID}";
 	mysqli_query($link,$sql);*/
 	$sql="select `id` from `of_bill` where `order_id`=$orderID and `active` = 0";

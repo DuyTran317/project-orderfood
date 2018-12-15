@@ -44,7 +44,7 @@
                     <div class="gutter-sizer"></div>
                     
                      <?php 
-					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
+					 $temp = 0;$idbandau=0;@$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					$sql = "select * from `of_order` where `active`=2";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
@@ -132,9 +132,8 @@
                 @$r_montrung = mysqli_query($link,$sql_montrung);
                 if(!empty($r_montrung )){?>
                 <div class="grid-item2">
-<<<<<<< HEAD
                 
-                <?php if($temp==1){ echo "từ bàn $bandau đến $bancuoi"; ?>
+                <?php if($temp==1){ echo "Từ bàn $bandau đến $bancuoi"; ?>
                 <table>
                 	<tr>
                         <th class="col-xs-8">Tên</th>

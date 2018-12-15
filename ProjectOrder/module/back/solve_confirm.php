@@ -60,8 +60,13 @@
 		
 		$mh=$k_mhd['id']+1;
 		$mh=date('Ym').$mh;
+		
+		$sql="select * from `of_discount` where `active` =1";
+        $khuyen_mai = mysqli_query($link,$sql);
+		$show_km = mysqli_fetch_assoc($khuyen_mai);
+		$giatri_km = $show_km['discount'];
 			
-		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '{$mh}', '$orderID', '$num_table', '$total', now(), '0')";
+		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '{$mh}', '$orderID', '$num_table', '$total', now(), '$giatri_km','0')";
 		mysqli_query($link,$sql_ins_thanhtoan);
 	}
 	else 
