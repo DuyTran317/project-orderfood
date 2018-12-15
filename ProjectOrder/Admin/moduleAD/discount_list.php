@@ -90,12 +90,21 @@
                             $kq_dis = mysqli_query($link,$sql_dis);
                             while($d_dis=mysqli_fetch_assoc($kq_dis))
                             {
+                               
+                                
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $d_dis['discount'] ?></td>
-                                <td><?= $d_dis['create_at'] ?></td>
-                                <td><?= $d_dis['end_at'] ?></td>
+                                <td><?php  
+                                        $datefrom = $d_dis['create_at'];
+                                        $date = new DateTime($datefrom);
+                                        echo $date->format('d/m/Y'); ?></td>
+                                <td><?php 
+                                     $dateto = $d_dis['end_at'];
+                                        $date1 = new DateTime($dateto);
+                                        echo $date1->format('d/m/Y'); ?>
+                                </td>
                                 <td><?php if($d_dis['active']==0) {echo "<a href=\"process-dis-s{$d_dis['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                     else
                                     {

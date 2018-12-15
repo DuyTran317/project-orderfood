@@ -310,7 +310,7 @@ include("moduleAD/{$mod}.php");
         if($mod=="add_de")echo"Thêm chủng loại";
         if($mod=="add_discount")echo"Thêm khuyến mãi";
         if($mod=="edit_discount")echo"Sửa khuyến mãi";
-        if($mod=="discount_list")echo"Danh sách khuyến mã<i></i>";
+        if($mod=="discount_list")echo"Danh sách khuyến mãi";
 
         ?> | OrderFood
   </title>

@@ -11,8 +11,8 @@ if(isset($_POST['khuyenmai']))
         $datefrom=$_POST['datefrom'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($datefrom,0,2);
-        $d= substr($datefrom,3,2);
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
         $y= substr($datefrom,6,4);
         
         $datefrom="{$y}-{$m}-{$d} 00:00:00";     
@@ -22,18 +22,29 @@ if(isset($_POST['khuyenmai']))
         $dateto=$_POST['dateto'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($dateto,0,2);
-        $d= substr($dateto,3,2);
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
         $y= substr($dateto,6,4);
         
         $dateto="{$y}-{$m}-{$d} 23:59:59";
 
     }   
+    
     $discount=$_POST['khuyenmai'];
     $trangthai = $_POST['trangthai'];
+        if($dateto < $datefrom)
+        {
+            $_SESSION['khuyenmai'] = $_POST['khuyenmai'];
+            $_SESSION['datefrom'] = $datefrom;
+            $_SESSION['dateto'] = $dateto;
+            $_SESSION['chuy'] = 'chuy';
+            header('Location:them-khuyen-mai.html');
+        }
+        else{
 
+     $sql_add = "insert into `of_discount` VALUES(NULL,'{$datefrom}','{$dateto}','{$discount}','{$trangthai}')";
+        }
     
-     $sql_add = "insert into `of_discount` VALUES(NULL,'{$datefrom}','{$dateto}','{$discount}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -50,8 +61,8 @@ if(isset($_POST['suakhuyenmai']))
         $datefrom=$_POST['suadatefrom'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($datefrom,0,2);
-        $d= substr($datefrom,3,2);
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
         $y= substr($datefrom,6,4);
         
         $datefrom="{$y}-{$m}-{$d} 00:00:00";     
@@ -61,8 +72,8 @@ if(isset($_POST['suakhuyenmai']))
         $dateto=$_POST['suadateto'];
         
         //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $m= substr($dateto,0,2);
-        $d= substr($dateto,3,2);
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
         $y= substr($dateto,6,4);
         
         $dateto="{$y}-{$m}-{$d} 23:59:59";
@@ -72,7 +83,18 @@ if(isset($_POST['suakhuyenmai']))
     $trangthai = $_POST['suatrangthai'];
     $id= $_POST['id'];
 
-        $sql_edit="update `of_discount` set `create_at`='{$datefrom}' ,`end_at`='{$dateto}',`discount`='{$discount}',`active`='{$trangthai}' where `id`={$id}";
+    /*if($dateto < $datefrom)
+        {
+            $_SESSION['suakhuyenmai'] = $_POST['suakhuyenmai'];
+            $_SESSION['suadatefrom'] = $datefrom;
+            $_SESSION['suadateto'] = $dateto;
+            $_SESSION['chuy'] = 'chuy';
+            header('Location:sua-khuyen-mai.html');
+        }
+        else{*/
+            $sql_edit="update `of_discount` set `create_at`='{$datefrom}' ,`end_at`='{$dateto}',`discount`='{$discount}',`active`='{$trangthai}' where `id`={$id}";
+        /*}*/
+        
        if(mysqli_query($link,$sql_edit)) 
        {
          $_SESSION['sua'] = 'suathanhcong';

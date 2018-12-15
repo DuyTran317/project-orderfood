@@ -241,6 +241,7 @@
                     <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
                 </ul>
             </li>
+            <li class="header" style="text-align:center">Quản lý khuyến mãi</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-tags" aria-hidden="true"></i>

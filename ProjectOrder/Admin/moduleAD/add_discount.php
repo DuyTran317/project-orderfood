@@ -1,3 +1,10 @@
+<?php if(isset($_SESSION['chuy'] )== 'chuy') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Chú ý',
+                          'Ngày đến phải lớn hơn ngày từ!',
+                          'warning');";
+            echo "},1);</script>";
+        }?>
 <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -27,7 +34,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Khuyến mãi:<span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                         required  name="khuyenmai" placeholder="Nhập tên khuyến mãi">
+                                         required  name="khuyenmai" value="<?php if(isset($_SESSION['khuyenmai'])){echo $_SESSION['khuyenmai'];}  ?>"  placeholder="Nhập tên khuyến mãi" 
+                                         >
                                 </div>
                             </div>
                             <div class="box-body">
@@ -39,7 +47,14 @@
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </div>
-                                  <input type="text" class="form-control pull-right" id="datepicker" readonly="" name="datefrom">
+                                  <input type="text" class="form-control pull-right" id="datepicker" readonly="" 
+                                  value="<?php if(isset($_SESSION['dateto']))
+                                          {
+                                                $dateto = $_SESSION['dateto'];
+                                                $date = new DateTime($dateto);
+                                                echo $date->format('d/m/Y');
+                                           }
+                                         ?>" name="datefrom">
                                 </div>
                                 <!-- /.input group -->
                               </div>
@@ -54,7 +69,13 @@
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </div>
-                                  <input type="text" class="form-control pull-right" id="datepicker1" readonly="" name="dateto">
+                                  <input type="text" class="form-control pull-right" id="datepicker1" readonly="" value="<?php if(isset($_SESSION['datefrom']))
+                                          {
+                                                $datefrom = $_SESSION['datefrom'];
+                                                $date = new DateTime($datefrom);
+                                                echo $date->format('d/m/Y');
+                                           }
+                                         ?>" name="dateto" >
                                 </div>
                                 <!-- /.input group -->
                               </div>
@@ -103,3 +124,8 @@
 
 </div>
 <!-- ./wrapper -->
+<?php unset($_SESSION['chuy']); 
+unset($_SESSION['khuyenmai']); 
+unset($_SESSION['dateto']); 
+unset($_SESSION['datefrom']); 
+?>

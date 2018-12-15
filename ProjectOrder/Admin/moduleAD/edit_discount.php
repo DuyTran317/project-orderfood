@@ -1,4 +1,12 @@
-<div class="wrapper">
+
+<?php if(isset($_SESSION['chuy'] )== 'chuy') {
+            echo "<script type='text/javascript'>";
+            echo "setTimeout(function () { swal('Chú ý',
+                          'Ngày đến phải lớn hơn ngày từ!',
+                          'warning');";
+            echo "},1);</script>";
+        }?>
+        <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -138,3 +146,8 @@
 
 </div>
 <!-- ./wrapper -->
+<?php unset($_SESSION['chuy']); 
+unset($_SESSION['suakhuyenmai']); 
+unset($_SESSION['suadateto']); 
+unset($_SESSION['suadatefrom']); 
+?>
