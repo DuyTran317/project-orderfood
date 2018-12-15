@@ -44,7 +44,7 @@
                     <div class="gutter-sizer"></div>
                     
                      <?php 
-					 $temp = 0;$idbandau=0;$sql_montrung="";
+					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					$sql = "select * from `of_order` where `active`=2";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
@@ -52,12 +52,21 @@
 						$id = $r1['id'];
 						if($temp == 0)
 						{ 
-							$idbandau = $r1['id'];
+							$idbandau = $r1['id'];$bandau=$r1['num_table'];
+							
+							$sql_idbancuoi="select Max(id) as idmax from `of_order` where `active`=2";
+							$r_idbancuoi=mysqli_query($link,$sql_idbancuoi);
+							$rs_idbancuoi=mysqli_fetch_assoc($r_idbancuoi);
+							
+							if($rs_idbancuoi['idmax']>$idbandau+$sobanmontrung) $idbancuoi=$idbandau+$sobanmontrung;
+							else $idbancuoi=$rs_idbancuoi['idmax'];
+							
 							if(!isset($_COOKIE['idbancuoi']) || $_COOKIE['idbancuoi']<$idbandau)
 							{
-							   setcookie("idbancuoi",$idbandau+$sobanmontrung-1,time()+86400);
+							   setcookie("idbancuoi",$idbancuoi,time()+86400);
 							}
 						}
+						if($r1['id'] == $_COOKIE['idbancuoi']) $bancuoi = $r1['num_table'];
 						
 					$num_table = $r1['num_table'];
 			 		?>
@@ -120,12 +129,16 @@
             <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
                 <div class="grid-item2">
+                
+                <?php if($temp==1){ echo "từ bàn $bandau đến $bancuoi"; ?>
                 <table>
                 	<tr>
                         <th class="col-xs-8">Tên</th>
                         <th>SL</th>
                     </tr> 
                 	<?php 
+					if($sql_montrung!="")
+					{
 						$r_montrung = mysqli_query($link,$sql_montrung);
 						while($rs_montrung=mysqli_fetch_assoc($r_montrung))
 						{
@@ -136,6 +149,8 @@
                     			</tr>
                             <?php
 						}
+					}
+				}
 					?>
                     </table>
                 </div>
