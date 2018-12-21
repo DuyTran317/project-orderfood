@@ -103,7 +103,7 @@
                                         echo "<a href=\"process-de-h{$d_de['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_de-<?= $d_de['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_de['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_de-<?= $d_de['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_de['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                             </tr>
                             <?php } ?>
 
