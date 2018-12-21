@@ -134,7 +134,7 @@
                 <div class="grid-item2">
                 
                 <?php if($temp==1){ echo "Từ bàn $bandau đến $bancuoi"; ?>
-                <table>
+                <table class="table">
                 	<tr>
                         <th class="col-xs-8">Tên</th>
                         <th>SL</th>

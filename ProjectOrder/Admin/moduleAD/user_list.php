@@ -97,7 +97,7 @@
                                             echo "<a href=\"process-user-h{$d_user['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)">Xóa</a></td>
+                                    <td><a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

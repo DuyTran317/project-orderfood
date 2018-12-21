@@ -137,7 +137,7 @@
                                         echo "<span style='color:red;'>Hết hàng</span>";
                                     }
                                     ?></td>
-                                <td><a href="edit_pro-<?php echo $d_pro['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_pro-<?php echo $d_pro['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>
