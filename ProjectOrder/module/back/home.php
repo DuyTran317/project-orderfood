@@ -44,7 +44,8 @@
                     <div class="gutter-sizer"></div>
                     
                      <?php 
-					 $temp = 0;$idbandau=0;@$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
+					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
+					 setcookie("idbancuoi",0,time()+86400);
 					$sql = "select * from `of_order` where `active`=2";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
@@ -64,6 +65,7 @@
 							if(!isset($_COOKIE['idbancuoi']) || $_COOKIE['idbancuoi']<$idbandau)
 							{
 							   setcookie("idbancuoi",$idbancuoi,time()+86400);
+							   header("location:?mod=home");	
 							}
 						}
 						if($r1['id'] == $_COOKIE['idbancuoi']) $bancuoi = $r1['num_table'];
