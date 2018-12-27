@@ -27,11 +27,9 @@
 
 </head>
 <?php
-
 // Set Language variable
 if(isset($_POST['lang']) && !empty($_POST['lang'])){
     $_SESSION['lang'] = $_POST['lang'];
-
     if(isset($_SESSION['lang']) && $_SESSION['lang'] != $_POST['lang']){
         echo "<script type='text/javascript'> location.reload(); </script>";
     }
@@ -43,6 +41,7 @@ if(isset($_SESSION['lang'])){
     include "languages/lang_vi.php";
 }
 ?>
+
 <script>
     function changeLang(){
         document.getElementById('form_lang').submit();

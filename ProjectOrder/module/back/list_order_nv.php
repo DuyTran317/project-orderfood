@@ -42,8 +42,7 @@
   </tr>
   
   <?php
-  $multi = $_SESSION['lang'].'_name';
-  	$sql="select b.{$multi} as ten,a.`price`, a.`qty`, b.`discount` as km, b.`price_discount` as gia_km
+  	$sql="select b.`en_name`, b.`vi_name`, a.`country`,a.`price`, a.`qty`, b.`discount` as km, b.`price_discount` as gia_km
 		  from `of_order_detail` as a, `of_food` as b
 		  where a.`food_id`= b.`id` and a.`order_id`={$id}";
 	$rs=mysqli_query($link,$sql);
@@ -65,7 +64,7 @@
   
   <tr style="text-align:center; height:50px">
     <td><?=++$i?></td>    
-    <td><?=$r['ten']?></td>
+    <td><?=$r[$r['country'].'_name']?></td>
     <td><?=number_format($r['price'])?><u>đ</u></td>
     <?php if($r['km']>0) 
 		{ 
