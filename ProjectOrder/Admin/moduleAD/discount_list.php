@@ -111,7 +111,7 @@
                                         echo "<a href=\"process-dis-h{$d_dis['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_discount-<?= $d_dis['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_dis['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_discount-<?= $d_dis['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_dis['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                             </tr>
                             <?php } ?>
 

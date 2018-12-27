@@ -90,7 +90,7 @@
                                         ?></td>
                                         <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
                                         <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
-                                    <td><a id="test_xoa" onclick="hoi(<?= $d_com['id'] ?>)">Xóa</a></td>
+                                    <td><a id="test_xoa" onclick="hoi(<?= $d_com['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                                 </tr>
                             <?php } ?>
 

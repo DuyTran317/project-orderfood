@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Khuyến mãi:<span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                         required  name="khuyenmai" value="<?php if(isset($_SESSION['khuyenmai'])){echo $_SESSION['khuyenmai'];}  ?>"  placeholder="Nhập tên khuyến mãi" 
+                                         required  name="khuyenmai" value="<?php if(isset($_SESSION['khuyenmai'])){echo $_SESSION['khuyenmai'];}  ?>"  placeholder="Nhập giá trị khuyến mãi" 
                                          >
                                 </div>
                             </div>

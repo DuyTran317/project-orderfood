@@ -115,7 +115,7 @@
                                         echo "<a href=\"process-cat-h{$d_cat['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)">Xóa</a></td>
+                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                             </tr>
                             <?php } ?>
 

@@ -49,25 +49,42 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 10%; background-color: white">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
+
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
+                <?php
+					$sql ="select `img_url`, `img_url2`, `img_url3`, `img_url4` from `of_food` where `id` ={$id}";
+					$show = mysqli_query($link,$sql);
+					$s=mysqli_fetch_assoc($show)
+				?>
                     <div class="item active">
-                        <img src="img/front/pxqrocxwsjcc_3GZEqT8qE8oUsyUkiQc66G_jalapeno-popper-stuffed-hamburger_squareThumbnail_en.png"  style="width:100%;">
+                        <img src="img/sp/<?=$s['img_url']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
-
+                    
+                    <?php
+						if($s['img_url2']){
+					?>
                     <div class="item">
-                        <img src="img/front/sous-vide-hamburger-finishing-steps-image-2.jpg" style="width:100%; ">
+                        <img src="img/sp/<?=$s['img_url2']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
-
+                    <?php } ?>
+                    
+                    <?php
+						if($s['img_url3']){
+					?>
                     <div class="item">
-                        <img src="img/front/tải xuống.jpg" style="width:100%;">
+                        <img src="img/sp/<?=$s['img_url3']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
+                    <?php } ?>
+                    
+                    <?php
+						if($s['img_url4']){
+					?>
+                    <div class="item">
+                        <img src="img/sp/<?=$s['img_url4']?>" alt="wrong"  style="width:100%; max-height:500px">
+                    </div>
+                    <?php } ?>
+
                 </div>
 
                 <!-- Left and right controls -->
@@ -87,16 +104,16 @@
             <h1 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h1>
             <div class="row">
                 <div class="col-sm-6">
-                    <?php if($kq['discount']>0){
-                        $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+                    <?php /*if($kq['discount']>0){
+                        $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
                         ?>
-                        <h2 style="color: red"><?=number_format($new_price) ?> VND (-<?=$kq['discount']?>%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND </span> </h2>
-                    <?php }
-                    else{
+                        <!--<h2 style="color: red">--><?php /*echonumber_format($new_price)*/ ?><!-- VND (---><?php /*$kq['discount']*/?><!--%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;">--><?php /*echonumber_format($kq['price'])*/ ?><!-- VND </span> </h2>-->
+                    <?php /*}
+                    else{*/
                         ?>
                         <h1 style="color: red"><?=number_format($kq['price']) ?> VND</h1>
                         <?php
-                    }
+                 /*   }*/
                     ?>
                 </div>
                 <div class="col-sm-6" align="right">
