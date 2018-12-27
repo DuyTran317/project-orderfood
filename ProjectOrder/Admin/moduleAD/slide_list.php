@@ -35,20 +35,7 @@
 
     }
 </script>
-<?php if(isset($_SESSION['sua'] )== 'suathanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Sửa Thành Công',
-                          'Bạn sửa thành công',
-                          'success');";
-            echo "},1);</script>";
-        }?>
- <?php if(isset($_SESSION['them'] )== 'themthanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Thêm Thành Công',
-                          'Bạn đã thêm thành công',
-                          'success');";
-            echo "},1);</script>";
-        }?>     
+     
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

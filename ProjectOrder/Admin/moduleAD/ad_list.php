@@ -6,15 +6,7 @@
             echo "},1);</script>";
         }?>
 <!-- Content Wrapper. Contains page content -->
- <?php 
- $cate = $_SESSION['catead'];
- if(isset($_SESSION['them'] )== 'themthanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Thêm Thành Công',
-                          'Bạn đã thêm thành công',
-                          'success');";
-            echo "},1);</script>";
-        }?>    
+   
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
