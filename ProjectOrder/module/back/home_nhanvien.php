@@ -39,6 +39,34 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	 Pusher.logToConsole = true;
+    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('newbill', function () {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('05d67b2777b04b8a83db', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu2', function (data) {
+
+        //code xử lý khi có dữ liệu từ pusher
+		
+		window.location.reload();
+		
+        // kết thúc code xử lý thông báo
+    });
 </script>
 
 <html>
@@ -52,7 +80,19 @@
     <hr>
     
     <h1 align="center" style="color:#033">Danh Sách Bàn</h1>
+    <?php 
+	$sql2 = "SELECT * FROM `of_bill` as a, `of_user` as b WHERE a.`num_table` = b.`name` and a.`active`=0 and b.`active`=1";
+	$qr2 = mysqli_query($link,$sql2);
+	$sl_an_quyt=mysqli_num_rows($qr2);
+	?>
+	<h1 align="center" style="color:#033">Đang có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất là:</h1>
     
+    <?php
+	while($ten_an_quyt=mysqli_fetch_assoc($qr2))
+	{
+ 	echo $ten_an_quyt['num_table']."</br>";
+    }
+	?>
     <div class="row">
     <?php 
 	//show bàn ra
