@@ -48,10 +48,16 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Danh mục <span style="color:#F00" >(*)</span></label>
                                 <select class="form-control" name="cate"  style="border-radius: 5px 5px 5px 5px;">
-                                    
-                                    <option value="1">Quản Lý Danh Sách Món Ăn</option>
-                                   <option value="2">Quản Lý Thanh Toán</option>
-                                   <option value="3">Nhân Viên</option>
+                                    <?php 
+                                        $sql = "select * from of_manage";
+                                        $kq = mysqli_query($link,$sql);
+                                        while ($d=mysqli_fetch_assoc($kq)) {?>
+
+                                          <option value="<?php echo $d['id']; ?>"><?php echo $d['name']; ?></option>
+
+                                    <?php   
+                                     }
+                                    ?>
                                    
                                 </select>
                             </div>
