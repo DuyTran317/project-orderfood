@@ -8,8 +8,8 @@
                 <small>Chủng Loại</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-                <li><a href="?mod=cat_list">Chủng loại</a></li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li><a href="danh-sach-chung-loai.html">Chủng loại</a></li>
                 <li class="active">Sửa</li>
             </ol>
         </section>
@@ -70,7 +70,7 @@
                                         while ($d=mysqli_fetch_assoc($kq)) {
                                             ?>
             
-                                          <option value="<?php echo $d['id']; ?>" <?php if( $d['id'] == $d_edit['source_de']) echo "selected"; ?>><?php echo $d['name']; ?></option>
+                                          <option value="<?php echo $d['id']; ?>" <?php if( $d['id'] == $d_edit['solve_department']) echo "selected"; ?>><?php echo $d['name']; ?></option>
 
                                     <?php   
                                      }

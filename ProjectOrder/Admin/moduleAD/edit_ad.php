@@ -1,12 +1,5 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-   <?php if(isset($_SESSION['sua'] )== 'suathanhcong') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Sửa Thành Công',
-                          'Bạn sửa thành công',
-                          'success');";
-            echo "},1);</script>";
-        }?>
     <section class="content-header">
         <h1>
             Sửa
