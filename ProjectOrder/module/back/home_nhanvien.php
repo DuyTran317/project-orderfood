@@ -71,7 +71,7 @@
 
 <html>
 
-<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;">
+<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
 
     <!--Chuyển Bàn -->
@@ -85,25 +85,29 @@
 	$qr2 = mysqli_query($link,$sql2);
 	$sl_an_quyt=mysqli_num_rows($qr2);
 	?>
-	<h1 align="center" style="color:#033">Đang có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất là:</h1>
-    
+	<h1 align="center" style="color:#033">Đang có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất là:
     <?php
 	while($ten_an_quyt=mysqli_fetch_assoc($qr2))
 	{
- 	echo $ten_an_quyt['num_table']."</br>";
+	    ?>
+        <a href="#ban<?=$ten_an_quyt['num_table'] ?>"><?=$ten_an_quyt['num_table'] ?>&nbsp;|</a>
+    <?php
     }
 	?>
+    </h1>
     <div class="row">
     <?php 
 	//show bàn ra
 	$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
 	$c=mysqli_query($link,$sql1);
+	$tableno=0;
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
 	$id_ban = $slban['id'];
+	$tableno++;
 	?>
     
-        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center">
+        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center" id="ban<?=$tableno?>">
         
         <?php
 				//lấy id_order và name bàn
