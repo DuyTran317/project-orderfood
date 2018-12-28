@@ -29,9 +29,9 @@ if(isset($_POST['user']))
 		{
 			header("location:?mod=home_nhanvien");
 		}
-		else
+		elseif ($r['cate']==4)
 		{
-			header("location:?mod=admin");
+			header("location:?mod=home");
 		}
 	}
 	else

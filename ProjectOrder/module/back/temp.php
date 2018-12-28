@@ -1,11 +1,11 @@
 <?php
 	if(isset($_POST['Chuyen_Ban']))
 	{
-		$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_from']} and (a.`active` <> 1 or b.`active` <> 1)";
+		@$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_from']} and (a.`active` <> 1 or b.`active` <> 1)";
 		$r_from= mysqli_query($link,$sql);
 		$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_to']} and (a.`active` <> 1 or b.`active` <> 1)";
 		$r_to= mysqli_query($link,$sql);
-		if(mysqli_num_rows($r_from))
+		if(@mysqli_num_rows($r_from))
 		{
 			$rs_from = mysqli_fetch_assoc($r_from);
 			
@@ -35,9 +35,9 @@
 	else
 	if(isset($_POST['Gop_Ban']))
 	{
-		$sql1 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_from']} and a.active <> 0 and b.`active` = 0";
+		@$sql1 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_from']} and a.active <> 0 and b.`active` = 0";
 		$r1 = mysqli_query($link,$sql1);
-		$rs1 = mysqli_fetch_assoc($r1);
+		$rs1 = @mysqli_fetch_assoc($r1);
 		
 		$sql2 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_to']} and a.active <> 0 and b.`active` = 0";
 		$r2 = mysqli_query($link,$sql2);
