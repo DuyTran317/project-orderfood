@@ -168,6 +168,10 @@
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+            Chon size:<select>
+                <option>A4</option>
+                <option>A5</option>
+            </select>
             <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
