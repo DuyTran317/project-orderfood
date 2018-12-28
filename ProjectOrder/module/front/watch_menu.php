@@ -37,18 +37,20 @@
         <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="?mod=watch_home" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
-            <div style="height: 250px; overflow-y: auto;" id="style-2">
+            <div style="height: 250px; overflow-y: auto;" id="style-2" data-spy="scroll" data-offset="50">
                 <?php
                 // Phần revise
                 //Chủng Loại
                 $counter=0;
                 $sql="select * from `of_department` where `active`=1";
                 $d=mysqli_query($link,$sql);
+                $scroll=0;
                 while($r_dep=mysqli_fetch_assoc($d)):
                     $counter++;
+                    $scroll++;
                     ?>
                     <hr>
-                    <div><a data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div id="menu<?=$scroll?>"><a href="#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
                     <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
 
                         <?php
