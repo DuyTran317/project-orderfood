@@ -38,7 +38,7 @@ define("_CARTZERO", "Your cart is empty");
 define("_DISCOUNT", "Discount");
 define("_RECEIPT", "RECEIPT");
 define("_CODENO", "Receipt #");
-define("_TOTALBYWORDS", "Total (by words)");
+define("_TOTALBYWORDS", "Cash (by words)");
 define("_CUSTOMER", "Customer");
 define("_EMPLOYEE", "Employee");
 define("_CITY", "HCM City");
@@ -49,4 +49,5 @@ define("_NOLOGIN", "Guest login");
 define("_AMOUNT", "Amount");
 define("_RESTAURANTNAME", "5 Supermans Restaurant");
 define("_RESTAURANTADDRESS", "115 Hai Ba Trung, Ben Nghe Ward, D.1, HCM City");
+define("_CASH", "Cash");
 
