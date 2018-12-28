@@ -45,7 +45,7 @@
 		
 		$sql_sol = "select `id` from `of_solve_pay` where `order_id` == {$rs2['order_id']} or `order_id` == {$rs2['order_id']}";
 		$r_sol = mysqli_query($link,$sql_sol);
-		$rs_sol = mysqli_num_rows($r_sol);
+		$rs_sol = @mysqli_num_rows($r_sol);
 		
 		if($rs1 && $rs2 && $rs_sol == 0)
 		{
@@ -79,7 +79,7 @@
 		{
 			?>
 			<script>
-            	alert("đéo gọp được nha óc chó!");
+            	alert("Vui lòng GỘP bàn sau khi các món ăn đã hoàn thành!");
             </script>
 			<?php
 		}
@@ -109,27 +109,42 @@
             </tr>
             <tr>
                 <td align="center">
-                    <select name="table_from" style="width: 50px; height: 50px;" >
-                        <?php
-                        $sql = "select `name` from `of_user`";
+                	<?php
+                        $sql = "select `name` from `of_user` where `active`=2";
                         $r = mysqli_query($link,$sql);
-                        while($rs = mysqli_fetch_assoc($r))
-                        {
-                            ?>
-                            <option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
-                            <?php
-                        }
+						if(mysqli_num_rows($r)==0)
+						{
+						?>
+							<option>N/A</option>
+                        <?php    
+						}
+						else
+						{
+						?>
+                    	<select name="table_from" style="width: 50px; height: 50px;" >
+                        <?php
+                        
+							while($rs = mysqli_fetch_assoc($r))
+							{
+								?>
+								<option value="<?=$rs['name']?>"><?=$rs['name']?></option>
+								<?php
+							}	
+						?>							
+                    	</select>
+                        <?php
+						}
                         ?>
-                    </select>
                 </td>
                 <td align="center" >
                     <select name="table_to" style="width: 50px; height: 50px;">
                         <?php
+						$sql = "select `name` from `of_user`";
                         $r = mysqli_query($link,$sql);
                         while($rs = mysqli_fetch_assoc($r))
                         {
                             ?>
-                            <option value="<?=$rs['name']?>"><?=$rs['name']?></option>";
+                            <option value="<?=$rs['name']?>"><?=$rs['name']?></option>
                             <?php
                         }
                         ?>

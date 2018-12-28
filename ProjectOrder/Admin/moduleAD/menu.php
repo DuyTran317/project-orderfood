@@ -128,7 +128,7 @@
             <li class="header" style="text-align:center">Quản lý món ăn</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
-                    <i class="fa fa-pie-chart"></i>
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                     <span>Chủng loại</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i></span>
@@ -192,7 +192,7 @@
             <li class="header" style="text-align:center">Quản lý bàn</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
-                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                   <i class="fa fa-table" aria-hidden="true"></i>
                     <span>Bàn</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -211,7 +211,7 @@
            <li class="header" style="text-align:center">Quản lý người dùng</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
-                    <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                    <i class="fa fa-users" aria-hidden="true"></i>
                     <span>Người Dùng</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -230,7 +230,7 @@
           <li class="header" style="text-align:center">Quản lý slide</li>
             <li class="treeview">
                 <a href="javascript:void(0)">
-                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                    <i class="fa fa-sliders" aria-hidden="true"></i>
                     <span>Slide</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>

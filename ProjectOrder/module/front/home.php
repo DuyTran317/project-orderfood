@@ -18,8 +18,9 @@ if(isset($_GET['name']))
 
 	<script>
 		alert("<?=_UNFOUND?>");
-		</script>
-        <?php } ?>
+	</script>
+<?php } ?>
+
 <script type="text/javascript">
 
 		$(document).ready(function()
@@ -28,9 +29,15 @@ if(isset($_GET['name']))
 			{
 				source: "search.php",
 			});
+				
+			$(".modal-body p img").removeAttr("style");
+			$(".modal-body p img").css("max-width","80%");
+			$(".modal-body p img").css("margin-left","auto");
+			$(".modal-body p img").css("margin-right","auto");			
+			$(".modal-body p img").css("display","block");
 		});
 		
-	</script>
+</script>
 
 
 
@@ -80,7 +87,7 @@ if(isset($_GET['name']))
                         
                               <!-- Modal footer -->
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><?= _CLOSE ?></button>
                               </div>
                         
                             </div>
