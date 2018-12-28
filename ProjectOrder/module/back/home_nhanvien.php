@@ -104,7 +104,7 @@
                                  <div class="col-md-12">
                                      <!--Nút Thanh toán-->
                                      <?php
-                                     $sql = "select `order_id` from `of_bill` where `order_id` = {$kq['id_or']} and `active`=0";
+                                     $sql = "select `id` from `of_order` where `id` = {$kq['id_or']} and `active`=1";
                                      $show = mysqli_query($link,$sql);
 
                                      if(mysqli_num_rows($show) > 0)
