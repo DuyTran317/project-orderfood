@@ -10,6 +10,7 @@ if(isset($_POST['vi_theloai']))
     $en_theloai = $_POST['en_theloai'];
     $trangthai = $_POST['trangthai'];
     $thutu = $_POST['thutu'];
+    $source = $_POST['manage'];
 
     $file = $_FILES['image'];
     if($file['name'] != '')
@@ -17,7 +18,7 @@ if(isset($_POST['vi_theloai']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/cate/{$img_url}");
     }
-     $sql_add = "insert into `of_department` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$trangthai}') ";
+     $sql_add = "insert into `of_department` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$source}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -34,6 +35,8 @@ if(isset($_POST['vi_suatheloai']))
     $trangthai = $_POST['suatrangthai'];
     $thutu = $_POST['suathutu'];
     $id= $_POST['id'];
+    $source = $_POST['suamanage'];
+
 
     $file = $_FILES['suaimage'];
     if($file['name']!= '')
@@ -41,12 +44,12 @@ if(isset($_POST['vi_suatheloai']))
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/cate/{$img_url}");
 
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}' where `id`={$id}";
+        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}',`source_de`='{source}' where `id`={$id}";
         
         mysqli_query($link,$sql_edit);
     }
     else{
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
+        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`source_de`='{source}' where `id`={$id}";
         mysqli_query($link,$sql_edit);
     }
     $_SESSION['sua'] = 'suathanhcong';
