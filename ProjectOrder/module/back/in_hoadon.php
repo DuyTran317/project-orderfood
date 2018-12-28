@@ -176,7 +176,7 @@
                                     $change = $_POST['change'];
                                 }
                                 else{
-                                    $change=a4;
+                                    $change= 'a4';
                                 }
                                 ?>
                         <option value="a4" <?php if( $change == 'a4') echo "selected"; ?>>A4</option>
@@ -184,7 +184,7 @@
                     </select>
             </form>
             <?php
-                if($_POST['change'] == 'a4')
+                if( $change == 'a4')
                 {
              ?>
             <div id="content">
@@ -311,7 +311,7 @@
             </div>
            <?php } ?>
             <?php
-                if($_POST['change']== 'a5')
+                if( $change == 'a5')
                 {
                     ?>
                    <div id="content">
