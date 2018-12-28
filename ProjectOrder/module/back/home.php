@@ -46,21 +46,22 @@
                      <?php 
 					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					 setcookie("idbancuoi",0,time()+86400);
-					$sql = "select * from `of_order` where `active`=2";
+					 
+					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY a.`id`";
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
 					{
-						$id = $r1['id'];
+						
+						$id = $r1['idorder'];
 						if($temp == 0)
 						{ 
-							$idbandau = $r1['id'];$bandau=$r1['num_table'];
+							$sql_bancuoi = "select Max(a.`id`) as idmax from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and e.`solve_department`={$_SESSION['admin_id']}";
+							$r_bancuoi = mysqli_query($link,$sql_bancuoi);
+							$rs_bancuoi=mysqli_fetch_assoc($r_bancuoi);
+							$idbandau = $r1['idorder'];$bandau=$r1['numtable'];
 							
-							$sql_idbancuoi="select Max(id) as idmax from `of_order` where `active`=2";
-							$r_idbancuoi=mysqli_query($link,$sql_idbancuoi);
-							$rs_idbancuoi=mysqli_fetch_assoc($r_idbancuoi);
-							
-							if($rs_idbancuoi['idmax']>$idbandau+$sobanmontrung) $idbancuoi=$idbandau+$sobanmontrung;
-							else $idbancuoi=$rs_idbancuoi['idmax'];
+							if($rs_bancuoi['idmax']>$idbandau+$sobanmontrung) $idbancuoi=$idbandau+$sobanmontrung;
+							else $idbancuoi=$rs_bancuoi['idmax'];
 							
 							if(!isset($_COOKIE['idbancuoi']) || $_COOKIE['idbancuoi']<$idbandau)
 							{
@@ -68,9 +69,9 @@
 							   header("location:?mod=home");	
 							}
 						}
-						if($r1['id'] == $_COOKIE['idbancuoi']) $bancuoi = $r1['num_table'];
+						if($r1['idorder'] == $_COOKIE['idbancuoi']) $bancuoi = $r1['numtable'];
 						
-					$num_table = $r1['num_table'];
+					$num_table = $r1['numtable'];
 			 		?>
                     <div class="grid-item"  >
                         <h3 style="text-align: center">Bàn: <?=$num_table?> </h3>
@@ -82,7 +83,7 @@
                             </tr>
                             <tr>
                              <?php 
-					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
+					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a, `of_food` as b, `of_category` as c, `of_department` as d where a.`food_id`=b.`id` and b.`category_id`=c.`id` and c.`department_id`=d.`id` and a.`active`=2 and d.`solve_department`={$_SESSION['admin_id']} and a.`order_id`={$id} GROUP BY a.`id`";
                 	$rs1=mysqli_query($link,$sql2);
 					if($temp==0) $sql_montrung = "select b.`vi_name`,SUM(qty) as qty_sum from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and a.`active`=2 and a.`order_id`>={$idbandau} and a.`order_id`<={$_COOKIE['idbancuoi']} and (a.food_id=0";
 					$total=0;
@@ -118,7 +119,7 @@
 					if($temp==0) $sql_montrung.=") GROUP BY a.`food_id` ORDER BY a.`id` ASC";
 					$temp=1;
                     ?>
-                        <a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a>
+                        <?php /*?><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a><?php */?>
                     </div>
                      
                    <?php
@@ -135,7 +136,7 @@
                 if(!empty($r_montrung )){?>
                 <div class="grid-item2">
                 
-                <?php if($temp==1){ echo "Từ bàn $bandau đến $bancuoi"; ?>
+                <?php if($temp==1){ ?>
                 <table class="table">
                 	<tr>
                         <th class="col-xs-8">Tên</th>
