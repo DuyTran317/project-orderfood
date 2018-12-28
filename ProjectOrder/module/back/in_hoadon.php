@@ -196,9 +196,6 @@
                         $kq=mysqli_query($link,$sql);
                         $k=mysqli_fetch_assoc($kq);
                         ?>
-
-
-
                         <table class="TableData table-responsive no-border">
 
                             <?php
