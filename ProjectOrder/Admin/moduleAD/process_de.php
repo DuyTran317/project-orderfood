@@ -18,7 +18,7 @@ if(isset($_POST['vi_theloai']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/cate/{$img_url}");
     }
-     $sql_add = "insert into `of_department` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$source}','{$trangthai}') ";
+     $sql_add = "insert into `of_department` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$trangthai}','{$source}') ";
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -44,12 +44,12 @@ if(isset($_POST['vi_suatheloai']))
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/cate/{$img_url}");
 
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}',`solve_department`='{source}' where `id`={$id}";
+        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}',`solve_department`='{$source}' where `id`={$id}";
         
         mysqli_query($link,$sql_edit);
     }
     else{
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`solve_department`='{source}' where `id`={$id}";
+        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`solve_department`='{$source}' where `id`={$id}";
         mysqli_query($link,$sql_edit);
     }
     $_SESSION['sua'] = 'suathanhcong';
