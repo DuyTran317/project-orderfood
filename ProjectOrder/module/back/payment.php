@@ -272,7 +272,7 @@
                         <td class="cotSo"><span ><?=$giatri_km?>%</span></td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="tong" style="font-weight: bold; font-size: 18px"><?=_TOTALPRICE?></td>
+                        <td colspan="4" class="tong" style="font-weight: bold; font-size: 18px"><?=_CASH?></td>
                         <td class="cotSo" style="font-size: 18px"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                     </tr>
                     </table>

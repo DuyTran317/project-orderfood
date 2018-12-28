@@ -168,6 +168,25 @@
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+            <form nam="form1" method="post" id="form1">
+                  Chon size:
+                    <select name="change" onchange="form1.submit();">
+                        <?php
+                                if(isset($_POST['change'])) {
+                                    $change = $_POST['change'];
+                                }
+                                else{
+                                    $change= 'a4';
+                                }
+                                ?>
+                        <option value="a4" <?php if( $change == 'a4') echo "selected"; ?>>A4</option>
+                        <option value="a5" <?php if($change == 'a5') echo "selected"; ?>>A5</option>
+                    </select>
+            </form>
+            <?php
+                if( $change == 'a4')
+                {
+             ?>
             <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
@@ -177,9 +196,6 @@
                         $kq=mysqli_query($link,$sql);
                         $k=mysqli_fetch_assoc($kq);
                         ?>
-
-
-
                         <table class="TableData table-responsive no-border">
 
                             <?php
@@ -272,7 +288,7 @@
                         <td class="cotSo"><span ><?=$giatri_km?>%</span></td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="tong" style="font-weight: bold; font-size: 18px"><?=_TOTALPRICE?></td>
+                        <td colspan="4" class="tong" style="font-weight: bold; font-size: 18px"><?=_CASH?></td>
                         <td class="cotSo" style="font-size: 18px"><span style="font-weight:bold"><?=number_format($total)?></span></td>
                     </tr>
                     </table>
@@ -290,6 +306,137 @@
 
                 </div>
             </div>
+           <?php } ?>
+            <?php
+                if( $change == 'a5')
+                {
+                    ?>
+                   <div id="content">
+                <div id="page" class="page">
+                    <div class="header" style="margin-top:10px">
+
+                        <?php
+                        $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                        $kq=mysqli_query($link,$sql);
+                        $k=mysqli_fetch_assoc($kq);
+                        ?>
+
+
+
+                        <table class="TableData table-responsive no-border">
+
+                            <?php
+                            $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                            $rs=mysqli_query($link,$sql);
+
+                            //Truy vấn cho việc sử dụng $lang
+                            $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
+                            $lang_use=mysqli_query($link,$sql);
+                            $lang=mysqli_fetch_assoc($lang_use);
+
+                            $stt=1;
+                            $total=0;
+                            $gia_goc=0;
+                            include "languages/lang_".$lang['country'].".php";
+                            ?><div style="float:left; font-size:18px; margin-left:65px"><strong><?=_RESTAURANTNAME?></strong></div>
+                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: <?=$k['code_order']?></strong></div>
+                            <div style="clear:both"></div>
+                            <div style="float:left"><strong><?=_RESTAURANTADDRESS?></strong></div>
+                    </div>
+                    <br/>
+                    <div class="title">
+                        <?=_RECEIPT?>
+                        <br/>
+                        -------oOo fjughykgmghkgh-------
+                    </div>
+                    <br/>
+                    <br/>
+                    <tr style="text-transform: uppercase; border-top: solid lightgrey; border-bottom: solid lightgrey " >
+                        <th><?=_STT?></th>
+                        <th ><?=_DISH?></th>
+                        <th><?=_PRICE?></th>
+                        <th><?=_QTY?></th>
+                        <!--<th><?=_DISCOUNT?></th>-->
+                        <th class="text-right"><?=_AMOUNT?></th>
+                    </tr>
+                    <?php
+                    while($r=mysqli_fetch_assoc($rs)){
+
+                        $gia_temp=$r['price']-(($r['km']*$r['price'])/100);
+
+                        echo "<tr style='border-bottom: dashed thin; '>";
+                        echo "<td class=\"cotSTT\" >".$stt++."</td>";
+                        echo "<td class=\"cotTenSanPham\">".$r[$r['country'].'_name']."</td>";
+                        echo "<td class=\"cotGia\"><div id='giasp'>".number_format($r['price'])."</div></td>";
+                        echo "<td class=\"cotSoLuong\" align='center'>".$r['qty']."</td>";
+                        /*echo "<td class=\"cotSoLuong\" align='center'>".$r['km']."%</td>";*/
+                        echo "<td class=\"cotSo\">".number_format(($r['qty']*$gia_temp))."</td>";
+                        echo "</tr>";
+                        $total += $gia_temp*$r['qty'];
+                        $gia_goc += $gia_temp*$r['qty'];
+                    }
+
+                    //Truy vấn ngày trong hóa đơn
+                    $sql="select `date` from `of_bill` where `order_id`={$id}";
+                    $date_bill=mysqli_query($link,$sql);
+                    $show_date_bill=mysqli_fetch_assoc($date_bill);
+
+                    //Truy vấn lấy ngày và giá trị khuyến mãi
+                    $giatri_km=0;
+
+                    $sql="select * from `of_discount` where `active` =1";
+                    $khuyen_mai = mysqli_query($link,$sql);
+
+                    if(mysqli_num_rows($khuyen_mai)>0)
+                    {
+                        $show_km = mysqli_fetch_assoc($khuyen_mai);
+                        $giatri_km = $show_km['discount'];
+                        $from = $show_km['create_at'];
+                        $to = $show_km['end_at'];
+
+                        if($show_date_bill['date'] <= $to && $show_date_bill['date'] >= $from)
+                        {
+                            $total = $total - (( $total * $giatri_km ) /100);
+                        }
+                    }
+
+                    //Đọc số tiền ra chữ
+                    $thanhtien="";
+                    $clgt=$lang['country']."Text";
+                    $thanhtien=$clgt($total);
+
+                    ?>
+                    <tr>
+                        <td colspan="4" class="tong"><?=_TOTALPRICE?></td>
+                        <td class="cotSo"><span ><?=number_format($gia_goc)?></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="tong"><?=_DISCOUNT?></td>
+                        <td class="cotSo"><span ><?=$giatri_km?>%</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="tong" style="font-weight: bold; font-size: 18px"><?=_CASH?></td>
+                        <td class="cotSo" style="font-size: 18px"><span style="font-weight:bold"><?=number_format($total)?></span></td>
+                    </tr>
+                    </table>
+
+                    <div style="font-size:18px; float:left; margin-top:12px; margin-left:80px"><strong><?=_TOTALBYWORDS?></strong>:&nbsp<?php  echo $thanhtien;?> </div>
+                    <div style="clear:left"></div>
+
+                    <div class="footer-right">
+                        <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($show_date_bill['date']));?> <i>(dd/mm/yyyy)</i></p>
+                        <p><?=_EMPLOYEE?></p>
+                    </div>
+                    <div class="footer-left">
+                        <p style="margin-top:22px"><?=_CUSTOMER?></p>
+                    </div>
+
+                </div>
+            </div>
+
+
+               <?php  }
+             ?>
             <div style="margin-top:10px; text-align:center">
                 <button  class="btn btn-info btn-lg" onClick="Print('content')" id="printbtn"><i class="fas fa-print  fa-1x"></i> In hóa đơn</button>
             </div>

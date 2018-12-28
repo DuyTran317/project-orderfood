@@ -18,8 +18,9 @@ if(isset($_GET['name']))
 
 	<script>
 		alert("<?=_UNFOUND?>");
-		</script>
-        <?php } ?>
+	</script>
+<?php } ?>
+
 <script type="text/javascript">
 
 		$(document).ready(function()
@@ -28,9 +29,15 @@ if(isset($_GET['name']))
 			{
 				source: "search.php",
 			});
+				
+			$(".modal-body p img").removeAttr("style");
+			$(".modal-body p img").css("max-width","80%");
+			$(".modal-body p img").css("margin-left","auto");
+			$(".modal-body p img").css("margin-right","auto");			
+			$(".modal-body p img").css("display","block");
 		});
 		
-	</script>
+</script>
 
 
 
@@ -59,28 +66,28 @@ if(isset($_GET['name']))
 					  ?>
                     
                         <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
-                            <img src="img/slider/<?=$show_slide['img_url']?>" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px;">
+                            <img src="img/slider/<?=$show_slide['img_url']?>" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer">
                         </div>
                   <?php if($show_slide['vi_content']!='')
 						{ ?>
-                        <div class="modal" id="<?=$show_slide['id']?>">
+                        <div class="modal fade" id="<?=$show_slide['id']?>">
                           <div class="modal-dialog">
                             <div class="modal-content">
                         
                               <!-- Modal Header -->
                               <div class="modal-header">
-                                <h4 class="modal-title"><?=$show_slide['vi_name']?></h4>
+                                <h4 class="modal-title"><?=$show_slide[$_SESSION['lang'].'_name']?></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
                         
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <?=$show_slide['vi_content']?>
+                                <?=$show_slide[$_SESSION['lang'].'_content']?>
                               </div>
                         
                               <!-- Modal footer -->
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><?= _CLOSE ?></button>
                               </div>
                         
                             </div>

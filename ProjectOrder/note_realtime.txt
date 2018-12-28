@@ -1,7 +1,7 @@
 ﻿-------------1----------------
 oau94795@awsoo.com
 123456
-// reload bep sang menu va home_thanhtoan
+// reload bep sang menu va home_thanhtoan home_nhanvien
 --------------2--------------
 dhu37482@awsoo.com
 123456
@@ -17,7 +17,7 @@ xop25938@nbzmr.com
 --------------5-----------------
 avg16455@nbzmr.com
 123456
-//truyen tin solve_order_finish sang menu voi home_thanhtoan
+//truyen tin solve_order_finish sang menu voi home_thanhtoan home_nhanvien
 ---------------6----------------
 zdm71571@iencm.com
 123456 

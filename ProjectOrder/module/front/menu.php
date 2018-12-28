@@ -201,18 +201,7 @@ Pusher.logToConsole = true;
 			$rs=mysqli_query($link,$sql);
 
 			$r=mysqli_fetch_assoc($rs);
-            if(isset($_GET['thanhtoan']) && $r_t['active']==1)
-            {
-					@$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
-					@$tt = mysqli_query($link,$sql);
-					if(@mysqli_num_rows($tt) > 0)
-					{
             ?>
-            		<!--Thanh toán-->
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
-                <?php }
-					else {unset($_SESSION['order_wait']);}
-			} ?>
                     <!--Kiểm Tra Hóa Đơn -->
                     <?php						
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
@@ -223,6 +212,20 @@ Pusher.logToConsole = true;
 					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
                     <?php } ?>
             <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <?php
+            if(isset($_GET['thanhtoan']) && $r_t['active']==1)
+            {
+                @$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
+                @$tt = mysqli_query($link,$sql);
+                if(@mysqli_num_rows($tt) > 0)
+                {
+                    ?>
+                    <!--Thanh toán-->
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                <?php }
+                else {unset($_SESSION['order_wait']);}
+            }
+            ?>
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->

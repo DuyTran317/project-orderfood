@@ -8,8 +8,8 @@
                 <small>Chủng Loại</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="?mod=home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-                <li><a href="?mod=cat_list">Chủng loại</a></li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li><a href="danh-sach-chung-loai.html">Chủng loại</a></li>
                 <li class="active">Sửa</li>
             </ol>
         </section>
@@ -60,6 +60,25 @@
                                     <input type="file" id="exampleInputFile" name="suaimage">
                                 </div>
                              </div>
+                              <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Bộ phận giải quyết <span style="color:#F00" >(*)</span></label>
+                                <select class="form-control" name="suamanage"  style="border-radius: 5px 5px 5px 5px;">
+                                    <?php 
+                                        $sql = "select * from of_manage where `id`=1 or `id`=4 ";
+                                        $kq = mysqli_query($link,$sql);
+                                        while ($d=mysqli_fetch_assoc($kq)) {
+                                            ?>
+            
+                                          <option value="<?php echo $d['id']; ?>" <?php if( $d['id'] == $d_edit['solve_department']) echo "selected"; ?>><?php echo $d['name']; ?></option>
+
+                                    <?php   
+                                     }
+                                    ?>
+                                   
+                                </select>
+                            </div>
+                            </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
@@ -74,6 +93,7 @@
                                 </div>
                             </div>
                             <!-- /.box-body -->
+
                             <input type="hidden" value="<?= $d_edit['id']?>" name="id">
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Sửa</button>

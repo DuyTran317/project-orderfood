@@ -39,11 +39,39 @@
 		 window.location.reload();
         // kết thúc code xử lý thông báo
     });
+	 Pusher.logToConsole = true;
+    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('newbill', function () {
+		
+        //code xử lý khi có dữ liệu từ pusher
+		 window.location.reload();
+        // kết thúc code xử lý thông báo
+    });
+	Pusher.logToConsole = true;
+    var pusher = new Pusher('05d67b2777b04b8a83db', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    // chanel trùng voi chanel trong send.php
+    channel.bind('loadmenu2', function (data) {
+
+        //code xử lý khi có dữ liệu từ pusher
+		
+		window.location.reload();
+		
+        // kết thúc code xử lý thông báo
+    });
 </script>
 
 <html>
 
-<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;">
+<body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
 
     <!--Chuyển Bàn -->
@@ -52,18 +80,34 @@
     <hr>
     
     <h1 align="center" style="color:#033">Danh Sách Bàn</h1>
-    
+    <?php 
+	$sql2 = "SELECT * FROM `of_bill` as a, `of_user` as b WHERE a.`num_table` = b.`name` and a.`active`=0 and b.`active`=1";
+	$qr2 = mysqli_query($link,$sql2);
+	$sl_an_quyt=mysqli_num_rows($qr2);
+	?>
+	<h3 align="center" style="color:#033">Có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất:<br>
+    <?php
+	while($ten_an_quyt=mysqli_fetch_assoc($qr2))
+	{
+	    ?>
+        <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-md btn-danger">Bàn <?=$ten_an_quyt['num_table'] ?></a>
+    <?php
+    }
+	?>
+    </h3>
     <div class="row">
     <?php 
 	//show bàn ra
 	$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
 	$c=mysqli_query($link,$sql1);
+	$tableno=0;
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
 	$id_ban = $slban['id'];
+	$tableno++;
 	?>
     
-        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center">
+        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center" id="ban<?=$tableno?>">
         
         <?php
 				//lấy id_order và name bàn
@@ -104,7 +148,7 @@
                                  <div class="col-md-12">
                                      <!--Nút Thanh toán-->
                                      <?php
-                                     $sql = "select `order_id` from `of_bill` where `order_id` = {$kq['id_or']} and `active`=0";
+                                     $sql = "select `id` from `of_order` where `id` = {$kq['id_or']} and `active`=1";
                                      $show = mysqli_query($link,$sql);
 
                                      if(mysqli_num_rows($show) > 0)

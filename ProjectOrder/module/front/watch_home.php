@@ -23,43 +23,68 @@
 <div class="container" style="margin-top:2%;">
     <div class="row">
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
-                    <!-- Indicators -->
-                    <!--<ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>-->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
+                <!-- Indicators -->
+                <!--<ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>-->
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                    
-                      <?php
-						$sql = "select * from `of_slider`";
-						$slide=mysqli_query($link,$sql);
-						$count=0;
-						while($show_slide = mysqli_fetch_assoc($slide)):
-						$count++;
-					  ?>
-                    
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    <?php
+                    $sql = "select * from `of_slider`";
+                    $slide=mysqli_query($link,$sql);
+                    $count=0;
+                    while($show_slide = mysqli_fetch_assoc($slide)):
+                        $count++;
+                        ?>
+
                         <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
-                            <img src="img/slider/<?=$show_slide['img_url']?>"  style="width:100%; height: 350px;">
+                            <img src="img/slider/<?=$show_slide['img_url']?>" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer">
                         </div>
-                        
-                      <?php endwhile ?>    
+                        <?php if($show_slide['vi_content']!='')
+                    { ?>
+                        <div class="modal fade" id="<?=$show_slide['id']?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                    </div>
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><?=$show_slide[$_SESSION['lang'].'_name']?></h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
 
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <?=$show_slide[$_SESSION['lang'].'_content']?>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } endwhile ?>
+
                 </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
             </div>
         <div class="col-sm-6" style="  color: white;">
             <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
