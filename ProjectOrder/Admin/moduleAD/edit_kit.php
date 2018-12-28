@@ -58,17 +58,17 @@
                                 <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
                             <input type="hidden" value="<?= $d_edit['id'] ?>" name="suaid">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
-                                <div class="radio">
-                                    <label class="radio-inline">
-                                        <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input name="suatrangthai" value="0" type="radio" <?php if($d_edit['active'] == 0) {echo "checked";}  else echo ""; ?> >Ẩn
-                                    </label>
-                                </div>
-                            </div>
+                           <!--  <div class="form-group">
+                               <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
+                               <div class="radio">
+                                   <label class="radio-inline">
+                                       <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
+                                   </label>
+                                   <label class="radio-inline">
+                                       <input name="suatrangthai" value="0" type="radio" <?php if($d_edit['active'] == 0) {echo "checked";}  else echo ""; ?> >Ẩn
+                                   </label>
+                               </div>
+                           </div> -->
                         </div>
                         <!-- /.box-body -->
 

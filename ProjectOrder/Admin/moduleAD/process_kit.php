@@ -24,14 +24,13 @@ if(isset($_POST['suaten']))
     $pass = $_POST['suapass'];
     $repass = $_POST['suarepass'];
     $name = $_POST['suaso'];
-    $active = $_POST['suatrangthai'];
 
         if($pass != '')
         {
             if($_POST['changePassword']="on"){
               
                     $pass = hash('sha512',$_POST['suapass']);
-                    $sql_edit="update `of_manage` set `account`='$account',`password`='$pass',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+                    $sql_edit="update `of_manage` set `account`='$account',`password`='$pass',`name`='$name' WHERE id={$_POST['suaid']}";
                     mysqli_query($link,$sql_edit);
                      $_SESSION['sua'] = 'suathanhcong';
                     header("location:danh-sach-bep-thanh-toan.html");
