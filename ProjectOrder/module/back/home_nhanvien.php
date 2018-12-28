@@ -85,12 +85,12 @@
 	$qr2 = mysqli_query($link,$sql2);
 	$sl_an_quyt=mysqli_num_rows($qr2);
 	?>
-	<h3 align="center" style="color:#033">Có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất là:<br>
+	<h3 align="center" style="color:#033">Có <?= $sl_an_quyt ?> bàn chưa thanh toán mà đăng xuất:<br>
     <?php
 	while($ten_an_quyt=mysqli_fetch_assoc($qr2))
 	{
 	    ?>
-        <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-lg btn-danger"><?=$ten_an_quyt['num_table'] ?></a>
+        <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-md btn-danger">Bàn <?=$ten_an_quyt['num_table'] ?></a>
     <?php
     }
 	?>
