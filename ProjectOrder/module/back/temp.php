@@ -1,5 +1,5 @@
 <?php
-	if(isset($_POST['Chuyen_Ban']))
+	if(isset($_POST['Chuyen_Ban']) && $_POST['table_to']!=$_POST['table_from'])
 	{
 		$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_from']} and (a.`active` <> 1 or b.`active` <> 1)";
 		$r_from= mysqli_query($link,$sql);
@@ -33,7 +33,7 @@
 		}
 	}
 	else
-	if(isset($_POST['Gop_Ban']))
+	if(isset($_POST['Gop_Ban']) && $_POST['table_to']!=$_POST['table_from'])
 	{
 		$sql1 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_from']} and a.active <> 0 and b.`active` = 0";
 		$r1 = mysqli_query($link,$sql1);
