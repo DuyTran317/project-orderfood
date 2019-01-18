@@ -282,7 +282,7 @@
 
                     <div class="footer-right">
                         <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($show_date_bill['date']));?> <i>(dd/mm/yyyy)</i></p>
-                        <p><?=_EMPLOYEE?></p>
+                        <p><?=_CASHIER?></p>
                     </div>
                     <div class="footer-left">
                         <p style="margin-top:22px"><?=_CUSTOMER?></p>

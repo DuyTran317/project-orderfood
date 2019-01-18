@@ -30,17 +30,17 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="font-family: 'Anton', sans-serif;">
+<body style="font-family: 'Anton', sans-serif; overflow-y: hidden;">
     <div class="container-fluid" >
-        <div class="row"  style="padding: 20px;">
-        <a href="?mod=ds_food" style="font-size:30px; color:#096; text-decoration:none"> <i class="fas fa-cogs"></i></a>
+        <div class="row" >
+        <a href="?mod=ds_food" style="font-size:30px; color:#096; text-decoration:none; position: absolute; z-index: 99; top:20px; left:20px;"> <i class="fas fa-cogs"></i></a>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
             </div>
-            <div class="col-xs-8" >
+            <div class="col-xs-8">
                 <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
 
-                <div class="grid">
+                <div class="grid"  style="overflow-y: auto; max-height: 90%">
                     <div class="gutter-sizer"></div>
                     
                      <?php 
@@ -129,7 +129,7 @@
               </div> 
             </div>
 
-            <div class="col-xs-4" style="border-left: lightgrey solid thin; " >
+            <div class="col-xs-4" style="border-left: lightgrey solid thin; height: 100%; overflow-y: hidden; background-color: #fcfcfc" >
                 <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
                 <?php
                 @$r_montrung = mysqli_query($link,$sql_montrung);
@@ -158,7 +158,7 @@
 					}
 				}
 					?>
-                    </table>
+                </table>
                 </div>
                 <?php } ?>
             </div>
@@ -220,11 +220,13 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
     }
     .grid-item2 {
         width: 100%;
-        border: solid medium lightgrey;
-        background-color: #f9f9f9;
+        max-height:90%;
+        overflow-y: auto;
+        border: solid thin lightgrey;
+        background-color: white;
         margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 10px;
+        padding: 15px;
+        border-radius: 5px;
         transition: 0.5s;
     }
     .gutter-sizer { width: 1%; }
