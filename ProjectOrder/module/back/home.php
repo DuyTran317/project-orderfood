@@ -47,7 +47,8 @@
 					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					 setcookie("idbancuoi",0,time()+86400);
 					 
-					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY a.`id`";
+					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and b.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY b.`order_id`";
+				
 					$rs=mysqli_query($link,$sql);
 					while($r1=mysqli_fetch_assoc($rs))
 					{
