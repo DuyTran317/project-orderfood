@@ -84,7 +84,7 @@
                             <tr>
                              <?php 
 					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a, `of_food` as b, `of_category` as c, `of_department` as d where a.`food_id`=b.`id` and b.`category_id`=c.`id` and c.`department_id`=d.`id` and a.`active`=2 and d.`solve_department`={$_SESSION['admin_id']} and a.`order_id`={$id} GROUP BY a.`id`";
-                	$rs1=mysqli_query($link,$sql2);
+	             	$rs1=mysqli_query($link,$sql2);
 					if($temp==0) $sql_montrung = "select b.`vi_name`,SUM(qty) as qty_sum from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and a.`active`=2 and a.`order_id`>={$idbandau} and a.`order_id`<={$_COOKIE['idbancuoi']} and (a.food_id=0";
 					$total=0;
 					while($r=mysqli_fetch_assoc($rs1))
@@ -93,7 +93,7 @@
 					?>
                                 <td><?=$r['ten']?></td>
                                 <td><?=$r['qty']?></td>
-                                <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>" class="btn btn-success"><i class="fas fa-check-double"></i></a></td>
+                                <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>&qty=<?=$r['qty']?>" class="btn btn-success"><i class="fas fa-check-double"></i></a></td>
                                 
                             </tr>
                             <?php
