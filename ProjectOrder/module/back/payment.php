@@ -173,7 +173,7 @@
                     <div class="header" style="margin-top:10px">
 
                         <?php
-                        $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                        $sql="select * from `of_bill` where `num_table` = {$num_table} and `active`=0";
                         $kq=mysqli_query($link,$sql);
                         $k=mysqli_fetch_assoc($kq);
                         ?>

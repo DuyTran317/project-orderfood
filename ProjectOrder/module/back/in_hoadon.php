@@ -191,7 +191,7 @@
                     <div class="header" style="margin-top:10px">
 
                         <?php
-                        $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                        $sql="select * from `of_bill` where `num_table` = {$num_table} and `active`=1 order by `id` desc limit 0,1";
                         $kq=mysqli_query($link,$sql);
                         $k=mysqli_fetch_assoc($kq);
                         ?>
@@ -319,7 +319,7 @@
             <div id="content" >
                 <div id="page" class="page" style="width: 58mm; font-family: Courier; text-transform: uppercase; ">
                     <?php
-                    $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                    $sql="select * from `of_bill` where `num_table` = {$num_table} and `active`=1 order by `id` desc limit 0,1";
                     $kq=mysqli_query($link,$sql);
                     $k=mysqli_fetch_assoc($kq);
                     ?>
@@ -335,6 +335,10 @@
                     $sql="select `date` from `of_bill` where `order_id`={$id}";
                     $date_bill=mysqli_query($link,$sql);
                     $show_date_bill=mysqli_fetch_assoc($date_bill);
+                    //Truy vấn tên nv
+                    $sql="select `name` from `of_manage`  where `cate`= 2";
+                    $cashier=mysqli_query($link,$sql);
+                    $show_cashier=mysqli_fetch_assoc($cashier);
                     $stt=1;
                     $total=0;
                     $gia_goc=0;
@@ -343,7 +347,7 @@
 
                     <p style="font-size: .9em;" align="center"><b><?=_RESTAURANTNAME?></b><br><?=_RESTAURANTADDRESS?><br><b><?=_PHONE?>:096.969.696</b><br><b style="font-size: .85em">www.orderfood.cf</b></p>
                     <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
-                    <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br><?=_CODENO?>:#2115225<br><?=_CASHIER?>:Duy gay<br><b><?=_TABLE?>:<?=$num_table?></b></p>
+                    <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br><?=_CODENO?>:#<?=$k['code_order']?><br><?=_CASHIER?>:<?=$show_cashier['name']?><br><b><?=_TABLE?>:<?=$num_table?></b></p>
                     <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
                     <table class=" word-wrap no-border" style="font-size: .9em;">
                         <tr style=" height: 25px; font-size: .9em">
@@ -431,7 +435,7 @@
         <div id="content" >
             <div id="page" class="page" style="width: 80mm; font-family: Courier; text-transform: uppercase;">
                 <?php
-                $sql="select * from `of_bill` order by `id` desc limit 0,1";
+                $sql="select * from `of_bill` where `num_table` = {$num_table} and `active`=1 order by `id` desc limit 0,1";
                 $kq=mysqli_query($link,$sql);
                 $k=mysqli_fetch_assoc($kq);
                 ?>
@@ -447,6 +451,12 @@
                 $sql="select `date` from `of_bill` where `order_id`={$id}";
                 $date_bill=mysqli_query($link,$sql);
                 $show_date_bill=mysqli_fetch_assoc($date_bill);
+
+                //Truy vấn tên nv
+                $sql="select `name` from `of_manage`  where `cate`= 2";
+                $cashier=mysqli_query($link,$sql);
+                $show_cashier=mysqli_fetch_assoc($cashier);
+
                 $stt=1;
                 $total=0;
                 $gia_goc=0;
@@ -455,7 +465,7 @@
 
                 <p style="font-size: .9em;" align="center"><b><?=_RESTAURANTNAME?></b><br><?=_RESTAURANTADDRESS?><br><b><?=_PHONE?>:096.969.696</b><br><b style="font-size: .85em">www.orderfood.cf</b></p>
                 <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
-                <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br><?=_CODENO?>:#2115225<br><?=_CASHIER?>:Duy gay<span style="float: right"><b><?=_TABLE?>:<?=$num_table?></b></span></p>
+                <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br><?=_CODENO?>:#<?=$k['code_order']?><br><?=_CASHIER?>:<?=$show_cashier['name']?><span style="float: right"><b><?=_TABLE?>:<?=$num_table?></b></span></p>
                 <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
                 <table class=" word-wrap no-border" style="font-size: .9em;">
                     <tr style=" height: 25px; font-size: .9em">
