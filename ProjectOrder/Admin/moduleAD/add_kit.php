@@ -49,11 +49,30 @@
                                 <label for="exampleInputPassword1">Danh mục <span style="color:#F00" >(*)</span></label>
                                 <select class="form-control" name="cate"  style="border-radius: 5px 5px 5px 5px;">
                                     <?php 
-                                        $sql = "select * from of_manage";
+                                        $sql = "select * from `of_manage` group by `cate`";
                                         $kq = mysqli_query($link,$sql);
                                         while ($d=mysqli_fetch_assoc($kq)) {?>
 
-                                          <option value="<?php echo $d['id']; ?>"><?php echo $d['name']; ?></option>
+                                          <option value="<?php echo $d['id']; ?>">
+										  	<?php
+											if($d['cate']==1)
+											{
+												echo "Khu Bếp Nấu";
+											}
+											if($d['cate']==2)
+											{
+												echo "Khu Thanh Toán";
+											}
+											if($d['cate']==3)
+											{
+												echo "Bộ Phận Nhân Viên";
+											}
+											if($d['cate']==4)
+											{
+												echo "Khu Bếp Pha Chế";
+											}
+										  	?>
+                                           </option>
 
                                     <?php   
                                      }
