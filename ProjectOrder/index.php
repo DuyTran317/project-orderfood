@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link rel="shortcut icon" href="img/shortcut/Christian-cross-icon.png" />-->
@@ -209,7 +210,19 @@ if(isset($_SESSION['lang'])){
             FOREACH($_COOKIE AS $key => $value) {
                 SETCOOKIE($key,$value,TIME()-10000);
             }*/
-            ?>
-
+			?>
 </script>
+<title>
+<?php
+	if($mod=="home" or $mod=="watch_home")echo"Trang Chủ";
+	if($mod=="menu" or $mod=="watch_menu")echo"Menu";
+	if($mod=="detail" or $mod=="watch_detail")echo"Chi Tiết Món Ăn";	
+	if($mod=="cart")echo"Danh Sách Gọi Món";
+	if($mod=="checkout")echo"Xác Nhận Gọi Món";
+	if($mod=="list_order")echo"Kiểm Tra Món Đã Gọi";
+	if($mod=="xulythanhtoan")echo"Rate Me";
+	if($mod=="dangnhap")echo"Đăng Nhập";
+	
+?>
+</title>
 </html>
