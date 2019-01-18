@@ -2,8 +2,7 @@
 	require_once("lib/connect.php");
 	session_start();
 	ob_start();//cached output cho browser, de su dung ham header
-?>
-<head>
+?><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/front/iconmanage.png" />
@@ -33,6 +32,7 @@
 	  include("module/back/{$mod}.php");
 	 
 ?>    
+
 <title>
 <?php
 	if($mod=="home")echo"Bếp";
@@ -44,7 +44,7 @@
 	if($mod=="add_food_nhanvien")echo"Thêm Món Ăn";
 	if($mod=="payment")echo"Kiểm Tra Hóa Đơn";
 	if($mod=="in_hoadon")echo"In Hóa Đơn";
-	
+	if($mod=="ds_food")echo"Chỉnh Sửa Menu";
 ?>
 </title>
 

@@ -15,30 +15,20 @@
 	{
 		$id=$_GET['id'];
 	}
-	
-	if(isset($_GET['idorder2']))
+	if(isset($_GET['qty']))
 	{
-		$idorder2=$_GET['idorder2'];
-	}
-	if(isset($_GET['num_table2']))
-	{
-		$num_table2=$_GET['num_table2'];
-	}
-	if(isset($_GET['id2']))
-	{
-		$id2=$_GET['id2'];
+		$qty=$_GET['qty'];
 	}
 	$sql = "select * from `of_order_detail` where `order_id` ={$idorder} and `active` = 2";
 	$rs = mysqli_query($link,$sql);
 	$dem = 1;
 	$tong =0;
-	$qty = 0;
 	while($r = mysqli_fetch_assoc($rs))
 	{
-		$qty = $r['qty'];
 		$tong += $dem;	
 	}
 	echo $tong;
+	
 	if($tong == 1)
 	{
 		$sql = "update `of_order` set `active` = 1 where `id` = {$idorder} and `num_table` = {$num_table}";
@@ -76,7 +66,7 @@
 			$sql="update `of_food` set `solve` = `solve` + {$qty} where `id` ={$id}";
 			mysqli_query($link,$sql);
 			
-			$sql_sl = "delete from `of_order_detail` where `order_id`={$idorder} and `active` = 2";
+			$sql_sl = "delete from `of_order_detail` where `order_id`={$idorder} and `active` = 2 and `food_id`={$id}";
 			mysqli_query($link,$sql_sl);
 		}
 		else
