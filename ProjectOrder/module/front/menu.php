@@ -476,7 +476,7 @@ Pusher.logToConsole = true;
                 <?php /*if($kq['discount']>0){
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
 				?>
-                <h5><?php /*echonumber_format($new_price)*/?> <!--VND (---><?php /*echo$kq['discount']*/?><!--%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?php /*echonumber_format($kq['price'])*/ ?> VND</span> </h5>-->
+                <!--<h5>--><?php /*echonumber_format($new_price)*/?> <!--VND (---><?php /*echo$kq['discount']*/?><!--%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?php /*echonumber_format($kq['price'])*/ ?> VND</span> </h5>-->
                 </label>
                 <?php /*}
 					else

@@ -175,20 +175,20 @@
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/sp/<?=$kq['img_url']?>);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
 
                         <?php if($kq['active'] == 1) { ?>
-                        	<?php if($kq['discount']>0){ ?>
-                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;"> <?=$kq['discount']?>%</span>
-                            <?php } ?>                                                        
+                        	<?php /*if($kq['discount']>0){ ?>
+                            <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;"> <?=$kq['discount']?>%</span>*/
+                            /*<?php }*/ ?>                                                        
 
-							<?php if($kq['discount']>0){
-									$new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+							<?php /*if($kq['discount']>0){
+									$new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
 							?>
-                            <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($new_price) ?> VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span></div>
-                            <?php }
-								  else{
+                            <!--<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?phpnumber_format($new_price) ?> VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?phpnumber_format($kq['price']) ?> VND</span></div>-->
+                            <?php /*}
+								  else{*/
 							?>
                             <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
                             <?php
-								  }
+								 /* }*/
 							?>
 
                         <?php } ?>
@@ -267,17 +267,17 @@
                 }
                 ?>
                 <h4 style="color:#900;" class="textover2"> <?=$info?><?= $kq[$_SESSION['lang'].'_name'] ?> </h4>
-                <?php if($kq['discount']>0){
-					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+                <?php /*if($kq['discount']>0){
+					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
 				?>
-                <h5><?=number_format($new_price)?> VND (-<?=$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?=number_format($kq['price']) ?> VND</span> </h5>
-                <?php }
+                <!--<h5><?number_format($new_price)?> VND (-<?$kq['discount']?>%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?number_format($kq['price']) ?> VND</span> </h5>-->
+                <?php /*}
 					else
-					{
+					{*/
 			    ?>
                 	<h5><?=number_format($kq['price']) ?> VND</h5>
 				<?php
-					}
+					/*}*/
 				?>
                 <a href="?mod=watch_detail&id=<?=$kq['id']?>&cate=<?=$cate?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>

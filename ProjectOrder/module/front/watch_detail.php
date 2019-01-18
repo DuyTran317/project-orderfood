@@ -82,16 +82,16 @@
             <h1 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h1>
             <div class="row">
                 <div class="col-sm-6">
-                    <?php if($kq['discount']>0){
-                        $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);
+                    <?php /*if($kq['discount']>0){
+                        $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
                         ?>
-                        <h2 style="color: red"><?=number_format($new_price) ?> VND (-<?=$kq['discount']?>%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?=number_format($kq['price']) ?> VND </span> </h2>
-                    <?php }
-                    else{
+                        <!--<h2 style="color: red"><?number_format($new_price) ?> VND (-<?$kq['discount']?>%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;"><?number_format($kq['price']) ?> VND </span> </h2>-->
+                    <?php /*}
+                    else{*/
                         ?>
                         <h1 style="color: red"><?=number_format($kq['price']) ?> VND</h1>
                         <?php
-                    }
+                    /*}*/
                     ?>
                 </div>
                 
