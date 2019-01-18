@@ -83,20 +83,33 @@
     <?php 
 	$sql2 = "SELECT * FROM `of_bill` as a, `of_user` as b WHERE a.`num_table` = b.`name` and a.`active`=0 and b.`active`=1";
 	$qr2 = mysqli_query($link,$sql2);
+	$flag=0;
 	while($ten_an_quyt=mysqli_fetch_assoc($qr2))
 	{
 		$sql = "select * from `of_solve_pay` where `num_table` = {$ten_an_quyt['num_table']} and `active` =0";
 		$tt = mysqli_query($link,$sql);
 		$sl_an_quyt = mysqli_num_rows($tt);
+		
 		if($sl_an_quyt>0)
 		{
 		}
 		else
 		{
-	    ?>
-        <h3 align="center" style="color:#F00; background-color:#FCF; padding:25px 0 25px 0; font-family:Tahoma, Geneva, sans-serif">*** Bàn Chưa Thanh Toán Mà Đã Đăng Xuất ***<br>
-        <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-md btn-danger" style="margin-top:20px">Bàn <?=$ten_an_quyt['num_table'] ?></a>        
-    <?php
+			if($flag==0)
+				{
+	   			 ?>
+				 <h3 align="center" style="color:#F00; background-color:#FCF; padding:25px 0 25px 0; font-family:Tahoma, Geneva, sans-serif">*** Bàn Chưa Thanh Toán Mà Đã Đăng Xuất ***<br>
+       			 <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-md btn-danger" style="margin-top:20px">Bàn <?=$ten_an_quyt['num_table'] ?></a>   
+        		 <?php 
+				 $flag=1;
+				}
+			else   
+				{
+				?>
+				        <a href="#ban<?=$ten_an_quyt['num_table'] ?>" class="btn btn-md btn-danger" style="margin-top:20px">Bàn <?=$ten_an_quyt['num_table'] ?></a>   
+
+				<?php	
+				}
 		}
     }
 	?>
