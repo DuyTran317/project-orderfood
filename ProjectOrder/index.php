@@ -220,7 +220,7 @@ if(isset($_SESSION['lang'])){
 	if($mod=="cart")echo"Danh Sách Gọi Món";
 	if($mod=="checkout")echo"Xác Nhận Gọi Món";
 	if($mod=="list_order")echo"Kiểm Tra Món Đã Gọi";
-	if($mod=="xulythanhtoan")echo"Rate Me";
+	if($mod=="xulythanhtoan")echo"Đánh Giá";
 	if($mod=="dangnhap")echo"Đăng Nhập";
 	
 ?>
