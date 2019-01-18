@@ -136,7 +136,7 @@ Pusher.logToConsole = true;
 </p>
 <div class="container-fluid" style="margin-top: 3%">
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
-        <div class="col-lg-3 hidden-xs col-md-4" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
+        <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p><br>
@@ -231,7 +231,7 @@ Pusher.logToConsole = true;
             ?>
         </div>
 
-        <div class="col-xs-12 hidden-md hidden-lg hidden-sm " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
+        <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
             <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
                 <h3 > <?=_TABLE?> <?=$name?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
             </a>
@@ -316,12 +316,12 @@ Pusher.logToConsole = true;
                 ?>
                 <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
             <?php } ?>
-            <a class="hidden-sm hidden-lg hidden-md" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg col-xs-12" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <a class="hidden-lg hidden-md" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg col-xs-12" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
 
         </div>
 
 
-        <div class="col-lg-9 col-md-8 hidden-xs" > <!--desktop-->
+        <div class="col-lg-9 col-md-8 hidden-xs hidden-sm" > <!--desktop-->
             <div class="scrolling-wrapper" id="style-2">
                 
             <?php
@@ -429,7 +429,7 @@ Pusher.logToConsole = true;
                 $(".scrolling-wrapper").scrollLeft(actualScroll+250)
             })
         </script>
-    <div class="col-xs-12 hidden-md hidden-lg hidden-sm card2"  style="height: 500px; overflow-y: scroll" > <!--mobile-->
+    <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 600px; overflow-y: scroll" > <!--mobile-->
         <?php
         $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
         $res= mysqli_query($link,$commsql);

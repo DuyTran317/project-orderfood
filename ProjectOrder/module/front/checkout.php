@@ -219,6 +219,16 @@
 	
 	
 ?>
+        <style>
+            th{
+                text-align:center;
+            }
+            html,
+            body{
+                height: 100%;
+            }
+
+        </style>
         <html style="">
         <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif;">
         <div class="container" style=" margin-top:30px;">
