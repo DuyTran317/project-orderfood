@@ -62,7 +62,8 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Account</th>
-                                <th>Tên</th>
+                                <th>Tên Người Dùng</th>
+                                <th>Thuộc Danh Mục</th>
                                 <th>Trạng Thái</th>
                                 <th><a href="them-bep-thanhtoan.html">Thêm</a></th>
                             </tr>
@@ -80,6 +81,26 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
+                                    <td>
+										<?php
+											if($d_user['cate']==1)
+											{
+												echo "Khu Bếp Nấu";
+											}
+											if($d_user['cate']==2)
+											{
+												echo "Khu Thanh Toán";
+											}
+											if($d_user['cate']==3)
+											{
+												echo "Bộ Phận Nhân Viên";
+											}
+											if($d_user['cate']==4)
+											{
+												echo "Khu Bếp Pha Chế";
+											}
+										?>
+                                    </td>
                                     <td><?php if($d_user['active']==0) {echo "<a href=\"process-kit-s{$d_user['id']}.html\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
                                         else
                                         {
