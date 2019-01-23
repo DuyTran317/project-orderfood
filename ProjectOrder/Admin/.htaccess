@@ -2,7 +2,7 @@ RewriteEngine on
 RewriteRule "index.html" "index.php"
 RewriteRule "^danh-sach-hoa-don.html$" "?mod=bill_list" 
 RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list" 
-RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list" 
+RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list"  
 RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
 RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list" 
 

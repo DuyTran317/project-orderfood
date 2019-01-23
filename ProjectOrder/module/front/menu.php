@@ -146,7 +146,7 @@ Pusher.logToConsole = true;
 				// Phần revise 
 				//Chủng Loại
             $counter=0;
-				$sql="select * from `of_department` where `active`=1";
+				$sql="select * from `of_department` where `active`=1 order by `order` asc";
 				$d=mysqli_query($link,$sql);
 				$scroll=0;
 				while($r_dep=mysqli_fetch_assoc($d)):
@@ -159,7 +159,7 @@ Pusher.logToConsole = true;
 
                 	<?php				
 						//Thể Loại
-						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
+						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']} order by `order` asc";
 						$c=mysqli_query($link,$sql);
 						while($r_cate=mysqli_fetch_assoc($c)):
 					?>

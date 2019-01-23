@@ -97,7 +97,7 @@
                             <input type="hidden" value="<?= $d_edit['id']?>" name="id">
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Sửa</button>
-                                <button type="reset" class="btn btn-defaul">Xóa</button>
+                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                             </div>
                         </form>
                     </div>

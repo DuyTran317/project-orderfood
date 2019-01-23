@@ -107,7 +107,7 @@
    <br>
     <div class="row">
      <?php
-		$sql="select * from `of_department` where `active`=1";
+		$sql="select * from `of_department` where `active`=1 order by `order` asc";
 		$rs=mysqli_query($link,$sql);
 		while($r=mysqli_fetch_assoc($rs)):
 	?>
