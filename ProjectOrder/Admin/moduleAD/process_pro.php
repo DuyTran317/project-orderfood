@@ -143,10 +143,11 @@ if(isset($_POST['suatheloai']))
 
 if(isset($_GET['del']))
 {
-	$sql="select `img_url`,`img_url2`,`img_url3`,`img_url4` from `of_food` where `id`='{$_GET['del']}'";
+	$sql="select `img_url`,`img_url2`,`img_url3`,`img_url4`,`category_id` from `of_food` where `id`='{$_GET['del']}'";
 	$rs=mysqli_query($link,$sql);
 	$r=mysqli_fetch_assoc($rs);
-	
+	$idtheloai = $r['category_id'];
+    $_SESSION['theloai'] = $idtheloai;
 	//Xóa hình 
 	if(is_file("../img/sp/{$r['img_url']}"))
 	{
@@ -164,14 +165,12 @@ if(isset($_GET['del']))
 	{
 		unlink("../img/sp/{$r['img_url4']}");	
 	}
-	$sql = "select * from of_food where `id`='{$_GET['del']}'";
-    $kq = mysqli_query($link,$sql);
-    $d = mysqli_fetch_assoc($kq);
-    $id = $d['category_id'];
+	
+
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
-        $_SESSION['theloai'] == $id;
+        
         header("location:danh-sach-san-pham.html");
     }
     else echo $sql_del;
