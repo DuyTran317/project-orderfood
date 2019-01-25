@@ -21,15 +21,6 @@
                     'success'
                 ).then(function(){
                     window.location.href="process_dis-del-"+id+".html";});
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
             }
         })
 
