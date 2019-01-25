@@ -23,7 +23,7 @@ if(isset($_POST['suaten']))
     $account=$_POST['suaten'];
     $pass = $_POST['suapass'];
     $repass = $_POST['suarepass'];
-    $name = $_POST['suaso'];
+    $name = $_POST['suaname'];
 
         if($pass != '')
         {

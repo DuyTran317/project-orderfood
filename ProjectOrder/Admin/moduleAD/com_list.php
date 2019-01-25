@@ -21,15 +21,6 @@
                     'success'
                 ).then(function(){
                     window.location.href="?mod=process_com&del="+id;});
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
             }
         })
 
@@ -63,7 +54,6 @@
                                 <th>STT</th>
                                 <th>Bình Luận</th>
                                 <th>Đánh Giá</th>
-                                <th>Trạng Thái</th>
                                 <th>Ngày Đánh Giá</th>
                                 <th>Thời Gian Đánh Giá</th>
                                 <th>Xóa</th>
@@ -81,15 +71,8 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_com['desc'] ?></td>
-                                    <td><?php for($j=1;$j<= $d_com['star'];$j++) {?><i class="icon ion-ios-star"></i> <?php } ?></td>
-                                    <td><?php if($d_com['active']==0) {echo "<a href=\"?mod=process_com&actives={$d_com['id']}\" data-toggle=\"tooltip\" title=\"Ẩn\">X</a>";}
-                                        else
-                                        {
-                                            echo "<a href=\"?mod=process_com&activeh={$d_com['id']}\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
-                                        }
-                                        ?></td>
-                                        <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
-                                        <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
+                                    <td><?php for($j=1;$j<= $d_com['star'];$j++) {?><i class="icon ion-ios-star"></i> <?php } ?></td>                                    <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
+                                    <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
                                     <td><a id="test_xoa" onclick="hoi(<?= $d_com['id'] ?>)" style="cursor: pointer">Xóa</a></td>
                                 </tr>
                             <?php } ?>

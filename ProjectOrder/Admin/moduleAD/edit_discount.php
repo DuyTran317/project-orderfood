@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Khuyến mãi:<span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                         required  name="suakhuyenmai" placeholder="Nhập tên khuyến mãi" value="<?php echo $d_edit['discount']; ?>">
+                                         required  name="suakhuyenmai" placeholder="Nhập tên khuyến mãi" value="<?php echo $d_edit['discount']; ?>" min="0" max="100">
                                 </div>
                             </div>
                             <div class="box-body">
@@ -84,7 +84,7 @@
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </div>
-                                  <input type="text" class="form-control pull-right" id="datepicker" readonly="" name="suadatefrom" value="<?php echo $datefrom->format('d/m/Y'); ?>">
+                                  <input type="text" class="form-control pull-right" id="datepicker" readonly="" name="suadatefrom" value="<?php echo $datefrom->format('d/m/Y'); ?>" style="background-color:#FFF" >
                                 </div>
                                 <!-- /.input group -->
                               </div>
@@ -99,7 +99,7 @@
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </div>
-                                  <input type="text" class="form-control pull-right" id="datepicker1" readonly="" name="suadateto" value="<?php echo $dateto->format('d/m/Y'); ?>">
+                                  <input type="text" class="form-control pull-right" id="datepicker1" readonly="" name="suadateto" value="<?php echo $dateto->format('d/m/Y'); ?>" style="background-color:#FFF" >
                                 </div>
                                 <!-- /.input group -->
                               </div>
