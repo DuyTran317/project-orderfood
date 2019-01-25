@@ -26,7 +26,9 @@
 
     }
 </script>
-   
+   <?php
+
+    ?>
 <div class="wrapper">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -61,14 +63,21 @@
                                 if(isset($_POST['change'])) {
                                     $id = $_POST['change'];
                                 }
-                                else{
+                                
+                                elseif(isset($_SESSION['theloai']))
+                                {
+                                    $id = $_SESSION['theloai'];
+                                }
+                                else
+                                {
                                     $id=1;
                                 }
+
                                 $sql_cat = "select * from of_category";
                                 $kq_cat = mysqli_query($link,$sql_cat);
                                 while($d_cat=mysqli_fetch_assoc($kq_cat))
                                 {?>
-                                <option value="<?= $d_cat['id'] ?>" <?php if($d_cat['id']== $id) echo "selected"; ?>><?= $d_cat['vi_name'] ?></option>
+                                <option value="<?= $d_cat['id'] ?>" <?php if($d_cat['id']== $id ) echo "selected"; ?>><?= $d_cat['vi_name'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -134,4 +143,6 @@
 </div>
 </div>
 <!-- /.content-wrapper --><?php unset($_SESSION['sua']);
-unset($_SESSION['them']);  ?>
+unset($_SESSION['theloai']);
+unset($_SESSION['them']); 
+unset($_SESSION['idxoa']); ?>

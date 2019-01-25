@@ -54,6 +54,10 @@ if(isset($_POST['khuyenmai']))
          echo $sql_add;
         }
 }
+
+
+
+
 if(isset($_POST['suakhuyenmai']))
 {
     if(isset($_POST['suadatefrom']))
@@ -83,17 +87,17 @@ if(isset($_POST['suakhuyenmai']))
     $trangthai = $_POST['suatrangthai'];
     $id= $_POST['id'];
 
-    /*if($dateto < $datefrom)
+    if($dateto < $datefrom)
         {
             $_SESSION['suakhuyenmai'] = $_POST['suakhuyenmai'];
-            $_SESSION['suadatefrom'] = $datefrom;
-            $_SESSION['suadateto'] = $dateto;
+            $_SESSION['suadatefrom'] = $_POST['suadatefrom'];
+            $_SESSION['suadateto'] = $_POST['suadateto'];
             $_SESSION['chuy'] = 'chuy';
-            header('Location:sua-khuyen-mai.html');
+            header('Location:edit_discount-'.$id.'.html');
         }
-        else{*/
+        else{
             $sql_edit="update `of_discount` set `create_at`='{$datefrom}' ,`end_at`='{$dateto}',`discount`='{$discount}',`active`='{$trangthai}' where `id`={$id}";
-        /*}*/
+        }
         
        if(mysqli_query($link,$sql_edit)) 
        {

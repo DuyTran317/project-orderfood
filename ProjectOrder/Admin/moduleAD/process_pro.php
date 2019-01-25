@@ -136,6 +136,7 @@ if(isset($_POST['suatheloai']))
 
     $sql_edit .= "where id=$edit";
     mysqli_query($link,$sql_edit);
+    $_SESSION['theloai'] = $theloai;
      $_SESSION['sua'] = 'suathanhcong';
     header("location:danh-sach-san-pham.html");
 }
@@ -163,10 +164,14 @@ if(isset($_GET['del']))
 	{
 		unlink("../img/sp/{$r['img_url4']}");	
 	}
-	
+	$sql = "select * from of_food where `id`='{$_GET['del']}'";
+    $kq = mysqli_query($link,$sql);
+    $d = mysqli_fetch_assoc($kq);
+    $id = $d['category_id'];
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
+        $_SESSION['theloai'] == $id;
         header("location:danh-sach-san-pham.html");
     }
     else echo $sql_del;
