@@ -21,16 +21,7 @@
                     'success'
                 ).then(function(){
                     window.location.href="process_cat-del-"+id+".html";});
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
-            }
+            } 
         })
 
     }

@@ -33,14 +33,14 @@
                         <!-- form start -->
                         <form role="form" method="post" enctype="multipart/form-data" action="process-cat.html">
                             <div class="form-group">
-                                <label>Thể Loại <?php echo $id; ?> <span style="color:#F00" >(*)</span> </label>
+                                <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
                                 <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="suachungloai">
                                     <?php
-                                    $sql_de = "select * from of_department where `id`= $id";
+                                    $sql_de = "select * from of_department";
                                     $kq_de = mysqli_query($link,$sql_de);
                                     while($d_de=mysqli_fetch_assoc($kq_de))
                                     {?>
-                                        <option value="<?= $d_de['id'] ?>" ><?= $d_de['vi_name'] ?></option>
+                                        <option value="<?= $d_de['id'] ?>" <?php if($d_de['id']==$id) echo'selected';?>><?= $d_de['vi_name'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -82,7 +82,7 @@
                             <input type="hidden" value="<?= $d_edit['id']?>" name="id">
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Sửa</button>
-                                <button type="reset" class="btn btn-defaul">Xóa</button>
+                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                             </div>
                         </form>
                     </div>

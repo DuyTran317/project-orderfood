@@ -121,7 +121,7 @@ if(isset($_GET['edit']))
                         <div class="box-footer">
                             <input type="hidden" name="id" value="<?php echo $d_pro['id']; ?>">
                             <button type="submit" class="btn btn-primary">Sửa</button>
-                            <button type="reset" class="btn btn-defaul">Xóa</button>
+                            <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                         </div>
                     </form>
                 </div>
