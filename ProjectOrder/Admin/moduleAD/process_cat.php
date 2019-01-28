@@ -15,6 +15,7 @@ if(isset($_POST['vi_theloai']))
      $sql_add = "insert into `of_category` VALUES(NULL,'{$department_id}','{$vi_theloai}','{$en_theloai}','{$thutu}','{$trangthai}') ";
      if(mysqli_query($link,$sql_add))
      {
+        $_SESSION['chungloai'] = $department_id;
         $_SESSION['them'] = 'themthanhcong';
          header('Location:danh-sach-the-loai.html');
      }
@@ -34,6 +35,7 @@ if(isset($_POST['vi_suatheloai']))
         $sql_edit="update `of_category` set `department_id`={$department_id} ,`vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
        if(mysqli_query($link,$sql_edit)) 
        {
+         $_SESSION['chungloai'] = $department_id;
          $_SESSION['sua'] = 'suathanhcong';
          header('Location:danh-sach-the-loai.html');
        }
@@ -45,10 +47,11 @@ if(isset($_POST['vi_suatheloai']))
 
 if(isset($_GET['del']))
 {
-	$sql="select `img_url` from `of_category` where `id`='{$_GET['del']}'";
+	$sql="select `department_id` from `of_category` where `id`='{$_GET['del']}'";
 	$rs=mysqli_query($link,$sql);
 	$r=mysqli_fetch_assoc($rs);
-	
+	$idchungloai = $r['department_id'];
+    $_SESSION['chungloai'] = $idchungloai;
 	//Xóa hình 
 	if(is_file("../img/cate/{$r['img_url']}"))
 	{
@@ -58,6 +61,7 @@ if(isset($_GET['del']))
     $sql_del="delete from `of_category` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
+        
         header('Location:danh-sach-the-loai.html');
     }
     else {

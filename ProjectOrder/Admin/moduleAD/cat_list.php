@@ -60,9 +60,15 @@
                                 if(isset($_POST['change'])) {
                                     $id = $_POST['change'];
                                 }
-                                else{
+                                elseif(isset($_SESSION['chungloai']))
+                                {
+                                    $id = $_SESSION['chungloai'];
+                                }
+                                else
+                                {
                                     $id=1;
                                 }
+
                                 $sql_de = "select * from of_department";
                                 $kq_de = mysqli_query($link,$sql_de);
                                 while($d_de=mysqli_fetch_assoc($kq_de))
@@ -127,4 +133,5 @@
 <!-- /.content-wrapper -->
 <?php unset($_SESSION['sua']); 
 unset($_SESSION['them']); 
+unset($_SESSION['chungloai']); 
 ?>
