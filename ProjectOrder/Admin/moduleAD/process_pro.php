@@ -48,6 +48,7 @@ if(isset($_POST['vi_tensp']))
     '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
+        $_SESSION['theloai'] = $theloai;
         $_SESSION['them'] = 'themthanhcong';
         header("Location:danh-sach-san-pham.html");
     }
