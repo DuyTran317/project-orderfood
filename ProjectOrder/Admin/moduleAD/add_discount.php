@@ -34,8 +34,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Khuyến mãi:<span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                         required  name="khuyenmai" value="<?php if(isset($_SESSION['khuyenmai'])){echo $_SESSION['khuyenmai'];}  ?>"  placeholder="Nhập giá trị khuyến mãi" 
-                                         >
+                                         required  name="khuyenmai" value="<?php if(isset($_SESSION['khuyenmai'])){echo $_SESSION['khuyenmai'];}  ?>"  placeholder="Nhập giá trị khuyến mãi" max="100" min="0" >
                                 </div>
                             </div>
                             <div class="box-body">
@@ -54,7 +53,7 @@
                                                 $date = new DateTime($dateto);
                                                 echo $date->format('d/m/Y');
                                            }
-                                         ?>" name="datefrom">
+                                         ?>" name="datefrom" style="background-color:#FFF" >
                                 </div>
                                 <!-- /.input group -->
                               </div>
@@ -75,7 +74,7 @@
                                                 $date = new DateTime($datefrom);
                                                 echo $date->format('d/m/Y');
                                            }
-                                         ?>" name="dateto" >
+                                         ?>" name="dateto" style="background-color:#FFF"  >
                                 </div>
                                 <!-- /.input group -->
                               </div>
@@ -101,7 +100,7 @@
 
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Thêm</button>
-                                <button type="reset" class="btn btn-defaul">Xóa</button>
+                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                             </div>
                         </form>
                     </div>

@@ -48,6 +48,7 @@ if(isset($_POST['vi_tensp']))
     '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     if( mysqli_query($link,$sql_img))
     {
+        $_SESSION['theloai'] = $theloai;
         $_SESSION['them'] = 'themthanhcong';
         header("Location:danh-sach-san-pham.html");
     }
@@ -136,16 +137,18 @@ if(isset($_POST['suatheloai']))
 
     $sql_edit .= "where id=$edit";
     mysqli_query($link,$sql_edit);
+    $_SESSION['theloai'] = $theloai;
      $_SESSION['sua'] = 'suathanhcong';
     header("location:danh-sach-san-pham.html");
 }
 
 if(isset($_GET['del']))
 {
-	$sql="select `img_url`,`img_url2`,`img_url3`,`img_url4` from `of_food` where `id`='{$_GET['del']}'";
+	$sql="select `img_url`,`img_url2`,`img_url3`,`img_url4`,`category_id` from `of_food` where `id`='{$_GET['del']}'";
 	$rs=mysqli_query($link,$sql);
 	$r=mysqli_fetch_assoc($rs);
-	
+	$idtheloai = $r['category_id'];
+    $_SESSION['theloai'] = $idtheloai;
 	//Xóa hình 
 	if(is_file("../img/sp/{$r['img_url']}"))
 	{
@@ -164,9 +167,11 @@ if(isset($_GET['del']))
 		unlink("../img/sp/{$r['img_url4']}");	
 	}
 	
+
     $sql_del = "delete from `of_food` where `id`='{$_GET['del']}'";
     if(mysqli_query($link,$sql_del))
     {
+        
         header("location:danh-sach-san-pham.html");
     }
     else echo $sql_del;

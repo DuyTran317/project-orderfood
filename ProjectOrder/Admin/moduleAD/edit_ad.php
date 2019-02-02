@@ -83,7 +83,7 @@
                         <div class="box-footer">
 
                             <button type="submit" id="pass" class="btn btn-primary" name="xacnhan" >Sửa</button>
-                            <button type="reset" class="btn btn-defaul">Xóa</button>
+                            <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                         </div>
                     </form>
                 </div>

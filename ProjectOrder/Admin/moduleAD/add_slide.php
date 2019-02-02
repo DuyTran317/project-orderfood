@@ -55,7 +55,7 @@
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Thêm</button>
-                                <button type="reset" class="btn btn-defaul">Xóa</button>
+                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                             </div>
                         </form>
                     </div>

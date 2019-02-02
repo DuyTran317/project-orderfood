@@ -24,7 +24,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên Account <span style="color:#F00" >(*)</span></label>
-                                <input type="text" class="form-control" id="ten" required  name="ten" placeholder="Nhập tên bàn">
+                                <input type="text" class="form-control" id="ten" required  name="ten" placeholder="Nhập tài khoản">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tên <span style="color:#F00" >(*)</span></label>
@@ -99,7 +99,7 @@
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Thêm</button>
-                            <button type="reset" class="btn btn-defaul">Xóa</button>
+                            <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                         </div>
                     </form>
                 </div>

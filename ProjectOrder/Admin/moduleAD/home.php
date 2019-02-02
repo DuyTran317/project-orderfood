@@ -94,7 +94,12 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>5</h3>
+                    	<?php 
+                        $sqlrate = "select * from of_rate where active = 1";
+                        $kqrate= mysqli_query($link,$sqlrate);
+                        $drate = mysqli_num_rows($kqrate);
+                        ?>
+                        <h3><?php echo $drate; ?></h3>
 
                         <p>Đánh giá</p>
                     </div>
@@ -194,7 +199,7 @@
                                           <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                           </div>
-                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom">
+                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom" style="background-color:#FFF">
                                         </div>
                                         <!-- /.input group -->
                                       </div>
@@ -209,7 +214,7 @@
                                           <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                           </div>
-                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto">
+                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto" style="background-color:#FFF">
                                         </div>
                                         <!-- /.input group -->
                                       </div>
