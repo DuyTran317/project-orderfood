@@ -241,9 +241,10 @@
                         <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
                             <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
                             <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
+                            <div style="max-height: 450px; overflow-y: auto ; overflow-x: hidden" id="style-2">
                             <form action="" method="post">
-                                <div class="table-responsive">
-                                    <table class="col-md-12 table table-striped">
+                                <div class="table-responsive" >
+                                    <table class="col-md-12 table table-striped" >
                                         <tr style="background-color: #f9d093; font-size: 18px;">
                                             <th class="text-left"><?=_DISH?></th>
                                             <th><?=_PRICE?></th>
@@ -299,21 +300,23 @@
                                 </div>
                                 <form action="" method="post">
                                     <div class="row" style="margin-top:30px">
-                                        <div style="width:100%">
+                                        <div class="col-md-8">
                                             <p><?=_NOTE?>:</p>
-                                            <textarea name="note" rows="4" class="form-control" placeholder="<?=_NOTEHERE?>"></textarea>
-                                        </div><br><br>
-                                        <div class="col-xs-4" style="font-weight:bold; font-size:20px;  ">
-                                            <?=_TOTALPRICE?>: <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span>
+                                            <textarea name="note" rows="4" class="form-control" style="resize: none;" placeholder="<?=_NOTEHERE?>"></textarea>
                                         </div>
-                                        <div align="right" class="col-xs-8">
-                                            <div id="form_lienhe">
-                                                    <input  class="btn btn-success btn-lg" type="submit" name="goimon" value="<?=_ORDER?>">
+                                        <div class="col-md-4" align="right">
+                                            <br>
+                                            <span style="font-weight:bold; font-size:20px;  "><?=_TOTALPRICE?>:</span> <span style="color: red; font-size: 26px;text-decoration:underline;"> <?=number_format($s)?>đ</span><br>
+                                            <br>
+                                            <div id="form_lienhe" style="margin-bottom: 0px;">
+                                                <input  class="btn btn-success btn-lg col-xs-12" type="submit" name="goimon" value="<?=_ORDER?>">
                                             </div>
                                         </div>
+
                                     </div>
                                 </form>
                             </form>
+                            </div>
                             </div>
                         </div>
                 </div>

@@ -29,20 +29,76 @@
  table.dataTable{
 	 border-collapse:collapse;
  }
+ .sidenav {
+     height: 100%;
+     width: 0;
+     position: fixed;
+     z-index: -99!important;
+     top: 0;
+     right: 0;
+     background-color: white;
+     overflow-x: hidden;
+     transition: 0.5s;
+     padding-top: 4.8%;
+     border-right:  lightgrey thin solid;
+ }
+.active {
+     width: 280px;
+ }
+.main-active{
+    margin-left: 280px;
+}
+ .sidenav a {
+     padding: 8px 8px 8px 32px;
+     text-decoration: none;
+     font-size: 25px;
+     color: #818181;
+     display: block;
+     transition: 0.3s;
+ }
+
+ .sidenav a:hover {
+     color: #f1f1f1;
+ }
+ .toggle-bars:before{
+     content: "\2630";
+ }
+ .toggle-X:before{
+     content: "\2613";
+ }
+
+ @media screen and (max-height: 450px) {
+     .sidenav {padding-top: 15px;}
+     .sidenav a {font-size: 18px;}
+ }
+ #main {
+     transition: margin-left .5s;
+     z-index: 1;
+ }
+
 </style>
-<body style="font-family: 'Anton', sans-serif; overflow-y: hidden;">
-    <div class="container-fluid" >
-        <div class="row" >
-        <a href="?mod=ds_food" style="font-size:30px; color:#096; text-decoration:none; position: absolute; z-index: 99; top:20px; left:20px;"> <i class="fas fa-cogs"></i></a>
+<body style="font-family: 'Anton', sans-serif; " onload="startTime()">
+    <div class="container-fluid "    >
+        <div class="row" style="background-color: #00adb5; color: white ; padding: 5px;">
+            <div class="col-xs-5">
+                <span style="font-size:25px;cursor:pointer; "  id="menu-toggle"><span class="toggle-bars" id="toggle-bars" style="vertical-align: top; "></span> Món Trùng</span>
+            </div>
+            <div class="col-xs-2" align="center" style="background-color: #e3fdfd; border-radius: 5px">
+                <span style="font-size:25px ; color: black"  id="txt"></span>
+            </div>
+            <div class="col-xs-5">
+
+                <div style="position: absolute; right: 5; top:5"><a href="?mod=ds_food" style="font-size:25px; color:white; text-decoration:none;"> <i class="fas fa-cogs"></i></a></div>
+            </div>
+        </div>
+        <div class="row" id="main">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
             </div>
-            <div class="col-xs-8">
-                <h2 style=" text-align:center">Danh Sách Gọi Món</h2>
-
-                <div class="grid"  style="overflow-y: auto; max-height: 90%">
+            <div class="col-sm-12" style="margin-top: 2%">
+                <div class="grid"  >
                     <div class="gutter-sizer"></div>
-                    
+
                      <?php 
 					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					 setcookie("idbancuoi",0,time()+86400);
@@ -50,9 +106,15 @@
 					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and b.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY b.`order_id`";
 				
 					$rs=mysqli_query($link,$sql);
-					while($r1=mysqli_fetch_assoc($rs))
+                     $colour = array("#f6d55c", "#fe5f55", "#3caea3", "#20639b", "#2e4057" ,"#f29924", "#c2c2b4", "#99641e" ,"#ffde7d", "#aa96da","#f6ffc6");
+                     $i=0;
+                     while($r1=mysqli_fetch_assoc($rs))
 					{
-						
+                     if ($i<count($colour)-1) {
+                         $i++;
+                     }
+                     else $i=0;
+                        $rand_colour = array_rand($colour, 2);
 						$id = $r1['idorder'];
 						if($temp == 0)
 						{ 
@@ -74,14 +136,12 @@
 						
 					$num_table = $r1['numtable'];
 			 		?>
-                    <div class="grid-item"  >
-                        <h3 style="text-align: center">Bàn: <?=$num_table?> </h3>
-                        <table class="table">
-                            <tr>
-                                <th class="col-xs-8">Tên</th>
-                                <th>SL</th>
-                                <th>Xử Lý</th>
-                            </tr>
+                    <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" >
+                        <div class="panel-heading " style="background-color: <?=$colour[$i]?>">
+                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?> </h3>
+                        </div>
+                        <div class="panel-body" style="border: solid lightgrey thin;">
+                        <table class="table no-border">
                             <tr>
                              <?php 
 					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a, `of_food` as b, `of_category` as c, `of_department` as d where a.`food_id`=b.`id` and b.`category_id`=c.`id` and c.`department_id`=d.`id` and a.`active`=2 and d.`solve_department`={$_SESSION['admin_id']} and a.`order_id`={$id} GROUP BY a.`id`";
@@ -92,9 +152,8 @@
 					{
 						if($temp==0) $sql_montrung.=" or a.food_id = {$r['food_id']}";
 					?>
-                                <td><?=$r['ten']?></td>
-                                <td><?=$r['qty']?></td>
-                                <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>&qty=<?=$r['qty']?>" class="btn btn-success"><i class="fas fa-check-double"></i></a></td>
+                                <td><?=$r['qty']?> x <?=$r['ten']?></td>
+                                <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>&qty=<?=$r['qty']?>" class="btn btn-success"><i class="fas fa-check"></i></a></td>
                                 
                             </tr>
                             <?php
@@ -111,56 +170,59 @@
                         <p>Chú Thích:</p> <?php
 					if($xacnhan > 0 )
 					{
-                    while($r2=mysqli_fetch_assoc($rs2))
-                    {
-                        echo $r2['note'];
-                        echo "<br>";
-                    }
+					    echo "<div style='background-color: #f9f9f9; padding: 5px; border-radius: 5px; color: red'>";
+                        while($r2=mysqli_fetch_assoc($rs2))
+                        {
+
+                            echo $r2['note'];
+
+                            echo "<br>";
+                        }
+                        echo "</div>";
 					}
 					if($temp==0) $sql_montrung.=") GROUP BY a.`food_id` ORDER BY a.`id` ASC";
 					$temp=1;
                     ?>
                         <?php /*?><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a><?php */?>
                     </div>
-                     
+                    </div>
                    <?php
 				   } 
 				   
 				   ?>
-              </div> 
-            </div>
 
-            <div class="col-xs-4" style="border-left: lightgrey solid thin; height: 100%; overflow-y: hidden; background-color: #fcfcfc" >
-                <h2 style=" text-align:center">Danh Sách Món Trùng</h2>
+              </div>
+            </div>
+            <div id="mySidenav" class="sidenav">
                 <?php
                 @$r_montrung = mysqli_query($link,$sql_montrung);
                 if(!empty($r_montrung )){?>
-                <div class="grid-item2">
-                
-                <?php if($temp==1){ ?>
-                <table class="table">
-                	<tr>
-                        <th class="col-xs-8">Tên</th>
-                        <th>SL</th>
-                    </tr> 
-                	<?php 
-					if($sql_montrung!="")
-					{
-						$r_montrung = mysqli_query($link,$sql_montrung);
-						while($rs_montrung=mysqli_fetch_assoc($r_montrung))
-						{
-							?>
-                            	<tr>
-                        			<td><?= $rs_montrung['vi_name']?></td>
-                                    <td><?= $rs_montrung['qty_sum']?></td>
-                    			</tr>
-                            <?php
-						}
-					}
-				}
-					?>
-                </table>
-                </div>
+                    <div class="grid-item2 panel">
+                        <div class="panel-heading" style="background-color: #00adb5">
+                            <h3 style=" text-align:center; color: white">Danh Sách Món Trùng</h3>
+                        </div>
+
+                        <?php if($temp==1){ ?>
+                        <div class="panel-body" style="border: solid lightgrey thin;">
+                            <table class="table no-border">
+                                <?php
+                                if($sql_montrung!="")
+                                {
+                                    $r_montrung = mysqli_query($link,$sql_montrung);
+                                    while($rs_montrung=mysqli_fetch_assoc($r_montrung))
+                                    {
+                                        ?>
+                                        <tr>
+                                            <td><?= $rs_montrung['qty_sum']?> x <?= $rs_montrung['vi_name']?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                }
+                                ?>
+                            </table>
+                        </div>
+                    </div>
                 <?php } ?>
             </div>
             <div class="table-responsive"></div>
@@ -206,48 +268,65 @@ $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', '
 $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)];
 ?>
 <style>
+
     .grid {
         max-width: 100%;
     }
 
     .grid-item {
-        width: 49%;
-        border: solid medium lightgrey;
-        background-color: #f9f9f9;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 10px;
+        width: 24%;
+        margin-bottom: 1%;
         transition: 0.5s;
     }
     .grid-item2 {
         width: 100%;
         max-height:90%;
         overflow-y: auto;
-        border: solid thin lightgrey;
         background-color: white;
-        margin-bottom: 10px;
-        padding: 15px;
         border-radius: 5px;
         transition: 0.5s;
+        border-bottom: solid #00adb5 5px;
+
     }
     .gutter-sizer { width: 1%; }
     .grid-item:hover{
-        transform: scale(1.005);
+        transform: scale(1.001);
         -webkit-box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
-        z-index: 99;
+        z-index: 90;
     }
     .grid-item2:hover{
-        transform: scale(1.005);
+        transform: scale(1.001);
         -webkit-box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
-        z-index: 99;
+        z-index: 90;
     }
 
 </style>
 <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#mySidenav").toggleClass("active");
+        $("#main").toggleClass("main-active");
+        $("#toggle-bars").toggleClass("toggle-bars toggle-X");
+    });
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
     $('.grid').masonry({
         // options
         columnWidth: '.grid-item',

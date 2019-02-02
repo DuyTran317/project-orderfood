@@ -14,6 +14,7 @@
     a[aria-expanded='false'] > .expand_caret {
         transform: scale(1.6) rotate(180deg);
     }
+
 </style>
 	<?php
 	if(!isset($_SESSION['user_nameban']))
@@ -232,7 +233,7 @@ Pusher.logToConsole = true;
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
-            <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
+            <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="#">
                 <h3 > <?=_TABLE?> <?=$name?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
             </a>
             <div id="demo" class="collapse">
