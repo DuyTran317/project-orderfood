@@ -88,14 +88,15 @@
         </ul>
         
         <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style=" margin-top:15px; overflow-x: scroll">
-            <!--<thead>-->
+            <thead>
             <tr style="font-size:20px">
                 <td align="center">Số Bàn</td>
                 <td align="center">Giờ Đặt</td>
                 <td align="center">Trạng Thái</td>
                 <td align="center"></td>
             </tr>
-            <!--</thead>-->
+            </thead>
+            <tbody>
             	<?php
 					if(isset($_POST['date_pick']))
 					{
@@ -162,7 +163,7 @@
                         
                     </td>
                 </tr>
-                	
+                </tbody>	
    				<?php } ?>
                 
 		</table>
