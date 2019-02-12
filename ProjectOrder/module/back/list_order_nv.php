@@ -13,15 +13,14 @@
 	{
 		header("location:?mod=dangnhap");
 	}*/
-	if(isset($_GET['id_ban']))
-	{
-		$id_ban=$_GET['id_ban'];
-	}
 	if(isset($_GET['name_ban']))
 	{
 		$name_ban=$_GET['name_ban'];
 	}
-	$id = $_GET['id'];
+	if(isset($_GET['id']))
+	{
+		$id = $_GET['id'];
+	}
 ?>
 <html>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">

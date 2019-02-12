@@ -125,8 +125,7 @@
 	$c=mysqli_query($link,$sql1);
 	
 	while($slban=mysqli_fetch_assoc($c)):
-	$name=$slban['name']; 
-	$id_ban = $slban['id'];
+	$name=$slban['name']; 	
 	
 	?>
     
@@ -164,7 +163,7 @@
                                      @$kt = mysqli_query($link,$sql);
                                      if(@mysqli_num_rows($kt) > 0) {
                                          ?>
-                                         <a style="color: black; text-decoration: none;" href="?mod=list_order_nv&id=<?=$kq['id_or']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name?>"><button class="col-xs-12 btn btn-lg" style=" border-radius: 0px; font-size: 15px; text-align: center; background-color:#f4af41; ">Kiểm Tra</button>
+                                         <a style="color: black; text-decoration: none;" href="?mod=list_order_nv&id=<?=$kq['id_or']?>&name_ban=<?=$name?>"><button class="col-xs-12 btn btn-lg" style=" border-radius: 0px; font-size: 15px; text-align: center; background-color:#f4af41; ">Kiểm Tra</button>
                                          </a>
                                      <?php } ?>
                                  </div>
