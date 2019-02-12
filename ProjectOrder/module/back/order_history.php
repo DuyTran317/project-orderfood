@@ -1,9 +1,6 @@
 <script>
 	$( function() {
 	$( "#datepicker" ).datepicker({
-	  showOn: "button",
-	  buttonImage: "jquery/jquery-ui-1.12.1.custom/images/calendar.gif",
-	  buttonImageOnly: true,
 	  buttonText: "Select date",
 	  
 	  //Tùy chỉnh tháng
@@ -67,31 +64,25 @@
         border-collapse:collapse;
     }
 </style>
-<body style="background-image:url(img/front/pexels-photo-326333.jpeg); background-size: cover; font-family: 'Anton', sans-serif;">
+<body style="background-image:url(img/front/pexels-photo-1323712.jpeg); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container">
-    <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+    <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 15px; padding: 20px;">
         <a href="?mod=home" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <div style="clear:right"></div>
         <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
-            <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
             <h2 style=" text-align:center;">Lịch Sử Đặt Món</h2>
         </div>
-        <div class="table-responsive"></div>
-        
-        <ul>
-            	<h4>Tìm theo ngày</h4>
-                <form action="" method="post">
-                <input type="text" name="date_pick" id="datepicker" readonly
-                value="<?php if(isset($date_pick)) echo $date_pick;?>" >
-                <button type="submit">Chọn</button>
-                </form>	
-        </ul>
+        <div align="center">
+            <form action="" method="post" id='form_date'>
+            <input type="text" name="date_pick" id="datepicker" placeholder="Kiếm theo ngày" readonly value="<?php if(isset($date_pick)) echo $date_pick;?>" onchange='changeDate();'>
+            </form>
+        </div>
         
         <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style=" margin-top:15px; overflow-x: scroll">
             <thead>
             <tr style="font-size:20px">
                 <td align="center">Số Bàn</td>
-                <td align="center">Giờ Đặt</td>
+                <td>Đặt Món Lúc</td>
                 <td align="center">Trạng Thái</td>
                 <td align="center"></td>
             </tr>
@@ -113,17 +104,17 @@
                     <td align="center" style="color:#906">
                        Bàn <?=$r['num_table']?>
                     </td>
-                    <td align="center">&nbsp;&nbsp;
-                        <span style=" font-size: 18px;"><?=date('H:i',strtotime($r['date']))?></span>
+                    <td>&nbsp;
+                        <span style=" font-size: 18px;"><?=date('d/m/y - H:i',strtotime($r['date']))?></span>
                     </td>
                     <td align="center">
                         <?php
-							if($r['active']==2)echo "Đang Chờ";
-							if($r['active']==1)echo "Đã Hoàn Thành";
+							if($r['active']==2)echo "<div style='color: #fcef37'>Đang Chờ</div>";
+							if($r['active']==1)echo "<div style='color: #5ab738'>Đã Hoàn Thành</div>";
 						?>
                     </td>
                     <td align="center">
-                        <a data-toggle="modal" data-target="#<?=$r['id']?>" >Chi Tiết</a>
+                        <a data-toggle="modal" data-target="#<?=$r['id']?>" ><span style="cursor: pointer">Chi Tiết</span> </a>
                         
                         <!-- Modal -->
                         <div class="modal fade" id="<?=$r['id']?>" role="dialog">
@@ -163,20 +154,23 @@
                         
                     </td>
                 </tr>
-                </tbody>	
    				<?php } ?>
-                
-		</table>
+            </tbody>
+        </table>
     </div>
  
 </div>
 </body>
 <script>
-    $(document).ready(function(){
+    function changeDate(){
+        document.getElementById('form_date').submit();
+    }
+    $(document).ready(function() {
         $('#datatable').DataTable( {
-            language: {
+            "language": {
                 url: 'lib/datatable/Vietnamese.json'
-            }
-        });
-    });
+            },
+            "ordering": false
+        } );
+    } );
 </script>

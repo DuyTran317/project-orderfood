@@ -28,9 +28,9 @@
 	 border-collapse:collapse;
  }
 </style>
-<body style="background-image:url(img/front/pexels-photo-326333.jpeg); background-size: cover; font-family: 'Anton', sans-serif;">
+<body style="background-image:url(img/front/pexels-photo-1323712.jpeg); background-size: cover; font-family: 'Anton', sans-serif;">
     <div class="container">
-        <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+        <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 15px; padding: 20px;">
         	<a href="?mod=home" style="font-size:36px; color: black"><i class="fas fa-arrow-left"></i></a>
             
             <div style="clear:right"></div>
@@ -38,8 +38,6 @@
             <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
                 <!--<p style="text-align:center"><a href="?mod=home"><button class="btn btn-success">Làm Mới</button></a></p>-->
                 <h2 style=" text-align:center;">Quản Lý Món Ăn</h2>
-                
-                <hr>
                 <div style="text-align:center; color:#066"><span style="color:#000; font-size:24px; color:#333">Chọn Loại:&nbsp;</span>
                 <select id="category_id" onChange="window.location='?mod=ds_food&cid='+this.value" style="width:200px;; font-size:20px; margin-top:10px">
 							<?php
