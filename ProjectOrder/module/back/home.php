@@ -79,16 +79,15 @@
 </style>
 <body style="font-family: 'Anton', sans-serif; " onload="startTime()">
     <div class="container-fluid "    >
-        <div class="row" style="background-color: #00adb5; color: white ; padding: 5px;">
+        <div class="row" style="background-color: #00adb5; padding: 5px;">
             <div class="col-xs-5">
-                <span style="font-size:25px;cursor:pointer; "  id="menu-toggle"><span class="toggle-bars" id="toggle-bars" style="vertical-align: top; "></span> Món Trùng</span>
+                <span style="font-size:25px;cursor:pointer;  color: white ;"  id="menu-toggle"><span class="toggle-bars" id="toggle-bars" style="vertical-align: top; "></span> Món Trùng</span>
             </div>
             <div class="col-xs-2" align="center" style="background-color: #e3fdfd; border-radius: 5px">
-                <span style="font-size:25px ; color: black"  id="txt"></span>
+                <span style="font-size:25px ;"  id="txt"></span>
             </div>
-            <div class="col-xs-5">
-
-                <div style="position: absolute; right: 5; top:5"><a href="?mod=ds_food" style="font-size:25px; color:white; text-decoration:none;"> <i class="fas fa-cogs"></i></a></div>
+            <div class="col-xs-5" style="text-align: right">
+                <div ><a href="?mod=order_history" class="btn" style="font-size:25px;text-decoration:none; background-color: #e3fdfd; border-radius: 5px; padding: 5px;"> <i class="fas fa-history"></i></a> <a href="?mod=ds_food" class="btn" style="font-size:25px;text-decoration:none; background-color: #e3fdfd; border-radius: 5px; padding: 5px;"> <i class="fas fa-cog"></i></a></div>
             </div>
         </div>
         <div class="row" id="main">
@@ -144,7 +143,7 @@
                         </div>
                         <div class="panel-body" style="border: solid lightgrey thin;">
                         <table class="table no-border">
-                            <tr>
+
                              <?php 
 					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a, `of_food` as b, `of_category` as c, `of_department` as d where a.`food_id`=b.`id` and b.`category_id`=c.`id` and c.`department_id`=d.`id` and a.`active`=2 and d.`solve_department`={$_SESSION['admin_id']} and a.`order_id`={$id} GROUP BY a.`id`";
 	             	$rs1=mysqli_query($link,$sql2);
@@ -152,8 +151,10 @@
 					$total=0;
 					while($r=mysqli_fetch_assoc($rs1))
 					{
+
 						if($temp==0) $sql_montrung.=" or a.food_id = {$r['food_id']}";
 					?>
+                            <tr style="border-bottom: dashed grey thin;">
                                 <td><?=$r['qty']?> x <?=$r['ten']?></td>
                                 <td><a href="?mod=solve_order_finish&id=<?=$r['id_food']?>&idorder=<?=$id?>&num_table=<?=$num_table?>&qty=<?=$r['qty']?>" class="btn btn-success"><i class="fas fa-check"></i></a></td>
                                 
