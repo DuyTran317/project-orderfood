@@ -78,9 +78,11 @@ if(isset($_SESSION['lang'])){
 
 
     <?php
-        $mod=@$_GET['mod'];
+
+          $mod=@$_GET['mod'];
           if($mod=='') $mod='dangnhap';
           include("module/front/{$mod}.php");
+
     ?>
 
 </div>

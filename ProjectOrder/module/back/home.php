@@ -106,15 +106,16 @@
 					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and b.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY b.`order_id`";
 				
 					$rs=mysqli_query($link,$sql);
+
+					/*Dynamic colours*/
                      $colour = array("#f6d55c", "#fe5f55", "#3caea3", "#20639b", "#2e4057" ,"#f29924", "#c2c2b4", "#99641e" ,"#ffde7d", "#aa96da","#f6ffc6");
                      $i=0;
                      while($r1=mysqli_fetch_assoc($rs))
-					{
-                     if ($i<count($colour)-1) {
-                         $i++;
-                     }
-                     else $i=0;
-                        $rand_colour = array_rand($colour, 2);
+					 {
+                         if ($i<count($colour)-1) {
+                             $i++;
+                         }
+                         else $i=0;
 						$id = $r1['idorder'];
 						if($temp == 0)
 						{ 
@@ -136,9 +137,10 @@
 						
 					$num_table = $r1['numtable'];
 			 		?>
+
                     <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" >
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>">
-                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?> </h3>
+                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?></h3>
                         </div>
                         <div class="panel-body" style="border: solid lightgrey thin;">
                         <table class="table no-border">
