@@ -123,50 +123,51 @@
                     </td>
                     <td align="center">
                         <a data-toggle="modal" data-target="#<?=$r['id']?>" >Chi Tiết</a>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="<?=$r['id']?>" role="dialog">
+                            <div class="modal-dialog" style="width: 24%">
+                                
+                                <?php
+                                    $sql="select `num_table` from `of_order` where `id`={$r['id']}";	
+                                    $kq=mysqli_query($link,$sql);	
+                                    $k=mysqli_fetch_assoc($kq);
+                                ?>
+                                
+                                <!-- Modal content-->
+                                <div class="modal-content" style="border-radius: 5px;">
+                                    <div class="modal-header" style="background-color: #5ab738; color: white" >
+                                        <h3 class="modal-title" >Bàn <?=$k['num_table']?></h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table no-border">
+                                            <?php
+                                                $sql="select b.`vi_name` as ten, a.`qty` as sl from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and `order_id`={$r['id']}";
+                                                $lap_kq=mysqli_query($link,$sql);
+                                                while($lap = mysqli_fetch_assoc($lap_kq)): 
+                                            ?>
+                                            <tr style="border-bottom: dashed grey thin;">
+                                                <td><?=$lap['sl']?> x <?=$lap['ten']?></td>
+                                            </tr>  
+                                            <?php endwhile ?>                      
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer" style="border-bottom: solid #5ab738 5px;">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                        
                     </td>
                 </tr>
+                	
+   				<?php } ?>
                 
-        </table>
+		</table>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="<?=$r['id']?>" role="dialog">
-        <div class="modal-dialog" style="width: 24%">
-			
-            <?php
-				$sql="select `num_table` from `of_order` where `id`={$r['id']}";	
-				$kq=mysqli_query($link,$sql);	
-				$k=mysqli_fetch_assoc($kq);
-			?>
-            
-            <!-- Modal content-->
-            <div class="modal-content" style="border-radius: 5px;">
-                <div class="modal-header" style="background-color: #5ab738; color: white" >
-                    <h3 class="modal-title" >Bàn <?=$k['num_table']?></h3>
-                </div>
-                <div class="modal-body">
-                    <table class="table no-border">
-                    	<?php
-							$sql="select b.`vi_name` as ten, a.`qty` as sl from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and `order_id`={$r['id']}";
-							$lap_kq=mysqli_query($link,$sql);
-							while($lap = mysqli_fetch_assoc($lap_kq)): 
-						?>
-                        <tr style="border-bottom: dashed grey thin;">
-                            <td><?=$lap['sl']?> x <?=$lap['ten']?></td>
-                        </tr>  
-                        <?php endwhile ?>                      
-                    </table>
-                </div>
-                <div class="modal-footer" style="border-bottom: solid #5ab738 5px;">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-	
-    <?php } ?>
-    
+ 
 </div>
 </body>
 <script>
@@ -177,7 +178,4 @@
             }
         });
     });
-
-
-
 </script>
