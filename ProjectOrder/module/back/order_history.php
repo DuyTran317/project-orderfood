@@ -32,7 +32,7 @@
 	//Khởi tạo
 	$datefrom = date("Y-m-d 00:00:00");
 	$dateto = date("Y-m-d 23:59:59");	
-	
+
 	if(isset($_POST['date_pick']))
 	{
 		$date_pick=$_POST['date_pick'];
@@ -96,6 +96,7 @@
                 <td align="center"></td>
             </tr>
             </thead>
+            <tbody>
             	<?php
 					if(isset($_POST['date_pick']))
 					{
@@ -162,7 +163,7 @@
                         
                     </td>
                 </tr>
-                	
+                </tbody>	
    				<?php } ?>
                 
 		</table>
