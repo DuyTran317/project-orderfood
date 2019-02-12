@@ -139,7 +139,7 @@
 
                     <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" >
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>">
-                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?></h3>                            
+                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?> <span style="float: right"><?=date('H:i',strtotime($r1['date']))?></span> </h3>
                         </div>
                         <div class="panel-body" style="border: solid lightgrey thin;">
                         <table class="table no-border">
