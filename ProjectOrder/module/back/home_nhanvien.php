@@ -177,7 +177,7 @@
                                      if(mysqli_num_rows($show) > 0)
                                      {
                                          ?>
-                                         <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
+                                         <a href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
                                          <h5 style="color:white; position:absolute; top:-190; left:22; background-color:red; width:50px ;height:50px; padding-top:10px; border-radius:50%; font-size:30px;"><i class="fas fa-check"></i></h5>
                                      <?php 
 									 } 
@@ -191,7 +191,7 @@
 				?>
 							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
                             <?php if($slban['a_user'] == 2) {?>
-                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" class="btn btn-danger">x</a></div>
+                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$name?>" class="btn btn-danger">x</a></div>
                                 <div style="clear:right"></div>
                             <?php }?>
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
