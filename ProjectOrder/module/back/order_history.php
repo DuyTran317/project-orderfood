@@ -32,7 +32,7 @@
 	//Khởi tạo
 	$datefrom = date("Y-m-d 00:00:00");
 	$dateto = date("Y-m-d 23:59:59");	
-	
+
 	if(isset($_POST['date_pick']))
 	{
 		$date_pick=$_POST['date_pick'];
@@ -88,14 +88,14 @@
         </ul>
         
         <table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style=" margin-top:15px; overflow-x: scroll">
-            <thead>
+            <!--<thead>-->
             <tr style="font-size:20px">
                 <td align="center">Số Bàn</td>
                 <td align="center">Giờ Đặt</td>
                 <td align="center">Trạng Thái</td>
                 <td align="center"></td>
             </tr>
-            </thead>
+            <!--</thead>-->
             	<?php
 					if(isset($_POST['date_pick']))
 					{
