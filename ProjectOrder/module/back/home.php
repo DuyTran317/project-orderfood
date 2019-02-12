@@ -77,7 +77,7 @@
  }
 
 </style>
-<body style="font-family: 'Anton', sans-serif; " onload="startTime()">
+<body style="font-family: 'Anton', sans-serif; " onLoad="startTime()">
     <div class="container-fluid "    >
         <div class="row" style="background-color: #00adb5; padding: 5px;">
             <div class="col-xs-5">
@@ -139,7 +139,7 @@
 
                     <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" >
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>">
-                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?></h3>
+                            <h3 style="color: white">&nbsp;BÀN <?=$num_table?></h3>                            
                         </div>
                         <div class="panel-body" style="border: solid lightgrey thin;">
                         <table class="table no-border">
