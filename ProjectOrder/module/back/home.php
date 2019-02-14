@@ -107,7 +107,7 @@
 					$rs=mysqli_query($link,$sql);
 
 					/*Dynamic colours*/
-                     $colour = array("#f6d55c", "#fe5f55", "#3caea3", "#20639b", "#2e4057" ,"#f29924", "#c2c2b4", "#99641e" ,"#ffde7d", "#aa96da","#f6ffc6");
+                     $colour = array("#f6d55c", "#fe5f55", "#3caea3", "#20639b", "#2e4057" ,"#f29924", "#c2c2b4", "#99641e" ,"#ffde7d", "#aa96da","#4d648d");
                      $i=0;
                      while($r1=mysqli_fetch_assoc($rs))
 					 {
