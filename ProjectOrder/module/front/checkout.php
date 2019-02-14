@@ -103,7 +103,8 @@
 							if($temp==0)
 							{
 								//Insert don hang (order)
-								$sql="insert into `of_order` values(NULL,'$num_table','0',now())";
+								$date = date("Y-m-d G:i:s");
+								$sql="insert into `of_order` values(NULL,'$num_table','0','$date')";
 								mysqli_query($link,$sql);
 								
 								//Insert don hang chi tiet (order_detail)
