@@ -335,6 +335,10 @@
                     $sql="select `date` from `of_bill` where `order_id`={$id}";
                     $date_bill=mysqli_query($link,$sql);
                     $show_date_bill=mysqli_fetch_assoc($date_bill);
+                    //Truy vấn ngày trong đơn món
+                    $sql="select `date` from `of_order` where `id`={$id}";
+                    $date_order=mysqli_query($link,$sql);
+                    $show_date_order=mysqli_fetch_assoc($date_order);
                     //Truy vấn tên nv
                     $sql="select `name` from `of_manage`  where `cate`= 2";
                     $cashier=mysqli_query($link,$sql);
@@ -347,7 +351,7 @@
 
                     <p style="font-size: .9em;" align="center"><b><?=_RESTAURANTNAME?></b><br><?=_RESTAURANTADDRESS?><br><b><?=_PHONE?>:096.969.696</b><br><b style="font-size: .85em">www.orderfood.cf</b></p>
                     <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
-                    <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br><?=_CODENO?>:#<?=$k['code_order']?><br><?=_CASHIER?>:<?=$show_cashier['name']?><br><b><?=_TABLE?>:<?=$num_table?></b></p>
+                    <p style="font-size: .9em;"><?=_DATE?>:<?=date('d/m/Y H:i',strtotime($show_date_bill['date']));?><br>Ngay Dat:<?=date('d/m/y - H:i',strtotime($show_date_order['date']))?><br><?=_CODENO?>:#<?=$k['code_order']?><br><?=_CASHIER?>:<?=$show_cashier['name']?><br><b><?=_TABLE?>:<?=$num_table?></b></p>
                     <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
                     <table class=" word-wrap no-border" style="font-size: .9em;">
                         <tr style=" height: 25px; font-size: .9em">

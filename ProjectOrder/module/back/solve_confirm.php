@@ -65,6 +65,10 @@
         $khuyen_mai = mysqli_query($link,$sql);
 		$show_km = mysqli_fetch_assoc($khuyen_mai);
 		$giatri_km = $show_km['discount'];
+		if(mysqli_num_rows($khuyen_mai)==0)
+		{
+			$giatri_km = 0;
+		}
 		
 		$date = date("Y-m-d G:i:s");		
 		$sql_ins_thanhtoan="insert into `of_bill` values(NULL, '{$mh}', '$orderID', '$num_table', '$total', '$date', '$giatri_km','0')";
