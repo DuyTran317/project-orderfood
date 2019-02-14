@@ -94,7 +94,7 @@
 										}
 									}
 										//Insert note vao DB
-										$sql="insert into `of_note_order` values('NULL','$take_id','$note',0)";
+										$sql="insert into `of_note_order` values(NULL,'$take_id','$note',0)";
 										mysqli_query($link,$sql);
 										$temp++;
 										break;
@@ -103,7 +103,7 @@
 							if($temp==0)
 							{
 								//Insert don hang (order)
-								$sql="insert into `of_order` values('NULL','$num_table','0',now())";
+								$sql="insert into `of_order` values(NULL,'$num_table','0',now())";
 								mysqli_query($link,$sql);
 								
 								//Insert don hang chi tiet (order_detail)
@@ -137,7 +137,7 @@
 								}
 								
 								//Insert note vao DB
-								$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+								$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
 								mysqli_query($link,$sql);
 							}
 						
@@ -165,7 +165,7 @@
 							mysqli_query($link,$sql);
 						}
 						//Insert note vao DB
-							$sql="insert into `of_note_order` values('NULL','$orderID','$note',0)";
+							$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
 							mysqli_query($link,$sql);
 					}
 	
