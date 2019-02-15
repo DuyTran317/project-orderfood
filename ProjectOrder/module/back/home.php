@@ -75,10 +75,18 @@
      transition: margin-left .5s;
      z-index: 1;
  }
+ .expand {
+     bottom: 125px;
+     margin-left: -32px;
+     margin-right: 16px;
+     pointer-events: none;
+     position: relative;
+ }
 
 </style>
 <body style="font-family: 'Anton', sans-serif; " onLoad="startTime()">
-    <div class="container-fluid "    >
+    <div  id="background-toggle"></div>
+    <div class="container-fluid " >
         <div class="row" style="background-color: #00adb5; padding: 5px;">
             <div class="col-xs-5">
                 <span style="font-size:25px;cursor:pointer;  color: white ;"  id="menu-toggle"><span class="toggle-bars" id="toggle-bars" style="vertical-align: top; "></span> Món Trùng</span>
@@ -137,8 +145,8 @@
 					$num_table = $r1['numtable'];
 			 		?>
 
-                    <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" >
-                        <div class="panel-heading " style="background-color: <?=$colour[$i]?>">
+                    <div class="grid-item panel"  style=" border-bottom: solid  <?=$colour[$i]?> 5px;" id="sample<?=$i?>">
+                        <div class="panel-heading " style="background-color: <?=$colour[$i]?>" id="order-toggle<?=$i?>">
                             <h3 style="color: white">&nbsp;BÀN <?=$num_table?> <span style="float: right"><?=date('H:i',strtotime($r1['date']))?></span> </h3>
                         </div>
                         <div class="panel-body" style="border: solid lightgrey thin;">
@@ -189,6 +197,29 @@
                         <?php /*?><a href="?mod=solve_order&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-12 btn btn-success btn-lg">Hoàn Tất</button></a><?php */?>
                     </div>
                     </div>
+                         <script>
+
+                             $("#order-toggle<?=$i?>").click(function(e) {
+                                 /*e.preventDefault();
+                                 var x = localStorage.getItem("hello");
+                                 localStorage.setItem("hello", " ");
+                                 if(x==" "){
+                                     localStorage.setItem("hello", "grid-active");
+                                 }*/
+
+                                 <?php
+                                     if($_SESSION["active"] ==" "){
+                                         $_SESSION["active"] == "grid-active";
+                                     }
+                                     else if($_SESSION["active"] == "grid-active"){
+                                         $_SESSION["active"] == " ";
+                                     }
+                                 ?>
+                                 $("#sample<?=$i?>").toggleClass("<?=$_SESSION["active"];?>");
+                                 $("#background-toggle").toggleClass("background-active");
+
+                             });
+                         </script>
                    <?php
 				   } 
 				   
@@ -277,9 +308,11 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
     }
 
     .grid-item {
+        position: absolute;
         width: 24%;
         margin-bottom: 1%;
         transition: 0.5s;
+        cursor: pointer;
     }
     .grid-item2 {
         width: 100%;
@@ -306,7 +339,15 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         box-shadow: 3px 3px 22px -1px rgba(0,0,0,0.75);
         z-index: 90;
     }
-
+    .grid-active{
+        left: 35% !important;
+        top: 5% !important;
+        right: 35% !important;;
+        z-index: 99 !important;
+    }
+    .background-active{
+        background-color: rgba(0,0,0,0.7); position: absolute; width: 100%; height: 100%; z-index: 98;
+    }
 </style>
 <script>
     $("#menu-toggle").click(function(e) {
@@ -315,6 +356,7 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         $("#main").toggleClass("main-active");
         $("#toggle-bars").toggleClass("toggle-bars toggle-X");
     });
+
     function startTime() {
         var today = new Date();
         var h = today.getHours();
