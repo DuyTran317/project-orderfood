@@ -121,7 +121,7 @@
 		$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
 	*/
 
-	$sql1="SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_order` as b ON a.`name` = b.`num_table` order by b.`date` desc, a.`name` asc"; 
+	$sql1="SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_order` as b ON a.`name` = b.`num_table` order by a.`active` desc, b.`active` asc, a.`name` asc"; 
 	$c=mysqli_query($link,$sql1);
 	
 	while($slban=mysqli_fetch_assoc($c)):
