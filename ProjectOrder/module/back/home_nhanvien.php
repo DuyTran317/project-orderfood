@@ -117,16 +117,20 @@
     <div class="row">
     <?php 
 	//show bàn ra
-	$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
+	/*
+		$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
+	*/
+
+	$sql1="SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_order` as b ON a.`name` = b.`num_table` order by b.`date` desc, a.`name` asc"; 
 	$c=mysqli_query($link,$sql1);
-	$tableno=0;
+	
 	while($slban=mysqli_fetch_assoc($c)):
 	$name=$slban['name']; 
 	$id_ban = $slban['id'];
-	$tableno++;
+	
 	?>
     
-        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center" id="ban<?=$tableno?>">
+        <div class="col-md-3 col-sm-4 col-xs-6 " style="padding: 10px; font-size: 25px" align="center" id="ban<?=$name?>">
         
         <?php
 				//lấy id_order và name bàn
@@ -186,7 +190,7 @@
 				{
 				?>
 							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
-                            <?php if($slban['active'] == 2) {?>
+                            <?php if($slban['a_user'] == 2) {?>
                                 <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" class="btn btn-danger">x</a></div>
                                 <div style="clear:right"></div>
                             <?php }?>
@@ -198,6 +202,7 @@
                   
         <?php endwhile ?>
     </div>
+
 </div>
 </body>
 </html>

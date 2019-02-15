@@ -47,9 +47,11 @@ if(isset($_GET['cate']))
   
   <?php
   $multi = $_SESSION['lang'].'_name';
-  	$sql="select b.{$multi} as ten,a.`price`, a.`qty`, b.`discount` as km, b.`price_discount` as gia_km
+  	$sql="select b.{$multi} as ten,a.`price`, SUM(a.`qty`) as qty, b.`discount` as km, b.`price_discount` as gia_km
 		  from `of_order_detail` as a, `of_food` as b
-		  where a.`food_id`= b.`id` and a.`order_id`={$id}";
+		  where a.`food_id`= b.`id` and a.`order_id`={$id}
+		  GROUP BY a.`food_id`";
+		  
 	$rs=mysqli_query($link,$sql);
 	
 	$s=0;
