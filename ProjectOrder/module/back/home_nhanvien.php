@@ -121,12 +121,11 @@
 		$sql1="SELECT * FROM `of_user` ORDER BY (CASE `active` WHEN '2' THEN 1 END) DESC , `name` ASC";
 	*/
 
-	$sql1="SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_order` as b ON a.`name` = b.`num_table` order by b.`date` desc, a.`name` asc"; 
+	$sql1="SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_bill` as c ON (a.`name` = c.`num_table` AND c.`active` = 0) LEFT JOIN `of_order` as b ON (a.`name` = b.`num_table` AND (c.`order_id` = b.`id` OR b.`active` = 0)) order by a.`active` desc, CASE WHEN b.`active` IS NULL then 3 END, b.`active` asc, a.`name` asc"; 
 	$c=mysqli_query($link,$sql1);
 	
 	while($slban=mysqli_fetch_assoc($c)):
-	$name=$slban['name']; 
-	$id_ban = $slban['id'];
+	$name=$slban['name']; 	
 	
 	?>
     
@@ -164,7 +163,7 @@
                                      @$kt = mysqli_query($link,$sql);
                                      if(@mysqli_num_rows($kt) > 0) {
                                          ?>
-                                         <a style="color: black; text-decoration: none;" href="?mod=list_order_nv&id=<?=$kq['id_or']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name?>"><button class="col-xs-12 btn btn-lg" style=" border-radius: 0px; font-size: 15px; text-align: center; background-color:#f4af41; ">Kiểm Tra</button>
+                                         <a style="color: black; text-decoration: none;" href="?mod=list_order_nv&id=<?=$kq['id_or']?>&name_ban=<?=$name?>"><button class="col-xs-12 btn btn-lg" style=" border-radius: 0px; font-size: 15px; text-align: center; background-color:#f4af41; ">Kiểm Tra</button>
                                          </a>
                                      <?php } ?>
                                  </div>
@@ -177,7 +176,7 @@
                                      if(mysqli_num_rows($show) > 0)
                                      {
                                          ?>
-                                         <a href="?mod=solve_payment_nhanvien&id=<?=$id_ban?>&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
+                                         <a href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
                                          <h5 style="color:white; position:absolute; top:-190; left:22; background-color:red; width:50px ;height:50px; padding-top:10px; border-radius:50%; font-size:30px;"><i class="fas fa-check"></i></h5>
                                      <?php 
 									 } 
@@ -191,7 +190,7 @@
 				?>
 							<div class="" style='background-color: #999; height: 250px; padding: 40px 0px;'>
                             <?php if($slban['a_user'] == 2) {?>
-                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$id_ban?>" class="btn btn-danger">x</a></div>
+                                <div style="position:absolute; top:10; right:10; font-size:18px"><a href="?mod=logout_user_nv&id=<?=$name?>" class="btn btn-danger">x</a></div>
                                 <div style="clear:right"></div>
                             <?php }?>
 							<div style="font-size: 40px;" ><?= $slban['name']?></div>
