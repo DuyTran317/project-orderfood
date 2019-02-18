@@ -154,7 +154,7 @@
 			if($dem==0)
 			{
 			?>
-				<h1 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px">Chưa có món ăn cho thể loại này!</h1>
+				<h1 style="text-align:center; color:#F00; background-color:#FF6; padding:10px; margin-top:100px"><?=_NODISHES?></h1>
 			<?php
 			}
 			else

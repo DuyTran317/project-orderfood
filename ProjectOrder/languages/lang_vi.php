@@ -56,3 +56,4 @@ define("_QTY2", "SL");
 define("_DATE", "Ngày");
 define("_PRICE2", "Giá");
 define("_AGAIN", "Cảm ơn và hẹn gặp lại");
+define("_NODISHES", "Chưa có món ăn cho thể loại này!");
