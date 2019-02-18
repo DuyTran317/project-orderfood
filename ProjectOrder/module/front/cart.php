@@ -147,7 +147,7 @@
                         
                       <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><i class="fas fa-sync"></i></button>
                     
-                    <button type="button" class="btn btn-success btn-lg " id="btnorder" onclick="window.location.href=`?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>`"><i class="fas fa-check"></i></button>
+                    <a class="btn btn-success btn-lg " id="btnorder" href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><i class="fas fa-check"></i></a>
 					<?php }
 						  else
 						  {

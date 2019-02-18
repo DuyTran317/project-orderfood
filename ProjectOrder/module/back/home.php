@@ -207,15 +207,7 @@
                                      localStorage.setItem("hello", "grid-active");
                                  }*/
 
-                                 <?php
-                                     if($_SESSION["active"] ==" "){
-                                         $_SESSION["active"] == "grid-active";
-                                     }
-                                     else if($_SESSION["active"] == "grid-active"){
-                                         $_SESSION["active"] == " ";
-                                     }
-                                 ?>
-                                 $("#sample<?=$i?>").toggleClass("<?=$_SESSION["active"];?>");
+                                 $("#sample<?=$i?>").toggleClass("grid-active");
                                  $("#background-toggle").toggleClass("background-active");
 
                              });
