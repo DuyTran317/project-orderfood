@@ -59,7 +59,12 @@ Pusher.logToConsole = true;
 <div class="container">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div style="padding-bottom:25px; padding-top:25px" class="col-md-12 col-sm-12 col-xs-12">
-            <h4 style="position: absolute; top: 0px;">Thu ngân: Trần Đình Duy ML</h4>
+            <?php //Truy vấn tên nv
+                    $sql="select `name` from `of_manage`  where `cate`= 2";
+                    $cashier=mysqli_query($link,$sql);
+                    $show_cashier=mysqli_fetch_assoc($cashier);
+                    ?>
+            <h4 style="position: absolute; top: 0px;">Thu ngân: <?=$show_cashier['name']?></h4>
         <h2 style=" text-align:center">Danh Sách Chờ Thanh Toán</h2>
         </div>
 

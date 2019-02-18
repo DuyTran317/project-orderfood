@@ -73,7 +73,12 @@
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
-    <h4 style="float: left">Nhân viên: Trần Đình Duy ML</h4>
+    <?php
+    $sql="select `name` from `of_manage`  where `cate`= 3";
+                    $waiter=mysqli_query($link,$sql);
+                    $show_waiter=mysqli_fetch_assoc($waiter);
+                    ?>
+    <h4 style="float: left">Nhân viên: <?=$show_waiter['name']?></h4>
     <!--Chuyển Bàn -->
     <a href="?mod=temp" class="btn btn-success" style="font-size:18px; color: #FFF; float:right; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
     <div style="clear:right"></div>
