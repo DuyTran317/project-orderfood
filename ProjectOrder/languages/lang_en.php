@@ -56,4 +56,5 @@ define("_QTY2", "Qty");
 define("_DATE", "DATE");
 define("_PRICE2", "Price");
 define("_AGAIN", "Thank you and See you Again");
+define("_NODISHES", "Currently there're no products for this category!");
 
