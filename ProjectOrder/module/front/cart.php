@@ -172,10 +172,12 @@
     $( ".qtyminus , .qtyplus" ).click(function() {
         $("#btnorder").attr("disabled", true);
         $("#refreshbtn").attr("disabled", false);
+        $("#btnorder").removeAttr("href");
     });
     $( ".quantity").click(function() {
         $("#btnorder").attr("disabled", true);
         $("#refreshbtn").attr("disabled", false);
+        $("#btnorder").removeAttr("href");
     });
     $(document).ready(function() {
         $("#<?=$k?>").keydown(function (e) {
