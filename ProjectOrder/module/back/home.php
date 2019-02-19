@@ -149,7 +149,7 @@
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>" id="order-toggle<?=$i?>">
                             <h3 style="color: white">&nbsp;BÀN <?=$num_table?> <span style="float: right"><?=date('H:i',strtotime($r1['date']))?></span> </h3>
                         </div>
-                        <div class="panel-body" style="border: solid lightgrey thin;">
+                        <div class="panel-body" style="border: solid lightgrey thin; max-height: 600px; overflow-y: auto;">
                         <table class="table no-border">
 
                              <?php 
@@ -200,7 +200,8 @@
                          <script>
 
                              $("#order-toggle<?=$i?>").click(function(e) {
-                                 /*e.preventDefault();
+                                 e.preventDefault();
+                                 /*
                                  var x = localStorage.getItem("hello");
                                  localStorage.setItem("hello", " ");
                                  if(x==" "){
@@ -297,6 +298,7 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
 
     .grid {
         max-width: 100%;
+
     }
 
     .grid-item {
@@ -332,13 +334,14 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         z-index: 90;
     }
     .grid-active{
+        position: fixed !important;
         left: 35% !important;
-        top: 5% !important;
+        top: 8% !important;
         right: 35% !important;;
         z-index: 99 !important;
     }
     .background-active{
-        background-color: rgba(0,0,0,0.7); position: absolute; width: 100%; height: 100%; z-index: 98;
+        background-color: rgba(0,0,0,0.7); position: fixed; width: 100%; height: 100%; z-index: 98;
     }
 </style>
 <script>

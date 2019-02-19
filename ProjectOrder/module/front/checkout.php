@@ -224,11 +224,6 @@
             th{
                 text-align:center;
             }
-            html,
-            body{
-                height: 100%;
-            }
-
         </style>
         <html style="">
         <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif;">
@@ -239,12 +234,12 @@
 
 
                     <div class="container">
-                        <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+                        <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px;">
                             <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
                             <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
-                            <div style="max-height: 450px; overflow-y: auto ; overflow-x: hidden" id="style-2">
+                            <div >
                             <form action="" method="post">
-                                <div class="table-responsive" >
+                                <div class="table-responsive"  style="max-height: 300px; overflow-y: auto ;" id="style-2">
                                     <table class="col-md-12 table table-striped" >
                                         <tr style="background-color: #f9d093; font-size: 18px;">
                                             <th class="text-left"><?=_DISH?></th>
