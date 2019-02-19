@@ -149,7 +149,7 @@
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>" id="order-toggle<?=$i?>">
                             <h3 style="color: white">&nbsp;BÀN <?=$num_table?> <span style="float: right"><?=date('H:i',strtotime($r1['date']))?></span> </h3>
                         </div>
-                        <div class="panel-body" style="border: solid lightgrey thin; max-height: 600px; overflow-y: auto;">
+                        <div class="panel-body" style="border: solid lightgrey thin; max-height: 550px; overflow-y: auto;">
                         <table class="table no-border">
 
                              <?php 
@@ -210,9 +210,15 @@
 
                                  $("#sample<?=$i?>").toggleClass("grid-active");
                                  $("#background-toggle").toggleClass("background-active");
+                             });
+                             $("#background-toggle").click(function(e) {
+                                 e.preventDefault();
 
+                                 $("#sample<?=$i?>").removeClass("grid-active");
+                                 $("#background-toggle").removeClass("background-active");
                              });
                          </script>
+
                    <?php
 				   } 
 				   
@@ -351,6 +357,7 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         $("#main").toggleClass("main-active");
         $("#toggle-bars").toggleClass("toggle-bars toggle-X");
     });
+
 
     function startTime() {
         var today = new Date();

@@ -165,7 +165,7 @@
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-            <form nam="form1" method="post" id="form1">
+            <form name="form1" method="post" id="form1">
                   Chon size:
                     <select name="change" onchange="form1.submit();">
                         <?php
@@ -565,8 +565,6 @@
                 <button  class="btn btn-info btn-lg" onClick="Print('content')" id="printbtn"><i class="fas fa-print  fa-1x"></i>In hóa đơn</button>
             </div>
         </div>
-    </div>
-</div>
 
 </body>
 
