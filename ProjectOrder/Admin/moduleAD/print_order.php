@@ -155,6 +155,16 @@
         word-wrap: break-word;
     }
 </style>
+<?php
+	if(isset($_GET['mhd']))
+	{
+		$take_idhd = $_GET['mhd'];
+		$sql="select `num_table` from `of_bill` where `id` ={$take_idhd}";
+		$query = mysqli_query($link,$sql);
+		$fetch = mysqli_fetch_assoc($query);
+		$num_table = $fetch['num_table'];
+	}
+?>
 
 <body>
 <div id="ok"  style=" background-size: cover;">
@@ -163,7 +173,7 @@
             <div class="col-xs-12" style="background-color: white">
                 <form nam="form1" method="post" id="form1" style="text-align: right">
                     Chon size:
-                    <select name="change" onchange="form1.submit();">
+                    <select name="change" onChange="form1.submit();">
                         <?php
                         if(isset($_POST['change'])) {
                             $change = $_POST['change'];
