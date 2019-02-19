@@ -212,9 +212,13 @@
                             include "languages/lang_".$lang['country'].".php";
                             ?>
                             <div style="float:left; font-size:18px; margin-left:65px"><strong><?=_RESTAURANTNAME?></strong></div>
-                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: <?=$k['code_order']?></strong></div>
+                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: #<?=$k['code_order']?></strong></div>
                             <div style="clear:both"></div>
                             <div style="float:left"><strong><?=_RESTAURANTADDRESS?></strong></div>
+                            <div style=" margin-left:90px; clear: both"><b>www.orderfood.cf</b>
+                                <br><br><span style=" margin-left:30px; font-size: 25px; border-top: solid thin; border-bottom: solid thin;   "><b><?=_TABLE?>:<?=$num_table?></b></span>
+                            </div>
+
                     </div>
                     <br/>
                     <div class="title">
