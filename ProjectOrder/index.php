@@ -54,8 +54,8 @@ if(isset($_SESSION['lang'])){
 
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <?php if(isset($_SESSION['user_idban'])){?>
-        <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_SESSION['user_nameban']?></h2>
+        <?php if(isset($_COOKIE['username_login'])){?>
+        <h2 style="margin-bottom:10px; margin-left:20px" align="center"><?=_TABLE?> <?=$_COOKIE['username_login']?></h2>
         <?php } ?>
         <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
          <a>
@@ -68,7 +68,7 @@ if(isset($_SESSION['lang'])){
          </a><br>
         <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
 
-        <?php if(isset($_SESSION['user_idban'])){?>
+        <?php if(isset($_COOKIE['username_login'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=xulydangxuat'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } else {?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-success" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=dangnhap'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGIN?></button> </div>

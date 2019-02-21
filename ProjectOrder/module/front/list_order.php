@@ -9,7 +9,7 @@
 </style>
 
 <?php
-	if(! isset($_SESSION['user_idban']))
+	if(! isset($_COOKIE['username_login']))
 	{
 		header("location:?mod=dangnhap");
 	}

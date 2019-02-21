@@ -11,8 +11,7 @@ if(isset($_POST['user']))
 	if(mysqli_num_rows($rs)>0)
 	{
 		$r=mysqli_fetch_assoc($rs);
-		$_SESSION['user_idban']=$r['id'];
-		$_SESSION['user_nameban']=$r['name'];
+
 		$id = $r['id'];
 		$name = $r['name'];
 		$country= $_SESSION['lang'];
