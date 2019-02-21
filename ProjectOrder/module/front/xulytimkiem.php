@@ -1,13 +1,13 @@
 <?php
 session_start();
 $lang = $_SESSION['lang'].'_name';
-if(isset($_SESSION['user_idban']))
+if(isset($_COOKIE['userid_login']))
 {
-	$id_ban=$_SESSION['user_idban'];
+	$id_ban=$_COOKIE['userid_login'];
 }
-if(isset($_SESSION['user_nameban']))
+if(isset($_COOKIE['username_login']))
 {
-	$id_name=$_SESSION['user_nameban'];
+	$id_name=$_COOKIE['username_login'];
 }
 if(isset($_POST['find']))
 	{
@@ -20,7 +20,7 @@ if(isset($_POST['find']))
 			{			
 				$id=$r['id'];
 				$id_cate=$r['category_id'];
-				if(isset($_SESSION['user_idban']))
+				if(isset($_COOKIE['userid_login']))
 				{
 					header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
 				}

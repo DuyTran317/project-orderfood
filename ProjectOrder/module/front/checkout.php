@@ -5,7 +5,7 @@
 
 </style>
 <?php
-	if(! isset($_SESSION['user_idban']))
+	if(! isset($_COOKIE['username_login']))
 	{
 		header("location:?mod=dangnhap");
 	}
@@ -23,7 +23,7 @@
 	}
 	$country = $_SESSION['lang'];
 	//Lấy thông tin người dùng
-	$userID=$_SESSION['user_idban'];
+	$userID=$_COOKIE['userid_login'];
 	$cart=@$_SESSION['cart'];
 	
 	$sql_check = "select `id` from `of_user` where `active` = 2 and `id` = {$userID}";
