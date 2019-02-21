@@ -239,7 +239,7 @@
                     $sql="select `date` from `of_order` where `id`={$id}";
                     $date_order=mysqli_query($link,$sql);
                     $show_date_order=mysqli_fetch_assoc($date_order);
-                    
+
                     //Truy vấn ngày trong hóa đơn
                     $sql="select `date` from `of_bill` where `order_id`={$id}";
                     $date_bill=mysqli_query($link,$sql);
