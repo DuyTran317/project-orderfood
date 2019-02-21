@@ -1,12 +1,13 @@
 <?php
 	if(isset($_COOKIE['username_login']))
 	{
+		echo $_COOKIE['username_login'];
 		//Kiem tra bang cach truy van vao DB
 		$sql="select * from `of_user` where `name`='{$_COOKIE['username_login']}' and `active`=2";
 		$rs=mysqli_query($link,$sql);
 		if(mysqli_num_rows($rs)>0)
 		{
-			header("location:?mod=home&id={$_COOKIE['username_login']}&name={$_COOKIE['username_login']}");
+			header("location:?mod=home&id={$_COOKIE['userid_login']}&name={$_COOKIE['username_login']}");
 		}
 	}
 ?>
