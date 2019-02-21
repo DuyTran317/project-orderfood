@@ -1,3 +1,16 @@
+<?php
+	if(isset($_COOKIE['username_login']))
+	{
+		//Kiem tra bang cach truy van vao DB
+		$sql="select * from `of_user` where `name`='{$_COOKIE['username_login']}' and `active`=2";
+		$rs=mysqli_query($link,$sql);
+		if(mysqli_num_rows($rs)>0)
+		{
+			header("location:?mod=home&id={$_COOKIE['username_login']}&name={$_COOKIE['username_login']}");
+		}
+	}
+?>
+
 <script>
     function changeLang(){
         document.getElementById('form_lang').submit();
