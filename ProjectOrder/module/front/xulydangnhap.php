@@ -20,8 +20,8 @@ if(isset($_POST['user']))
 		$rs=mysqli_query($link,$sql);
 		
 		//Cookies
-		setcookie("username_login", $_SESSION['user_nameban'], time() + (86400 * 30), "/");
-		setcookie("userid_login", $_SESSION['user_nameban'], time() + (86400 * 30), "/");
+		setcookie("username_login", $r['name'], time() + (86400 * 30), "/");
+		setcookie("userid_login", $r['id'], time() + (86400 * 30), "/");
 		
 		// gui tin sang nhan vien
 		require('Pusher.php');
