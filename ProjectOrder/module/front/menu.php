@@ -211,21 +211,21 @@ Pusher.logToConsole = true;
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
-						    $buttoncol="col-xs-6";
 					?>
 					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button <?php
-
-                        if(count($_SESSION['cart']) >0 )
-                        {
-                            echo 'class="btn col-xs-6 btn-lg"';
-                        }
-                        else
-                        {
+                        if(!isset($_SESSION['cart'])){
                             echo 'class="btn col-xs-12 btn-lg"';
+                        }
+                        else {
+                            if (count($_SESSION['cart']) > 0) {
+                                echo 'class="btn col-xs-6 btn-lg"';
+                            } else {
+                                echo 'class="btn col-xs-12 btn-lg"';
+                            }
                         }
                             ?> style="background-color:#FF0; border-radius: 0px; font-size: 15px;" id="col_toggle"><?=_CHECK?></button></a>
                     <?php } ?>
-            <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-6 btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
