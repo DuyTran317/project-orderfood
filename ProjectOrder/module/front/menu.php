@@ -193,7 +193,7 @@ Pusher.logToConsole = true;
             </script>
             <br>
             <?php
-            @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
+            @$sql="select * from `of_order` where `id` = {$_COOKIE['order_wait']}";
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
             $buttoncol="col-xs-12";
@@ -208,7 +208,7 @@ Pusher.logToConsole = true;
             ?>
                     <!--Kiểm Tra Hóa Đơn -->
                     <?php						
-						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
+						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
 						    $buttoncol="col-xs-6";
@@ -229,7 +229,7 @@ Pusher.logToConsole = true;
             <?php
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                @$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
+                @$sql ="select `active` from `of_bill` where `order_id` = {$_COOKIE['order_wait']} and `active`=0";
                 @$tt = mysqli_query($link,$sql);
                 if(@mysqli_num_rows($tt) > 0)
                 {
@@ -237,7 +237,7 @@ Pusher.logToConsole = true;
                     <!--Thanh toán-->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
-                else {unset($_SESSION['order_wait']);}
+                else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             }
             ?>
         </div>
@@ -293,7 +293,7 @@ Pusher.logToConsole = true;
 
             </div>
             <?php
-            @$sql="select * from `of_order` where `id` = {$_SESSION['order_wait']}";
+            @$sql="select * from `of_order` where `id` = {$_COOKIE['order_wait']}";
             $rs_t=mysqli_query($link,$sql);
             @$r_t=mysqli_fetch_assoc($rs_t);
 
@@ -308,7 +308,7 @@ Pusher.logToConsole = true;
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                @$sql ="select `active` from `of_bill` where `order_id` = {$_SESSION['order_wait']} and `active`=0";
+                @$sql ="select `active` from `of_bill` where `order_id` = {$_COOKIE['order_wait']} and `active`=0";
                 @$tt = mysqli_query($link,$sql);
                 if(@mysqli_num_rows($tt) > 0)
                 {
@@ -316,12 +316,12 @@ Pusher.logToConsole = true;
                     <!--Thanh toán-->
                     <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
-                else {unset($_SESSION['order_wait']);}
+                else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
 
             <!--Kiểm Tra Hóa Đơn -->
             <?php
-            @$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_SESSION['order_wait']}";
+            @$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
             @$kt = mysqli_query($link,$sql);
             if(@mysqli_num_rows($kt) > 0) {
                 ?>

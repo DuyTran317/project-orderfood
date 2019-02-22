@@ -188,7 +188,8 @@
 					
 					if(@$orderID != NULL)
 					{
-						@$_SESSION['order_wait']=$orderID;
+						//Cookies
+						setcookie("order_wait", $orderID, time() + (86400 * 30), "/");
 					}
 					if($_SESSION['lang']=='vi'){
 							echo '<script type="text/javascript">';
