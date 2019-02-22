@@ -184,10 +184,12 @@
 					    echo "<div style='background-color: #f9f9f9; padding: 5px; border-radius: 5px; color: red'>";
                         while($r2=mysqli_fetch_assoc($rs2))
                         {
-
-                            echo $r2['note'];
-
-                            echo "<br>";
+							if($r2['note']!="")
+							{
+                            	echo $r2['note'];
+								echo "<br>";
+							}
+                            
                         }
                         echo "</div>";
 					}

@@ -31,10 +31,8 @@ if(empty($_SESSION['servantlang'])){
 		$id_sp = $_POST['id_sp'];
 		$qty = $_POST['qty'];
 		$note = "";
-		if($_POST['note']!="")
-		{
-			$note = "<br/>".$_POST['note'];
-		}		
+		$note = $_POST['note'];
+			
 		
 		$sql = "select `price`, `discount` from `of_food` where `id` = {$id_sp}";
 		$kq = mysqli_query($link,$sql);
@@ -55,20 +53,11 @@ if(empty($_SESSION['servantlang'])){
 				$soluong=$_POST['qty'];
 				$sql="update `of_order_detail` set `qty` = `qty` + {$soluong} where `food_id` = {$id_sp} and `active`=2";
 				mysqli_query($link,$sql);
-				
-				$sql="select * from `of_note_order` where `order_id`={$id}";
-				$chay = mysqli_query($link,$sql);
-				if(mysqli_num_rows($chay)>0)
-				{
-					$sql="update `of_note_order` set `note` = concat(`note`,'$note') where `order_id`={$id}";
-					mysqli_query($link,$sql);
-				}
-				else
-				{
-					//Insert note vao DB
-					$sql="insert into `of_note_order` values(NULL,'$id','$note',2)";
-					mysqli_query($link,$sql);
-				}
+								
+				//Insert note vao DB
+				$sql="insert into `of_note_order` values(NULL,'$id','$note',2)";
+				mysqli_query($link,$sql);
+		
 				
 				echo "
 				<script>
@@ -82,20 +71,11 @@ if(empty($_SESSION['servantlang'])){
 				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '2', '$servantlang')";
 				mysqli_query($link,$sql);
 								
-				$sql="select * from `of_note_order` where `order_id`={$id}";
-				$chay = mysqli_query($link,$sql);
-				if(mysqli_num_rows($chay)>0)
-				{
-					$sql="update `of_note_order` set `note` = concat(`note`,'$note') where `order_id`={$id}";
-					mysqli_query($link,$sql);
-				}
-				else
-				{
-					//Insert note vao DB
-					$sql="insert into `of_note_order` values(NULL,'$id','$note',2)";
-					mysqli_query($link,$sql);
-				}
-				
+
+				//Insert note vao DB
+				$sql="insert into `of_note_order` values(NULL,'$id','$note',2)";
+				mysqli_query($link,$sql);
+					
 				echo "
 				<script>
 					alert('Đã thêm thành công!');
@@ -122,19 +102,10 @@ if(empty($_SESSION['servantlang'])){
 				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '0', '$servantlang')";
 				mysqli_query($link,$sql);
 				
-				$sql="select * from `of_note_order` where `order_id`={$id}";
-				$chay = mysqli_query($link,$sql);
-				if(mysqli_num_rows($chay)>0)
-				{
-					$sql="update `of_note_order` set `note` = concat(`note`,'$note') where `order_id`={$id}";
-					mysqli_query($link,$sql);
-				}
-				else
-				{
-					//Insert note vao DB
-					$sql="insert into `of_note_order` values(NULL,'$id','$note',0)";
-					mysqli_query($link,$sql);
-				}
+				
+				//Insert note vao DB
+				$sql="insert into `of_note_order` values(NULL,'$id','$note',0)";
+				mysqli_query($link,$sql);
 		
 				header("location:?mod=confirm_order&id={$id}&num_table=$num_table");
 			}

@@ -136,8 +136,16 @@
     ?>
     </div>
     
+    <?php
+		//Nhan vien dat them khi bep chua hoan thanh
+		$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
+		$wait=mysqli_query($link,$sql);
+		if(mysqli_num_rows($wait)>0)
+		{	
+	?>
 	<div style='float: right'><a href='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>'><input value='Thêm Món' class='btn btn-success'></a>
     </div><br>
+    <?php } ?>
 
 </div>
 </body>
