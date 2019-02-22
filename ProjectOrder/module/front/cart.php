@@ -62,9 +62,9 @@
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px; " >
-        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <a href="cmn-thuc_don-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center"><?=_CHOSEN?></h2>
-        <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">
+        <form action="index.php?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">
         <div class="table-responsive" style="max-height: 450px; overflow-y: auto ;" id="style-2">
 
             <table class="col-md-12 table table-striped" >
@@ -122,14 +122,14 @@
                 <?php if($r['discount']>0) { ?>
                 
                 <td align="center"><?=number_format($r['price_discount']*$v)?><u>đ</u></td>
-                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')" id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">X</a></td>
+                  <td><a style="color: red" href="index.php?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')" id="test_xoa" onclick="hoi(<?=$d_pro['id'] ?>)">X</a></td>
                
                 <?php }
 					  else
 					  { 
 				?>               
                 <td align="center"><?=number_format($r['price']*$v)?><u>đ</u></td>
-                  <td><a style="color: red" href="?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')">X</a></td>
+                  <td><a style="color: red" href="index.php?mod=cart_process&id=<?=$k?>&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" onClick="return confirm('<?=_DELFOOD?>')">X</a></td>
 				
                 <?php } ?>
                 
@@ -147,13 +147,13 @@
                         
                       <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><i class="fas fa-sync"></i></button>
                     
-                    <a class="btn btn-success btn-lg " id="btnorder" href="?mod=checkout&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><i class="fas fa-check"></i></a>
+                    <a class="btn btn-success btn-lg " id="btnorder" href="kt-checkout-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><i class="fas fa-check"></i></a>
 					<?php }
 						  else
 						  {
 					?>		  
                     <script>
-						window.location="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>";
+						window.location="cmn-thuc_don-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html";
 					</script>			  
                     <?php          
 						  }

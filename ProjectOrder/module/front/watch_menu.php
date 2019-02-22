@@ -36,7 +36,7 @@
 	<div class="row" style=" padding: 20px; font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
         <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
 
-            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="?mod=watch_home" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="watch_homewolg.html" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
             <div style="height: 250px; overflow-y: auto;" id="style-2" data-spy="scroll" data-offset="50">
                 <?php
                 // Phần revise
@@ -50,7 +50,7 @@
                     $scroll++;
                     ?>
                     <hr>
-                    <div id="menu<?=$scroll?>"><a href="#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                    <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
                     <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
 
                         <?php
@@ -60,7 +60,7 @@
                         while($r_cate=mysqli_fetch_assoc($c)):
                             ?>
                             <ul>
-                                <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                <a style="color: white; text-decoration: none" href="wnl-watch_menuwolg-c9102ate<?=$r_cate['id']?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
                         <?php endwhile ?>
@@ -95,7 +95,7 @@
                 </a>
                 
                 <div class="collapse out" id="demo">
-                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=watch_home" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="watch_homewolg.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                     <?php
                     // Phần revise
                     //Chủng Loại
@@ -115,7 +115,7 @@
                             while($r_cate=mysqli_fetch_assoc($c)):
                                 ?>
                                 <ul>
-                                    <a style="color: white; text-decoration: none" href="?mod=watch_menu&cate=<?=$r_cate['id']?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                    <a style="color: white; text-decoration: none" href="wnl-watch_menuwolg-c9102ate<?=$r_cate['id']?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                                 </ul>
 
                             <?php endwhile ?>
@@ -208,7 +208,7 @@
 					?>
                         <h3 align="center" class="textover" style="color:#900;"><b><?=$info?><?= $kq[$_SESSION['lang'].'_name'] ?></b></h3>
                         <div class="row">
-                            <a href="?mod=watch_detail&id=<?=$kq['id']?>&cate=<?=$cate?>"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
+                            <a href="dtail-watch_detailwolg-i9102dfood<?=$kq['id']?>-c9102ate<?=$cate?>.html"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
 
                         </div>
                     </div>
@@ -279,7 +279,7 @@
 				<?php
 					/*}*/
 				?>
-                <a href="?mod=watch_detail&id=<?=$kq['id']?>&cate=<?=$cate?>"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
+                <a href="dtail-watch_detailwolg-i9102dfood<?=$kq['id']?>-c9102ate<?=$cate?>.html"><button class="btn btn-xs" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>
         <?php } ?>

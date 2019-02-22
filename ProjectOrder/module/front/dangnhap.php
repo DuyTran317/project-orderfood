@@ -6,7 +6,7 @@
 		$rs=mysqli_query($link,$sql);
 		if(mysqli_num_rows($rs)>0)
 		{
-			header("location:?mod=home&id={$_COOKIE['userid_login']}&name={$_COOKIE['username_login']}");
+			header("location:tlc-trang_chu-i9102d{$_COOKIE['userid_login']}-n9102ame{$_COOKIE['username_login']}.html");
 			exit;
 		}
 	}
@@ -22,7 +22,7 @@
 <div class="container-fluid" style="margin-top:10%">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-lg-4 col-lg-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">
-            <form action="?mod=xulydangnhap" method="post" class="form-horizontal">
+            <form action="xuly_dangnhap.html" method="post" class="form-horizontal">
                 <fieldset>
                     <div class="row">
                         <div class="col-md-6">
@@ -44,7 +44,7 @@
                             </div>
                             
                             <button class="btn col-xs-12" style=" font-size:18px; color: black; background-color: yellow; border-radius: 0px; margin-bottom:10px;" type="submit" ><?=_LOGIN?></button><br>
-                            <a href="?mod=watch_home" style="color:#FFF; margin-top:10px; text-decoration:underline "><?=_NOLOGIN?></a>
+                            <a href="watch_homewolg.html" style="color:#FFF; margin-top:10px; text-decoration:underline "><?=_NOLOGIN?></a>
 
                             
                         </div>
@@ -56,5 +56,5 @@
 
     </div>
 </div>
-</body>z
+</body>
 </html>

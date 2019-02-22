@@ -13,5 +13,5 @@ setcookie("userid_login", $k['id'], time() - 3600, "/");
 
 unset($_SESSION['cart']);
 
-header("location:?mod=dangnhap");
+header("location:login.html");
 ?>

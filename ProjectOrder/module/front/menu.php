@@ -140,7 +140,8 @@ Pusher.logToConsole = true;
         <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
 
-            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p><br>
+            <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" >
+            <a href="tlc-trang_chu-i9102d<?=$id?>-n9102ame<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p><br>
             <div style="height: 250px; overflow-y: auto; " id="style-2" data-spy="scroll" data-offset="50">
                         
             <?php
@@ -155,7 +156,7 @@ Pusher.logToConsole = true;
 				    $scroll++;
 			?>
 
-                <div id="menu<?=$scroll?>"><a href="#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a>
+                <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a>
                 <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;" >
 
                 	<?php				
@@ -166,7 +167,7 @@ Pusher.logToConsole = true;
 					?>
 
                     <ul>
-                        <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                        <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                     </ul>
 
                     <?php endwhile ?>
@@ -212,7 +213,7 @@ Pusher.logToConsole = true;
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
 					?>
-					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button <?php
+					<a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button <?php
                         if(!isset($_SESSION['cart'])){
                             echo 'class="btn col-xs-12 btn-lg"';
                         }
@@ -225,7 +226,7 @@ Pusher.logToConsole = true;
                         }
                             ?> style="background-color:#FF0; border-radius: 0px; font-size: 15px;" id="col_toggle"><?=_CHECK?></button></a>
                     <?php } ?>
-            <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn col-xs-6 btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <a class="hidden-xs" href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn col-xs-6 btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
@@ -235,7 +236,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                     <!--Thanh toán-->
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
+                    <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             }
@@ -243,11 +244,12 @@ Pusher.logToConsole = true;
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
-            <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="#">
+            <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="javascript:void()">
                 <h3 > <?=_TABLE?> <?=$name?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
             </a>
             <div id="demo" class="collapse">
-                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="?mod=home&id=<?=$id?>&name=<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" >
+                <a href="tlc-trang_chu-i9102d<?=$id?>-n9102ame<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
                 // Phần revise
                 //Chủng Loại
@@ -267,7 +269,7 @@ Pusher.logToConsole = true;
                         while($r_cate=mysqli_fetch_assoc($c)):
                             ?>
                             <ul>
-                                <a style="color: white; text-decoration: none" href="?mod=menu&id=<?=$id?>&name=<?=$name?>&cate=<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "&thanhtoan=1";}?>"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                                <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
                         <?php endwhile ?>
@@ -314,7 +316,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                     <!--Thanh toán-->
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
@@ -327,7 +329,7 @@ Pusher.logToConsole = true;
                 ?>
                 <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
             <?php } ?>
-            <a class="hidden-lg hidden-md" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg col-xs-12" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <a class="hidden-lg hidden-md" href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn btn-lg col-xs-12" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
 
         </div>
 
@@ -408,7 +410,7 @@ Pusher.logToConsole = true;
 					?>
                         <h3 align="center" class="textover" style="color:#900;"><b><?=$info?><?= $kq[$_SESSION['lang'].'_name'] ?></b></h3>
                         <div class="row">
-                            <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
+                            <a href="xdt-chi_tiet-i9102dfood<?=$kq['id']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><button  class="btn col-xs-12" style="border-radius: 0px;background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
 
                         </div>
                     </div>
@@ -503,7 +505,7 @@ Pusher.logToConsole = true;
 				<?php
 					/*}*/
 				?>
-                <a href="?mod=detail&id=<?=$kq['id']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style=" position: absolute; bottom: 5px; right: 5px;"><button class="btn" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
+                <a href="xdt-chi_tiet-i9102dfood<?=$kq['id']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" style=" position: absolute; bottom: 5px; right: 5px;"><button class="btn" style="background-color: #ff9d00; color: black;"><?= _DETAIL ?></button></a>
             </div>
         </div>
         <?php } ?>

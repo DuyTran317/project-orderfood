@@ -36,7 +36,7 @@ if(isset($_POST['user']))
 		);
 		$pusher->trigger('Reload', 'login', @$data);
 	
-		header("location:?mod=home&id=$id&name=$name");
+		header("location:tlc-trang_chu-i9102d{$id}-n9102ame{$name}.html");
 	}
 	else
 	{
@@ -48,7 +48,7 @@ $rs=mysqli_query($link,$sql);
 ?>		
 		<script> 
 			alert('<?=_WRONGTABLENO?>');
-			window.location="?mod=dangnhap";
+			window.location="login.html";
 		</script>
 			
 <?php		

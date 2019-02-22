@@ -198,7 +198,7 @@
 							text: "Gọi món thành công",
 							type: "success"
 							}).then(function() {
-								window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+								window.location = "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
 							});';
 							echo '</script>';
 					}
@@ -210,7 +210,7 @@
 							text: "Your dishes have been successfully ordered",
 							type: "success"
 						}).then(function() {
-							window.location = "?mod=menu&id='.$id_ban.'&name='.$name_ban.'&thanhtoan=1&cate='.$cate.'";
+								window.location = "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
 						});';
 						echo '</script>';
 					}
@@ -236,7 +236,7 @@
 
                     <div class="container">
                         <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px;">
-                            <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+                            <a href="kt-cart-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
                             <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
                             <div >
                             <form action="" method="post">

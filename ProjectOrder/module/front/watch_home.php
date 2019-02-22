@@ -112,7 +112,7 @@
 		while($r=mysqli_fetch_assoc($rs)):
 	?>
 
-    	<a href="?mod=watch_menu&cate=<?=$r['id']?>">
+    	<a href="wnl-watch_menuwolg-c9102ate<?=$r['id']?>.html">
         <div class=" col-md-4 col-sm-6" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
                 <p style="font-size: 60px; "><?=$r[$_SESSION['lang'].'_name']?></p>

@@ -105,7 +105,7 @@
             <div><i><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i></div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-xs-12">
-                        <a href="<?php if(isset($_GET['back'])) {echo "?mod=watch_home";}else{echo "?mod=watch_menu&cate=$cate"; }?>"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
+                        <a href="<?php if(isset($_GET['back'])) {echo "watch_homewolg.html";}else{echo "wnl-watch_menuwolg-c9102ate{$cate}.html"; }?>"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
                     </div>
         </div>
     </div>

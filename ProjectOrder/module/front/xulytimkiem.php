@@ -22,18 +22,24 @@ if(isset($_POST['find']))
 				$id_cate=$r['category_id'];
 				if(isset($_COOKIE['userid_login']))
 				{
-					header("location:?mod=detail&id={$id}&id_ban={$id_ban}&name_ban={$id_name}&cate={$id_cate}&back");
+					header("location:xdt-chi_tiet-i9102dfood{$id}-i9102d{$id_ban}-n9102ame{$id_name}-c9102ate{$id_cate}-back.html");
 				}
 				else
 				{
-					header("location:?mod=watch_detail&id={$id}&cate={$id_cate}&back");
+					header("location:dtail-watch_detailwolg-i9102dfood{$id}-c9102ate{$id_cate}-back.html");
 				}
 			}
 		}
 	else
 		{
-		
-		header("location:?mod=home&id={$id_ban}&name={$id_name}&tim");
+			if(!isset($_COOKIE['userid_login']))
+			{
+				header("location:watch_homewolg.html");
+			}
+			else
+			{
+				header("location:tlc-trang_chu-i9102d{$id_ban}-n9102ame{$id_name}-search.html");
+			}
 		}
 	}
 ?>

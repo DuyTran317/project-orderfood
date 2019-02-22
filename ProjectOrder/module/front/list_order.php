@@ -31,7 +31,7 @@ if(isset($_GET['cate']))
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
-        <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate ?>& thanhtoan=1" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+        <a href="cmn-thuc_don-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate ?>-tt9102oan1.html" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center"><?=_CHOSEN?></h2>
 <form action="" method="post">
     <div class="table-responsive" style="max-height: 450px; overflow-y: auto ;" id="style-2">

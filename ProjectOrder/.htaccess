@@ -1,0 +1,48 @@
+#Chong list file trong thu muc
+Options -Indexes
+
+#Rewrite URL
+RewriteEngine On
+
+#Cac rule rewrite khi khach hang dang nhap
+RewriteRule ^(.*)-trang_chu-i9102d([0-9]+)-n9102ame([0-9]+)\.html$ index.php?mod=home&id=$2&name=$3
+RewriteRule ^(.*)-trang_chu-i9102d([0-9]+)-n9102ame([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=home&id=$2&name=$3&thanhtoan=$4
+RewriteRule ^(.*)-trang_chu-i9102d([0-9]+)-n9102ame([0-9]+)-search\.html$ index.php?mod=home&id=$2&name=$3&tim
+
+RewriteRule ^(.*)-thuc_don-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)\.html$ index.php?mod=menu&id=$2&name=$3&cate=$4
+RewriteRule ^(.*)-thuc_don-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=menu&id=$2&name=$3&cate=$4&thanhtoan=$5
+RewriteRule ^(.*)-thuc_don-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)#menu([0-9]+)\.html$ index.php?mod=menu&id=$2&name=$3&cate=$4#menu$5
+RewriteRule ^(.*)-thuc_don-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=menu&id=$2&name=$3&cate=$4&thanhtoan=$5
+
+RewriteRule ^(.*)-chi_tiet-i9102dfood([0-9]+)-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)\.html$ index.php?mod=detail&id=$2&id_ban=$3&name_ban=$4&cate=$5
+RewriteRule ^(.*)-chi_tiet-i9102dfood([0-9]+)-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=detail&id=$2&id_ban=$3&name_ban=$4&cate=$5&thanhtoan=$6
+RewriteRule ^(.*)-chi_tiet-i9102dfood([0-9]+)-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-back\.html$ index.php?mod=detail&id=$2&id_ban=$3&name_ban=$4&cate=$5&back
+
+RewriteRule ^(.*)-cart-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)\.html$ index.php?mod=cart&id_ban=$2&name_ban=$3&cate=$4
+RewriteRule ^(.*)-cart-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=cart&id_ban=$2&name_ban=$3&cate=$4&thanhtoan=$5
+
+RewriteRule ^(.*)-checkout-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)\.html$ index.php?mod=checkout&id_ban=$2&name_ban=$3&cate=$4
+RewriteRule ^(.*)-checkout-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=checkout&id_ban=$2&name_ban=$3&cate=$4&thanhtoan=$5
+
+RewriteRule ^(.*)-dsdat_mon-i9102dod([0-9]+)-i9102d([0-9]+)-n9102ame([0-9]+)-c9102ate([0-9]+)-tt9102oan([0-9]+)\.html$ index.php?mod=list_order&id=$2&id_ban=$3&name_ban=$4&cate=$5&thanhtoan=$6
+
+RewriteRule ^(.*)-rating-i9102d([0-9]+)-n9102ame([0-9]+)-o9102rder([0-9]+)\.html$ index.php?mod=xulythanhtoan&id=$2&name=$3&order_id=$4
+
+RewriteRule ^xuly_dangxuat\.html$ index.php?mod=xulydangxuat
+
+RewriteRule ^login\.html$ index.php?mod=dangnhap
+RewriteRule ^xuly_dangnhap\.html$ index.php?mod=xulydangnhap
+
+RewriteRule ^watch_homewolg\.html$ index.php?mod=watch_home
+
+RewriteRule ^(.*)-watch_menuwolg-c9102ate([0-9]+)\.html$ index.php?mod=watch_menu&cate=$2
+RewriteRule ^(.*)-watch_menuwolg-c9102ate([0-9]+)\.html$ index.php?mod=watch_menu&cate=$2
+
+RewriteRule ^(.*)-watch_detailwolg-i9102dfood([0-9]+)-c9102ate([0-9]+)\.html$ index.php?mod=watch_detail&id=$2&cate=$3
+RewriteRule ^(.*)-watch_detailwolg-i9102dfood([0-9]+)-c9102ate([0-9]+)-back\.html$ index.php?mod=watch_detail&id=$2&cate=$3&back
+
+
+
+
+
+

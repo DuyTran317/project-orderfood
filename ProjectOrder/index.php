@@ -12,6 +12,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="http://localhost/project-orderfood/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -71,9 +72,9 @@ if(isset($_SESSION['lang'])){
         <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
 
         <?php if(isset($_COOKIE['username_login'])){?>
-        <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=xulydangxuat'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='xuly_dangxuat.html'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } else {?>
-        <div style="position: absolute; bottom: 0px;"><button class="btn btn-success" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='?mod=dangnhap'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGIN?></button> </div>
+        <div style="position: absolute; bottom: 0px;"><button class="btn btn-success" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='login.html'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGIN?></button> </div>
         <?php } ?>
     </div>
 

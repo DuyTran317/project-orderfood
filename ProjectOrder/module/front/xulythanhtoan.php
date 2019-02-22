@@ -26,7 +26,7 @@ if(isset($_POST['content']))
 		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star','$date','1')";
 		mysqli_query($link,$sql);
 		
-		header("location:?mod=xulydangxuat");	
+		header("location:xuly_dangxuat.html");	
 	}	
 	
 }
