@@ -353,9 +353,9 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
-        $("#mySidenav").toggleClass("active");
-        $("#main").toggleClass("main-active");
-        $("#toggle-bars").toggleClass("toggle-bars toggle-X");
+        $("#mySidenav").toggleClass("active" , 1000);
+        $("#main").toggleClass("main-active" , 1000);
+        $("#toggle-bars").toggleClass("toggle-bars toggle-X" , 1000);
     });
 
 

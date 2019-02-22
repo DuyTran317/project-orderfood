@@ -213,7 +213,17 @@ Pusher.logToConsole = true;
 						if(@mysqli_num_rows($kt) > 0) {
 						    $buttoncol="col-xs-6";
 					?>
-					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+					<a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button <?php
+
+                        if(count($_SESSION['cart']) >0 )
+                        {
+                            echo 'class="btn col-xs-6 btn-lg"';
+                        }
+                        else
+                        {
+                            echo 'class="btn col-xs-12 btn-lg"';
+                        }
+                            ?> style="background-color:#FF0; border-radius: 0px; font-size: 15px;" id="col_toggle"><?=_CHECK?></button></a>
                     <?php } ?>
             <a class="hidden-xs" href="?mod=cart&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" ><button class="btn btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
@@ -225,7 +235,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                     <!--Thanh toán-->
-                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a href="?mod=xulythanhtoan&id=<?=$id?>&name=<?=$name?>&order_id=<?=$r_t['id'] ?>" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
                 else {unset($_SESSION['order_wait']);}
             }
@@ -345,12 +355,13 @@ Pusher.logToConsole = true;
             
 			<?php
 			}
+
 			while($kq= mysqli_fetch_assoc($res))
 			{
 			    $number1++;
 			    $number2++;
                 ?>
-                <div class="card"  style="  width: 300px; background:white; ">
+                <div class="card"  style="  width: 300px; background:white; " id="col_trigger<?php  echo $number1;?>">
 
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/sp/<?=$kq['img_url']?>);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
 
@@ -374,7 +385,12 @@ Pusher.logToConsole = true;
                             <?php
 								  /*}*/
 							?>
-
+                            <script>
+                                /*$("#foodchosen").change(function(e) {
+                                    e.preventDefault();
+                                    $("#col_toggle").toggleClass("col-xs-12 col-xs-6");
+                                });*/
+                            </script>
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
@@ -497,6 +513,7 @@ Pusher.logToConsole = true;
 </body>
 
 <script>
+
     function getCookie(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -546,15 +563,24 @@ Pusher.logToConsole = true;
 		$.ajax({
 			url:'module/front/ajax_order.php',
 			type:'POST',
-			data:{id_food: id, act: 1}
+			data:{id_food: id, act: 1},
+
 			}).done(function(data){
 				var btn = document.getElementById("btn_GoiMon");
 
 				if(data > 0){
 						btn.style.display = "block";
+                    $("#col_toggle").addClass("col-xs-6");
+                       $("#col_toggle").removeClass("col-xs-12");
 
 					}
-					else {btn.style.display = "none";}
+					else {
+					    btn.style.display = "none";
+                    $("#col_toggle").addClass("col-xs-12");
+                    $("#col_toggle").removeClass("col-xs-6");
+
+
+					}
 
 				});
 	}

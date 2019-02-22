@@ -66,7 +66,7 @@ if(isset($_GET['name']))
 					  ?>
                     
                         <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
-                            <img src="img/slider/<?=$show_slide['img_url']?>" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer">
+                            <img src="img/slider/<?=$show_slide['img_url']?>" class="img-responsive" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer;">
                         </div>
                   <?php if($show_slide['vi_content']!='')
 						{ ?>
@@ -110,7 +110,7 @@ if(isset($_GET['name']))
                 </div>
             </div>
         <div class="col-sm-6" style="  color: white;">
-            <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
+            <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); max-height: 350px; padding: 30px;">
                 <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> <?= _SEARCH ?></p>
                <form  method="post" action="?mod=xulytimkiem">
                 <div class="input-group">
@@ -121,7 +121,6 @@ if(isset($_GET['name']))
                       </button>
                     </span>
                 </div><hr><br><br>
-            
                 <p style="font-size: 60px;" align="center"><?= _CATE ?></p>
             </div>
             </form>
