@@ -38,6 +38,52 @@ if(empty($_SESSION['servantlang'])){
 		$price = $k['price'];
 		$discount = $k['discount'];
 		
+		//Nhan vien dat them khi bep chua hoan thanh
+		$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
+		$wait=mysqli_query($link,$sql);
+		if(mysqli_num_rows($wait)>0)
+		{
+			$note = " | ".$_POST['note'];
+			$sql = "select * from `of_order_detail` where `food_id` ={$id_sp} and `active` = 2";
+			$run = mysqli_query($link,$sql);
+			if(mysqli_num_rows($run)>0)
+			{		
+				$soluong=$_POST['qty'];
+				$sql="update `of_order_detail` set `qty` = `qty` + {$soluong} where `food_id` = {$id_sp} and `active`=2";
+				mysqli_query($link,$sql);
+				
+				$sql="update `of_note_order` set `note` = concat(`note`,'$note') where `order_id`={$id}";
+				mysqli_query($link,$sql);
+				
+				echo "
+				<script>
+					alert('Đã thêm thành công!');
+					window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
+				</script>		
+				";
+			}
+			else
+			{			
+				$sql = "insert into `of_order_detail` values (NULL, '$id', '$id_sp', '$price', '$qty', '$discount', '2', '$servantlang')";
+				mysqli_query($link,$sql);
+				
+				$sql="update `of_note_order` set `note` = concat(`note`,'$note') where `order_id`={$id}";
+				mysqli_query($link,$sql);
+				
+				echo "
+				<script>
+					alert('Đã thêm thành công!');
+					window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
+				</script>		
+				";
+			}
+		}
+		
+		
+		$sql = "select `id` from `of_order` where `id` = {$id} and `active`=0";
+		$kiemtra = mysqli_query($link,$sql);
+		if(mysqli_num_rows($kiemtra)>0)
+		{
 		$sql = "select * from `of_order_detail` where `order_id` ={$id} and `active` = 0 and `food_id` = {$id_sp}";
 		$check = mysqli_query($link,$sql);
 		
@@ -52,6 +98,7 @@ if(empty($_SESSION['servantlang'])){
 		
 				header("location:?mod=confirm_order&id={$id}&num_table=$num_table");
 			}
+		}
 	}
 ?>
 <body style="background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size: cover; font-family: 'Anton', sans-serif;">
@@ -134,6 +181,20 @@ if(empty($_SESSION['servantlang'])){
                         	<input type="number" min="1" name="qty" required class="form-control" value="1" id="quantity">
                         </td>
                     </tr>
+                    <?php
+					//Nhan vien dat them khi bep chua hoan thanh
+					$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
+					$show=mysqli_query($link,$sql);
+					if(mysqli_num_rows($show)>0)
+					{
+					?>
+                    <tr>
+                    	<td class="col-sm-3">Chú thích món (nếu có)</td>
+                        <td>
+                        	<textarea name="note" rows="4" class="form-control" style="resize: none;" placeholder="..."></textarea>
+                        </td>
+                    </tr>
+                    <?php }?>
 
 </table>
         <input type="submit" value="Thêm" class="btn btn-success col-xs-12 btn-lg">
