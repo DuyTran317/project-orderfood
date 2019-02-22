@@ -12,6 +12,9 @@ if(isset($_GET['id']))
 	mysqli_query($link,$sql);
 	
 	unset($_SESSION['order_wait']);
+	//Delete Cookies
+	setcookie("username_login", $name, time() - 3600, "/");
+	setcookie("userid_login", $id, time() - 3600, "/");
 }
 if(isset($_POST['content']))
 {
