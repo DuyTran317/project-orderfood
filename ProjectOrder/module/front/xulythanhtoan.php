@@ -22,7 +22,8 @@ if(isset($_POST['content']))
 	if(isset($_POST['rate']))
 	{
 		$star=$_POST['rate'];
-		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star',now(),'1')";
+		$date = date("Y-m-d G:i:s");
+		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star','$date','1')";
 		mysqli_query($link,$sql);
 		
 		header("location:?mod=xulydangxuat");	
