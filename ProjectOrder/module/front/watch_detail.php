@@ -79,8 +79,13 @@
     </div>
 
         <div class="col-md-10 col-md-offset-1" style="background-color:#FFF; padding:10px;">
-            <h1 style="color:#F90; font-weight:bold"><?php echo $kq[$_SESSION['lang'].'_name'] ?></h1>
-            <div class="row">
+            <h1 style="color:#F90; font-weight:bold">
+                <span <?php if($kq['active'] == 2) { ?> style="text-decoration: line-through red" <?php } ?>><?php echo $kq[$_SESSION['lang'].'_name'] ?></span>
+                <?php if($kq['active'] == 2) { ?>
+                    <span style="color: red">(<?=_OUTOFSTOCK?>)</span>
+                <?php } ?>
+
+            </h1>            <div class="row">
                 <div class="col-sm-6">
                     <?php /*if($kq['discount']>0){
                         $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
