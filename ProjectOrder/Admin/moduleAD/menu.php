@@ -256,6 +256,20 @@
                 </ul>
             </li>
             <li class="header" style="text-align:center">Quản lý và phân quyền</li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                   <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <span>Cài đặt</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="sao-luu-du-lieu.html"><i class="fa fa-circle-o"></i> Sao lưu dữ liệu</a></li>
+                    
+                </ul>
+            </li>
+            
             <li>
                 <a href='danh-sach-admin.html'>
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
