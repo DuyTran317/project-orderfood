@@ -5,7 +5,8 @@ RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list"
 RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list"  
 RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
 RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list" 
-RewriteRule "^sao-luu-du-lieu.html$" "?mod=backupdb" 
+RewriteRule "^sao-luu-du-lieu.html$" "?mod=backup" 
+RewriteRule "^tai-xuong.html$" "?mod=backupdb" 
 
 
 RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
@@ -56,6 +57,7 @@ RewriteRule "^process_cat-del-(.*).html$" "?mod=process_cat&del=$1"
 RewriteRule "^process_pro-del-(.*).html$" "?mod=process_pro&del=$1"
 RewriteRule "^process_slide-del-(.*).html$" "?mod=process_slide&del=$1"
 RewriteRule "^process_kit-del-(.*).html$" "?mod=process_kit&del=$1"
+RewriteRule "^process_com-del-(.*).html$" "?mod=process_com&del=$1"
 
 RewriteRule "^process_user-del-(.*).html$" "?mod=process_user&del=$1"
 RewriteRule "^process_dis-del-(.*).html$" "?mod=process_dis&del=$1"

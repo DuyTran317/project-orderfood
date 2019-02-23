@@ -20,7 +20,7 @@
                     'Bạn đã xóa thành công!',
                     'success'
                 ).then(function(){
-                    window.location.href="?mod=process_com&del="+id;});
+                    window.location.href="process_com-del-"+id+".html";});
             }
         })
 

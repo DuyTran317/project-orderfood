@@ -1,4 +1,5 @@
 <?php
+
 //ENTER THE RELEVANT INFO BELOW
     $mysqlUserName      = "root";
     $mysqlPassword      = "";
@@ -79,6 +80,8 @@
         header('Content-Type: application/octet-stream');   
         header("Content-Transfer-Encoding: Binary"); 
         header("Content-disposition: attachment; filename=\"".$backup_name."\"");  
+        ob_end_clean();
         echo $content; exit;
     }
+    
     ?>
