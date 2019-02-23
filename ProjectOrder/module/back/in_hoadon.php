@@ -165,7 +165,7 @@
     <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <div class="col-xs-12" style="background-color: white">
             <a href="?mod=home_thanhtoan" class="btn" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
-            <form nam="form1" method="post" id="form1">
+            <form name="form1" method="post" id="form1">
                   Chon size:
                     <select name="change" onchange="form1.submit();">
                         <?php
@@ -212,9 +212,13 @@
                             include "languages/lang_".$lang['country'].".php";
                             ?>
                             <div style="float:left; font-size:18px; margin-left:65px"><strong><?=_RESTAURANTNAME?></strong></div>
-                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: <?=$k['code_order']?></strong></div>
+                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: #<?=$k['code_order']?></strong></div>
                             <div style="clear:both"></div>
                             <div style="float:left"><strong><?=_RESTAURANTADDRESS?></strong></div>
+                            <div style=" margin-left:90px; clear: both"><b>www.orderfood.cf</b>
+                                <br><br><span style=" margin-left:30px; font-size: 25px; border-top: solid thin; border-bottom: solid thin;   "><b><?=_TABLE?>:<?=$num_table?></b></span>
+                            </div>
+
                     </div>
                     <br/>
                     <div class="title">
@@ -565,8 +569,6 @@
                 <button  class="btn btn-info btn-lg" onClick="Print('content')" id="printbtn"><i class="fas fa-print  fa-1x"></i>In hóa đơn</button>
             </div>
         </div>
-    </div>
-</div>
 
 </body>
 

@@ -61,7 +61,7 @@
 </style>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
 <div class="container">
-    <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px; " >
+    <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px; " >
         <a href="?mod=menu&id=<?=$id_ban?>&name=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
         <h2 style=" text-align: center"><?=_CHOSEN?></h2>
         <form action="?mod=cart_process&act=2&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" method="post">

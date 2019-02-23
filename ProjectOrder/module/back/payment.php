@@ -196,9 +196,12 @@
                             $gia_goc=0;
                             include "languages/lang_".$lang['country'].".php";
                             ?><div style="float:left; font-size:18px; margin-left:65px"><strong><?=_RESTAURANTNAME?></strong></div>
-                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: <?=$k['code_order']?></strong></div>
+                            <div style="float:right; font-size:18px"><strong><?=_CODENO?>: #<?=$k['code_order']?></strong></div>
                             <div style="clear:both"></div>
                             <div style="float:left"><strong><?=_RESTAURANTADDRESS?></strong></div>
+                            <div style=" margin-left:90px; clear: both"><b>www.orderfood.cf</b>
+                                <br><br><span style=" margin-left:30px; font-size: 25px; border-top: solid thin; border-bottom: solid thin;   "><b><?=_TABLE?>:<?=$num_table?></b></span>
+                            </div>
                     </div>
                     <br/>
                     <div class="title">
@@ -232,6 +235,10 @@
                         $total += $gia_temp*$r['qty'];
                         $gia_goc += $gia_temp*$r['qty'];
                     }
+                    //Truy vấn ngày trong đơn món
+                    $sql="select `date` from `of_order` where `id`={$id}";
+                    $date_order=mysqli_query($link,$sql);
+                    $show_date_order=mysqli_fetch_assoc($date_order);
 
                     //Truy vấn ngày trong hóa đơn
                     $sql="select `date` from `of_bill` where `order_id`={$id}";
@@ -281,7 +288,7 @@
                     <div style="clear:left"></div>
 
                     <div class="footer-right">
-                        <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($show_date_bill['date']));?> <i>(dd/mm/yyyy)</i></p>
+                        <p><strong><?=_CITY?></strong>, <?=date('d/m/Y',strtotime($show_date_bill['date']));?> <i>(<?=_ODEREDAT?>:<?=date('d/m/y H:i',strtotime($show_date_order['date']))?>)</i></p>
                         <p><?=_CASHIER?></p>
                     </div>
                     <div class="footer-left">

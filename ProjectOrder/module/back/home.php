@@ -149,7 +149,7 @@
                         <div class="panel-heading " style="background-color: <?=$colour[$i]?>" id="order-toggle<?=$i?>">
                             <h3 style="color: white">&nbsp;BÀN <?=$num_table?> <span style="float: right"><?=date('H:i',strtotime($r1['date']))?></span> </h3>
                         </div>
-                        <div class="panel-body" style="border: solid lightgrey thin;">
+                        <div class="panel-body" style="border: solid lightgrey thin; max-height: 550px; overflow-y: auto;">
                         <table class="table no-border">
 
                              <?php 
@@ -184,10 +184,12 @@
 					    echo "<div style='background-color: #f9f9f9; padding: 5px; border-radius: 5px; color: red'>";
                         while($r2=mysqli_fetch_assoc($rs2))
                         {
-
-                            echo $r2['note'];
-
-                            echo "<br>";
+							if($r2['note']!="")
+							{
+                            	echo $r2['note'];
+								echo "<br>";
+							}
+                            
                         }
                         echo "</div>";
 					}
@@ -200,7 +202,8 @@
                          <script>
 
                              $("#order-toggle<?=$i?>").click(function(e) {
-                                 /*e.preventDefault();
+                                 e.preventDefault();
+                                 /*
                                  var x = localStorage.getItem("hello");
                                  localStorage.setItem("hello", " ");
                                  if(x==" "){
@@ -209,9 +212,15 @@
 
                                  $("#sample<?=$i?>").toggleClass("grid-active");
                                  $("#background-toggle").toggleClass("background-active");
+                             });
+                             $("#background-toggle").click(function(e) {
+                                 e.preventDefault();
 
+                                 $("#sample<?=$i?>").removeClass("grid-active");
+                                 $("#background-toggle").removeClass("background-active");
                              });
                          </script>
+
                    <?php
 				   } 
 				   
@@ -297,6 +306,7 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
 
     .grid {
         max-width: 100%;
+
     }
 
     .grid-item {
@@ -332,22 +342,24 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         z-index: 90;
     }
     .grid-active{
+        position: fixed !important;
         left: 35% !important;
-        top: 5% !important;
+        top: 8% !important;
         right: 35% !important;;
         z-index: 99 !important;
     }
     .background-active{
-        background-color: rgba(0,0,0,0.7); position: absolute; width: 100%; height: 100%; z-index: 98;
+        background-color: rgba(0,0,0,0.7); position: fixed; width: 100%; height: 100%; z-index: 98;
     }
 </style>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
-        $("#mySidenav").toggleClass("active");
-        $("#main").toggleClass("main-active");
-        $("#toggle-bars").toggleClass("toggle-bars toggle-X");
+        $("#mySidenav").toggleClass("active" , 1000);
+        $("#main").toggleClass("main-active" , 1000);
+        $("#toggle-bars").toggleClass("toggle-bars toggle-X" , 1000);
     });
+
 
     function startTime() {
         var today = new Date();

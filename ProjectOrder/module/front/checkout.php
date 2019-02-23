@@ -5,7 +5,7 @@
 
 </style>
 <?php
-	if(! isset($_SESSION['user_idban']))
+	if(! isset($_COOKIE['username_login']))
 	{
 		header("location:?mod=dangnhap");
 	}
@@ -23,7 +23,7 @@
 	}
 	$country = $_SESSION['lang'];
 	//Lấy thông tin người dùng
-	$userID=$_SESSION['user_idban'];
+	$userID=$_COOKIE['userid_login'];
 	$cart=@$_SESSION['cart'];
 	
 	$sql_check = "select `id` from `of_user` where `active` = 2 and `id` = {$userID}";
@@ -93,7 +93,7 @@
 											mysqli_query($link,$sql);
 										}
 									}
-										//Insert note vao DB
+										//Insert note vao DB									
 										$sql="insert into `of_note_order` values(NULL,'$take_id','$note',0)";
 										mysqli_query($link,$sql);
 										$temp++;
@@ -188,7 +188,8 @@
 					
 					if(@$orderID != NULL)
 					{
-						@$_SESSION['order_wait']=$orderID;
+						//Cookies
+						setcookie("order_wait", $orderID, time() + (86400 * 30), "/");
 					}
 					if($_SESSION['lang']=='vi'){
 							echo '<script type="text/javascript">';
@@ -224,11 +225,6 @@
             th{
                 text-align:center;
             }
-            html,
-            body{
-                height: 100%;
-            }
-
         </style>
         <html style="">
         <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); font-family: 'Anton', sans-serif;">
@@ -239,12 +235,12 @@
 
 
                     <div class="container">
-                        <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
+                        <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px;">
                             <a href="?mod=cart&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
                             <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
-                            <div style="max-height: 450px; overflow-y: auto ; overflow-x: hidden" id="style-2">
+                            <div >
                             <form action="" method="post">
-                                <div class="table-responsive" >
+                                <div class="table-responsive"  style="max-height: 300px; overflow-y: auto ;" id="style-2">
                                     <table class="col-md-12 table table-striped" >
                                         <tr style="background-color: #f9d093; font-size: 18px;">
                                             <th class="text-left"><?=_DISH?></th>

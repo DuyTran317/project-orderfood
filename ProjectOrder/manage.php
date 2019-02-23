@@ -1,7 +1,18 @@
-<?php
+﻿<?php
 	require_once("lib/connect.php");
+
 	session_start();
-	ob_start();//cached output cho browser, de su dung ham header
+	ob_start();
+	$now = time();
+	if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
+    // this session has worn out its welcome; kill it and start a brand new one
+    session_unset();
+    session_destroy();
+    session_start();
+}
+
+// either new or old, it should live at most for another hour
+$_SESSION['discard_after'] = $now + 3600;
 ?><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
