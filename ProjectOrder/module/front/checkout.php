@@ -93,7 +93,7 @@
 											mysqli_query($link,$sql);
 										}
 									}
-										//Insert note vao DB
+										//Insert note vao DB									
 										$sql="insert into `of_note_order` values(NULL,'$take_id','$note',0)";
 										mysqli_query($link,$sql);
 										$temp++;

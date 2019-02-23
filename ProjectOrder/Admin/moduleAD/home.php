@@ -59,8 +59,8 @@
                         $kquser = mysqli_query($link,$sqluser);
                         $duser = mysqli_num_rows($kquser);
                         ?>
-                        <h3><?php echo $duser; ?></h3>
-
+                        <h3 id="value" style="color: white"><?php echo $duser; ?></h3>
+                        
                         <p>Số bàn hiện có</p>
                     </div>
                     <div class="icon">
@@ -79,7 +79,7 @@
                         $kqbill= mysqli_query($link,$sqlbill);
                         $dbill = mysqli_num_rows($kqbill);
                         ?>
-                        <h3><?php echo $dbill; ?></h3>
+                        <h3 id="value1" style="color: white"><?php echo $dbill; ?></h3>
 
                         <p>Số hóa đơn theo tháng</p>
                     </div>
@@ -99,7 +99,7 @@
                         $kqrate= mysqli_query($link,$sqlrate);
                         $drate = mysqli_num_rows($kqrate);
                         ?>
-                        <h3><?php echo $drate; ?></h3>
+                        <h3 id="value2" style="color: white"><?php echo $drate; ?></h3>
 
                         <p>Đánh giá</p>
                     </div>
@@ -115,11 +115,11 @@
                 <div class="small-box bg-red">
                     <div class="inner">
                         <?php 
-                        $sqlbill = "select * from `of_discount` where active = 1";
-                        $kqbill= mysqli_query($link,$sqlbill);
-                        $dbill = mysqli_num_rows($kqbill);
+                        $sqlbill1 = "select * from `of_discount` where active = 1";
+                        $kqbill1= mysqli_query($link,$sqlbill1);
+                        $dbill1 = mysqli_num_rows($kqbill1);
                         ?>
-                        <h3><?php echo $dbill; ?></h3>
+                        <h3 id="value3" style="color: white"><?php echo $dbill1; ?></h3>
 
                         <p>Mục Khuyến Mãi</p>
                     </div>
@@ -343,4 +343,23 @@ var chart = new CanvasJS.Chart("chartContainer", {
 chart.render();
 
 }
+function animateValue(id, start, end, duration) {
+        var range = end - start;
+        var current = start;
+        var increment = end > start? 1 : -1;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var obj = document.getElementById(id);
+        var timer = setInterval(function() {
+            current += increment;
+            obj.innerHTML = current;
+            if (current == end) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+
+    animateValue("value", 1,<?php echo $duser; ?> , 5000);
+    animateValue("value1", 1,<?php echo $dbill; ?> , 5000);
+    animateValue("value2", 1,<?php echo $drate; ?> , 5000);
+    animateValue("value3", 1,<?php echo $dbill1; ?> , 5000);
 </script>  

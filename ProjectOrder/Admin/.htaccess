@@ -5,6 +5,8 @@ RewriteRule "^danh-sach-san-pham.html$" "?mod=pro_list"
 RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list"  
 RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
 RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list" 
+RewriteRule "^sao-luu-du-lieu.html$" "?mod=backupdb" 
+
 
 RewriteRule "^danh-sach-bep-thanh-toan.html$" "?mod=kit_list"
 RewriteRule "^danh-sach-admin.html$" "?mod=ad_list"

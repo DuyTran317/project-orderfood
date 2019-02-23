@@ -122,7 +122,9 @@
                 ?>
             </div>
         </div>
-        <a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" onClick="return confirm('Bạn chắc chắn xóa đơn hàng?')" <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Hủy</button></a>
+        <a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" 
+        onClick="return confirm('Bạn chắc chắn xóa đơn hàng?')"> <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;
+        ">Hủy</button></a>
         <a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-6 btn btn-primary btn-lg"style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" >Xác Nhận</button></a><hr>
     </div>
     <?php
@@ -134,8 +136,16 @@
     ?>
     </div>
     
+    <?php
+		//Nhan vien dat them khi bep chua hoan thanh
+		$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
+		$wait=mysqli_query($link,$sql);
+		if(mysqli_num_rows($wait)>0)
+		{	
+	?>
 	<div style='float: right'><a href='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>'><input value='Thêm Món' class='btn btn-success'></a>
-                </div><br>
+    </div><br>
+    <?php } ?>
 
 </div>
 </body>
