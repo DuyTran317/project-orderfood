@@ -37,7 +37,7 @@
         <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="watch_homewolg.html" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
-            <div style="height: 250px; overflow-y: auto;" id="style-2" data-spy="scroll" data-offset="50">
+            <div style="height: 300px; overflow-y: auto;" id="style-2" data-spy="scroll" data-offset="50">
                 <?php
                 // Phần revise
                 //Chủng Loại

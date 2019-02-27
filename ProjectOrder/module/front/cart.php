@@ -145,9 +145,9 @@
                 <div align="right" class="col-xs-8">
                     <?php if(@count($cart)>0){ ?>
                         
-                      <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><i class="fas fa-sync"></i></button>
+                      <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><?=_UPDATE?></button>
                     
-                    <a class="btn btn-success btn-lg " id="btnorder" href="kt-checkout-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><i class="fas fa-check"></i></a>
+                    <a class="btn btn-success btn-lg " id="btnorder" href="kt-checkout-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><?=_CONFIRM?></a>
 					<?php }
 						  else
 						  {

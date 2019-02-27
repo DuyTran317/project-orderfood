@@ -440,12 +440,12 @@ Pusher.logToConsole = true;
         <script>
             $(".arrow-left").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
-                $(".scrolling-wrapper").scrollLeft(actualScroll-250)
+                $(".scrolling-wrapper").animate( { scrollLeft: '-=450' }, 200);
                 ;
             })
             $(".arrow-right").mousedown(function(){
                 var actualScroll = $(".scrolling-wrapper").scrollLeft();
-                $(".scrolling-wrapper").scrollLeft(actualScroll+250)
+                $(".scrolling-wrapper").animate( { scrollLeft: '+=450' }, 200);
             })
         </script>
     <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 600px; overflow-y: scroll" > <!--mobile-->
