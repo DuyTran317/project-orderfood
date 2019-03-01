@@ -11,7 +11,7 @@
 	{
 		$num_table=$_GET['num_table'];
 	}
-	
+	//////
 	$sql="select * from `of_order` where `num_table`={$num_table} and `id`={$orderID}";
 	$rs=mysqli_query($link,$sql);
 	$r=mysqli_fetch_assoc($rs);

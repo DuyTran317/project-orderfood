@@ -133,8 +133,9 @@ if(isset($_GET['name']))
 		$sql="select * from `of_department` where `active`=1 order by `order` asc";
 		$rs=mysqli_query($link,$sql);
 		while($r=mysqli_fetch_assoc($rs)):
+		
 	?>
-
+		
     	<a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html">
         <div class=" col-md-4 col-sm-6" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">

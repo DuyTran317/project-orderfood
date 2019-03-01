@@ -19,7 +19,7 @@
 	$sql="select * from `of_order` where `num_table`={$num_table} and `id`={$id}";
 	$kq=mysqli_query($link,$sql);
 	$k=mysqli_fetch_assoc($rs);
-	
+	////////////////
 	if($r['active']==0)
 	{						
 		$sql="select * from `of_order_detail` where `order_id`={$id} and `active`=1";

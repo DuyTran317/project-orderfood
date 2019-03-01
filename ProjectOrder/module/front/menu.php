@@ -32,7 +32,9 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
+		$_SESSION['theloai'][$cate] = 1;
 	}
+	
 	?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -510,6 +512,14 @@ Pusher.logToConsole = true;
         </div>
         <?php } ?>
     </div>
+    <?php 
+		if(isset($_GET['remind']))
+		{
+			?>
+            	<a href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>"><button>skip</button></a>
+            <?php
+		}
+	?>
 </div>
 </div>
 </body>
@@ -604,6 +614,14 @@ Pusher.logToConsole = true;
 
         });
     }
-
+	function remind(id_ban, name_ban){
+		$.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{act: 3, id_ban: id_ban, name_ban: name_ban}
+			}).done(function(data){
+				
+				});
+	}
 </script>
 </html>

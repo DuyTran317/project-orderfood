@@ -37,6 +37,11 @@
 		{			
 			if(isset($_POST['goimon']))
 			{			
+				$sql="select * from `of_department` where `active`=1 order by `order` asc";
+				$rs=mysqli_query($link,$sql);
+				while($r=mysqli_fetch_assoc($rs)):
+				$_SESSION['theloai'][$r['id']] = 0;
+				endwhile;
 				$sql = "select * from `of_order` where `num_table`={$name_ban} and `active` !=1";
 				$sosanh = mysqli_query($link,$sql);
 				if(mysqli_num_rows($sosanh) > 0)

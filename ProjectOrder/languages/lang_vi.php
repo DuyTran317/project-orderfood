@@ -58,3 +58,4 @@ define("_PRICE2", "Giá");
 define("_AGAIN", "Cảm ơn và hẹn gặp lại");
 define("_NODISHES", "Chưa có món ăn cho thể loại này!");
 define("_ODEREDAT", "Đặt món");
+define("_REMINDSEEMENU", "Bạn có muốn đặt thêm");
