@@ -2,9 +2,10 @@
 	session_start();
 	require_once("../../lib/connect.php");
 	$act=0;
+
 	if(isset($_POST['act'])){
 		$act=$_POST['act'];
-	}//$act == 1 check food    == 2 update qty food
+	}//$act == 1 check food    == 2 update qty food		== 3 remind custumer see menu
 	if($act == 1)
 	{
 		if(isset($_POST['id_food']))
@@ -47,4 +48,6 @@
 		}
 		echo number_format($total);
 	}
+	
+	
 ?>

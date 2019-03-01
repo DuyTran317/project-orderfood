@@ -60,3 +60,4 @@ define("_NODISHES", "Chưa có món ăn cho thể loại này!");
 define("_ODEREDAT", "Đặt món");
 define("_CONFIRM", "Xác nhận");
 define("_UPDATE", "Cập nhật");
+

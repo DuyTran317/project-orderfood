@@ -65,4 +65,33 @@
 	</script>
 <?php
 	}
+	if($act == 4)
+	{
+		if(isset($_GET['id_ban'])&&isset($_GET['name_ban']))
+		{
+			$temp = 1;
+			foreach($_SESSION['theloai'] as $k => $v)
+			{
+				$cate = $k;
+				if($v == 0)
+				{
+					$temp=0;
+					//$_SESSION['theloai'][$k] = 1;
+					if(isset($_GET['thanhtoan']))
+						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&remind=1");
+						else
+						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&remind=1&thanhtoan=1");
+					break;
+				}
+				
+			}
+			
+                	if($temp==1) {
+						if(isset($_GET['thanhtoan'])) 
+						header("location:index.php?mod=checkout&id_ban={$_GET['id_ban']}&name_ban={$_GET['name_ban']}&cate={$cate}&thanhtoan=1");
+						else
+						header("location:index.php?mod=checkout&id_ban={$_GET['id_ban']}&name_ban={$_GET['name_ban']}&cate={$cate}");
+					}
+		}
+	}
 ?>

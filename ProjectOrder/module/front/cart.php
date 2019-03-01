@@ -147,7 +147,9 @@
                         
                       <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><?=_UPDATE?></button>
                     
-                    <a class="btn btn-success btn-lg " id="btnorder" href="kt-checkout-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><?=_CONFIRM?></a>
+
+                    <a class="btn btn-success btn-lg " id="btnorder" href="index.php?mod=cart_process&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&act=4<?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><i class="fas fa-check"></i></a>
+
 					<?php }
 						  else
 						  {
@@ -244,6 +246,15 @@
 			data:{id_food: id, qty: qty, act: 2}
 			}).done(function(data){
 				document.getElementById("total").innerHTML = data;
+				});
+	}
+	function remind(id_ban, name_ban){
+		$.ajax({
+			url:'module/front/ajax_order.php',
+			type:'POST',
+			data:{act: 3, id_ban: id_ban, name_ban: name_ban}
+			}).done(function(data){
+				
 				});
 	}
 </script>

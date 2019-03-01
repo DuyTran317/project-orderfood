@@ -2,6 +2,11 @@
 
 if(isset($_POST['user']))
 {
+	$sql="select * from `of_department` where `active`=1 order by `order` asc";
+		$rs=mysqli_query($link,$sql);
+		while($r=mysqli_fetch_assoc($rs)):
+		$_SESSION['theloai'][$r['id']] = 0;
+		endwhile;
 	$user=$_POST['user'];
 	
 	//Kiem tra bang cach truy van vao DB
