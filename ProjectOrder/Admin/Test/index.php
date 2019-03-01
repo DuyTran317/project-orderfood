@@ -21,7 +21,7 @@ if(isset($_POST['btnExport'])){
 	$sheet->setCellValue('D'.$rowCount,'Tổng tiền');
 	$sheet->setCellValue('E'.$rowCount,'Ngày');
 
-	$result = $mysqli->query("SELECT * FROM of_bill");
+	$result = $mysqli->query("SELECT * FROM of_bill where `date` <= '{$dateto}' and `date` >= '{$datefrom}'");
 	while($row = mysqli_fetch_array($result)){
 		$rowCount++;
 		$sheet->setCellValue('A'.$rowCount,$row['id']);
@@ -51,6 +51,32 @@ if(isset($_POST['btnExport'])){
 }
 
 
+?>
+<?php
+    if(isset($_POST['datefrom']))
+    {
+        $datefrom=$_POST['datefrom'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($datefrom,0,2);
+        $m= substr($datefrom,3,2);
+        $y= substr($datefrom,6,4);
+        
+        $datefrom="{$y}-{$m}-{$d} 00:00:00";     
+    }
+    if(isset($_POST['dateto']))
+    {
+        $dateto=$_POST['dateto'];
+        
+        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
+        $d= substr($dateto,0,2);
+        $m= substr($dateto,3,2);
+        $y= substr($dateto,6,4);
+        
+        $dateto="{$y}-{$m}-{$d} 23:59:59";
+
+    }   
+   
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,15 +135,17 @@ if(isset($_POST['btnExport'])){
         <div class="col-md-6">
             <h1><b>Truy xuất dữ liệu</b></h1>
             <h2>Bạn có thể in ra bản báo cáo dữ liệu theo ngày theo định dạng excel</h2><br>
+            <form method="POST" action="index.php">
             <div class="form-group form-group-lg row">
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" id="datepickerfrom" placeholder="Từ">
+                    <input type="text" class="datefrom form-control" id="datepickerfrom" placeholder="Từ" readonly="" name="datefrom">
                 </div>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" id="datepickerto" placeholder="Đến">
+                    <input type="text" class="dateto form-control" id="datepickerto" placeholder="Đến" readonly="" name="dateto">
                 </div>
             </div>
-            <button class="btn btn-info col-xs-12 btn-lg"><b>Tìm Kiếm</b></button>
+            <button type="submit" class="btn btn-info col-xs-12 btn-lg"><b>Tìm Kiếm</b></button>
+       		</form>
         </div>
         <br><br>
         <div class="col-md-6">
@@ -126,32 +154,63 @@ if(isset($_POST['btnExport'])){
                 <th>
                     <tr class="info">
                         <th>
-                            dsfs
+                            Mã Hóa Đơn
                         </th>
                         <th>
-                            dsfs
+                            Mã Order
                         </th>
                         <th>
-                            dsfs
+                           Bàn
                         </th>
                         <th>
-                            dsfs
+                            Tổng tiền
+                        </th>
+                        <th>
+                            Ngày
                         </th>
                     </tr>
-                    <tr>
-                        <td>
-                            dsfs
-                        </td>
-                        <td>
-                            dsfs
-                        </td>
-                        <td>
-                            dsfs
-                        </td>
-                        <td>
-                            dsfs
-                        </td>
-                    </tr>
+                    <?php
+                            if(isset($_POST['datefrom'])&&isset($_POST['dateto'])){
+                                if($datefrom>$dateto)
+                                    {
+                                        echo "<script type='text/javascript'>";
+                                            echo "setTimeout(function () { swal('Lỗi',
+                                                          'Bạn hãy chọn đúng ngày!',
+                                                          'error');";
+                                            echo "},1);</script>";
+                                        }
+                            $sql_bill = "select `code_order`,`order_id`,`num_table`,`total`,`date` from `of_bill` where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
+                            $i=1;
+                            $kq_bill = mysqli_query($mysqli,$sql_bill);
+                        }else{
+							
+                            $sql_bill = "select * from `of_bill` where DATE(`date`) =  CURDATE()";
+                            $i=1;
+                            $kq_bill = mysqli_query($mysqli,$sql_bill); 
+							                        }
+                            while($d_bill=mysqli_fetch_assoc($kq_bill))
+                            {
+                            ?>
+                            <tr>
+                               
+                                <td><?= $d_bill['code_order'] ?></td>
+                                <td><?= $d_bill['order_id'] ?></td>
+                               	<td><?= $d_bill['num_table'] ?></td>
+                               	<td><?= number_format($d_bill['total']) ?></td>
+                               	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td>
+                            </tr>
+                           
+                            <?php } ?>
+							 <tr>
+                               <?php 
+                               	$sql_bill1 = "select sum(total) as tongtien from `of_bill` where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
+	                            
+	                            $kq_bill1 = mysqli_query($mysqli,$sql_bill1);
+	                            $d_bill1=mysqli_fetch_assoc($kq_bill1)
+                               ?>
+                                <td>Tổng Tiền:<?= number_format($d_bill1['tongtien']) ?></td>
+                               
+                            </tr>
                 </th>
             </table>
             <div align="right">
@@ -165,13 +224,15 @@ if(isset($_POST['btnExport'])){
 
 </body>
 <script>
+     
+
     $('#datepickerfrom').datepicker({
         dateFormat: 'dd/mm/yy',
-        startDate: '-3d',
+      
     });
     $('#datepickerto').datepicker({
         dateFormat: 'dd/mm/yy',
-        startDate: '-3d',
+     
     });
 </script>
 </html>
