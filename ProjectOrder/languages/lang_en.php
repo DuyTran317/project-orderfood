@@ -58,4 +58,7 @@ define("_PRICE2", "Price");
 define("_AGAIN", "Thank you and See you Again");
 define("_NODISHES", "Currently there're no products for this category!");
 define("_ODEREDAT", "Ordered at");
-define("_REMINDSEEMENU", "Bạn có muốn đặt thêm");
+define("_CONFIRM", "Confirm");
+define("_UPDATE", "Update");
+define("_UNAVAILABLE", "Update");
+

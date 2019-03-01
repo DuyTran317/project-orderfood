@@ -266,7 +266,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="sao-luu-du-lieu.html"><i class="fa fa-circle-o"></i> Sao lưu dữ liệu</a></li>
-                    
+                    <li><a href="Test"><i class="fa fa-circle-o"></i> Test</a></li>
                 </ul>
             </li>
             

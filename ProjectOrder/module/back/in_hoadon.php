@@ -363,7 +363,7 @@
                     <div style="border-bottom: dashed 1px; margin: 0.2em"></div>
                     <table class=" word-wrap no-border" style="font-size: .9em;">
                         <tr style=" height: 25px; font-size: .9em">
-                            <th class="text-left" ><?=_NAME?></th>
+                            <th class="text-left" style="width: 40%"><?=_NAME?></th>
                             <th class="text-center"><?=_QTY2?></th>
                             <th class="text-center"><?=_PRICE2?></th>
                             <th class="text-left"><?=_TOTALPRICE?></th>

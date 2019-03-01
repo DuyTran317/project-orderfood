@@ -100,7 +100,7 @@
                 <?php
 				if($dem>0){
             echo "
-                 <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button><div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}'><input value='Thêm Món' class='btn btn-success'></a>
+                 <button type=\"submit\" class=\"btn btn-warning btn-lg\" name=\"update\"><i class=\"fas fa-sync\"></i> </button><div style='float: right'><a href='?mod=add_food_nhanvien&id={$id}&num_table={$num_table}' class='btn btn-success'>Thêm Món</a>
                 </div><br>
 ";
             }
@@ -143,7 +143,7 @@
 		if(mysqli_num_rows($wait)>0)
 		{	
 	?>
-	<div style='float: right'><a href='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>'><input value='Thêm Món' class='btn btn-success'></a>
+	<div style='float: right'><a href='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>' class="btn btn-success">Thêm Món</a>
     </div><br>
     <?php } ?>
 
