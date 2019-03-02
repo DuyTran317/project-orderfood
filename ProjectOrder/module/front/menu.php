@@ -513,7 +513,7 @@ Pusher.logToConsole = true;
         <?php } ?>
     </div>
     <?php 
-		if(isset($_GET['remind']))
+		if(isset($_SESSION['remind']) && $_SESSION['remind']==1)
 		{
 			?>
             	<a href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>"><button>skip</button></a>

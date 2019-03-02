@@ -77,10 +77,11 @@
 				{
 					$temp=0;
 					//$_SESSION['theloai'][$k] = 1;
+					$_SESSION['remind'] = 1;
 					if(isset($_GET['thanhtoan']))
-						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&remind=1");
+						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}");
 						else
-						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&remind=1&thanhtoan=1");
+						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&thanhtoan=1");
 					break;
 				}
 				

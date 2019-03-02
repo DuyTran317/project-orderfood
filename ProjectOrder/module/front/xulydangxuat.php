@@ -12,6 +12,7 @@ setcookie("username_login", $k['name'], time() - 3600, "/");
 setcookie("userid_login", $k['id'], time() - 3600, "/");
 
 unset($_SESSION['cart']);
+unset($_SESSION['remind']);
 
 header("location:login.html");
 ?>
