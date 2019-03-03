@@ -319,3 +319,29 @@ body{
 .hinh_detail{
 	height:2000px;
 }
+@-webkit-keyframes hot_tt {
+ 0% { color: #33F; } 
+ 50% { color: #606;  } 
+ 100% { color: #900;  } 
+}
+@-moz-keyframes hot_tt { 
+ 0% { color: #33F;  } 
+ 50% { color: #606;  }
+ 100% { color: #900;  } 
+}
+@-o-keyframes hot_tt { 
+ 0% { color: #33F; } 
+ 50% { color: #606; } 
+ 100% { color: #900;  } 
+}
+@keyframes hot_tt { 
+ 0% { color: #33F;  } 
+ 50% { color: #606;  }
+ 100% { color: #900;  } 
+} 
+.hot_tt {
+ -webkit-animation: hot_tt 700ms infinite;
+ -moz-animation: hot_tt 700ms infinite; 
+ -o-animation: hot_tt 700ms infinite; 
+ animation: hot_tt 700ms infinite;
+}

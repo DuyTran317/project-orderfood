@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	if(isset($_GET['id_ban']))
 	{
 		$id_ban=$_GET['id_ban'];
