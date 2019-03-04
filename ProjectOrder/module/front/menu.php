@@ -247,7 +247,9 @@ Pusher.logToConsole = true;
 
         <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
             <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="javascript:void()">
-                <h3 > <?=_TABLE?> <?=$name?>  </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                <h3 > <?=_TABLE?> <?=$name?>&nbsp;&nbsp;&nbsp; 
+                	<span style="font-style:italic; background-color:#CCC" class="hot_tt btn btn-info;">&nbsp;MENU&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-double-down"></i></span>
+                </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
             </a>
             <div id="demo" class="collapse">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" >
@@ -513,7 +515,7 @@ Pusher.logToConsole = true;
         <?php } ?>
     </div>
     <?php 
-		if(isset($_GET['remind']))
+		if(isset($_SESSION['remind']) && $_SESSION['remind']==1 && count($_SESSION['cart'])>0)
 		{
 			?>
             	<a href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>"><button>skip</button></a>
