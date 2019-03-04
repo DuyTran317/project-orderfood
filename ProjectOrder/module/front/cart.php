@@ -148,7 +148,7 @@
                       <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><?=_UPDATE?></button>
                     
 
-                    <a class="btn btn-success btn-lg " id="btnorder" href="index.php?mod=cart_process&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&act=4<?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><i class="fas fa-check"></i></a>
+                    <a class="btn btn-success btn-lg " id="btnorder" href="index.php?mod=cart_process&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&act=4<?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>">Xác nhận</a>
 
 					<?php }
 						  else
