@@ -5,22 +5,11 @@
     }
 </style>
 <?php
-	if(isset($_GET['id']))
-	{
-		$id = $_GET['id'];
-	}
-	if(isset($_GET['id_ban']))
-	{
-		$id_ban=$_GET['id_ban'];
-	}
-	if(isset($_GET['name_ban']))
-	{
-		$name_ban=$_GET['name_ban'];
-	}
-	if(isset($_GET['cate']))
-	{
-		$cate=$_GET['cate'];
-	}
+	checkLoginCookie($_COOKIE['username_login']);
+	$id = takeGet('id');
+	$id_ban = takeGet('id_ban');
+	$name_ban = takeGet('name_ban');
+	$cate = takeGet('cate');
 
 	$sql="select * from `of_food` where `id`={$id}";
 	$res = mysqli_query($link,$sql);

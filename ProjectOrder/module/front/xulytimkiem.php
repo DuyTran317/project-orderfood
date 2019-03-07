@@ -1,14 +1,9 @@
 <?php
 session_start();
 $lang = $_SESSION['lang'].'_name';
-if(isset($_COOKIE['userid_login']))
-{
-	$id_ban=$_COOKIE['userid_login'];
-}
-if(isset($_COOKIE['username_login']))
-{
-	$id_name=$_COOKIE['username_login'];
-}
+$id_ban = takeValueCookie('userid_login');
+$id_name = takeValueCookie('username_login');
+
 if(isset($_POST['find']))
 	{
 	$name=$_POST['find'];
