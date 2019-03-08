@@ -1,9 +1,16 @@
 ﻿<?php
 	require_once("lib/connect.php");
+    /*require_once('lib/geoplugin.class/geoplugin.class.php');
+$geoplugin = new geoPlugin();
+// If we wanted to change the base currency, we would uncomment the following line
+// $geoplugin->currency = 'EUR';
 
+$geoplugin->locate();
+
+echo "Geolocation results for {$geoplugin->ip}: <br />\n";
+*/
 	session_start();
 	ob_start();
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,7 +19,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost:8888/project-orderfood/ProjectOrder/">
+<base href="http://localhost/project-orderfood/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -59,8 +66,8 @@ if(isset($_SESSION['lang'])){
     }
 </script>
 <body onload="setState() ; mobile_setState(); clearbiscuit()">
+<div id="ip"></div>
 <div id="loadingpage">
-
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <?php if(isset($_COOKIE['username_login'])){?>
@@ -176,8 +183,15 @@ if(isset($_SESSION['lang'])){
     </div>
 </div>
 <div id="loading"></div>
+
 </body>
 <script>
+    $.get("https://ipinfo.io/json", function (response) {
+        $("#ip").html("IP: " + response.ip);
+        $("#address").html("Location: " + response.city + ", " + response.region);
+        $("#details").html(JSON.stringify(response, null, 4));
+    }, "jsonp");
+
     function onReady(callback) {
         var intervalID = window.setInterval(checkReady, 1000);
 

@@ -25,14 +25,14 @@
 		$cate=$_GET['cate'];
 		$_SESSION['theloai'][$cate] = 1;
 	}
-	
 	?>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
-<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; ">
+<body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " >
 <p style="text-align:right; ">
 <script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
@@ -129,6 +129,29 @@ Pusher.logToConsole = true;
 
 </p>
 <div class="container-fluid" style="margin-top: 3%">
+    <div class="row">
+        <?php
+        if(isset($_SESSION['remind']) && $_SESSION['remind']==1 && count($_SESSION['cart'])>0)
+        {
+            ?>
+            <a style="font-size: 25px; text-decoration: none; color: black; padding:5px; background-color: orange; font-style: italic; font-weight: bold; position: absolute; top: 10px; right: 0px;"  href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>">skip >></a>
+            <script>
+                <?php
+                $catename = "select * from `of_department` where `id`={$cate}";
+                $get = mysqli_query($link, $catename);
+                $result = mysqli_fetch_assoc($get);
+                ?>
+                var duyoccho = confirm("Bạn có muốn chọn <?=$result['vi_name']?> không?");
+                if (duyoccho == false) {
+                    window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
+                }
+                <?php ?>
+            </script>
+            <?php
+        }
+        ?>
+    </div>
+
 	<div class="row" style=" padding: 20px;  font-family: 'Anton', sans-serif; background: url(img/front/pexels-photo-189451.jpeg)">
         <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover"> <!--desktop-->
             <h1 align="center"> <?=_TABLE?> <?=$name?></h1>
@@ -201,10 +224,12 @@ Pusher.logToConsole = true;
 			$r=mysqli_fetch_assoc($rs);
             ?>
                     <!--Kiểm Tra Hóa Đơn -->
-                    <?php						
+                    <?php
+                    $col_button="col-xs-12";
 						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
 						@$kt = mysqli_query($link,$sql);
 						if(@mysqli_num_rows($kt) > 0) {
+						    $col_button="col-xs-6";
 					?>
 					<a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button <?php
                         if(!isset($_SESSION['cart'])){
@@ -219,7 +244,7 @@ Pusher.logToConsole = true;
                         }
                             ?> style="background-color:#FF0; border-radius: 0px; font-size: 15px;" id="col_toggle"><?=_CHECK?></button></a>
                     <?php } ?>
-            <a class="hidden-xs" href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn col-xs-6 btn-lg <?=$buttoncol?>" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
+            <a class="hidden-xs" href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn <?=$col_button?> btn-lg" id="btn_GoiMon" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
@@ -238,9 +263,7 @@ Pusher.logToConsole = true;
 
         <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
             <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="javascript:void()">
-                <h3 > <?=_TABLE?> <?=$name?>&nbsp;&nbsp;&nbsp; 
-                	<span style="font-style:italic; background-color:#CCC" class="hot_tt btn btn-info;">&nbsp;MENU&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-double-down"></i></span>
-                </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                <h3 > <?=_TABLE?> <?=$name?></h3> <div style="position: absolute; top: 25px; right: 25px">Menu</div><div class="expand_caret fas fa-caret-up"></div>
             </a>
             <div id="demo" class="collapse">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" >
@@ -328,8 +351,8 @@ Pusher.logToConsole = true;
 
         </div>
 
-
         <div class="col-lg-9 col-md-8 hidden-xs hidden-sm" > <!--desktop-->
+
             <div class="scrolling-wrapper" id="style-2">
                 
             <?php
@@ -358,6 +381,7 @@ Pusher.logToConsole = true;
 			    $number1++;
 			    $number2++;
                 ?>
+
                 <div class="card"  style="  width: 300px; background:white; " id="col_trigger<?php  echo $number1;?>">
 
                     <label class="col-xs-12 status dark" style=" height: 350px;  background:url(img/sp/<?=$kq['img_url']?>);background-position:center; background-size:cover; cursor: pointer;" for="foodchosen<?php  echo $number1;?>">
@@ -443,7 +467,7 @@ Pusher.logToConsole = true;
                 $(".scrolling-wrapper").animate( { scrollLeft: '+=450' }, 200);
             })
         </script>
-    <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 600px; overflow-y: scroll" > <!--mobile-->
+    <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 100vw; overflow-y: scroll" > <!--mobile-->
         <?php
         $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
         $res= mysqli_query($link,$commsql);
@@ -505,14 +529,7 @@ Pusher.logToConsole = true;
         </div>
         <?php } ?>
     </div>
-    <?php 
-		if(isset($_SESSION['remind']) && $_SESSION['remind']==1 && count($_SESSION['cart'])>0)
-		{
-			?>
-            	<a href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>"><button>skip</button></a>
-            <?php
-		}
-	?>
+
 </div>
 </div>
 </body>
@@ -617,4 +634,5 @@ Pusher.logToConsole = true;
 				});
 	}
 </script>
+
 </html>

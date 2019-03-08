@@ -18,7 +18,7 @@
 
 
 
-<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/pexels-photo-326333.jpeg); height: 100% ">
+<body style="font-family: 'Anton', sans-serif; background:url(img/front/pexels-photo-326333.jpeg); background-size: cover; ">
 
 <div class="container" style="margin-top:2%;">
     <div class="row">

@@ -4,6 +4,10 @@ require('Classes/PHPExcel.php');
 require('connect/db_connect.php');
 
 if(isset($_POST['btnExport'])){
+	$datefr=$_POST['datefrom'];
+	$dateto=$_POST['dateto'];
+
+
 	$objExcel = new PHPExcel;
 	$objExcel->setActiveSheetIndex(0);
 	$sheet = $objExcel->getActiveSheet()->setTitle('databill');
@@ -21,7 +25,7 @@ if(isset($_POST['btnExport'])){
 	$sheet->setCellValue('D'.$rowCount,'Tổng tiền');
 	$sheet->setCellValue('E'.$rowCount,'Ngày');
 
-	$result = $mysqli->query("SELECT * FROM of_bill where `date` <= '{$dateto}' and `date` >= '{$datefrom}'");
+	$result = $mysqli->query("SELECT * FROM of_bill where `date` >= '{$datefr}' and `date` <= '{$dateto}'");
 	while($row = mysqli_fetch_array($result)){
 		$rowCount++;
 		$sheet->setCellValue('A'.$rowCount,$row['id']);
@@ -47,39 +51,10 @@ if(isset($_POST['btnExport'])){
 	header('Pragma: no-cache');
 	readfile($filename);
 	return;
-
 }
 
 
 ?>
-<?php
-    if(isset($_POST['datefrom']))
-    {
-        $datefrom=$_POST['datefrom'];
-        
-        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $d= substr($datefrom,0,2);
-        $m= substr($datefrom,3,2);
-        $y= substr($datefrom,6,4);
-        
-        $datefrom="{$y}-{$m}-{$d} 00:00:00";     
-    }
-    if(isset($_POST['dateto']))
-    {
-        $dateto=$_POST['dateto'];
-        
-        //Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
-        $d= substr($dateto,0,2);
-        $m= substr($dateto,3,2);
-        $y= substr($dateto,6,4);
-        
-        $dateto="{$y}-{$m}-{$d} 23:59:59";
-
-    }   
-   
-?>
-<!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -125,114 +100,47 @@ if(isset($_POST['btnExport'])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <script src="dist/js/sweetalert2.all.min.js"></script>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Export data</title>
-	<link rel="stylesheet" href="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Export data</title>
+    <link rel="stylesheet" href="">
 </head>
-<body>
-<div class="container-fluid" style="margin-top: 2%">
-    <div class="row">
-        <div class="col-md-6">
-            <h1><b>Truy xuất dữ liệu</b></h1>
-            <h2>Bạn có thể in ra bản báo cáo dữ liệu theo ngày theo định dạng excel</h2><br>
-            <form method="POST" action="index.php">
-            <div class="form-group form-group-lg row">
-                <div class="col-xs-6">
-                    <input type="text" class="datefrom form-control" id="datepickerfrom" placeholder="Từ" readonly="" name="datefrom">
+<body style="background-color: #f7f7f7">
+<div class="container-fluid">
+
+    <h1 align="center"><b><a href="#">ORDERFOOD</a></b></h1>
+        <div class="col-md-4 col-md-offset-4" style="background-color: white; padding: 10px;">
+            <h2 align="center"><b>Truy xuất dữ liệu</b></h2><hr>
+            <h3 style="color: grey">Bạn có thể in ra bản báo cáo dữ liệu theo ngày theo định dạng excel</h3>
+            <form method="POST" action="" autocomplete="off">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input id="datepickerfrom" type="text" name="datefrom" class="form-control"  placeholder="Ngày từ">
+                    </div>
+                    <div class="col-xs-6">
+                        <input id="datepickerto" type="text" name="dateto" class="form-control"  placeholder="Ngày đến"><br>
+                    </div>
                 </div>
-                <div class="col-xs-6">
-                    <input type="text" class="dateto form-control" id="datepickerto" placeholder="Đến" readonly="" name="dateto">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button name="btnExport" type="submit"  class="btn btn-info btn-lg" style="width: 100%">Xuất file</button>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-info col-xs-12 btn-lg"><b>Tìm Kiếm</b></button>
-       		</form>
+            </form>
         </div>
-        <br><br>
-        <div class="col-md-6">
-            <h1><b>Chi tiết </b></h1>
-            <table class="table">
-                <th>
-                    <tr class="info">
-                        <th>
-                            Mã Hóa Đơn
-                        </th>
-                        <th>
-                            Mã Order
-                        </th>
-                        <th>
-                           Bàn
-                        </th>
-                        <th>
-                            Tổng tiền
-                        </th>
-                        <th>
-                            Ngày
-                        </th>
-                    </tr>
-                    <?php
-                            if(isset($_POST['datefrom'])&&isset($_POST['dateto'])){
-                                if($datefrom>$dateto)
-                                    {
-                                        echo "<script type='text/javascript'>";
-                                            echo "setTimeout(function () { swal('Lỗi',
-                                                          'Bạn hãy chọn đúng ngày!',
-                                                          'error');";
-                                            echo "},1);</script>";
-                                        }
-                            $sql_bill = "select `code_order`,`order_id`,`num_table`,`total`,`date` from `of_bill` where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
-                            $i=1;
-                            $kq_bill = mysqli_query($mysqli,$sql_bill);
-                        }else{
-							
-                            $sql_bill = "select * from `of_bill` where DATE(`date`) =  CURDATE()";
-                            $i=1;
-                            $kq_bill = mysqli_query($mysqli,$sql_bill); 
-							                        }
-                            while($d_bill=mysqli_fetch_assoc($kq_bill))
-                            {
-                            ?>
-                            <tr>
-                               
-                                <td><?= $d_bill['code_order'] ?></td>
-                                <td><?= $d_bill['order_id'] ?></td>
-                               	<td><?= $d_bill['num_table'] ?></td>
-                               	<td><?= number_format($d_bill['total']) ?></td>
-                               	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td>
-                            </tr>
-                           
-                            <?php } ?>
-							 <tr>
-                               <?php 
-                               	$sql_bill1 = "select sum(total) as tongtien from `of_bill` where `date` <= '{$dateto}' and `date` >= '{$datefrom}' ";
-	                            
-	                            $kq_bill1 = mysqli_query($mysqli,$sql_bill1);
-	                            $d_bill1=mysqli_fetch_assoc($kq_bill1)
-                               ?>
-                                <td>Tổng Tiền:<?= number_format($d_bill1['tongtien']) ?></td>
-                               
-                            </tr>
-                </th>
-            </table>
-            <div align="right">
-                <form method="POST" >
-                    <button name="btnExport" type="submit" class="btn btn-lg btn-info">Xuất file</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </div>
+
+
 
 </body>
 <script>
-     
-
     $('#datepickerfrom').datepicker({
-        dateFormat: 'dd/mm/yy',
-      
+        dateFormat: 'd-m-y',
+
     });
     $('#datepickerto').datepicker({
-        dateFormat: 'dd/mm/yy',
-     
+        dateFormat: 'd-m-y',
+
     });
 </script>
 </html>
