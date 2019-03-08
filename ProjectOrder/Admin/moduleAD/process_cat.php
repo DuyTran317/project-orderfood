@@ -19,7 +19,7 @@ if(isset($_POST['vi_theloai']))
         $_SESSION['them'] = 'themthanhcong';
          header('Location:danh-sach-the-loai.html');
      }
-        else {
+    else {
          echo $sql_add;
         }
 }

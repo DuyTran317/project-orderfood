@@ -27,9 +27,8 @@
                                 <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
                                 <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="chungloai">
                                     <?php
-                                    $sql_de = "select * from of_department";
-                                    $kq_de = mysqli_query($link,$sql_de);
-                                    while($d_de=mysqli_fetch_assoc($kq_de))
+                                    $d = getFectch($link,'of_department');
+                                    foreach($d as $d_de)
                                     {?>
                                         <option value="<?= $d_de['id'] ?>" ><?= $d_de['vi_name'] ?></option>
                                     <?php } ?>
@@ -82,11 +81,6 @@
                         </form>
                     </div>
                     <!-- /.box -->
-
-
-
-
-
                 </div>
                 <!--/.col (left) -->
 

@@ -61,11 +61,9 @@
                             </thead>
                             <tbody>
                             <?php
-
-                            $sql_user = "select * from of_manage";
+                            $d = getFectch($link,'of_manage');
                             $i=1;
-                            $kq_user = mysqli_query($link,$sql_user);
-                            while($d_user=mysqli_fetch_assoc($kq_user))
+                            foreach($d as $d_user)
                             {
                                 ?>
                                 <tr>

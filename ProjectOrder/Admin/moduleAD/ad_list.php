@@ -32,11 +32,10 @@
                             <tbody>
                             <?php
 
-                            $sql_user = "select * from of_admin";
+                           
                             $i=1;
-                            $kq_user = mysqli_query($link,$sql_user);
-                            while($d_user=mysqli_fetch_assoc($kq_user))
-                            {
+                            $d = getFectch($link,'of_admin');
+                            foreach($d as $d_user){
                                 $a = $d_user['id'];
                                 ?>
                                 <tr>

@@ -72,10 +72,8 @@
                                 {
                                     $id=1;
                                 }
-
-                                $sql_cat = "select * from of_category";
-                                $kq_cat = mysqli_query($link,$sql_cat);
-                                while($d_cat=mysqli_fetch_assoc($kq_cat))
+                                $d = getFectch($link,'of_category');
+                                foreach($d  as $d_cat)
                                 {?>
                                 <option value="<?= $d_cat['id'] ?>" <?php if($d_cat['id']== $id ) echo "selected"; ?>><?= $d_cat['vi_name'] ?></option>
                                 <?php } ?>
