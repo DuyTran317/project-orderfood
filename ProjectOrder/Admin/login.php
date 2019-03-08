@@ -7,7 +7,7 @@ ob_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ORDER FOOD | Login</title>
+    <title> Login | ORDER FOOD</title>
     <link rel="shortcut icon" href="../img/front/icon.png" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -36,7 +36,9 @@ ob_start();
 <body class="hold-transition login-page">
 
 <?php
+
 include ("../lib/connect.php");
+include("controller/c_getLogin.php");
 if(isset($_POST['account']))
 {
 
@@ -58,10 +60,8 @@ if(isset($_POST['account']))
     }
     else
     {
-        $sql = "select * from of_admin where account= '$user' and password = '$pass'";
-        $kq = mysqli_query($link,$sql);
-        if(mysqli_num_rows($kq) == 0)
-        {
+        $kq = checkUser($user,$pass,$link);
+       if($kq == null){
             /*echo "Email hoặc Mật khẩu ko đúng";*/
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { swal("Đăng Nhập Thất bại?",
@@ -72,17 +72,14 @@ if(isset($_POST['account']))
 
         else {
 
-            $d=mysqli_fetch_assoc($kq);
-            $_SESSION['userad'] =  $d['name'];
-            $_SESSION['idad'] = $d['id'];
-            $_SESSION['catead'] = $d['cate'];
-            $_SESSION['success'] = 'thanhcong';/*array(
-                  'message' => 'Du lieu nhap vao ko hop le',
-                  'data' => $_POST,
-                );*/
-            if(isset($_POST['remember'])){ setcookie("userad","{$d['name']}",time()+999999);
-                setcookie("idad","{$d['id']}",time()+999999);
-                setcookie("catead","{$d['cate']}",time()+999999);
+            
+            $_SESSION['userad'] =  $kq['name'];
+            $_SESSION['idad'] = $kq['id'];
+            $_SESSION['catead'] = $kq['cate'];
+           
+            if(isset($_POST['remember'])){ setcookie("userad","{$kq['name']}",time()+999999);
+                setcookie("idad","{$kq['id']}",time()+999999);
+                setcookie("catead","{$kq['cate']}",time()+999999);
 
             }
 

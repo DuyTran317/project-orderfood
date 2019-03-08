@@ -29,7 +29,7 @@
 	}		
 ?>
 
-<div class="wrapper">
+<div class="wrapper" style="top: -20px;">
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -284,7 +284,7 @@
     </section>
 </div>
 <!-- /.content-wrapper -->
-    </div>
+ </div>
 <!-- ./wrapper -->
  
 <?php

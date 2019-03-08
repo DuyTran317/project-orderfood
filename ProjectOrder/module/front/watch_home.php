@@ -14,7 +14,7 @@
 			});
 		});
 		
-	</script>
+</script>
 
 
 
@@ -35,15 +35,14 @@
                 <div class="carousel-inner">
 
                     <?php
-                    $sql = "select * from `of_slider`";
-                    $slide=mysqli_query($link,$sql);
                     $count=0;
-                    while($show_slide = mysqli_fetch_assoc($slide)):
-                        $count++;
+                    $select = selectWithoutConditionArray($link, 'of_slider');
+					foreach($select as $show_slide){
+					$count++;
                         ?>
 
                         <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
-                            <img src="img/slider/<?=$show_slide['img_url']?>" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer">
+                            <div data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="background-image: url('img/slider/<?=$show_slide['img_url']?>') ;width:100%; height: 350px; cursor: pointer;background-position: center center; background-size: cover;"></div>
                         </div>
                         <?php if($show_slide['vi_content']!='')
                     { ?>
@@ -71,7 +70,7 @@
                             </div>
                         </div>
 
-                    <?php } endwhile ?>
+                    <?php } } ?>
 
                 </div>
 
@@ -107,9 +106,8 @@
    <br>
     <div class="row">
      <?php
-		$sql="select * from `of_department` where `active`=1 order by `order` asc";
-		$rs=mysqli_query($link,$sql);
-		while($r=mysqli_fetch_assoc($rs)):
+		$take = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
+		foreach($take as $r){
 	?>
 
     	<a href="wnl-watch_menuwolg-c9102ate<?=$r['id']?>.html">
@@ -120,7 +118,7 @@
             </div>
         </div>        
     	</a>
-    <?php endwhile ?>     
+    <?php } ?>     
         
     </div>
     

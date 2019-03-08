@@ -63,11 +63,9 @@
                             </thead>
                             <tbody>
                             <?php
-
-                            $sql_cat = "select * from of_department";
                             $i=1;
-                            $kq_cat = mysqli_query($link,$sql_cat);
-                            while($d_de=mysqli_fetch_assoc($kq_cat))
+                            $d = getFectch($link,'of_department');
+                            foreach($d as $d_de)
                             {
                             ?>
                             <tr>

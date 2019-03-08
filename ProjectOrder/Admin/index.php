@@ -1,6 +1,9 @@
 ﻿<?php
 session_start();
-ob_start(); ?>
+ob_start(); 
+
+?>
+
    <?php
     if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
     {
@@ -76,10 +79,11 @@ ob_start(); ?>
    ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
- 
-<?php include('moduleAD/menu.php') ?>
 <?php
 include ("../lib/connect.php");
+include('controller/c_getIndex.php');
+include('moduleAD/menu.php');
+
 $mod=@$_GET['mod'];
 if($mod=='') $mod='home';
 include("moduleAD/{$mod}.php");

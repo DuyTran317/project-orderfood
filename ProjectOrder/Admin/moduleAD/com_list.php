@@ -61,11 +61,9 @@
                             </thead>
                             <tbody>
                             <?php
-
-                            $sql_cat = "select * from `of_rate`";
-                            $i=1;
-                            $kq_cat = mysqli_query($link,$sql_cat);
-                            while($d_com=mysqli_fetch_assoc($kq_cat))
+                            $i =  0;
+                            $d = getFectch($link,'of_rate');
+                            foreach($d as $d_com)
                             {
                                 ?>
                                 <tr>

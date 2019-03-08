@@ -48,10 +48,9 @@ $name = takeGet('name');
                     <div class="carousel-inner">
                     
                       <?php
-						$sql = "select * from `of_slider`";
-						$slide=mysqli_query($link,$sql);
 						$count=0;
-						while($show_slide = mysqli_fetch_assoc($slide)):
+						$select = selectWithoutConditionArray($link, 'of_slider');
+						foreach($select as $show_slide){
 						$count++;
 					  ?>
                     
@@ -84,7 +83,7 @@ $name = takeGet('name');
                           </div>
                         </div>
                         
-                      <?php } endwhile ?>    
+                      <?php } } ?>    
 
                     </div>
 
@@ -119,10 +118,8 @@ $name = takeGet('name');
    <br>
     <div class="row">
     <?php
-		$sql="select * from `of_department` where `active`=1 order by `order` asc";
-		$rs=mysqli_query($link,$sql);
-		while($r=mysqli_fetch_assoc($rs)):
-		
+		$take = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
+		foreach($take as $r){
 	?>
 		
     	<a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html">
@@ -133,7 +130,7 @@ $name = takeGet('name');
             </div>
         </div>        
     	</a>
-    <?php endwhile ?>    
+    <?php } ?>    
         
     </div>
     

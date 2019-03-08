@@ -96,13 +96,12 @@ Pusher.logToConsole = true;
             <?php
 				// Phần revise 
 				//Chủng Loại
-            $counter=0;
-				$sql="select * from `of_department` where `active`=1 order by `order` asc";
-				$d=mysqli_query($link,$sql);
+            	$counter=0;
+				$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
 				$scroll=0;
-				while($r_dep=mysqli_fetch_assoc($d)):
-                    $counter++;
-				    $scroll++;
+				foreach($select as $r_dep){
+				$counter++;
+				$scroll++;
 			?>
 
                 <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a>
@@ -110,19 +109,18 @@ Pusher.logToConsole = true;
 
                 	<?php				
 						//Thể Loại
-						$sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']} order by `order` asc";
-						$c=mysqli_query($link,$sql);
-						while($r_cate=mysqli_fetch_assoc($c)):
+						$take = selectWithConditionArray_AcDeOrByOrAsc($link, 'of_category', $r_dep['id']);
+						foreach($take as $r_cate){
 					?>
 
                     <ul>
                         <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                     </ul>
 
-                    <?php endwhile ?>
+                    <?php } ?>
                 </div>
                 </div><hr>
-            <?php endwhile ?>
+            <?php } ?>
 
 
             </div>
@@ -143,26 +141,16 @@ Pusher.logToConsole = true;
             </script>
             <br>
             <?php
-            @$sql="select * from `of_order` where `id` = {$_COOKIE['order_wait']}";
-            $rs_t=mysqli_query($link,$sql);
-            @$r_t=mysqli_fetch_assoc($rs_t);
+			@$r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);            
             $buttoncol="col-xs-12";
-			$sql="select a.`id` as id_donhang  
-				from `of_order` as a, `of_order_detail` as b
-				where a.`id`=b.`order_id` and `num_table`={$name}				
-				group by a.`id`
-				order by a.`id` desc limit 0,1";
-			$rs=mysqli_query($link,$sql);
-
-			$r=mysqli_fetch_assoc($rs);
+			$r = selectIdOrderInMenu($link, $name);			
             ?>
                     <!--Kiểm Tra Hóa Đơn -->
-                    <?php
-                    $col_button="col-xs-12";
-						@$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
-						@$kt = mysqli_query($link,$sql);
+                    <?php		
+						@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);						
+                    	$col_button="col-xs-12";
 						if(@mysqli_num_rows($kt) > 0) {
-						    $col_button="col-xs-6";
+						$col_button="col-xs-6";
 					?>
 					<a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button <?php
                         if(!isset($_SESSION['cart'])){
@@ -181,8 +169,7 @@ Pusher.logToConsole = true;
             <?php
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                @$sql ="select `active` from `of_bill` where `order_id` = {$_COOKIE['order_wait']} and `active`=0";
-                @$tt = mysqli_query($link,$sql);
+				@$tt = selectActiveBill_OrAc($link, 'of_bill', $_COOKIE['order_wait']);
                 if(@mysqli_num_rows($tt) > 0)
                 {
                     ?>
@@ -205,9 +192,8 @@ Pusher.logToConsole = true;
                 // Phần revise
                 //Chủng Loại
                 $mobile_counter=0;
-                $sql="select * from `of_department` where `active`=1";
-                $d=mysqli_query($link,$sql);
-                while($r_dep=mysqli_fetch_assoc($d)):
+				$get = selectWithConditionArray_Act($link, 'of_department');
+				foreach($get as $r_dep){
                    $mobile_counter++;
                     ?>
                     <hr>
@@ -215,19 +201,18 @@ Pusher.logToConsole = true;
                     <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;" >
                         <?php
                         //Thể Loại
-                        $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
-                        $c=mysqli_query($link,$sql);
-                        while($r_cate=mysqli_fetch_assoc($c)):
+						$took = selectWithConditionArray_AcDep($link, 'of_category', $r_dep['id']);
+						foreach($took as $r_cate){
                             ?>
                             <ul>
                                 <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
-                        <?php endwhile ?>
+                        <?php } ?>
 
                     </div>
 
-                <?php endwhile ?>
+                <?php } ?>
 
 
                     <script>
@@ -246,23 +231,12 @@ Pusher.logToConsole = true;
 
             </div>
             <?php
-            @$sql="select * from `of_order` where `id` = {$_COOKIE['order_wait']}";
-            $rs_t=mysqli_query($link,$sql);
-            @$r_t=mysqli_fetch_assoc($rs_t);
-
-            $sql="select a.`id` as id_donhang  
-				from `of_order` as a, `of_order_detail` as b
-				where a.`id`=b.`order_id` and `num_table`={$name}				
-				group by a.`id`
-				order by a.`id` desc limit 0,1";
-            $rs=mysqli_query($link,$sql);
-
-            $r=mysqli_fetch_assoc($rs);
+            $r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
+            $r = selectIdOrderInMenu($link, $name);
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
-                @$sql ="select `active` from `of_bill` where `order_id` = {$_COOKIE['order_wait']} and `active`=0";
-                @$tt = mysqli_query($link,$sql);
+                @$tt = selectActiveBill_OrAc($link, 'of_bill', $_COOKIE['order_wait']);
                 if(@mysqli_num_rows($tt) > 0)
                 {
                     ?>
@@ -274,8 +248,8 @@ Pusher.logToConsole = true;
 
             <!--Kiểm Tra Hóa Đơn -->
             <?php
-            @$sql = "select * from `of_order` where `num_table` = {$name} and `id` ={$_COOKIE['order_wait']}";
-            @$kt = mysqli_query($link,$sql);
+			$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
+            
             if(@mysqli_num_rows($kt) > 0) {
                 ?>
                 <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
@@ -288,9 +262,8 @@ Pusher.logToConsole = true;
 
             <div class="scrolling-wrapper" id="style-2">
                 
-            <?php
-			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
-			$res= mysqli_query($link,$commsql);
+            <?php			
+			$res= selectFood($link, 'of_food', $cate);
             $number1=0;
             $number2=0;
 			$dem = mysqli_num_rows($res);
@@ -402,8 +375,7 @@ Pusher.logToConsole = true;
         </script>
     <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 100vw; overflow-y: scroll" > <!--mobile-->
         <?php
-        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
-        $res= mysqli_query($link,$commsql);
+        $res= selectFood($link, 'of_food', $cate);
         $number1=0;
         $number2=0;
 		

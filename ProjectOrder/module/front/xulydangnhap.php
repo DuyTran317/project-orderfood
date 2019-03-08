@@ -35,9 +35,6 @@ if(isset($_POST['user']))
 	{
 		//Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
 		$_SESSION['email']=$user;
-		$sql="update `of_user` set `active`= 2 where `id`={$id}";
-$rs=mysqli_query($link,$sql);
-
 ?>		
 		<script> 
 			alert('<?=_WRONGTABLENO?>');
