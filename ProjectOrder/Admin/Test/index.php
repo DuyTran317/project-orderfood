@@ -114,10 +114,10 @@ if(isset($_POST['btnExport'])){
             <form method="POST" action="" autocomplete="off">
                 <div class="row">
                     <div class="col-xs-6">
-                        <input id="datepickerfrom" type="text" name="datefrom" class="form-control"  placeholder="Ngày từ">
+                        <input id="datepickerfrom" type="text" name="datefrom" class="form-control"  placeholder="Ngày từ" required>
                     </div>
                     <div class="col-xs-6">
-                        <input id="datepickerto" type="text" name="dateto" class="form-control"  placeholder="Ngày đến"><br>
+                        <input id="datepickerto" type="text" name="dateto" class="form-control"  placeholder="Ngày đến" required><br>
                     </div>
                 </div>
                 <div class="row">
