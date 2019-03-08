@@ -31,7 +31,7 @@ $name = takeGet('name');
 
 
 
-<body style="background-color: #fff289; font-family: 'Anton', sans-serif; background-image:url(img/front/pexels-photo-326333.jpeg); height: 100% ">
+<body style=" font-family: 'Anton', sans-serif; background:url(img/front/pexels-photo-326333.jpeg); height: 100%; background-size: cover; ">
 
 <div class="container" style="margin-top:2%;">
     <div class="row">
@@ -55,7 +55,7 @@ $name = takeGet('name');
 					  ?>
                     
                         <div <?php if($count==1) echo"class='item active'"; else echo"class='item'";?>>
-                            <img src="img/slider/<?=$show_slide['img_url']?>" class="img-responsive" data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="width:100%; height: 350px; cursor: pointer;">
+                            <div data-toggle="modal" data-target="#<?=$show_slide['id']?>"  style="background-image: url('img/slider/<?=$show_slide['img_url']?>') ;width:100%; height: 350px; cursor: pointer;background-position: center center; background-size: cover;"></div>
                         </div>
                   <?php if($show_slide['vi_content']!='')
 						{ ?>

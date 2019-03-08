@@ -86,9 +86,7 @@
 
             <div  class="collapse in" style="cursor: pointer">
                 <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
-                    <h3 > <?=_CATE?> 
-                    <span style="font-style:italic; background-color:#CCC" class="hot_tt btn btn-info;">&nbsp;MENU&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-double-down"></i></span> 
-                    </h3> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                    <h3 > <?=_CATE?></h3> <div style="position: absolute; top: 25px; right: 25px">Menu</div> <div class="expand_caret fas fa-caret-up" align="right"></div>
                 </a>
                 
                 <div class="collapse out" id="demo">
