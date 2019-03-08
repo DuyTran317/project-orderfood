@@ -34,6 +34,7 @@
 	//Include Controllers
 	include("controller/c_cookie.php");
 	include("controller/c_takeGet.php");
+	include("controller/c_sql_select.php");
 ?>
 
 </head>

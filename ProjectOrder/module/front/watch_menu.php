@@ -20,12 +20,9 @@
         transform: scale(1.6) rotate(180deg);
     }
 </style>
-	<?php
-	if(isset($_GET['cate']))
-	{
-		$cate=$_GET['cate'];
-	}
-	?>
+<?php
+	$cate = takeGet('cate');
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,32 +39,30 @@
                 // Phần revise
                 //Chủng Loại
                 $counter=0;
-                $sql="select * from `of_department` where `active`=1 order by `order` asc";
-                $d=mysqli_query($link,$sql);
+                $select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
                 $scroll=0;
-                while($r_dep=mysqli_fetch_assoc($d)):
-                    $counter++;
-                    $scroll++;
-                    ?>
+                foreach($select as $r_dep){
+				$counter++;
+				$scroll++;
+				?>
                     <hr>
                     <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
                     <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
 
                         <?php
                         //Thể Loại
-                        $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']} order by `order` asc";
-                        $c=mysqli_query($link,$sql);
-                        while($r_cate=mysqli_fetch_assoc($c)):
-                            ?>
+                        $take = selectWithConditionArray_AcDeOrByOrAsc($link, 'of_category', $r_dep['id']);
+						foreach($take as $r_cate){
+                        ?>
                             <ul>
                                 <a style="color: white; text-decoration: none" href="wnl-watch_menuwolg-c9102ate<?=$r_cate['id']?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                             </ul>
 
-                        <?php endwhile ?>
+                        <?php } ?>
 
                     </div>
 
-                <?php endwhile ?>
+                <?php } ?>
             </div>
 
             <script>
@@ -102,9 +97,8 @@
                     // Phần revise
                     //Chủng Loại
                     $mobile_counter=0;
-                    $sql="select * from `of_department` where `active`=1";
-                    $d=mysqli_query($link,$sql);
-                    while($r_dep=mysqli_fetch_assoc($d)):
+                    $get = selectWithConditionArray_Act($link, 'of_department');
+					foreach($get as $r_dep){
                         $mobile_counter++;
                         ?>
                         <hr>
@@ -112,19 +106,18 @@
                         <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
                             <?php
                             //Thể Loại
-                            $sql="select * from `of_category` where `active`=1 and `department_id` = {$r_dep['id']}";
-                            $c=mysqli_query($link,$sql);
-                            while($r_cate=mysqli_fetch_assoc($c)):
+                            $took = selectWithConditionArray_AcDep($link, 'of_category', $r_dep['id']);
+							foreach($took as $r_cate){
                                 ?>
                                 <ul>
                                     <a style="color: white; text-decoration: none" href="wnl-watch_menuwolg-c9102ate<?=$r_cate['id']?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
                                 </ul>
 
-                            <?php endwhile ?>
+                            <?php } ?>
 
                         </div>
 
-                    <?php endwhile ?>
+                    <?php } ?>
                     <script>
 
                         var url = window.location;
@@ -148,8 +141,7 @@
             <div class="scrolling-wrapper" id="style-2">
                 
             <?php
-			$commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
-			$res= mysqli_query($link,$commsql);
+			$res= selectFood($link, 'of_food', $cate);
             $number1=0;
             $number2=0;
 			$dem = mysqli_num_rows($res);
@@ -234,8 +226,7 @@
         </script>
     <div class="col-xs-12 hidden-md hidden-lg col-sm-12 card2"  style="height: 500px; overflow-y: scroll" > <!--mobile-->
         <?php
-        $commsql="select * from `of_food` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
-        $res= mysqli_query($link,$commsql);
+        $res= selectFood($link, 'of_food', $cate);
         $number1=0;
         $number2=0;
 		
