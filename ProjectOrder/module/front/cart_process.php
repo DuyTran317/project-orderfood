@@ -1,24 +1,15 @@
 ﻿<?php
-	if(isset($_GET['id_ban']))
-	{
-		$id_ban=$_GET['id_ban'];
-	}
-	if(isset($_GET['name_ban']))
-	{
-		$name_ban=$_GET['name_ban'];
-	}
-	if(isset($_GET['cate']))
-	{
-		$cate=$_GET['cate'];
-	}
+	$id_ban = takeGet('id_ban');
+	$name_ban = takeGet('name_ban');
+	$cate = takeGet('cate');
 	
 	//$_SESSION['cart']= array(1=>2,360=>5);
 	
 	@$cart=$_SESSION['cart'];
 	
-	$act=$_GET['act'];//act=1:Thêm, act=2:Sửa, act=3:Xóa
+	$act=takeGet('act');//act=1:Thêm, act=2:Sửa, act=3:Xóa
 	
-	@$id = $_GET['id'];
+	@$id = takeGet('id');
 	
 	//Tang san pham them ++, khi khach hàng chon them
 	if($act==1)

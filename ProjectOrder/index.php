@@ -19,7 +19,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost/project-orderfood/ProjectOrder/">
+<base href="http://localhost:8888/project-orderfood/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -36,6 +36,12 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="lib/sweetalert2.all.min.js"></script>
+
+<?php
+	//Include Controllers
+	include("controller/c_cookie.php");
+	include("controller/c_takeGet.php");
+?>
 
 </head>
 <?php

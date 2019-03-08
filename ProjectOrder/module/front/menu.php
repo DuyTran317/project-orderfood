@@ -17,18 +17,9 @@
 
 </style>
 	<?php
-	if(!isset($_COOKIE['username_login']))
-	{
-		header("location:?mod=dangnhap");
-	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['name']))
-	{
-		$name=$_GET['name'];
-	}
+	checkLoginCookie($_COOKIE['username_login']);
+	$id = takeGet('id');
+	$name = takeGet('name');
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];

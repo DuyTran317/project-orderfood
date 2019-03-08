@@ -5,22 +5,11 @@
 
 </style>
 <?php
-	if(! isset($_COOKIE['username_login']))
-	{
-		header("location:?mod=dangnhap");
-	}
-	if(isset($_GET['id_ban']))
-	{
-		$id_ban=$_GET['id_ban'];
-	}
-	if(isset($_GET['name_ban']))
-	{
-		$name_ban=$_GET['name_ban'];
-	}
-	if(isset($_GET['cate']))
-	{
-		$cate=$_GET['cate'];
-	}
+	checkLoginCookie($_COOKIE['username_login']);
+	$id_ban = takeGet('id_ban');
+	$name_ban = takeGet('name_ban');
+	$cate = takeGet('cate');
+	
 	$country = $_SESSION['lang'];
 	//Lấy thông tin người dùng
 	$userID=$_COOKIE['userid_login'];

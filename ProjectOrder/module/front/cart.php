@@ -1,16 +1,7 @@
 <?php
-  	if(isset($_GET['id_ban']))
-	{
-		$id_ban=$_GET['id_ban'];
-	}
-	if(isset($_GET['name_ban']))
-	{
-		$name_ban=$_GET['name_ban'];
-	}
-	if(isset($_GET['cate']))
-	{
-		$cate=$_GET['cate'];
-	}
+	$cate = takeGet('cate');
+	$id_ban = takeGet('id_ban');
+	$name_ban = takeGet('name_ban');
 ?>
 <script type="text/javascript">
     function hoi(id){
