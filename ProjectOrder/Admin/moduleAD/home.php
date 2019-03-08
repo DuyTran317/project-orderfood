@@ -358,8 +358,8 @@ function animateValue(id, start, end, duration) {
         }, stepTime);
     }
 
-    animateValue("value", -1,<?php echo $duser; ?> , 5000);
-    animateValue("value1", -1,<?php echo $dbill; ?> , 5000);
-    animateValue("value2", -1,<?php echo $drate; ?> , 5000);
-    animateValue("value3", -1,<?php echo $dbill1; ?> , 5000);
+    animateValue("value", -1,<?php echo $duser; ?> , 1000);
+    animateValue("value1", -1,<?php echo $dbill; ?> , 1000);
+    animateValue("value2", -1,<?php echo $drate; ?> , 1000);
+    animateValue("value3", -1,<?php echo $dbill1; ?> , 1000);
 </script>  
