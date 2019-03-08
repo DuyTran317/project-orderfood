@@ -31,8 +31,6 @@
                             </thead>
                             <tbody>
                             <?php
-
-                           
                             $i=1;
                             $d = getFectch($link,'of_admin');
                             foreach($d as $d_user){

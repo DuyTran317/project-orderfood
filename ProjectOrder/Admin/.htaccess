@@ -6,6 +6,7 @@ RewriteRule "^danh-sach-the-loai.html$" "?mod=cat_list"
 RewriteRule "^danh-sach-chung-loai.html$" "?mod=de_list" 
 RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list" 
 RewriteRule "^sao-luu-du-lieu.html$" "?mod=backupdb" 
+RewriteRule "^home.html$" "../?mod=home" 
 
 
 
