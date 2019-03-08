@@ -1,74 +1,10 @@
-<script src="lib/pusher.min.js"></script>
-  <script type="text/javascript">
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-     //chanel trùng voi chanel trong send.php
-    channel.bind('notices', function () {
-		
-        //code xử lý khi có dữ liệu từ pushe
-		 window.location.reload();
-         //kết thúc code xử lý thông báo
-    });
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('aaee585e94d28c3959f4', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu_nhanvien', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('51e37eb7c055b1a5ea68', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('login', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-	 Pusher.logToConsole = true;
-    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('05d67b2777b04b8a83db', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu2', function (data) {
-
-        //code xử lý khi có dữ liệu từ pusher
-		
-		window.location.reload();
-		
-        // kết thúc code xử lý thông báo
-    });
-</script>
-
+<?php 
+getPusher('770fa0ac91f2e68d3ae7', 'Reload', 'newbill'); 
+getPusher('05d67b2777b04b8a83db', 'Reload', 'loadmenu2');
+getPusher('161363aaa8197830a033', 'Reload', 'notices');
+getPusher('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien');
+getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
+?>
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">

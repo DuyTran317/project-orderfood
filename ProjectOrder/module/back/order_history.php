@@ -43,22 +43,6 @@
 		$date_pickto="{$y}-{$m}-{$d} 23:59:59";		
 	}
 ?>
-<!--Reload Page-->
-<!--<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
-<script src="lib/pusher.min.js"></script>
-  <script type="text/javascript">
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('notices', function () {
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-</script>-->
 <style>
     table.dataTable{
         border-collapse:collapse;

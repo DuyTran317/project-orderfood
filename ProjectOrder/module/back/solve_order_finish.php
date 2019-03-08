@@ -39,20 +39,7 @@
 		
 		
 		// reload bep
-	require('Pusher.php');
-			$options = array(
-			'cluster' => 'ap1',
-			'encrypted' => true
-			);
-			$pusher = new Pusher(
-			'05d67b2777b04b8a83db',
-			'd7e2016ecdb311bba59b',
-			'636618',
-			$options
-			);
-			$data['name']=$num_table;
-			$pusher->trigger('Reload', 'loadmenu2', @$data);
-			
+			sendPusher2('05d67b2777b04b8a83db', 'd7e2016ecdb311bba59b', '636618', 'Reload', 'loadmenu2',$num_table);
 	}
 		
 		$sql1 = "select * from `of_order_detail` where `order_id`={$idorder} and `active` = 1 and `food_id` = {$id}";

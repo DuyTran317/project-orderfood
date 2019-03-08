@@ -43,19 +43,6 @@
 	}
 	
 	//pussher
-	require('Pusher.php');
-	$options = array(
-	'cluster' => 'ap1',
-    'encrypted' => true
-	);
- 	$pusher = new Pusher(
-    'a8fd52cd1e38d4a2bcf1',
-    '3df7cccb3390bcafa3e5',
-    '636610',
-    $options
-	);
-	$data['name']=$num_table;
-	$pusher->trigger('Reload', 'delorder', $data);
-	
+	sendPusher2('a8fd52cd1e38d4a2bcf1', '3df7cccb3390bcafa3e5', '636610', 'Reload', 'delorder',$num_table);
 	header("location:?mod=home_nhanvien");
 ?>

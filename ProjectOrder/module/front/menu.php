@@ -34,81 +34,16 @@
 </head>
 <body style="background:url(img/front/pexels-photo-326333.jpeg);  background-position:center; background-size:cover  ;font-family: 'Anton', sans-serif; " >
 <p style="text-align:right; ">
+<?php 
+getPusher2('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien', $name);
+getPusher2('770fa0ac91f2e68d3ae7', 'Reload', 'newbill', $name);
+getPusher2('05d67b2777b04b8a83db', 'Reload', 'loadmenu2', $name);
+getPusher('161363aaa8197830a033', 'Reload', 'loadmenu');
+getPusher2('0d68e38f87eb0271863b', 'Reload', 'delfood', $name);
+getPusher2('a8fd52cd1e38d4a2bcf1', 'Reload', 'delorder', $name);
+?>
 <script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function(data) {
-		
-		if(data.name == <?= $name?>){
-		window.location.reload();
-		}
-    });
-
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('a8fd52cd1e38d4a2bcf1', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('delorder', function (data) {
-
-		if(data.name == <?= $name?>){
-		window.location.reload();
-		}
-        // kết thúc code xử lý thông báo
-    });
-
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('0d68e38f87eb0271863b', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('delfood', function (data) {
-
-        //code xử lý khi có dữ liệu từ pusher
-
-		if(data.name == <?= $name?>){
-		window.location.reload();
-		}
-        // kết thúc code xử lý thông báo
-    });
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu', function () {
-
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-Pusher.logToConsole = true;
-    var pusher = new Pusher('05d67b2777b04b8a83db', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu2', function (data) {
-
-        //code xử lý khi có dữ liệu từ pusher
-		if(data.name == <?= $name?>){
-		window.location.reload();
-		}
-        // kết thúc code xử lý thông báo
-    });
 Pusher.logToConsole = true;
     var pusher = new Pusher('aaee585e94d28c3959f4', {
       cluster: 'ap1',
@@ -125,8 +60,6 @@ Pusher.logToConsole = true;
         // kết thúc code xử lý thông báo
     });
 </script>
-<script src="lib/pusher.min.js"></script>
-
 </p>
 <div class="container-fluid" style="margin-top: 3%">
     <div class="row">

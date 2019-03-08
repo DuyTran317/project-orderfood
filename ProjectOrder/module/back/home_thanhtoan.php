@@ -5,51 +5,11 @@
 		header("location:?mod=dangnhap");	
 	}
 ?>
-<!--Reload Page-->
-<meta http-equiv="refresh" content="number;url=http://localhost:8080/project-orderfood/ProjectOrder/admin.php?mod=home_thanhtoan">
-
-<script src="lib/pusher.min.js"></script>
-<script type="text/javascript">
-    Pusher.logToConsole = true;
-   var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('notice', function () {
-		
-        //code xử lý khi có dữ liệu từ pushe
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-	Pusher.logToConsole = true;
-    var pusher = new Pusher('05d67b2777b04b8a83db', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadmenu2', function () {
-
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('loadthanhtoan', function () {
-
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-</script>
+<?php  
+getPusher('05d67b2777b04b8a83db', 'Reload', 'loadmenu2');
+getPusher('161363aaa8197830a033', 'Reload', 'notice');
+getPusher('161363aaa8197830a033', 'Reload', 'loadthanhtoan');
+?>
 <style>
  table.dataTable{
 	 border-collapse:collapse;
@@ -131,23 +91,7 @@ Pusher.logToConsole = true;
     </div>
 </div>
 </body>
-<script src="lib/pusher.min.js"></script>
-<script type="text/javascript">
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('770fa0ac91f2e68d3ae7', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('newbill', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-</script>
-
+<?php getPusher('770fa0ac91f2e68d3ae7', 'Reload', 'newbill'); ?>
 <script>
 	$(document).ready(function(){    	
 		$('#datatable').DataTable( {

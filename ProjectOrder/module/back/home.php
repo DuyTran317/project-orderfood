@@ -6,25 +6,8 @@
 		header("location:?mod=dangnhap");	
 	}
 	$sobanmontrung=5;
+	getPusher('161363aaa8197830a033', 'Reload', 'reloadbep');
 ?>
-<!--Reload Page-->
-<meta http-equiv="refresh" content="number;url=http://localhost/project-orderfood/ProjectOrder/admin.php?mod=home">
-<script src="lib/pusher.min.js"></script>
-  <script type="text/javascript">
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('161363aaa8197830a033', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('reloadbep', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-</script>
 <style>
  table.dataTable{
 	 border-collapse:collapse;

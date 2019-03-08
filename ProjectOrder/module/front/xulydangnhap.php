@@ -28,19 +28,7 @@ if(isset($_POST['user']))
 		setcookie("userid_login", $r['id'], time() + (86400 * 30), "/");
 		
 		// gui tin sang nhan vien
-		require('Pusher.php');
-		$options = array(
-		'cluster' => 'ap1',
-		'encrypted' => true
-		);
-		$pusher = new Pusher(
-		'51e37eb7c055b1a5ea68',
-		'42f05b8854b00b014f5b',
-		 '643830',
-		 $options
-		);
-		$pusher->trigger('Reload', 'login', @$data);
-	
+		sendPusher('51e37eb7c055b1a5ea68', '42f05b8854b00b014f5b', '643830', 'Reload', 'login');
 		header("location:tlc-trang_chu-i9102d{$id}-n9102ame{$name}.html");
 	}
 	else

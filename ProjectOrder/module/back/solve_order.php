@@ -80,19 +80,7 @@
 		mysqli_query($link,$sql_update_thanhtoan);
 	}
 	//pussher
-	require('Pusher.php');
-	$options = array(
-	'cluster' => 'ap1',
-    'encrypted' => true
-	);
- 	$pusher = new Pusher(
-    '770fa0ac91f2e68d3ae7',
-    'ba6aadbd24eaa367edb6',
-    '631845',
-    $options
-	);
-	$data['name'] = $num_table;
-	$pusher->trigger('Reload', 'newbill', $data);
+	sendPusher2('770fa0ac91f2e68d3ae7', 'ba6aadbd24eaa367edb6', '631845', 'Reload', 'newbill',$num_table);
 ?>
 <script>
 	alert("Hoàn Tất Đơn Hàng!");

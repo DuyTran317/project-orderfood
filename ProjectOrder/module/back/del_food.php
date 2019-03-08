@@ -73,19 +73,6 @@
 	}
 	
 	//pussher
-	require('Pusher.php');
-	$options = array(
-	'cluster' => 'ap1',
-    'encrypted' => true
-	);
- 	$pusher = new Pusher(
-    '0d68e38f87eb0271863b',
-    '276ddaf41f63aa27e778',
-    '636611',
-    $options
-	);
-	$data['name']=$num_table;
-	$pusher->trigger('Reload', 'delfood', $data);
-	
+	sendPusher2('0d68e38f87eb0271863b', '276ddaf41f63aa27e778', '636611', 'Reload', 'delfood',$num_table);
 	header("location:?mod=confirm_order&id=$id&num_table=$num_table");
 ?>

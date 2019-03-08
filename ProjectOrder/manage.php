@@ -1,6 +1,6 @@
 ﻿<?php
 	require_once("lib/connect.php");
-
+	include("controller/c_Pusher.php");
 	session_start();
 	ob_start();
 	$now = time();

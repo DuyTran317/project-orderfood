@@ -41,6 +41,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	//Include Controllers
 	include("controller/c_cookie.php");
 	include("controller/c_takeGet.php");
+	include("controller/c_Pusher.php");
 ?>
 
 </head>
