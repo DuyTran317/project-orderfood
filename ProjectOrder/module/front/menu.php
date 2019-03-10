@@ -229,7 +229,7 @@ Pusher.logToConsole = true;
 
             </div>
             <?php
-            $r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
+            @$r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
             $r = selectIdOrderInMenu($link, $name);
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
@@ -246,7 +246,7 @@ Pusher.logToConsole = true;
 
             <!--Kiểm Tra Hóa Đơn -->
             <?php
-			$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
+			@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
             
             if(@mysqli_num_rows($kt) > 0) {
                 ?>
