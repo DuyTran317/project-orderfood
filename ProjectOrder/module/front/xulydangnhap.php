@@ -2,17 +2,14 @@
 
 if(isset($_POST['user']))
 {
-	$sql="select * from `of_department` where `active`=1 order by `order` asc";
-		$rs=mysqli_query($link,$sql);
-		while($r=mysqli_fetch_assoc($rs)):
+	$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
+	foreach($select as $r){
 		$_SESSION['theloai'][$r['id']] = 0;
-		endwhile;
+	}
 	$user=$_POST['user'];
 	
 	//Kiem tra bang cach truy van vao DB
-	$sql="select * from `of_user` where `name`='{$user}' and `active`=1";
-	$rs=mysqli_query($link,$sql);
-	
+	$rs = selectWithCondition_NameAct($link, 'of_user', $user, 1);
 	if(mysqli_num_rows($rs)>0)
 	{
 		$r=mysqli_fetch_assoc($rs);

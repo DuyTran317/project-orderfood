@@ -14,9 +14,7 @@
 		$cate=$_GET['cate'];
 	}
 
-	$sql="select * from `of_food` where `id`={$id}";
-	$res = mysqli_query($link,$sql);
-	$kq = mysqli_fetch_assoc($res);
+	$kq = selectIdWithCondition($link, 'of_food', $id);
 ?>	
 
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">

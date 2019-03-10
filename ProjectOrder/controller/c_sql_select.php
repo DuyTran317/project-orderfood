@@ -24,7 +24,21 @@
 	//Select ID & Number Table from SQL
 	function selectIdNum($link, $table, $id, $numtable)
 	{
-		@$sql = "select * from `$table` where `num_table` = {$numtable} and `id` ={$id}";
+		@$sql = "select * from `{$table}` where `num_table` = {$numtable} and `id` ={$id}";
+		return $query = mysqli_query($link,$sql);
+	}
+	
+	//Query Select * From SQL Where Act, ID
+	function selectWithCondition_ActId($link, $table, $act, $id)
+	{
+		$sql = "select * from `{$table}` where `active` = $act and `id` = {$id}";
+		return $query = mysqli_query($link,$sql);
+	}
+	
+	//Query Select * From SQL Where NumTable, Act!=1
+	function selectWithCondition_ActNum($link, $table, $numtable)
+	{
+		$sql = "select * from `{$table}` where `num_table`={$numtable} and `active` !=1";
 		return $query = mysqli_query($link,$sql);
 	}
 	
@@ -42,7 +56,7 @@
 		return $value;
 	}
 	
-	//Select Food From SQL in File_Menu
+	//Query Select Food From SQL in File_Menu
 	function selectFood($link, $table, $cate)
 	{
 		$sql = "select * from `{$table}` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
@@ -88,11 +102,18 @@
 		return $kq;
 	}
 	
-	//Select Active Of Bill Where OrderId=, Active=0
+	//Query Select Active Of Bill Where OrderId=, Active=0
 	function selectActiveBill_OrAc($link ,$table, $order_id)
 	{
 		 $sql = "select `active` from `{$table}` where `order_id` = {$order_id} and `active`=0";
          return $query = mysqli_query($link,$sql);
+	}
+	
+	//Query Select From SQL Where OrderID=, Act=, FoodID=
+	function selectWithCondition_OrdActFoo($link, $table, $orderID, $foodID, $act)
+	{
+		$sql = "select * from `{$table}` where `order_id`={$orderID} and `food_id`={$foodID} and `active`={$act}";
+		return $query = mysqli_query($link,$sql);
 	}
 	
 	//Select * From SQL Where Active=1, DepartmentID With Array(While)
@@ -106,5 +127,28 @@
 			$kq[] = $temp;
 		}
 		return $kq;
+	}
+	
+	//Select * From SQL Where NumTable, Order by ID DESC Limit 0,1
+	function selectWithCondition_NumOrByIdDes($link, $table, $numtable)
+	{
+		$sql = "select * from `{$table}` where `num_table`={$numtable} order by `id` DESC limit 0,1";
+		$query = mysqli_query($link,$sql);
+		$value = mysqli_fetch_assoc($query);
+		return $value;
+	}
+	
+	//Select * From SQL Where Active=
+	function selectWithCondition_Act0($link, $table, $act)
+	{
+		$sql = "select * from `{$table}` where `active`={$act}";
+		return $query = mysqli_query($link,$sql);
+	}
+	
+	//Query Select * From SQL Where Name=, Act=
+	function selectWithCondition_NameAct($link, $table, $name, $act)
+	{
+		$sql = "select * from `$table` where `name`='{$name}' and `active`={$act}";
+		return $query = mysqli_query($link,$sql);
 	}
 ?>

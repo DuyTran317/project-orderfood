@@ -75,9 +75,7 @@
                 $i=0;
                 if(@count($cart)>0) foreach($cart as $k=>$v)
                 {
-                    $sql="select * from `of_food` where `id`={$k} ";
-                    $rs=mysqli_query($link,$sql);
-                    $r=mysqli_fetch_assoc($rs);
+					$r = selectIdWithCondition($link, 'of_food', $k);
 					
 					//Tính giá có Khuyến Mãi
 					if($r['discount']>0)
