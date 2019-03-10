@@ -43,6 +43,8 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	include("controller/c_takeGet.php");
 	include("controller/c_Pusher.php");
 	include("controller/c_sql_select.php");
+	include("controller/c_sql_insert.php");
+	include("controller/c_sql_update.php");
 ?>
 
 </head>

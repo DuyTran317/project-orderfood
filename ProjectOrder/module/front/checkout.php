@@ -69,18 +69,15 @@
 										$rs_search = mysqli_num_rows($r_search);
 										if($rs_search == 0)
 										{
-											$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0,'$country')";
-											mysqli_query($link,$sql);
+											Ins_OrderDetail($link, 'of_order_detail', $take_id, $k, $price, $v, $km, 0, $country);
 										}
 										else 
 										{
-											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-											mysqli_query($link,$sql);
+											Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
 										}
 									}
 										//Insert note vao DB									
-										$sql="insert into `of_note_order` values(NULL,'$take_id','$note',0)";
-										mysqli_query($link,$sql);
+										Ins_Note($link, 'of_note_order', $take_id, $note, 0);
 										$temp++;
 										break;
 								}
@@ -89,8 +86,7 @@
 							{
 								//Insert don hang (order)
 								$date = date("Y-m-d G:i:s");
-								$sql="insert into `of_order` values(NULL,'$num_table','0','$date')";
-								mysqli_query($link,$sql);
+								Ins_Order($link, 'of_order', $num_table, 0, $date);
 								
 								//Insert don hang chi tiet (order_detail)
 								//Lay id (Auto Increment) cua lenh insert truoc
@@ -109,26 +105,22 @@
 										$rs_search = @mysqli_num_rows($r_search);
 										if($rs_search == 0)
 										{
-											$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-											mysqli_query($link,$sql);
+											Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
 										}
 										else 
 										{
-											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-											mysqli_query($link,$sql);
+											Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
 										}
 								}
 								
 								//Insert note vao DB
-								$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
-								mysqli_query($link,$sql);
+								Ins_Note($link, 'of_note_order', $orderID, $note, 0);
 							}
 						
 					}
 					else{
 						$rs = selectWithCondition_NumOrByIdDes($link, 'of_order', $num_table);
-						$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
-						mysqli_query($link,$sql);
+						Upd_OderAct($link, 'of_order', 0, $rs['id']);
 						
 						@$orderID = $rs['id'];
 						$carts=@$_SESSION['cart'];
@@ -140,12 +132,10 @@
 							$km = $r['discount'];
 							
 							//Insert
-							$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-							mysqli_query($link,$sql);
+							Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
 						}
 						//Insert note vao DB
-							$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
-							mysqli_query($link,$sql);
+						Ins_Note($link, 'of_note_order', $orderID, $note, 0);							
 					}
 	
 					unset($_SESSION['cart']);
