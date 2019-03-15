@@ -6,22 +6,6 @@ getPusher('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien');
 getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
 
 ?>
-<!--<script>
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('51e37eb7c055b1a5ea68', {
-      cluster: 'ap1',
-	   forceTLS: true,
-      encrypted: true
-    });
-    var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
-    channel.bind('login', function (data) {
-		
-        //code xử lý khi có dữ liệu từ pusher
-		 window.location.reload();
-        // kết thúc code xử lý thông báo
-    });
-</script>-->
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
@@ -33,7 +17,7 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
                     ?>
     <h4 style="float: left">Nhân viên: <?=$show_waiter['name']?></h4>
     <!--Chuyển Bàn -->
-    <a href="?mod=temp" class="btn btn-success" style="font-size:18px; color: #FFF; float:right; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
+    <a href="?mod=chuyenban" class="btn btn-success" style="font-size:18px; color: #FFF; float:right; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
     <div style="clear:right"></div>
     <hr>
     

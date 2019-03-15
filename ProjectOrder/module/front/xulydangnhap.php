@@ -26,19 +26,6 @@ if(isset($_POST['user']))
 		
 		// gui tin sang nhan vien
 		sendPusher('51e37eb7c055b1a5ea68', '42f05b8854b00b014f5b', '643830', 'Reload', 'login');
-		/*require('Pusher.php');
-		$options = array(
-		'cluster' => 'ap1',
-		 'useTLS' => true,
-		'encrypted' => true
-		);
-		$pusher = new Pusher(
-		'51e37eb7c055b1a5ea68',
-		'42f05b8854b00b014f5b',
-		 '643830',
-		 $options
-		);
-		$pusher->trigger('Reload','login',@$data);*/
 		header("location:tlc-trang_chu-i9102d{$id}-n9102ame{$name}.html");
 	}
 	else
