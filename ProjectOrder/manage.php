@@ -52,7 +52,7 @@ $_SESSION['discard_after'] = $now + 3600;
 	if($mod=="home_nhanvien")echo"Quản Lý Bàn Ăn";
 	if($mod=="list_order_nv")echo"Danh Sách Món Ăn Khách Gọi";
 	if($mod=="confirm_order")echo"Xác Nhận Món Khách Gọi";
-	if($mod=="temp")echo"Quản Lý Chuyển Bàn";
+	if($mod=="chuyenban")echo"Quản Lý Chuyển Bàn";
 	if($mod=="add_food_nhanvien")echo"Thêm Món Ăn";
 	if($mod=="payment")echo"Kiểm Tra Hóa Đơn";
 	if($mod=="in_hoadon")echo"In Hóa Đơn";
