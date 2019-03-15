@@ -227,6 +227,27 @@ if(isset($_SESSION['lang'])){
                 $(".find").attr('disabled','');
 			 }
 				});
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+            alert("không lấy dược GPS");
+        }
+        function showPosition(position) {
+            if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
+                $.ajax({
+                    url:'module/front/ajax_order.php',
+                    type:'POST',
+                    data:{ act: 3},
+
+                }).done(function(data) {
+                    if(data == 1) {
+                        window.location = "module/front/location.php";
+                    }
+                });
+            }
+            // document.getElementById("la").innerHTML=position.coords.latitude;
+            // document.getElementById("lo").innerHTML=position.coords.longitude;
+        }
     });
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
