@@ -3,9 +3,7 @@ $id=$_COOKIE['userid_login'];
 $sql="update `of_user` set `active`= 1 where `id`={$id}";
 $rs=mysqli_query($link,$sql);
 
-$sql="select `id`,`name` from `of_user` where `id`={$id}";
-$kq=mysqli_query($link,$sql);
-$k=mysqli_fetch_assoc($kq);
+$k = selectIdWithCondition($link, 'of_user', $id);
 
 //Delete Cookies
 setcookie("username_login", $k['name'], time() - 3600, "/");

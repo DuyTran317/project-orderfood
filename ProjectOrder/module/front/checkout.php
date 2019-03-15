@@ -15,8 +15,7 @@
 	$userID=$_COOKIE['userid_login'];
 	$cart=@$_SESSION['cart'];
 	
-	$sql_check = "select `id` from `of_user` where `active` = 2 and `id` = {$userID}";
-	$r_check = mysqli_query($link,$sql_check);
+	$r_check = selectWithCondition_ActId($link, 'of_user', 2, $userID);
 	if(mysqli_num_rows($r_check))
 	{
 		if(@count($cart)<=0){ ?>
@@ -25,17 +24,14 @@
 		 else
 		{			
 			if(isset($_POST['goimon']))
-			{			
-				$sql="select * from `of_department` where `active`=1 order by `order` asc";
-				$rs=mysqli_query($link,$sql);
-				
-				while($r=mysqli_fetch_assoc($rs)):
+			{							
+				$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
+				foreach($select as $r){
 				$_SESSION['theloai'][$r['id']] = 0;
-				endwhile;
+				}
 				$_SESSION['remind'] = 0;
 				
-				$sql = "select * from `of_order` where `num_table`={$name_ban} and `active` !=1";
-				$sosanh = mysqli_query($link,$sql);
+				$sosanh = selectWithCondition_ActNum($link, 'of_order', $name_ban);
 				if(mysqli_num_rows($sosanh) > 0)
 				{
 					echo '<script type="text/javascript">';
@@ -48,16 +44,11 @@
 				{
 					$num_table=$name_ban;
 					$note= $_POST['note'];		
-					
-					$sql="select `active` from `of_bill` where `num_table`=$num_table order by `id` DESC limit 0,1";
-					$r=mysqli_query($link,$sql);
-					$rs=mysqli_fetch_assoc($r);
-					
+				
+					$rs = selectWithCondition_NumOrByIdDes($link, 'of_bill', $num_table);					
 					if($rs === null||$rs['active'] == 1){
 						
-						$sql="select `id`,`num_table` from `of_order` where `active`=0";
-						$take=mysqli_query($link,$sql);
-						
+						$take = selectWithCondition_Act0($link, 'of_order', 0);
 						
 						$carts=@$_SESSION['cart'];
 						$temp = 0;
@@ -65,34 +56,28 @@
 						{
 								if($name_ban == $take_sth['num_table'])
 								{
-									$take_id = $take_sth['id'];
+									@$take_id = $take_sth['id'];
 									
 									foreach($carts as $k => $v)
 									{
 										//Lay gia san pham
-										$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
-										$rs = mysqli_query($link,$sql);
-										$r = mysqli_fetch_assoc($rs);
+										$r = selectIdWithCondition($link, 'of_food' ,$k);
 										$price = $r['price'];
 										$km = $r['discount'];
 										//Insert
-										$sql = "select `id` from `of_order_detail` where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-										$r_search = mysqli_query($link,$sql);
+										$r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
 										$rs_search = mysqli_num_rows($r_search);
 										if($rs_search == 0)
 										{
-											$sql = "insert into `of_order_detail` values(NULL,'$take_id','$k','$price','$v','$km',0,'$country')";
-											mysqli_query($link,$sql);
+											Ins_OrderDetail($link, 'of_order_detail', $take_id, $k, $price, $v, $km, 0, $country);
 										}
 										else 
 										{
-											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$take_id} and `food_id`={$k} and `active`=0";
-											mysqli_query($link,$sql);
+											Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
 										}
 									}
 										//Insert note vao DB									
-										$sql="insert into `of_note_order` values(NULL,'$take_id','$note',0)";
-										mysqli_query($link,$sql);
+										Ins_Note($link, 'of_note_order', $take_id, $note, 0);
 										$temp++;
 										break;
 								}
@@ -101,8 +86,7 @@
 							{
 								//Insert don hang (order)
 								$date = date("Y-m-d G:i:s");
-								$sql="insert into `of_order` values(NULL,'$num_table','0','$date')";
-								mysqli_query($link,$sql);
+								Ins_Order($link, 'of_order', $num_table, 0, $date);
 								
 								//Insert don hang chi tiet (order_detail)
 								//Lay id (Auto Increment) cua lenh insert truoc
@@ -112,59 +96,46 @@
 								foreach($carts as $k => $v)
 								{
 									//Lay gia san pham
-									$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
-									$rs = mysqli_query($link,$sql);
-									$r = mysqli_fetch_assoc($rs);
+									$r = selectIdWithCondition($link, 'of_food' ,$k);
 									$price = $r['price'];
 									$km = $r['discount'];
 									
 									//Insert
-									$sql = "select `id` from `of_order_detail` where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-										$r_search = mysqli_query($link,$sql);
-										$rs_search = mysqli_num_rows($r_search);
+										@$r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
+										$rs_search = @mysqli_num_rows($r_search);
 										if($rs_search == 0)
 										{
-											$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-											mysqli_query($link,$sql);
+											Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
 										}
 										else 
 										{
-											$sql = "update `of_order_detail` set `qty` = `qty` + {$v} where `order_id`={$orderID} and `food_id`={$k} and `active`=0";
-											mysqli_query($link,$sql);
+											Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
 										}
 								}
 								
 								//Insert note vao DB
-								$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
-								mysqli_query($link,$sql);
+								Ins_Note($link, 'of_note_order', $orderID, $note, 0);
 							}
 						
 					}
 					else{
-						$sql="select `id` from `of_order` where `num_table`=$num_table order by `id` DESC limit 0,1";
-						$r=mysqli_query($link,$sql);
-						$rs=mysqli_fetch_assoc($r);
-						$sql="update `of_order` set `active`=0 where `id`={$rs['id']}";
-						mysqli_query($link,$sql);
+						$rs = selectWithCondition_NumOrByIdDes($link, 'of_order', $num_table);
+						Upd_OderAct($link, 'of_order', 0, $rs['id']);
 						
 						@$orderID = $rs['id'];
 						$carts=@$_SESSION['cart'];
 						foreach($carts as $k => $v)
 						{
 							//Lay gia san pham
-							$sql = 'select `price`,`discount` from `of_food` where`id`='.$k;
-							$rs = mysqli_query($link,$sql);
-							$r = mysqli_fetch_assoc($rs);
+							$r = selectIdWithCondition($link, 'of_food' ,$k);
 							$price = $r['price'];
 							$km = $r['discount'];
 							
 							//Insert
-							$sql = "insert into `of_order_detail` values(NULL,'$orderID','$k','$price','$v','$km',0,'$country')";
-							mysqli_query($link,$sql);
+							Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
 						}
 						//Insert note vao DB
-							$sql="insert into `of_note_order` values(NULL,'$orderID','$note',0)";
-							mysqli_query($link,$sql);
+						Ins_Note($link, 'of_note_order', $orderID, $note, 0);							
 					}
 	
 					unset($_SESSION['cart']);
@@ -245,10 +216,7 @@
                                         $i=0;
                                         if(@count($cart)>0) foreach($cart as $k=>$v)
                                         {
-                                            $sql="select * from `of_food` where `id`={$k} ";
-                                            $rs=mysqli_query($link,$sql);
-                                            $r=mysqli_fetch_assoc($rs);
-                                            
+                                            $r = selectIdWithCondition($link, 'of_food', $k);
 											//Tính giá có Khuyến Mãi
 											if($r['discount']>0)
 											{

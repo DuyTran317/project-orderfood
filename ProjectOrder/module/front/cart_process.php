@@ -70,9 +70,9 @@
 					//$_SESSION['theloai'][$k] = 1;
 					$_SESSION['remind'] = 1;
 					if(isset($_GET['thanhtoan']))
-						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}");
+						header("location:cmn-thuc_don-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}-tt9102oan1.html");						
 						else
-						header("location:index.php?mod=menu&id={$_GET['id_ban']}&name={$_GET['name_ban']}&cate={$cate}&thanhtoan=1");
+						header("location:cmn-thuc_don-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}.html");
 					break;
 				}
 				
@@ -80,9 +80,9 @@
 			
                 	if($temp==1) {
 						if(isset($_GET['thanhtoan'])) 
-						header("location:index.php?mod=checkout&id_ban={$_GET['id_ban']}&name_ban={$_GET['name_ban']}&cate={$cate}&thanhtoan=1");
+						header("location:chk-checkout-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}-tt9102oan1.html");
 						else
-						header("location:index.php?mod=checkout&id_ban={$_GET['id_ban']}&name_ban={$_GET['name_ban']}&cate={$cate}");
+						header("location:chk-checkout-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}.html");
 					}
 		}
 	}

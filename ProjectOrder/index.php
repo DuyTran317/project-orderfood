@@ -36,13 +36,15 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="lib/sweetalert2.all.min.js"></script>
-
+<script src="lib/pusher.min.js"></script>
 <?php
 	//Include Controllers
 	include("controller/c_cookie.php");
 	include("controller/c_takeGet.php");
 	include("controller/c_Pusher.php");
 	include("controller/c_sql_select.php");
+	include("controller/c_sql_insert.php");
+	include("controller/c_sql_update.php");
 ?>
 
 </head>

@@ -11,9 +11,7 @@
 	$name_ban = takeGet('name_ban');
 	$cate = takeGet('cate');
 
-	$sql="select * from `of_food` where `id`={$id}";
-	$res = mysqli_query($link,$sql);
-	$kq = mysqli_fetch_assoc($res);
+	$kq = selectIdWithCondition($link, 'of_food', $id);
 	getPusher('161363aaa8197830a033', 'Reload', 'loadchitiet');
 ?>	
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
@@ -25,36 +23,32 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                <?php
-					$sql ="select `img_url`, `img_url2`, `img_url3`, `img_url4` from `of_food` where `id` ={$id}";
-					$show = mysqli_query($link,$sql);
-					$s=mysqli_fetch_assoc($show)
-				?>
+
                     <div class="item active">
-                        <img src="img/sp/<?=$s['img_url']?>" alt="wrong"  style="width:100%; max-height:500px">
+                        <img src="img/sp/<?=$kq['img_url']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
                     
                     <?php
-						if($s['img_url2']){
+						if($kq['img_url2']){
 					?>
                     <div class="item">
-                        <img src="img/sp/<?=$s['img_url2']?>" alt="wrong"  style="width:100%; max-height:500px">
-                    </div>
-                    <?php } ?>
-                    
-                    <?php
-						if($s['img_url3']){
-					?>
-                    <div class="item">
-                        <img src="img/sp/<?=$s['img_url3']?>" alt="wrong"  style="width:100%; max-height:500px">
+                        <img src="img/sp/<?=$kq['img_url2']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
                     <?php } ?>
                     
                     <?php
-						if($s['img_url4']){
+						if($kq['img_url3']){
 					?>
                     <div class="item">
-                        <img src="img/sp/<?=$s['img_url4']?>" alt="wrong"  style="width:100%; max-height:500px">
+                        <img src="img/sp/<?=$kq['img_url3']?>" alt="wrong"  style="width:100%; max-height:500px">
+                    </div>
+                    <?php } ?>
+                    
+                    <?php
+						if($kq['img_url4']){
+					?>
+                    <div class="item">
+                        <img src="img/sp/<?=$kq['img_url4']?>" alt="wrong"  style="width:100%; max-height:500px">
                     </div>
                     <?php } ?>
 

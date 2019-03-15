@@ -70,12 +70,10 @@ Pusher.logToConsole = true;
             <a style="font-size: 25px; text-decoration: none; color: black; padding:5px; background-color: orange; font-style: italic; font-weight: bold; position: absolute; top: 10px; right: 0px;"  href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>">skip >></a>
             <script>
                 <?php
-                $catename = "select * from `of_department` where `id`={$cate}";
-                $get = mysqli_query($link, $catename);
-                $result = mysqli_fetch_assoc($get);
+				$result = selectIdWithCondition($link, 'of_department', $cate);
                 ?>
-                var duyoccho = confirm("Bạn có muốn chọn <?=$result['vi_name']?> không?");
-                if (duyoccho == false) {
+                var check = confirm("Bạn có muốn chọn <?=$result['vi_name']?> không?");
+                if (check == false) {
                     window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
                 }
                 <?php ?>
@@ -231,7 +229,7 @@ Pusher.logToConsole = true;
 
             </div>
             <?php
-            $r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
+            @$r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
             $r = selectIdOrderInMenu($link, $name);
 
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
@@ -248,7 +246,7 @@ Pusher.logToConsole = true;
 
             <!--Kiểm Tra Hóa Đơn -->
             <?php
-			$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
+			@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
             
             if(@mysqli_num_rows($kt) > 0) {
                 ?>
