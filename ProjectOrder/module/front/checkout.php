@@ -9,7 +9,13 @@
 	$id_ban = takeGet('id_ban');
 	$name_ban = takeGet('name_ban');
 	$cate = takeGet('cate');
-	
+	foreach($_SESSION['theloai'] as $a => $b)
+	{
+		if($b==1)
+		{
+			$cate=$a;
+		}	
+	}
 	$country = $_SESSION['lang'];
 	//Lấy thông tin người dùng
 	$userID=$_COOKIE['userid_login'];
