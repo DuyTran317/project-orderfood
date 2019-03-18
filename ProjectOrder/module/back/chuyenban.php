@@ -1,10 +1,8 @@
 <?php
 	if(isset($_POST['Chuyen_Ban']) && $_POST['table_to']!=$_POST['table_from'])
 	{
-		@$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_from']} and (a.`active` <> 1 or b.`active` <> 1)";
-		$r_from= mysqli_query($link,$sql);
-		$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$_POST['table_to']} and (a.`active` <> 1 or b.`active` <> 1)";
-		$r_to= mysqli_query($link,$sql);
+		$r_from = select_ChangeTable($link, $_POST['table_from']);
+		$r_to = select_ChangeTable($link, $_POST['table_to']);
 		if(@mysqli_num_rows($r_from))
 		{
 			$rs_from = mysqli_fetch_assoc($r_from);
@@ -35,16 +33,11 @@
 	else
 	if(isset($_POST['Gop_Ban']) && $_POST['table_to']!=$_POST['table_from'])
 	{
-		@$sql1 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_from']} and a.active <> 0 and b.`active` = 0";
-		$r1 = mysqli_query($link,$sql1);
-		$rs1 = @mysqli_fetch_assoc($r1);
+		$rs1 = changeTable($link, $_POST['table_from']);
 		
-		$sql2 = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$_POST['table_to']} and a.active <> 0 and b.`active` = 0";
-		$r2 = mysqli_query($link,$sql2);
-		$rs2 = mysqli_fetch_assoc($r2);
+		$rs2 = changeTable($link, $_POST['table_to']);
 		
-		$sql_sol = "select `id` from `of_solve_pay` where `order_id` == {$rs2['order_id']} or `order_id` == {$rs2['order_id']}";
-		$r_sol = mysqli_query($link,$sql_sol);
+		$r_sol = queryChangeTable($link, $rs1['order_id'], $rs2['order_id']);
 		$rs_sol = @mysqli_num_rows($r_sol);
 		
 		if($rs1 && $rs2 && $rs_sol == 0)
@@ -110,8 +103,7 @@
             <tr>
                 <td align="center">
                 	<?php
-                        $sql = "select `name` from `of_user` where `active`=2";
-                        $r = mysqli_query($link,$sql);
+						$r = selectWithCondition_Act0($link, 'of_user', 2);
 						if(mysqli_num_rows($r)==0)
 						{
 						?>
@@ -139,9 +131,8 @@
                 <td align="center" >
                     <select name="table_to" style="width: 50px; height: 50px;">
                         <?php
-						$sql = "select `name` from `of_user`";
-                        $r = mysqli_query($link,$sql);
-                        while($rs = mysqli_fetch_assoc($r))
+						$select = selectWithoutConditionArray($link , 'of_user');
+                        foreach($select as $rs)
                         {
                             ?>
                             <option value="<?=$rs['name']?>"><?=$rs['name']?></option>

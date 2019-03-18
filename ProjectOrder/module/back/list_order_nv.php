@@ -9,18 +9,8 @@
 </style>
 
 <?php
-	/*if(! isset($_SESSION['user_idban']))
-	{
-		header("location:?mod=dangnhap");
-	}*/
-	if(isset($_GET['name_ban']))
-	{
-		$name_ban=$_GET['name_ban'];
-	}
-	if(isset($_GET['id']))
-	{
-		$id = $_GET['id'];
-	}
+	$name_ban = takeGet('name_ban');
+	$id = takeGet('id');
 ?>
 <html>
 <body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg); background-size: cover;  font-family: 'Anton', sans-serif;">
@@ -41,15 +31,11 @@
   </tr>
   
   <?php
-  	$sql="select b.`en_name`, b.`vi_name`, a.`country`,a.`price`, SUM(a.`qty`) as qty, b.`discount` as km, b.`price_discount` as gia_km
-		  from `of_order_detail` as a, `of_food` as b
-		  where a.`food_id`= b.`id` and a.`order_id`={$id}
-		  GROUP BY a.`food_id`";
-	$rs=mysqli_query($link,$sql);
-	
 	$s=0;
 	$i=0;
-	while($r=mysqli_fetch_assoc($rs)) {
+	$select = selectWithConditionArray_ListOrderEmploy($link, $id);
+	foreach($select as $r){
+
 		//Tính giá có Khuyến Mãi
 		if($r['km']>0)
 		{

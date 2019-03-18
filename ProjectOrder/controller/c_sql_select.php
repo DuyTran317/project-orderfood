@@ -266,4 +266,58 @@
 		$sql = "select * from `{$table}` where `food_id` ={$id} and `active` = {$active}";
 		return $query = mysqli_query($link,$sql);
 	}
+	
+	//Select LIST ORDER With Array(While) in EMPLOYEE
+	function selectWithConditionArray_ListOrderEmploy($link, $id)
+	{
+		$kq = array();
+		$sql = "select b.`en_name`, b.`vi_name`, a.`country`,a.`price`, SUM(a.`qty`) as qty, b.`discount` as km, b.`price_discount` as gia_km
+		  from `of_order_detail` as a, `of_food` as b
+		  where a.`food_id`= b.`id` and a.`order_id`={$id}
+		  GROUP BY a.`food_id`";
+		$query = mysqli_query($link,$sql);
+		while($temp = mysqli_fetch_assoc($query))
+		{
+			$kq[] = $temp;
+		}
+		return $kq;
+	}
+	
+	//Select LIST ORDER With Array(While) in CUSTOMER
+	function selectWithConditionArray_ListOrderCust($link, $multi, $id)
+	{
+		$kq = array();
+		$sql = "select b.{$multi} as ten,a.`price`, SUM(a.`qty`) as qty, b.`discount` as km, b.`price_discount` as gia_km
+		  from `of_order_detail` as a, `of_food` as b
+		  where a.`food_id`= b.`id` and a.`order_id`={$id}
+		  GROUP BY a.`food_id`";
+		$query = mysqli_query($link,$sql);
+		while($temp = mysqli_fetch_assoc($query))
+		{
+			$kq[] = $temp;
+		}
+		return $kq;
+	}
+	
+	//FUNCTION CHANGE TABLE in EMPLOYEE
+	function changeTable($link, $num_table)
+	{
+		@$sql = "select b.`num_table`, b.`order_id`, b.`id`, a.`active`, b.`total` from `of_order` as a, `of_bill` as b where a.`id` = b.`order_id` and a.`num_table` = {$num_table} and a.active <> 0 and b.`active` = 0";
+		$query = mysqli_query($link,$sql);
+		return $value = @mysqli_fetch_assoc($query);
+	}
+	
+	//Query FUNCTION CHANGE TABLE in EMPLOYEE
+	function queryChangeTable($link, $order_id1, $order_id2)
+	{
+		$sql = "select `id` from `of_solve_pay` where `order_id` == {$order_id1} or `order_id` == {order_id2}";
+		return $query = mysqli_query($link,$sql);
+	}
+	
+	//Query FUNCTION CHANGE TABLE in EMPLOYEE
+	function select_ChangeTable($link, $num_table)
+	{
+		@$sql = "select a.`id`, a.`num_table` from `of_order` as a left join `of_bill` as b on a.`id` = b.`order_id` where a.`num_table` = {$num_table} and (a.`active` <> 1 or b.`active` <> 1)";
+		return $query = mysqli_query($link,$sql);
+	}
 ?>
