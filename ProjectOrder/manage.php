@@ -34,14 +34,13 @@ $_SESSION['discard_after'] = $now + 3600;
 </head>
 
 <?php
-/*	if(isset($_SESSION['admin_id']))
-	{
-		header("location:?mod=home");
-	}*/
+	include("controller/c_sql_select.php");
+	include("controller/c_takeGet.php");	
+	include("controller/c_takePost.php");	
 	
 	$mod=@$_GET['mod'];
-	  if($mod=='') $mod='dangnhap';
-	  include("module/back/{$mod}.php");
+	if($mod=='') $mod='dangnhap';
+	include("module/back/{$mod}.php");
 	 
 ?>    
 
