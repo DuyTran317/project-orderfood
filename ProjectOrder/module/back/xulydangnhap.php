@@ -6,10 +6,8 @@ if(isset($_POST['user']))
 	
 	//Mã hóa MK
 	$pass=hash('sha512',$_POST['pass']);
-	
-	//Kiem tra bang cach truy van vao DB
-	$sql="select * from `of_manage` where `account`='{$user}' and `password`='{$pass}' and `active`=1";
-	$rs=mysqli_query($link,$sql);
+		
+	$rs = queryLogin_Back($link, 'of_manage', $user, $pass);
 	
 	if(mysqli_num_rows($rs)>0)
 	{

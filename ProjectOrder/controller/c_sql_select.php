@@ -151,4 +151,78 @@
 		$sql = "select * from `$table` where `name`='{$name}' and `active`={$act}";
 		return $query = mysqli_query($link,$sql);
 	}
+	
+	//Query Login Managers WHERE Act=1
+	function queryLogin_Back($link, $table, $user, $pass)
+	{
+		$sql = "select * from `{$table}` where `account`='{$user}' and `password`='{$pass}' and `active`=1";
+		return $query = mysqli_query($link,$sql);
+	}
+	
+	//Select * From SQL With Cate=3
+	function selectWithCondition_Cate($link, $table, $cate)
+	{
+		$sql  ="select * from `{$table}`  where `cate`= {$cate}";
+		$query = mysqli_query($link,$sql);
+		return $value = mysqli_fetch_assoc($query);
+	}
+	
+	//Select * From BILL and USER WHERE... With Array(While)
+	function selectWithCondition_BillUser($link, $table1, $table2)
+	{
+		$kq = array();
+		$sql = "select * from `{$table1}` as a, `{$table2}` as b 
+				where a.`num_table` = b.`name` and a.`active`=0 and b.`active`=1";
+        $query = mysqli_query($link,$sql);
+		while($temp = mysqli_fetch_assoc($query))
+		{
+			$kq[] = $temp;
+		}
+		return $kq;
+	}
+	
+	//COUNT * From SQL WHERE NumTable, Active
+	function selectWithCondition_NumAct($link, $table, $numtable ,$active)
+	{
+		$sql = "select * from `{$table}` where `num_table` = {$numtable} and `active` ={$active}";
+		$query = mysqli_query($link,$sql);
+		return $count = mysqli_num_rows($query);
+	}
+	
+	//Select SHOW TABLE in EMPLOYEE
+	function selectTableInEmployee($link)
+	{
+		$kq = array();
+		$sql = "SELECT *, a.`active` as a_user FROM `of_user` as a left JOIN `of_bill` as c ON (a.`name` = c.`num_table` AND c.`active` = 0) LEFT JOIN `of_order` as b ON (a.`name` = b.`num_table` AND (c.`order_id` = b.`id` OR b.`active` = 0)) order by a.`active` desc, CASE WHEN b.`active` IS NULL then 3 END, b.`active` asc, a.`name` asc"; 
+		$query = mysqli_query($link,$sql);
+		while($temp = mysqli_fetch_assoc($query))
+		{
+			$kq[] = $temp;
+		}
+		return $kq;
+	}
+	
+	//Query IDORDER & NameTable in EMPLOYEE
+	function selectWithCondition_IdOrNameTable($link, $name)
+	{
+		$sql = "SELECT *,`of_order`.`id` as id_or, `of_order`.`num_table` as name_ban FROM `of_order` LEFT JOIN `of_bill` ON `of_order`.`id` = `of_bill`.`order_id` where (`of_order`.`active` <> 1 or `of_bill`.`active` <> 1) and `of_order`.`num_table` = '{$name}'";
+		return $query = mysqli_query($link,$sql);	
+	}
+	
+	//Select Number Of Food WHERE Act=0 in EMPLOYEE 
+	function selectWithCondition_NumOfFood($link, $table1, $table2, $name, $active)
+	{
+		$sql = "select  * 
+			  from `{$table1}` as a, `{$table2}` as b
+			  where a.`id`=b.`order_id` and `num_table`='{$name}' and b.`active`={$active}";
+		$query = mysqli_query($link,$sql);
+		return $value = mysqli_num_rows($query);
+	}
+	
+	//Query ORDER WHERE ID, NumTable, Act in EMPLOYEE
+	function selectWithCondition_IdNumAct($link, $table, $numtable, $id, $active)
+	{
+		@$sql = "select * from `{$table}` where `num_table` = {$numtable} and `id` ={$id} and `active` !={$active}";
+		return @$query = mysqli_query($link,$sql);
+	}
 ?>
