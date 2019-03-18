@@ -4,23 +4,15 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
-    if(isset($_GET['country']))
-    {
-        $country=$_GET['country'];
-    }
+	
+	$id = takeGet('id');
+	$num_table = takeGet('num_table');
+	$country = takeGet('country');	
 	$SoHoaDonLamTruoc = 5;
+	
 	if(isset($_POST['update']))
 	{
-		$sql ="select id from `of_order_detail` where `order_id` = {$_POST['order_id']} and `active`=0";
-		$r=mysqli_query($link,$sql);
+		$r = selectActiveBill_OrAc($link, 'of_order_detail', $_POST['order_id']);
 		while($kq=mysqli_fetch_assoc($r))
 		{
 			$temp=$_POST['qty'.$kq['id']];
@@ -35,13 +27,11 @@
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">
         <?php
-        $sql="select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
-        $rs=mysqli_query($link,$sql);
-
-        @$dem = mysqli_num_rows($rs);
+        $rs = selectSomething1_ConfirmOrder($link, $id);
+        @$dem = mysqli_num_rows($rs);		
         $total=0;
 
-        $sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+        $sql_timtrung = selectSomething2_ConfirmOrder($link);
 
         ?>
 
@@ -107,8 +97,7 @@
 				?>
                  </form>
                 <?php
-				$sql="select `note` from `of_note_order` where `order_id` = {$id} and `active`= 0";
-				$rs2 = mysqli_query($link,$sql);
+				$rs2 = selectActiveBill_OrAc($link, 'of_note_order', $id);
 				?>
             </div>
             </table>
@@ -138,8 +127,7 @@
     
     <?php
 		//Nhan vien dat them khi bep chua hoan thanh
-		$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
-		$wait=mysqli_query($link,$sql);
+		$wait = selectWithCondition_ActId($link, 'of_order', 2, $id);
 		if(mysqli_num_rows($wait)>0)
 		{	
 	?>

@@ -34,14 +34,13 @@ $_SESSION['discard_after'] = $now + 3600;
 </head>
 
 <?php
-/*	if(isset($_SESSION['admin_id']))
-	{
-		header("location:?mod=home");
-	}*/
+	include("controller/c_sql_select.php");
+	include("controller/c_takeGet.php");	
+	include("controller/c_takePost.php");	
 	
 	$mod=@$_GET['mod'];
-	  if($mod=='') $mod='dangnhap';
-	  include("module/back/{$mod}.php");
+	if($mod=='') $mod='dangnhap';
+	include("module/back/{$mod}.php");
 	 
 ?>    
 
@@ -52,7 +51,7 @@ $_SESSION['discard_after'] = $now + 3600;
 	if($mod=="home_nhanvien")echo"Quản Lý Bàn Ăn";
 	if($mod=="list_order_nv")echo"Danh Sách Món Ăn Khách Gọi";
 	if($mod=="confirm_order")echo"Xác Nhận Món Khách Gọi";
-	if($mod=="temp")echo"Quản Lý Chuyển Bàn";
+	if($mod=="chuyenban")echo"Quản Lý Chuyển Bàn";
 	if($mod=="add_food_nhanvien")echo"Thêm Món Ăn";
 	if($mod=="payment")echo"Kiểm Tra Hóa Đơn";
 	if($mod=="in_hoadon")echo"In Hóa Đơn";

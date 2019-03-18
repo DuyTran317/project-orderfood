@@ -48,6 +48,17 @@
 		}
 		echo number_format($total);
 	}
-	
-	
+    else
+        if($act == 3)
+        {
+            if(isset($_COOKIE['userid_login']) && $_COOKIE['userid_login'] != 0)
+                {
+                    echo 1;
+                }
+                else
+                {
+                    echo 0;
+                }
+
+        }
 ?>

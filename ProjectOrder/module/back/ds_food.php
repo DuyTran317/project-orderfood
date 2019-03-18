@@ -93,7 +93,7 @@
    			 language: {
         		url: 'lib/datatable/Vietnamese.json'
     		}
-		});
+		});	
     	});
 	
 	function ChangeStatus(id){

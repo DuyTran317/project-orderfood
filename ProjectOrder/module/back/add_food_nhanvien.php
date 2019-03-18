@@ -17,37 +17,26 @@ if(empty($_SESSION['servantlang'])){
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
+	$id = takeGet('id');
+	$num_table = takeGet('num_table');
 		
 	if(isset($_POST['id_sp']))
 	{
-		$id_sp = $_POST['id_sp'];
-		$qty = $_POST['qty'];
+		$id_sp = takePost('id_sp');
+		$qty = takePost('qty');
 		$note = "";
-		$note = $_POST['note'];
+		$note = takePost('note');
 			
 		
-		$sql = "select `price`, `discount` from `of_food` where `id` = {$id_sp}";
-		$kq = mysqli_query($link,$sql);
-		$k = mysqli_fetch_assoc($kq);
-		
+		$k = selectIdWithCondition($link, 'of_food', $id_sp);
 		$price = $k['price'];
 		$discount = $k['discount'];
 		
 		//Nhan vien dat them khi bep chua hoan thanh
-		$sql ="select `id` from `of_order` where `id` = {$id} and `active`=2";
-		$wait=mysqli_query($link,$sql);
+		$wait = selectWithCondition_ActId($link, 'of_order', 2, $id);
 		if(mysqli_num_rows($wait)>0)
 		{			
-			$sql = "select * from `of_order_detail` where `food_id` ={$id_sp} and `active` = 2";
-			$run = mysqli_query($link,$sql);
+			$run = selectWithCondition_FoodIdAct($link, 'of_order_detail', $id_sp, 2);
 			if(mysqli_num_rows($run)>0)
 			{		
 				$soluong=$_POST['qty'];
@@ -84,14 +73,11 @@ if(empty($_SESSION['servantlang'])){
 				";
 			}
 		}
-		
-		
-		$sql = "select `id` from `of_order` where `id` = {$id} and `active`=0";
-		$kiemtra = mysqli_query($link,$sql);
+				
+		$kiemtra = selectWithCondition_ActId($link, 'of_order', 0, $id);
 		if(mysqli_num_rows($kiemtra)>0)
 		{
-		$sql = "select * from `of_order_detail` where `order_id` ={$id} and `active` = 0 and `food_id` = {$id_sp}";
-		$check = mysqli_query($link,$sql);
+			$check = selectWithCondition_OrdActFoo($link, 'of_order_detail', $id, $id_sp,0);
 		
 			if(mysqli_num_rows($check) > 0)
 			{
@@ -147,17 +133,13 @@ if(empty($_SESSION['servantlang'])){
                         <td>
                         	 <select id="category_id" onChange="window.location='?mod=add_food_nhanvien&id=<?=$id?>&num_table=<?=$num_table?>&cid='+this.value" class="form-control">
 							<?php
-								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
-								$rs_s=mysqli_query($link,$sql);
-								$r_s=mysqli_fetch_assoc($rs_s);
+								$r_s = selectWithCondition_AcOrByOrAsc($link, 'of_category');
 								
                                 $cid = @$_GET['cid'];
                                 if($cid == '') $cid = $r_s['id'];
-                                
-                                
-                                $sql="select * from `of_category` where `active`=1 order by `order` asc";
-                                $rs=mysqli_query($link,$sql);
-                                while($r=mysqli_fetch_assoc($rs)){
+                                                               
+								$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_category');
+								foreach($select as $r){
                             ?>
                                                     
                                 <option <?php if($r['id']==$cid) echo'selected'?>
@@ -173,9 +155,8 @@ if(empty($_SESSION['servantlang'])){
                         <td>
                         	<select id="id_sp" name="id_sp" class="form-control">
 							<?php
-                                $sql="select * from `of_food` where `active`=1 and `category_id`={$cid}";
-                                $rs_pro=mysqli_query($link,$sql);
-                                while($r_pro=mysqli_fetch_assoc($rs_pro)){
+								$take = selectWithConditionArray_ActCate($link, 'of_food', 1, $cid);
+								foreach($take as $r_pro){
                           ?>
                                                     
                                 <option <?php if($r_pro['id']==$cid) echo'selected'?>

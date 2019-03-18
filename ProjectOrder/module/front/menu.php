@@ -23,6 +23,10 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
+		/*if(isset($_SESSION['remind'])&&$_SESSION['remind']==1)
+		{
+			
+		}*/
 		$_SESSION['theloai'][$cate] = 1;
 	}
 	?>
@@ -74,7 +78,7 @@ Pusher.logToConsole = true;
                 ?>
                 var check = confirm("Bạn có muốn chọn <?=$result['vi_name']?> không?");
                 if (check == false) {
-                    window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
+                    window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4&cate=<?= $cate?><?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
                 }
                 <?php ?>
             </script>
@@ -527,15 +531,6 @@ Pusher.logToConsole = true;
 
         });
     }
-	function remind(id_ban, name_ban){
-		$.ajax({
-			url:'module/front/ajax_order.php',
-			type:'POST',
-			data:{act: 3, id_ban: id_ban, name_ban: name_ban}
-			}).done(function(data){
-				
-				});
-	}
 </script>
 
 </html>

@@ -60,6 +60,10 @@
 	{
 		if(isset($_GET['id_ban'])&&isset($_GET['name_ban']))
 		{
+			if(isset($_SESSION['remind'])&&$_SESSION['remind']==1&&isset($_GET['cate']))
+			{
+				$_SESSION['theloai'][$cate]=2;
+			}
 			$temp = 1;
 			foreach($_SESSION['theloai'] as $k => $v)
 			{
