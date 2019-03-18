@@ -102,6 +102,14 @@
 		return $kq;
 	}
 	
+	//Select * From SQL Where Active =1 and Order by Order ASC
+	function selectWithCondition_AcOrByOrAsc($link, $table)
+	{
+		$sql = "select * from `{$table}` where `active`=1 order by `order` asc";
+		$query = mysqli_query($link,$sql);
+		return $value = mysqli_fetch_assoc($query);
+	}
+	
 	//Query Select Active Of Bill Where OrderId=, Active=0
 	function selectActiveBill_OrAc($link ,$table, $order_id)
 	{
@@ -121,6 +129,19 @@
 	{
 		$kq = array();
 		$sql = "select * from `{$table}` where `active`=1 and `department_id` = {$dep_id}";
+        $query = mysqli_query($link,$sql);
+		while($temp = mysqli_fetch_assoc($query))
+		{
+			$kq[] = $temp;
+		}
+		return $kq;
+	}
+	
+	//Select * From SQL WHERE Active, CategoryID With Array(While)
+	function selectWithConditionArray_ActCate($link, $table, $active, $cate_id)
+	{
+		$kq = array();
+		$sql = "select * from `{$table}` where `active`={$active} and `category_id`={$cate_id}";
         $query = mysqli_query($link,$sql);
 		while($temp = mysqli_fetch_assoc($query))
 		{
@@ -237,5 +258,12 @@
 	function selectSomething2_ConfirmOrder($link)
 	{
 		return $sql = "select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
+	}
+	
+	//Query * From SQL WHERE FoodID, Act
+	function selectWithCondition_FoodIdAct($link, $table, $id, $active)
+	{
+		$sql = "select * from `{$table}` where `food_id` ={$id} and `active` = {$active}";
+		return $query = mysqli_query($link,$sql);
 	}
 ?>
