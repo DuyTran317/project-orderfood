@@ -1,8 +1,8 @@
 <?php 
 if(isset($_GET['name']))
 {
-	$name = $_GET['name'];
-	$order_id=$_GET['order_id'];	
+	$name = takeGet('name');
+	$order_id = takeGet('order_id');	
 
 	$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$name},'0')";
 	mysqli_query($link,$sql);
