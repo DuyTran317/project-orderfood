@@ -117,6 +117,13 @@
          return $query = mysqli_query($link,$sql);
 	}
 	
+	//Query Select Active Of Bill Where OrderId=, Active=0
+	function selectActiveBill_OrActive($link ,$table, $order_id, $active)
+	{
+		 $sql = "select * from `{$table}` where `order_id` = {$order_id} and `active`={$active}";
+         return $query = mysqli_query($link,$sql);
+	}
+	
 	//Query Select From SQL Where OrderID=, Act=, FoodID=
 	function selectWithCondition_OrdActFoo($link, $table, $orderID, $foodID, $act)
 	{
@@ -159,7 +166,16 @@
 		return $value;
 	}
 	
-	//Select * From SQL Where Active=
+	//Select * From SQL Order by ID DESC Limit 0,1
+	function selectWithCondition_OrByIdDes($link, $table)
+	{
+		$sql = "select * from `{$table}` order by `id` DESC limit 0,1";
+		$query = mysqli_query($link,$sql);
+		$value = mysqli_fetch_assoc($query);
+		return $value;
+	}
+	
+	//Select * From SQL Where Act=
 	function selectWithCondition_Act0($link, $table, $act)
 	{
 		$sql = "select * from `{$table}` where `active`={$act}";
