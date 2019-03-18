@@ -34,7 +34,8 @@ $_SESSION['discard_after'] = $now + 3600;
 </head>
 
 <?php
-	include("controller/c_sql_select.php");	
+	include("controller/c_sql_select.php");
+	include("controller/c_takeGet.php");	
 	
 	$mod=@$_GET['mod'];
 	if($mod=='') $mod='dangnhap';

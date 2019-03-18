@@ -105,7 +105,7 @@
 	//Query Select Active Of Bill Where OrderId=, Active=0
 	function selectActiveBill_OrAc($link ,$table, $order_id)
 	{
-		 $sql = "select `active` from `{$table}` where `order_id` = {$order_id} and `active`=0";
+		 $sql = "select * from `{$table}` where `order_id` = {$order_id} and `active`=0";
          return $query = mysqli_query($link,$sql);
 	}
 	
@@ -224,5 +224,18 @@
 	{
 		@$sql = "select * from `{$table}` where `num_table` = {$numtable} and `id` ={$id} and `active` !={$active}";
 		return @$query = mysqli_query($link,$sql);
+	}
+	
+	//COUNT in file Confirm_order in EMPLOYEE
+	function selectSomething1_ConfirmOrder($link, $id)
+	{
+		$sql = "select a.*,b.`vi_name`,a.`country`,b.`img_url` as hinh,a.`id` as id_food,b.`en_name` from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=0";
+        return $query = mysqli_query($link,$sql);		 
+	}
+	
+	//Select Tìm Trùng in file Confirm_order in EMPLOYEE
+	function selectSomething2_ConfirmOrder($link)
+	{
+		return $sql = "select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=0 and ( a.`food_id`=0";
 	}
 ?>
