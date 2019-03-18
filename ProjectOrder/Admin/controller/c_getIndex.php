@@ -24,4 +24,5 @@ function getFectch($link,$table)
 	}
 	return $kq;
 }
+
 ?>
