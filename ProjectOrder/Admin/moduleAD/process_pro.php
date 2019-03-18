@@ -47,7 +47,7 @@ if(isset($_POST['vi_tensp']))
 		$new_price = $gia;
 	}
 	
-    $sql_img = insert_pro($theloai,$theloai,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai);
+    $sql_img = insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai);
     if( mysqli_query($link,$sql_img))
     {
         $_SESSION['theloai'] = $theloai;

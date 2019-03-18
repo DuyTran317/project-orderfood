@@ -102,10 +102,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $sql_pro = "select * from of_food WHERE category_id=$id";
+                            <?php ;
                             $i=1;
-                            $kq_pro = mysqli_query($link,$sql_pro);
-                            while($d_pro=mysqli_fetch_assoc($kq_pro))
+                            $d = sql_select_pro($link,'of_food',$id);
+                            foreach ($d as $d_pro) 
                             {?>
                             <tr>
                                 <td><?php echo $i++; ?></td>

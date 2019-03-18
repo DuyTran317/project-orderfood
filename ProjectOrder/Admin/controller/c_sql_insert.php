@@ -31,9 +31,9 @@
 		 return $sql_user;
 	}
 	//sql insert production
-	function insert_pro($theloai,$theloai,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai)
+	function insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai)
 	{
-		$sql_img = "insert into of_food(`id`,`category_id`,`vi_name`,`en_name`,`price`,`price_discount`,`discount`,`vi_desc`,`en_desc`,`img_url`,`img_url2`,`img_url3`,`img_url4`,`order`,`active`)  VALUES(NULL ,'$theloai','$theloai','$en_tensp','$gia','$new_price',0,
+		$sql_img = "insert into of_food(`id`,`category_id`,`vi_name`,`en_name`,`price`,`price_discount`,`discount`,`vi_desc`,`en_desc`,`img_url`,`img_url2`,`img_url3`,`img_url4`,`order`,`active`)  VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia','$new_price',0,
     '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
     return $sql_img;
 	}

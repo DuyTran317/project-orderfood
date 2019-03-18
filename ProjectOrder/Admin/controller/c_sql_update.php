@@ -82,7 +82,7 @@ function active_hide($table)
 	return $sql;
 }
 //sql update discount
-function update_dis($datefrom,$dateto,$discount,$trangthai)
+function update_dis($datefrom,$dateto,$discount,$trangthai,$id)
 {
 	 $sql_edit="update `of_discount` set `create_at`='{$datefrom}' ,`end_at`='{$dateto}',`discount`='{$discount}',`active`='{$trangthai}' where `id`={$id}";
 	 return $sql_edit;
