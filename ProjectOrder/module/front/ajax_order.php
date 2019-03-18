@@ -51,12 +51,7 @@
     else
         if($act == 3)
         {
-
-            if(isset($_COOKIE['userid_login'])) {
-                $sql = "select `id` from `of_user` where `id`={$_COOKIE['userid_login']} and `active`=2";
-                $r = mysqli_query($link,$sql);
-                $rs = mysqli_num_rows($r);
-                if($rs > 0)
+            if(isset($_COOKIE['userid_login']) && $_COOKIE['userid_login'] != 0)
                 {
                     echo 1;
                 }
@@ -64,8 +59,6 @@
                 {
                     echo 0;
                 }
-            }
+
         }
-	
-	
 ?>

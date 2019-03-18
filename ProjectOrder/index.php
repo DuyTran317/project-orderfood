@@ -19,7 +19,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost/project-orderfood/ProjectOrder/">
+<base href="http://localhost/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -228,25 +228,47 @@ if(isset($_SESSION['lang'])){
 			 }
 				});
         if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(showPosition);
+            navigator.geolocation.watchPosition(showPosition, showError);
         } else {
             alert("không lấy dược GPS");
         }
         function showPosition(position) {
             if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
-                $.ajax({
-                    url:'module/front/ajax_order.php',
-                    type:'POST',
-                    data:{ act: 3},
-
-                }).done(function(data) {
-                    if(data == 1) {
-                        window.location = "module/front/location.php";
-                    }
-                });
+                alert("bạn đang ở ngoài khu vực nhà hàng");
+                checkandlogout();
             }
-            // document.getElementById("la").innerHTML=position.coords.latitude;
-            // document.getElementById("lo").innerHTML=position.coords.longitude;
+        }
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    checkandlogout();
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    checkandlogout();
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    checkandlogout();
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    checkandlogout();
+                    break;
+            }
+        }
+        function checkandlogout() {
+            $.ajax({
+                url:'module/front/ajax_order.php',
+                type:'POST',
+                data:{ act: 3},
+
+            }).done(function(data) {
+                if(data == 1) {
+                    window.location = "module/front/location.php";
+                }
+            });
         }
     });
     function openNav() {
