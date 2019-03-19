@@ -99,7 +99,7 @@ if(isset($_POST['suakhuyenmai']))
             header('Location:edit_discount-'.$id.'.html');
         }
         else{
-            $sql_edit=update_dis($datefrom,$dateto,$discount,$trangthai);
+            $sql_edit=update_dis($datefrom,$dateto,$discount,$trangthai,$id);
         }
         
        if(mysqli_query($link,$sql_edit)) 
