@@ -217,11 +217,12 @@ if(isset($_SESSION['lang'])){
     });
 
     $(document).ready(function () {
+        var Latitude = 106, Longitude = 40;
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
 			 });
-		$("#find").blur(function () {	
-			if(document.getElementById('find').value != ''){ 
+		$("#find").blur(function () {
+			if(document.getElementById('find').value != ''){
 			 $(".find").removeAttr('disabled');
 			 }else{
                 $(".find").attr('disabled','');
@@ -234,31 +235,26 @@ if(isset($_SESSION['lang'])){
         }
         function showPosition(position) {
             if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
-                alert("bạn đang ở ngoài khu vực nhà hàng");
-                checkandlogout();
+                checkandlogout(1);
             }
         }
         function showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    checkandlogout();
+                    checkandlogout(2);
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    checkandlogout();
+                    checkandlogout(3);
                     break;
                 case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    checkandlogout();
+                    checkandlogout(4);
                     break;
                 case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    checkandlogout();
+                    checkandlogout(5);
                     break;
             }
         }
-        function checkandlogout() {
+        function checkandlogout(error) {
             $.ajax({
                 url:'module/front/ajax_order.php',
                 type:'POST',
@@ -266,7 +262,7 @@ if(isset($_SESSION['lang'])){
 
             }).done(function(data) {
                 if(data == 1) {
-                    window.location = "module/front/location.php";
+                    window.location = "module/front/location.php?error="+error;
                 }
             });
         }
