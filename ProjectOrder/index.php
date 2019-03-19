@@ -217,6 +217,7 @@ if(isset($_SESSION['lang'])){
     });
 
     $(document).ready(function () {
+		var Latitude = 106; var Longitude = 40;
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
 			 });
