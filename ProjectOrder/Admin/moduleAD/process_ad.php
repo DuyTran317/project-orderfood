@@ -1,5 +1,7 @@
 <?php
-
+include("controller/c_sql_insert.php");
+include("controller/c_sql_update.php");
+include("controller/c_sql_del.php");
 if(isset($_POST['xacnhan']) )
 {
    
@@ -12,7 +14,7 @@ if(isset($_POST['xacnhan']) )
             if($_POST['changePassword']="on"){
                 
                     $pass = hash('sha512',$_POST['suapass']);
-                    $sql_edit="update `of_admin` set `password`='{$pass}', `cate`= '{$level}' WHERE id={$_POST['suaid']}"; 
+                    $sql_edit=up_ad_pass($pass,$level); 
                      mysqli_query($link,$sql_edit);
                    
                     if($cate ==1)
@@ -31,7 +33,7 @@ if(isset($_POST['xacnhan']) )
         }
         else
         {
-                    $sql_edit="update `of_admin` set `cate`= '{$level}' WHERE id={$_POST['suaid']}";
+                    $sql_edit=up_ad_nopass($level);
                     mysqli_query($link,$sql_edit);
                     
                     if($cate ==1)
@@ -53,7 +55,7 @@ if(isset($_POST['xacnhan']) )
                     if($_POST['changePassword']="on"){
                         
                             $pass = hash('sha512',$_POST['suapass']);
-                            $sql_edit="update `of_admin` set `password`='{$pass}', `cate`= '1' WHERE id={$_POST['suaid']}"; 
+                            $sql_edit=function up_ad_on($pass); 
                              mysqli_query($link,$sql_edit);
                            
                             if($cate ==1)
@@ -72,7 +74,7 @@ if(isset($_POST['xacnhan']) )
                 }
                 else
                 {
-                            $sql_edit="update `of_admin` set `cate`= '1' WHERE id={$_POST['suaid']}";
+                            $sql_edit=up_ad_noon();
                             mysqli_query($link,$sql_edit);
                             
                             if($cate ==1)
@@ -93,7 +95,7 @@ if(isset($_POST['xacnhan']) )
                     if($_POST['changePassword']="on"){
                         
                             $pass = hash('sha512',$_POST['suapass']);
-                            $sql_edit="update `of_admin` set `password`='{$pass}' WHERE id={$_POST['suaid']}"; 
+                            $sql_edit=up_ad_null($pass); 
                              mysqli_query($link,$sql_edit);
                            
                             if($cate ==1)

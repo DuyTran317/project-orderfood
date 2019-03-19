@@ -1,4 +1,7 @@
 <?php
+include("controller/c_sql_insert.php");
+include("controller/c_sql_update.php");
+include("controller/c_sql_del.php");
 if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -12,7 +15,7 @@ if(isset($_POST['vi_theloai']))
     $thutu = $_POST['thutu'];
 
     
-     $sql_add = "insert into `of_category` VALUES(NULL,'{$department_id}','{$vi_theloai}','{$en_theloai}','{$thutu}','{$trangthai}') ";
+     $sql_add = insert_cat($department_id,$vi_theloai,$en_theloai,$thutu,$trangthai);
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['chungloai'] = $department_id;
@@ -32,7 +35,7 @@ if(isset($_POST['vi_suatheloai']))
     $thutu = $_POST['suathutu'];
     $id= $_POST['id'];
 
-        $sql_edit="update `of_category` set `department_id`={$department_id} ,`vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}' where `id`={$id}";
+        $sql_edit=update_cat($department_id,$vi_theloai,$en_theloai,$thutu,$trangthai,$id);
        if(mysqli_query($link,$sql_edit)) 
        {
          $_SESSION['chungloai'] = $department_id;
@@ -58,7 +61,7 @@ if(isset($_GET['del']))
 		unlink("../img/cate/{$r['img_url']}");	
 	}
 	
-    $sql_del="delete from `of_category` where `id`='{$_GET['del']}'";
+    $sql_del=sql_delete('of_category');
     if(mysqli_query($link,$sql_del))
     {
         
@@ -71,13 +74,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = "update `of_category` set `active`=1 where id='{$_GET['actives']}' ";
+    $sql = active_show('of_category');
     mysqli_query($link,$sql);
     header("location:danh-sach-the-loai.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = "update `of_category` set `active`=0 where id='{$_GET['activeh']}' ";
+    $sql = active_hide('of_category');
     mysqli_query($link,$sql);
     header("location:danh-sach-the-loai.html");
 }

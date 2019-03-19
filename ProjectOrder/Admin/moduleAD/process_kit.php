@@ -1,5 +1,7 @@
 <?php
-
+include("controller/c_sql_insert.php");
+include("controller/c_sql_update.php");
+include("controller/c_sql_del.php");
 if(isset($_POST['ten']))
 {
     $account=$_POST['ten'];
@@ -9,7 +11,7 @@ if(isset($_POST['ten']))
     $active = $_POST['trangthai'];
     $cate = $_POST['cate'];
        $pass = hash('sha512',$_POST['pass']);
-        $sql_user = "insert into `of_manage` VALUES (NULL ,'{$account}','{$pass}','{$name}','{$cate}','{$active}')";
+        $sql_user = insert_kit($account,$pass,$name,$cate,$active);
        if(mysqli_query($link,$sql_user))
         {
             $_SESSION['them'] = 'themthanhcong';
@@ -30,7 +32,7 @@ if(isset($_POST['suaten']))
             if($_POST['changePassword']="on"){
               
                     $pass = hash('sha512',$_POST['suapass']);
-                    $sql_edit="update `of_manage` set `account`='$account',`password`='$pass',`name`='$name' WHERE id={$_POST['suaid']}";
+                    $sql_edit=up_kit_on($account,$pass,$name);
                     mysqli_query($link,$sql_edit);
                      $_SESSION['sua'] = 'suathanhcong';
                     header("location:danh-sach-bep-thanh-toan.html");
@@ -39,7 +41,7 @@ if(isset($_POST['suaten']))
         }
         else {
 
-            $sql_edit = "update `of_manage` set `account`='$account',`name`='$name',`active`='$active' WHERE id={$_POST['suaid']}";
+            $sql_edit = up_kit_noon($account,$name);
             mysqli_query($link,$sql_edit);
             header("location:danh-sach-bep-thanh-toan.html");
         }
@@ -48,19 +50,19 @@ if(isset($_POST['suaten']))
 
 if(isset($_GET['actives']))
 {
-    $sql = "update `of_manage` set `active`=1 where id='{$_GET['actives']}' ";
+    $sql = active_show('of_manage');
     mysqli_query($link,$sql);
     header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = "update `of_manage` set `active`=0 where id='{$_GET['activeh']}' ";
+    $sql = active_hide('of_manage');
     mysqli_query($link,$sql);
     header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['del']))
 {
-    $sql_del= "delete from of_manage WHERE id={$_GET['del']}";
+    $sql_del= sql_delete('of_manage');
     if(mysqli_query($link,$sql_del))
     {
         header("location:danh-sach-bep-thanh-toan.html");
