@@ -1,6 +1,6 @@
 ﻿<?php
 
-if(isset($_POST['user']))
+if(isset($_POST['user'])&&isset($_SESSION['inside']))
 {
 	$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
 	foreach($select as $r){
@@ -40,5 +40,16 @@ if(isset($_POST['user']))
 			
 <?php		
 	}
+}
+else{
+    //Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
+    $_SESSION['email']=$user;
+    ?>
+    <script>
+        alert('bạn hãy nhập đúng số bàn và cho phép orderfood xác định vị trí hiện tại của bạn');
+        window.location="login.html";
+    </script>
+
+    <?php
 }
 ?>

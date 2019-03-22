@@ -19,7 +19,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost:8888/project-orderfood/ProjectOrder/">
+<base href="http://localhost/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -237,33 +237,36 @@ if(isset($_SESSION['lang'])){
         }
         function showPosition(position) {
             if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
-                checkandlogout(1);
+                checkandlogout(1,3);
             }
+            // else{
+            //     checkandlogout(0,4);
+            // }
         }
         function showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    checkandlogout(2);
+                    checkandlogout(2,3);
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    checkandlogout(3);
+                    checkandlogout(3,3);
                     break;
                 case error.TIMEOUT:
-                    checkandlogout(4);
+                    checkandlogout(4,3);
                     break;
                 case error.UNKNOWN_ERROR:
-                    checkandlogout(5);
+                    checkandlogout(5,3);
                     break;
             }
         }
-        function checkandlogout(error) {
+        function checkandlogout(error,act) {
             $.ajax({
                 url:'module/front/ajax_order.php',
                 type:'POST',
-                data:{ act: 3},
+                data:{ act: act},
 
             }).done(function(data) {
-                if(data == 1) {
+                if(data == 1 && error!=0) {
                     window.location = "module/front/location.php?error="+error;
                 }
             });
