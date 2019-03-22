@@ -7,7 +7,12 @@ $name = takeGet('name');
 <?php if(isset($_GET['tim'])){?>
 
 	<script>
-		alert("<?=_UNFOUND?>");
+		// alert("<?=_UNFOUND?>");
+
+    setTimeout(function () { swal("Chú ý",
+          "<?=_UNFOUND?>",
+          "warning");
+    }, 1);
 	</script>
 <?php } ?>
 

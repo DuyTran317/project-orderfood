@@ -1,8 +1,12 @@
 <?php if(isset($_GET['tim'])){?>
 
 	<script>
-		alert("<?=_UNFOUND?>");
-		</script>
+		// 
+        setTimeout(function () { swal("Chú ý",
+          "<?=_UNFOUND?>",
+          "warning");
+        }, 1);
+    </script>
         <?php } ?>
 <script type="text/javascript">
 

@@ -1,4 +1,5 @@
-﻿<?php
+﻿
+<?php
 
 if(isset($_POST['user']))
 {
@@ -34,8 +35,19 @@ if(isset($_POST['user']))
 		$_SESSION['email']=$user;
 ?>		
 		<script> 
-			alert('<?=_WRONGTABLENO?>');
-			window.location="login.html";
+			swal({
+                            title: "Chú ý!",
+                            text: "<?=_WRONGTABLENO?>",
+                            type: "warning"
+                        }).then(function() {
+                                window.location="login.html";
+                        });
+			// setTimeout(function () { swal("Chú ý",
+			// 		  "<?=_WRONGTABLENO?>",
+			// 		  "warning");
+			// }, 1);
+			// alert('<?=_WRONGTABLENO?>');
+			// window.location="login.html";
 		</script>
 			
 <?php		

@@ -48,12 +48,22 @@ if(empty($_SESSION['servantlang'])){
 				mysqli_query($link,$sql);
 				//riu tham trang bep
 				sendPusher('161363aaa8197830a033', '46f2ba3b258f514f6fc7', '577033', 'Reload', 'reloadbep');	
-				echo "
-				<script>
-					alert('Đã thêm thành công!');
-					window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
-				</script>		
-				";
+				// echo "
+				// <script>
+
+				// 	alert('Đã thêm thành công!');
+				// 	window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
+				// </script>		
+				// ";
+				echo '<script type="text/javascript">';
+							echo 'swal({
+							title: "Thành công!",
+							text: "Đã thêm thành công!",
+							type: "success"
+							}).then(function() {
+								window.location ="?mod=confirm_order&id='.$id.'&num_table='.$num_table.'";
+							});';
+				echo '</script>';
 			}
 			else
 			{			
@@ -65,12 +75,21 @@ if(empty($_SESSION['servantlang'])){
 				$sql="insert into `of_note_order` values(NULL,'$id','$note',2)";
 				mysqli_query($link,$sql);
 					
-				echo "
-				<script>
-					alert('Đã thêm thành công!');
-					window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
-				</script>		
-				";
+				// echo "
+				// <script>
+				// 	alert('Đã thêm thành công!');
+				// 	window.location='?mod=confirm_order&id={$id}&num_table=$num_table';	
+				// </script>		
+				// ";
+				echo '<script type="text/javascript">';
+							echo 'swal({
+							title: "Thành công!",
+							text: "Đã thêm thành công!",
+							type: "success"
+							}).then(function() {
+								window.location ="?mod=confirm_order&id='.$id.'&num_table='.$num_table.'";
+							});';
+				echo '</script>';
 			}
 		}
 				
@@ -81,7 +100,12 @@ if(empty($_SESSION['servantlang'])){
 		
 			if(mysqli_num_rows($check) > 0)
 			{
-				echo "<script>alert('Đã tồn tại món này trong danh sách!')</script>";
+				// echo "<script>alert('Đã tồn tại món này trong danh sách!')</script>";
+					echo '<script type="text/javascript">';
+					echo 'setTimeout(function () { swal("Chú ý",
+							  "Đã tồn tại món này trong danh sách!",
+							  "warning");';
+					echo '}, 1);</script>';
 			}
 			else
 			{
