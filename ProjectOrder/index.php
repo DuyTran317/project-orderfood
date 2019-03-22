@@ -239,9 +239,9 @@ if(isset($_SESSION['lang'])){
             if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
                 checkandlogout(1,3);
             }
-            // else{
-            //     checkandlogout(0,4);
-            // }
+            else{
+                checkandlogout(0,4);
+            }
         }
         function showError(error) {
             switch(error.code) {
