@@ -1,7 +1,5 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_POST['vi_tensp']))
 {
     $theloai = $_POST['theloai'];
@@ -168,7 +166,7 @@ if(isset($_GET['del']))
 	}
 	
 
-    $sql_del = sql_delete('of_food');
+    $sql_del = sql_delete_pro('of_food');
     if(mysqli_query($link,$sql_del))
     {
         
@@ -178,13 +176,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = active_show('of_food');
+    $sql = active_show_pro('of_food');
     mysqli_query($link,$sql);
     header("location:danh-sach-san-pham.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = active_hide('of_food');
+    $sql = active_hide_pro('of_food');
     mysqli_query($link,$sql);
     header("location:danh-sach-san-pham.html");
 }

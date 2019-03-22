@@ -1,8 +1,6 @@
 
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -117,7 +115,7 @@ if(isset($_GET['del']))
 {
 
 	
-    $sql_del=sql_delete('of_discount');
+    $sql_del=sql_delete_dis('of_discount');
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-khuyen-mai.html');
@@ -129,13 +127,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = active_show('of_discount');;
+    $sql = active_show_dis('of_discount');;
     mysqli_query($link,$sql);
     header("location:danh-sach-khuyen-mai.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = active_hide('of_discount');;
+    $sql = active_hide_dis('of_discount');;
     mysqli_query($link,$sql);
     header("location:danh-sach-khuyen-mai.html");
 }

@@ -1,7 +1,5 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_POST['username']))
 {
     
@@ -26,7 +24,7 @@ if(isset($_POST['username']))
 
 if(isset($_GET['del']))
 {
-    $sql_del= sql_delete('of_user');
+    $sql_del= sql_delete_user('of_user');
     if(mysqli_query($link,$sql_del))
     {
         header("location:danh-sach-ban.html");
@@ -35,13 +33,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = active_show('of_user');
+    $sql = active_show_user('of_user');
     mysqli_query($link,$sql);
     header("location:danh-sach-ban.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = active_hide('of_user');
+    $sql = active_hide_user('of_user');
     mysqli_query($link,$sql);
     header("location:danh-sach-ban.html");
 }

@@ -1,7 +1,5 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_POST['xacnhan']) )
 {
    

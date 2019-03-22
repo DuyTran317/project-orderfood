@@ -82,6 +82,16 @@ ob_start();
 <?php
 include ("../lib/connect.php");
 include('controller/c_getIndex.php');
+include('controller/c_sql_ad.php');
+include('controller/c_sql_bill.php');
+include('controller/c_sql_cate.php');
+include('controller/c_sql_com.php');
+include('controller/c_sql_de.php');
+include('controller/c_sql_dis.php');
+include('controller/c_sql_kit.php');
+include('controller/c_sql_pro.php');
+include('controller/c_sql_slide.php');
+include('controller/c_sql_user.php');
 include('moduleAD/menu.php');
 
 $mod=@$_GET['mod'];
