@@ -3,31 +3,19 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
-	if(isset($_GET['id_food']))
-	{
-		$id_food=$_GET['id_food'];
-	}
+	$id = takeGet('id');
+	$num_table = takeGet('num_table');
+	$id_food = takeGet('id_food');
 	
-	$sql="select * from `of_order` where `num_table`={$num_table} and `id`={$id}";
-	$kq=mysqli_query($link,$sql);
-	$k=mysqli_fetch_assoc($rs);
-	////////////////
+	$kq = selectIdNum($link, 'of_order', $id, $num_table);
+	$k = mysqli_fetch_assoc($rs);
+
 	if($r['active']==0)
 	{						
-		$sql="select * from `of_order_detail` where `order_id`={$id} and `active`=1";
-		$rs2=mysqli_query($link,$sql);
+		$rs2 = selectActiveBill_OrActive($link, 'of_order_detail', $id, 1);
 		if(mysqli_num_rows($rs2)==0)
 		{			
-			$sql="select * from `of_order_detail` where `order_id`={$id} and `active`=0";
-			$rs=mysqli_query($link,$sql);
+			$rs = selectActiveBill_OrActive($link, 'of_order_detail', $id, 0);
 			
 			$dem = mysqli_num_rows($rs);
 			if($dem==1)
@@ -49,8 +37,7 @@
 		}
 		else
 		{
-			$sql="select * from `of_order_detail` where `order_id`={$id} and `active`=0";
-			$rs=mysqli_query($link,$sql);
+			$rs = selectActiveBill_OrActive($link, 'of_order_detail', $id, 0);
 			
 			$dem = mysqli_num_rows($rs);
 			if($dem==1)

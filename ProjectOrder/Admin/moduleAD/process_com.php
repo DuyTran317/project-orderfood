@@ -1,7 +1,8 @@
 <?php
+
 if(isset($_GET['del']))
 {
-    $sql_del = "delete from of_rate where id={$_GET['del']}";
+    $sql_del = sql_delete_com('of_rate');;
     if(mysqli_query($link,$sql_del))
     {
         header("location:danh-sach-danh-gia.html");

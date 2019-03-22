@@ -46,12 +46,8 @@ function getPusher(string $key, string $channel, string $event)
       encrypted: true
     });
     var channel = pusher.subscribe('<?= $channel ?>');
-    // chanel trùng voi chanel trong send.php
     channel.bind('<?= $event ?>', function () {
-		
-        //code xử lý khi có dữ liệu từ pusher
 		 window.location.reload();
-        // kết thúc code xử lý thông báo
     });
 </script>
 	
@@ -69,15 +65,10 @@ function getPusher2($key, $channel, $event, $name)
       encrypted: true
     });
     var channel = pusher.subscribe('<?= $channel ?>');
-    // chanel trùng voi chanel trong send.php
     channel.bind('<?= $event ?>', function (data) {
-
-        //code xử lý khi có dữ liệu từ pusher
-
 		if(data.name == <?= $name?>){
 		window.location.reload();
 		}
-        // kết thúc code xử lý thông báo
     });
 </script>
 	

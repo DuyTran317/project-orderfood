@@ -3,7 +3,7 @@ if(!isset($_SESSION))
     { 
         session_start(); 
     } 
-include("connect.php");
+
 if(isset($_POST['vi_theloai']))
 {
     $vi_theloai = $_POST['vi_theloai'];
@@ -18,15 +18,15 @@ if(isset($_POST['vi_theloai']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/cate/{$img_url}");
     }
-     $sql_add = "insert into `of_department` VALUES(NULL,'{$vi_theloai}','{$en_theloai}','{$img_url}','{$thutu}','{$trangthai}','{$source}') ";
+    $sql_add = insert_de($vi_theloai,$en_theloai,$img_url,$thutu,$trangthai,$source);
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
          header('Location:danh-sach-chung-loai.html');
      }
-        else {
-         echo $sql_add;
-        }
+    else {
+     echo $sql_add;
+    }
 }
 if(isset($_POST['vi_suatheloai']))
 {
@@ -44,12 +44,12 @@ if(isset($_POST['vi_suatheloai']))
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/cate/{$img_url}");
 
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`img_url`='{$img_url}',`solve_department`='{$source}' where `id`={$id}";
+        $sql_edit= update_de_img($vi_theloai,$en_theloai,$thutu,$trangthai,$img_url,$source,$id);
         
         mysqli_query($link,$sql_edit);
     }
     else{
-        $sql_edit="update `of_department` set `vi_name`='{$vi_theloai}',`en_name`='{$en_theloai}',`order`='{$thutu}',`active`='{$trangthai}',`solve_department`='{$source}' where `id`={$id}";
+        $sql_edit=update_de_noimg($vi_theloai,$en_theloai,$thutu,$trangthai,$source,$id);
         mysqli_query($link,$sql_edit);
     }
     $_SESSION['sua'] = 'suathanhcong';
@@ -59,6 +59,7 @@ header('Location:danh-sach-chung-loai.html');
 
 if(isset($_GET['del']))
 {
+
 	$sql="select `img_url` from `of_department` where `id`='{$_GET['del']}'";
 	$rs=mysqli_query($link,$sql);
 	$r=mysqli_fetch_assoc($rs);
@@ -69,7 +70,7 @@ if(isset($_GET['del']))
 		unlink("../img/cate/{$r['img_url']}");	
 	}
 	
-    $sql_del="delete from `of_department` where `id`='{$_GET['del']}'";
+    $sql_del=sql_delete_de('of_department');;
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-chung-loai.html');
@@ -81,13 +82,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = "update `of_department` set `active`=1 where id='{$_GET['actives']}' ";
+    $sql = active_show_de('of_department');
     mysqli_query($link,$sql);
     header("location:danh-sach-chung-loai.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = "update `of_department` set `active`=0 where id='{$_GET['activeh']}' ";
+    $sql = active_hide_de('of_department');
     mysqli_query($link,$sql);
     header("location:danh-sach-chung-loai.html");
 }

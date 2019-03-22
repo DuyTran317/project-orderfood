@@ -19,4 +19,11 @@
 		$sql = "insert into `{$table}` values(NULL,'$numtable','$active','$date')";
 		return mysqli_query($link,$sql);
 	}
+	
+	//Insert 5 values
+	function Ins_FiveValue($link, $table, $val_1, $val_2, $val_3, $val_4)
+	{
+		$sql = "insert into `{$table}` values(NULL,'$val_1','$val_2','$val_3','$val_4')";
+		return mysqli_query($link,$sql);
+	}
 ?>

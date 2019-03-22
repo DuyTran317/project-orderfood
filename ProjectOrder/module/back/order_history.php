@@ -32,7 +32,7 @@
 
 	if(isset($_POST['date_pick']))
 	{
-		$date_pick=$_POST['date_pick'];
+		$date_pick = takePost('date_pick');
 		
 		//Chuyen format $date_pick tu dd/mm/yyyy -> yyyy-mm-dd
 		$d= substr($date_pick,0,2);
@@ -75,11 +75,11 @@
             	<?php
 					if(isset($_POST['date_pick']))
 					{
-					$sql="select * from `of_order` where `date` >='{$date_pickfrom}' and `date` <='{$date_pickto}' order by `date` desc";
+					$sql = selectDate($date_pickfrom, $date_pickto);
 					}
 					if(!isset($_POST['date_pick']))
 					{
-					$sql="select * from `of_order` where `date` >='{$datefrom}' and `date` <='{$dateto}' order by `date` desc";	
+					$sql = selectDate($datefrom, $dateto);
 					}
 					$rs = mysqli_query($link,$sql);
 					while($r=mysqli_fetch_assoc($rs)){
@@ -105,9 +105,7 @@
                             <div class="modal-dialog" style="width: 24%">
                                 
                                 <?php
-                                    $sql="select `num_table` from `of_order` where `id`={$r['id']}";	
-                                    $kq=mysqli_query($link,$sql);	
-                                    $k=mysqli_fetch_assoc($kq);
+                                    $k = selectIdWithCondition($link, 'num_table', $r['id']);
                                 ?>
                                 
                                 <!-- Modal content-->
@@ -117,15 +115,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <table class="table no-border">
-                                            <?php
-                                                $sql="select b.`vi_name` as ten, a.`qty` as sl from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and `order_id`={$r['id']}";
-                                                $lap_kq=mysqli_query($link,$sql);
-                                                while($lap = mysqli_fetch_assoc($lap_kq)): 
+                                            <?php                                        
+												$select = selectOrderHistory($link, $r['id']);
+												foreach($select as $lap){
                                             ?>
                                             <tr style="border-bottom: dashed grey thin;">
                                                 <td><?=$lap['sl']?> x <?=$lap['ten']?></td>
                                             </tr>  
-                                            <?php endwhile ?>                      
+                                            <?php } ?>                      
                                         </table>
                                     </div>
                                     <div class="modal-footer" style="border-bottom: solid #5ab738 5px;">

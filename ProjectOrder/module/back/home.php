@@ -5,7 +5,7 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	$sobanmontrung=5;
+	$sobanmontrung = 5;
 	getPusher('161363aaa8197830a033', 'Reload', 'reloadbep');
 ?>
 <style>
@@ -92,10 +92,8 @@
                      <?php 
 					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					 setcookie("idbancuoi",0,time()+86400);
-					 
-					$sql = "select *, a.`id` as idorder, a.`num_table` as numtable from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and b.`active`=2 and e.`solve_department`={$_SESSION['admin_id']} GROUP BY b.`order_id`";
 				
-					$rs=mysqli_query($link,$sql);
+					 $rs = selectSomething_HomeBack($link, $_SESSION['admin_id']);
 
 					/*Dynamic colours*/
                      $colour = array("#f6d55c", "#fe5f55", "#3caea3", "#20639b", "#2e4057" ,"#f29924", "#c99789", "#99641e" ,"#536878", "#aa96da","#4d648d");
@@ -109,9 +107,7 @@
 						$id = $r1['idorder'];
 						if($temp == 0)
 						{ 
-							$sql_bancuoi = "select Max(a.`id`) as idmax from `of_order` as a, `of_order_detail` as b, `of_food` as c, `of_category` as d, `of_department` as e where a.`id`=b.`order_id` and b.`food_id`=c.`id` and c.`category_id`=d.`id` and d.`department_id`=e.`id` and a.`active`=2 and e.`solve_department`={$_SESSION['admin_id']}";
-							$r_bancuoi = mysqli_query($link,$sql_bancuoi);
-							$rs_bancuoi=mysqli_fetch_assoc($r_bancuoi);
+							$rs_bancuoi = selectSomething2_HomeBack($link, $_SESSION['admin_id']);
 							$idbandau = $r1['idorder'];$bandau=$r1['numtable'];
 							
 							if($rs_bancuoi['idmax']>$idbandau+$sobanmontrung) $idbancuoi=$idbandau+$sobanmontrung;
@@ -135,10 +131,9 @@
                         <div class="panel-body" style="border: solid lightgrey thin; max-height: 550px; overflow-y: auto;">
                         <table class="table no-border">
 
-                             <?php 
-					$sql2="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a, `of_food` as b, `of_category` as c, `of_department` as d where a.`food_id`=b.`id` and b.`category_id`=c.`id` and c.`department_id`=d.`id` and a.`active`=2 and d.`solve_department`={$_SESSION['admin_id']} and a.`order_id`={$id} GROUP BY a.`id`";
-	             	$rs1=mysqli_query($link,$sql2);
-					if($temp==0) $sql_montrung = "select b.`vi_name`,SUM(qty) as qty_sum from `of_order_detail` as a, `of_food` as b where a.`food_id` = b.`id` and a.`active`=2 and a.`order_id`>={$idbandau} and a.`order_id`<={$_COOKIE['idbancuoi']} and (a.food_id=0";
+                    <?php 
+	             	$rs1 = selectSomething3_HomeBack($link, $_SESSION['admin_id'], $id);
+					if($temp==0) $sql_montrung = selectSomething4_HomeBack($idbandau, $_COOKIE['idbancuoi']);
 					$total=0;
 					while($r=mysqli_fetch_assoc($rs1))
 					{
@@ -154,12 +149,9 @@
 							 $total += $r['price']*$r['qty'];
 					} ?>
                         </table>
-                         <?php 
-					
-				$sql="SELECT `note` FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
-				$rs2 = mysqli_query($link,$sql);
-				$xacnhan = mysqli_num_rows($rs2);
-				 
+                 <?php 					
+					$rs2 = selectNote_HomeBack($link, $num_table);
+					$xacnhan = mysqli_num_rows($rs2);				 
 				?>
                         <p>Chú Thích:</p> <?php
 					if($xacnhan > 0 )
@@ -244,40 +236,6 @@
                 <?php } ?>
             </div>
             <div class="table-responsive"></div>
-            <?php /*?><table class="col-md-12 col-sm-12 col-xs-12 table-bordered" id="datatable" style="text-align:center; margin-top:15px; overflow-x: scroll">
-              <thead>
-              <tr align="center" bgcolor="#FFFFCC">
-                <td><h4><strong>STT</strong></h4></td>
-                <td><h4><strong>Số Bàn</strong></h4></td>
-                <td><h4><strong>Trạng Thái</strong></h4></td>
-                <td><h4><strong>Kiểm Tra</strong></h4></td>
-              </tr>
-              </thead>
-              <?php
-                $sql = "SELECT * from `of_order` where `active`=2";
-                $rel = mysqli_query($link,$sql);
-                $i=1;
-                while($re = mysqli_fetch_assoc($rel))
-                {
-              ?>
-              <tr>
-                <td align="center"><h5>
-                  <?=$i++?>
-                </h5></td>
-                <td align="center"><h5>&nbsp;&nbsp;
-                  Bàn Số: <span style="color: red; font-size: 24px;"><?=$re['num_table']?></span>
-                </h5></td>
-                <td align="center"><h5>
-                  <?php
-                    echo"Đang chờ xử lý";
-                  ?>
-                </h5></td>
-                <td align="center"><h5>
-                  <a href="?mod=check_order&id=<?=$re['id']?>&num_table=<?=$re['num_table']?>">Xem</a>
-                </h5></td>
-              </tr>
-              <?php } ?>
-            </table><?php */?>
         </div>
     </div>
 </body>

@@ -18,7 +18,7 @@
     }
 </script>
 <html style="height: 100%">
-<body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif; height: 100%">
+<body style="background-image: url(img/front/close-up-cooking-cuisine-958545.jpg);  font-family: 'Anton', sans-serif; height: 100%; width: 100%;">
 <div class="container-fluid" style="margin-top:10%">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-lg-4 col-lg-offset-4" style="background-color: rgba(0,0,0,0.8); padding:15px">

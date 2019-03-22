@@ -1,7 +1,8 @@
 <?php
+
 if(isset($_GET['mahd']))
 {
-    $sql_del="delete from `of_bill` where `id`='{$_GET['mahd']}'";
+    $sql_del=sql_delete('of_bill');
     if(mysqli_query($link,$sql_del))
     {
     	 

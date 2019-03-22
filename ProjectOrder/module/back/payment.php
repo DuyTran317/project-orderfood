@@ -3,14 +3,8 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
+	$id = takeGet('id');
+	$num_table = takeGet('num_table');	
 ?>
 
 <style>
@@ -171,25 +165,16 @@
             <div id="content">
                 <div id="page" class="page">
                     <div class="header" style="margin-top:10px">
-
                         <?php
-                        $sql="select * from `of_bill` where `num_table` = {$num_table} and `active`=0";
-                        $kq=mysqli_query($link,$sql);
-                        $k=mysqli_fetch_assoc($kq);
+                        	$k = selectWithCondition_FetchNumAct($link, 'of_bill', $num_table, 0);
                         ?>
-
-
-
                         <table class="TableData table-responsive no-border">
 
                             <?php
-                            $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
-                            $rs=mysqli_query($link,$sql);
+                            $rs = selectPayment($link, $id);
 
                             //Truy vấn cho việc sử dụng $lang
-                            $sql="select a.*,b.`en_name`,b.`vi_name`,a.`country` as country, b.`img_url` as hinh, a.`discount` as km from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
-                            $lang_use=mysqli_query($link,$sql);
-                            $lang=mysqli_fetch_assoc($lang_use);
+                            $lang = select_UsingLang($link, $id);
 
                             $stt=1;
                             $total=0;
@@ -236,21 +221,14 @@
                         $gia_goc += $gia_temp*$r['qty'];
                     }
                     //Truy vấn ngày trong đơn món
-                    $sql="select `date` from `of_order` where `id`={$id}";
-                    $date_order=mysqli_query($link,$sql);
-                    $show_date_order=mysqli_fetch_assoc($date_order);
+                    $show_date_order = selectIdWithCondition($link, 'of_order', $id);
 
                     //Truy vấn ngày trong hóa đơn
-                    $sql="select `date` from `of_bill` where `order_id`={$id}";
-                    $date_bill=mysqli_query($link,$sql);
-                    $show_date_bill=mysqli_fetch_assoc($date_bill);
+                    $show_date_bill = selectWithCondition_OrderId($link, 'of_bill', $id);
 
                     //Truy vấn lấy ngày và giá trị khuyến mãi
                     $giatri_km=0;
-
-                    $sql="select * from `of_discount` where `active` =1";
-                    $khuyen_mai = mysqli_query($link,$sql);
-
+                    $khuyen_mai = selectWithCondition_Act0($link, 'of_discount', 1);					
                     if(mysqli_num_rows($khuyen_mai)>0)
                     {
                         $show_km = mysqli_fetch_assoc($khuyen_mai);

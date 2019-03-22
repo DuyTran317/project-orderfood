@@ -1,4 +1,5 @@
 <?php
+
 if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -9,7 +10,7 @@ if(isset($_POST['vi_tenslide']))
     $tenslideen = $_POST['en_tenslide'];
     $noidungvi = $_POST['vi_noidung'];
     $noidungen = $_POST['en_noidung'];
-
+    $date = date("Y-m-d G:i:s");
 
     $file = $_FILES['image'];
     if($file['name'] != '')
@@ -17,7 +18,7 @@ if(isset($_POST['vi_tenslide']))
         $img_url = mt_rand().$file['name'];
         copy($file['tmp_name'],"../img/slider/{$img_url}");
     }
-     $sql_add = "insert into `of_slider`(`id`,`vi_name`,`en_name`,`vi_content`,`en_content`,`img_url`,`create_at`) VALUES(NULL,'{$tenslidevi}','{$tenslideen}','{$noidungvi}','{$noidungen}','{$img_url}',now())";
+     $sql_add = insert_slide($tenslidevi,$tenslideen,$noidungvi,$noidungen,$img_url,$date);
      if(mysqli_query($link,$sql_add))
      {
         $_SESSION['them'] = 'themthanhcong';
@@ -43,7 +44,7 @@ if(isset($_POST['vi_suatenslide']))
       $img_url= mt_rand().$file['name'];
       copy($file['tmp_name'],"../img/slider/{$img_url}");
 
-        $sql_edit="update `of_slider` set `vi_name`='{$suatenslidevi}',`en_name`='{$suatenslideen}',`vi_content`='{$suanoidungvi}',`en_content`='{$suanoidungen}',`img_url`='{$img_url}'where `id`={$_POST['id']}";
+        $sql_edit=up_slide_img($suatenslidevi,$suatenslideen,$suanoidungvi,$suanoidungen,$img_url);
         
         mysqli_query($link,$sql_edit);
 		
@@ -71,7 +72,7 @@ if(isset($_GET['del']))
 		unlink("../img/slider/{$r['img_url']}");	
 	}
 	
-    $sql_del="delete from `of_slider` where `id`='{$_GET['del']}'";
+    $sql_del=sql_delete_slide('of_slider');
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-slide.html');

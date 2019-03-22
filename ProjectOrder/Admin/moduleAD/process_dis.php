@@ -1,5 +1,6 @@
 
 <?php
+
 if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -42,7 +43,7 @@ if(isset($_POST['khuyenmai']))
         }
         else{
 
-     $sql_add = "insert into `of_discount` VALUES(NULL,'{$datefrom}','{$dateto}','{$discount}','{$trangthai}')";
+     $sql_add = insert_dis($datefrom,$dateto,$discount,$trangthai);
         }
     
      if(mysqli_query($link,$sql_add))
@@ -96,7 +97,7 @@ if(isset($_POST['suakhuyenmai']))
             header('Location:edit_discount-'.$id.'.html');
         }
         else{
-            $sql_edit="update `of_discount` set `create_at`='{$datefrom}' ,`end_at`='{$dateto}',`discount`='{$discount}',`active`='{$trangthai}' where `id`={$id}";
+            $sql_edit=update_dis($datefrom,$dateto,$discount,$trangthai,$id);
         }
         
        if(mysqli_query($link,$sql_edit)) 
@@ -114,7 +115,7 @@ if(isset($_GET['del']))
 {
 
 	
-    $sql_del="delete from `of_discount` where `id`='{$_GET['del']}'";
+    $sql_del=sql_delete_dis('of_discount');
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-khuyen-mai.html');
@@ -126,13 +127,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = "update `of_discount` set `active`=1 where id='{$_GET['actives']}' ";
+    $sql = active_show_dis('of_discount');;
     mysqli_query($link,$sql);
     header("location:danh-sach-khuyen-mai.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = "update `of_discount` set `active`=0 where id='{$_GET['activeh']}' ";
+    $sql = active_hide_dis('of_discount');;
     mysqli_query($link,$sql);
     header("location:danh-sach-khuyen-mai.html");
 }

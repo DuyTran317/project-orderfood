@@ -1,6 +1,7 @@
-﻿<?php
+﻿
+<?php
 
-if(isset($_POST['user']))
+if(isset($_POST['user'])&&isset($_SESSION['inside']))
 {
 	$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
 	foreach($select as $r){
@@ -17,8 +18,8 @@ if(isset($_POST['user']))
 		$id = $r['id'];
 		$name = $r['name'];
 		$country= $_SESSION['lang'];
-		$sql="update `of_user` set `active`= 2 where `id`={$id}";
-		$rs=mysqli_query($link,$sql);
+
+		$rs = Upd_OderAct($link, 'of_user', 2, $id);
 		
 		//Cookies
 		setcookie("username_login", $r['name'], time() + (86400 * 30), "/");
@@ -34,11 +35,42 @@ if(isset($_POST['user']))
 		$_SESSION['email']=$user;
 ?>		
 		<script> 
-			alert('<?=_WRONGTABLENO?>');
-			window.location="login.html";
+			swal({
+                            title: "Chú ý!",
+                            text: "<?=_WRONGTABLENO?>",
+                            type: "warning"
+                        }).then(function() {
+                                window.location="login.html";
+                        });
+			// setTimeout(function () { swal("Chú ý",
+			// 		  "<?=_WRONGTABLENO?>",
+			// 		  "warning");
+			// }, 1);
+			// alert('<?=_WRONGTABLENO?>');
+			// window.location="login.html";
 		</script>
 			
 <?php		
 	}
 }
+
+else{
+    //Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
+    $_SESSION['email']=$user;
+    ?>
+    <script>
+    	swal({
+		title: "Chú ý!",
+		text: "bạn hãy nhập đúng số bàn và cho phép orderfood xác định vị trí hiện tại của bạn",
+		type: "warning"
+		}).then(function() {
+			window.location="login.html";
+		});
+        // alert('bạn hãy nhập đúng số bàn và cho phép orderfood xác định vị trí hiện tại của bạn');
+        // window.location="login.html";
+    </script>
+
+    <?php
+}
 ?>
+
