@@ -3,10 +3,7 @@ if(!isset($_SESSION))
     { 
         session_start(); 
     } 
-include("connect.php");
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_POST['vi_theloai']))
 {
     $vi_theloai = $_POST['vi_theloai'];
@@ -73,7 +70,7 @@ if(isset($_GET['del']))
 		unlink("../img/cate/{$r['img_url']}");	
 	}
 	
-    $sql_del=sql_delete('of_department');;
+    $sql_del=sql_delete_de('of_department');;
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-chung-loai.html');
@@ -85,13 +82,13 @@ if(isset($_GET['del']))
 }
 if(isset($_GET['actives']))
 {
-    $sql = active_show('of_department');
+    $sql = active_show_de('of_department');
     mysqli_query($link,$sql);
     header("location:danh-sach-chung-loai.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = active_hide('of_department');
+    $sql = active_hide_de('of_department');
     mysqli_query($link,$sql);
     header("location:danh-sach-chung-loai.html");
 }

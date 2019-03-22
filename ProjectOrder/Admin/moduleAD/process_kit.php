@@ -1,7 +1,5 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_POST['ten']))
 {
     $account=$_POST['ten'];
@@ -50,19 +48,19 @@ if(isset($_POST['suaten']))
 
 if(isset($_GET['actives']))
 {
-    $sql = active_show('of_manage');
+    $sql = active_show_kit('of_manage');
     mysqli_query($link,$sql);
     header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['activeh']))
 {
-    $sql = active_hide('of_manage');
+    $sql = active_hide_kit('of_manage');
     mysqli_query($link,$sql);
     header("location:danh-sach-bep-thanh-toan.html");
 }
 if(isset($_GET['del']))
 {
-    $sql_del= sql_delete('of_manage');
+    $sql_del= sql_delete_kit('of_manage');
     if(mysqli_query($link,$sql_del))
     {
         header("location:danh-sach-bep-thanh-toan.html");

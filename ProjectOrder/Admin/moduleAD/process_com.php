@@ -1,10 +1,8 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(isset($_GET['del']))
 {
-    $sql_del = sql_delete('of_rate');;
+    $sql_del = sql_delete_com('of_rate');;
     if(mysqli_query($link,$sql_del))
     {
         header("location:danh-sach-danh-gia.html");

@@ -1,7 +1,5 @@
 <?php
-include("controller/c_sql_insert.php");
-include("controller/c_sql_update.php");
-include("controller/c_sql_del.php");
+
 if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -74,7 +72,7 @@ if(isset($_GET['del']))
 		unlink("../img/slider/{$r['img_url']}");	
 	}
 	
-    $sql_del=sql_delete('of_slider');
+    $sql_del=sql_delete_slide('of_slider');
     if(mysqli_query($link,$sql_del))
     {
         header('Location:danh-sach-slide.html');
