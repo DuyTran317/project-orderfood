@@ -72,7 +72,12 @@
 		{
 			?>
 			<script>
-            	alert("Vui lòng GỘP bàn sau khi các món ăn đã hoàn thành!");
+            	// alert("Vui lòng GỘP bàn sau khi các món ăn đã hoàn thành!");
+
+				setTimeout(function () { swal("Chú ý",
+						  "Vui lòng GỘP bàn sau khi các món ăn đã hoàn thành!",
+						  "warning");
+				}, 1);
             </script>
 			<?php
 		}

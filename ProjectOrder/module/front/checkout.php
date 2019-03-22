@@ -289,9 +289,22 @@
 <?php } 
 	else {
 		?>
-        <script>
-        	alert('Bạn vui lòng đăng nhập lại!');
+		<script type="text/javascript">
+			swal({
+				title: "Chú ý!",
+				text: "Bạn vui lòng đăng nhập lại!",
+				type: "warning"
+				}).then(function() {
+				window.location = "?mod=dangnhap";
+				});
+		</script>
+		<!-- <script type="text/javascript">
+		setTimeout(function () 
+			{ swal("Chú ý",
+					"Bạn vui lòng đăng nhập lại!",
+					"warning");
+					 }, 1);
 			window.location="?mod=dangnhap";
-        </script>
+        </script> -->
         <?php
 	}?>

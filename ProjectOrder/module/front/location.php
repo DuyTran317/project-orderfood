@@ -1,4 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../../lib/sweetalert2.all.min.js"></script>
+</head>
+<body style="background-image: url(../../img/front/pexels-photo-326333.jpeg);  font-family: 'Anton', sans-serif; height: 100%">
 <?php
+
 // đăng xuất người dùng
 require_once("../../lib/connect.php");
 ob_start();
@@ -15,48 +22,92 @@ ob_start();
             if(isset($_GET['error'])) {
                 switch ($_GET['error']) {
                     case 1:
-                        ?>
-                        <script>
-                            alert("bạn đang ở ngoài khu vực nhà hàng");
+?>
+                        <script type="text/javascript">
+   
+
+
+                        swal({
+                            title: "Chú ý!",
+                            text: "Bạn đang ở ngoài nhà hàng!",
+                            type: "warning"
+                        }).then(function() {
+                                window.location = "../../index.php?mod=dangnhap";
+                        });
                         </script>
-                    <?php
+
+                      <!--   <script type="text/javascript">
+                       
+                        alert("Bạn đang ở ngoài khu vực nhà hàng");
+                        </script> -->
+<?php
                         break;
                     case 2:
                         ?>
                         <script>
-                            alert("User denied the request for Geolocation.");
+                             swal({
+                            title: "warning",
+                            text: "User denied the request for Geolocation.",
+                            type: "warning"
+                            }).then(function() {
+                                    window.location = "../../index.php?mod=dangnhap";
+                            });
                         </script>
+
                         <?php
                         break;
                     case 3:
                         ?>
                         <script>
-                            alert("Location information is unavailable.");
+                            swal({
+                            title: "warning",
+                            text: "Location information is unavailable.",
+                            type: "warning"
+                            }).then(function() {
+                                    window.location = "../../index.php?mod=dangnhap";
+                            });
                         </script>
                         <?php
                         break;
                     case 4:
                         ?>
                         <script>
-                            alert("The request to get user location timed out.");
+                            swal({
+                            title: "warning",
+                            text: "The request to get user location timed out.",
+                            type: "warning"
+                            }).then(function() {
+                                    window.location = "../../index.php?mod=dangnhap";
+                            });
+                           
+                      
                         </script>
                         <?php
                         break;
                     case 5:
                         ?>
                         <script>
-                            alert("An unknown error occurred.");
+                            swal({
+                            title: "warning",
+                            text: "An unknown error occurred.",
+                            type: "warning"
+                            }).then(function() {
+                                    window.location = "../../index.php?mod=dangnhap";
+                            });
                         </script>
                         <?php
                         break;
                         } ?>
 
 
-                <script>
+                <!-- <script>
                     window.location = "../../index.php?mod=dangnhap";
-                </script>
+                </script> -->
+
                 <?php
             }
         }
     }
 ?>
+</body>
+</html>
