@@ -75,7 +75,6 @@ if(isset($_SESSION['lang'])){
 </script>
 <body onload="setState() ; mobile_setState(); clearbiscuit()">
 
-<div id="width"></div>
 <div id="loadingpage">
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -307,8 +306,6 @@ if(isset($_SESSION['lang'])){
 
 </body>
 <script>
-    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-    $("#width").html(width);
     $.get("https://ipinfo.io/json", function (response) {
         $("#ip").html("IP: " + response.ip);
         $("#address").html("Location: " + response.city + ", " + response.region);
