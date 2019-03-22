@@ -240,7 +240,7 @@
                                                     <?=$r[$_SESSION['lang'].'_name']?>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
-                                                <!--<td align="center" <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?>%</td>-->
+                                                <?php /*?><!--<td align="center"<?php */?> <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?><?php /*?>%</td>--><?php */?>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
                                                 <?php
 													if($r['discount']>0)

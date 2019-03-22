@@ -237,7 +237,7 @@ if(isset($_SESSION['lang'])){
             alert("không lấy dược GPS");
         }
         function showPosition(position) {
-            if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
+            if((Latitude-0.01 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.01) || (Longitude-0.01 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.01)) {
                 checkandlogout(1,3);
             }
             else{

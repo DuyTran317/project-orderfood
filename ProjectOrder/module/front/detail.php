@@ -21,7 +21,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 10%; background-color: white">
 
-                <!-- Wrapper for slides -->
+                <?php /*?><!-- Wrapper for slides --><?php */?>
                 <div class="carousel-inner">
 
                     <div class="item active">
@@ -54,7 +54,7 @@
 
                 </div>
 
-                <!-- Left and right controls -->
+               <?php /*?> <!-- Left and right controls --><?php */?>
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     <span class="sr-only">Previous</span>
@@ -80,7 +80,7 @@
                     <?php /*if($kq['discount']>0){
                         $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
                         ?>
-                        <!--<h2 style="color: red">--><?php /*echonumber_format($new_price)*/ ?><!-- VND (---><?php /*$kq['discount']*/?><!--%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;">--><?php /*echonumber_format($kq['price'])*/ ?><!-- VND </span> </h2>-->
+                       <?php /*?> <!--<h2 style="color: red">--><?php */?><?php /*echonumber_format($new_price)*/ ?><?php /*?><!-- VND (---><?php */?><?php /*$kq['discount']*/?><?php /*?><!--%)<br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;">--><?php */?><?php /*echonumber_format($kq['price'])*/ ?><?php /*?><!-- VND </span> </h2>--><?php */?>
                     <?php /*}
                     else{*/
                         ?>
@@ -120,7 +120,7 @@
   <script>
   $(document).ready(function() {
     $("#quantity").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
+       <?php // Allow: backspace, delete, tab, escape, enter and . ?>
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl/cmd+A
             (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
@@ -133,7 +133,7 @@
                  // let it happen, don't do anything
                  return;
         }
-        // Ensure that it is a number and stop the keypress
+       <?php // Ensure that it is a number and stop the keypress ?>
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
