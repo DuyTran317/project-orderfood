@@ -1,4 +1,11 @@
 <?php
+	//Select * From SQL WHERE LANG
+	function selectWithCondition_Lang($link, $table, $lang, $name)
+	{
+		$sql = "select * from `{$table}` where `$lang`='$name'";
+		return $query = mysqli_query($link,$sql);
+	}
+	
 	//Select * From SQL No Condition With Array(While)
 	function selectWithoutConditionArray($link, $table)
 	{

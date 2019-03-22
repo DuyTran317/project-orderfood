@@ -5,12 +5,12 @@ if(isset($_GET['id']))
 	$name = takeGet('name');
 
 	$order_id = takeGet('order_id');	
-
-	$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$id},'0')";
-	mysqli_query($link,$sql);
 	
-	$sql="update `of_user` set `active`= 1 where `id`={$id}";
-	mysqli_query($link,$sql);
+	//Insert to SolvePay
+	Ins_Note($link, 'of_solve_pay', $order_id, $id, 0);
+	
+	//Update User Active = 1
+	Upd_OderAct($link, 'of_user', 1, $id);
 	
 	setcookie("order_wait", $order_id, time() - 3600, "/");
 	//Delete Cookies
@@ -19,13 +19,12 @@ if(isset($_GET['id']))
 }
 if(isset($_POST['content']))
 {
-	$bl=$_POST['content'];
+	$bl = takePost('content');
 	if(isset($_POST['rate']))
 	{
-		$star=$_POST['rate'];
+		$star = takePost('rate');
 		$date = date("Y-m-d G:i:s");
-		$sql = "INSERT INTO of_rate VALUES  (NULL,'$bl','$star','$date','1')";
-		mysqli_query($link,$sql);
+		Ins_FiveValue($link, 'of_rate', $bl, $star, $date, 1);
 		
 		header("location:xuly_dangxuat.html");	
 	}	

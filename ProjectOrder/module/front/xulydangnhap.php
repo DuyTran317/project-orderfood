@@ -17,8 +17,8 @@ if(isset($_POST['user'])&&isset($_SESSION['inside']))
 		$id = $r['id'];
 		$name = $r['name'];
 		$country= $_SESSION['lang'];
-		$sql="update `of_user` set `active`= 2 where `id`={$id}";
-		$rs=mysqli_query($link,$sql);
+
+		$rs = Upd_OderAct($link, 'of_user', 2, $id);
 		
 		//Cookies
 		setcookie("username_login", $r['name'], time() + (86400 * 30), "/");

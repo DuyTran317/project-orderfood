@@ -41,6 +41,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	//Include Controllers
 	include("controller/c_cookie.php");
 	include("controller/c_takeGet.php");
+	include("controller/c_takePost.php");
 	include("controller/c_Pusher.php");
 	include("controller/c_sql_select.php");
 	include("controller/c_sql_insert.php");
@@ -218,7 +219,7 @@ if(isset($_SESSION['lang'])){
 
     $(document).ready(function () {
 
-        var Latitude = 106, Longitude = 40;
+        var Latitude = 10.755271, Longitude = 106.619449;
 
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
