@@ -23,10 +23,6 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
-		/*if(isset($_SESSION['remind'])&&$_SESSION['remind']==1)
-		{
-			
-		}*/
 		$_SESSION['theloai'][$cate] = 1;
 	}
 	?>
@@ -46,7 +42,6 @@ getPusher('161363aaa8197830a033', 'Reload', 'loadmenu');
 getPusher2('0d68e38f87eb0271863b', 'Reload', 'delfood', $name);
 getPusher2('a8fd52cd1e38d4a2bcf1', 'Reload', 'delorder', $name);
 ?>
-<script src="lib/pusher.min.js"></script>
 <script type="text/javascript">
 Pusher.logToConsole = true;
     var pusher = new Pusher('aaee585e94d28c3959f4', {
@@ -54,14 +49,10 @@ Pusher.logToConsole = true;
       encrypted: true
     });
     var channel = pusher.subscribe('Reload');
-    // chanel trùng voi chanel trong send.php
     channel.bind('loadmenu_nhanvien', function (data) {
-		
-        //code xử lý khi có dữ liệu từ pusher
 		if(data.name == <?= $name?>){
 		window.location="?mod=xulydangxuat";
 		}
-        // kết thúc code xử lý thông báo
     });
 </script>
 </p>
@@ -147,8 +138,8 @@ Pusher.logToConsole = true;
             $buttoncol="col-xs-12";
 			$r = selectIdOrderInMenu($link, $name);			
             ?>
-                    <!--Kiểm Tra Hóa Đơn -->
-                    <?php		
+<?php /*?>                    Kiểm Tra Hóa Đơn     <?php */?>                    
+					<?php		
 						@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);						
                     	$col_button="col-xs-12";
 						if(@mysqli_num_rows($kt) > 0) {
@@ -175,7 +166,7 @@ Pusher.logToConsole = true;
                 if(@mysqli_num_rows($tt) > 0)
                 {
                     ?>
-                    <!--Thanh toán-->
+                   <?php /*?> <!--Thanh toán--><?php */?>
                     <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
@@ -242,14 +233,14 @@ Pusher.logToConsole = true;
                 if(@mysqli_num_rows($tt) > 0)
                 {
                     ?>
-                    <!--Thanh toán-->
+                   <?php /*?> <!--Thanh toán--><?php */?>
                     <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
 
-            <!--Kiểm Tra Hóa Đơn -->
-            <?php
+<?php /*?>            <!--Kiểm Tra Hóa Đơn -->
+<?php */?>            <?php
 			@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
             
             if(@mysqli_num_rows($kt) > 0) {
@@ -260,7 +251,7 @@ Pusher.logToConsole = true;
 
         </div>
 
-        <div class="col-lg-9 col-md-8 hidden-xs hidden-sm" > <!--desktop-->
+        <div class="col-lg-9 col-md-8 hidden-xs hidden-sm" > <?php /*?><!--desktop--><?php */?>
 
             <div class="scrolling-wrapper" id="style-2">
                 
@@ -296,7 +287,7 @@ Pusher.logToConsole = true;
 
                         <?php if($kq['active'] == 1) { ?>
                         	<?php /*if($kq['discount']>0){*/ ?>
-                           <!-- <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;">--> <?php /*echo$kq['discount']*/?><!--%</span>-->
+                         <?php //  <!-- <div id="burst-8" style="position: absolute; top: 20px; left: 20px;"> </div><span style="position: absolute; top: 30px; left: 30px; font-size: 25px; color: red;">--> <?php /*echo$kq['discount']*/?><!--%</span>--> 
                             <?php /*}*/ ?>
                             <div id="status<?=$kq['id'] ?>" class="status1" <?php if(isset($_SESSION['cart'][$kq['id']])) echo 'style="background-color: rgba(249, 150, 2,0.5)"' ?>>
                                 <h1 style=" font-size: 80px; color: #e8ebf2; " id="chose<?=$kq['id'] ?>"><?php if(isset($_SESSION['cart'][$kq['id']])) echo '<i class="fas fa-check"></i>';?></h1>
@@ -306,8 +297,8 @@ Pusher.logToConsole = true;
 							<?php /*if($kq['discount']>0){
 									$new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
 							?>
-                            <!--<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold">--><?php /*number_format($new_price)*/ ?><!-- VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;">--><?php /*echonumber_format($kq['price'])*/ ?><!-- VND</span></div>-->
-                            <?php /*}
+<?php /*?>                            <!--<div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold">--><?php number_format($new_price) ?><!-- VND <br><span style=" text-decoration: line-through; color:#333 ;font-size: 20px; font-weight: normal;">--><?php echonumber_format($kq['price']) ?><!-- VND</span></div>-->
+<?php */?>                            <?php /*}
 								  else{*/
 							?>
                             <div style=" padding: 5px; position:absolute; bottom:0px; left:0px; background-color:#ff9d00; color:#000; font-size:30px;font-weight:bold"><?=number_format($kq['price']) ?> VND</div>
@@ -315,10 +306,10 @@ Pusher.logToConsole = true;
 								  /*}*/
 							?>
                             <script>
-                                /*$("#foodchosen").change(function(e) {
+                               <?php /*$("#foodchosen").change(function(e) {
                                     e.preventDefault();
                                     $("#col_toggle").toggleClass("col-xs-12 col-xs-6");
-                                });*/
+                                });*/ ?>
                             </script>
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
@@ -421,7 +412,7 @@ Pusher.logToConsole = true;
                 <?php /*if($kq['discount']>0){
 					  $new_price = $kq['price']-(($kq['discount']*$kq['price'])/100);*/
 				?>
-                <!--<h5>--><?php /*echonumber_format($new_price)*/?> <!--VND (---><?php /*echo$kq['discount']*/?><!--%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?php /*echonumber_format($kq['price'])*/ ?> VND</span> </h5>-->
+               <?php /*?> <!--<h5>--><?php */?><?php /*echonumber_format($new_price)*/?> <?php /*?><!--VND (---><?php */?><?php /*echo$kq['discount']*/?><?php /*?><!--%)<br> <span style=" text-decoration: line-through; font-size: 10px; font-weight: normal;"><?php */?><?php /*echonumber_format($kq['price'])*/ ?> <?php /*?>VND</span> </h5>--><?php */?>
                 </label>
                 <?php /*}
 					else

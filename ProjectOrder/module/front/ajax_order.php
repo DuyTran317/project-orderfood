@@ -61,4 +61,9 @@
                 }
 
         }
+        else if($act == 4)
+        {
+            if(!isset($_SESSION['inside'])) $_SESSION['inside'] = 1;
+        }
+
 ?>

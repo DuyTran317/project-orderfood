@@ -3,26 +3,18 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['orderID']))
-	{
-		$orderID=$_GET['orderID'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
-	//////
-	$sql="select * from `of_order` where `num_table`={$num_table} and `id`={$orderID}";
-	$rs=mysqli_query($link,$sql);
-	$r=mysqli_fetch_assoc($rs);
+	$orderID = takeGet('orderID');
+	$num_table = takeGet('num_table');
+	
+	$rs = selectIdNum($link, 'of_order', $orderID, $num_table);
+	$r = mysqli_fetch_assoc($rs);
 	
 	if($r['active']==0)
 	{		
 		$sql="DELETE FROM `of_order_detail` WHERE `order_id`={$orderID} AND `active`=0";
 		mysqli_query($link,$sql);
 		
-		$sql="select * from `of_order_detail` where `order_id`={$orderID} and `active`=1";
-		$rs2=mysqli_query($link,$sql);
+		$rs2 = selectActiveBill_OrActive($link, 'of_order_detail', $orderID, 1);
 		
 		if(mysqli_num_rows($rs2)==0)
 		{

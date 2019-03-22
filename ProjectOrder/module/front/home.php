@@ -42,14 +42,7 @@ $name = takeGet('name');
     <div class="row">
         <div class=" col-sm-6 " style="margin-bottom: 20px;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 350px;">
-                    <!-- Indicators -->
-                    <!--<ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>-->
-
-                    <!-- Wrapper for slides -->
+                    
                     <div class="carousel-inner">
                     
                       <?php

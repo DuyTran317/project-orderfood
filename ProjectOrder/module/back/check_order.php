@@ -4,14 +4,8 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-	}
-	if(isset($_GET['num_table']))
-	{
-		$num_table=$_GET['num_table'];
-	}
+	$id = takeGet('id');
+	$num_table = takeGet('num_table');	
 	$SoHoaDonLamTruoc = 15;
 ?>
 
@@ -24,16 +18,14 @@
                     <h2 style=" text-align: center">Danh Sách Bàn Số: <span style="color: red; font-size: 50px;"><?=$num_table?></span></h2>
 
                 <?php
-                $sql="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id` and a.`active`=2";
-                $rs=mysqli_query($link,$sql);
+                $rs = selectSomething_CheckOrder($link, $id);
 				
-				$sql1="select a.*,b.`vi_name` as ten, a.`food_id` as id_food from `of_order_detail` as a,`of_food` as b where `order_id`={$id} and a.`food_id` = b.`id`";
-                $rs1=mysqli_query($link,$sql1);
+                $rs1 = selectSomething2_CheckOrder($link, $id);
 				
 				$dem = mysqli_num_rows($rs);				
                 $total=0;
 
-				$sql_timtrung="select a.*, b.`vi_name`, c.`num_table` from `of_order_detail` as a, `of_food` as b, `of_order` as c where a.`food_id`=b.`id` and a.`order_id`=c.`id` and a.`active`=2 and (a.`food_id`=0";
+				$sql_timtrung = selectSomething3_CheckOrder();
 
 				if($dem > 0 )
 				{
@@ -74,10 +66,8 @@
                 endwhile
                 ?>
                 <?php 
-				$sql="SELECT `note` FROM `of_note_order` as a , `of_order` as b WHERE  a.`order_id`=b.`id` and b.`num_table`={$num_table} and a.`active`=2";
-				$rs2 = mysqli_query($link,$sql);
-				$xacnhan = mysqli_num_rows($rs2);
-				 
+					$rs2 = selectNote_HomeBack($link, $num_table);
+					$xacnhan = mysqli_num_rows($rs2);				 
 				?>
 
             </table>
@@ -116,8 +106,7 @@
                     }
                     $orderId1=$rs_timtrung['order_id'];
 
-                    $sql_takenotes="select `note` from `of_note_order` where `order_id` = {$orderId1} and `active`= 2";
-                    $r_takenotes = mysqli_query($link,$sql_takenotes);
+                    $r_takenotes = selectActiveBill_OrActive($link, 'of_note_order', $orderId1, 2);
                     $note="";
                     while($rs_takenotes=mysqli_fetch_assoc($r_takenotes))
                     {

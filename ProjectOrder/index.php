@@ -41,6 +41,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	//Include Controllers
 	include("controller/c_cookie.php");
 	include("controller/c_takeGet.php");
+	include("controller/c_takePost.php");
 	include("controller/c_Pusher.php");
 	include("controller/c_sql_select.php");
 	include("controller/c_sql_insert.php");
@@ -218,7 +219,7 @@ if(isset($_SESSION['lang'])){
 
     $(document).ready(function () {
 
-        var Latitude = 106, Longitude = 40;
+        var Latitude = 10.755271, Longitude = 106.619449;
 
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
@@ -236,34 +237,37 @@ if(isset($_SESSION['lang'])){
             alert("không lấy dược GPS");
         }
         function showPosition(position) {
-            if((Latitude-0.0001 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.0001) || (Longitude-0.0001 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.0001)) {
-                checkandlogout(1);
+            if((Latitude-0.01 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.01) || (Longitude-0.01 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.01)) {
+                checkandlogout(1,3);
+            }
+            else{
+                checkandlogout(0,4);
             }
         }
         function showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    checkandlogout(2);
+                    checkandlogout(2,3);
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    checkandlogout(3);
+                    checkandlogout(3,3);
                     break;
                 case error.TIMEOUT:
-                    checkandlogout(4);
+                    checkandlogout(4,3);
                     break;
                 case error.UNKNOWN_ERROR:
-                    checkandlogout(5);
+                    checkandlogout(5,3);
                     break;
             }
         }
-        function checkandlogout(error) {
+        function checkandlogout(error,act) {
             $.ajax({
                 url:'module/front/ajax_order.php',
                 type:'POST',
-                data:{ act: 3},
+                data:{ act: act},
 
             }).done(function(data) {
-                if(data == 1) {
+                if(data == 1 && error!=0) {
                     window.location = "module/front/location.php?error="+error;
                 }
             });

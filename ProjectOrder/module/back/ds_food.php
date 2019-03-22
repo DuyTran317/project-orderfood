@@ -1,11 +1,9 @@
-﻿
-<script src="lib/notice.js"></script>
+﻿<script src="lib/notice.js"></script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
 		header("location:?mod=dangnhap");	
 	}
-	
 ?>
 <style>
  table.dataTable{
@@ -25,17 +23,13 @@
                 <div style="text-align:center; color:#066"><span style="color:#000; font-size:24px; color:#333">Chọn Loại:&nbsp;</span>
                 <select id="category_id" onChange="window.location='?mod=ds_food&cid='+this.value" style="width:200px;; font-size:20px; margin-top:10px">
 							<?php
-								$sql="select `id` from `of_category` where `active`=1 order by `order` asc";
-								$rs_s=mysqli_query($link,$sql);
-								$r_s=mysqli_fetch_assoc($rs_s);
+								$r_s = selectWithCondition_AcOrByOrAsc($link, 'of_category');
 								
                                 $cid = @$_GET['cid'];
                                 if($cid == '') $cid = $r_s['id'];
-                                
-                                
-                                $sql="select * from `of_category` where `active`=1 order by `order` asc";
-                                $rs=mysqli_query($link,$sql);
-                                while($r=mysqli_fetch_assoc($rs)){
+                                                               
+								$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_category');
+								foreach($select as $r){
                             ?>
                                                     
                                 <option <?php if($r['id']==$cid) echo'selected'?>
@@ -57,11 +51,9 @@
               </tr>
               </thead>
               <?php
-                $sql = "SELECT * from `of_food` where `category_id`={$cid}";
-                $rel = mysqli_query($link,$sql);
                 $i=1;
-                while($re = mysqli_fetch_assoc($rel))
-                {
+				$take = selectWithCondition_CateID($link, 'of_food', $cid);
+				foreach($take as $re){
               ?>
               <tr>
                 <td align="center" style="color:#906">

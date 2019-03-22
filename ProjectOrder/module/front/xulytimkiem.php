@@ -4,11 +4,11 @@ $lang = $_SESSION['lang'].'_name';
 $id_ban = takeValueCookie('userid_login');
 $id_name = takeValueCookie('username_login');
 
-if(isset($_POST['find']))
-	{
-	$name=$_POST['find'];
-	$sql="select * from `of_food` where `$lang`='$name'";
-	$rs=mysqli_query($link,$sql);
+if(isset($_POST['find'])){
+	
+	$name= takePost('find');
+	
+	$rs = selectWithCondition_Lang($link, 'of_food', $lang, $name);
 	if(mysqli_num_rows($rs)>0)
 		{
 		while($r=mysqli_fetch_assoc($rs))
