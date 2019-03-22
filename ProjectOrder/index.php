@@ -19,7 +19,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost:8888/project-orderfood/ProjectOrder/">
+<base href="http://localhost/project-orderfood/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -46,7 +46,10 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	include("controller/c_sql_insert.php");
 	include("controller/c_sql_update.php");
 ?>
+<style type="text/css">
+    .carousel-caption { bottom:5px; }
 
+</style>
 </head>
 <?php
 // Set Language variable
@@ -70,7 +73,8 @@ if(isset($_SESSION['lang'])){
     }
 </script>
 <body onload="setState() ; mobile_setState(); clearbiscuit()">
-<div id="ip"></div>
+
+<div id="width"></div>
 <div id="loadingpage">
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -86,8 +90,9 @@ if(isset($_SESSION['lang'])){
             </select>
         </form>
          </a><br>
-        <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
 
+        <a data-toggle="modal" data-target="#manual" style="cursor: pointer" ><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
+        <a data-toggle="modal" data-target="#location" style="cursor: pointer"><i class="fas fa-location-arrow" ></i> Location Troubleshoot</a>
         <?php if(isset($_COOKIE['username_login'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='xuly_dangxuat.html'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } else {?>
@@ -108,9 +113,123 @@ if(isset($_SESSION['lang'])){
 
 </div>
 
-<div class="modal fade" id="manual" role="dialog">
+<div class="modal fade" id="location" role="dialog">
     <div class="modal-dialog modal-lg">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Location Troubleshoot</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#laptop"><i class="fas fa-laptop"></i> Computer</a></li>
+                    <li><a data-toggle="tab" href="#android"><i class="fab fa-android"></i> Android</a></li>
+                    <li><a data-toggle="tab" href="#ios"><i class="fab fa-apple"></i> Ios</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="laptop" class="tab-pane fade in active">
+                        <div id="myLaptop" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <img src="img/front/Screenshot (45).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3>Hãy đảm bảo bạn bật chức năng vị trí.</h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (46).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3>Bạn hãy ấn Allow để cho phép quyền truy cập vị trí.</h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (47).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3>Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử hoặc bấm tổ hợp phím Ctrl+H.</h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (48).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3>Bấm vào xóa dữ liệu trình duyệt.</h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (49).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3>Tiến hành xóa cache.</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myLaptop" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myLaptop" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="android" class="tab-pane fade">
+                        <div id="myAndroid" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <img src="img/front/android1.png">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4>Bạn hãy ấn Allow để cho phép quyền truy cập vị trí.</h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android2.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4>Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử.</h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android3.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4>Bấm vào xóa dữ liệu trình duyệt.</h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android4.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4>Tiến hành xòa dữ liệu trình duyệt.</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myAndroid" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myAndroid" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="ios" class="tab-pane fade">
+                        <h3>Menu 2</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="manual" role="dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" style="z-index: 99 !important;">
             <div class="modal-header">
@@ -119,9 +238,7 @@ if(isset($_SESSION['lang'])){
             </div>
             <div class="modal-body">
                 <div id="myManual" class="carousel slide" data-ride="carousel" data-interval="false">
-
                     <div class="carousel-inner" >
-
                         <div class="item active">
                             <img src="img/front/1.jpg" style="width:100%;">
                             <div class="carousel-caption ">
@@ -177,8 +294,6 @@ if(isset($_SESSION['lang'])){
                         <span class="sr-only"></span>
                     </a>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?=_CLOSE?></button>
@@ -186,10 +301,13 @@ if(isset($_SESSION['lang'])){
         </div>
     </div>
 </div>
+
 <div id="loading"></div>
 
 </body>
 <script>
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    $("#width").html(width);
     $.get("https://ipinfo.io/json", function (response) {
         $("#ip").html("IP: " + response.ip);
         $("#address").html("Location: " + response.city + ", " + response.region);
