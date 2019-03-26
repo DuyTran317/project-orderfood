@@ -62,3 +62,10 @@ define("_CONFIRM", "Confirm");
 define("_UPDATE", "Update");
 define("_UNAVAILABLE", "Update");
 define("_UNFOUND", "No found!");
+define("_LOCAERROR", "Location Troubleshoot");
+define("_COMPUTER1", "Make sure you turn the location service on.");
+define("_COMPUTER2", "Click on Allow.");
+define("_COMPUTER3", "In case of having trouble, go to history.");
+define("_COMPUTER4", "Click on Clear History.");
+define("_COMPUTER5", "Click on Clear Data and try again.");
+

@@ -92,7 +92,7 @@ if(isset($_SESSION['lang'])){
          </a><br>
 
         <a data-toggle="modal" data-target="#manual" style="cursor: pointer" ><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
-        <a data-toggle="modal" data-target="#location" style="cursor: pointer"><i class="fas fa-location-arrow" ></i> Location Troubleshoot</a>
+        <a data-toggle="modal" data-target="#location" style="cursor: pointer"><i class="fas fa-location-arrow" ></i> <?=_LOCAERROR?></a>
         <?php if(isset($_COOKIE['username_login'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='xuly_dangxuat.html'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } else {?>
@@ -120,7 +120,7 @@ if(isset($_SESSION['lang'])){
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Location Troubleshoot</h4>
+                <h4 class="modal-title"><?=_LOCAERROR?></h4>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs">
@@ -136,31 +136,31 @@ if(isset($_SESSION['lang'])){
                                 <div class="item active">
                                     <img src="img/front/Screenshot (45).png" style="width:100%;">
                                     <div class="carousel-caption ">
-                                        <h3>Hãy đảm bảo bạn bật chức năng vị trí.</h3>
+                                        <h3><?=_COMPUTER1?></h3>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/Screenshot (46).png" style="width:100%;">
                                     <div class="carousel-caption ">
-                                        <h3>Bạn hãy ấn Allow để cho phép quyền truy cập vị trí.</h3>
+                                        <h3><?=_COMPUTER2?></h3>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/Screenshot (47).png" style="width:100%;">
                                     <div class="carousel-caption ">
-                                        <h3>Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử hoặc bấm tổ hợp phím Ctrl+H.</h3>
+                                        <h3><?=_COMPUTER3?></h3>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/Screenshot (48).png" style="width:100%;">
                                     <div class="carousel-caption ">
-                                        <h3>Bấm vào xóa dữ liệu trình duyệt.</h3>
+                                        <h3><?=_COMPUTER4?></h3>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/Screenshot (49).png" style="width:100%;">
                                     <div class="carousel-caption ">
-                                        <h3>Tiến hành xóa cache.</h3>
+                                        <h3><?=_COMPUTER5?></h3>
                                     </div>
                                 </div>
                             </div>
@@ -181,25 +181,25 @@ if(isset($_SESSION['lang'])){
                                 <div class="item active">
                                     <img src="img/front/android1.png">
                                     <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
-                                        <h4>Bạn hãy ấn Allow để cho phép quyền truy cập vị trí.</h4>
+                                        <h4><?=_COMPUTER2?></h4>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/android2.png" style="width:100%;">
                                     <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
-                                        <h4>Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử.</h4>
+                                        <h4><?=_COMPUTER3?></h4>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/android3.png" style="width:100%;">
                                     <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
-                                        <h4>Bấm vào xóa dữ liệu trình duyệt.</h4>
+                                        <h4><?=_COMPUTER4?></h4>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="img/front/android4.png" style="width:100%;">
                                     <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
-                                        <h4>Tiến hành xòa dữ liệu trình duyệt.</h4>
+                                        <h4><?=_COMPUTER5?></h4>
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +215,49 @@ if(isset($_SESSION['lang'])){
                         </div>
                     </div>
                     <div id="ios" class="tab-pane fade">
-                        <h3>Menu 2</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        <div id="myIos" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <div class="item">
+                                        <img src="img/front/ios2.jpg" style="width:100%;">
+                                        <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                            <h4><?=_COMPUTER1?></h4>
+                                        </div>
+                                    </div>
+                                    <img src="img/front/ios1.jpg">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER2?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios3.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER3?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios4.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER4?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios5.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER5?></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myIos" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myIos" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

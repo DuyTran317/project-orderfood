@@ -61,4 +61,10 @@ define("_ODEREDAT", "Đặt món");
 define("_CONFIRM", "Xác nhận");
 define("_UPDATE", "Cập nhật");
 define("_UNFOUND", "Không tìm thấy!");
+define("_LOCAERROR", "Sửa Lỗi Vị Trí");
+define("_COMPUTER1", "Hãy đảm bảo bạn bật chức năng vị trí.");
+define("_COMPUTER2", "Bạn hãy ấn Allow để cho phép quyền truy cập vị trí.");
+define("_COMPUTER3", "Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử.");
+define("_COMPUTER4", "Bấm vào xóa dữ liệu.");
+define("_COMPUTER5", "Tiến hành xóa data và thử lại.");
 
