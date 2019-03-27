@@ -167,7 +167,7 @@
                                     $change = takePost('change');
                                 }
                                 else{
-                                    $change= 'a4';
+                                    $change= '58';
                                 }
                                 ?>
                         <option value="a4" <?php if( $change == 'a4') echo "selected"; ?>>A4</option>

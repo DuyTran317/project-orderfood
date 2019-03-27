@@ -47,7 +47,10 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	include("controller/c_sql_insert.php");
 	include("controller/c_sql_update.php");
 ?>
+<style type="text/css">
+    .carousel-caption { bottom:5px; }
 
+</style>
 </head>
 <?php
 // Set Language variable
@@ -71,7 +74,7 @@ if(isset($_SESSION['lang'])){
     }
 </script>
 <body onload="setState() ; mobile_setState(); clearbiscuit()">
-<div id="ip"></div>
+
 <div id="loadingpage">
     <div id="mySidenav" class="sidenav" style="color: white; line-height: 20px;">
         <a  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -87,8 +90,9 @@ if(isset($_SESSION['lang'])){
             </select>
         </form>
          </a><br>
-        <a data-toggle="modal" data-target="#manual" style="cursor: pointer"><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
 
+        <a data-toggle="modal" data-target="#manual" style="cursor: pointer" ><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>
+        <a data-toggle="modal" data-target="#location" style="cursor: pointer"><i class="fas fa-location-arrow" ></i> <?=_LOCAERROR?></a>
         <?php if(isset($_COOKIE['username_login'])){?>
         <div style="position: absolute; bottom: 0px;"><button class="btn btn-danger" style=" width: 250px; border-radius: 0px; font-size: 25px;" onclick="window.location.href='xuly_dangxuat.html'"><i class="fas fa-sign-out-alt fa-fw"></i> <?=_LOGOUT?></button> </div>
         <?php } else {?>
@@ -109,9 +113,164 @@ if(isset($_SESSION['lang'])){
 
 </div>
 
-<div class="modal fade" id="manual" role="dialog">
+<div class="modal fade" id="location" role="dialog">
     <div class="modal-dialog modal-lg">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?=_LOCAERROR?></h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#laptop"><i class="fas fa-laptop"></i> Computer</a></li>
+                    <li><a data-toggle="tab" href="#android"><i class="fab fa-android"></i> Android</a></li>
+                    <li><a data-toggle="tab" href="#ios"><i class="fab fa-apple"></i> Ios</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="laptop" class="tab-pane fade in active">
+                        <div id="myLaptop" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <img src="img/front/Screenshot (45).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3><?=_COMPUTER1?></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (46).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3><?=_COMPUTER2?></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (47).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3><?=_COMPUTER3?></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (48).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3><?=_COMPUTER4?></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/Screenshot (49).png" style="width:100%;">
+                                    <div class="carousel-caption ">
+                                        <h3><?=_COMPUTER5?></h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myLaptop" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myLaptop" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="android" class="tab-pane fade">
+                        <div id="myAndroid" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <img src="img/front/android1.png">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER2?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android2.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER3?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android3.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER4?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/android4.png" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER5?></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myAndroid" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myAndroid" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="ios" class="tab-pane fade">
+                        <div id="myIos" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" >
+                                <div class="item active">
+                                    <div class="item">
+                                        <img src="img/front/ios2.jpg" style="width:100%;">
+                                        <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                            <h4><?=_COMPUTER1?></h4>
+                                        </div>
+                                    </div>
+                                    <img src="img/front/ios1.jpg">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER2?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios3.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER3?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios4.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER4?></h4>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/front/ios5.jpg" style="width:100%;">
+                                    <div class="carousel-caption " style="background-color: rgba(0,0,0,0.5)">
+                                        <h4><?=_COMPUTER5?></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#myIos" data-slide="prev">
+
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myIos" data-slide="next">
+
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="manual" role="dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" style="z-index: 99 !important;">
             <div class="modal-header">
@@ -120,9 +279,7 @@ if(isset($_SESSION['lang'])){
             </div>
             <div class="modal-body">
                 <div id="myManual" class="carousel slide" data-ride="carousel" data-interval="false">
-
                     <div class="carousel-inner" >
-
                         <div class="item active">
                             <img src="img/front/1.jpg" style="width:100%;">
                             <div class="carousel-caption ">
@@ -178,8 +335,6 @@ if(isset($_SESSION['lang'])){
                         <span class="sr-only"></span>
                     </a>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?=_CLOSE?></button>
@@ -187,6 +342,7 @@ if(isset($_SESSION['lang'])){
         </div>
     </div>
 </div>
+
 <div id="loading"></div>
 
 </body>
@@ -241,7 +397,7 @@ if(isset($_SESSION['lang'])){
             // alert("không lấy dược GPS");
         }
         function showPosition(position) {
-            if((Latitude-0.01 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.01) || (Longitude-0.01 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.01)) {
+            if((Latitude-1 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+1) || (Longitude-1 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+1)) {
                 checkandlogout(1,3);
             }
             else{

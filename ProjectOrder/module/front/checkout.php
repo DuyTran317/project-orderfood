@@ -203,7 +203,8 @@
 
                     <div class="container">
                         <div class="row" style="background-color: #FFF; margin-top: 2%; border-radius: 20px; padding: 20px;">
-                            <a href="kt-cart-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i></a>
+                            <a href="kt-cart-i9102d<?=$id_ban?>-n9102ame<?=$name_ban?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" style="font-size: 36px; color: black"><i class="fas fa-arrow-left"></i>
+                            </a>
                             <h2 style=" text-align: center"><?=_CHECKOUT?></h2>
                             <div >
                             <form action="" method="post">
@@ -240,7 +241,7 @@
                                                     <?=$r[$_SESSION['lang'].'_name']?>
                                                 </td>
                                                 <td align="center"><?=number_format($r['price'])?><u>đ</u></td>
-                                                <?php /*?><!--<td align="center"<?php */?> <?php if($r['discount']>0) echo "style='color:#F00'";?>><?=number_format($r['discount'])?><?php /*?>%</td>--><?php */?>
+                                                <?php /*?><!--<td align="center"<?php */?> <?php if($r['discount']>0) echo "style='color:#F00'";?><?php /*?><?=number_format($r['discount'])?><?php */?><?php /*?>%</td>--><?php */?>
                                                 <td align="center"><input type="number" min="1" name="<?=$k?>" value="<?=$v?>" style="width:50%; text-align:center" disabled></td>
                                                 <?php
 													if($r['discount']>0)
