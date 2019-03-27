@@ -79,7 +79,7 @@
 	//Query Select Food From SQL in File_Menu
 	function selectFood($link, $table, $cate)
 	{
-		$sql = "select * from `{$table}` where `category_id`={$cate} and `active`<>0 order by `discount` desc";
+		$sql = "select * from `{$table}` where `category_id`={$cate} and `active`<>0 order by `order` asc";
 		return mysqli_query($link,$sql);		 
 	}
 	
