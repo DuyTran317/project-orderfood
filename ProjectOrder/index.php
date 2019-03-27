@@ -234,7 +234,11 @@ if(isset($_SESSION['lang'])){
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(showPosition, showError);
         } else {
-            alert("không lấy dược GPS");
+            setTimeout(function () 
+                { swal("Chú ý",
+                        "không lấy dược GPS!",
+                        "warning");
+            // alert("không lấy dược GPS");
         }
         function showPosition(position) {
             if((Latitude-0.01 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+0.01) || (Longitude-0.01 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+0.01)) {
