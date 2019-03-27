@@ -32,7 +32,7 @@
 	function selectWithCondition_CateID($link, $table, $cateID)
 	{
 		$kq = array();
-		$sql = "SELECT * from `{$table}` where `category_id`={$cateID}`";
+		$sql = "SELECT * from `{$table}` where `category_id`={$cateID}";
 		$query = mysqli_query($link,$sql);
 		while($temp = mysqli_fetch_assoc($query))
 		{
