@@ -53,7 +53,7 @@ if(isset($_POST['xacnhan']) )
                     if($_POST['changePassword']="on"){
                         
                             $pass = hash('sha512',$_POST['suapass']);
-                            $sql_edit=function up_ad_on($pass); 
+                            $sql_edit= up_ad_on($pass); 
                              mysqli_query($link,$sql_edit);
                            
                             if($cate ==1)

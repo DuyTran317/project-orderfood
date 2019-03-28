@@ -19,7 +19,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="http://localhost/project-orderfood/ProjectOrder/">
+<base href="http://localhost:8888/project-orderfood/ProjectOrder/">
 <link rel="shortcut icon" href="img/front/icon.png" />
 <link href="https://fonts.googleapis.com/css?family=Exo+2|Pacifico" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
@@ -375,7 +375,7 @@ if(isset($_SESSION['lang'])){
 
     $(document).ready(function () {
 
-        var Latitude = 10.755271, Longitude = 106.619449;
+        var Latitude = 10.804537, Longitude = 106.717575;
 
 		$("#find").click(function () {
 			 $(".find").removeAttr('disabled');
@@ -392,9 +392,8 @@ if(isset($_SESSION['lang'])){
         } else {
             setTimeout(function () 
                 { swal("Chú ý",
-                        "không lấy dược GPS!",
-                        "warning");
-            // alert("không lấy dược GPS");
+                        "Không lấy dược GPS!",
+                        "warning");},1);
         }
         function showPosition(position) {
             if((Latitude-1 > parseFloat(position.coords.latitude) ||  parseFloat(position.coords.latitude) > Latitude+1) || (Longitude-1 > parseFloat(position.coords.longitude) || parseFloat(position.coords.longitude) > Longitude+1)) {

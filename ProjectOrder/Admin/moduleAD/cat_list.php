@@ -133,5 +133,5 @@
 <!-- /.content-wrapper -->
 <?php unset($_SESSION['sua']); 
 unset($_SESSION['them']); 
-unset($_SESSION['chungloai']); 
+ 
 ?>

@@ -22,8 +22,8 @@ $_SESSION['discard_after'] = $now + 3600;
 <link rel="stylesheet" type="text/css" href="lib/fontawesome-free-5.1.0-web/css/all.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
-    <script src="bootstrap/js/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
+<script src="bootstrap/js/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="jqueryUI/jquery-ui.min.js"></script>
 <script src="lib/pusher.min.js"></script>

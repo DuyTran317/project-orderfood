@@ -45,7 +45,7 @@ if(isset($_POST['vi_tensp']))
 		$new_price = $gia;
 	}
 	
-    $sql_img = insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai);
+    $sql_img = insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai);
     if( mysqli_query($link,$sql_img))
     {
         $_SESSION['theloai'] = $theloai;
@@ -86,7 +86,7 @@ if(isset($_POST['suatheloai']))
     $kq = mysqli_query($link,$sql);
     $d=mysqli_fetch_assoc($kq);
 
-    $sql_edit = up_pro_img($theloai,$vi_tensp,$en_tensp,$gia,$new_price,$vi_noidung,$en_noidung,$thutu,$trangthai);
+    $sql_edit = up_pro_img($theloai,$vi_tensp,$en_tensp,$gia,$vi_noidung,$en_noidung,$thutu,$trangthai);
 
     if($file['name']!= '')
     {

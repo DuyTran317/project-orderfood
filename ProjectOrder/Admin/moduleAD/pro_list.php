@@ -141,6 +141,6 @@
 </div>
 </div>
 <!-- /.content-wrapper --><?php unset($_SESSION['sua']);
-unset($_SESSION['theloai']);
+
 unset($_SESSION['them']); 
 unset($_SESSION['idxoa']); ?>

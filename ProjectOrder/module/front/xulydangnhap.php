@@ -35,20 +35,14 @@ if(isset($_POST['user'])&&isset($_SESSION['inside']))
 		$_SESSION['email']=$user;
 ?>		
 		<script> 
-			swal({
-                            title: "Chú ý!",
-                            text: "<?=_WRONGTABLENO?>",
-                            type: "warning"
-                        }).then(function() {
-                                window.location="login.html";
-                        });
-			// setTimeout(function () { swal("Chú ý",
-			// 		  "<?=_WRONGTABLENO?>",
-			// 		  "warning");
-			// }, 1);
-			// alert('<?=_WRONGTABLENO?>');
-			// window.location="login.html";
-		</script>
+            swal({
+						title: "Chú ý!",
+						text: "<?=_WRONGTABLENO?>",
+						type: "warning"
+					}).then(function() {
+							window.location="login.html";
+                });
+        </script>
 			
 <?php		
 	}
@@ -65,11 +59,8 @@ else{
 		type: "warning"
 		}).then(function() {
 			window.location="login.html";
-		});
-        // alert('bạn hãy nhập đúng số bàn và cho phép orderfood xác định vị trí hiện tại của bạn');
-        // window.location="login.html";
+		});       
     </script>
-
     <?php
 }
 ?>

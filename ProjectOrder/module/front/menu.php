@@ -68,33 +68,23 @@ Pusher.logToConsole = true;
 				$result = selectIdWithCondition($link, 'of_department', $cate);
                 ?>
                 swal({
-                    title: 'Chú ý',
+                    title: 'Thông Báo',
                     text: "Bạn có muốn chọn <?=$result['vi_name']?> không?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Xóa!',
-                    cancelButtonText: 'Hủy!',
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
+					cancelButtonText: 'Yes',
+                    confirmButtonText: 'No',   
+					cancelButtonClass: 'btn btn-success',                 
+                    confirmButtonClass: 'btn btn-danger',                    
                     buttonsStyling: false,
                     reverseButtons: true
                 }).then((result) => {
                     if (result.value) {
-                        swal(
-                            'Xóa!',
-                            'Bạn đã xóa thành công!',
-                            'success'
-                        ).then(function(){
-                            window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4&cate=<?= $cate?><?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";});
+                        window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4&cate=<?= $cate?><?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
                     }
-                })
-               // var check = confirm("Bạn có muốn chọn <?=$result['vi_name']?> không?");
-                //if (check == false) {
-                  //  window.location.href = "index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4&cate=<?= $cate?><?php if (isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>";
-              //  }
-                <?php ?>
+                })             
             </script>
             <?php
         }

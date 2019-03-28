@@ -74,7 +74,7 @@
 
                         <div class="box-footer">
 
-                            <button type="submit" class="btn btn-primary password" disabled="">Sửa</button>
+                            <button type="submit" class="btn btn-primary password">Sửa</button>
                             <button type="reset" class="btn btn-defaul">Đặt Lại</button>
                         </div>
                     </form>

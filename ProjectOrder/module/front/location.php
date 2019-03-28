@@ -23,10 +23,7 @@ ob_start();
                 switch ($_GET['error']) {
                     case 1:
 ?>
-                        <script type="text/javascript">
-   
-
-
+                        <script type="text/javascript">   
                         swal({
                             title: "Chú ý!",
                             text: "Bạn đang ở ngoài nhà hàng!",
@@ -36,17 +33,13 @@ ob_start();
                         });
                         </script>
 
-                      <!--   <script type="text/javascript">
-                       
-                        alert("Bạn đang ở ngoài khu vực nhà hàng");
-                        </script> -->
-<?php
+						<?php
                         break;
                     case 2:
-                        ?>
+                       	?>
                         <script>
                              swal({
-                            title: "warning",
+                            title: "Warning",
                             text: "User denied the request for Geolocation.",
                             type: "warning"
                             }).then(function() {
@@ -98,13 +91,7 @@ ob_start();
                         <?php
                         break;
                         } ?>
-
-
-                <!-- <script>
-                    window.location = "../../index.php?mod=dangnhap";
-                </script> -->
-
-                <?php
+                		<?php
             }
         }
     }
