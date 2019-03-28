@@ -38,15 +38,8 @@ if(isset($_POST['user']))
 		$_SESSION['email']=$user;
 ?>		
 		<script> 
-			swal({
-			title: "Chú ý!",
-			text: "Sai tài khoản hoặc mật khẩu!",
-			type: "warning"
-			}).then(function() {
-				window.location="?mod=dangnhap";
-			});
-			// alert('Sai tài khoản hoặc mật khẩu!'); 
-			// window.location="?mod=dangnhap";
+			 alert('Sai tài khoản hoặc mật khẩu!'); 
+			 window.location="?mod=dangnhap";
         </script>
 		
 <?php		
