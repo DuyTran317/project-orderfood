@@ -1,6 +1,5 @@
 ﻿<?php
-	require_once("lib/connect.php");
-	include("controller/c_Pusher.php");
+	require_once("lib/connect.php");	
 	session_start();
 	ob_start();
 	$now = time();
@@ -36,7 +35,8 @@ $_SESSION['discard_after'] = $now + 3600;
 <?php
 	include("controller/c_sql_select.php");
 	include("controller/c_takeGet.php");	
-	include("controller/c_takePost.php");	
+	include("controller/c_takePost.php");
+	include("controller/c_Pusher.php");	
 	
 	$mod=@$_GET['mod'];
 	if($mod=='') $mod='dangnhap';
