@@ -55,13 +55,12 @@ $name = takeGet('name');
                   <?php if($show_slide['vi_content']!='')
 						{ ?>
                         <div class="modal fade" id="<?=$show_slide['id']?>">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                         
                               <!-- Modal Header -->
                               <div class="modal-header">
-                                <h4 class="modal-title"><?=$show_slide[$_SESSION['lang'].'_name']?></h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">HOT <?=$show_slide[$_SESSION['lang'].'_name']?></h4>
                               </div>
                         
                               <!-- Modal body -->
