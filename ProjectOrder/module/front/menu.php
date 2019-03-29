@@ -20,7 +20,7 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
-		$_SESSION['theloai'][$cate] = 1;
+		$_SESSION['theloai'][$cate] = 1;		
 	}
 	?>
 

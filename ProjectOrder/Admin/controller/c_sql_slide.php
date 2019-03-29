@@ -1,7 +1,7 @@
 <?php
 	//sql insert side
 	function insert_slide($tenslidevi,$tenslideen,$noidungvi,$noidungen,$img_url,$date){
-		 @$sql_add = "insert into `of_slider`(`id`,`vi_name`,`en_name`,`vi_content`,`en_content`,`img_url`,`create_at`) VALUES(NULL,'{$tenslidevi}','{$tenslideen}','{$noidungvi}','{$noidungen}','{$img_url}','{$date}')";
+		 @$sql_add = "insert into `of_slider` VALUES(NULL,'{$tenslidevi}','{$tenslideen}','{$noidungvi}','{$noidungen}','{$img_url}','{$date}')";
 		 return  $sql_add;
 	}
 	//sql update  slide
