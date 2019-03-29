@@ -64,6 +64,7 @@
 			{
 				$_SESSION['remind'] = 1;
 			}
+
 			if(isset($_SESSION['remind'])&&$_SESSION['remind']==1&&isset($_GET['cate']))
 			{
 				$_SESSION['theloai'][$cate]=2;				
