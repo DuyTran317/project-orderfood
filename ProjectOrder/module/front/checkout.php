@@ -145,6 +145,7 @@
 					}
 	
 					unset($_SESSION['cart']);
+					unset($_SESSION['remind']);
 				
 					//Gửi thông điêp để reload trang BẾP
 					sendPusher('161363aaa8197830a033', '46f2ba3b258f514f6fc7', '577033', 'Reload', 'notices');
