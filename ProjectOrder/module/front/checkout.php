@@ -35,8 +35,8 @@
 				foreach($select as $r){
 				$_SESSION['theloai'][$r['id']] = 0;
 				}
-				$_SESSION['remind'] = 0;
-				
+				unset($_SESSION['remind']);
+
 				$sosanh = selectWithCondition_ActNum($link, 'of_order', $name_ban);
 				if(mysqli_num_rows($sosanh) > 0)
 				{
