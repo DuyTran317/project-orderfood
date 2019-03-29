@@ -90,21 +90,106 @@
             </div>
             </div>
         <div class="col-sm-6" style="  color: white;">
-            <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); height: 350px; padding: 30px;">
-                <p  style="font-size: 40px; font-weight: bolder"><i class="fas fa-search"></i> <?= _SEARCH ?></p>
-               <form  method="post" action="?mod=xulytimkiem">
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg " placeholder="<?= _FIND ?>" id="find" name="find" style="font-style:normal">
-                    <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
-                      <button class="btn btn-xs find" type="submit" style="background-color: transparent;" disabled>
-                      <?= _SEARCH ?>
-                      </button>
-                    </span>
-                </div><hr><br><br>
-            
-                <p style="font-size: 60px;" align="center"><?= _CATE ?></p>
+            <div style="background-image:url(img/front/pexels-photo-1020317.jpeg); min-height: 350px; padding: 30px; position: relative">
+                <form  method="post" action="?mod=xulytimkiem" style="margin-bottom: 10px">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg " placeholder="<?= _FIND ?>" id="find" name="find" style="font-style:normal">
+                        <span class="input-group-addon btn"  style="background: #c6c6c6; color: white">
+                          <button class="btn btn-xs find" type="submit" style="background-color: transparent;" disabled>
+                          <?= _SEARCH ?>
+                          </button>
+                        </span>
+                    </div>
+                </form>
+                <div class="col-md-3 hidden-sm hidden-xs" style="background-color: #fe4a49; padding: 6px; font-size: 20px; ">
+                    Bán Chạy
+                </div>
+                <div class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
+                    Bán Chạy
+                </div>
+                <ul class="nav nav-pills hidden-xs hidden-sm" style="background-color: #fed766;">
+                    <li class="active"><a data-toggle="pill" href="#home" style="color: white">Đồ Ăn</a></li>
+                    <li><a data-toggle="pill" href="#menu1" style="color: white">Thức Uống</a></li>
+                    <li><a data-toggle="pill" href="#menu2" style="color: white">Món Khác</a></li>
+                </ul>
+                <div id="hotsaler" class="collapse">
+                    <ul class="nav nav-pills nav-stacked hidden-md hidden-lg " style="background-color: #fed766;">
+                        <li class="active"><a data-toggle="pill" href="#home" style="color: white">Đồ Ăn</a></li>
+                        <li><a data-toggle="pill" href="#menu1" style="color: white">Thức Uống</a></li>
+                        <li><a data-toggle="pill" href="#menu2" style="color: white">Món Khác</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <div class="scrolling-wrapper" style="overflow-x: hidden">
+                            <div class="mixedContent">
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="menu1" class="tab-pane fade">
+                        <div class="scrolling-wrapper" style="overflow-x: hidden">
+                            <div class="mixedContent">
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <div class="scrolling-wrapper" style="overflow-x: hidden">
+                            <div class="mixedContent">
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                                <div class="contentBox">
+                                    <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
+                                    <p>Ốc Rang Me</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </form>
+
         </div>
     </div>
    <br>
@@ -122,11 +207,19 @@
             </div>
         </div>        
     	</a>
-    <?php } ?>     
-        
+    <?php } ?>
     </div>
-    
-    </div>
-
+</div>
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Init Smooth Div Scroll
+        $(".mixedContent").smoothDivScroll({
+            mousewheelScrolling: "allDirections",
+            manualContinuousScrolling: true,
+            autoScrollingMode: "onStart",
+            touchScrolling: true,
+        });
+    });
+</script>
 </html>
