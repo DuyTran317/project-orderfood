@@ -23,7 +23,7 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
-		$_SESSION['theloai'][$cate] = 1;
+		$_SESSION['theloai'][$cate] = 1;		
 	}
 	?>
 
@@ -59,10 +59,17 @@ Pusher.logToConsole = true;
 <div class="container-fluid" style="margin-top: 3%">
     <div class="row">
         <?php
-        if(isset($_SESSION['remind']) && $_SESSION['remind']==1 && count($_SESSION['cart'])>0)
+            if(isset($_SESSION['remind']) && count($_SESSION['cart'])>0)
+                {
+                 ?>
+            <a style="font-size: 25px; text-decoration: none; color: black; padding:5px; background-color: orange; font-style: italic; font-weight: bold; position: absolute; top: 10px; right: 0px;"  href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>">skip >></a>
+                <?php
+                }
+                ?>
+        <?php
+        if(isset($_SESSION['remind']) && $_SESSION['remind'] == 1 && count($_SESSION['cart'])>0)
         {
             ?>
-            <a style="font-size: 25px; text-decoration: none; color: black; padding:5px; background-color: orange; font-style: italic; font-weight: bold; position: absolute; top: 10px; right: 0px;"  href="index.php?mod=cart_process&id_ban=<?=$id?>&name_ban=<?=$name?>&act=4<?php if(isset($_GET['thanhtoan'])) echo '&thanhtoan=1'?>">skip >></a>
             <script>
                 <?php
 				$result = selectIdWithCondition($link, 'of_department', $cate);
@@ -87,6 +94,7 @@ Pusher.logToConsole = true;
                 })             
             </script>
             <?php
+            $_SESSION['remind'] = 0;
         }
         ?>
     </div>
