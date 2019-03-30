@@ -18,3 +18,14 @@
 
 - Account Google 2:
 (demoorderfood@gmail.com - Project123!!!@@@)
+
+********************************************************
+
+Sửa 000webhost{
+	1 DB ở index
+	1 DB trong Admin
+	1 DB trong Excel Admin
+	1 DB ở file backup trong Admin
+	Đường dẫn userfiles
+	Các thẻ <base> ở index và Admin
+}

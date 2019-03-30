@@ -6,12 +6,9 @@
      }
     .expand_caret {
         transform: scale(1.6);
-        position: absolute;
-        top: 30px;
-        right: 10px;
         transition: 0.5s;
     }
-    a[aria-expanded='false'] > .expand_caret {
+    a[aria-expanded='false'] > div .expand_caret {
         transform: scale(1.6) rotate(180deg);
     }
 
@@ -23,7 +20,7 @@
 	if(isset($_GET['cate']))
 	{
 		$cate=$_GET['cate'];
-		$_SESSION['theloai'][$cate] = 1;
+		$_SESSION['theloai'][$cate] = 1;		
 	}
 	?>
 
@@ -196,10 +193,18 @@ Pusher.logToConsole = true;
         </div>
 
         <div class="col-xs-12 hidden-md hidden-lg col-sm-12 " style="padding: 5px; color: white; font-size: 15px;  margin-bottom: 50px; border: solid medium #ff9d00; background: url(img/front/pexels-photo-958168.jpeg);  "> <!--Mobile-->
+            <?php
+            $collapse_stat = "";
+            $collapse_dep_stat = "";
+            if(isset($_SESSION['remind']) && count($_SESSION['cart'])>0) {
+                $collapse_stat = "in";
+            }
+            ?>
             <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;" href="javascript:void()">
-                <h3 > <?=_TABLE?> <?=$name?></h3> <div style="position: absolute; top: 25px; right: 25px">Menu</div><div class="expand_caret fas fa-caret-up"></div>
+                <h3><?=_TABLE?> <?=$name?></h3> <button class="btn" style="position: absolute; top: 10px; right: 5px; background-color: orange; border-radius: 0px; padding: 15px; font-size: 15px; color: black;"><i class="fas fa-bars"></i></button>
             </a>
-            <div id="demo" class="collapse">
+
+            <div id="demo" class="collapse <?=$collapse_stat?>">
                 <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" >
                 <a href="tlc-trang_chu-i9102d<?=$id?>-n9102ame<?=$name?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                 <?php
@@ -207,12 +212,18 @@ Pusher.logToConsole = true;
                 //Chủng Loại
                 $mobile_counter=0;
 				$get = selectWithConditionArray_Act($link, 'of_department');
-				foreach($get as $r_dep){
+                $sql = "select `department_id` from `of_category` where $cate = `id` ";
+                $query = mysqli_query($link,$sql);
+                $temp = mysqli_fetch_assoc($query);
+
+                foreach($get as $r_dep){
                    $mobile_counter++;
+
+
                     ?>
                     <hr>
-                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
-                    <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;" >
+                    <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?> </a></div>
+                    <div id="mobile_<?=$r_dep['id']?>" class="collapse <?php if($temp['department_id'] == $r_dep['id']) {echo "in";}?>" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;" >
                         <?php
                         //Thể Loại
 						$took = selectWithConditionArray_AcDep($link, 'of_category', $r_dep['id']);
@@ -273,7 +284,6 @@ Pusher.logToConsole = true;
         </div>
 
         <div class="col-lg-9 col-md-8 hidden-xs hidden-sm" > <?php /*?><!--desktop--><?php */?>
-
             <div class="scrolling-wrapper" id="style-2">
                 
             <?php			
@@ -485,17 +495,6 @@ Pusher.logToConsole = true;
             }
             else {
                 document.getElementById(i).className = "collapse in";
-            }
-        }
-    }
-    function mobile_setState() {
-        for (var x=1; x<= <?=$counter?>; x++) {
-            var string ="mobile_" + x;
-            if (getCookie(string) == "" || getCookie(string) == "off") {
-                document.getElementById(string).className = "collapse";
-            }
-            else {
-                document.getElementById(string).className = "collapse in";
             }
         }
     }

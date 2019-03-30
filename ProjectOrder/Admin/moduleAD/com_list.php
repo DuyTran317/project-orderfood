@@ -61,7 +61,7 @@
                             </thead>
                             <tbody>
                             <?php
-                            $i =  0;
+                            $i =  1;
                             $d = getFectch($link,'of_rate');
                             foreach($d as $d_com)
                             {

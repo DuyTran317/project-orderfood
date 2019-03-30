@@ -26,6 +26,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 <link rel="stylesheet" type="text/css" href="lib/fontawesome-free-5.1.0-web/css/all.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="lib/wowjs/animate.min.css" />
+<link rel="stylesheet" type="text/css" href="lib/tkahn-Smooth-Div-Scroll-a9d0830/css/smoothDivScroll.css" />
 <link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="woocommerce-FlexSlider-53570ee/flexslider.css" media="screen" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -37,6 +38,9 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="lib/sweetalert2.all.min.js"></script>
 <script src="lib/pusher.min.js"></script>
+<script src="lib/tkahn-Smooth-Div-Scroll-a9d0830/js/jquery.mousewheel.min.js"></script>
+<script src="lib/tkahn-Smooth-Div-Scroll-a9d0830/js/jquery.smoothdivscroll-1.3-min.js"></script>
+<script src="lib/tkahn-Smooth-Div-Scroll-a9d0830/js/jquery.kinetic.min.js"></script>
 <?php
 	//Include Controllers
 	include("controller/c_cookie.php");
