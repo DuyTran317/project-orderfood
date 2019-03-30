@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tên</label>
-                                <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số bàn" value="<?= $d_edit['name'] ?>" disabled="">
+                                <input type="text" class="form-control" id="so" name="suaso" placeholder="Nhập số tên" value="<?= $d_edit['name'] ?>" >
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="changePassword" id="changePassword">

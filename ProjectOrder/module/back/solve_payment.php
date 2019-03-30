@@ -17,6 +17,13 @@
 ?>
 
 <script>	
-	alert("Hoàn Tất Thanh Toán!");
-	window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
+	swal({
+		title: "Thành công!",
+		text: "Hoàn Tất Thanh Toán!",
+		type: "success"
+		}).then(function() {
+			window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
+		});
+	// alert("Hoàn Tất Thanh Toán!");
+	// window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
 </script> 
