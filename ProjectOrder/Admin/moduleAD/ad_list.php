@@ -26,7 +26,7 @@
                                 <th>STT</th>
                                 <th>Account</th>
                                 <th>Tên</th>
-                                <th>Sửa</th>
+                                <th><a href="?mod=add_ad">Thêm</a></th>
                             </tr>
                             </thead>
                             <tbody>

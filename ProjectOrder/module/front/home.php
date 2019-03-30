@@ -110,85 +110,56 @@ $name = takeGet('name');
                 <div class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
                     Bán Chạy
                 </div>
+
                 <ul class="nav nav-pills hidden-xs hidden-sm" style="background-color: #fed766;">
-                    <li class="active"><a data-toggle="pill" href="#home" style="color: white">Đồ Ăn</a></li>
-                    <li><a data-toggle="pill" href="#menu1" style="color: white">Thức Uống</a></li>
-                    <li><a data-toggle="pill" href="#menu2" style="color: white">Món Khác</a></li>
+                  <?php 
+                  $flag=0;
+                  $sql="select * from `of_department`where `active`=1";
+                  $r=mysqli_query($link,$sql);
+                  while($show=mysqli_fetch_assoc($r)){
+                    if ($flag==0){
+                      $flag=$show['id'];
+                    }
+
+                ?>
+                    <li <?php if ($show['id']==$flag) echo 'class="active"'?> ><a data-toggle="pill" href="#menu<?=$show['id']?>" style="color: white"><?=$show['vi_name'] ?> </a></li>
+                    <?php } ?>
                 </ul>
                 <div id="hotsaler" class="collapse">
                     <ul class="nav nav-pills nav-stacked hidden-md hidden-lg " style="background-color: #fed766;">
-                        <li class="active"><a data-toggle="pill" href="#home" style="color: white">Đồ Ăn</a></li>
-                        <li><a data-toggle="pill" href="#menu1" style="color: white">Thức Uống</a></li>
-                        <li><a data-toggle="pill" href="#menu2" style="color: white">Món Khác</a></li>
+                      <?php
+                       $r1=mysqli_query($link,$sql);
+                       while($show_mobile=mysqli_fetch_assoc($r1)){
+                       $dem=0
+                    ?>
+                        <li><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile['vi_name']?></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
                <div class="tab-content">
-                   <div id="home" class="tab-pane fade in active">
+                <?php
+                $r2=mysqli_query($link,$sql);
+                while($getid=mysqli_fetch_assoc($r2)){
+                  $id_depart=$getid['id'];
+                ?>
+                   <div id="menu<?=$id_depart?>" class="tab-pane fade in active">
                        <div class="scrolling-wrapper" style="overflow-x: hidden">
-                           <div class="mixedContent">
+                         <div class="mixedContent">
+                        <?php
+                         $sql3="select c.vi_name as ten, c.img_url as hinh, c.id as id from `of_department` as a, `of_category`  as b ,`of_food` as c where a.id=b.department_id and b.id=c.category_id and a.id={$id_depart}";
+                          $r3=mysqli_query($link,$sql3);
+                          while($show_food=mysqli_fetch_assoc($r3)){ 
+                            ?>
                                <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
+                                   <img style="" src="img/sp/<?=$show_food['hinh']?>" onclick="window.location.href = 'http://www.google.com';">
+                                   <p><?=$show_food['ten']?></p>
                                </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
+                             <?php } ?>
                            </div>
                        </div>
                    </div>
-
-                   <div id="menu1" class="tab-pane fade">
-                       <div class="scrolling-wrapper" style="overflow-x: hidden">
-                           <div class="mixedContent">
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <div id="menu2" class="tab-pane fade">
-                       <div class="scrolling-wrapper" style="overflow-x: hidden">
-                           <div class="mixedContent">
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                               <div class="contentBox">
-                                   <img style="" src="img/sp/cchs.jpg" onclick="window.location.href = 'http://www.google.com';">
-                                   <p>Ốc Rang Me</p>
-                               </div>
-                           </div>
-                       </div>
+<?php } ?>
+                  
                    </div>
                </div>
             </div>
