@@ -1,9 +1,17 @@
 ﻿<script src="../jqueryUI/jquery-ui-admin.js"></script>
 
-<?php
+<?php	
+	if(isset($_GET['datefrom']))
+	{
+		$datefrom = $_GET['datefrom'];	
+	}
+	if(isset($_GET['dateto']))
+	{
+		$dateto = $_GET['dateto'];	
+	}
 	if(isset($_POST['datefrom']))
 	{
-		$datefrom=$_POST['datefrom'];
+		$datefrom=$_POST['datefrom'];				
 		
 		//Chuyen format $dob tu dd/mm/yyyy -> yyyy-mm-dd
 		$d= substr($datefrom,0,2);
@@ -140,7 +148,9 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
-                            <select id="category_id" onchange="window.location='index.php?mod=home&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
+                            <select id="category_id" onchange="window.location='index.php?mod=home<?php if(isset($datefrom))
+							echo"&datefrom=".$datefrom?><?php if(isset($dateto))
+							echo"&dateto=".$dateto?>&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
                                 <?php
                                 $sql="select `id` from `of_category` where `active`=1 order by `id` asc";
                                 $rs_s=mysqli_query($link,$sql);
@@ -163,7 +173,9 @@
                             </select>
                             <br><br>
                             <span style="font-size:16px; margin-left: 15px; "><strong>Chọn Món:</strong></span>
-                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='index.php?mod=home&cid=<?=$cid?>&id_mon='+this.value" >
+                            <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='index.php?mod=home<?php if(isset($datefrom))
+							echo"&datefrom=".$datefrom?><?php if(isset($dateto))
+							echo"&dateto=".$dateto?>&cid=<?=$cid?>&id_mon='+this.value" >
                                 <?php
                                 $sql="select `id` from `of_food` where `active` !=0 and `category_id`={$cid} order by `id` asc";
                                 $lay_idmon=mysqli_query($link,$sql);
@@ -199,7 +211,7 @@
                                           <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                           </div>
-                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom" style="background-color:#FFF">
+                                          <input type="text" class="form-control pull-right datefrom" id="datepicker" readonly="" name="datefrom" style="background-color:#FFF" value="<?php if(isset($datefrom)) echo date('d-m-Y',strtotime($datefrom))?>">
                                         </div>
                                         <!-- /.input group -->
                                       </div>
@@ -214,7 +226,7 @@
                                           <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                           </div>
-                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto" style="background-color:#FFF">
+                                          <input type="text" class="form-control pull-right dateto" id="datepicker1" readonly="" name="dateto" style="background-color:#FFF" value="<?php if(isset($dateto)) echo date('d-m-Y',strtotime($dateto))?>">
                                         </div>
                                         <!-- /.input group -->
                                       </div>
