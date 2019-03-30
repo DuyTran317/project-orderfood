@@ -117,12 +117,8 @@ $name = takeGet('name');
                   $sql="select * from `of_department`where `active`=1";
                   $r=mysqli_query($link,$sql);
                   while($show=mysqli_fetch_assoc($r)){
-                    if ($flag==0){
-                      $flag=$show['id'];
-                    }
-
                 ?>
-                    <li <?php if ($show['id']==$flag) echo 'class="active"'?> ><a data-toggle="pill" href="#menu<?=$show['id']?>" style="color: white"><?=$show['vi_name'] ?> </a></li>
+                    <li class <?php if ($flag==0) { echo '="active"';$flag=1;}?>> <a data-toggle="pill" href="#menu<?=$show['id']?>" style="color: white"><?=$show['vi_name'] ?> </a></li>
                     <?php } ?>
                 </ul>
                 <div id="hotsaler" class="collapse">
@@ -130,7 +126,6 @@ $name = takeGet('name');
                       <?php
                        $r1=mysqli_query($link,$sql);
                        while($show_mobile=mysqli_fetch_assoc($r1)){
-                       $dem=0
                     ?>
                         <li><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile['vi_name']?></a></li>
                         <?php } ?>
@@ -138,20 +133,22 @@ $name = takeGet('name');
                 </div>
                <div class="tab-content">
                 <?php
+				$flag1=0;
                 $r2=mysqli_query($link,$sql);
                 while($getid=mysqli_fetch_assoc($r2)){
                   $id_depart=$getid['id'];
+				  
                 ?>
-                   <div id="menu<?=$id_depart?>" class="tab-pane fade in active">
+                   <div id="menu<?=$id_depart?>" class="tab-pane fade <?php if($flag1==0){ echo 'in active';$flag1=1; }?>">
                        <div class="scrolling-wrapper" style="overflow-x: hidden">
                          <div class="mixedContent">
                         <?php
-                         $sql3="select c.vi_name as ten, c.img_url as hinh, c.id as id from `of_department` as a, `of_category`  as b ,`of_food` as c where a.id=b.department_id and b.id=c.category_id and a.id={$id_depart}";
+                         $sql3="select c.vi_name as ten, c.img_url as hinh, c.id as id,b.id as cate from `of_department` as a, `of_category`  as b ,`of_food` as c where a.id=b.department_id and b.id=c.category_id and a.id={$id_depart} and c.active=1 ORDER BY c.solve DESC LIMIT 9";
                           $r3=mysqli_query($link,$sql3);
                           while($show_food=mysqli_fetch_assoc($r3)){ 
                             ?>
                                <div class="contentBox">
-                                   <img style="" src="img/sp/<?=$show_food['hinh']?>" onclick="window.location.href = 'http://www.google.com';">
+                                <a href="xdt-chi_tiet-i9102dfood<?=$show_food['id']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$show_food['cate']?>.html"> <img style="" src="img/sp/<?=$show_food['hinh']?>"></a>
                                    <p><?=$show_food['ten']?></p>
                                </div>
                              <?php } ?>
@@ -166,6 +163,7 @@ $name = takeGet('name');
 
         </div>
     </div>
+    
    <br>
     <div class="row">
     <?php
