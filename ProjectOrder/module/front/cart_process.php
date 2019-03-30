@@ -60,6 +60,7 @@
 	{
 		if(isset($_GET['id_ban'])&&isset($_GET['name_ban']))
 		{
+            $_SESSION['remind'] = 1;
 			if(isset($_SESSION['remind'])&&$_SESSION['remind']==1&&isset($_GET['cate']))
 			{
 				$_SESSION['theloai'][$cate]=2;
@@ -72,7 +73,6 @@
 				{
 					$temp=0;
 					//$_SESSION['theloai'][$k] = 1;
-					$_SESSION['remind'] = 1;
 					if(isset($_GET['thanhtoan']))
 						header("location:cmn-thuc_don-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}-tt9102oan1.html");						
 						else
