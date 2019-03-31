@@ -84,7 +84,7 @@
 							header("location:cmn-thuc_don-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}-tt9102oan1.html");												
 							header("location:cmn-thuc_don-i9102d{$_GET['id_ban']}-n9102ame{$_GET['name_ban']}-c9102ate{$cate}.html"); 
 						break;	
-					} 
+					}
 				}
 				
 			}

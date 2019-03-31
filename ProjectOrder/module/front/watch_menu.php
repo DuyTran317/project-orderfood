@@ -10,9 +10,6 @@
     }
     .expand_caret {
         transform: scale(1.6);
-        position: absolute;
-        top: 30px;
-        right: 10px;
         transition: 0.5s;
 
     }
@@ -34,7 +31,7 @@
         <div class="col-lg-3 hidden-xs col-md-4 hidden-sm" style="color: white; font-size: 25px; background-color: grey; margin-bottom: 50px; border: solid thick #ff9d00; background: url(img/front/pexels-photo-958168.jpeg); padding: 2px 20px;  background-size: cover">
 
             <p  style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center; margin-top: 10px;" ><a href="watch_homewolg.html" style="color: #000; text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
-            <div style="height: 300px; overflow-y: auto;" id="style-2" data-spy="scroll" data-offset="50">
+            <div style="height: 300px; overflow-y: auto; margin-top:40px" id="style-2" data-spy="scroll" data-offset="50">
                 <?php
                 // Phần revise
                 //Chủng Loại
@@ -45,9 +42,9 @@
 				$counter++;
 				$scroll++;
 				?>
-                    <hr>
-                    <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
-                    <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
+                    <?php if($counter != 1) echo "<hr>"?>
+                    <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" aria-expanded="false" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px;" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up" style="font-size:16px"></div></a></div>
+                    <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3);" >
 
                         <?php
                         //Thể Loại
@@ -86,11 +83,11 @@
 
             <div  class="collapse in" style="cursor: pointer">
                 <a data-toggle="collapse" data-target="#demo"  aria-expanded="false" align="center" style="color: white; text-decoration: none;">
-                    <h3 > <?=_CATE?></h3> <div style="position: absolute; top: 25px; right: 25px">Menu</div> <div class="expand_caret fas fa-caret-up" align="right"></div>
+                    <h3 > <?=_CATE?></h3> <button class="btn" style="position: absolute; top: 10px; right: 5px; background-color: #e6cb84; border-radius: 0px; padding: 15px; font-size: 15px; color: black;"><i class="fas fa-bars"></i></button>
                 </a>
                 
                 <div class="collapse out" id="demo">
-                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; text-align:center" ><a href="watch_homewolg.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
+                <p style="background-image:url(img/front/pexels-photo-1020317.jpeg); padding: 5px; margin-bottom:20px; text-align:center" ><a href="watch_homewolg.html" style="color: black;  text-decoration: none;"><i class="fas fa-home"></i> <?=_HOME?></a></p>
                     <?php
                     // Phần revise
                     //Chủng Loại
@@ -99,8 +96,8 @@
 					foreach($get as $r_dep){
                         $mobile_counter++;
                         ?>
-                        <hr>
-                        <div><a data-toggle="collapse" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?></a></div>
+                        <?php if($mobile_counter != 1) echo "<hr>"?>
+                        <div><a data-toggle="collapse" aria-expanded="false" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up"></div></a></div>
                         <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
                             <?php
                             //Thể Loại
