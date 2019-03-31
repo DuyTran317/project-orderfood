@@ -3,27 +3,42 @@ session_start();
 ob_start(); 
 
 ?>
-
-   <?php
-    if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
-    {
-        $_SESSION['userad'] = $_COOKIE['userad'];
-        $_SESSION['idad'] = $_COOKIE['idad'];
-        $_SESSION['catead'] = $_COOKIE['catead'];
-        setcookie("userad","{$_SESSION['userad']}",time()+999999);
-        setcookie("idad","{$_SESSION['idad']}",time()+999999);
-        setcookie("catead","{$_SESSION['catead']}",time()+999999);
+<?php
+// Set Language variable
+if(isset($_POST['ad_lang']) && !empty($_POST['ad_lang'])){
+    $_SESSION['ad_lang'] = $_POST['ad_lang'];
+    if(isset($_SESSION['ad_lang']) && $_SESSION['ad_lang'] != $_POST['ad_lang']){
+        echo "<script type='text/javascript'> location.reload(); </script>";
     }
-    if(!isset($_SESSION['userad'])) {
+}
+if(isset($_SESSION['ad_lang'])){
+    include "../languages/ad_lang_".$_SESSION['ad_lang'].".php";
+}else{
+    $_SESSION['ad_lang']='vi';
+    include "../languages/ad_lang_vi.php";
+}
+?>
 
-        header('location:login.php');
-    }
-    else
-    {
-        header("trang-chu.html");
-    } 
+<?php
+if(isset($_COOKIE['userad']) && isset($_COOKIE['idad']) && isset($_COOKIE['catead']))
+{
+    $_SESSION['userad'] = $_COOKIE['userad'];
+    $_SESSION['idad'] = $_COOKIE['idad'];
+    $_SESSION['catead'] = $_COOKIE['catead'];
+    setcookie("userad","{$_SESSION['userad']}",time()+999999);
+    setcookie("idad","{$_SESSION['idad']}",time()+999999);
+    setcookie("catead","{$_SESSION['catead']}",time()+999999);
+}
+if(!isset($_SESSION['userad'])) {
 
-        ?>
+    header('location:login.php');
+}
+else
+{
+    header("trang-chu.html");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -223,14 +238,20 @@ include("moduleAD/{$mod}.php");
 <script>
     $(function () {
         $('#example1').DataTable( {
+            <?php if($_SESSION['ad_lang']=="vi"){
+            ?>
             "language": {
                 "url": "bower_components/datatables.net/Vietnamese.json"
             }
+            <?php } ?>
         } );
         $('#example2').DataTable({
+            <?php if($_SESSION['ad_lang']=="vi"){
+            ?>
             "language": {
                 "url": "bower_components/datatables.net/Vietnamese.json"
             },
+            <?php } ?>
             'paging'      : true,
             'lengthChange': false,
             'searching'   : false,
@@ -349,6 +370,9 @@ include("moduleAD/{$mod}.php");
  <script>
     $( function() {
         <!--Config DatePicker Bootstrap-->
+        <?php
+        if($_SESSION['ad_lang']=="vi"){
+            ?>
         $.fn.datepicker.dates['en'] = {
             days: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
             daysShort: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"],
@@ -358,7 +382,7 @@ include("moduleAD/{$mod}.php");
             titleFormat: "MM yyyy",/*  Leverages same syntax as 'format' */
             weekStart: 0
         };
-        
+        <?php } ?>
         $( ".datefrom" ).datepicker({
             format:'dd/mm/yyyy',            
         });

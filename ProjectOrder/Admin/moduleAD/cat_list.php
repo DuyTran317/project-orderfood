@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
-            text: "Bạn có muốn xóa thể loại này",
+            title: '<?=_DELWARNING?>',
+            text: "<?=_DELCATEWARNING?>",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_DELETE?>',
+            cancelButtonText: '<?=_CANCEL?>',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -33,13 +33,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
-            <small>Thể loại</small>
+            <?=_LIST?>
+            <small><?=_CATEGORY?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
-            <li class="active">Danh sách</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-the-loai.html"><?=_CATEGORY?></a></li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -48,7 +48,7 @@
             <div class="col-xs-12">
                 <div class="box box-warning">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Chủng Loại</h3>
+                    <h3 class="box-title"><?=_CATEGORY?></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -73,7 +73,7 @@
                                 $kq_de = mysqli_query($link,$sql_de);
                                 while($d_de=mysqli_fetch_assoc($kq_de))
                                 {?>
-                                <option value="<?= $d_de['id'] ?>" <?php if($d_de['id']== $id) echo "selected"; ?>><?= $d_de['vi_name'] ?></option>
+                                <option value="<?= $d_de['id'] ?>" <?php if($d_de['id']== $id) echo "selected"; ?>><?= $d_de[$_SESSION['ad_lang'].'_name'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -86,11 +86,11 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Tên Thể Loại VN</th> 
-                                <th>Tên Thể Loại EN</th>
-                                <th>Trạng Thái</th>
-                                <th><a href="them-the-loai.html">Thêm</a></th>
+                                <th>#</th>
+                                <th><?=_NAME?> (VN)</th>
+                                <th><?=_NAME?> (EN)</th>
+                                <th><?=_STATUS?></th>
+                                <th><a href="them-the-loai.html"><?=_ADD?></a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -112,7 +112,7 @@
                                         echo "<a href=\"process-cat-h{$d_cat['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)" style="cursor: pointer">Xóa</a></td>
+                                <td><a href="edit_cat-<?= $d_cat['id'] ?>.html"><?=_EDIT?></a>/<a id="test_xoa" onclick="hoi(<?=$d_cat['id'] ?>)" style="cursor: pointer"><?=_DELETE?></a></td>
                             </tr>
                             <?php } ?>
 

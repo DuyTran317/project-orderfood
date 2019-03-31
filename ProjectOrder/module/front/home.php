@@ -108,9 +108,8 @@ $name = takeGet('name');
                     Bán Chạy
                 </div>
                 <div class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
-                    Bán Chạy
+                    Bán Chạy <i class="fas fa-caret-up expand_caret"></i>
                 </div>
-
                 <ul class="nav nav-pills hidden-xs hidden-sm" style="background-color: #fed766;">
                   <?php 
                   $flag=0;

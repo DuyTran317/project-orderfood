@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
-            text: "Bạn có muốn xóa thể loại này",
+            title: '<?=_DELWARNING?>',
+            text: "<?=_DELCATEWARNING?>",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_DELETE?>',
+            cancelButtonText: '<?=_CANCEL?>',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -33,13 +33,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
-            <small>Chủng Loại</small>
+            <?=_LIST?>
+            <small><?=_DEPARTMENT?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-chung-loai.html">Chủng Loại</a></li>
-            <li class="active">Danh sách</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-chung-loai.html"><?=_DEPARTMENT?></a></li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -53,12 +53,12 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Hình</th>
-                                <th>Tên Chủng Loại VN</th> 
-                                <th>Tên Chủng Loại EN</th>
-                                <th>Trạng Thái</th>
-                                <th><a href="them-chung-loai.html">Thêm</a></th>
+                                <th>#</th>
+                                <th><?=_PIC?></th>
+                                <th><?=_NAME?> (VN)</th>
+                                <th><?=_NAME?> (EN)</th>
+                                <th><?=_STATUS?></th>
+                                <th><a href="them-chung-loai.html"><?=_ADD?></a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -79,7 +79,7 @@
                                         echo "<a href=\"process-de-h{$d_de['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                     }
                                     ?></td>
-                                <td><a href="edit_de-<?= $d_de['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_de['id'] ?>)" style="cursor: pointer">Xóa</a></td>
+                                <td><a href="edit_de-<?= $d_de['id'] ?>.html"><?=_EDIT?></a>/<a id="test_xoa" onclick="hoi(<?=$d_de['id'] ?>)" style="cursor: pointer"><?=_DELETE?></a></td>
                             </tr>
                             <?php } ?>
 

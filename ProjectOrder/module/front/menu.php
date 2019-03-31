@@ -4,13 +4,6 @@
          border-radius: 5px;
          transition: 0.3s;
      }
-    .expand_caret {
-        transform: scale(1.6);
-        transition: 0.5s;
-    }
-    a[aria-expanded='false'] > div .expand_caret {
-        transform: scale(1.6) rotate(180deg);
-    }
 
 </style>
 	<?php

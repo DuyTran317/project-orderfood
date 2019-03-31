@@ -88,11 +88,11 @@ if(isset($_SESSION['lang'])){
         <a class="text-center" style="color: white; font-size: 25px;"><?=_OPTION?></a><hr>
          <a>
              <form method='post' action='' id='form_lang'><?=_LANGUAGE?>:
-            <select name='lang' onchange='changeLang();' style="color: black">
-                <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
-                <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
-            </select>
-        </form>
+                <select name='lang' onchange='changeLang();' style="color: black">
+                    <option value='vi' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
+                    <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >English</option>
+                </select>
+            </form>
          </a><br>
 
         <a data-toggle="modal" data-target="#manual" style="cursor: pointer" ><i class="fas fa-info-circle"></i> <?=_MANUAL?></a>

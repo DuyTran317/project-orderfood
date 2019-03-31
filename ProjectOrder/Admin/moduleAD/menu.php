@@ -58,11 +58,27 @@
                     </ul>
                 </li> -->
                 <!-- User Account: style can be found in dropdown.less -->
+                <li>
+                    <a>
+                        <script>
+                            function changeLang(){
+                                document.getElementById('form_lang').submit();
+                            }
+                        </script>
+                        <form method='post' action='' id='form_lang'>
+                            <select name='ad_lang' onchange='changeLang();' style="color: black">
+                                <option value='vi' <?php if(isset($_SESSION['ad_lang']) && $_SESSION['ad_lang'] == 'vi'){ echo "selected"; } ?> >Tiếng Việt</option>
+                                <option value='en' <?php if(isset($_SESSION['ad_lang']) && $_SESSION['ad_lang'] == 'en'){ echo "selected"; } ?> >English</option>
+                            </select>
+                        </form>
+                    </a>
+                </li>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="dist/img/1.png" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?= $_SESSION['userad']; ?></span>
                     </a>
+
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
@@ -75,10 +91,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="edit_ad-<?php echo  $_SESSION['idad'] ?>.html" class="btn btn-default btn-flat">Tài Khoản</a>
+                                <a href="edit_ad-<?php echo  $_SESSION['idad'] ?>.html" class="btn btn-default btn-flat"><?=_ACCOUNT?></a>
                             </div>
                             <div class="pull-right">
-                                <a href="thoat.html" class="btn btn-default btn-flat">Logout</a>
+                                <a href="thoat.html" class="btn btn-default btn-flat"><?=_LOGOUT?></a>
                             </div>
                         </li>
                     </ul>
@@ -114,10 +130,10 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header" style="text-align:center">Bảng điều khiển</li>
+            <li class="header" style="text-align:center"><?=_CONTROLPANEL?></li>
             <li>
                 <a href="trang-chu.html">
-                    <i class="fa fa-dashboard"></i> <span>Tổng quan </span>
+                    <i class="fa fa-dashboard"></i> <span><?=_DASHBOARD?></span>
                     <span class="pull-right-container"></span>
                 </a>
             </li>
@@ -125,53 +141,53 @@
        <?php
             $cate = $_SESSION['catead'];
           if($cate ==3 || $cate  ==1 || $cate  ==6) {  ?> 
-            <li class="header" style="text-align:center">Quản lý món ăn</li>
+            <li class="header" style="text-align:center"><?=_FOODMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    <span>Chủng loại</span>
+                    <span><?=_DEPARTMENT?></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-chung-loai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-chung-loai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-chung-loai.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-chung-loai.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-pie-chart"></i>
-                    <span>Thể loại</span>
+                    <span><?=_CATEGORY?></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-the-loai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-the-loai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-the-loai.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-the-loai.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
-                    <span>Sản phẩm</span>
+                    <span><?=_PRODUCT?></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-san-pham.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-san-pham.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-san-pham.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-san-pham.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li><?php }?>
             
          <?php
             $cate = $_SESSION['catead'];
           if($cate ==2 || $cate  ==1 || $cate  ==6) {  ?> 
-            <li class="header" style="text-align:center">Phân tích</li> 
+            <li class="header" style="text-align:center"><?=_ANALYZE?></li>
            <li>
                 <a href='danh-sach-hoa-don.html'>
                     <i class='fa fa-first-order' aria-hidden='true'></i>
-                    <span>Hóa đơn</span>
+                    <span><?=_RECEIPT?></span>
                     <span class='pull-right-container'>
             </span>
                 </a>
@@ -179,7 +195,7 @@
             <li>
                 <a href='danh-sach-danh-gia.html'>
                     <i class='fa fa-comments' aria-hidden='true'></i>
-                    <span>Đánh Giá</span>
+                    <span><?=_RATE?></span>
                     <span class='pull-right-container'>
                 </span>
                 </a>
@@ -189,18 +205,18 @@
       <?php
             $cate = $_SESSION['catead'];
           if($cate ==5 || $cate  ==1 || $cate  ==6) {  ?> 
-            <li class="header" style="text-align:center">Quản lý bàn</li>
+            <li class="header" style="text-align:center"><?=_TABLEMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                    <i class="fa fa-table" aria-hidden="true"></i>
-                    <span>Bàn</span>
+                    <span><?=_TABLE?></span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-ban.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-ban.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-ban.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-ban.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
         <?php }?>
@@ -208,17 +224,17 @@
         <?php
             $cate = $_SESSION['catead'];
           if($cate ==4 || $cate  ==1 || $cate  ==6) {  ?>
-           <li class="header" style="text-align:center">Quản lý người dùng</li>
+           <li class="header" style="text-align:center"><?=_USERMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    <span>Người Dùng</span>
+                    <span><?=_USERS?></span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-bep-thanh-toan.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-bep-thanhtoan.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-bep-thanh-toan.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-bep-thanhtoan.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
         <?php } ?>
@@ -227,7 +243,7 @@
             $cate = $_SESSION['catead'];
           if($cate  ==1 || $cate  ==6) {  ?> 
           
-          <li class="header" style="text-align:center">Quản lý slide</li>
+          <li class="header" style="text-align:center"><?=_SLIDEMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-sliders" aria-hidden="true"></i>
@@ -237,36 +253,36 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-slide.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-slide.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-slide.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
-            <li class="header" style="text-align:center">Quản lý khuyến mãi</li>
+            <li class="header" style="text-align:center"><?=_PROMOTIONMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-tags" aria-hidden="true"></i>
-                    <span>Khuyến mãi</span>
+                    <span><?=_PROMOTION?></span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="danh-sach-khuyen-mai.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-                    <li><a href="them-khuyen-mai.html"><i class="fa fa-circle-o"></i> Thêm</a></li>
+                    <li><a href="danh-sach-khuyen-mai.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
+                    <li><a href="them-khuyen-mai.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
-            <li class="header" style="text-align:center">Quản lý và phân quyền</li>
+            <li class="header" style="text-align:center"><?=_AUTHORITYMANAGE?></li>
             <li class="treeview">
                 <a href="javascript:void(0)">
                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    <span>Cài đặt</span>
+                    <span><?=_SETTING?></span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="sao-luu-du-lieu.html"><i class="fa fa-circle-o"></i> Sao lưu dữ liệu</a></li>
-                    <li><a href="Excel"><i class="fa fa-circle-o"></i> Xuất doanh thu</a></li>
+                    <li><a href="sao-luu-du-lieu.html"><i class="fa fa-circle-o"></i> <?=_BACKUP?></a></li>
+                    <li><a href="Excel"><i class="fa fa-circle-o"></i> <?=_EXPORT?></a></li>
                 </ul>
             </li>
             
