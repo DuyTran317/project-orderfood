@@ -26,9 +26,7 @@
 
     }
 </script>
-   <?php
 
-    ?>
 <div class="wrapper">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -68,10 +66,6 @@
                                 {
                                     $id = $_SESSION['theloai'];
                                 }
-                                else
-                                {
-                                    $id=1;
-                                }
                                 $d = getFectch($link,'of_category');
                                 foreach($d  as $d_cat)
                                 {?>
@@ -102,7 +96,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php ;
+                            <?php 
+							if(!isset($_POST['change'])) 
+							{
+								$sql="select * from `of_category` where `active`=1 limit 1";
+								$r=mysqli_query($link,$sql);
+								$rs=mysqli_fetch_assoc($r);
+								$id=$rs['id'];
+							}
+							
                             $i=1;
                             $d = sql_select_pro($link,'of_food',$id);
                             foreach ($d as $d_pro) 

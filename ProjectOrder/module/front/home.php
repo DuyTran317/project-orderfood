@@ -155,14 +155,12 @@ $name = takeGet('name');
                            </div>
                        </div>
                    </div>
-<?php } ?>
-                  
+                <?php } ?>
                    </div>
                </div>
             </div>
-
         </div>
-    </div>
+
     
    <br>
     <div class="row">
@@ -170,7 +168,6 @@ $name = takeGet('name');
 		$take = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
 		foreach($take as $r){
 	?>
-		
     	<a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html">
         <div class=" col-md-4 col-sm-6" style="margin-bottom: 20px;">
             <div style="height: 300px; background-image:url(img/cate/<?=$r['img_url']?>); background-size: cover; padding: 30px; color: white">
@@ -179,11 +176,9 @@ $name = takeGet('name');
             </div>
         </div>        
     	</a>
-    <?php } ?>    
-        
+    <?php } ?>
     </div>
-    
-    </div>
+</div>
 
 </body>
 <script type="text/javascript">
