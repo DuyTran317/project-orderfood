@@ -19,23 +19,31 @@ if(isset($_POST['btnExport'])){
 	$objExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
 
 	$rowCount = 1;
-	$sheet->setCellValue('A'.$rowCount,'Mã Hóa Đơn');
+	$sheet->setCellValue('A'.$rowCount,'STT');
 	$sheet->setCellValue('B'.$rowCount,'Mã Order');
 	$sheet->setCellValue('C'.$rowCount,'Bàn');
 	$sheet->setCellValue('D'.$rowCount,'Tổng tiền');
 	$sheet->setCellValue('E'.$rowCount,'Ngày');
 
 	$result = $mysqli->query("SELECT * FROM of_bill where `date` >= '{$datefr}' and `date` <= '{$dateto}'");
+	$stt=1;
 	while($row = mysqli_fetch_array($result)){
 		$rowCount++;
-		$sheet->setCellValue('A'.$rowCount,$row['id']);
+		$sheet->setCellValue('A'.$rowCount,$stt);
 		$sheet->setCellValue('B'.$rowCount,$row['code_order']);
 		$sheet->setCellValue('C'.$rowCount,$row['num_table']);
-		$sheet->setCellValue('D'.$rowCount,$row['total']);
+		$sheet->setCellValue('D'.$rowCount,number_format($row['total']));
 		$sheet->setCellValue('E'.$rowCount,date('d-m-Y',strtotime($row['date'])));
+		$stt++;
 	}
-
-
+$sheet->getStyle('A1:E1')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => '00DD00')
+        )
+    )
+);
 
 	$styleArray = array('borders'=>array('allborders'=>array('style'=> PHPExcel_Style_Border::BORDER_THIN)));
 	$sheet->getStyle('A1:'.'E'.($rowCount))->applyFromArray($styleArray);

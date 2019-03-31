@@ -4,6 +4,15 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
+	if( isset($_GET['cid']))
+	{
+		$cid= $_GET['cid'];
+	}
+	else
+	{
+		$r_s = selectWithCondition_AcOrByOrAsc($link, 'of_category');								
+		$cid = $r_s['id'];
+	}
 ?>
 <style>
  table.dataTable{
@@ -74,7 +83,7 @@
               </tr>
               <?php } ?>
             </table><br>
-           <a href="?mod=reload_menu" style="color:black; "> <button class="col-xs-12 btn btn-lg btn-info"  >Cập Nhật Menu</button></a>
+           <a href="?mod=reload_menu&cid=<?=$cid?>" style="color:black; "> <button class="col-xs-12 btn btn-lg btn-info"  >Cập Nhật Menu</button></a>
         </div>
         
     </div>

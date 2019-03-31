@@ -26,7 +26,7 @@
                                 <th>STT</th>
                                 <th>Account</th>
                                 <th>Tên</th>
-                                <th>Sửa</th>
+                                <th><?php if($_SESSION['catead'] == 1){ echo '<a href="them-quan-tri-vien.html">Thêm</a>';}else echo "Sửa"; ?></th>
                             </tr>
                             </thead>
                             <tbody>

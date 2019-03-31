@@ -50,7 +50,7 @@ if(isset($_POST['user'])&&isset($_SESSION['inside']))
 
 else{
     //Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
-    $_SESSION['email']=$user;
+    @$_SESSION['email']=$user;
     ?>
     <script>
     	swal({
