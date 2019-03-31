@@ -28,7 +28,7 @@ function getFectch($link,$table)
 function sql_select_pro($link,$table,$id)
 {
 	$kq = array();
-	$sql_pro = "select * from {$table} WHERE category_id={$id}";
+	$sql_pro = "select * from `{$table}` WHERE `category_id`={$id}";
 	$kq_pro = mysqli_query($link,$sql_pro);
 	while ($temp = mysqli_fetch_assoc($kq_pro)){
 		$kq[] = $temp;
