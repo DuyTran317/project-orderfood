@@ -82,6 +82,8 @@
 							$sql1="select * from `of_rate`";
 							$r1=mysqli_query($link,$sql1);
 							$dem=mysqli_num_rows($r1);
+							if($dem!=0)
+							{
 							?>
                              
 								<tr >
@@ -90,6 +92,7 @@
                                 <tr >
                                		<h3 class="text-info" style="text-align:center;">Số sao trung bình:  <?= number_format($rs['tb'],2	)?> <i class="icon ion-ios-star" style="color:#FC0"></i> </h3>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
