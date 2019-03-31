@@ -69,12 +69,30 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_com['desc'] ?></td>
-                                    <td><?php for($j=1;$j<= $d_com['star'];$j++) {?><i class="icon ion-ios-star"></i> <?php } ?></td>                                    <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
+                                    <td><?php for($j=1;$j<= $d_com['star'];$j++) {?><i class="icon ion-ios-star"></i> <?php } ?></td>                                   
+                                    <td><?= date("d/m/Y", strtotime( $d_com['date']))?></td>
                                     <td><?= date("H:i:s", strtotime( $d_com['date']))?></td>
                                     <td><a id="test_xoa" onclick="hoi(<?= $d_com['id'] ?>)" style="cursor: pointer">Xóa</a></td>
+                               
+                               </tr>
+                            <?php } 
+							$sql="select AVG(star) as tb, SUM(star) as tong from `of_rate`";
+							$r=mysqli_query($link,$sql);
+							$rs=mysqli_fetch_assoc($r);
+							$sql1="select * from `of_rate`";
+							$r1=mysqli_query($link,$sql1);
+							$dem=mysqli_num_rows($r1);
+							if($dem!=0)
+							{
+							?>
+                             
+								<tr >
+                                	<h3 class="text-info" style="text-align:center;"> Đã nhận được tổng cộng:  <?= $rs['tong']?> <i class="icon ion-ios-star" style="color:#FC0"></i> trên <a style="color:#C63"><?=$dem?></a> đánh giá </h3>
                                 </tr>
-                            <?php } ?>
-
+                                <tr >
+                               		<h3 class="text-info" style="text-align:center;">Số sao trung bình:  <?= number_format($rs['tb'],2	)?> <i class="icon ion-ios-star" style="color:#FC0"></i> </h3>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

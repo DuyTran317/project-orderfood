@@ -89,7 +89,7 @@
                 <div class="grid"  >
                     <div class="gutter-sizer"></div>
 
-                     <?php 
+                     <?php
 					 $temp = 0;$idbandau=0;$idbancuoi=0;$sql_montrung="";$bandau = 0; $bancuoi = 0;
 					 setcookie("idbancuoi",0,time()+86400);
 				
@@ -178,27 +178,31 @@
 
                              $("#order-toggle<?=$i?>").click(function(e) {
                                  e.preventDefault();
-                                 /*
-                                 var x = localStorage.getItem("hello");
-                                 localStorage.setItem("hello", " ");
-                                 if(x==" "){
-                                     localStorage.setItem("hello", "grid-active");
-                                 }*/
 
-                                 $("#sample<?=$i?>").toggleClass("grid-active");
-                                 $("#background-toggle").toggleClass("background-active");
+                                 $("#sample<?=$i?>").addClass("grid-active");
+                                 $("#background-toggle").addClass("background-active");
+                                 $.ajax({
+                                     url:'module/back/ajax.php',
+                                     type:'POST',
+                                     data:{act: 1, status: "turn on", value : <?=$i?>}
+                                 })
                              });
                              $("#background-toggle").click(function(e) {
                                  e.preventDefault();
 
                                  $("#sample<?=$i?>").removeClass("grid-active");
                                  $("#background-toggle").removeClass("background-active");
+                                 $.ajax({
+                                     url:'module/back/ajax.php',
+                                     type:'POST',
+                                     data:{act: 1, status: "turn off" }
+                                 })
                              });
                          </script>
 
                    <?php
 				   } 
-				   
+
 				   ?>
 
               </div>
@@ -233,7 +237,18 @@
                             </table>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }
+                    if($_SESSION['i'] != -1)
+                    {
+                        ?>
+                            <script>
+                                $("#sample<?=$_SESSION['i']?>").toggleClass("grid-active");
+                                $("#background-toggle").toggleClass("background-active");
+
+                            </script>
+                        <?php
+                    }
+                ?>
             </div>
             <div class="table-responsive"></div>
         </div>
@@ -333,6 +348,7 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
         		url: 'lib/datatable/Vietnamese.json'
     		}
 		});
+
     });
 	
 	
