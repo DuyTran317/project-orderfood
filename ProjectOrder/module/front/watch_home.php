@@ -183,6 +183,8 @@
     $(document).ready(function () {
         // Init Smooth Div Scroll
         $(".mixedContent").smoothDivScroll({
+            hotSpotScrollingStep: 1,
+            easingAfterHotSpotScrollingDuration: 450,
             mousewheelScrolling: "allDirections",
             manualContinuousScrolling: true,
             autoScrollingMode: "onStart",

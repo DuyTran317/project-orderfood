@@ -4,12 +4,15 @@
          border-radius: 5px;
          transition: 0.3s;
      }
-    .expand_caret {
+    /*.expand_caret {
         transform: scale(1.6);
         transition: 0.5s;
     }
     a[aria-expanded='false'] > .expand_caret {
-        transform: scale(1.6) rotate(180deg);
+        transform: rotate(180deg);
+    }*/
+    .rotate{
+        transform: rotate(180deg);
     }
 </style>
 	<?php
@@ -114,7 +117,7 @@ Pusher.logToConsole = true;
 				$scroll++;
 			?>
 
-                <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" aria-expanded="false" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up" style="font-size:16px"></div></a>
+                <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" aria-expanded="false" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<i id="caret<?=$counter?>" class="fas fa-caret-down" style="font-size:16px"></i></a>
                 <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;" >
 
                 	<?php				
@@ -130,6 +133,12 @@ Pusher.logToConsole = true;
                     <?php } ?>
                 </div>
                 </div><hr>
+                <script>
+                    $("#menu<?=$scroll?>").click(function(e) {
+                        e.preventDefault();
+                        $("#caret<?=$counter?>").toggleClass("rotate" , 500);
+                    });
+                </script>
             <?php } ?>
 
 
@@ -142,7 +151,6 @@ Pusher.logToConsole = true;
                 $('ul a').filter(function () {
                     return this.href == url;
                 }).parent().addClass('active');
-                console.log(123);
                 var current_url = window.location;
                 $('ul li a').filter(function () {
                     return this.href == current_url;
@@ -218,7 +226,7 @@ Pusher.logToConsole = true;
                    $mobile_counter++;
                 ?>
                     <?php if($mobile_counter != 1) echo "<hr>"?>
-                    <div><a data-toggle="collapse" aria-expanded="false" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up"></div></a></div>
+                    <div><a id="carettoggle<?=$mobile_counter?>" data-toggle="collapse" aria-expanded="false" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div id="caret_mobile<?=$mobile_counter?>" class="fas fa-caret-<?php if($temp['department_id'] == $r_dep['id']) {echo "up";} else{echo "down";}?>"></div></a></div>
                     <div id="mobile_<?=$r_dep['id']?>" class="collapse <?php if($temp['department_id'] == $r_dep['id']) {echo "in";}?>" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;" >
                         <?php
                         //Thể Loại
@@ -230,8 +238,13 @@ Pusher.logToConsole = true;
                             </ul>
 
                         <?php } ?>
-
                     </div>
+                    <script>
+                        $("#carettoggle<?=$mobile_counter?>").click(function(e) {
+                            e.preventDefault();
+                            $("#caret_mobile<?=$mobile_counter?>").toggleClass("rotate" , 500);
+                        });
+                    </script>
 
                 <?php } ?>
 
@@ -332,12 +345,6 @@ Pusher.logToConsole = true;
                             <?php
 								  /*}*/
 							?>
-                            <script>
-                               <?php /*$("#foodchosen").change(function(e) {
-                                    e.preventDefault();
-                                    $("#col_toggle").toggleClass("col-xs-12 col-xs-6");
-                                });*/ ?>
-                            </script>
                         <?php } ?>
                         <?php if($kq['active'] == 2) { ?>
                             <div id="dark">
@@ -488,12 +495,19 @@ Pusher.logToConsole = true;
         for (var i=1; i<= <?=$counter?>; i++){
             if (getCookie(i) == "" || getCookie(i) == "off") {
                 document.getElementById(i).className = "collapse";
+                $("#caret" + i).removeClass("fa-caret-up");
+                $("#caret" + i).addClass("fa-caret-down");
+
             }
             else {
                 document.getElementById(i).className = "collapse in";
+                $("#caret" + i).removeClass("fa-caret-down");
+                $("#caret" + i).addClass("fa-caret-up");
+
             }
         }
     }
+
 	function checkFood(id){
 
 		$.ajax({
@@ -506,7 +520,7 @@ Pusher.logToConsole = true;
 
 				if(data > 0){
 						btn.style.display = "block";
-                    $("#col_toggle").addClass("col-xs-6");
+                        $("#col_toggle").addClass("col-xs-6");
                        $("#col_toggle").removeClass("col-xs-12");
 
 					}
