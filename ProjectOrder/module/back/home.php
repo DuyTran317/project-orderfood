@@ -238,7 +238,7 @@
                         </div>
                     </div>
                 <?php }
-                    if($_SESSION['i'] != -1)
+                    if(isset($_SESSION['i']) && $_SESSION['i'] != -1)
                     {
                         ?>
                             <script>
