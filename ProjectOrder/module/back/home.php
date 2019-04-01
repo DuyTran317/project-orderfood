@@ -5,7 +5,7 @@
 	{
 		header("location:?mod=dangnhap");	
 	}
-	$sobanmontrung = 5;
+	$sobanmontrung = 5;	
 	getPusher('161363aaa8197830a033', 'Reload', 'reloadbep');
 ?>
 <style>
@@ -72,7 +72,9 @@
     <div class="container-fluid " >
         <div class="row" style="background-color: #00adb5; padding: 5px;">
             <div class="col-xs-5">
-                <span style="font-size:25px;cursor:pointer;  color: white ;"  id="menu-toggle"><span class="toggle-bars" id="toggle-bars" style="vertical-align: top; "></span> Món Trùng</span>
+                <span style="font-size:25px;cursor:pointer;  color: white ;"  id="menu-toggle"><span 
+                class="<?php if($_SESSION['nut_montrung']==1) echo 'toggle-X'; else echo'toggle-bars';?>" id="toggle-bars" 
+                style="vertical-align: top; "></span> Món Trùng</span>
             </div>
             <div class="col-xs-2" align="center" style="background-color: #e3fdfd; border-radius: 5px">
                 <span style="font-size:25px ;"  id="txt"></span>
@@ -207,6 +209,7 @@
 
               </div>
             </div>
+            
             <div id="mySidenav" class="sidenav">
                 <?php
                 @$r_montrung = mysqli_query($link,$sql_montrung);
@@ -309,13 +312,35 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
     }
 </style>
 <script>
+	<?php if($_SESSION['nut_montrung'] == 1)
+	{
+	?>
+		$("#mySidenav").toggleClass("active" , 0);
+		$("#main").toggleClass("main-active" , 0);
+	<?php } ?>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#mySidenav").toggleClass("active" , 1000);
         $("#main").toggleClass("main-active" , 1000);
         $("#toggle-bars").toggleClass("toggle-bars toggle-X" , 1000);
+		var checkClass = $("#toggle-bars").hasClass("toggle-X");
+		if(checkClass == true)
+		{
+			 $.ajax({
+				 url:'module/back/ajax.php',
+				 type:'POST',
+				 data:{role: 1}
+			 })			 
+		}
+		else
+		{
+			$.ajax({
+				 url:'module/back/ajax.php',
+				 type:'POST',
+				 data:{role: 0}
+			 })	
+		}
     });
-
 
     function startTime() {
         var today = new Date();
