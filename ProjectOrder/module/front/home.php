@@ -12,7 +12,9 @@ $name = takeGet('name');
     }, 1);
 	</script>
 <?php } ?>
+<style>
 
+</style>
 <script type="text/javascript">
 
 		$(document).ready(function()
@@ -107,9 +109,16 @@ $name = takeGet('name');
                 <div class="col-md-3 hidden-sm hidden-xs" style="background-color: #fe4a49; padding: 6px; font-size: 20px; ">
                     Bán Chạy
                 </div>
-                <div class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
-                    Bán Chạy <i class="fas fa-caret-up expand_caret"></i>
+                <div id="best_seller_toggle" class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
+                    Bán Chạy <i class="fas fa-caret-down" id="best_seller_caret"></i>
                 </div>
+                <script>
+                    $("#best_seller_toggle").click(function(e) {
+                        console.log(123);
+                        e.preventDefault();
+                        $("#best_seller_caret").toggleClass("rotate" , 500);
+                    });
+                </script>
                 <ul class="nav nav-pills hidden-xs hidden-sm" style="background-color: #fed766;">
                   <?php 
                   $flag=0;

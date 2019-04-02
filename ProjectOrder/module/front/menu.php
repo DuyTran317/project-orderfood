@@ -11,9 +11,7 @@
     a[aria-expanded='false'] > .expand_caret {
         transform: rotate(180deg);
     }*/
-    .rotate{
-        transform: rotate(180deg);
-    }
+
 </style>
 	<?php
 	checkLoginCookie($_COOKIE['username_login']);
@@ -117,24 +115,22 @@ Pusher.logToConsole = true;
 				$scroll++;
 			?>
 
-                <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" aria-expanded="false" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<i id="caret<?=$counter?>" class="fas fa-caret-down" style="font-size:16px"></i></a>
-                <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;" >
+                <div id="menu<?=$scroll?>"><a href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html#menu<?=$scroll?>" data-toggle="collapse" data-target="#<?=$r_dep['id']?>" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px" aria-expanded="false" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<i id="caret<?=$counter?>" class="fas fa-caret-down" style="font-size:16px"></i></a> </div>
+                    <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;" >
+                        <?php
+                            //Thể Loại
+                            $take = selectWithConditionArray_AcDeOrByOrAsc($link, 'of_category', $r_dep['id']);
+                            foreach($take as $r_cate){
+                        ?>
+                        <ul>
+                            <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
+                        </ul>
+                        <?php } ?>
 
-                	<?php				
-						//Thể Loại
-						$take = selectWithConditionArray_AcDeOrByOrAsc($link, 'of_category', $r_dep['id']);
-						foreach($take as $r_cate){
-					?>
-
-                    <ul>
-                        <a style="color: white; text-decoration: none" href="cmn-thuc_don-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$r_cate['id']?><?php if(isset($_GET['thanhtoan'])){echo "-tt9102oan1";}?>.html"><li><?=$r_cate[$_SESSION['lang'].'_name']?></li></a>
-                    </ul>
-
-                    <?php } ?>
-                </div>
                 </div><hr>
                 <script>
                     $("#menu<?=$scroll?>").click(function(e) {
+                        console.log(123);
                         e.preventDefault();
                         $("#caret<?=$counter?>").toggleClass("rotate" , 500);
                     });
