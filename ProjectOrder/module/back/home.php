@@ -312,12 +312,14 @@ $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,
     }
 </style>
 <script>
-	<?php if($_SESSION['nut_montrung'] == 1)
+	<?php if(isset($_SESSION['nut_montrung']))
 	{
+		if($_SESSION['nut_montrung']==1)
+		{
 	?>
-		$("#mySidenav").toggleClass("active" , 0);
-		$("#main").toggleClass("main-active" , 0);
-	<?php } ?>
+			$("#mySidenav").toggleClass("active" , 1000);
+			$("#main").toggleClass("main-active" , 1000);
+	<?php }} ?>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#mySidenav").toggleClass("active" , 1000);
