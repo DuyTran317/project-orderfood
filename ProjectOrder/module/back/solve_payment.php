@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	if(! isset($_SESSION['admin_id']))
 	{
 		header("location:?mod=dangnhap");	
@@ -17,7 +17,7 @@
 ?>
 
 <script>	
-	swal({
+	swal({ 	
 		title: "Thành công!",
 		text: "Hoàn Tất Thanh Toán!",
 		type: "success"

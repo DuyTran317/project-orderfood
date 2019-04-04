@@ -26,6 +26,7 @@ $_SESSION['discard_after'] = $now + 3600;
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="jqueryUI/jquery-ui.min.js"></script>
 <script src="lib/pusher.min.js"></script>
+<script src="lib/sweetalert2.all.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <!-- Library For DATATABLE PLUGGIN -->
 <script src="lib/datatable/jquery.dataTables.min.js"></script>
