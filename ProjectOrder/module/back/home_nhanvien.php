@@ -6,6 +6,44 @@ getPusher('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien');
 getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
 
 ?>
+<script type="text/javascript">
+    function hoi(id_or){
+        swal({
+            title: 'Chú ý',
+            text: "Chắc chắn thanh toán?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Thành Công',
+                    'Bạn đã thanh toán thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id="+id_or
+                });
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
@@ -98,7 +136,8 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
                                      if(mysqli_num_rows($show) > 0)
                                      {
                                          ?>
-                                         <a href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id=<?=$kq['id_or']?>" onClick="return confirm('Chắc chắn thanh toán?')"  style=" color:black;"><button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
+                                         <a id="test_xoa" onclick="hoi(<?=$kq['id_or']?>)" style="cursor: pointer;color:black;">
+                                        <button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
                                          <h5 style="color:white; position:absolute; top:-190; left:22; background-color:red; width:50px ;height:50px; padding-top:10px; border-radius:50%; font-size:30px;"><i class="fas fa-check"></i></h5>
                                      <?php 
 									 } 

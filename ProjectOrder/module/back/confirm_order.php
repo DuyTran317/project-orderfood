@@ -1,4 +1,41 @@
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Chú ý',
+            text: "Bạn chắc chắn xóa đơn hàng?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Thành Công',
+                    'Bạn đã thanh toán thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="?mod=del_order&orderID="+id+"&num_table=<?=$num_table?>"
+                });
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
 
+    }
+</script>
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -111,8 +148,8 @@
                 ?>
             </div>
         </div>
-        <a href="?mod=del_order&orderID=<?=$id?>&num_table=<?=$num_table?>" 
-        onClick="return confirm('Bạn chắc chắn xóa đơn hàng?')"> <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;
+        <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;">
+         <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;
         ">Hủy</button></a>
         <a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-6 btn btn-primary btn-lg"style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" >Xác Nhận</button></a><hr>
     </div>

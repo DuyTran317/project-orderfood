@@ -1,3 +1,4 @@
+
 <style>
     .active{
          background-color: rgba(247, 139, 7,0.8);
@@ -184,7 +185,8 @@ Pusher.logToConsole = true;
                 {
                     ?>
                    <?php /*?> <!--Thanh toán--><?php */?>
-                    <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
+                   <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;color:black;">
+                    <button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             }
@@ -262,7 +264,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                    <?php /*?> <!--Thanh toán--><?php */?>
-                    <a href="dg-rating-i9102d<?=$id?>-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html" onClick="return confirm('<?=_PAYCONFIRM?>')"  style=" color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
@@ -539,5 +541,42 @@ Pusher.logToConsole = true;
         });
     }
 </script>
+<script type="text/javascript">
+    function hoi(id){
+        swal({
+            title: 'Chú ý',
+            text: "<?=_PAYCONFIRM?>",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Thành Công',
+                    'Bạn đã thanh toán thành công!',
+                    'success'
+                ).then(function(){
+                    window.location.href="dg-rating-i9102d"+id+"-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html"
+                });
+            } else if (
+                // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
+            ) {
+                swal(
+                    'Hủy',
+                    'Bạn đã hủy thành công :)',
+                    'error'
+                )
+            }
+        })
 
+    }
+</script>
 </html>

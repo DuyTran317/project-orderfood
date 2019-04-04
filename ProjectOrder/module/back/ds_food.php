@@ -31,22 +31,19 @@
                 <h2 style=" text-align:center;">Quản Lý Món Ăn</h2>
                 <div style="text-align:center; color:#066"><span style="color:#000; font-size:24px; color:#333">Chọn Loại:&nbsp;</span>
                 <select id="category_id" onChange="window.location='?mod=ds_food&cid='+this.value" style="width:200px;; font-size:20px; margin-top:10px">
-							<?php
-								$r_s = selectWithCondition_AcOrByOrAsc($link, 'of_category');
-								
-                                $cid = @$_GET['cid'];
-                                if($cid == '') $cid = $r_s['id'];
-                                                               
-								$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_category');
-								foreach($select as $r){
-                            ?>
-                                                    
-                                <option <?php if($r['id']==$cid) echo'selected'?>
-                                    value="<?=$r['id']?>"><?=$r['vi_name']?>
-                                </option>                           
-                            
-                            <?php } ?>
-             	</select>
+  							<?php
+  								$r_s = selectWithCondition_AcOrByOrAsc($link, 'of_category');
+  								$cid = @$_GET['cid'];
+                  if($cid == '') $cid = $r_s['id'];                                              
+  								$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_category');
+  								foreach($select as $r){
+                      ?>
+                      <option <?php if($r['id']==$cid) echo'selected'?>
+                         value="<?=$r['id']?>"><?=$r['vi_name']?>
+                      </option>                           
+                              
+                  <?php } ?>
+              	</select>
                 </div>
                 
             </div>
