@@ -22,4 +22,12 @@ if(isset($_POST['act']) && $_POST['act'] == 1 && isset($_POST['status']))
             $_SESSION['i'] = -1;
         }
 }
+
+if(isset($_POST['role']))
+{
+	if($_POST['role']==1)
+	$_SESSION['nut_montrung']=1;
+	if($_POST['role']==0)
+	$_SESSION['nut_montrung']=0;
+}
 ?>

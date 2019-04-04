@@ -1,6 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 #scroll { white-space: nowrap; overflow-y: scroll; }
+.rotate{
+    transform: rotate(180deg);
+}
 .nav .nav-pills .active{
     background-color: grey;
 }

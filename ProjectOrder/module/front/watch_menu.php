@@ -8,13 +8,8 @@
         border-radius: 5px;
         transition: 0.3s;
     }
-    .expand_caret {
-        transform: scale(1.6);
-        transition: 0.5s;
-
-    }
-    a[aria-expanded='false'] > .expand_caret {
-        transform: scale(1.6) rotate(180deg);
+    .rotate{
+        transform: rotate(180deg);
     }
 </style>
 <?php
@@ -43,7 +38,7 @@
 				$scroll++;
 				?>
                     <?php if($counter != 1) echo "<hr>"?>
-                    <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" aria-expanded="false" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px;" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up" style="font-size:16px"></div></a></div>
+                    <div id="menu<?=$scroll?>"><a href="wnl-watch_menuwolg-c9102ate<?=$cate?>.html#menu<?=$scroll?>"  data-toggle="collapse" data-target="#<?=$r_dep['id']?>" aria-expanded="false" style="color: white; text-decoration: none; cursor: pointer; font-size: 30px;" onClick="setCookie('<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div id="caret<?=$counter?>" class="expand_caret fas fa-caret-up" style="font-size:16px"></div></a></div>
                     <div id="<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3);" >
 
                         <?php
@@ -56,9 +51,13 @@
                             </ul>
 
                         <?php } ?>
-
                     </div>
-
+                    <script>
+                        $("#menu<?=$scroll?>").click(function(e) {
+                            e.preventDefault();
+                            $("#caret<?=$counter?>").toggleClass("rotate" , 500);
+                        });
+                    </script>
                 <?php } ?>
             </div>
 
@@ -97,7 +96,7 @@
                         $mobile_counter++;
                         ?>
                         <?php if($mobile_counter != 1) echo "<hr>"?>
-                        <div><a data-toggle="collapse" aria-expanded="false" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div class="expand_caret fas fa-caret-up"></div></a></div>
+                        <div><a id="carettoggle<?=$mobile_counter?>" data-toggle="collapse" aria-expanded="false" data-target="#mobile_<?=$r_dep['id']?>" style="color: white; text-decoration: none;" onClick="setCookie('mobile_<?=$r_dep['id']?>')"><?=$r_dep[$_SESSION['lang'].'_name']?>&nbsp;&nbsp;<div id="caret_mobile<?=$mobile_counter?>" class="fas fa-caret-down"></div></a></div>
                         <div id="mobile_<?=$r_dep['id']?>" class="collapse" style="background-color: rgba(0, 0, 0, 0.3)" >
                             <?php
                             //Thể Loại
@@ -109,9 +108,13 @@
                                 </ul>
 
                             <?php } ?>
-
                         </div>
-
+                        <script>
+                            $("#carettoggle<?=$mobile_counter?>").click(function(e) {
+                                e.preventDefault();
+                                $("#caret_mobile<?=$mobile_counter?>").toggleClass("rotate" , 500);
+                            });
+                        </script>
                     <?php } ?>
                     <script>
 
@@ -303,20 +306,32 @@
         for (var i=1; i<= <?=$counter?>; i++){
             if (getCookie(i) == "" || getCookie(i) == "off") {
                 document.getElementById(i).className = "collapse";
+                $("#caret" + i).removeClass("fa-caret-up");
+                $("#caret" + i).addClass("fa-caret-down");
+
             }
             else {
                 document.getElementById(i).className = "collapse in";
+                $("#caret" + i).removeClass("fa-caret-down");
+                $("#caret" + i).addClass("fa-caret-up");
+
             }
         }
     }
     function mobile_setState() {
         for (var x=1; x<= <?=$counter?>; x++) {
             var string ="mobile_" + x;
-            if (getCookie(string) == "" || getCookie(string) == "off") {
-                document.getElementById(string).className = "collapse";
+            if (getCookie(i) == "" || getCookie(i) == "off") {
+                document.getElementById(i).className = "collapse";
+                $("#caret_mobile" + i).removeClass("fa-caret-up");
+                $("#caret_mobile" + i).addClass("fa-caret-down");
+
             }
             else {
-                document.getElementById(string).className = "collapse in";
+                document.getElementById(i).className = "collapse in";
+                $("#caret_mobile" + i).removeClass("fa-caret-down");
+                $("#caret_mobile" + i).addClass("fa-caret-up");
+
             }
         }
     }
