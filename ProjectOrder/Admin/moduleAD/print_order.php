@@ -167,6 +167,9 @@
 ?>
 
 <body>
+
+<!-- Nut Back -->
+<a href="index.php?mod=bill_detail&id=<?=$id?>&mahd=<?=$mhd?>" class="btn btn-success">Back</a>
 <div id="ok"  style=" background-size: cover;">
     <div class="container" style="margin-bottom:50px">
         <div class="row" style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">

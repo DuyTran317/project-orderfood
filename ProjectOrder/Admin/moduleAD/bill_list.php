@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
-            text: "Bạn có muốn xóa thể loại này",
+            title: '<?=_DELCONFIRM?>?',
+            text: "<?=_DELWARNING?> <?=_RECEIPT?> ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_DELETE?>!',
+            cancelButtonText: '<?=_CANCEL?>!',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -16,8 +16,8 @@
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Xóa!',
-                    'Bạn đã xóa thành công!',
+                    '<?=_DELETE?>!',
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="?mod=process_bill&mahd="+id;});
@@ -58,13 +58,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
-            <small>Hóa Đơn</small>
+            <?=_LIST?>
+            <small><?=_RECEIPT?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-hoa-don.html">Hóa Đơn</a></li>
-            <li class="active">Danh sách</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-hoa-don.html"><?=_RECEIPT?></a></li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -76,7 +76,7 @@
                         <div class="box-body">
                               <!-- Date -->
                               <div class="form-group">
-                                <label>Date from:</label>
+                                <label><?=_FROM?>:</label>
 
                                 <div class="input-group date">
                                   <div class="input-group-addon">
@@ -91,8 +91,7 @@
                         <div class="box-body">
                               <!-- Date -->
                               <div class="form-group">
-                                <label>Date to:</label>
-
+                                <label><?=_TO?>:</label>
                                 <div class="input-group date">
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
@@ -104,7 +103,7 @@
                               <!-- /.form group -->
                         </div>
                         <div class="box-body">
-                            <button type="submit" class="btn btn-success">Tìm Theo Ngày</button>
+                            <button type="submit" class="btn btn-success"><?=_SEARCH?></button>
                         </div>
                     </form>    
                 </div>
@@ -116,13 +115,13 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Mã  Hóa Đơn</th>
-                                <th>Bàn</th>
-                                <th>Tổng Tiền</th>
-                                <th>Ngày Xuất</th>
-                                <th>Giờ Xuất</th>
-                                <th>Thao Tác</th>
+                                <th>#</th>
+                                <th><?=_RECEIPT?> #</th>
+                                <th><?=_TABLE?></th>
+                                <th><?=_TOTAL?></th>
+                                <th><?=_DATE?></th>
+                                <th><?=_HOUR?></th>
+                                <th><?=_ACTION?></th>
                                 
                             </tr>
                             </thead>
@@ -145,7 +144,7 @@
                             $sql_bill = "select * from `of_bill` where DATE(`date`) =  CURDATE()";
                             $i=1;
                             $kq_bill = mysqli_query($link,$sql_bill); 
-							echo "<span style='font-size:18px;  text-decoration: underline;'>Hóa Đơn Trong Ngày</span><hr>";
+							echo "<span style='font-size:18px;  text-decoration: underline;'>"; echo _RECEIPTLIST; echo "</span><hr>";
 							                        }
                             while($d_bill=mysqli_fetch_assoc($kq_bill))
                             {
@@ -157,7 +156,7 @@
                                	<td><?= number_format($d_bill['total']) ?></td>
                                	<td><?= date("d/m/Y", strtotime( $d_bill['date']))?></td> 
                                 <td><?= date("H:i:s", strtotime( $d_bill['date']))?></td> 
-                                <td><a href="index.php?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>">Chi Tiết</a></td>
+                                <td><a href="index.php?mod=bill_detail&id=<?= $d_bill['order_id'] ?>&mahd=<?= $d_bill['id'] ?>"><?=_DETAIL?></a></td>
                             </tr>
                             <?php } ?>
 

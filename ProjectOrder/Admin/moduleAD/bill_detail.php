@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Chi Tiết
-            <small>Hóa Đơn</small>
+            <?=_DETAIL?>
+            <small><?=_RECEIPT?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="">Hóa Đơn</a></li>
-            <li class="active">Chi Tiết</li>
+            <li><a href=""><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href=""><?=_RECEIPT?></a></li>
+            <li class="active"><?=_DETAIL?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -29,15 +29,15 @@
 						$rs=mysqli_query($link,$sql);
 						$r=mysqli_fetch_assoc($rs);
 					?>
-                    <h3>Mã Hóa Đơn: <?=$r['code_order']?></h3>
+                    <h3><?=_RECEIPT?>#: <?=$r['code_order']?></h3>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Tên Món Ăn</th>
-                                <th>Giá Tiền</th>
-                                <th>Số Lượng</th>
-                                <th>Thành Tiền (VND)</th>
+                                <th>#</th>
+                                <th><?=_DISH?></th>
+                                <th><?=_PRICE?></th>
+                                <th><?=_QTY?></th>
+                                <th><?=_TOTAL?></th>
                                 
                             </tr>
                             </thead>
@@ -53,7 +53,7 @@
                             ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                               	<td><?= $d_bill['vi_name'] ?></td>
+                               	<td><?= $d_bill[$_SESSION['ad_lang'].'_name'] ?></td>
                                	<td><?= number_format($d_bill['price']) ?></td>
                                 <td><?= $d_bill['qty'] ?></td>
                                 <td><?= number_format($d_bill['price']*$d_bill['qty']) ?></td>
@@ -66,9 +66,9 @@
                             </tbody>
                         </table>
                         	<hr />
-                        	<p style="font-size:20px; font-weight:bold;">Tổng thành tiền (VND): <?=number_format($total)?></p><br />
-                            <a href="?mod=print_order&id=<?=$id?>&mhd=<?=$mahd?>"><button class="btn btn-primary" style="float:right; font-size:18px">Xem bản in hóa đơn</button><hr /></a>
-                       <a href="?mod=bill_list">Trở về danh sách hóa đơn</a>
+                        	<p style="font-size:20px; font-weight:bold;"><?=_TOTAL?> (VND): <?=number_format($total)?></p><br />
+                            <a href="?mod=print_order&id=<?=$id?>&mhd=<?=$mahd?>"><button class="btn btn-primary" style="float:right; font-size:18px"><?=_VIEWRECEIPT?></button><hr /></a>
+                       <a href="?mod=bill_list"><?=_BACK?></a>
                     </div>
                     <!-- /.box-body -->
                 </div>

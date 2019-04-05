@@ -38,7 +38,7 @@ define("_QTY", "Quantity");
 define("_DATE", "Date");
 define("_HOUR", "Hour");
 define("_RESBESTSELLER", "Restaurant's Best Sellers");
-define("_DELWARNING", "Are you sure?");
+define("_DELWARNING", "Do you want to delete this");
 define("_DELCATEWARNING", "You want to delete this category?");
 define("_DELETE", "Delete");
 define("_CANCEL", "Cancel");
@@ -47,6 +47,48 @@ define("_EDIT", "Edit");
 define("_VISIBLE", "Visible");
 define("_HIDE", "Hide");
 define("_PIC", "Picture");
+define("_ORDER", "Order");
+define("_RESPONSIBLE", "Responsible Department");
+define("_RESET", "Reset");
+define("_SEARCH", "Search");
+define("_TOTAL", "Total");
+define("_ACTION", "Action");
+define("_DISH", "Dish");
+define("_VIEWRECEIPT", "View Receipt");
+define("_PRICE", "Price");
+define("_BACK", "Back");
+define("_ENTERCATNAME", "Enter category's name");
+define("_ENTERDEPNAME", "Enter department's name");
+define("_ENTERPRONAME", "Enter product's name");
+define("_ENTERTABNAME", "Enter table's name");
+define("_ENTERACCNAME", "Enter account's name");
+define("_ENTERNAME", "Enter name");
+define("_OUTOFSTOCK", "Out of stock");
+define("_DESC", "Description");
+define("_RECEIPTLIST", "Receipt List");
+define("_ACCNAME", "Account Name");
+define("_PASS", "Password");
+define("_PASSCONFIRM", "Confirm Password");
+define("_ROLE", "Role");
+define("_COOKER", "Cooker");
+define("_CASHIER", "Cashier");
+define("_WAITER", "Waiter");
+define("_BARTENDER", "Bartender");
+define("_CHANGEPASS", "Click here to change password!");
+define("_PASSWARNING", "Password must have at least 6 letters, 1 upper case letter, 1 lower case letter and 1 number");
+define("_COMMENT", "Comment");
+define("_TOTALSTAR", "Total stars:");
+define("_AVGSTAR", "Average star:");
+define("_DELCONFIRM", "Are you sure?");
+define("_DELSUCCESS", "Deleted successfully");
+
+define("_ACCOUNTANT", "Accountant");
+define("_MANAGER", "Manager");
+define("_TABLEMANAGER", "Table Manager");
+define("_ADROLE", "sub Admin");
+define("_DEPCATEMANAGER", "Department and Category Manager");
+
+
 
 
 

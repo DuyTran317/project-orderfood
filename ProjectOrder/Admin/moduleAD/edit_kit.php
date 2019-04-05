@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Sửa
+            <?=_EDIT?>
             <small><?php
             $sql = "select `name` from of_manage where id = {$_GET['edit']}";
                     $kq = mysqli_query($link,$sql);
@@ -10,9 +10,9 @@
              ?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-bep-thanh-toan.html">Bếp và Thanh Toán</a></li>
-            <li class="active">Sửa</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-bep-thanh-toan.html"><?=_USERS?></a></li>
+            <li class="active"><?=_EDIT?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -31,29 +31,29 @@
                     <form role="form" action="process-kit.html" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Account <span style="color:#F00" >(*)</span></label>
+                                <label for="exampleInputEmail1"><?=_ACCOUNT?> <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="ten" name="suaten" readonly="readonly" value="<?= $d_edit['account'] ?>">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tên <span style="color:#F00" >(*)</span></label>
+                                <label for="exampleInputPassword1"><?=_NAME?> <span style="color:#F00" >(*)</span></label>
                                 <input type="text" class="form-control" id="so" name="suaname" placeholder="Nhập tên" value="<?= $d_edit['name'] ?>">
                             </div>
                              <div class="form-group">
                                 <input type="checkbox" name="changePassword" id="changePassword">
-                                <label for="exampleInputPassword1">Nhấn vào đây nếu bạn muốn thay đổi mật khẩu!</label>
+                                <label for="exampleInputPassword1"><?=_CHANGEPASS?></label>
                             </div>
-                            <label for="exampleInputPassword1">Mật khẩu <span style="color:#F00" >(*)</span></label>
+                            <label for="exampleInputPassword1"><?=_PASS?> <span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
-                                    <input type="password" id="pass" class="form-control password" name="suapass" onkeyup='check();'  required placeholder="Nhập mật khẩu " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
+                                    <input type="password" id="pass" class="form-control password" name="suapass" onkeyup='check();'  required placeholder="<?=_PASS?> " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" disabled="" />
                                     
                                     <div class="requirements">
-                                        Bạn phải nhập ít nhất 6 ký tự, phải có 1 ký tự hoa, 1 ký tự số, 1 ký thường.
+                                        <?=_PASSWARNING?>
                                     </div>
                             </div>
-                            <label for="exampleInputPassword1">Nhập lại mật khẩu <span style="color:#F00" >(*)</span></label>
+                            <label for="exampleInputPassword1"><?=_PASSCONFIRM?><span style="color:#F00" >(*)</span></label>
                             <div class="form-group">
                                 <span>
-                                 <input type="password" id="repass" class="form-control password" onkeyup='check();' name="repass" required placeholder="Nhập lại mật khẩu " disabled="" />
+                                 <input type="password" id="repass" class="form-control password" onkeyup='check();' name="repass" required placeholder="<?=_PASSCONFIRM?> " disabled="" />
 
                                 <span id='message' class="requirements" style="padding: 0 30px 0 20px;"></span> </span>
                             </div>
@@ -74,8 +74,8 @@
 
                         <div class="box-footer">
 
-                            <button type="submit" class="btn btn-primary password">Sửa</button>
-                            <button type="reset" class="btn btn-defaul">Đặt Lại</button>
+                            <button type="submit" class="btn btn-primary password"><?=_EDIT?></button>
+                            <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                         </div>
                     </form>
                 </div>

@@ -1,8 +1,8 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: '<?=_DELWARNING?>',
-            text: "<?=_DELCATEWARNING?>",
+            title: '<?=_DELCONFIRM?>',
+            text: "<?=_DELWARNING?> <?=_CATEGORY?> ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

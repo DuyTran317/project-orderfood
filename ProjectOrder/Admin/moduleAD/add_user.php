@@ -10,13 +10,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Thêm
-            <small>Bàn</small>
+            <?=_ADD?>
+            <small><?=_TABLE?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li><a href="danh-sach-ban.html">Bàn</a></li>
-            <li class="active">Thêm</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-ban.html"><?=_TABLE?></a></li>
+            <li class="active"><?=_ADD?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -31,20 +31,20 @@
                     <form role="form1" action="process-user.html" method="post" enctype="multipart/form-data">
                         <div class="box-body"><div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Số <span style="color:#F00" >(*)</span></label>
-                                <input type="number" class="form-control" id="username" name="username" required placeholder="Nhập số bàn" value=""><span id="thongbao"></span>
+                                <label for="exampleInputPassword1"><?=_NAME?> <span style="color:#F00" >(*)</span></label>
+                                <input type="number" class="form-control" id="username" name="username" required placeholder="<?=_ENTERTABNAME?>" value=""><span id="thongbao"></span>
                             </div>     </div>                      
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
+                                <label for="exampleInputEmail1"><?=_STATUS?>: <span style="color:#F00" >(*)</span></label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked>Hiện
+                                        <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked><?=_VISIBLE?>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="trangthai" id="optionsRadios2" value="0">
-                                        Ẩn
+                                        <?=_HIDE?>
                                     </label>
                                 </div>
                             </div>
@@ -52,8 +52,8 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Thêm</button>
-                            <button type="reset" class="btn btn-defaul">Đặt Lại</button>
+                            <button type="submit" class="btn btn-primary"><?=_ADD?></button>
+                            <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                         </div>
                     </form>
                 </div>

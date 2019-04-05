@@ -1,3 +1,4 @@
+
 <?php
 
 require('Classes/PHPExcel.php');
@@ -88,20 +89,19 @@ $sheet->getStyle('A1:E1')->applyFromArray(
 
     <h1 align="center"><b><a href="../?mod=home">ORDERFOOD</a></b></h1>
         <div class="col-md-4 col-md-offset-4" style="background-color: white; padding: 10px;">
-            <h2 align="center"><b>Truy xuất dữ liệu</b></h2><hr>
-            <h3 style="color: grey">Bạn có thể in ra bản báo cáo dữ liệu theo ngày theo định dạng excel</h3>
+            <h2 align="center"><b>EXPORT</b></h2><hr>
             <form method="POST" action="" autocomplete="off">
                 <div class="row">
                     <div class="col-xs-6">
-                        <input id="datepickerfrom" type="text" name="datefrom" class="form-control"  placeholder="Ngày từ" required>
+                        <input id="datepickerfrom" type="text" name="datefrom" class="form-control"  placeholder="From" required>
                     </div>
                     <div class="col-xs-6">
-                        <input id="datepickerto" type="text" name="dateto" class="form-control"  placeholder="Ngày đến" required><br>
+                        <input id="datepickerto" type="text" name="dateto" class="form-control"  placeholder="To" required><br>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button name="btnExport" type="submit"  class="btn btn-info btn-lg" style="width: 100%">Xuất file</button>
+                        <button name="btnExport" type="submit"  class="btn btn-info btn-lg" style="width: 100%">Export</button>
                     </div>
                 </div>
             </form>

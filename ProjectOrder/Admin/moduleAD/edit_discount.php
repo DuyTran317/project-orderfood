@@ -1,24 +1,39 @@
-
-<?php if(isset($_SESSION['chuy'] )== 'chuy') {
-            echo "<script type='text/javascript'>";
-            echo "setTimeout(function () { swal('Chú ý',
-                          'Ngày đến phải lớn hơn ngày từ!',
-                          'warning');";
-            echo "},1);</script>";
-        }?>
+<?php
+if($_SESSION['ad_lang'] == 'vi')
+{
+    if(isset($_SESSION['chuy'] )== 'chuy')
+    {
+        echo "<script type='text/javascript'>";
+        echo "setTimeout(function () { swal('Chú ý',
+                      'Ngày đến phải lớn hơn ngày từ!',
+                      'warning');";
+        echo "},1);</script>";
+    }
+}
+elseif ($_SESSION['ad_lang'] == 'en'){
+    if(isset($_SESSION['chuy'] )== 'chuy')
+    {
+        echo "<script type='text/javascript'>";
+        echo "setTimeout(function () { swal('Warning',
+                      'To value must be greater than the from one!',
+                      'warning');";
+        echo "},1);</script>";
+    }
+}
+?>
         <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-               Sửa
-                <small>Khuyến mãi</small>
+               <?=_EDIT?>
+                <small><?=_PROMOTION?></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-                <li><a href="danh-sach-khuyen-mai.html">Khuyến mãi</a></li>
-                <li class="active">Sửa</li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+                <li><a href="danh-sach-khuyen-mai.html"><?=_PROMOTION?></a></li>
+                <li class="active"><?=_EDIT?></li>
             </ol>
         </section>
         <?php
@@ -70,15 +85,15 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="process-dis.html">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Khuyến mãi:<span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1"><?=_PROMOTION?>:<span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                         required  name="suakhuyenmai" placeholder="Nhập tên khuyến mãi" value="<?php echo $d_edit['discount']; ?>" min="0" max="100">
+                                         required  name="suakhuyenmai" placeholder="<?=_PROMOTION?>" value="<?php echo $d_edit['discount']; ?>" min="0" max="100">
                                 </div>
                             </div>
                             <div class="box-body">
                               <!-- Date -->
                               <div class="form-group">
-                                <label>Từ Ngày:</label>
+                                <label><?=_FROM?>:</label>
 
                                 <div class="input-group date">
                                   <div class="input-group-addon">
@@ -93,7 +108,7 @@
                              <div class="box-body">
                               <!-- Date -->
                               <div class="form-group">
-                                <label>Đến ngày:</label>
+                                <label><?=_TO?>:</label>
 
                                 <div class="input-group date">
                                   <div class="input-group-addon">
@@ -107,13 +122,13 @@
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Trạng Thái: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1"><?=_STATUS?>: <span style="color:#F00" >(*)</span></label>
                                     <div class="radio">
                                         <label class="radio-inline">
-                                            <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio">Hiện
+                                            <input name="suatrangthai" value="1" <?php if($d_edit['active'] == 1) {echo "checked";}  else echo ""; ?> type="radio"><?=_VISIBLE?>
                                         </label>
                                         <label class="radio-inline">
-                                            <input name="suatrangthai" value="0" type="radio" <?php if($d_edit['active'] == 0) {echo "checked";}  else echo ""; ?> >Ẩn
+                                            <input name="suatrangthai" value="0" type="radio" <?php if($d_edit['active'] == 0) {echo "checked";}  else echo ""; ?> ><?=_HIDE?>
                                         </label>
                                     </div>
                                 </div>
@@ -122,8 +137,8 @@
                             <input type="hidden" value="<?= $d_edit['id']?>" name="id">
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Sửa</button>
-                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
+                                <button type="submit" class="btn btn-primary"><?=_EDIT?></button>
+                                <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>
                     </div>

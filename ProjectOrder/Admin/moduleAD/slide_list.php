@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
-            text: "Bạn có muốn xóa ",
+            title: '<?=_DELCONFIRM?>',
+            text: "<?=_DELWARNING?> slide ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_DELETE?>!',
+            cancelButtonText: '<?=_CANCEL?>!',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -16,8 +16,8 @@
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Xóa!',
-                    'Bạn đã xóa thành công!',
+                    '<?=_DELETE?>!',
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="process_slide-del-"+id+".html";});
@@ -31,13 +31,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
+            <?=_LIST?>
             <small>Slide</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> <?=_HOME?></a></li>
             <li><a href="danh-sach-slide.html">slide</a></li>
-            <li class="active">Danh sách</li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -50,11 +50,11 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Tên VN</th>
-                                <th>Tên EN</th>
-                                <th>Hình</th>
-                                <th><a href="them-slide.html">Thêm</a></th>
+                                <th>#</th>
+                                <th><?=_NAME?> VN</th>
+                                <th><?=_NAME?> EN</th>
+                                <th><?=_PIC?></th>
+                                <th><a href="them-slide.html"><?=_ADD?></a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@
                                     <td><?= $d_user['vi_name'] ?></td>
                                     <td><?= $d_user['en_name'] ?></td>
                                     <td><img src="../img/slider/<?= $d_user['img_url'] ?>" width="50" height="50"></td>
-                                    <td><a href="edit_slide-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer">Xóa</a></td>
+                                    <td><a href="edit_slide-<?= $d_user['id'] ?>.html"><?=_EDIT?></a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer"><?=_DELETE?></a></td>
                                 </tr>
                             <?php } ?>
 

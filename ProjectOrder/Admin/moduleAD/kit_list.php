@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
-            text: "Bạn có muốn xóa ",
+            title: '<?=_DELCONFIRM?>?',
+            text: "<?=_DELWARNING?> <?=_USERSS?> ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_DELETE?>!',
+            cancelButtonText: '<?=_CANCEL?>!',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -16,8 +16,8 @@
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Xóa!',
-                    'Bạn đã xóa thành công!',
+                    '<?=_DELETE?>!',
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="process_kit-del-"+id+".html";});
@@ -32,13 +32,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
-            <small>Bếp - Thanh Toán</small>
+            <?=_LIST?>
+            <small><?=_USERS?></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="danh-sach-bep-thanh-toan.html">Bếp - Thanh Toán</a></li>
-            <li class="active">Danh sách</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> <?=_HOME?></a></li>
+            <li><a href="danh-sach-bep-thanh-toan.html"><?=_USERS?></a></li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -51,12 +51,12 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Account</th>
-                                <th>Tên Người Dùng</th>
-                                <th>Thuộc Danh Mục</th>
-                                <th>Trạng Thái</th>
-                                <th><a href="them-bep-thanhtoan.html">Thêm</a></th>
+                                <th>#</th>
+                                <th><?=_ACCOUNT?></th>
+                                <th><?=_NAME?></th>
+                                <th><?=_ROLE?></th>
+                                <th><?=_STATUS?></th>
+                                <th><a href="them-bep-thanhtoan.html"><?=_ADD?></a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -74,19 +74,19 @@
 										<?php
 											if($d_user['cate']==1)
 											{
-												echo "Khu Bếp Nấu";
+											    echo _COOKER;
 											}
 											if($d_user['cate']==2)
 											{
-												echo "Khu Thanh Toán";
+												echo _CASHIER;
 											}
 											if($d_user['cate']==3)
 											{
-												echo "Bộ Phận Nhân Viên";
+												echo _WAITER;
 											}
 											if($d_user['cate']==4)
 											{
-												echo "Khu Bếp Pha Chế";
+												echo _BARTENDER;
 											}
 										?>
                                     </td>
@@ -96,7 +96,7 @@
                                             echo "<a href=\"process-kit-h{$d_user['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a href="edit_kit-<?= $d_user['id'] ?>.html">Sửa</a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer">Xóa</a></td>
+                                    <td><a href="edit_kit-<?= $d_user['id'] ?>.html"><?=_EDIT?></a>/<a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer"><?=_DELETE?></a></td>
                                 </tr>
                             <?php } ?>
 

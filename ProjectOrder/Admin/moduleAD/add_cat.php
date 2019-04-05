@@ -4,13 +4,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-               Thêm
-                <small>Thể Loại</small>
+                <?=_ADD?>
+                <small><?=_CATEGORY?></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-                <li><a href="danh-sach-the-loai.html">Thể Loại</a></li>
-                <li class="active">Thêm</li>
+                <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+                <li><a href="danh-sach-the-loai.html"><?=_CATEGORY?></a></li>
+                <li class="active"><?=_ADD?></li>
             </ol>
         </section>
 
@@ -24,50 +24,50 @@
                         <!-- form start -->
                         <form role="form" method="post" enctype="multipart/form-data" action="process-cat.html">
                             <div class="form-group">
-                                <label>Thể Loại <span style="color:#F00" >(*)</span> </label>
+                                <label><?=_CATEGORY?> <span style="color:#F00" >(*)</span> </label>
                                 <select class="form-control"tyle="border-radius: 5px 5px 5px 5px;" name="chungloai">
                                     <?php
                                     $d = getFectch($link,'of_department');
                                     foreach($d as $d_de)
                                     {?>
-                                        <option value="<?= $d_de['id'] ?>" ><?= $d_de['vi_name'] ?></option>
+                                        <option value="<?= $d_de['id'] ?>" ><?= $d_de[$_SESSION['ad_lang'].'_name'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại VN: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1"><?=_NAME?> VN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="vi_theloai" placeholder="Nhập tên thể loại">
+                                         required  name="vi_theloai" placeholder="<?=_ENTERCATNAME?> (VN)">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Thể Loại EN: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1"><?=_NAME?> EN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                         required  name="en_theloai" placeholder="Nhập tên thể loại bằng tiếng anh">
+                                         required  name="en_theloai" placeholder="<?=_ENTERCATNAME?> (EN)">
                                 </div>
                             </div>
                             
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Thứ Tự: <span style="color:#F00" >(*)</span></label>
+                                    <label for="exampleInputEmail1"><?=_ORDER?>: <span style="color:#F00" >(*)</span></label>
                                     <input type="number" class="form-control"
-                                          required name="thutu" placeholder="Nhập thứ tự" min="1">
+                                          required name="thutu" placeholder="<?=_ORDER?>" min="1">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Trạng Thái:</label>
+                                    <label for="exampleInputEmail1"><?=_STATUS?>:</label>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked>Hiện
+                                            <input type="radio" name="trangthai" id="optionsRadios1" value="1" checked><?=_VISIBLE?>
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="trangthai" id="optionsRadios2" value="0">
-                                            Ẩn
+                                            <?=_HIDE?>
                                         </label>
                                     </div>
                                 </div>
@@ -75,8 +75,8 @@
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Thêm</button>
-                                <button type="reset" class="btn btn-defaul">Đặt Lại</button>
+                                <button type="submit" class="btn btn-primary"><?=_ADD?></button>
+                                <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>
                     </div>

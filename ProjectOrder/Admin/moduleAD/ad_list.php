@@ -4,13 +4,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh Sách
+            <?=_LIST?>
             <small>Admin</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i> <?=_HOME?></a></li>
             <li><a href="danh-sach-admin.html">Admin</a></li>
-            <li class="active">Danh sách</li>
+            <li class="active"><?=_LIST?></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -23,10 +23,10 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Account</th>
-                                <th>Tên</th>
-                                <th><?php if($_SESSION['catead'] == 1){ echo '<a href="them-quan-tri-vien.html">Thêm</a>';}else echo "Sửa"; ?></th>
+                                <th>#</th>
+                                <th><?=_ACCOUNT?></th>
+                                <th><?=_NAME?></th>
+                                <th><?php if($_SESSION['catead'] == 1){ echo '<a href="them-quan-tri-vien.html">'; echo _ADD ; echo '</a>';}else echo _EDIT; ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $d_user['account'] ?></td>
                                     <td><?= $d_user['name'] ?></td>
-                                    <td ><a href="edit_ad-<?=$d_user['id']?>.html" style="<?php if($cate != 1 && $d_user['cate'] ==1 ){ echo "display: none; "; } ?>" >Sửa</a></td>
+                                    <td ><a href="edit_ad-<?=$d_user['id']?>.html" style="<?php if($cate != 1 && $d_user['cate'] ==1 ){ echo "display: none; "; } ?>" ><?=_EDIT?></a></td>
                                 </tr>
                             <?php } ?>
 

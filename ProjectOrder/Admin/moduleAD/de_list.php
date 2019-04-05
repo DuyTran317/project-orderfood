@@ -1,8 +1,8 @@
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: '<?=_DELWARNING?>',
-            text: "<?=_DELCATEWARNING?>",
+            title: '<?=_DELCONFIRM?>',
+            text: "<?=_DELWARNING?> <?=_DEPARTMENT?> ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -16,8 +16,8 @@
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Xóa!',
-                    'Bạn đã xóa thành công!',
+                    '<?=_DELETE?>!',
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="process_de-del-"+id+".html";});

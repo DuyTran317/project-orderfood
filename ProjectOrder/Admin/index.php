@@ -11,11 +11,15 @@ if(isset($_POST['ad_lang']) && !empty($_POST['ad_lang'])){
         echo "<script type='text/javascript'> location.reload(); </script>";
     }
 }
-if(isset($_SESSION['ad_lang'])){
-    include "../languages/ad_lang_".$_SESSION['ad_lang'].".php";
-}else{
-    $_SESSION['ad_lang']='vi';
-    include "../languages/ad_lang_vi.php";
+
+$mod=@$_GET['mod'];
+if($mod != "print_order") {
+    if (isset($_SESSION['ad_lang'])) {
+        include "../languages/ad_lang_" . $_SESSION['ad_lang'] . ".php";
+    } else {
+        $_SESSION['ad_lang'] = 'vi';
+        include "../languages/ad_lang_vi.php";
+    }
 }
 ?>
 
@@ -39,6 +43,7 @@ else
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,12 +112,17 @@ include('controller/c_sql_kit.php');
 include('controller/c_sql_pro.php');
 include('controller/c_sql_slide.php');
 include('controller/c_sql_user.php');
-include('moduleAD/menu.php');
+
+if($mod != "print_order") {
+    include('moduleAD/menu.php');
+}
 
 $mod=@$_GET['mod'];
 if($mod=='') $mod='home';
 include("moduleAD/{$mod}.php");
 ?>
+
+
 <!-- jQuery 3 -->
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script>
  --><!-- jQuery UI 1.11.4 -->
