@@ -64,6 +64,12 @@
 	sendPusher2('770fa0ac91f2e68d3ae7', 'ba6aadbd24eaa367edb6', '631845', 'Reload', 'newbill',$num_table);
 ?>
 <script>
-	 alert("Hoàn Tất Đơn Hàng!");
-	 window.location="?mod=home";
+	swal({
+		title: "Thành công!",
+		text: "Hoàn Tất Đơn Hàng!",
+		type: "success"
+		}).then(function() {
+			window.location="?mod=home";
+		});
+	 
 </script>

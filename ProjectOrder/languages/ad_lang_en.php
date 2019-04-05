@@ -1,0 +1,52 @@
+<?php
+define("_ACCOUNT", "Account");
+define("_LOGOUT", "Log out");
+define("_CONTROLPANEL", "Control pannel");
+define("_DASHBOARD", "Dashboard");
+define("_FOODMANAGE", "Food Managment");
+define("_DEPARTMENT", "Departments");
+define("_LIST", "List");
+define("_ADD", "Add");
+define("_CATEGORY", "Categories");
+define("_PRODUCT", "Products");
+define("_ANALYZE", "Analyse");
+define("_RECEIPT", "Receipts");
+define("_RATE", "Rates");
+define("_TABLEMANAGE", "Table Management");
+define("_TABLE", "Tables");
+define("_USERMANAGE", "User Managment");
+define("_USERS", "Users");
+define("_SLIDEMANAGE", "Slide Management");
+define("_PROMOTIONMANAGE", "Promotion Management");
+define("_PROMOTION", "Promotion");
+define("_AUTHORITYMANAGE", "Authorities Management");
+define("_SETTING", "Setting");
+define("_BACKUP", "Back Up Database");
+define("_EXPORT", "Export Excel");
+define("_HOME", "Home");
+define("_CURRENTTABLE", "Current tables");
+define("_DETAIL", "Detail");
+define("_MONTHLYRECEIPT", "Monthly receipt's amount");
+define("_PROMOTIONSECTION", "Promotion");
+define("_FOODREPORT", "Food Report");
+define("_CHOOSECATE", "Choose Category");
+define("_CHOOSEDISH", "Chose Product");
+define("_FROM", "From");
+define("_TO", "TO");
+define("_NAME", "Name");
+define("_QTY", "Quantity");
+define("_DATE", "Date");
+define("_HOUR", "Hour");
+define("_RESBESTSELLER", "Restaurant's Best Sellers");
+define("_DELWARNING", "Are you sure?");
+define("_DELCATEWARNING", "You want to delete this category?");
+define("_DELETE", "Delete");
+define("_CANCEL", "Cancel");
+define("_STATUS", "Status");
+define("_EDIT", "Edit");
+define("_VISIBLE", "Visible");
+define("_HIDE", "Hide");
+define("_PIC", "Picture");
+
+
+

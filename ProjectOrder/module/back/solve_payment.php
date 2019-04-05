@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	if(! isset($_SESSION['admin_id']))
 	{
 		header("location:?mod=dangnhap");	
@@ -17,13 +17,12 @@
 ?>
 
 <script>	
-	swal({
+	swal({ 	
 		title: "Thành công!",
 		text: "Hoàn Tất Thanh Toán!",
 		type: "success"
 		}).then(function() {
 			window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
 		});
-	// alert("Hoàn Tất Thanh Toán!");
-	// window.location="?mod=in_hoadon&id=<?=$orderID?>&num_table=<?=$num_table?>";
+	
 </script> 

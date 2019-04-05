@@ -71,13 +71,8 @@ if(isset($_POST['content']))
                     </label>
                 </div>
                 <textarea name="content" id="comment" class="form-group" style="width:100%; height:100px" placeholder="<?=_OPINION?>"></textarea>
-
-
-
                 <br/><br/>
                 <div align="right"><button id="submit_comment" class="btn btn-success btn-lg" style="clear:left"><?=_SEND?></button></div>
-
-
             </form>
         </div>
     </div>

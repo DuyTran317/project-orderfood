@@ -45,11 +45,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Tổng Quan
+           <?=_DASHBOARD?>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li class="active">Tổng quan</li>
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li class="active"><?=_DASHBOARD?></li>
         </ol>
     </section>
 
@@ -69,12 +69,12 @@
                         ?>
                         <h3 id="value" style="color: white"><?php echo $duser; ?></h3>
                         
-                        <p>Số bàn hiện có</p>
+                        <p><?=_CURRENTTABLE?></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-clipboard"></i>
                     </div>
-                    <a href="danh-sach-ban.html" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-ban.html" class="small-box-footer"><?=_DETAIL?>  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -89,12 +89,12 @@
                         ?>
                         <h3 id="value1" style="color: white"><?php echo $dbill; ?></h3>
 
-                        <p>Số hóa đơn theo tháng</p>
+                        <p><?=_MONTHLYRECEIPT?></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-compose"></i>
                     </div>
-                    <a href="danh-sach-hoa-don.html" class="small-box-footer">Xem chi tiết  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-hoa-don.html" class="small-box-footer"><?=_DETAIL?>  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -109,12 +109,12 @@
                         ?>
                         <h3 id="value2" style="color: white"><?php echo $drate; ?></h3>
 
-                        <p>Đánh giá</p>
+                        <p><?=_RATE?></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-star"></i>
                     </div>
-                    <a href="danh-sach-danh-gia.html" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-danh-gia.html" class="small-box-footer"><?=_DETAIL?> <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -129,12 +129,12 @@
                         ?>
                         <h3 id="value3" style="color: white"><?php echo $dbill1; ?></h3>
 
-                        <p>Mục Khuyến Mãi</p>
+                        <p><?=_PROMOTIONSECTION?></p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-tags" aria-hidden="true"></i>
                     </div>
-                    <a href="danh-sach-khuyen-mai.html" class="small-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="danh-sach-khuyen-mai.html" class="small-box-footer"><?=_DETAIL?> <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -144,10 +144,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <h1 style="font-size: 24px; font-weight: bold">Thống Kê Món Ăn</h1>
+                    <h1 style="font-size: 24px; font-weight: bold"><?=_FOODREPORT?></h1>
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <span style="font-size:16px;margin-left: 15px; "><strong>Chọn Loại:</strong></span>
+                            <span style="font-size:16px;margin-left: 15px; "><strong><?=_CHOOSECATE?>:</strong></span>
                             <select id="category_id" onchange="window.location='index.php?mod=home<?php if(isset($datefrom))
 							echo"&datefrom=".$datefrom?><?php if(isset($dateto))
 							echo"&dateto=".$dateto?>&cid='+this.value" style="margin-top:10px; font-size:14px; margin-left:10px;width: 300px; ">
@@ -166,13 +166,13 @@
                                     ?>
 
                                     <option <?php if($r['id']==$cid) echo'selected'?>
-                                            value="<?=$r['id']?>"><?=$r['vi_name']?>
+                                            value="<?=$r['id']?>"><?=$r[$_SESSION['ad_lang'].'_name']?>
                                     </option>
 
                                 <?php } ?>
                             </select>
                             <br><br>
-                            <span style="font-size:16px; margin-left: 15px; "><strong>Chọn Món:</strong></span>
+                            <span style="font-size:16px; margin-left: 15px; "><strong><?=_CHOOSEDISH?>:</strong></span>
                             <select style=" font-size:14px; margin-left:10px;width: 300px; "  onchange="window.location='index.php?mod=home<?php if(isset($datefrom))
 							echo"&datefrom=".$datefrom?><?php if(isset($dateto))
 							echo"&dateto=".$dateto?>&cid=<?=$cid?>&id_mon='+this.value" >
@@ -194,7 +194,7 @@
                                     ?>
 
                                     <option <?php if($r_pro['id']==$id_mon) echo'selected'?>
-                                            value="<?=$r_pro['id']?>"><?=$r_pro['vi_name']?>
+                                            value="<?=$r_pro['id']?>"><?=$r_pro[$_SESSION['ad_lang'].'_name']?>
                                     </option>
 
                                 <?php } ?>
@@ -205,7 +205,7 @@
                                     <div class="box-body">
                                       <!-- Date -->
                                       <div class="form-group">
-                                        <label>Từ Ngày:</label>
+                                        <label><?=_FROM?>:</label>
 
                                         <div class="input-group date">
                                           <div class="input-group-addon">
@@ -220,7 +220,7 @@
                                      <div class="box-body">
                                       <!-- Date -->
                                       <div class="form-group">
-                                        <label>Đến ngày:</label>
+                                        <label><?=_TO?>:</label>
 
                                         <div class="input-group date">
                                           <div class="input-group-addon">
@@ -232,7 +232,7 @@
                                       </div>
                                       <!-- /.form group -->
                                     </div>
-                                    <button type="submit" class="btn btn-success">Tìm Chi Tiết</button>
+                                    <button type="submit" class="btn btn-success"><?=_DETAIL?></button>
                                 </form>
                             </div>
                         </div>
@@ -240,7 +240,7 @@
 
                 </div>
                 <div class="col-md-7">
-                    <h1 style="font-size: 24px; font-weight: bold">Chi Tiết</h1>
+                    <h1 style="font-size: 24px; font-weight: bold"><?=_DETAIL?></h1>
                     <div class="box box-primary">
                         <div class="box-body">
 
@@ -248,17 +248,17 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>STT</th>
-                                    <th>Tên Thể Loại</th>
-                                    <th>Số Lượng</th>
-                                    <th>Ngày</th>
-                                    <th>Giờ</th>
+                                    <th>#</th>
+                                    <th><?=_NAME?></th>
+                                    <th><?=_QTY?></th>
+                                    <th><?=_DATE?></th>
+                                    <th><?=_HOUR?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
 
-                                @$sql_cat = "select *,c.`vi_name` as ten_mon, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
+                                @$sql_cat = "select *, b.`qty` as sl_mon, a.`date` as ngay from `of_bill` as a, `of_order_detail` as b, `of_food` as c where a.`order_id` = b.`order_id` and b.`food_id` = c.`id` and a.`date` <= '{$dateto}' and a.`date` >= '{$datefrom}' and c.`id` = {$id_mon}";
                                 $i=1;
                                 $kq_cat = mysqli_query($link,$sql_cat);
                                 while($d_cat=mysqli_fetch_assoc($kq_cat))
@@ -266,7 +266,7 @@
                                     ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $d_cat['ten_mon'] ?></td>
+                                        <td><?= $d_cat[$_SESSION['ad_lang'].'_name'] ?></td>
                                         <td><?= $d_cat['sl_mon'] ?></td>
                                         <td><?= date('d/m/Y',strtotime($d_cat['ngay']))?></td>
                                         <td><?= date('H:i:s',strtotime($d_cat['ngay']))?></td>
@@ -284,7 +284,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 style="font-size: 24px; font-weight: bold">Tổng Quan</h1>
+                    <h1 style="font-size: 24px; font-weight: bold"><?=_DASHBOARD?></h1>
                     <div class="box box-primary">
                         <div class="box-body">
                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
@@ -334,7 +334,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
 		fontSize: 22,
 		fontFamily: "Verdana",		
-		text: "Các Món Bán Chạy Nhất Của Mặt Hàng"
+		text: "<?=_RESBESTSELLER?>"
 	},
 	data: [{
 		type: "pie",
@@ -343,11 +343,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabel: "{label} {y}",
 		dataPoints: [
 		<?php
-		  	$sql="select `vi_name`, `solve` from `of_food` where `category_id` = {$cid} order by `solve` desc limit 0,5";
+		  	$sql="select *, `solve` from `of_food` where `category_id` = {$cid} order by `solve` desc limit 0,5";
 			$kq=mysqli_query($link,$sql);
 			while($k=mysqli_fetch_assoc($kq)){
 		 ?>
-			{y: <?=$k['solve']?>, label: "<?=$k['vi_name']?>, SL:"},
+			{y: <?=$k['solve']?>, label: "<?=$k[$_SESSION['ad_lang'].'_name']?>, <?=_QTY?>:"},
 		<?php } ?>
 		]
 	}]

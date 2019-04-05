@@ -32,7 +32,7 @@
                             >
                         </div>
                     </div>
-                    <button class="btn col-xs-12" style="font-size:18px; color: black; background-color: yellow; border-radius: 0px; type="submit">Đăng Nhập</button>
+                    <button class="btn col-xs-12" style="font-size:18px; color: black; background-color: yellow; border-radius: 0px;" type="submit">Đăng Nhập</button>
                 </fieldset>
             </form>
         </div>

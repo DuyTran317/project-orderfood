@@ -25,7 +25,7 @@
 		$sql = "update `of_note_order` set `active` = 1 where `order_id` = {$idorder}";
 		mysqli_query($link,$sql);
 		
-		
+		if(isset($_SESSION['i'])) $_SESSION['i'] = -1;
 		// reload bep
 			sendPusher2('05d67b2777b04b8a83db', 'd7e2016ecdb311bba59b', '636618', 'Reload', 'loadmenu2',$num_table);
 	}				
