@@ -128,10 +128,11 @@
                 <div id="hotsaler" class="collapse">
                     <ul class="nav nav-pills nav-stacked hidden-md hidden-lg " style="background-color: #fed766;">
                       <?php
+					  $flag2=0;
                        $r1=mysqli_query($link,$sql);
                        while($show_mobile=mysqli_fetch_assoc($r1)){
                     ?>
-                        <li><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile['vi_name']?></a></li>
+                        <li class <?php if ($flag2==0) { echo '="active"';$flag2=1;}?>><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile['vi_name']?></a></li>
                         <?php } ?>
                     </ul>
                 </div>
