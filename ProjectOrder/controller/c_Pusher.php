@@ -1,4 +1,4 @@
-<script src="../lib/pusher.min.js"></script>
+
 <?php
 include("Pusher.php");
 //Func send singal to server

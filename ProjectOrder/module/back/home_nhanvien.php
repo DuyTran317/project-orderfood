@@ -6,44 +6,7 @@ getPusher('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien');
 getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
 
 ?>
-<script type="text/javascript">
-    function hoi(id_or){
-        swal({
-            title: 'Chú ý',
-            text: "Chắc chắn thanh toán?",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
-            confirmButtonClass: 'btn btn-success',
-            cancelButtonClass: 'btn btn-danger',
-            buttonsStyling: false,
-            reverseButtons: true
-        }).then((result) => {
-            if (result.value) {
-                swal(
-                    'Thành Công',
-                    'Bạn đã thanh toán thành công!',
-                    'success'
-                ).then(function(){
-                    window.location.href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id="+id_or
-                });
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
-            }
-        })
 
-    }
-</script>
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
@@ -142,6 +105,35 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
                                      <?php 
 									 } 
 									 ?>
+                                     <script type="text/javascript">
+                                        function hoi(id_or){
+                                            swal({
+                                                title: 'Chú ý',
+                                                text: "Chắc chắn thanh toán?",
+                                                type: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Đồng ý!',
+                                                cancelButtonText: 'Hủy!',
+                                                confirmButtonClass: 'btn btn-success',
+                                                cancelButtonClass: 'btn btn-danger',
+                                                buttonsStyling: false,
+                                                reverseButtons: true
+                                            }).then((result) => {
+                                                if (result.value) {
+                                                    swal(
+                                                        'Thành Công',
+                                                        'Bạn đã thanh toán thành công!',
+                                                        'success'
+                                                    ).then(function(){
+                                                        window.location.href="?mod=solve_payment_nhanvien&name=<?=$kq['name_ban']?>&order_id="+id_or
+                                                    });
+                                                }  
+                                            })
+
+                                        }
+                                    </script>
                                  </div>
                              </div>
 				<?php  
@@ -164,5 +156,6 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
     </div>
 </div>
 </div>
+
 </body>
 </html>

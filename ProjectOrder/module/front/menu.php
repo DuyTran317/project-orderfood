@@ -560,7 +560,7 @@ Pusher.logToConsole = true;
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
+            confirmButtonText: 'Đồng ý!',
             cancelButtonText: 'Hủy!',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
@@ -575,16 +575,7 @@ Pusher.logToConsole = true;
                 ).then(function(){
                     window.location.href="dg-rating-i9102d"+id+"-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html"
                 });
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
-            }
+            } 
         })
 
     }
