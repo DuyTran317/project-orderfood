@@ -27,15 +27,6 @@
                 ).then(function(){
                     window.location.href="index.php?mod=cart_process&id="+k+"&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"
                 });
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
             }
         })
 
