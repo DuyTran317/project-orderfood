@@ -37,8 +37,9 @@ getPusher('161363aaa8197830a033', 'Reload', 'loadthanhtoan');
     <td><h4><strong>Kiểm Tra</strong></h4></td>
   </tr>
   </thead>
+  <?php /*?>
   <?php   	
-	$i=1;
+	
 	$select = selectHomeThanhToan($link);
 	foreach($select as $re){
   ?>
@@ -80,6 +81,18 @@ getPusher('161363aaa8197830a033', 'Reload', 'loadthanhtoan');
 		}
 	 ?>
     </h5></td> 
+  </tr>
+  <?php } ?><?php */
+  $i=1;
+  $sql="select * from `of_solve_pay` where `active`=0";
+  $r=mysqli_query($link,$sql);
+  while($rs=mysqli_fetch_assoc($r)){
+  ?>
+  <tr>
+  	<td align="center"> <?=$i++?></td>
+    <td align="center"><h5>&nbsp;&nbsp;Bàn Số: <span style="color: red; font-size: 24px;"><?=$rs['num_table']?></span></h5></td>
+    <td><h5><i class='fas fa-bell'></i></h5><audio style="display:none" autoplay="autoplay" src="lib/ringtone/bell-ringing-01.mp3"></audio></td>
+    <td><h5><a href="?mod=payment&id=<?=$rs['order_id']?>&num_table=<?=$rs['num_table']?>">Xem</a></h5></td>
   </tr>
   <?php } ?>
 </table>

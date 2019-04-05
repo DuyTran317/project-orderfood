@@ -1,31 +1,4 @@
-<<<<<<< HEAD
-<script type="text/javascript">
-    function hoi(id){
-        swal({
-            title: 'Chú ý',
-            text: "Bạn chắc chắn xóa đơn hàng?",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
-            confirmButtonClass: 'btn btn-success',
-            cancelButtonClass: 'btn btn-danger',
-            buttonsStyling: false,
-            reverseButtons: true
-        }).then((result) => {
-            if (result.value) {
-                swal(
-                    'Thành Công',
-                    'Bạn đã thanh toán thành công!',
-                    'success'
-                ).then(function(){
-                    window.location.href="?mod=del_order&orderID="+id+"&num_table=<?=$num_table?>"
-                });
-            }
-        })
-}
+
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{

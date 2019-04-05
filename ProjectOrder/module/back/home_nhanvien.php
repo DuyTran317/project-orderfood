@@ -99,7 +99,7 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
                                      if(mysqli_num_rows($show) > 0)
                                      {
                                          ?>
-                                         <a id="test_xoa" onclick="hoi(<?=$kq['id_or']?>)" style="cursor: pointer;color:black;">
+                                         <a id="test_xoa" onClick="hoi(<?=$kq['id_or']?>)" style="cursor: pointer;color:black;">
                                         <button class="btn btn-lg col-xs-12" style="background-color:#f2a11f; border-radius: 0px; font-size: 15px;text-align:center">Thanh Toán</button></a>
                                          <h5 style="color:white; position:absolute; top:-190; left:22; background-color:red; width:50px ;height:50px; padding-top:10px; border-radius:50%; font-size:30px;"><i class="fas fa-check"></i></h5>
                                      <?php 
