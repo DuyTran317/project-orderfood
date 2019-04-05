@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript">
     function hoi(id){
         swal({
@@ -24,9 +25,7 @@
                 });
             }
         })
-
-    }
-</script>
+}
 <?php
 	if(! isset($_SESSION['admin_id']))
 	{
@@ -103,8 +102,8 @@
                         </td>
                         <td >
                             <span style="float:right; ">
-                                
-                                <a href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food=<?=$r['id_food']?>" onClick="return confirm('Chắc chắn xóa?')"><i class="fas fa-trash-alt" style="color: darkred"></i></a>
+                                <a id="test_xoa" onClick="hoi(<?=$r['id_food']?>)" style="cursor: pointer;">
+                                <i class="fas fa-trash-alt" style="color: darkred"></i></a>
                             </span>
                         </td>
                        
@@ -139,7 +138,7 @@
                 ?>
             </div>
         </div>
-        <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;">
+        <a id="test_xoa" onClick="hoi_huy(<?=$id?>)" style="cursor: pointer;">
          <button type="submit"class="btn btn-danger btn-lg col-xs-6" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;
         ">Hủy</button></a>
         <a href="?mod=solve_confirm&orderID=<?=$id?>&num_table=<?=$num_table?>&total=<?=$total?>"><button class="col-xs-6 btn btn-primary btn-lg"style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" >Xác Nhận</button></a><hr>
@@ -187,4 +186,60 @@ $(document).ready(function() {
         }
     });
 });
+
+function hoi_huy(id){
+	swal({
+		title: 'Chú ý',
+		text: "Bạn chắc chắn xóa đơn hàng?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Xóa!',
+		cancelButtonText: 'Hủy!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false,
+		reverseButtons: true
+	}).then((result) => {
+		if (result.value) {
+			swal(
+				'Thành Công',
+				'Bạn đã thanh toán thành công!',
+				'success'
+			).then(function(){
+				window.location.href="?mod=del_order&orderID="+id+"&num_table=<?=$num_table?>"
+				
+			});
+		}
+	})
+}
+
+function hoi(id_food){
+	swal({
+		title: 'Chú ý',
+		text: "Chắc chắn xóa?'",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Xóa!',
+		cancelButtonText: 'Hủy!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false,
+		reverseButtons: true
+	}).then((result) => {
+		if (result.value) {
+			swal(
+				'Thành Công',
+				'Bạn đã thanh toán thành công!',
+				'success'
+			).then(function(){
+				window.location.href="?mod=del_food&id=<?=$id?>&num_table=<?=$num_table?>&id_food="+id_food
+				
+			});
+		}
+	})
+}
 </script>
