@@ -189,7 +189,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                    <?php /*?> <!--Thanh toán--><?php */?>
-                   <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;color:black;">
+                   <a id="test_xoa" onClick="hoi(<?=$id?>)" style="cursor: pointer;color:black;">
                     <button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
@@ -273,7 +273,7 @@ Pusher.logToConsole = true;
                 {
                     ?>
                    <?php /*?> <!--Thanh toán--><?php */?>
-                    <a id="test_xoa" onclick="hoi(<?=$id?>)" style="cursor: pointer;color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <a id="test_xoa" onClick="hoi(<?=$id?>)" style="cursor: pointer;color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
@@ -575,15 +575,6 @@ Pusher.logToConsole = true;
                 ).then(function(){
                     window.location.href="dg-rating-i9102d"+id+"-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html"
                 });
-            } else if (
-                // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-            ) {
-                swal(
-                    'Hủy',
-                    'Bạn đã hủy thành công :)',
-                    'error'
-                )
             }
         })
 
