@@ -2,7 +2,7 @@
 
 	<script>
 		// 
-        setTimeout(function () { swal("Chú ý",
+        setTimeout(function () { swal("Warning",
           "<?=_UNFOUND?>",
           "warning");
         }, 1);
@@ -102,10 +102,10 @@
                     </div>
                 </form>
                  <div class="col-md-3 hidden-sm hidden-xs" style="background-color: #fe4a49; padding: 6px; font-size: 20px; ">
-                    Bán Chạy
+                     <?=_BESTSELLER?>
                 </div>
                 <div id="best_seller_toggle" class="hidden-md hidden-lg" style="background-color: #fe4a49; padding: 6px; font-size: 20px; " data-toggle="collapse" data-target="#hotsaler">
-                    Bán Chạy <i class="fas fa-caret-down" id="best_seller_caret"></i>
+                    <?=_BESTSELLER?> <i class="fas fa-caret-down" id="best_seller_caret"></i>
                 </div>
                 <script>
                     $("#best_seller_toggle").click(function(e) {
@@ -122,7 +122,7 @@
                   $r=mysqli_query($link,$sql);
                   while($show=mysqli_fetch_assoc($r)){
                 ?>
-                    <li class <?php if ($flag==0) { echo '="active"';$flag=1;}?>> <a data-toggle="pill" href="#menu<?=$show['id']?>" style="color: white"><?=$show['vi_name'] ?> </a></li>
+                    <li class <?php if ($flag==0) { echo '="active"';$flag=1;}?>> <a data-toggle="pill" href="#menu<?=$show['id']?>" style="color: white"><?=$show[$_SESSION['lang'].'_name'] ?> </a></li>
                     <?php } ?>
                 </ul>
                 <div id="hotsaler" class="collapse">
@@ -132,7 +132,7 @@
                        $r1=mysqli_query($link,$sql);
                        while($show_mobile=mysqli_fetch_assoc($r1)){
                     ?>
-                        <li class <?php if ($flag2==0) { echo '="active"';$flag2=1;}?>><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile['vi_name']?></a></li>
+                        <li class <?php if ($flag2==0) { echo '="active"';$flag2=1;}?>><a data-toggle="pill" href="#menu<?=$show_mobile['id']?>" style="color: white"><?=$show_mobile[$_SESSION['lang'].'_name']?></a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -148,14 +148,14 @@
                        <div class="scrolling-wrapper" style="overflow-x: hidden">
                          <div class="mixedContent">
                         <?php
-                         $sql3="select c.vi_name as ten, c.img_url as hinh, c.id as id,b.id as cate from `of_department` as a, `of_category`  as b ,`of_food` as c where a.id=b.department_id and b.id=c.category_id and a.id={$id_depart} and c.active=1 ORDER BY c.solve DESC LIMIT 9";
+                         $sql3="select c.vi_name ,c.en_name, c.img_url as hinh, c.id as id,b.id as cate from `of_department` as a, `of_category`  as b ,`of_food` as c where a.id=b.department_id and b.id=c.category_id and a.id={$id_depart} and c.active=1 ORDER BY c.solve DESC LIMIT 9";
                           $r3=mysqli_query($link,$sql3);
                           while($show_food=mysqli_fetch_assoc($r3)){ 
                             ?>
                                <div class="contentBox">
                                 <a href="dtail-watch_detailwolg-i9102dfood<?=$show_food['id']?>-c9102ate<?=$show_food['cate']?>.html"> <img style="" src="img/sp/<?=$show_food['hinh']?>"></a>
                                    			
-                                   <p><?=$show_food['ten']?></p>
+                                   <p><?=substr($show_food[$_SESSION['lang'].'_name'],0,30)?>...</p>
                                </div>
                              <?php } ?>
                            </div>

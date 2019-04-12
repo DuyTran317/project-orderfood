@@ -70,22 +70,24 @@
                 </td>
                 <td align="center"><h5>
 				  <!--act == 0 ngừng kinh doanh  == 1 đang kinh doanh, còn món  == 2 đang kinh doanh, hết món-->
-                    <select id="<?=$re['id'] ?>" name='status' onChange="ChangeStatus(<?=$re['id'] ?>)" <?php if($re['active']==2) echo "style='color:#F00'";
-					if($re['active']==0) echo "style='color:#000'"; if($re['active']==1) echo "style='color:#096'";?>>
-							<option style="color:#000" value='0' <?php if($re['active']==0) echo "selected"; ?>>ngừng kinh doanh</option>
-							<option style="color:#096" value='1' <?php if($re['active']==1) echo "selected"; ?>>còn món</option>
-							<option style="color:#F00" value='2' <?php if($re['active']==2) echo "selected"; ?>>hết món</option>
+                    <select id="<?=$re['id'] ?>" name='status' onChange="ChangeStatus(<?=$re['id'] ?>);" <?php if($re['active']==2) echo "style='color:#F00'";
+                    if($re['active']==0) echo "style='color:#000'"; if($re['active']==1) echo "style='color:#096'";?>>
+							<option id="option1" style="color:#000" value='0' <?php if($re['active']==0) echo "selected"; ?>>ngừng kinh doanh</option>
+							<option id="option2" style="color:#096" value='1' <?php if($re['active']==1) echo "selected"; ?>>còn món</option>
+							<option id="option3" style="color:#F00" value='2' <?php if($re['active']==2) echo "selected"; ?>>hết món</option>
 						</select>
                 </h5></td>
               </tr>
               <?php } ?>
             </table><br>
            <a href="?mod=reload_menu&cid=<?=$cid?>" style="color:black; "> <button class="col-xs-12 btn btn-lg btn-info"  >Cập Nhật Menu</button></a>
+            <button id="cc">CC</button>
         </div>
         
     </div>
 </body>
 <script>
+
 	$(document).ready(function(){    	
 		$('#datatable').DataTable( {
    			 language: {
@@ -101,8 +103,8 @@
 			type:'POST',
 			data:{id: id, active: active, ChangeActiveFood: 1}
 			}).done(function(data){
-								
+
 				});
+		window.location.reload();
 	};
-    
 </script>

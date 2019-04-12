@@ -68,11 +68,10 @@
 								if($name_ban == $take_sth['num_table'])
 								{
 									@$take_id = $take_sth['id'];
-									
+									$numFoodInsSuccess = 0;
 									foreach($carts as $k => $v)
 									{
 										//Lay gia san pham
-                                        $numFoodInsSuccess = 0;
 										$r = selectIdWithCondition($link, 'of_food' ,$k);
 										if($r['active']==1)
 										{
@@ -87,7 +86,18 @@
                                             } else {
                                                 Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
                                             }
-                                        } else  echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                                        } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
+                                        
+
+
 									}
 										//Insert note vao DB
                                         if($numFoodInsSuccess>0) {
@@ -96,13 +106,21 @@
                                         }
                                         else
                                         {
-                                            echo "<script> alert('Đặt Món Không Thành Công!'); </script>";
-                                            echo "<script> window.location= 'cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html';</script>";
+                                        	echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "mn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+											});';
+
+					
                                         }
 										$temp++;
 										break;
 								}
-							}
+						}
 							if($temp==0)
 							{
 								//Insert don hang (order)
@@ -132,7 +150,15 @@
                                         } else {
                                             Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
                                         }
-                                    } else echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                                    } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
 								}
 								if($numFoodInsSuccess>0) {
                                     //Insert note vao DB
@@ -142,8 +168,16 @@
                                 {
                                     $sql = "DELETE FROM `of_order` WHERE `id` = $orderID";
                                     $r = mysqli_query($link,$sql);
-                                    echo "<script> alert('Đặt Món Không Thành Công!'); </script>";
-                                    echo "<script> window.location= 'cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'.html';</script>";
+											echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate.".html";
+											});';
+
+                                  
                                 }
 							}
 						
@@ -166,7 +200,17 @@
                                 $numFoodInsSuccess++;
                                 //Insert
                                 Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
-                            } echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                            }else{
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món '.$r[$country.'_name'].' đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
+
+                             
 						}
 						//Insert note vao DB
                         if($numFoodInsSuccess>0) {
@@ -175,8 +219,14 @@
                         }
                         else
                         {
-                            echo "<script> alert('Đặt Món Không Thành Công!'); </script>";
-                            echo "<script> window.location= 'cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html';</script>";
+                        	echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+											});';
                         }
 					}
 	
