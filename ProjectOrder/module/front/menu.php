@@ -91,14 +91,14 @@ Pusher.logToConsole = true;
 				$result = selectIdWithCondition($link, 'of_department', $cate);
                 ?>
                 swal({
-                    title: 'Thông Báo',
-                    text: "Bạn có muốn chọn <?=$result['vi_name']?> không?",
+                    title: 'Warning',
+                    text: "<?=_SKIPCONFIRM?><?=$result[$_SESSION['lang'].'_name']?>?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-					cancelButtonText: 'Yes',
-                    confirmButtonText: 'No',   
+					cancelButtonText: '<?=_YES?>!',
+                    confirmButtonText: '<?=_NO?>!',
 					cancelButtonClass: 'btn btn-success',                 
                     confirmButtonClass: 'btn btn-danger',                    
                     buttonsStyling: false,
@@ -280,31 +280,32 @@ Pusher.logToConsole = true;
                     </script>
 
             </div>
+
+
+<?php /*?>            <!--Kiểm Tra Hóa Đơn -->
+<?php */?>            <?php
+			@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
+            $col_button="col-xs-12";
+            if(@mysqli_num_rows($kt) > 0) {
+                $col_button="col-xs-6";
+                ?>
+                <a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+            <?php } ?>
+            <a class="hidden-lg hidden-md " href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn btn-lg <?=$col_button?>" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
             @$r_t = selectIdWithCondition($link, 'of_order', $_COOKIE['order_wait']);
             $r = selectIdOrderInMenu($link, $name);
-
             if(isset($_GET['thanhtoan']) && $r_t['active']==1)
             {
                 @$tt = selectActiveBill_OrAc($link, 'of_bill', $_COOKIE['order_wait']);
                 if(@mysqli_num_rows($tt) > 0)
                 {
                     ?>
-                   <?php /*?> <!--Thanh toán--><?php */?>
-                    <a id="test_xoa" onClick="hoi(<?=$id?>)" style="cursor: pointer;color:black;"><button class="col-xs-6 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
+                    <?php /*?> <!--Thanh toán--><?php */?>
+                    <a id="test_xoa" onClick="hoi(<?=$id?>)" style="cursor: pointer;color:black;"><button class="col-xs-12 btn btn-lg" style="background-color:#F60; border-radius: 0px; font-size: 15px;"><?=_PAY?></button></a>
                 <?php }
                 else {setcookie("order_wait", $r_t['id'], time() - 3600, "/");}
             } ?>
-
-<?php /*?>            <!--Kiểm Tra Hóa Đơn -->
-<?php */?>            <?php
-			@$kt = selectIdNum($link, 'of_order', $_COOKIE['order_wait'], $name);
-            
-            if(@mysqli_num_rows($kt) > 0) {
-                ?>
-                <a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
-            <?php } ?>
-            <a class="hidden-lg hidden-md" href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn btn-lg col-xs-12" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; margin-top:20px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
 
         </div>
 
@@ -477,7 +478,6 @@ Pusher.logToConsole = true;
         </div>
         <?php } ?>
     </div>
-
 </div>
 </div>
 </body>
@@ -572,14 +572,19 @@ Pusher.logToConsole = true;
 <script type="text/javascript">
     function hoi(id){
         swal({
-            title: 'Chú ý',
+            title: 'Warning',
             text: "<?=_PAYCONFIRM?>",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
+<<<<<<< HEAD
+            confirmButtonText: '<?=_YES?>!',
+            cancelButtonText: '<?=_NO?>!',
+=======
             confirmButtonText: 'Xóa!',
             cancelButtonText: 'Hủy!',
+>>>>>>> 94cc24e1a495454fdfd32a39d9ca93aac4120c5f
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -587,8 +592,8 @@ Pusher.logToConsole = true;
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Thành Công',
-                    'Bạn đã thanh toán thành công!',
+                    'Success',
+                    '<?=_PAYSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="dg-rating-i9102d"+id+"-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html"

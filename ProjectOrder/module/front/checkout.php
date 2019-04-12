@@ -86,7 +86,14 @@
                                             } else {
                                                 Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
                                             }
-                                        } else  echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                                        } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
 									}
 										//Insert note vao DB
                                         if($numFoodInsSuccess>0) {
@@ -111,7 +118,7 @@
 										$temp++;
 										break;
 								}
-							}
+						}
 							if($temp==0)
 							{
 								//Insert don hang (order)
@@ -141,7 +148,15 @@
                                         } else {
                                             Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
                                         }
-                                    } else echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                                    } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
 								}
 								if($numFoodInsSuccess>0) {
                                     //Insert note vao DB
@@ -185,7 +200,17 @@
                                 $numFoodInsSuccess++;
                                 //Insert
                                 Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
-                            } echo "<script> alert('Trong lúc bạn chọn món thì món {$r[$country.'_name']} đã hết!'); </script>";
+                            }else{
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món '.$r[$country.'_name'].' đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
+
+                             
 						}
 						//Insert note vao DB
                         if($numFoodInsSuccess>0) {
@@ -206,6 +231,7 @@
 											});';
                             echo '</script>';
                             $failOrder =1;
+
                         }
 					}
 					if($failOrder==0)

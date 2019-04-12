@@ -68,4 +68,9 @@ define("_COMPUTER2", "Click on Allow.");
 define("_COMPUTER3", "In case of having trouble, go to history.");
 define("_COMPUTER4", "Click on Clear History.");
 define("_COMPUTER5", "Click on Clear Data and try again.");
-
+define("_BESTSELLER", "Best Seller");
+define("_SKIPCONFIRM", "Do you want to choose ");
+define("_PAYSUCCESS", "Pay successfully");
+define("_YES", "Yes");
+define("_NO", "No");
+define("_DELSUCCESS", "Deleted successfully");

@@ -67,4 +67,9 @@ define("_COMPUTER2", "Bạn hãy ấn Allow để cho phép quyền truy cập v
 define("_COMPUTER3", "Trường hợp xảy ra lỗi, bạn vui lòng chọn vào Lịch Sử.");
 define("_COMPUTER4", "Bấm vào xóa dữ liệu.");
 define("_COMPUTER5", "Tiến hành xóa data và thử lại.");
-
+define("_BESTSELLER", "Bán Chạy");
+define("_SKIPCONFIRM", "Bạn có muốn chọn ");
+define("_PAYSUCCESS", "Thanh toán thành công");
+define("_YES", "Có");
+define("_NO", "Không");
+define("_DELSUCCESS", "Xóa thành công");
