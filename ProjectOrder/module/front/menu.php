@@ -578,13 +578,8 @@ Pusher.logToConsole = true;
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-<<<<<<< HEAD
             confirmButtonText: '<?=_YES?>!',
             cancelButtonText: '<?=_NO?>!',
-=======
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
->>>>>>> 94cc24e1a495454fdfd32a39d9ca93aac4120c5f
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
