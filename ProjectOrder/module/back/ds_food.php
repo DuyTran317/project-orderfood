@@ -105,6 +105,14 @@
 			}).done(function(data){
 
 				});
-		window.location.reload();
+		if(active == 0){
+            $( "#"+id ).css("color","black");
+        }
+        if(active == 1){
+            $( "#"+id ).css("color","#096");
+        }
+        if(active == 2){
+            $( "#"+id ).css("color","#F00");
+        }
 	};
 </script>

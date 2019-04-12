@@ -281,7 +281,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="thu-vien-anh.html"><i class="fa fa-circle-o"></i> Thư viện ảnh</a></li>
+                    <li><a href="thu-vien-anh.html"><i class="fa fa-circle-o"></i> <?=_GALLERY?></a></li>
                     <li><a href="sao-luu-du-lieu.html"><i class="fa fa-circle-o"></i> <?=_BACKUP?></a></li>
                     <li><a href="Excel"><i class="fa fa-circle-o"></i> <?=_EXPORT?></a></li>
                 </ul>

@@ -81,12 +81,22 @@ define("_TOTALSTAR", "Total stars:");
 define("_AVGSTAR", "Average star:");
 define("_DELCONFIRM", "Are you sure?");
 define("_DELSUCCESS", "Deleted successfully");
-
 define("_ACCOUNTANT", "Accountant");
 define("_MANAGER", "Manager");
 define("_TABLEMANAGER", "Table Manager");
 define("_ADROLE", "sub Admin");
 define("_DEPCATEMANAGER", "Department and Category Manager");
+define("_UPLOAD", "Upload Picture");
+define("_DROPDRAG", "Drag & drop your pictures here");
+define("_TOTALPIC", "Total pictures");
+define("_ERRORFILE", "Error: Can't upload file number ");
+define("_EXIST", "This file's existed");
+define("_UPSUCCESS", "Success");
+define("_CHOSEN", "file(s) chosen");
+define("_GALLERY", "Gallery");
+
+
+
 
 
 
