@@ -64,6 +64,7 @@ Pusher.logToConsole = true;
     channel.bind('loadmenu3', function (data) {
 		if(data.name == <?= $name?>){
 		alert('Đơn hàng đã được thay đổi. Vui lòng kiểm tra lại!');
+		window.location.reload();
 		}
     });	
 </script>

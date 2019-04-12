@@ -17,7 +17,7 @@ if(isset($_POST['ChangeActiveFood']))
 	if($active == 2)
 	{
 		$sql = "select b.`num_table` as soban, b.`id` as id_order from `of_order_detail` as a inner join `of_order` as b on a.`order_id`=b.`id`
-		where a.`food_id`={$id} and a.`active`=2 and b.`active`=2";
+		where a.`food_id`={$id} and a.`active`!=1";
 		$query = mysqli_query($link,$sql);
 		while($show_soban = mysqli_fetch_assoc($query))
 		{
@@ -26,7 +26,7 @@ if(isset($_POST['ChangeActiveFood']))
 		}					
 		
 		$sql = "select `order_id` from `of_order_detail` where `food_id` ={$id}";
-		$imply = mysqli_query($link,$sql);					
+		$imply = mysqli_query($link,$sql);							
 		
 		while($take_idorder = mysqli_fetch_assoc($imply)):
 			$sql = "select `food_id` from `of_order_detail` where `order_id` = {$take_idorder['order_id']}";

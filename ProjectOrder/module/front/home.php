@@ -31,6 +31,19 @@ $name = takeGet('name');
 			$(".modal-body p img").css("display","block");
 		});
 		
+		Pusher.logToConsole = true;
+		var pusher = new Pusher('161363aaa8197830a033', {
+		  cluster: 'ap1',
+		  encrypted: true
+		});
+		var channel = pusher.subscribe('Reload');
+		channel.bind('loadmenu3', function (data) {
+			if(data.name == <?= $name?>){
+			alert('Đơn hàng đã được thay đổi. Vui lòng kiểm tra lại!');
+			window.location.reload();
+			}
+		});	
+		
 </script>
 
 
