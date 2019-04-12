@@ -1,4 +1,8 @@
-<?php 
+<?php
+ if(!isset($_COOKIE['username_login']))
+{
+	header("location:login.html");
+}
 if(isset($_GET['id']))
 {
 	$id = takeGet('id');
@@ -7,7 +11,13 @@ if(isset($_GET['id']))
 	$order_id = takeGet('order_id');	
 	
 	//Insert to SolvePay
-	Ins_Note($link, 'of_solve_pay', $order_id, $id, 0);
+	//Tìm xem solve_pay đã tồn tại 1 row đó chưa
+	$sql = "select `id` from `of_solve_pay` where `order_id` = {$order_id} and num_table = {$name} and `active`=0";
+	$query = mysqli_query($link,$sql);
+	if(mysqli_num_rows($query) == 0 )
+	{
+		Ins_Note($link, 'of_solve_pay', $order_id, $id, 0);
+	}
 	
 	//Update User Active = 1
 	Upd_OderAct($link, 'of_user', 1, $id);

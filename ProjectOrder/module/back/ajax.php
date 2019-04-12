@@ -41,8 +41,19 @@ if(isset($_POST['ChangeActiveFood']))
 			}			
 		endwhile;
 		
+		$sql = "select `order_id` from `of_order_detail` where `food_id` ={$id} and `active` != 1";
+		$run = mysqli_query($link, $sql);
+		if(mysqli_num_rows($run) == 1)
+		{
+			while($show_run= mysqli_fetch_assoc($run)):
+			
+				$sql = "update `of_order` set `active` = 1 where `id` = {$show_run['order_id']}";
+				mysqli_query($link,$sql);
+			endwhile;
+		}
+		
 		$sql = "delete from `of_order_detail` where `food_id` ={$id} and `active`!=1";
-		mysqli_query($link,$sql);				
+		mysqli_query($link,$sql);								
 	}
 }
 // check session i

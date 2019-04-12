@@ -1,5 +1,7 @@
-<?php 
-checkLoginCookie($_COOKIE['username_login']);
+<?php if(!isset($_COOKIE['username_login']))
+{
+	header("location:login.html");
+}
 $id = takeGet('id');
 $name = takeGet('name');
 ?>
