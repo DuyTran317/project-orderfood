@@ -38,7 +38,7 @@
 			else{
 			$temp=preg_split('/[\/\\\\]+/',$name[$i]);
 			$filename=$temp[count($temp)-1];
-			$upload_dir="userfiles/files/";
+			$upload_dir="../userfiles/files/";
 			$upload_file=$upload_dir.$filename;
 				if(file_exists($upload_file)){
 				echo "File '".$name[$i]."' đã tồn tại!"."<br>";			
