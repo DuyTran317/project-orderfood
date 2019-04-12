@@ -7,6 +7,21 @@ getPusher('51e37eb7c055b1a5ea68', 'Reload', 'login');
 
 ?>
 
+<script>
+Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    channel.bind('loadmenu3', function (data) {
+		
+		alert('Bàn '+data.name+' đã đặt trúng món HẾT. Vui lòng thông báo với Khách Hàng!');
+		window.location.reload();
+
+    });	
+</script>
+
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">

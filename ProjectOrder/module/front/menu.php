@@ -14,8 +14,11 @@
     }*/
 
 </style>
-	<?php
-	checkLoginCookie($_COOKIE['username_login']);
+	<?php if(!isset($_COOKIE['username_login']))
+{
+	header("location:login.html");
+}
+	
 	$id = takeGet('id');
 	$name = takeGet('name');
 	if(isset($_GET['cate']))
@@ -36,7 +39,9 @@
 getPusher2('aaee585e94d28c3959f4', 'Reload', 'loadmenu_nhanvien', $name);
 getPusher2('770fa0ac91f2e68d3ae7', 'Reload', 'newbill', $name);
 getPusher2('05d67b2777b04b8a83db', 'Reload', 'loadmenu2', $name);
-getPusher('161363aaa8197830a033', 'Reload', 'loadmenu');
+//getPusher('161363aaa8197830a033', 'Reload', 'loadmenu');
+//getPusher2('161363aaa8197830a033', 'Reload', 'loadmenu3', $name);
+
 getPusher2('0d68e38f87eb0271863b', 'Reload', 'delfood', $name);
 getPusher2('a8fd52cd1e38d4a2bcf1', 'Reload', 'delorder', $name);
 ?>
@@ -52,6 +57,19 @@ Pusher.logToConsole = true;
 		window.location="?mod=xulydangxuat";
 		}
     });
+	
+Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    channel.bind('loadmenu3', function (data) {
+		if(data.name == <?= $name?>){
+		alert('Đơn hàng đã được thay đổi. Vui lòng kiểm tra lại!');
+		window.location.reload();
+		}
+    });	
 </script>
 </p>
 <div class="container-fluid" style="margin-top: 3%">
@@ -271,7 +289,7 @@ Pusher.logToConsole = true;
             if(@mysqli_num_rows($kt) > 0) {
                 $col_button="col-xs-6";
                 ?>
-                <a href="?mod=list_order&id=<?=$r['id_donhang']?>&id_ban=<?=$id?>&name_ban=<?=$name?>&cate=<?=$cate?>&thanhtoan=1" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
+                <a href="check-dsdat_mon-i9102dod<?=$r['id_donhang']?>-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?>-tt9102oan1.html" style="color:black; "><button class="col-xs-6 btn btn-lg" style="background-color:#FF0; border-radius: 0px; font-size: 15px;"><?=_CHECK?></button></a>
             <?php } ?>
             <a class="hidden-lg hidden-md " href="kt-cart-i9102d<?=$id?>-n9102ame<?=$name?>-c9102ate<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html" ><button class="btn btn-lg <?=$col_button?>" id="btn_GoiMonMobile" style="background-color: orange; color: black;border-radius: 0px; font-size: 15px; display:<?php if(isset($_SESSION['cart'])){if(count($_SESSION['cart'])) echo "block"; else echo "none";} else echo "none"; ?>"><?=_CHOSEN?></button> </a>
             <?php
@@ -560,8 +578,13 @@ Pusher.logToConsole = true;
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
+<<<<<<< HEAD
             confirmButtonText: '<?=_YES?>!',
             cancelButtonText: '<?=_NO?>!',
+=======
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy!',
+>>>>>>> 94cc24e1a495454fdfd32a39d9ca93aac4120c5f
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -575,9 +598,9 @@ Pusher.logToConsole = true;
                 ).then(function(){
                     window.location.href="dg-rating-i9102d"+id+"-n9102ame<?=$name?>-o9102rder<?=$r_t['id'] ?>.html"
                 });
-
             }
         })
+
     }
 </script>
 </html>

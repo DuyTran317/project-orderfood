@@ -4,8 +4,10 @@
 	}
 
 </style>
-<?php
-	checkLoginCookie($_COOKIE['username_login']);
+<?php if(!isset($_COOKIE['username_login']))
+{
+	header("location:login.html");
+}
 	$id_ban = takeGet('id_ban');
 	$name_ban = takeGet('name_ban');
 	$cate = takeGet('cate');
@@ -20,7 +22,7 @@
 	//Lấy thông tin người dùng
 	$userID=$_COOKIE['userid_login'];
 	$cart=@$_SESSION['cart'];
-	
+	//Gọi món
 	$r_check = selectWithCondition_ActId($link, 'of_user', 2, $userID);
 	if(mysqli_num_rows($r_check))
 	{
@@ -32,14 +34,16 @@
 			if(isset($_POST['goimon']))
 			{							
 				$select = selectWithConditionArray_AcOrByOrAsc($link, 'of_department');
+				//clear dữ liệu nhắc menu
 				foreach($select as $r){
 				$_SESSION['theloai'][$r['id']] = 0;
 				}
 				unset($_SESSION['remind']);
-
+                //check tình trạng của bàn
 				$sosanh = selectWithCondition_ActNum($link, 'of_order', $name_ban);
 				if(mysqli_num_rows($sosanh) > 0)
 				{
+				    //bàn đã được sử dụng
 					echo '<script type="text/javascript">';
 					echo 'setTimeout(function () { swal("Không thể đặt món",
 							  "Bàn đã được sử dụng!",
@@ -48,6 +52,7 @@
 				}
 				else
 				{
+				    //cho phép đặt món
 					$num_table=$name_ban;
 					$note= $_POST['note'];		
 				
@@ -63,31 +68,59 @@
 								if($name_ban == $take_sth['num_table'])
 								{
 									@$take_id = $take_sth['id'];
-									
+									$numFoodInsSuccess = 0;
 									foreach($carts as $k => $v)
 									{
 										//Lay gia san pham
 										$r = selectIdWithCondition($link, 'of_food' ,$k);
-										$price = $r['price'];
-										$km = $r['discount'];
-										//Insert
-										$r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
-										$rs_search = mysqli_num_rows($r_search);
-										if($rs_search == 0)
+										if($r['active']==1)
 										{
-											Ins_OrderDetail($link, 'of_order_detail', $take_id, $k, $price, $v, $km, 0, $country);
-										}
-										else 
-										{
-											Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
-										}
+                                            $price = $r['price'];
+                                            $km = $r['discount'];
+                                            $numFoodInsSuccess++;
+                                            //Insert
+                                            $r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
+                                            $rs_search = mysqli_num_rows($r_search);
+                                            if ($rs_search == 0) {
+                                                Ins_OrderDetail($link, 'of_order_detail', $take_id, $k, $price, $v, $km, 0, $country);
+                                            } else {
+                                                Upd_OrderDeital($link, 'of_order_detail', $v, $take_id, $k, 0);
+                                            }
+                                        } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
+                                        
+
+
 									}
-										//Insert note vao DB									
-										Ins_Note($link, 'of_note_order', $take_id, $note, 0);
+										//Insert note vao DB
+                                        if($numFoodInsSuccess>0) {
+                                            //Insert note vao DB
+                                            Ins_Note($link, 'of_note_order', $take_id, $note, 0);
+                                        }
+                                        else
+                                        {
+                                        	echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "mn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+											});';
+
+					
+                                        }
 										$temp++;
 										break;
 								}
-							}
+						}
 							if($temp==0)
 							{
 								//Insert don hang (order)
@@ -96,31 +129,56 @@
 								
 								//Insert don hang chi tiet (order_detail)
 								//Lay id (Auto Increment) cua lenh insert truoc
-								
-								@$orderID=mysqli_insert_id($link);					
-								
+
+								@$orderID=mysqli_insert_id($link);
+                                $numFoodInsSuccess = 0;
 								foreach($carts as $k => $v)
 								{
 									//Lay gia san pham
 									$r = selectIdWithCondition($link, 'of_food' ,$k);
-									$price = $r['price'];
-									$km = $r['discount'];
-									
-									//Insert
-										@$r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
-										$rs_search = @mysqli_num_rows($r_search);
-										if($rs_search == 0)
-										{
-											Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
-										}
-										else 
-										{
-											Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
-										}
+                                    if($r['active']==1)
+                                    {
+                                        $numFoodInsSuccess++;
+                                        $price = $r['price'];
+                                        $km = $r['discount'];
+
+                                        //Insert
+                                        @$r_search = selectWithCondition_OrdActFoo($link, 'of_order_detail', $take_id, $k, 0);
+                                        $rs_search = @mysqli_num_rows($r_search);
+                                        if ($rs_search == 0) {
+                                            Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
+                                        } else {
+                                            Upd_OrderDeital($link, 'of_order_detail', $v, $orderID, $k, 0);
+                                        }
+                                    } else {
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món'.$r[$country.'_name'] .'đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
 								}
-								
-								//Insert note vao DB
-								Ins_Note($link, 'of_note_order', $orderID, $note, 0);
+								if($numFoodInsSuccess>0) {
+                                    //Insert note vao DB
+                                    Ins_Note($link, 'of_note_order', $orderID, $note, 0);
+                                }
+								else
+                                {
+                                    $sql = "DELETE FROM `of_order` WHERE `id` = $orderID";
+                                    $r = mysqli_query($link,$sql);
+											echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate.".html";
+											});';
+
+                                  
+                                }
 							}
 						
 					}
@@ -129,19 +187,47 @@
 						Upd_OderAct($link, 'of_order', 0, $rs['id']);
 						
 						@$orderID = $rs['id'];
+                        $numFoodInsSuccess = 0;
 						$carts=@$_SESSION['cart'];
 						foreach($carts as $k => $v)
 						{
 							//Lay gia san pham
 							$r = selectIdWithCondition($link, 'of_food' ,$k);
-							$price = $r['price'];
-							$km = $r['discount'];
-							
-							//Insert
-							Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
+                            if($r['active']==1)
+                            {
+                                $price = $r['price'];
+                                $km = $r['discount'];
+                                $numFoodInsSuccess++;
+                                //Insert
+                                Ins_OrderDetail($link, 'of_order_detail', $orderID, $k, $price, $v, $km, 0, $country);
+                            }else{
+
+                                        	echo '<script type="text/javascript">';
+											echo 'setTimeout(function () { swal("Thông Báo",
+													  "Trong lúc bạn chọn món thì món '.$r[$country.'_name'].' đã hết!",
+													  "warning");';
+											echo '}, 1);</script>';
+                                        }
+
+
+                             
 						}
 						//Insert note vao DB
-						Ins_Note($link, 'of_note_order', $orderID, $note, 0);							
+                        if($numFoodInsSuccess>0) {
+                            //Insert note vao DB
+                            Ins_Note($link, 'of_note_order', $orderID, $note, 0);
+                        }
+                        else
+                        {
+                        	echo '<script type="text/javascript">';
+											echo 'swal({
+											title: "Chú ý!",
+											text: "Đặt Món Không Thành Công!",
+											type: "warning"
+											}).then(function() {
+												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+											});';
+                        }
 					}
 	
 					unset($_SESSION['cart']);
@@ -181,8 +267,18 @@
 				}
 			}
 	}
-	
-	
+	function notiOutOfStock($name)
+    {
+        echo '<script type="text/javascript">';
+        echo 'swal({';
+        echo 'title: "Xin lỗi quý khách!",';
+        echo "text: 'Trong lúc bạn chọn món thì món {$name} đã hết!',";
+        echo 'type: "warning"';
+        echo '}).then(function() {';
+
+        echo '});';
+        echo '</script>';
+    }
 ?>
         <style>
             th{
