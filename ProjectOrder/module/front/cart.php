@@ -6,14 +6,14 @@
 <script type="text/javascript">
     function hoi(k){
         swal({
-            title: 'Bạn có chắc chắn muốn xóa?',
+            title: 'Warning',
             text: "<?=_DELFOOD?>",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Xóa!',
-            cancelButtonText: 'Hủy!',
+            confirmButtonText: '<?=_YES?>!',
+            cancelButtonText: '<?=_NO?>!',
             confirmButtonClass: 'btn btn-success',
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false,
@@ -21,8 +21,8 @@
         }).then((result) => {
             if (result.value) {
                 swal(
-                    'Xóa!',
-                    'Bạn đã xóa thành công!',
+                    'Success',
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="index.php?mod=cart_process&id="+k+"&act=3&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"
@@ -129,7 +129,7 @@
                       <button type="submit" class="btn btn-warning btn-lg" disabled id="refreshbtn"><?=_UPDATE?></button>
                     
 
-                    <a class="btn btn-success btn-lg " id="btnorder" href="index.php?mod=cart_process&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&act=4<?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>">Xác nhận</a>
+                    <a class="btn btn-success btn-lg " id="btnorder" href="index.php?mod=cart_process&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&act=4<?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1'?>"><?=_CONFIRM?></a>
 
 					<?php }
 						  else
