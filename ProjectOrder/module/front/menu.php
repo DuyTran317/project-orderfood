@@ -14,8 +14,11 @@
     }*/
 
 </style>
-	<?php
-	checkLoginCookie($_COOKIE['username_login']);
+	<?php if(!isset($_COOKIE['username_login']))
+{
+	header("location:login.html");
+}
+	
 	$id = takeGet('id');
 	$name = takeGet('name');
 	if(isset($_GET['cate']))
@@ -64,6 +67,7 @@ Pusher.logToConsole = true;
     channel.bind('loadmenu3', function (data) {
 		if(data.name == <?= $name?>){
 		alert('Đơn hàng đã được thay đổi. Vui lòng kiểm tra lại!');
+		window.location.reload();
 		}
     });	
 </script>

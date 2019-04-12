@@ -22,6 +22,21 @@
 	}
 ?>
 
+<script>
+Pusher.logToConsole = true;
+    var pusher = new Pusher('161363aaa8197830a033', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('Reload');
+    channel.bind('loadmenu3', function (data) {
+		if(data.name == <?= $num_table ?>){
+		alert('Đơn hàng đã được thay đổi. Vui lòng kiểm tra lại!');
+		window.location = "?mod=confirm_order&id=<?= $id ?>&num_table=<?= $num_table ?>";
+		}
+    });	
+</script>
+
 <body style="background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%); background-size: cover; font-family: 'Anton', sans-serif;">
 <div class="container" style="margin-bottom:50px">
     <div class="row"  style="background-color: #FFF; margin-top: 5%; border-radius: 20px; padding: 20px;">

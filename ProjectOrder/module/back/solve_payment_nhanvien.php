@@ -3,9 +3,15 @@ if(isset($_GET['name']))
 {
 	$name = takeGet('name');
 	$order_id = takeGet('order_id');	
-
-	$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$name},'0')";
-	mysqli_query($link,$sql);
+	
+	//Tìm xem solve_pay đã tồn tại 1 row đó chưa
+	$sql = "select `id` from `of_solve_pay` where `order_id` = {$order_id} and num_table = {$name} and `active`=0";
+	$query = mysqli_query($link,$sql);
+	if(mysqli_num_rows($query) == 0 )
+	{
+		$sql="insert into `of_solve_pay` values(NULL,{$order_id},{$name},'0')";
+		mysqli_query($link,$sql);
+	}
 	
 	$sql="update `of_user` set `active`= 1 where `name`={$name}";
 	$rs=mysqli_query($link,$sql);
