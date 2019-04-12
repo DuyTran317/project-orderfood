@@ -1,4 +1,25 @@
-<?php 
+
+  
+<div class="wrapper">
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   <section class="content-header">
+        <h1>
+            Thư Viện
+            <small>Ảnh</small>
+            
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
+            <li><a href="danh-sach-admin.html"><?=_LIST?></a></li>
+            <li class="active"><?=_ADD?></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+            	<?php 
 
 
 // Xử Lý Upload
@@ -52,7 +73,7 @@
 //					$date = date("d-m-Y");
 					//$sql="insert into `url_img` values (NULL,'$id','$name[$i]')";
 					//mysqli_query($link,$sql);
-					echo "Tải Lên Thành Công";
+					echo $name[$i]." tải Lên Thành Công";?><br><?php
 					}	
 				}
 			}
@@ -60,9 +81,17 @@
 	}
 
 ?>
-  <form method="POST" action="" enctype="multipart/form-data">
-    	<a>Chọn Files không vượt quá 8Mb</a>
-        <br>
-        <input type="file" name="file[]" multiple/>
-        <input type="submit" name="uploadclick" value="Upload"/>
-    </form>
+            	<div class="box box-primary">
+	            	<form method="POST" action="" enctype="multipart/form-data">
+				    	<a>Chọn Files không vượt quá 8Mb</a>
+				        <br>
+				        <input type="file" name="file[]" multiple/>
+				        <input type="submit" name="uploadclick" value="Upload"/>
+			   		</form>
+		   		</div>
+            </div>
+         
+        </div>
+    </section>
+</div>
+</div>
