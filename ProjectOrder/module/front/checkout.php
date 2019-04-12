@@ -53,7 +53,7 @@
 				else
 				{
 				    //cho phép đặt món
-					$num_table=$name_ban;
+					$num_table=$name_ban; $failOrder=0;
 					$note= $_POST['note'];		
 				
 					$rs = selectWithCondition_NumOrByIdDes($link, 'of_bill', $num_table);					
@@ -68,7 +68,7 @@
 								if($name_ban == $take_sth['num_table'])
 								{
 									@$take_id = $take_sth['id'];
-									$numFoodInsSuccess = 0;
+                                    $numFoodInsSuccess = 0;
 									foreach($carts as $k => $v)
 									{
 										//Lay gia san pham
@@ -94,10 +94,6 @@
 													  "warning");';
 											echo '}, 1);</script>';
                                         }
-
-                                        
-
-
 									}
 										//Insert note vao DB
                                         if($numFoodInsSuccess>0) {
@@ -106,16 +102,18 @@
                                         }
                                         else
                                         {
-                                        	echo '<script type="text/javascript">';
-											echo 'swal({
+                                            unset($_SESSION['cart']);
+                                            unset($_SESSION['remind']);
+                                            echo '<script type="text/javascript">';
+                                            echo 'swal({
 											title: "Chú ý!",
 											text: "Đặt Món Không Thành Công!",
 											type: "warning"
 											}).then(function() {
-												window.location= "mn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+												window.location= "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
 											});';
-
-					
+                                            echo '</script>';
+                                            $failOrder =1;
                                         }
 										$temp++;
 										break;
@@ -166,18 +164,20 @@
                                 }
 								else
                                 {
+                                    unset($_SESSION['cart']);
+                                    unset($_SESSION['remind']);
                                     $sql = "DELETE FROM `of_order` WHERE `id` = $orderID";
                                     $r = mysqli_query($link,$sql);
-											echo '<script type="text/javascript">';
-											echo 'swal({
+                                    echo '<script type="text/javascript">';
+                                    echo 'swal({
 											title: "Chú ý!",
 											text: "Đặt Món Không Thành Công!",
 											type: "warning"
 											}).then(function() {
-												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate.".html";
+												window.location= "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'.html";
 											});';
-
-                                  
+                                    echo '</script>';
+                                    $failOrder =1;
                                 }
 							}
 						
@@ -219,51 +219,54 @@
                         }
                         else
                         {
-                        	echo '<script type="text/javascript">';
-											echo 'swal({
+                            unset($_SESSION['cart']);
+                            unset($_SESSION['remind']);
+                            echo '<script type="text/javascript">';
+                            echo 'swal({
 											title: "Chú ý!",
 											text: "Đặt Món Không Thành Công!",
 											type: "warning"
 											}).then(function() {
-												window.location= "cmn-thuc_don-i9102d".$id_ban."-n9102ame".$name_ban."-c9102ate".$cate."-tt9102oan1.html";
+												window.location= "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
 											});';
+                            echo '</script>';
+                            $failOrder =1;
+
                         }
 					}
-	
-					unset($_SESSION['cart']);
-					unset($_SESSION['remind']);
-				
-					//Gửi thông điêp để reload trang BẾP
-					sendPusher('161363aaa8197830a033', '46f2ba3b258f514f6fc7', '577033', 'Reload', 'notices');
-					if(@$orderID != NULL)
-					{
-						//Cookies
-						setcookie("order_wait", $orderID, time() + (86400 * 30), "/");
-					}
-					if($_SESSION['lang']=='vi'){
-							echo '<script type="text/javascript">';
-							echo 'swal({
+					if($failOrder==0)
+                    {
+                        unset($_SESSION['cart']);
+                        unset($_SESSION['remind']);
+
+                        //Gửi thông điêp để reload trang BẾP
+                        sendPusher('161363aaa8197830a033', '46f2ba3b258f514f6fc7', '577033', 'Reload', 'notices');
+                        if (@$orderID != NULL) {
+                            //Cookies
+                            setcookie("order_wait", $orderID, time() + (86400 * 30), "/");
+                        }
+                        if ($_SESSION['lang'] == 'vi') {
+                            echo '<script type="text/javascript">';
+                            echo 'swal({
 							title: "Thành công!",
 							text: "Gọi món thành công",
 							type: "success"
 							}).then(function() {
-								window.location = "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
+								window.location = "cmn-thuc_don-i9102d' . $id_ban . '-n9102ame' . $name_ban . '-c9102ate' . $cate . '-tt9102oan1.html";
 							});';
-							echo '</script>';
-					}
-					else if ($_SESSION['lang']=='en')
-					{
-						echo '<script type="text/javascript">';
-						echo 'swal({
+                            echo '</script>';
+                        } else if ($_SESSION['lang'] == 'en') {
+                            echo '<script type="text/javascript">';
+                            echo 'swal({
 							title: "Success!",
 							text: "Your dishes have been successfully ordered",
 							type: "success"
 						}).then(function() {
-								window.location = "cmn-thuc_don-i9102d'.$id_ban.'-n9102ame'.$name_ban.'-c9102ate'.$cate.'-tt9102oan1.html";
+								window.location = "cmn-thuc_don-i9102d' . $id_ban . '-n9102ame' . $name_ban . '-c9102ate' . $cate . '-tt9102oan1.html";
 						});';
-						echo '</script>';
-					}
-	
+                            echo '</script>';
+                        }
+                    }
 				}
 			}
 	}
