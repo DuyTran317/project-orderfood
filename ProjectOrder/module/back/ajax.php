@@ -41,19 +41,28 @@ if(isset($_POST['ChangeActiveFood']))
 			}			
 		endwhile;
 		
+		
+		//lay order_id check con mon chua hoan thanh k
 		$sql = "select `order_id` from `of_order_detail` where `food_id` ={$id} and `active` != 1";
 		$run = mysqli_query($link, $sql);
-		if(mysqli_num_rows($run) == 1)
+		while($hold_orderId = mysqli_fetch_assoc($run))
 		{
-			while($show_run= mysqli_fetch_assoc($run)):
+			$orderID_holder = $hold_orderId['order_id'];
 			
-				$sql = "update `of_order` set `active` = 1 where `id` = {$show_run['order_id']}";
-				mysqli_query($link,$sql);
-			endwhile;
+			$sql = "delete from `of_order_detail` where `food_id` ={$id} and `active`!=1";
+			mysqli_query($link,$sql);								
+			
+			$sql = "select `order_id` from `of_order_detail` where `order_id` ={$orderID_holder} and `active`=!1";
+			$check=mysqli_query($link,$sql);
+			
+			
+			
+				if(mysqli_num_rows($check) == 0)
+				{				
+						$sql = "update `of_order` set `active` = 1 where `id` = {$orderID_holder}";
+						mysqli_query($link,$sql);				
+				}
 		}
-		
-		$sql = "delete from `of_order_detail` where `food_id` ={$id} and `active`!=1";
-		mysqli_query($link,$sql);								
 	}
 }
 // check session i
