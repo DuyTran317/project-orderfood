@@ -24,8 +24,7 @@ $_SESSION['discard_after'] = $now + 3600;
 					echo '}, 1);</script>';
 	}
 	unset($_SESSION['chuy']);
- ?>
-<head>
+ ?><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/front/iconmanage.png" />
@@ -57,6 +56,7 @@ $_SESSION['discard_after'] = $now + 3600;
 	include("module/back/{$mod}.php");
 	 
 ?>    
+
 
 <title>
 <?php
