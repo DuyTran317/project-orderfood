@@ -101,13 +101,57 @@
             </div>
             <br>
             <div><i><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i></div>
-                <div class="row" style="margin-top:10px;">
-                    <div class="col-xs-12">
-                        <a href="<?php if(isset($_GET['back'])) {echo "watch_homewolg.html";}else{echo "wnl-watch_menuwolg-c9102ate{$cate}.html"; }?>"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-xs-12">
+                    <a href="<?php if(isset($_GET['back'])) {echo "watch_homewolg.html";}else{echo "wnl-watch_menuwolg-c9102ate{$cate}.html"; }?>"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <h5><i class="fas fa-tag"></i> Tags: <span id="tag">Bukake</span> <span id="tag">Hiếp dâm</span> <span id="tag">Gangbang</span> <span id="tag">Học sinh</span></h5>
+                <h3>Các sản phẩm liên quan</h3>
+                <div class="scrolling-wrapper" style="overflow-x: hidden">
+                    <div class="mixedContent">
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
                     </div>
-        </div>
+                </div>
+            </div>
     </div>
 </div>
 </body>
-
+<script>
+    $(document).ready(function () {
+        // Init Smooth Div Scroll
+        $(".mixedContent").smoothDivScroll({
+            hotSpotScrollingStep: 1,
+            easingAfterHotSpotScrollingDuration: 450,
+            mousewheelScrolling: "allDirections",
+            manualContinuousScrolling: true,
+            autoScrollingMode: "onStart",
+            touchScrolling: true,
+        });
+    });
+</script>
 </html>

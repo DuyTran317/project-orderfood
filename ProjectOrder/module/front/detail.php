@@ -75,7 +75,6 @@
                 <?php if($kq['active'] == 2) { ?>
                         <span style="color: red">(<?=_OUTOFSTOCK?>)</span>
                 <?php } ?>
-
             </h1>
             <div class="row">
                 <div class="col-sm-6">
@@ -103,18 +102,50 @@
             </div>
             <br>
             <div><i><?php echo $kq[$_SESSION['lang'].'_desc'] ?></i></div>
-                <div class="row" style="margin-top:10px;">
-                    <div class="col-xs-6">
-                        <a href="<?php if(isset($_GET['back'])) {echo "tlc-trang_chu-i9102d{$id_ban}-n9102ame{$name_ban}";}else{echo "cmn-thuc_don-i9102d{$id_ban}-n9102ame{$name_ban}-c9102ate{$cate}"; }?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
-                    </div>
-                    <div class="col-xs-6">
-                    <?php
-						if($kq['active']==1){
-					?>
-                    <a href="javascript:window.location='index.php?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12 btn-lg" style="background-color:#F60; color:#FFF"><?=_ORDER?></button></a>
-                    <?php } ?>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-xs-6">
+                    <a href="<?php if(isset($_GET['back'])) {echo "tlc-trang_chu-i9102d{$id_ban}-n9102ame{$name_ban}";}else{echo "cmn-thuc_don-i9102d{$id_ban}-n9102ame{$name_ban}-c9102ate{$cate}"; }?><?php if(isset($_GET['thanhtoan'])) echo'-tt9102oan1'?>.html"><button class="btn btn-lg col-xs-12" style="color: grey"><?=_BACK?></button></a>
+                </div>
+                <div class="col-xs-6">
+                <?php
+                    if($kq['active']==1){
+                ?>
+                <a href="javascript:window.location='index.php?mod=cart_process&act=1&id=<?=$kq['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?><?php if(isset($_GET['thanhtoan'])) echo'&thanhtoan=1';?>&qty='+document.getElementById('qty').value"><button class="btn col-xs-12 btn-lg" style="background-color:#F60; color:#FFF"><?=_ORDER?></button></a>
+                <?php } ?>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <h5><i class="fas fa-tag"></i> Tags: <span id="tag">Bukake</span> <span id="tag">Hiếp dâm</span> <span id="tag">Gangbang</span> <span id="tag">Học sinh</span></h5>
+                <h3>Các sản phẩm liên quan</h3>
+                <div class="scrolling-wrapper" style="overflow-x: hidden">
+                    <div class="mixedContent">
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
+                        <div class="contentBox">
+                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
+                            <p>Tên</p>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -175,6 +206,17 @@
               // Otherwise put a 0 there
               $('input[name='+fieldName+']').val(0);
           }
+      });
+  });
+  $(document).ready(function () {
+      // Init Smooth Div Scroll
+      $(".mixedContent").smoothDivScroll({
+          hotSpotScrollingStep: 1,
+          easingAfterHotSpotScrollingDuration: 450,
+          mousewheelScrolling: "allDirections",
+          manualContinuousScrolling: true,
+          autoScrollingMode: "onStart",
+          touchScrolling: true,
       });
   });
   </script>
