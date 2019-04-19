@@ -81,10 +81,16 @@ define("_TOTALSTAR", "Tổng số sao:");
 define("_AVGSTAR", "Số sao trung bình:");
 define("_DELCONFIRM", "Bạn muốn xóa");
 define("_DELSUCCESS", "Xóa thành công");
-
 define("_ACCOUNTANT", "Thống Kê Viên");
 define("_MANAGER", "Quản Lý");
 define("_TABLEMANAGER", "Quản Lý Bàn");
 define("_ADROLE", "Quyền admin");
 define("_DEPCATEMANAGER", "Quản Lý Loại & Sản Phẩm");
-
+define("_UPLOAD", "Up Hình Ảnh");
+define("_DROPDRAG", "Kéo thả file vào đây");
+define("_TOTALPIC", "Tổng số file được tải lên");
+define("_ERRORFILE", "Lỗi: Không thể upload hình số ");
+define("_EXIST", "Đã tồn tại");
+define("_UPSUCCESS", "Thành công");
+define("_CHOSEN", "hình được chọn");
+define("_GALLERY", "Thư Viện");

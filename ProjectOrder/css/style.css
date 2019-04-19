@@ -391,4 +391,10 @@ body{
  -o-animation: hot_tt 700ms infinite; 
  animation: hot_tt 700ms infinite;
 }
+#tag{
+    background-color: orange;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+}
 

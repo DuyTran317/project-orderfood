@@ -36,6 +36,7 @@ if(isset($_POST['user']))
 	{
 		//Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
 		$_SESSION['email']=$user;
+
 ?>
 		<script>
             setTimeout(function(){swal({
@@ -45,6 +46,7 @@ if(isset($_POST['user']))
             }).then(function() {
                 window.location="login.html";
             })},1);
+
         </script>
 		
 <?php		

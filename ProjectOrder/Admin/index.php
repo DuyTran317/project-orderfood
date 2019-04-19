@@ -357,6 +357,7 @@ include("moduleAD/{$mod}.php");
         if($mod=="add_discount")echo"Thêm khuyến mãi";
         if($mod=="edit_discount")echo"Sửa khuyến mãi";
         if($mod=="discount_list")echo"Danh sách khuyến mãi";
+        if($mod=="add_tag")echo"Thêm tag";
 
         ?>
   </title>
