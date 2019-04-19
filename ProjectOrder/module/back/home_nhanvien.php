@@ -1,4 +1,8 @@
 <?php 
+if(!isset($_SESSION['admin_id']))
+{
+	header("location:?mod=dangnhap");
+}
 getPusher('770fa0ac91f2e68d3ae7', 'Reload', 'newbill'); 
 getPusher('05d67b2777b04b8a83db', 'Reload', 'loadmenu2');
 getPusher('161363aaa8197830a033', 'Reload', 'notices');
@@ -25,11 +29,17 @@ Pusher.logToConsole = true;
 <html>
 
 <body style="background-image:-webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);  font-family: 'Anton', sans-serif;" data-spy="scroll" data-offset="50">
+
+<!--Logout-->
+<div style="text-align:right">
+	<a href="?mod=xulydangxuat"><button class="btn btn-danger"><i class="fas fa-sign-out-alt" style="font-size:26px; padding: 2px 8px 2px 8px"></i></button></a>    
+</div>
+
 <div class="container" style="margin-top: 5%; background-color: white; border-radius: 20px; padding: 20px;">
     <?php
 		$show_waiter = selectWithCondition_Cate($link, 'of_manage', 3);
     ?>
-    <h4 style="float: left">Nhân viên: <?=$show_waiter['name']?></h4>
+    <h4 style="float: left">Xin chào, <span style="color:#099"><?=$show_waiter['name']?></span></h4>
     <!--Chuyển Bàn -->
     <a href="?mod=chuyenban" class="btn btn-success" style="font-size:18px; color: #FFF; float:right; padding:10px 5px 10px 5px"><i class="fas fa-exchange-alt"></i> Quản Lý Bàn</a>
     <div style="clear:right"></div>
