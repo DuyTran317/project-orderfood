@@ -47,5 +47,20 @@ if(isset($_POST['user'])&&isset($_SESSION['inside']))
 <?php		
 	}
 }
+else{
+    //Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
+    @$_SESSION['email']=$user;
+    ?>
+    <script>
+        swal({
+            title: "Chú ý!",
+            text: "bạn hãy nhập đúng số bàn và cho phép orderfood xác định vị trí hiện tại của bạn",
+            type: "warning"
+        }).then(function() {
+            window.location="login.html";
+        });
+    </script>
+    <?php
+}
 ?>
 
