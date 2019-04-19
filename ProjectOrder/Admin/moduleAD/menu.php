@@ -166,7 +166,6 @@
                     <li><a href="them-the-loai.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
             </li>
-            
             <li class="treeview">
                 <a href="javascript:void(0)">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -178,7 +177,20 @@
                     <li><a href="danh-sach-san-pham.html"><i class="fa fa-circle-o"></i> <?=_LIST?></a></li>
                     <li><a href="them-san-pham.html"><i class="fa fa-circle-o"></i> <?=_ADD?></a></li>
                 </ul>
-            </li><?php }?>
+            </li>
+              <li class="treeview">
+                  <a href="javascript:void(0)">
+                      <i class="fa fa-tag" aria-hidden="true"></i>
+                      <span>Tag</span>
+                      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i></span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="index.php?mod=add_tag"><i class="fa fa-circle-o"></i> Quản lý tag</a></li>
+                      <li><a href="index.php?mod=add_food_tag"><i class="fa fa-circle-o"></i> Quản lý tag món ăn</a></li>
+                  </ul>
+              </li>
+          <?php }?>
             
          <?php
             $cate = $_SESSION['catead'];
