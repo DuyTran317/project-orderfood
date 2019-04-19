@@ -12,7 +12,20 @@
 
 // either new or old, it should live at most for another hour
 $_SESSION['discard_after'] = $now + 3600;
-?><head>
+?>
+<?php
+
+	if(isset($_SESSION['chuy']))
+	{
+		echo '<script type="text/javascript">';
+					echo 'setTimeout(function () { swal("Chú ý",
+							  "Tài khoản hoặc mật khẩu sai!",
+							  "warning");';
+					echo '}, 1);</script>';
+	}
+	unset($_SESSION['chuy']);
+ ?>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/front/iconmanage.png" />
@@ -59,4 +72,6 @@ $_SESSION['discard_after'] = $now + 3600;
 	if($mod=="ds_food")echo"Chỉnh Sửa Menu";
 ?>
 </title>
+
+
 
