@@ -94,17 +94,18 @@
         		url: 'lib/datatable/Vietnamese.json'
     		}
 		});	
-    	});
-	
-	function ChangeStatus(id){
-		var active = document.getElementById(id).value;
-		$.ajax({
-			url:'module/back/ajax.php',
-			type:'POST',
-			data:{id: id, active: active, ChangeActiveFood: 1}
-			}).done(function(data){
+    });
+    function ChangeStatus(id){
+        var active = document.getElementById(id).value;
+        $.ajax({
+            url:'module/back/ajax.php',
+            type:'POST',
+            data:{id: id, active: active, ChangeActiveFood: 1}
+        }).done(function(data){
 
-				});
-		window.location.reload();
-	};
+        });
+        window.location.reload();
+    };
+
+
 </script>

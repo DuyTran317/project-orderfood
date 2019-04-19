@@ -36,16 +36,15 @@ if(isset($_POST['user']))
 	{
 		//Tạo Session lưu tạm (hiện lại) email sau khi nhập sai
 		$_SESSION['email']=$user;
-?>		
-		<script> 
-			swal({
-			title: "Chú ý",
-			text: "Sai tài khoản hoặc mật khẩu!",
-			type: "warning"
-			}).then(function() {
-				window.location="?mod=dangnhap";
-			});
-			
+?>
+		<script>
+            setTimeout(function(){swal({
+                title: "Chú ý!",
+                text: "Sai tài khoản hoặc mật khẩu!",
+                type: "warning"
+            }).then(function() {
+                window.location="login.html";
+            })},1);
         </script>
 		
 <?php		
