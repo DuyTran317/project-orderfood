@@ -51,7 +51,7 @@ echo "Geolocation results for {$geoplugin->ip}: <br />\n";
 	include("controller/c_sql_insert.php");
 	include("controller/c_sql_update.php");
     include("Admin/controller/c_sql_tag.php");
-?>1
+?>
 <style type="text/css">
     .carousel-caption { bottom:5px; }
 
