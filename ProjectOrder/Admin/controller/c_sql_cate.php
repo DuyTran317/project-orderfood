@@ -29,5 +29,15 @@
 		$sql = "update {$table} set `active`=0 where id='{$_GET['activeh']}' ";
 		return $sql;
 	}
-
+	function selectAllCate($link)
+	{
+		$kq = array();
+		$sql = "select * from `of_category` where `active` = 1";
+		$r = mysqli_query($link,$sql);
+		while($rs = mysqli_fetch_assoc($r))
+		{
+			$kq[]=$rs;
+		}
+		return $kq;
+	}
 ?>

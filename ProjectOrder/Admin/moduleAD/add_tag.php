@@ -22,25 +22,25 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form role="form" method="post" enctype="multipart/form-data" action="process-de.html">
+                        <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_tag">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><?=_NAME?> VN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                           required  name="vi_theloai" placeholder="<?=_NAME?> (VN)">
+                                           required  name="vi_tag" placeholder="<?=_NAME?> (VN)">
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><?=_NAME?> EN: <span style="color:#F00" >(*)</span></label>
                                     <input type="text" class="form-control"
-                                           required  name="en_theloai" placeholder="<?=_NAME?> (EN)">
+                                           required  name="en_tag" placeholder="<?=_NAME?> (EN)">
                                 </div>
                             </div>
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary"><?=_ADD?></button>
+                                <button type="submit" name="add_tag" class="btn btn-primary"><?=_ADD?></button>
                                 <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>

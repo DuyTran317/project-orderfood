@@ -12,10 +12,13 @@
 	$id_ban = takeGet('id_ban');
 	$name_ban = takeGet('name_ban');
 	$cate = takeGet('cate');
-
+    $ds_tags_food = selectAllTagsFood($link,$id);
+    $ds_food_like = selectIdFoodLike($link,$id,$ds_tags_food);
 	$kq = selectIdWithCondition($link, 'of_food', $id);
 	getPusher('161363aaa8197830a033', 'Reload', 'loadchitiet');
-?>	
+
+
+?>
 <body style="background:url(img/front/pexels-photo-1020317.jpeg); background-size:cover ;font-family: 'Anton', sans-serif;">
 
 <div class="container" style="margin-top:2%" >
@@ -115,34 +118,17 @@
                 </div>
             </div>
             <div class="col-md-12" style="margin-top: 20px;">
-                <h5><i class="fas fa-tag"></i> Tags: <span id="tag">Bukake</span> <span id="tag">Hiếp dâm</span> <span id="tag">Gangbang</span> <span id="tag">Học sinh</span></h5>
+
+                <h5><i class="fas fa-tag"></i> Tags: <?php foreach ($ds_tags_food as $i){ $tag = selectTag($link,$i['id_tag']) ?><span id="tag"><?=$tag[$_SESSION['lang'].'_name']?></span><?php } ?></h5>
                 <h3>Các sản phẩm liên quan</h3>
                 <div class="scrolling-wrapper" style="overflow-x: hidden">
                     <div class="mixedContent">
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
+                        <?php foreach ($ds_food_like as $i) { ?>
+                            <div class="contentBox">
+                                <a href="?mod=detail&id=<?=$i['id']?>&id_ban=<?=$id_ban?>&name_ban=<?=$name_ban?>&cate=<?=$cate?>"> <img style="" src="img/sp/<?=$i['img_url']?>"></a>
+                                <p><?=$i[$_SESSION['lang'].'_name']?></p>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

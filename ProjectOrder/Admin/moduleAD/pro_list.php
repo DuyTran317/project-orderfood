@@ -58,6 +58,7 @@
                         <div class="form-group">
                             <select class="form-control" name="change" onchange="form1.submit();" style="border-radius: 5px 5px 5px 5px;">
                                 <?php
+                                $id = 1;
                                 if(isset($_POST['change'])) {
                                     $id = $_POST['change'];
                                 }

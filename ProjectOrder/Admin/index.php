@@ -112,6 +112,7 @@ include('controller/c_sql_kit.php');
 include('controller/c_sql_pro.php');
 include('controller/c_sql_slide.php');
 include('controller/c_sql_user.php');
+include("controller/c_sql_tag.php");
 
 if($mod != "print_order") {
     include('moduleAD/menu.php');
