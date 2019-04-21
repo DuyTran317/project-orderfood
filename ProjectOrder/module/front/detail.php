@@ -199,8 +199,7 @@
       $(".mixedContent").smoothDivScroll({
           hotSpotScrollingStep: 1,
           easingAfterHotSpotScrollingDuration: 450,
-          mousewheelScrolling: "allDirections",
-          manualContinuousScrolling: true,
+          manualContinuousScrolling: false,
           touchScrolling: true,
       });
   });
