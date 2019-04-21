@@ -13,7 +13,8 @@
 	{
 		$cate=$_GET['cate'];
 	}
-
+    $ds_tags_food = selectAllTagsFood($link,$id);
+    $ds_food_like = selectIdFoodLike($link,$id,$ds_tags_food);
 	$kq = selectIdWithCondition($link, 'of_food', $id);
 ?>	
 
@@ -107,34 +108,16 @@
                 </div>
             </div>
             <div class="col-md-12" style="margin-top: 20px;">
-                <h5><i class="fas fa-tag"></i> Tags: <span id="tag">Bukake</span> <span id="tag">Hiếp dâm</span> <span id="tag">Gangbang</span> <span id="tag">Học sinh</span></h5>
+                <h5><i class="fas fa-tag"></i> Tags: <?php foreach ($ds_tags_food as $i){ $tag = selectTag($link,$i['id_tag']) ?><span id="tag"><?=$tag[$_SESSION['lang'].'_name']?></span><?php } ?></h5>
                 <h3>Các sản phẩm liên quan</h3>
                 <div class="scrolling-wrapper" style="overflow-x: hidden">
                     <div class="mixedContent">
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
-                        <div class="contentBox">
-                            <a href="#"> <img style="" src="img/sp/33693811cach-uong-ruou-vang-do.jpg"></a>
-                            <p>Tên</p>
-                        </div>
+                        <?php foreach ($ds_food_like as $i) { ?>
+                            <div class="contentBox">
+                                <a href="?mod=watch_detail&id=<?=$i['id']?>&cate=<?=$cate?>"> <img style="" src="img/sp/<?=$i['img_url']?>"></a>
+                                <p><?=$i[$_SESSION['lang'].'_name']?></p>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

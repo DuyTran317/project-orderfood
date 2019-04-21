@@ -32,7 +32,7 @@
     function selectFoodCate($link,$id_cate)
     {
         $kq = array();
-        $sql = "select * from `of_food` where `active`=1 and `category_id` = $id_cate";
+        $sql = "select * from `of_food` where `category_id` = $id_cate";
         $r = mysqli_query($link,$sql);
         while($rs = mysqli_fetch_assoc($r))
         {
