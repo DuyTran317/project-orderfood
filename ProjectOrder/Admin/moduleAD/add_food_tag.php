@@ -103,7 +103,7 @@
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" name="save_tags_food" class="btn btn-primary">Save</button>
+                                <button <?php if(!isset($id_food)) echo "onclick=\"alert('Vui lòng chọn món ăn!')\""; else echo 'type="submit"' ?>  name="save_tags_food" class="btn btn-primary">Save</button>
                                 <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>
