@@ -3,9 +3,17 @@
     if(isset($_POST['add_tag']))
     {
         if (!addTag($link, $_POST['vi_tag'], $_POST['en_tag'])) {
-            echo "<script> alert('thêm tag thất bại!'); </script>";
+            echo '<script type="text/javascript">';
+                echo 'swal({
+                     title: "Chú ý!",
+                     text: "Thêm tag thất bại!",
+                     type: "warning"
+                     }).then(function() {
+                         window.location = "danh-sach-tag.html";
+                     });';
+                echo '</script>';
         }
-        echo "<script> window.location = 'danh-sach-tag.html';</script>";
+       
     }
     if(isset($_POST['save_tags_food']))
     {
