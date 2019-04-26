@@ -4,6 +4,13 @@
         $sql = "INSERT INTO `of_tag`(`vi_name`, `en_name`) VALUES (N'{$vi_name}', '{$en_name}')";
         return $r = mysqli_query($link,$sql);
     }
+    function editTag($link, $vi_name, $en_name)
+    {
+       
+        $sql = "UPDATE  `of_tag` SET `vi_name`= '{$vi_name}' , `en_name` = '{$en_name}' WHERE
+            id = {$_POST['id']}";
+        return $r = mysqli_query($link,$sql);
+    }
     function selectAllTag($link)
     {
         $kq = array();
@@ -59,5 +66,11 @@
             $kq[]=$rs;
         }
         return $kq;
+    }
+    //sql delete
+    function sql_delete_tag($table)
+    {
+         $sql_del="delete from {$table} where `id`='{$_GET['del']}'";
+         return $sql_del;
     }
 ?>
