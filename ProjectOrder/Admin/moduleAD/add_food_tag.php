@@ -104,10 +104,10 @@
 
                             <div class="box-footer">
                                 <?php
-                                    $cc=_PLZCHOOSEFOOD;
+                                    $message=_PLZCHOOSEFOOD;
 
                                 ?>
-                                <button <?php if(!isset($id_food)) echo "onclick=\"alert('$cc')\""; else echo 'type="submit"' ?>  name="save_tags_food" class="btn btn-primary"><?=_ADD?></button>
+                                <button <?php if(!isset($id_food)) echo "onclick=\"alert('$message')\""; else echo 'type="submit"' ?>  name="save_tags_food" class="btn btn-primary"><?=_ADD?></button>
                                 <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>
