@@ -31,7 +31,7 @@
         <section class="content-header">
             <h1>
                 <?=_ADD?>
-                <small>Tag đồ ăn</small>
+                <small>Tag</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="trang-chu.html"><i class="fa fa-dashboard"></i><?=_HOME?></a></li>
@@ -49,7 +49,7 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên loại</span></label>
+                                <label for="exampleInputEmail1"><?=_CATEGORY?></span></label>
                                 <div class="form-group">
                                     <select class="form-control" onchange="loadFoodCate(this.value)"  style="border-radius: 5px 5px 5px 5px;">
                                         <?php
@@ -66,7 +66,7 @@
                         <form role="form" method="post" enctype="multipart/form-data" action="?mod=process_tag">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên món ăn</span></label>
+                                    <label for="exampleInputEmail1"><?=_DISH?></span></label>
                                     <div class="form-group">
                                         <select class="form-control" onchange="loadFoods(<?=$_SESSION['id_cate']?>,this.value)" name="food_id"  style="border-radius: 5px 5px 5px 5px;">
                                             <option style="display: none"></option>
@@ -82,7 +82,7 @@
                             </div>
                             <div class="box-body">
                                 <div class="form-group" >
-                                    <label for="exampleInputEmail1">Danh Sách Tag</span></label>
+                                    <label for="exampleInputEmail1"><?=_TAGLIST?></span></label>
                                     <div style=" max-height: 200px; overflow-y: auto;">
                                         <?php
                                             foreach ($ds_tag as $i)
@@ -103,7 +103,7 @@
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" name="save_tags_food" class="btn btn-primary">Save</button>
+                                <button type="submit" name="save_tags_food" class="btn btn-primary"><?=_ADD?></button>
                                 <button type="reset" class="btn btn-defaul"><?=_RESET?></button>
                             </div>
                         </form>

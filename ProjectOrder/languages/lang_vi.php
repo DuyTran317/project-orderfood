@@ -73,3 +73,4 @@ define("_PAYSUCCESS", "Thanh toán thành công");
 define("_YES", "Có");
 define("_NO", "Không");
 define("_DELSUCCESS", "Xóa thành công");
+define("_RELEVANT", "Các sản phẩm liên quan");

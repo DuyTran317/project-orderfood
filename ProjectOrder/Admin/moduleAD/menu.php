@@ -186,8 +186,8 @@
               <i class="fa fa-angle-left pull-right"></i></span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="index.php?mod=add_tag"><i class="fa fa-circle-o"></i> Thêm tag</a></li>
-                      <li><a href="index.php?mod=add_food_tag"><i class="fa fa-circle-o"></i> Quản lý tag món ăn</a></li>
+                      <li><a href="index.php?mod=add_tag"><i class="fa fa-circle-o"></i> <?=_ADDTAG?></a></li>
+                      <li><a href="index.php?mod=add_food_tag"><i class="fa fa-circle-o"></i> <?=_MANAGEFOODTAG?></a></li>
                   </ul>
               </li>
           <?php }?>
