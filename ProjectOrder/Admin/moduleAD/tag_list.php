@@ -53,9 +53,9 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Tên Tag (VN)</th>
-                                <th>Tên Tag (EN)</th>
+                                <th>#</th>
+                                <th><?=_NAME?>(VN)</th>
+                                <th><?=_NAME?> (EN)</th>
                                 <th><a href="them-tag.html"><?=_ADD?></a></th>
                             </tr>
                             </thead>
