@@ -124,10 +124,10 @@
 </div>
 <script>
     function  loadFoodCate(id) {
-        window.location = "?mod=add_food_tag&cate="+id;
+        window.location = "index.php?mod=add_food_tag&cate="+id;
     }
     function  loadFoods(id_cate,id) {
-        window.location = "?mod=add_food_tag&cate="+id_cate+"&food="+id;
+        window.location = "index.php?mod=add_food_tag&cate="+id_cate+"&food="+id;
     }
     function setArrayTag(id,name) {
         var id_tag = $('#'+id).val();
