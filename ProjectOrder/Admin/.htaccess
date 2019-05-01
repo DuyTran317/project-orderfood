@@ -9,7 +9,8 @@ RewriteRule "^danh-sach-khuyen-mai.html$" "?mod=discount_list"
 RewriteRule "^sao-luu-du-lieu.html$" "?mod=backupdb" 
 RewriteRule "^home.html$" "../?mod=home" 
 RewriteRule "^them-quan-tri-vien.html$" "?mod=add_ad"
-RewriteRule "^them-tag.html$" "?mod=add_tag"  
+RewriteRule "^them-tag.html$" "?mod=add_tag" 
+RewriteRule "^thu-vien-anh.html$" "?mod=upload"  
 
 RewriteRule "^quan-ly-tag-mon-an.html$" "?mod=add_food_tag"
 
