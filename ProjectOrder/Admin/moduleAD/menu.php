@@ -129,9 +129,9 @@
               <i class="fa fa-angle-left pull-right"></i></span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="danh-sach-tag.html"><i class="fa fa-circle-o"></i> Danh sách các tag</a></li>
-                      <li><a href="them-tag.html"><i class="fa fa-circle-o"></i> Thêm tag</a></li>
-                      <li><a href="quan-ly-tag-mon-an.html"><i class="fa fa-circle-o"></i> Quản lý tag món ăn</a></li>
+                      <li><a href="danh-sach-tag.html"><i class="fa fa-circle-o"></i> <?=_TAGLIST?></a></li>
+                      <li><a href="them-tag.html"><i class="fa fa-circle-o"></i> <?=_ADDTAG?></a></li>
+                      <li><a href="quan-ly-tag-mon-an.html"><i class="fa fa-circle-o"></i> <?=_MANAGEFOODTAG?></a></li>
                   </ul>
               </li>
           <?php }?>

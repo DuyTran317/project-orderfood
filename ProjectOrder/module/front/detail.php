@@ -120,7 +120,7 @@
             <div class="col-md-12" style="margin-top: 20px;">
 
                 <h5><i class="fas fa-tag"></i> Tags: <?php foreach ($ds_tags_food as $i){ $tag = selectTag($link,$i['id_tag']) ?> <span id="tag"><?=$tag[$_SESSION['lang'].'_name']?></span><?php } ?></h5>
-                <h3>Các sản phẩm liên quan</h3>
+                <h3><?=_RELEVANT?></h3>
                 <div class="scrolling-wrapper" style="overflow-x: hidden">
                     <div class="mixedContent">
                         <?php foreach ($ds_food_like as $i) { ?>

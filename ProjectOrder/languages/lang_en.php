@@ -74,3 +74,4 @@ define("_PAYSUCCESS", "Pay successfully");
 define("_YES", "Yes");
 define("_NO", "No");
 define("_DELSUCCESS", "Deleted successfully");
+define("_RELEVANT", "Relevant dishes");

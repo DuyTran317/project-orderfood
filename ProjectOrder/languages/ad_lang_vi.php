@@ -94,3 +94,7 @@ define("_EXIST", "Đã tồn tại");
 define("_UPSUCCESS", "Thành công");
 define("_CHOSEN", "hình được chọn");
 define("_GALLERY", "Thư Viện");
+define("_ADDTAG", "Thêm tag");
+define("_MANAGEFOODTAG","Quản lý tag món ăn");
+define("_TAGLIST", "Danh sách tag");
+define("_PLZCHOOSEFOOD", "Vui lòng chọn đồ ăn");
