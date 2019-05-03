@@ -98,6 +98,7 @@ define("_ADDTAG", "Add tag");
 define("_MANAGEFOODTAG", "Manage food's tag");
 define("_TAGLIST", "Tag list");
 define("_PLZCHOOSEFOOD", "Please choose food first");
+define("_ADDFAILED", "Add tag unsucessfully");
 
 
 

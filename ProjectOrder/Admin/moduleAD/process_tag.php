@@ -1,9 +1,9 @@
 <?php
-
+    $Multilang= _ADDFAILED;
     if(isset($_POST['add_tag']))
     {
         if (!addTag($link, $_POST['vi_tag'], $_POST['en_tag'])) {
-            echo "<script> alert('thêm tag thất bại!'); </script>";
+            echo "<script> alert('$Multilang'); </script>";
         }
         echo "<script> window.location = 'danh-sach-tag.html';</script>";
     }
@@ -21,7 +21,7 @@
     if(isset($_POST['edit_tag']))
     {
         if (!editTag($link, $_POST['edit_vi_tag'], $_POST['edit_en_tag'])) {
-            echo "<script> alert('thêm tag thất bại!'); </script>";
+            echo "<script> alert('$Multilang'); </script>";
         }
         echo "<script> window.location = 'danh-sach-tag.html';</script>";
     }
