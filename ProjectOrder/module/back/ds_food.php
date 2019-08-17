@@ -81,7 +81,6 @@
               <?php } ?>
             </table><br>
            <a href="?mod=reload_menu&cid=<?=$cid?>" style="color:black; "> <button class="col-xs-12 btn btn-lg btn-info"  >Cập Nhật Menu</button></a>
-            <button id="cc">CC</button>
         </div>
         
     </div>

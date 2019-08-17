@@ -114,12 +114,29 @@ $sheet->getStyle('A1:E1')->applyFromArray(
 </body>
 <script>
     $('#datepickerfrom').datepicker({
-        dateFormat: 'd-m-y',
+      //Tùy chỉnh tháng
+	  changeMonth:true,
+	  monthNamesShort: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+	  
+	  //Tùy chỉnh năm
+	  changeYear:true,
+	  yearRange: "c-100:c",
+	  
+	  //Date Format
+	  dateFormat: "dd-mm-yy",
 
     });
     $('#datepickerto').datepicker({
-        dateFormat: 'd-m-y',
-
+      //Tùy chỉnh tháng
+	  changeMonth:true,
+	  monthNamesShort: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+	  
+	  //Tùy chỉnh năm
+	  changeYear:true,
+	  yearRange: "c-100:c",
+	  
+	  //Date Format
+	  dateFormat: "dd-mm-yy",
     });
 </script>
 </html>
