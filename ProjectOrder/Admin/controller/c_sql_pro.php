@@ -2,8 +2,8 @@
 	//sql insert production
 	function insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai)
 	{
-		$sql_img = "insert into of_food VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia',0,0,
-    '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu','$trangthai')";
+		$sql_img = "insert into `of_food` VALUES(NULL ,'$theloai','$vi_tensp','$en_tensp','$gia',0,0,
+    '$vi_noidung','$en_noidung','$img_url','$img_url2','$img_url3','$img_url4','$thutu',0,'$trangthai')";
     return $sql_img;
 	}
 	//sql update production

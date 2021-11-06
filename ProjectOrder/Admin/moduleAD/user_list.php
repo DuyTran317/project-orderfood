@@ -2,7 +2,7 @@
     function hoi(id){
         swal({
             title: '<?=_DELCONFIRM?>?',
-            text: "<?=_DELWARNING?> <?=_TABLE?> ?",
+            text: "<?=_DELWARNING?> tag ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -17,14 +17,13 @@
             if (result.value) {
                 swal(
                     '<?=_DELETE?>!',
-                    '<?=_DELSUCCESS?>!'
+                    '<?=_DELSUCCESS?>!',
                     'success'
                 ).then(function(){
                     window.location.href="process_user-del-"+id+".html";});
             }
         })
-
-    }
+	}
 </script>
 
 <!-- Content Wrapper. Contains page content -->
@@ -76,7 +75,7 @@
                                             echo "<a href=\"process-user-h{$d_user['id']}.html\"><i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Hiện\"></i></a>";
                                         }
                                         ?></td>
-                                    <td><a id="test_xoa" onclick="hoi(<?=$d_user['id'] ?>)" style="cursor: pointer"><?=_DELETE?></a></td>
+                                    <td><a id="test_xoa" onclick="hoi(<?=$d_user['id']?>)" style="cursor: pointer"><?=_DELETE?></a></td>
                                 </tr>
                             <?php } ?>
 

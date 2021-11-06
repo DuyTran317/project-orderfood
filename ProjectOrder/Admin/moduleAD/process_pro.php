@@ -6,7 +6,7 @@ if(isset($_POST['vi_tensp']))
     $vi_tensp = $_POST['vi_tensp'];
     $en_tensp = $_POST['en_tensp'];
     $gia = $_POST['gia'];
-    $khuyenmai = $_POST['khuyenmai'];
+    //$khuyenmai = $_POST['khuyenmai'];
     $thutu = $_POST['thutu'];
     $vi_noidung = $_POST['vi_noidung'];
     $en_noidung = $_POST['en_noidung'];
@@ -36,23 +36,22 @@ if(isset($_POST['vi_tensp']))
         copy($file4['tmp_name'],"../img/sp/{$img_url4}");
     }
 	//Khuyến mãi
-	if($khuyenmai != 0)
+	/*if($khuyenmai != 0)
 	{ 
 		$new_price = $gia-(($khuyenmai*$gia)/100);
 	}
 	else
 	{
 		$new_price = $gia;
-	}
+	}*/
 	
     $sql_img = insert_pro($theloai,$vi_tensp,$en_tensp,$gia,$vi_noidung,$en_noidung,$img_url,$img_url2,$img_url3,$img_url4,$thutu,$trangthai);
-    if( mysqli_query($link,$sql_img))
+    if(mysqli_query($link,$sql_img))
     {
         $_SESSION['theloai'] = $theloai;
         $_SESSION['them'] = 'themthanhcong';
-        header("Location:danh-sach-san-pham.html");
+        header("location:danh-sach-san-pham.html");
     }
-    else echo $sql_img;
 }
 if(isset($_POST['suatheloai']))
 {
